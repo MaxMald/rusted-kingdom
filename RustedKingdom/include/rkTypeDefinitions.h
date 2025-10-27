@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <cstddef>
+#include <unordered_map>
 
 namespace rk
 {
@@ -17,4 +18,7 @@ namespace rk
 
   using Bool = bool;
   using SizeT = std::size_t;
+
+  template<typename K, typename V>
+  using UnorderedMap = std::unordered_map<K,V>;
 }

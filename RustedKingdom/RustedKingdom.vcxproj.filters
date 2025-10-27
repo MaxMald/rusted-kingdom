@@ -19,13 +19,22 @@
     <Filter Include="Header Files\assetManager">
       <UniqueIdentifier>{4222a4a4-a9bf-4455-8e86-a87169fee78e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\utilities">
+      <UniqueIdentifier>{864f1969-89c8-41a2-b942-2c26ffbde874}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\assetManager">
+      <UniqueIdentifier>{aa0eb773-2a25-4cf5-9041-7115b756396a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\rkJson.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkAssetManager.cpp">
+      <Filter>Source Files\assetManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="include\rkString.h">
       <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkAssetManager.h">
+      <Filter>Header Files\assetManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

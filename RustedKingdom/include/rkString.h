@@ -53,3 +53,28 @@ public:
     return String(buffer.data());
   }
 };
+
+namespace std {
+  /**
+   * @brief Specialization of std::hash for the String class.
+   *
+   * Enables the use of String as a key in unordered associative containers such
+   * as std::unordered_map and std::unordered_set by providing a hash function.
+   * This implementation delegates hashing to std::string's hash function,
+   * ensuring consistent behavior and performance.
+   */
+  template<>
+  struct hash<String>
+  {
+    /**
+     * @brief Computes the hash value for a String object.
+     *
+     * @param s The String object to hash.
+     * @return The hash value as a std::size_t.
+     */
+    std::size_t operator()(const String& s) const noexcept
+    {
+      return std::hash<std::string>()(static_cast<const std::string&>(s));
+    }
+  };
+}

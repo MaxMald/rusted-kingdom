@@ -162,9 +162,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\rkAssetManager.cpp" />
     <ClCompile Include="src\rkJson.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\rkAssetManager.h" />
     <ClInclude Include="include\rkExceptions.h" />
     <ClInclude Include="include\rkJson.h" />
     <ClInclude Include="include\rkPrerequisites.h" />
