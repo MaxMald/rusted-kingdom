@@ -25,6 +25,12 @@
     <Filter Include="Source Files\assetManager">
       <UniqueIdentifier>{aa0eb773-2a25-4cf5-9041-7115b756396a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\scene">
+      <UniqueIdentifier>{96f0154f-1977-4f1d-bcf0-b7a6b8b0a3c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\scene">
+      <UniqueIdentifier>{f4b7875f-8ddb-4bbc-93a4-1c8002b40c54}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -35,6 +41,9 @@
     </ClCompile>
     <ClCompile Include="src\rkAssetManager.cpp">
       <Filter>Source Files\assetManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkGameObject.cpp">
+      <Filter>Source Files\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="include\rkAssetManager.h">
       <Filter>Header Files\assetManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkGameObject.h">
+      <Filter>Header Files\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

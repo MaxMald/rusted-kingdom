@@ -3,6 +3,8 @@
 #include <cstdint>
 #include <cstddef>
 #include <unordered_map>
+#include <memory>
+#include <vector>
 
 namespace rk
 {
@@ -21,4 +23,10 @@ namespace rk
 
   template<typename K, typename V>
   using UnorderedMap = std::unordered_map<K,V>;
+
+  template<typename T>
+  using UniquePtr = std::unique_ptr<T>;
+
+  template<typename T>
+  using Vector = std::vector<T>;
 }
