@@ -57,6 +57,9 @@
     <ClCompile Include="src\rkSpriteGameObject.cpp">
       <Filter>Source Files\scene\gameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkSpriteSheet.cpp">
+      <Filter>Source Files\assetManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="include\rkSpriteGameObject.h">
       <Filter>Header Files\scene\gameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkSpriteSheet.h">
+      <Filter>Header Files\assetManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
