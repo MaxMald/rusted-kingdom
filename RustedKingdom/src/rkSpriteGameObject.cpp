@@ -8,8 +8,15 @@ namespace rk
     : m_texture(texture),
     m_sprite(*texture)
   {
-    if (m_texture)
-      m_sprite.setTexture(*m_texture);
+  }
+
+  SpriteGameObject::SpriteGameObject(
+    const sf::Texture* texture,
+    const sf::IntRect& textureRect
+  ) :
+    m_texture(texture),
+    m_sprite(*texture, textureRect)
+  {
   }
 
   void SpriteGameObject::setTexture(const sf::Texture* texture)
