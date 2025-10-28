@@ -45,6 +45,9 @@
     <ClCompile Include="src\rkGameObject.cpp">
       <Filter>Source Files\scene</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkSceneGraph.cpp">
+      <Filter>Source Files\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -66,6 +69,9 @@
       <Filter>Header Files\assetManager</Filter>
     </ClInclude>
     <ClInclude Include="include\rkGameObject.h">
+      <Filter>Header Files\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkSceneGraph.h">
       <Filter>Header Files\scene</Filter>
     </ClInclude>
   </ItemGroup>

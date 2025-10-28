@@ -18,6 +18,7 @@ namespace rk
 
   GameObject::~GameObject()
   {
+    onDelete();
     clearChildren();
   }
 
@@ -26,28 +27,59 @@ namespace rk
     return m_name;
   }
 
-  void GameObject::update(float deltaTime)
-  {
-    OnUpdate();
-   
-    for (auto& child : m_children)
-    {
-      child->update(deltaTime);
-    }
-  }
-
   void GameObject::addChild(UniquePtr<GameObject> child)
   {
-    if (child)
+    if (!child)
+      return;
+
+    if (child->m_parent == this)
+      return;
+
+    child->m_parent = this;
+    m_children.push_back(std::move(child));
+  }
+
+  UniquePtr<GameObject> GameObject::removeChild(GameObject* child)
+  {
+    for (auto it = m_children.begin(); it != m_children.end(); ++it)
     {
-      child->m_parent = this;
-      m_children.push_back(std::move(child));
+      if (it->get() == child)
+      {
+        child->m_parent = nullptr;
+        UniquePtr<GameObject> removedChild = std::move(*it);
+        m_children.erase(it);
+        return removedChild;
+      }
     }
+
+    return nullptr;
+  }
+
+  UniquePtr<GameObject> GameObject::detachFromParent()
+  {
+    if (m_parent)
+      return m_parent->removeChild(this);
+
+    return nullptr;
   }
 
   void GameObject::clearChildren()
   {
     m_children.clear();
+  }
+
+  GameObject* GameObject::findChildByName(const char* name)
+  {
+    for (auto& child : m_children)
+    {
+      if (child->getName() && std::strcmp(child->getName(), name) == 0)
+        return child.get();
+
+      GameObject* found = child->findChildByName(name);
+      if (found)
+        return found;
+    }
+    return nullptr;
   }
 
   GameObject* GameObject::getParent() const
@@ -60,15 +92,28 @@ namespace rk
     return m_children;
   }
 
-  void GameObject::OnUpdate()
+  void GameObject::update(float deltaTime)
   {
-    // Custom update logic can be implemented in derived classes
+    onUpdate(deltaTime);
+
+    for (auto& child : m_children)
+      child->update(deltaTime);
   }
 
-  void GameObject::destroy()
+  void GameObject::draw()
   {
-    // Custom destruction logic if needed
-    clearChildren();
-    // Actual deletion should be managed by the owner (scene graph/manager)
+    // Custom drawing logic for derived classes can be implemented here.
+  }
+
+  void GameObject::onUpdate(float deltaTime)
+  {
+    (void)deltaTime;
+
+    // Custom update logic for derived classes can be implemented here.
+  }
+
+  void GameObject::onDelete()
+  {
+    // Custom deletion logic for derived classes can be implemented here.
   }
 }
