@@ -1,4 +1,5 @@
 #include "rkGameObject.h"
+#include <SFML/Graphics/RenderStates.hpp>
 
 namespace rk
 {
@@ -98,11 +99,6 @@ namespace rk
 
     for (auto& child : m_children)
       child->update(deltaTime);
-  }
-
-  void GameObject::draw()
-  {
-    // Custom drawing logic for derived classes can be implemented here.
   }
 
   void GameObject::onUpdate(float deltaTime)

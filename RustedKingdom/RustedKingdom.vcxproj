@@ -166,6 +166,7 @@
     <ClCompile Include="src\rkGameObject.cpp" />
     <ClCompile Include="src\rkJson.cpp" />
     <ClCompile Include="src\rkSceneGraph.cpp" />
+    <ClCompile Include="src\rkSpriteGameObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkAssetManager.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="include\rkJson.h" />
     <ClInclude Include="include\rkPrerequisites.h" />
     <ClInclude Include="include\rkSceneGraph.h" />
+    <ClInclude Include="include\rkSpriteGameObject.h" />
     <ClInclude Include="include\rkString.h" />
     <ClInclude Include="include\rkTypeDefinitions.h" />
   </ItemGroup>

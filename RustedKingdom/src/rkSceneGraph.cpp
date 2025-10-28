@@ -32,7 +32,7 @@ namespace rk
     sortGameObjectsByYPosition(gameObjects);
 
     for (GameObject* gameObject : gameObjects)
-      gameObject->draw();
+      // gameObject->draw(); TODO draw using a render target and render states
   }
 
   void SceneGraph::getAllGameObjectsRecursively(

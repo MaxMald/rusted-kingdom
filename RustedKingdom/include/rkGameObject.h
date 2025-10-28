@@ -1,7 +1,11 @@
 #pragma once
 
 #include <SFML/Graphics/Transformable.hpp>
+#include <SFML/Graphics/Drawable.hpp>
 #include "rkPrerequisites.h"
+
+using sf::RenderTarget;
+using sf::RenderStates;
 
 namespace rk
 {
@@ -14,7 +18,7 @@ namespace rk
   * for game logic. Inherits from sf::Transformable for position, rotation, and
   * scale management.
   */
-  class GameObject : public sf::Transformable
+  class GameObject : public sf::Transformable, public sf::Drawable
   {
   public:
 
@@ -114,13 +118,6 @@ namespace rk
      * @param deltaTime Time elapsed since last update (in seconds).
      */
     void update(float deltaTime);
-
-    /**
-     * @brief Draws this GameObject.
-     *
-     * Override to implement custom drawing logic.
-     */
-    virtual void draw();
 
     /**
      * @brief Called during update to implement custom behavior.
