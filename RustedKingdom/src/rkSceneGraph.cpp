@@ -1,5 +1,7 @@
 #include "rkSceneGraph.h"
 #include <algorithm>
+#include <SFML/Graphics/RenderStates.hpp>
+#include <SFML/Graphics/RenderTarget.hpp>
 
 namespace rk
 {
@@ -25,20 +27,22 @@ namespace rk
       m_root->update(deltaTime);
   }
 
-  void SceneGraph::draw()
+  void SceneGraph::draw(RenderTarget& target, RenderStates states) const
   {
-    Vector<GameObject*> gameObjects;
-    getAllGameObjectsRecursively(m_root.get(), gameObjects);
-    sortGameObjectsByYPosition(gameObjects);
+    m_root->updateTransform();
 
-    for (GameObject* gameObject : gameObjects)
-      // gameObject->draw(); TODO draw using a render target and render states
+    Vector<GameObject*> sortedGameObjects;
+    getAllGameObjectsRecursively(m_root.get(), sortedGameObjects);
+    sortGameObjectsByYPosition(sortedGameObjects);
+
+    for (GameObject* gameObject : sortedGameObjects)
+      target.draw(*gameObject, states);
   }
 
   void SceneGraph::getAllGameObjectsRecursively(
     GameObject* parent,
     Vector<GameObject*>& gameObjects
-  )
+  ) const
   {
     if (!parent)
       return;
@@ -51,7 +55,9 @@ namespace rk
     }
   }
 
-  void SceneGraph::sortGameObjectsByYPosition(Vector<GameObject*>& gameObjects)
+  void SceneGraph::sortGameObjectsByYPosition(
+    Vector<GameObject*>& gameObjects
+  ) const
   {
     std::sort(
       gameObjects.begin(),

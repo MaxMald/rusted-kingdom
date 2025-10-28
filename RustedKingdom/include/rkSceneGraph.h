@@ -1,5 +1,6 @@
 #pragma once
 
+#include <SFML/Graphics/Drawable.hpp>
 #include "rkPrerequisites.h"
 #include "rkGameObject.h"
 
@@ -11,7 +12,7 @@ namespace rk
    * SceneGraph owns all GameObjects, provides root node access, and supports
    * creation, destruction, and traversal of the scene hierarchy.
    */
-  class SceneGraph
+  class SceneGraph : public sf::Drawable
   {
   public:
     SceneGraph();
@@ -32,9 +33,15 @@ namespace rk
     void update(float deltaTime);
 
     /**
-     * @brief Draws all GameObjects in the scene graph, sorted by Y position.
+     * @brief Draws all GameObjects in the scene graph, sorted by Y position for
+     * correct isometric rendering.
+     *
+     * @param target The SFML render target to draw onto (e.g., window or
+     * texture).
+     * @param states The current render states (transform, blend mode, etc.) to
+     * use for drawing.
      */
-    void draw();
+    void draw(RenderTarget& target, RenderStates states) const override;
 
   private:
 
@@ -51,7 +58,7 @@ namespace rk
     void getAllGameObjectsRecursively(
       GameObject* parent,
       Vector<GameObject*>& gameObjects
-    );
+    ) const;
 
     /**
      * @brief Sorts a vector of GameObject pointers by their Y position.
@@ -59,6 +66,6 @@ namespace rk
      * @param gameObjects Reference to a vector of GameObject pointers to be
      * sorted.
      */
-    void sortGameObjectsByYPosition(Vector<GameObject*>& gameObjects);
+    void sortGameObjectsByYPosition(Vector<GameObject*>& gameObjects) const;
   };
 }

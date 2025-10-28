@@ -114,6 +114,14 @@ namespace rk
       child->update(deltaTime);
   }
 
+  void GameObject::draw(RenderTarget& target, RenderStates states) const
+  {
+    (void)target;
+    (void)states;
+
+    // Custom drawing logic for derived classes can be implemented here.
+  }
+
   void GameObject::onUpdate(float deltaTime)
   {
     (void)deltaTime;

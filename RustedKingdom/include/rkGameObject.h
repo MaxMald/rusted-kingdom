@@ -132,6 +132,16 @@ namespace rk
     void update(float deltaTime);
 
     /**
+     * @brief Draws this GameObject. Override to implement custom rendering.
+     *
+     * @param target The SFML render target to draw onto (e.g., window or
+     * texture).
+     * @param states The current render states (transform, blend mode, etc.) to
+     * use for drawing.
+     */
+    virtual void draw(RenderTarget& target, RenderStates states) const override;
+
+    /**
      * @brief Called during update to implement custom behavior.
      *
      * @param deltaTime Time elapsed since last update (in seconds).
