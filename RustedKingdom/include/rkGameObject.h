@@ -110,7 +110,19 @@ namespace rk
      */
     const Vector<UniquePtr<GameObject>>& getChildren() const;
 
+    /**
+     * @brief Updates the transformation of this GameObject based on its parent's
+     * transform.
+     */
+    void updateTransform();
+
   protected:
+
+    /**
+     * @brief The world transform of this GameObject, combining its local
+     * transform with its parent's world transform.
+     */
+    sf::Transform m_worldTransform;
 
     /**
      * @brief Updates this GameObject and recursively updates its children.

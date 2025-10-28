@@ -6,14 +6,16 @@ namespace rk
   GameObject::GameObject() :
     m_name("Unnamed"),
     m_parent(nullptr),
-    m_children()
+    m_children(),
+    m_worldTransform()
   {
   }
 
   GameObject::GameObject(const char* name) :
     m_name(name),
     m_parent(nullptr),
-    m_children()
+    m_children(),
+    m_worldTransform()
   {
   }
 
@@ -91,6 +93,17 @@ namespace rk
   const Vector<UniquePtr<GameObject>>& GameObject::getChildren() const
   {
     return m_children;
+  }
+
+  void GameObject::updateTransform()
+  {
+    if (m_parent)
+      m_worldTransform = m_parent->getTransform() * getTransform();
+    else
+      m_worldTransform = getTransform();
+
+    for (auto& child : m_children)
+      child->updateTransform();
   }
 
   void GameObject::update(float deltaTime)
