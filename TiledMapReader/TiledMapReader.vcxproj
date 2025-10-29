@@ -158,10 +158,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\TiledMapReader.cpp" />
+    <ClCompile Include="src\tmrJson.cpp" />
     <ClCompile Include="src\tmrTiledMap.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\TMR\TiledMapParser.h" />
     <ClInclude Include="include\TMR\TiledMapReader.h" />
+    <ClInclude Include="include\TMR\tmrJson.h" />
     <ClInclude Include="include\TMR\tmrOrientation.h" />
     <ClInclude Include="include\TMR\tmrPrerequisites.h" />
     <ClInclude Include="include\TMR\tmrRenderOrder.h" />
