@@ -7,12 +7,12 @@ namespace tmr
   class TiledMap;
   class TiledMapParser;
 
-  class TMR_API TileMapReader
+  class TMR_API TiledMapReader
   {
   public:
 
-    TileMapReader();
-    ~TileMapReader();
+    TiledMapReader();
+    ~TiledMapReader();
 
     TiledMap* readFromFile(const char* filePath);
 

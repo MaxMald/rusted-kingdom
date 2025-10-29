@@ -33,7 +33,7 @@ int main()
   rk::SceneGraph sceneGraph;
   sceneGraph.getRoot()->addChild(std::move(landTile));
 
-  tmr::TileMapReader tileMapReader;
+  tmr::TiledMapReader tileMapReader;
   tmr::TiledMap* tiledMap = tileMapReader.readFromFile(
     "F:/Repositories/MaxMald/rusted-kingdom/assets/maps/level-0.json"
   );

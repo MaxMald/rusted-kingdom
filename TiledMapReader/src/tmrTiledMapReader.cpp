@@ -4,17 +4,17 @@
 
 namespace tmr
 {
-  TileMapReader::TileMapReader() :
+  TiledMapReader::TiledMapReader() :
     m_parser(new TiledMapParser())
   {
   }
 
-  TileMapReader::~TileMapReader()
+  TiledMapReader::~TiledMapReader()
   {
     delete m_parser;
   }
 
-  TiledMap* TileMapReader::readFromFile(const char* filePath)
+  TiledMap* TiledMapReader::readFromFile(const char* filePath)
   {
     Json json = Json::loadFromFile(filePath);
     return m_parser->parseFromJson(json);
