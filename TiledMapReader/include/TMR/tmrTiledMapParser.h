@@ -1,0 +1,26 @@
+#pragma once
+
+#include "TMR/tmrPrerequisites.h"
+#include "TMR/tmrJson.h"
+#include "TMR/tmrOrientation.h"
+#include "TMR/tmrRenderOrder.h"
+
+namespace tmr
+{
+  class TiledMap;
+
+  class TiledMapParser
+  {
+  public:
+
+    TiledMapParser();
+    ~TiledMapParser();
+
+    TiledMap* parseFromJson(const Json& json);
+
+  private:
+
+    orientation::Type parseOrientation(const char* orientationStr);
+    renderOrder::Type parseRenderOrder(const char* renderOrderStr);
+  };
+}

@@ -22,9 +22,12 @@
     <Filter Include="Source Files\utilities">
       <UniqueIdentifier>{6e72bd00-77b3-4823-8bb6-31ce5d3a906b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\parsers">
+      <UniqueIdentifier>{92d8e78e-e638-4775-914e-c8cc60b335a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\TiledMapReader.cpp">
+    <ClCompile Include="src\tmrTiledMapReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\tmrTiledMap.cpp">
@@ -33,9 +36,12 @@
     <ClCompile Include="src\tmrJson.cpp">
       <Filter>Source Files\utilities</Filter>
     </ClCompile>
+    <ClCompile Include="src\tmrTiledMapParser.cpp">
+      <Filter>Source Files\parsers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\TMR\TiledMapReader.h">
+    <ClInclude Include="include\TMR\tmrTiledMapReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrPrerequisites.h">
@@ -50,7 +56,7 @@
     <ClInclude Include="include\TMR\tmrRenderOrder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\TMR\TiledMapParser.h">
+    <ClInclude Include="include\TMR\tmrTiledMapParser.h">
       <Filter>Header Files\parsers</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrJson.h">
