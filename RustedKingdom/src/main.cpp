@@ -1,4 +1,6 @@
 #include <SFML/Graphics.hpp>
+#include <TMR/tmrTiledMapReader.h>
+#include <TMR/tmrTiledMap.h>
 #include "rkAssetManager.h"
 #include "rkSceneGraph.h"
 #include "rkSpriteSheet.h"
@@ -31,6 +33,11 @@ int main()
   rk::SceneGraph sceneGraph;
   sceneGraph.getRoot()->addChild(std::move(landTile));
 
+  tmr::TileMapReader tileMapReader;
+  tmr::TiledMap* tiledMap = tileMapReader.readFromFile(
+    "F:/Repositories/MaxMald/rusted-kingdom/assets/maps/level-0.json"
+  );
+
   while (window.isOpen())
   {
     // Process events
@@ -48,5 +55,6 @@ int main()
     window.display();
   }
 
+  delete tiledMap;
   assetManager.clear();
 }
