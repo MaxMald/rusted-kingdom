@@ -54,6 +54,9 @@
     <ClCompile Include="src\tmrObjectGroupMapLayer.cpp">
       <Filter>Source Files\mapLayers</Filter>
     </ClCompile>
+    <ClCompile Include="src\tmrTileMapLayerPaser.cpp">
+      <Filter>Source Files\parsers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\TMR\tmrTiledMapReader.h">
@@ -88,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="include\TMR\tmrObjectGroupMapLayer.h">
       <Filter>Header Files\mapLayers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrTileMapLayerParser.h">
+      <Filter>Header Files\parsers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
