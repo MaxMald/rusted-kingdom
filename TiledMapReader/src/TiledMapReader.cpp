@@ -9,4 +9,9 @@ namespace tmr
   TileMapReader::~TileMapReader()
   {
   }
+
+  TiledMap* TileMapReader::readFromFile(const char* filePath)
+  {
+      return nullptr;
+  }
 }

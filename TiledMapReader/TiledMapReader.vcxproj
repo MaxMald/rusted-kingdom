@@ -158,10 +158,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\TiledMapReader.cpp" />
+    <ClCompile Include="src\tmrTiledMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\TMR\TiledMapReader.h" />
+    <ClInclude Include="include\TMR\tmrOrientation.h" />
     <ClInclude Include="include\TMR\tmrPrerequisites.h" />
+    <ClInclude Include="include\TMR\tmrRenderOrder.h" />
+    <ClInclude Include="include\TMR\tmrTiledMap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

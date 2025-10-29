@@ -18,12 +18,24 @@
     <ClCompile Include="src\TiledMapReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tmrTiledMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\TMR\TiledMapReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrPrerequisites.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrTiledMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrOrientation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrRenderOrder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
