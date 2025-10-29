@@ -25,6 +25,12 @@
     <Filter Include="Source Files\parsers">
       <UniqueIdentifier>{92d8e78e-e638-4775-914e-c8cc60b335a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\mapLayers">
+      <UniqueIdentifier>{b515af21-58e2-4463-aa5d-663662f36f2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\mapLayers">
+      <UniqueIdentifier>{bff6329b-f422-4971-8519-d38488a2a8c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\tmrTiledMapReader.cpp">
@@ -38,6 +44,9 @@
     </ClCompile>
     <ClCompile Include="src\tmrTiledMapParser.cpp">
       <Filter>Source Files\parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrMapLayer.cpp">
+      <Filter>Source Files\mapLayers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +70,12 @@
     </ClInclude>
     <ClInclude Include="include\TMR\tmrJson.h">
       <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrMapLayer.h">
+      <Filter>Header Files\mapLayers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrMapLayerType.h">
+      <Filter>Header Files\mapLayers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

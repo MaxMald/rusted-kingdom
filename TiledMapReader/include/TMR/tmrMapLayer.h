@@ -1,0 +1,92 @@
+#pragma once
+
+#include "TMR/tmrPrerequisites.h"
+#include "TMR/tmrMapLayerType.h"
+
+namespace tmr
+{
+  /**
+   * @class TiledMapLayer
+   * @brief Represents a layer in a Tiled map, such as a tile layer or object group.
+   */
+  class TMR_API TiledMapLayer
+  {
+  public:
+    /**
+     * @brief Constructs a TiledMapLayer with the specified properties.
+     * 
+     * @param type The type of the layer (e.g., TileLayer, ObjectGroup).
+     * @param id The unique identifier for the layer.
+     * @param x The x-coordinate of the layer.
+     * @param y The y-coordinate of the layer.
+     * @param visible Whether the layer is visible.
+     * @param opacity The opacity of the layer (0.0f to 1.0f).
+     * @param name The name of the layer.
+     */
+    TiledMapLayer(
+      mapLayerType::Type type,
+      std::int32_t id,
+      std::int32_t x,
+      std::int32_t y,
+      bool visible,
+      float opacity,
+      const char* name
+    );
+
+    /**
+     * @brief Virtual destructor for safe polymorphic use.
+     */
+    virtual ~TiledMapLayer();
+
+    /**
+     * @brief Gets the type of the layer.
+     * @return The layer type.
+     */
+    mapLayerType::Type getType() const { return m_type; }
+
+    /**
+     * @brief Gets the unique identifier of the layer.
+     * @return The layer ID.
+     */
+    std::int32_t getId() const { return m_id; }
+
+    /**
+     * @brief Gets the x-coordinate of the layer.
+     * @return The x position.
+     */
+    std::int32_t getX() const { return m_x; }
+
+    /**
+     * @brief Gets the y-coordinate of the layer.
+     * @return The y position.
+     */
+    std::int32_t getY() const { return m_y; }
+
+    /**
+     * @brief Checks if the layer is visible.
+     * @return True if visible, false otherwise.
+     */
+    bool isVisible() const { return m_visible; }
+
+    /**
+     * @brief Gets the opacity of the layer.
+     * @return The opacity value (0.0f to 1.0f).
+     */
+    float getOpacity() const { return m_opacity; }
+
+    /**
+     * @brief Gets the name of the layer.
+     * @return The layer name as a C-style string.
+     */
+    const char* getName() const { return m_name; }
+
+  private:
+    mapLayerType::Type m_type;      ///< The type of the layer.
+    std::int32_t m_id;              ///< The unique identifier for the layer.
+    std::int32_t m_x;               ///< The x-coordinate of the layer.
+    std::int32_t m_y;               ///< The y-coordinate of the layer.
+    bool m_visible;                 ///< Whether the layer is visible.
+    float m_opacity;                ///< The opacity of the layer.
+    char* m_name;                   ///< The name of the layer.
+  };
+}
