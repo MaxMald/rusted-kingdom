@@ -48,6 +48,9 @@
     <ClCompile Include="src\tmrMapLayer.cpp">
       <Filter>Source Files\mapLayers</Filter>
     </ClCompile>
+    <ClCompile Include="src\tmrTileMapLayer.cpp">
+      <Filter>Source Files\mapLayers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\TMR\tmrTiledMapReader.h">
@@ -75,6 +78,9 @@
       <Filter>Header Files\mapLayers</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrMapLayerType.h">
+      <Filter>Header Files\mapLayers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrTileMapLayer.h">
       <Filter>Header Files\mapLayers</Filter>
     </ClInclude>
   </ItemGroup>

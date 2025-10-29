@@ -1,15 +1,16 @@
 #include "TMR/tmrMapLayer.h"
 #include <cstring>
+#include <stdexcept>
 
 namespace tmr
 {
-  TiledMapLayer::TiledMapLayer(
-    mapLayerType::Type type,
-    std::int32_t id,
-    std::int32_t x,
-    std::int32_t y,
-    bool visible,
-    float opacity,
+  MapLayer::MapLayer(
+    const mapLayerType::Type& type,
+    const std::int32_t& id,
+    const std::int32_t& x,
+    const std::int32_t& y,
+    const bool& visible,
+    const float& opacity,
     const char* name
   ) :
     m_type(type),
@@ -26,7 +27,7 @@ namespace tmr
     }
   }
 
-  TiledMapLayer::~TiledMapLayer()
+  MapLayer::~MapLayer()
   {
     delete[] m_name;
   }

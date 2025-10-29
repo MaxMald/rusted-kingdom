@@ -162,6 +162,7 @@
     <ClCompile Include="src\tmrJson.cpp" />
     <ClCompile Include="src\tmrTiledMap.cpp" />
     <ClCompile Include="src\tmrTiledMapParser.cpp" />
+    <ClCompile Include="src\tmrTileMapLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\TMR\tmrMapLayer.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="include\TMR\tmrPrerequisites.h" />
     <ClInclude Include="include\TMR\tmrRenderOrder.h" />
     <ClInclude Include="include\TMR\tmrTiledMap.h" />
+    <ClInclude Include="include\TMR\tmrTileMapLayer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
