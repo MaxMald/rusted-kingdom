@@ -6,6 +6,20 @@
 
 namespace tmr
 {
+  static inline std::string jsonToStdString(const Json& j)
+  {
+    const std::size_t len = j.getStringLength();
+    std::string s;
+
+    // reserve for terminator written by getString
+    s.resize(len + 1);
+    j.getString(&s[0], s.size());
+
+    // drop the explicit terminator
+    s.resize(len);
+    return s;
+  }
+
   MapLayerParser::MapLayerParser() :
     m_tileMapLayerParser(),
     m_objectGroupMapLayerParser()
@@ -30,9 +44,7 @@ namespace tmr
     json["name"].getString(&nameStr[0], nameStr.size());
 
     // Parse type
-    std::string typeStr;
-    typeStr.resize(json["type"].getStringLength() + 1);
-    json["type"].getString(&typeStr[0], typeStr.size());
+    std::string typeStr = jsonToStdString(json["type"]);
 
     if (typeStr == "tilelayer")
     {

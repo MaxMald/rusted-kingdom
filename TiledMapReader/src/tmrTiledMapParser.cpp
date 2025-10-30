@@ -1,11 +1,13 @@
 #include "TMR/tmrTiledMapParser.h"
 #include "TMR/tmrTiledMap.h"
+#include "TMR/tmrMapLayer.h"
 #include <string>
 #include <stdexcept>
 
 namespace tmr
 {
-  TiledMapParser::TiledMapParser()
+  TiledMapParser::TiledMapParser() :
+    m_mapLayerParser()
   {
   }
 
@@ -50,6 +52,15 @@ namespace tmr
     versionStr.resize(json["version"].getStringLength() + 1);
     json["version"].getString(&versionStr[0], versionStr.size());
 
+    // Parse map layers
+    Json layersJson = json["layers"];
+    std::size_t layersArraySize = layersJson.getSize();
+    MapLayer** layers = new MapLayer * [layersArraySize];
+    for (std::size_t i = 0; i < layersArraySize; ++i)
+    {
+      layers[i] = m_mapLayerParser.parseFromJson(layersJson[i]);
+    }
+
     return new TiledMap(
       infinite,
       height,
@@ -62,7 +73,9 @@ namespace tmr
       renderOrderVal,
       tiledVersionStr.c_str(),
       typeStr.c_str(),
-      versionStr.c_str()
+      versionStr.c_str(),
+      layers,
+      layersArraySize
     );
   }
 

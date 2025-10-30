@@ -1,5 +1,6 @@
 #include "TMR/tmrTiledMap.h"
 #include <cstring>
+#include <stdexcept>
 
 namespace tmr
 {
@@ -15,7 +16,9 @@ namespace tmr
     renderOrder::Type renderOrder,
     const char* tiledVersion,
     const char* type,
-    const char* version
+    const char* version,
+    MapLayer** layers,
+    const std::size_t& layersCount
   ) :
     m_infinite(infinite),
     m_height(height),
@@ -25,7 +28,9 @@ namespace tmr
     m_tileHeight(tileHeight),
     m_tileWidth(tileWidth),
     m_orientation(orientation),
-    m_renderOrder(renderOrder)
+    m_renderOrder(renderOrder),
+    m_layers(layers),
+    m_layersCount(layersCount)
   {
     m_tiledVersion = tiledVersion ? new char[std::strlen(tiledVersion) + 1] : nullptr;
     if (m_tiledVersion)
@@ -51,5 +56,24 @@ namespace tmr
     delete[] m_tiledVersion;
     delete[] m_type;
     delete[] m_version;
+
+    if (m_layers)
+    {
+      for (std::size_t i = 0; i < m_layersCount; ++i)
+        delete m_layers[i];
+
+      delete[] m_layers;
+      m_layers = nullptr;
+      m_layersCount = 0;
+    }
+  }
+
+  const MapLayer* TiledMap::getLayerAt(const std::size_t& index) const
+  {
+    if (index >= m_layersCount)
+    {
+      throw std::out_of_range("TiledMap::getLayerAt: Index out of range.");
+    }
+    return m_layers[index];
   }
 }

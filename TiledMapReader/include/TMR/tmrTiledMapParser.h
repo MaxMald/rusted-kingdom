@@ -4,6 +4,7 @@
 #include "TMR/tmrJson.h"
 #include "TMR/tmrOrientation.h"
 #include "TMR/tmrRenderOrder.h"
+#include "TMR/tmrMapLayerParser.h"
 
 namespace tmr
 {
@@ -19,6 +20,8 @@ namespace tmr
     TiledMap* parseFromJson(const Json& json);
 
   private:
+
+    MapLayerParser m_mapLayerParser;
 
     orientation::Type parseOrientation(const char* orientationStr);
     renderOrder::Type parseRenderOrder(const char* renderOrderStr);

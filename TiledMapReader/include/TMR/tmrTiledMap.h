@@ -6,6 +6,8 @@
 
 namespace tmr
 {
+  class MapLayer;
+
   /**
    * @class TiledMap
    * @brief Represents a Tiled map and its properties.
@@ -28,6 +30,9 @@ namespace tmr
       * @param tiledVersion Tiled version string.
       * @param type Type string of the map.
       * @param version Version string of the map.
+      * @param layers Array of pointers to MapLayer objects. Ownership 
+      * is transferred to TiledMap.
+      * @param layersCount Number of layers in the map.
       */
     TiledMap(
       bool infinite,
@@ -41,7 +46,9 @@ namespace tmr
       renderOrder::Type renderOrder,
       const char* tiledVersion,
       const char* type,
-      const char* version
+      const char* version,
+      MapLayer** layers,
+      const std::size_t& layersCount
     );
 
     /**
@@ -133,6 +140,20 @@ namespace tmr
      */
     const char* getVersion() const { return m_version; }
 
+    /**
+     * @brief Gets the number of layers in the map.
+     * @return The number of layers.
+     */
+    const std::size_t& getLayersCount() const { return m_layersCount; }
+
+    /**
+     * @brief Gets the map layer at the specified index.
+     * 
+     * @param index Index of the layer to retrieve.
+     * @return Pointer to the MapLayer at the specified index.
+     */
+    const MapLayer* getLayerAt(const std::size_t& index) const;
+
   private:
     bool m_infinite;
     std::int32_t m_height;
@@ -146,5 +167,7 @@ namespace tmr
     char* m_tiledVersion;
     char* m_type;
     char* m_version;
+    MapLayer** m_layers;
+    std::size_t m_layersCount;
   };
 }
