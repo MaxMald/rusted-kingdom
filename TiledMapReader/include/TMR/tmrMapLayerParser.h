@@ -1,6 +1,7 @@
 #pragma once
 
 #include "TMR/tmrTileMapLayerParser.h"
+#include "TMR/tmrObjectGroupMapLayerParser.h"
 
 namespace tmr
 {
@@ -30,5 +31,6 @@ namespace tmr
 
   private:
     TileMapLayerParser m_tileMapLayerParser;
+    ObjectGroupMapLayerParser m_objectGroupMapLayerParser;
   };
 }

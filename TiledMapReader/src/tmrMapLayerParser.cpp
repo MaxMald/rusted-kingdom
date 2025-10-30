@@ -1,12 +1,14 @@
 #include "TMR/tmrMapLayerParser.h"
 #include "TMR/tmrTileMapLayer.h"
+#include "TMR/tmrObjectGroupMapLayer.h"
 #include <string>
 #include <stdexcept>
 
 namespace tmr
 {
   MapLayerParser::MapLayerParser() :
-    m_tileMapLayerParser()
+    m_tileMapLayerParser(),
+    m_objectGroupMapLayerParser()
   {
   }
 
@@ -35,6 +37,17 @@ namespace tmr
     if (typeStr == "tilelayer")
     {
       return m_tileMapLayerParser.parseFromJson(
+        id,
+        x, y,
+        visible,
+        opacity,
+        nameStr.c_str(),
+        json
+      );
+    }
+    else if(typeStr == "objectgroup")
+    {
+      return m_objectGroupMapLayerParser.parseFromJson(
         id,
         x, y,
         visible,
