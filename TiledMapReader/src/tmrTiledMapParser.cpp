@@ -7,7 +7,8 @@
 namespace tmr
 {
   TiledMapParser::TiledMapParser() :
-    m_mapLayerParser()
+    m_mapLayerParser(),
+    m_tileSetParser()
   {
   }
 
@@ -61,6 +62,15 @@ namespace tmr
       layers[i] = m_mapLayerParser.parseFromJson(layersJson[i]);
     }
 
+    // Parse tile sets
+    Json tileSetsJson = json["tilesets"];
+    std::size_t tileSetsArraySize = tileSetsJson.getSize();
+    TileSet** tileSets = new TileSet * [tileSetsArraySize];
+    for (std::size_t i = 0; i < tileSetsArraySize; ++i)
+    {
+      tileSets[i] = m_tileSetParser.parseFromJson(tileSetsJson[i]);
+    }
+
     return new TiledMap(
       infinite,
       height,
@@ -75,7 +85,9 @@ namespace tmr
       typeStr.c_str(),
       versionStr.c_str(),
       layers,
-      layersArraySize
+      layersArraySize,
+      tileSets,
+      tileSetsArraySize
     );
   }
 

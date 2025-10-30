@@ -72,6 +72,9 @@
     <ClCompile Include="src\tmrTileSet.cpp">
       <Filter>Source Files\tilesets</Filter>
     </ClCompile>
+    <ClCompile Include="src\tmrTileSetParser.cpp">
+      <Filter>Source Files\parsers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\TMR\tmrTiledMapReader.h">
@@ -118,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="include\TMR\tmrTileSet.h">
       <Filter>Header Files\tilesets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrTileSetParser.h">
+      <Filter>Header Files\parsers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

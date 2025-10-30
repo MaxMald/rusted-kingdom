@@ -7,6 +7,7 @@
 namespace tmr
 {
   class MapLayer;
+  class TileSet;
 
   /**
    * @class TiledMap
@@ -33,6 +34,9 @@ namespace tmr
       * @param layers Array of pointers to MapLayer objects. Ownership 
       * is transferred to TiledMap.
       * @param layersCount Number of layers in the map.
+      * @param tileSets Array of pointers to TileSet objects. Ownership
+      * is transferred to TiledMap.
+      * @param tileSetsCount Number of tile sets in the map.
       */
     TiledMap(
       bool infinite,
@@ -48,7 +52,9 @@ namespace tmr
       const char* type,
       const char* version,
       MapLayer** layers,
-      const std::size_t& layersCount
+      const std::size_t& layersCount,
+      TileSet** tileSets,
+      const std::size_t& tileSetsCount
     );
 
     /**
@@ -169,5 +175,7 @@ namespace tmr
     char* m_version;
     MapLayer** m_layers;
     std::size_t m_layersCount;
+    TileSet** m_tileSets;
+    std::size_t m_tileSetsCount;
   };
 }

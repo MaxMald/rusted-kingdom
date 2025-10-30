@@ -18,7 +18,9 @@ namespace tmr
     const char* type,
     const char* version,
     MapLayer** layers,
-    const std::size_t& layersCount
+    const std::size_t& layersCount,
+    TileSet** tileSets,
+    const std::size_t& tileSetsCount
   ) :
     m_infinite(infinite),
     m_height(height),
@@ -30,7 +32,9 @@ namespace tmr
     m_orientation(orientation),
     m_renderOrder(renderOrder),
     m_layers(layers),
-    m_layersCount(layersCount)
+    m_layersCount(layersCount),
+    m_tileSets(tileSets),
+    m_tileSetsCount(tileSetsCount)
   {
     m_tiledVersion = tiledVersion ? new char[std::strlen(tiledVersion) + 1] : nullptr;
     if (m_tiledVersion)
@@ -65,6 +69,16 @@ namespace tmr
       delete[] m_layers;
       m_layers = nullptr;
       m_layersCount = 0;
+    }
+
+    if (m_tileSets)
+    {
+      for (std::size_t i = 0; i < m_tileSetsCount; ++i)
+        delete m_tileSets[i];
+
+      delete[] m_tileSets;
+      m_tileSets = nullptr;
+      m_tileSetsCount = 0;
     }
   }
 

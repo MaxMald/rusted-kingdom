@@ -168,6 +168,7 @@
     <ClCompile Include="src\tmrTileMapLayer.cpp" />
     <ClCompile Include="src\tmrTileMapLayerPaser.cpp" />
     <ClCompile Include="src\tmrTileSet.cpp" />
+    <ClCompile Include="src\tmrTileSetParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\TMR\tmrMapLayer.h" />
@@ -185,6 +186,7 @@
     <ClInclude Include="include\TMR\tmrTileMapLayer.h" />
     <ClInclude Include="include\TMR\tmrTileMapLayerParser.h" />
     <ClInclude Include="include\TMR\tmrTileSet.h" />
+    <ClInclude Include="include\TMR\tmrTileSetParser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

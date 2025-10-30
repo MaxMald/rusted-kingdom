@@ -5,6 +5,7 @@
 #include "TMR/tmrOrientation.h"
 #include "TMR/tmrRenderOrder.h"
 #include "TMR/tmrMapLayerParser.h"
+#include "TMR/tmrTileSetParser.h"
 
 namespace tmr
 {
@@ -22,6 +23,7 @@ namespace tmr
   private:
 
     MapLayerParser m_mapLayerParser;
+    TileSetParser m_tileSetParser;
 
     orientation::Type parseOrientation(const char* orientationStr);
     renderOrder::Type parseRenderOrder(const char* renderOrderStr);
