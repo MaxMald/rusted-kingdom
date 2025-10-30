@@ -31,6 +31,12 @@
     <Filter Include="Source Files\mapLayers">
       <UniqueIdentifier>{bff6329b-f422-4971-8519-d38488a2a8c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\tilesets">
+      <UniqueIdentifier>{de835462-98e8-4efb-b8f6-4d280d1055c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tilesets">
+      <UniqueIdentifier>{d5fbf756-6236-48bf-b2ee-7974a33b2e60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\tmrTiledMapReader.cpp">
@@ -62,6 +68,9 @@
     </ClCompile>
     <ClCompile Include="src\tmrObjectGroupMapLayerParser.cpp">
       <Filter>Source Files\parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrTileSet.cpp">
+      <Filter>Source Files\tilesets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="include\TMR\tmrObjectGroupMapLayerParser.h">
       <Filter>Header Files\parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrTileSet.h">
+      <Filter>Header Files\tilesets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
