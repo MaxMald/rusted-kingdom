@@ -18,8 +18,8 @@ namespace tmr
   {
   public:
 
-    MapLayerParser() = default;
-    ~MapLayerParser() = default;
+    MapLayerParser();
+    ~MapLayerParser();
 
     /**
      * @brief Parses a MapLayer from a JSON object.
@@ -29,6 +29,6 @@ namespace tmr
     MapLayer* parseFromJson(const Json& json);
 
   private:
-    TileMapLayerParser m_TileMapLayerParser;
+    TileMapLayerParser m_tileMapLayerParser;
   };
 }

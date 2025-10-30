@@ -13,19 +13,6 @@ namespace tmr
   {
   }
 
-  TiledMap* TiledMapParser::parseFromJson(
-    const std::int32_t id,
-    const std::int32_t x,
-    const std::int32_t y,
-    const bool& visible,
-    const float& opacity,
-    const char* name,
-    const Json& json
-  )
-  {
-    return nullptr;
-  }
-
   TiledMap* TiledMapParser::parseFromJson(const Json& json)
   {
     bool infinite = json["infinite"].getBool();

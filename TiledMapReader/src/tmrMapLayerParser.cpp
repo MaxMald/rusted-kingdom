@@ -5,7 +5,8 @@
 
 namespace tmr
 {
-  MapLayerParser::MapLayerParser()
+  MapLayerParser::MapLayerParser() :
+    m_tileMapLayerParser()
   {
   }
 
@@ -33,7 +34,7 @@ namespace tmr
 
     if (typeStr == "tilelayer")
     {
-      return m_TileMapLayerParser.parseFromJson(
+      return m_tileMapLayerParser.parseFromJson(
         id,
         x, y,
         visible,
