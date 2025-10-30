@@ -39,9 +39,9 @@ namespace tmr
       const bool& visible,
       const float& opacity,
       const char* name,
-      const std::int32_t& height,
       const std::int32_t& width,
-      const std::int32_t& dataSize,
+      const std::int32_t& height,
+      const std::size_t& dataSize,
       std::int32_t* data
     );
 
@@ -63,7 +63,7 @@ namespace tmr
      * @brief Gets the size of the tile data array.
      * @return The size of the data array.
      */
-    const std::int32_t& getDataSize() const { return m_dataSize; }
+    const std::size_t& getDataSize() const { return m_dataSize; }
 
     /**
      * @brief Gets the tile data at the specified index.
@@ -88,7 +88,7 @@ namespace tmr
   private:
     std::int32_t m_height;    ///< The height of the tile layer in tiles.
     std::int32_t m_width;     ///< The width of the tile layer in tiles.
-    std::int32_t m_dataSize;  ///< The size of the tile data array.
+    std::size_t m_dataSize;   ///< The size of the tile data array.
     std::int32_t* m_data;     ///< The tile data for tile layers.
   };
 }

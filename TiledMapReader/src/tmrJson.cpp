@@ -168,7 +168,12 @@ namespace tmr
     return m_impl->json.get<std::string>().length();
   }
 
-  void Json::getString(char* buffer, std::size_t bufferSize) const
+  std::size_t Json::getSize() const
+  {
+    return m_impl->json.size();
+  }
+
+  void Json::getString(char* buffer, const std::size_t& bufferSize) const
   {
     if (bufferSize == 0)
       return;
@@ -187,6 +192,37 @@ namespace tmr
     buffer[bufferSize - 1] = '\0';
   }
 
+  void Json::getArrayInt32(
+    std::int32_t* outArray,
+    const std::size_t& arraySize
+  ) const
+  {
+    if (!m_impl->json.is_array())
+    {
+      throw std::runtime_error("JSON value is not an array.");
+    }
+
+    const auto& jsonArray = m_impl->json;
+    if (jsonArray.size() < arraySize)
+    {
+      throw std::runtime_error(
+        "JSON array size is smaller than the provided array size."
+      );
+    }
+
+    for (std::size_t i = 0; i < arraySize; ++i)
+    {
+      if (!jsonArray[i].is_number_integer())
+      {
+        throw std::runtime_error(
+          "JSON array contains non-integer elements."
+        );
+      }
+
+      outArray[i] = static_cast<std::int32_t>(jsonArray[i].get<int>());
+    }
+  }
+
   bool Json::getBool() const
   {
     return m_impl->json.get<bool>();
@@ -195,5 +231,10 @@ namespace tmr
   std::int32_t Json::getInt32() const
   {
     return static_cast<std::int32_t>(m_impl->json.get<int>());
+  }
+
+  float Json::getFloat() const
+  {
+    return m_impl->json.get<float>();
   }
 }

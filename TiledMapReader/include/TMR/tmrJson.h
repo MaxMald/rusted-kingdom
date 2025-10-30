@@ -166,6 +166,15 @@ namespace tmr
     std::size_t getStringLength() const;
 
     /**
+     * @brief Returns the number of elements of the array.
+     *
+     * @return The number of elements in the array.
+     *
+     * @throws std::exception if the value is not an array.
+     */
+    std::size_t getSize() const;
+
+    /**
      * @brief Copies the JSON string value into a caller-provided buffer.
      *
      * Copies up to bufferSize - 1 characters from the string value to the buffer
@@ -178,7 +187,24 @@ namespace tmr
      *
      * @throws std::exception if the value is not a string.
      */
-    void getString(char* buffer, std::size_t bufferSize) const;
+    void getString(char* buffer, const std::size_t& bufferSize) const;
+
+    /**
+     * @brief Copy JSON array of 32-bit integers into a caller-provided buffer.
+     *
+     * Copies up to `arraySize` elements from the JSON array into `outArray`. If
+     * the JSON value is not an array or any element is not an integer, an
+     * exception is thrown.
+     *
+     * @param outArray Destination buffer for values (must be valid if arraySize
+     * > 0).
+     * @param arraySize Number of elements available in `outArray`.
+     *
+     * @throws std::exception if the JSON value is not an array, contains
+     * non-integer elements, or if `outArray` is null while `arraySize`
+     * > 0.
+     */
+    void getArrayInt32(std::int32_t* outArray, const std::size_t& arraySize) const;
 
     /**
      * @brief Returns the value as a boolean.
@@ -194,6 +220,12 @@ namespace tmr
      */
     std::int32_t getInt32() const;
 
+    /**
+     * @brief Returns the value as a floating-point number.
+     * @return The float value.
+     * @throws std::exception if the value is not a number.
+     */
+    float getFloat() const;
 
   private:
 

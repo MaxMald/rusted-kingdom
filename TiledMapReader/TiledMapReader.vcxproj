@@ -158,6 +158,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\tmrMapLayer.cpp" />
+    <ClCompile Include="src\tmrMapLayerParser.cpp" />
     <ClCompile Include="src\tmrObjectGroupMapLayer.cpp" />
     <ClCompile Include="src\tmrTiledMapReader.cpp" />
     <ClCompile Include="src\tmrJson.cpp" />
@@ -168,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\TMR\tmrMapLayer.h" />
+    <ClInclude Include="include\TMR\tmrMapLayerParser.h" />
     <ClInclude Include="include\TMR\tmrMapLayerType.h" />
     <ClInclude Include="include\TMR\tmrObjectGroupMapLayer.h" />
     <ClInclude Include="include\TMR\tmrTiledMapParser.h" />

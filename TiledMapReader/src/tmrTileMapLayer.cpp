@@ -10,9 +10,9 @@ namespace tmr
     const bool& visible,
     const float& opacity,
     const char* name,
-    const std::int32_t& height,
     const std::int32_t& width,
-    const std::int32_t& dataSize,
+    const std::int32_t& height,
+    const std::size_t& dataSize,
     std::int32_t* data
   ) :
     MapLayer(
