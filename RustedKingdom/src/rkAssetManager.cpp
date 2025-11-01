@@ -144,6 +144,8 @@ namespace rk
         }
       }
     }
+
+    return true;
   }
 
   void AssetManager::clear()

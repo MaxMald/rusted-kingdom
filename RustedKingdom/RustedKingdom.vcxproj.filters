@@ -75,6 +75,12 @@
     <ClCompile Include="src\rkTileSetsManager.cpp">
       <Filter>Source Files\assetManager\tiledMap</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkMapLayer.cpp">
+      <Filter>Source Files\assetManager\tiledMap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTileMapLayer.cpp">
+      <Filter>Source Files\assetManager\tiledMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -114,6 +120,15 @@
       <Filter>Header Files\assetManager\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTileSetsManager.h">
+      <Filter>Header Files\assetManager\tiledMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkMapLayer.h">
+      <Filter>Header Files\assetManager\tiledMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTileMapLayer.h">
+      <Filter>Header Files\assetManager\tiledMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTileDescription.h">
       <Filter>Header Files\assetManager\tiledMap</Filter>
     </ClInclude>
   </ItemGroup>

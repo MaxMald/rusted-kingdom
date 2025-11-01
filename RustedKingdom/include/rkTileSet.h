@@ -1,7 +1,8 @@
 #pragma once
 
+#include <SFML/Graphics/Rect.hpp>
+#include <TMR/tmrTileSet.h>
 #include "rkPrerequisites.h"
-#include <filesystem>
 
 namespace tmr
 {
@@ -44,11 +45,62 @@ namespace rk
      */
     ~TileSet();
 
-    /**
-     * @brief Gets the tileset name.
-     * @return Tileset name as a std::string (empty if not available).
-     */
-    const String& getName() const
+    /** @return margin in pixels */
+    Int32 getMargin() const
+    {
+      return m_tmrTileSet->getMargin();
+    }
+
+    /** @return first global tile id */
+    Int32 getFirstGid() const
+    {
+      return m_tmrTileSet->getFirstGid();
+    }
+
+    /** @return number of columns in the source image */
+    UInt32 getColumns() const
+    {
+      return m_tmrTileSet->getColumns();
+    }
+
+    /** @return source image height in pixels */
+    UInt32 getImageHeight() const
+    {
+      return m_tmrTileSet->getImageHeight();
+    }
+
+    /** @return source image width in pixels */
+    UInt32 getImageWidth() const
+    {
+      return m_tmrTileSet->getImageWidth();
+    }
+
+    /** @return spacing in pixels between tiles */
+    UInt32 getSpacing() const
+    {
+      return m_tmrTileSet->getSpacing();
+    }
+
+    /** @return number of tiles in the tileset */
+    UInt32 getTileCount() const
+    {
+      return m_tmrTileSet->getTileCount();
+    }
+
+    /** @return tile height in pixels */
+    UInt32 getTileHeight() const
+    {
+      return m_tmrTileSet->getTileHeight();
+    }
+
+    /** @return tile width in pixels */
+    UInt32 getTileWidth() const
+    {
+      return m_tmrTileSet->getTileWidth();
+    }
+
+    /** @return tileset display name */
+    String getName() const
     {
       return m_name;
     }
@@ -81,14 +133,14 @@ namespace rk
     }
 
     /**
-     * @brief Gets the underlying TMR tileset pointer.
+     * @brief Computes the texture rectangle for the specified local tile id.
      *
-     * @return Pointer to the original tmr::TileSet (may be nullptr).
+     * @param localId Local tile id within the tileset (zero-based).
+     *
+     * @return Rectangle (in pixels) within the tileset image that contains the
+     * tile graphic.
      */
-    const tmr::TileSet* getTmrTileSet() const
-    {
-      return m_tmrTileSet;
-    }
+    sf::IntRect getTileTextureRect(const Int32& localId) const;
 
   private:
     String m_name;                       ///< Tileset display name
