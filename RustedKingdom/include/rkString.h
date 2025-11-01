@@ -12,6 +12,8 @@ class String : public std::string
 public:
   using std::string::string;
 
+  String(const std::string& s) : std::string(s) {}
+
   /**
    * @brief Formats a string using printf-style formatting.
    *

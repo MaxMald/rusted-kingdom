@@ -6,11 +6,9 @@
 #include "rkSpriteSheet.h"
 #include "rkSpriteGameObject.h"
 
-#include <string>
-
 int main()
 {
-  std::string assetsPath = "C:/Users/nuup2/OneDrive/Documentos/Repositories/MaxMald/rusted-kingdom/assets";
+  String assetsPath = "C:/Users/nuup2/OneDrive/Documentos/Repositories/MaxMald/rusted-kingdom/assets";
   // std::string assetsPath = "F:/Repositories/MaxMald/rusted-kingdom/assets";
 
   sf::RenderWindow window(sf::VideoMode({ 500, 500 }), "SFML works!");
@@ -38,7 +36,7 @@ int main()
   rk::SceneGraph sceneGraph;
   sceneGraph.getRoot()->addChild(std::move(landTile));
 
-  std::string mapPath = assetsPath + "/maps/level-0.json";
+  String mapPath = assetsPath + "/maps/level-0.json";
 
   assetManager.loadTiledMap("level-0", "maps/level-0.json");
   assetManager.loadAssetsFromTiledMap("level-0");
