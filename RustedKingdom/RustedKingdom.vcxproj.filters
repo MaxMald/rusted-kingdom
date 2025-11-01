@@ -75,11 +75,8 @@
     <ClCompile Include="src\rkTileSetsManager.cpp">
       <Filter>Source Files\assetManager\tiledMap</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkMapLayer.cpp">
-      <Filter>Source Files\assetManager\tiledMap</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkTileMapLayer.cpp">
-      <Filter>Source Files\assetManager\tiledMap</Filter>
+    <ClCompile Include="src\rkTiledMapBuilder.cpp">
+      <Filter>Source Files\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,14 +119,11 @@
     <ClInclude Include="include\rkTileSetsManager.h">
       <Filter>Header Files\assetManager\tiledMap</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkMapLayer.h">
-      <Filter>Header Files\assetManager\tiledMap</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkTileMapLayer.h">
-      <Filter>Header Files\assetManager\tiledMap</Filter>
-    </ClInclude>
     <ClInclude Include="include\rkTileDescription.h">
       <Filter>Header Files\assetManager\tiledMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledMapBuilder.h">
+      <Filter>Header Files\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

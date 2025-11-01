@@ -1,5 +1,7 @@
 #pragma once
 
+#include "tmrPrerequisites.h"
+
 namespace tmr
 {
   /**
