@@ -161,6 +161,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\rkTiledMap.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkAssetManager.cpp" />
     <ClCompile Include="src\rkGameObject.cpp" />
@@ -168,6 +169,8 @@
     <ClCompile Include="src\rkSceneGraph.cpp" />
     <ClCompile Include="src\rkSpriteGameObject.cpp" />
     <ClCompile Include="src\rkSpriteSheet.cpp" />
+    <ClCompile Include="src\rkTileSet.cpp" />
+    <ClCompile Include="src\rkTileSetsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkAssetManager.h" />
@@ -179,6 +182,9 @@
     <ClInclude Include="include\rkSpriteGameObject.h" />
     <ClInclude Include="include\rkSpriteSheet.h" />
     <ClInclude Include="include\rkString.h" />
+    <ClInclude Include="include\rkTiledMap.h" />
+    <ClInclude Include="include\rkTileSet.h" />
+    <ClInclude Include="include\rkTileSetsManager.h" />
     <ClInclude Include="include\rkTypeDefinitions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

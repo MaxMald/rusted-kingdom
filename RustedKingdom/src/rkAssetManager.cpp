@@ -1,10 +1,13 @@
 #include "rkAssetManager.h"
 #include <SFML/Graphics/Texture.hpp>
+#include "rkTiledMap.h"
 
 namespace rk
 {
   AssetManager::AssetManager(const char* assetDirectory)
-    : m_assetDirectory(assetDirectory)
+    : m_assetDirectory(assetDirectory),
+    m_textures(),
+    m_tiledMaps()
   {
   }
 
@@ -31,6 +34,48 @@ namespace rk
 
     m_textures[name] = texture;
     return true;
+  }
+
+  bool AssetManager::loadTiledMap(
+    const String& name,
+    const String& filename
+  )
+  {
+    if (hasTiledMap(name))
+      return false;
+
+    TiledMap* tiledMap = new TiledMap();
+    path fullPath = path(m_assetDirectory) / filename.c_str();
+
+    // Attempt to load; if loading fails clean up and return false
+    if (!tiledMap->loadFromFile(fullPath))
+    {
+      delete tiledMap;
+      return false;
+    }
+
+    // Store the successfully loaded map
+    m_tiledMaps[name] = tiledMap;
+    return true;
+  }
+
+  bool AssetManager::hasTiledMap(const String& name)
+  {
+    return m_tiledMaps.find(name) != m_tiledMaps.end();
+  }
+
+  bool AssetManager::removeTiledMap(const String& name)
+  {
+    auto it = m_tiledMaps.find(name);
+
+    if (it != m_tiledMaps.end())
+    {
+      delete it->second;
+      m_tiledMaps.erase(it);
+      return true;
+    }
+
+    return false;
   }
 
   Texture* AssetManager::getTexture(const String& name) const

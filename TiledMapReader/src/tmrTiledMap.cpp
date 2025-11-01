@@ -90,4 +90,13 @@ namespace tmr
     }
     return m_layers[index];
   }
+
+  const TileSet* TiledMap::getTileSetAt(const std::size_t& index) const
+  {
+    if (index >= m_tileSetsCount)
+    {
+      throw std::out_of_range("TiledMap::getTileSetAt: Index out of range.");
+    }
+    return m_tileSets[index];
+  }
 }

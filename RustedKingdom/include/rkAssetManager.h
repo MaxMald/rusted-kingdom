@@ -1,9 +1,12 @@
 #pragma once
 
 #include "rkPrerequisites.h"
+#include <filesystem>
+
+using std::filesystem::path;
 
 namespace sf
-{
+{ 
   class Texture;
 }
 
@@ -11,6 +14,8 @@ using sf::Texture;
 
 namespace rk
 {
+  class TiledMap;
+
   /**
    * @brief Manages loading and retrieval of texture assets.
    *
@@ -68,6 +73,15 @@ namespace rk
     bool removeTexture(const String& name);
 
     /**
+     * @brief Loads a tiled map from file and stores by name.
+     */
+    bool loadTiledMap(const String& name, const String& filename);
+
+    bool hasTiledMap(const String& name);
+
+    bool removeTiledMap(const String& name);
+
+    /**
      * @brief Clears all loaded textures.
      */
     void clear();
@@ -81,5 +95,6 @@ namespace rk
   private:
     const char* m_assetDirectory;
     UnorderedMap<String, Texture*> m_textures;
+    UnorderedMap<String, TiledMap*> m_tiledMaps;
   };
 }

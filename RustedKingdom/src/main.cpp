@@ -40,10 +40,7 @@ int main()
 
   std::string mapPath = assetsPath + "/maps/level-0.json";
 
-  tmr::TiledMapReader tileMapReader;
-  tmr::TiledMap* tiledMap = tileMapReader.readFromFile(
-    mapPath.c_str()
-  );
+  assetManager.loadTiledMap("level-0", "maps/level-0.json");
 
   while (window.isOpen())
   {
@@ -62,6 +59,5 @@ int main()
     window.display();
   }
 
-  delete tiledMap;
   assetManager.clear();
 }

@@ -160,6 +160,20 @@ namespace tmr
      */
     const MapLayer* getLayerAt(const std::size_t& index) const;
 
+    /**
+     * @brief Gets the number of tile sets in the map.
+     * @return The number of tile sets.
+     */
+    const std::size_t& getTileSetsCount() const { return m_tileSetsCount; }
+
+    /**
+     * @brief Gets the tile set at the specified index.
+     * 
+     * @param index Index of the tile set to retrieve.
+     * @return Pointer to the TileSet at the specified index.
+     */
+    const TileSet* getTileSetAt(const std::size_t& index) const;
+
   private:
     bool m_infinite;
     std::int32_t m_height;
