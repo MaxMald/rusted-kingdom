@@ -41,6 +41,20 @@ namespace rk
     return true;
   }
 
+  const TileSet* TileSetsManager::getTileSetAt(const SizeT& index) const
+  {
+    if (index >= m_tileSets.size())
+      throw RuntimeErrorException(
+        String::Format(
+          "TileSetsManager::getTileSetAt: Index %zu is out of bounds (max %zu).",
+          index,
+          m_tileSets.size() - 1
+        )
+      );
+
+    return m_tileSets[index];
+  }
+
   void TileSetsManager::clear()
   {
     for (TileSet* ts : m_tileSets)

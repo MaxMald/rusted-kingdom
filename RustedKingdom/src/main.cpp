@@ -41,6 +41,7 @@ int main()
   std::string mapPath = assetsPath + "/maps/level-0.json";
 
   assetManager.loadTiledMap("level-0", "maps/level-0.json");
+  assetManager.loadAssetsFromTiledMap("level-0");
 
   while (window.isOpen())
   {

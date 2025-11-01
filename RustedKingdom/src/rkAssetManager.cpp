@@ -1,6 +1,7 @@
 #include "rkAssetManager.h"
 #include <SFML/Graphics/Texture.hpp>
 #include "rkTiledMap.h"
+#include "rkTileSet.h"
 
 namespace rk
 {
@@ -57,7 +58,7 @@ namespace rk
     return true;
   }
 
-  bool AssetManager::hasTiledMap(const String& name)
+  bool AssetManager::hasTiledMap(const String& name) const
   {
     return m_tiledMaps.find(name) != m_tiledMaps.end();
   }
@@ -121,6 +122,28 @@ namespace rk
         name.c_str()
       )
     );
+  }
+
+  bool AssetManager::loadAssetsFromTiledMap(const String& name)
+  {
+    TiledMap* tiledMap = getTiledMap(name);
+    const TileSetsManager& tileSetmanager = tiledMap->getTileSetsManager();
+
+    SizeT tileSetCount = tileSetmanager.getTileSetsCount();
+    for (SizeT i = 0; i < tileSetCount; ++i)
+    {
+      const TileSet* tileSet = tileSetmanager.getTileSetAt(i);
+
+      const String& textureName = tileSet->getImageKey();
+      const Path& texturePath = tileSet->getImageFilepath();
+      if (!hasTexture(textureName))
+      {
+        if (!loadTexture(textureName, texturePath))
+        {
+          return false;
+        }
+      }
+    }
   }
 
   void AssetManager::clear()

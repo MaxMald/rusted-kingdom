@@ -48,6 +48,23 @@ namespace rk
     );
 
     /**
+     * @brief Gets the number of loaded tilesets.
+     * 
+     * @return Number of tilesets.
+     */
+    const SizeT& getTileSetsCount() const { return m_tileSets.size(); }
+
+    /**
+     * @brief Retrieves the tileset at the specified index.
+     * 
+     * @param index Index of the tileset to retrieve.
+     * @return Pointer to the rk::TileSet at the given index.
+     * 
+     * @throws RuntimeErrorException if the index is out of bounds.
+     */
+    const TileSet* getTileSetAt(const SizeT& index) const;
+
+    /**
      * @brief Clears all loaded tilesets.
      */
     void clear();

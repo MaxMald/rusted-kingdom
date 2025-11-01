@@ -25,7 +25,7 @@ namespace rk
     }
 
     m_imageFilepath = finalPath;
-    m_imageKey = finalPath.lexically_normal().string();
+    m_imageKey = finalPath.lexically_normal().string().c_str();
     m_name = tmrTileSet->getName();
   }
 

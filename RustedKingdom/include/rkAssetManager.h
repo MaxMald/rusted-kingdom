@@ -78,7 +78,7 @@ namespace rk
      * @brief Retrieves a tiled map by name.
      * @param name The key/name of the tiled map.
      */
-    bool hasTiledMap(const String& name);
+    bool hasTiledMap(const String& name) const;
 
     /**
      * @brief Removes a tiled map by name.
@@ -92,6 +92,13 @@ namespace rk
      * @return Pointer to the tiled map, or nullptr if not found.
      */
     TiledMap* getTiledMap(const String& name) const;
+
+    /**
+     * @brief Loads all assets (textures) referenced by the specified tiled map.
+     * @param name The key/name of the tiled map.
+     * @return True if all assets were loaded successfully, false otherwise.
+     */
+    bool loadAssetsFromTiledMap(const String& name);
 
     /**
      * @brief Clears all loaded textures.

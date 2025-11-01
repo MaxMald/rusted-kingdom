@@ -38,6 +38,20 @@ namespace rk
      */
     bool loadFromFile(const Path& filename);
 
+    /**
+     * @brief Retrieves the TileSetsManager that holds the map's tilesets.
+     *
+     * @return Reference to the internal TileSetsManager.
+     */
+    TileSetsManager& getTileSetsManager();
+
+    /**
+     * @brief Retrieves the TileSetsManager that holds the map's tilesets.
+     *
+     * @return Const reference to the internal TileSetsManager.
+     */
+    const TileSetsManager& getTileSetsManager() const;
+
   private:
 
     /**

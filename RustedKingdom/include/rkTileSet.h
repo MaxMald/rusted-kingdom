@@ -48,7 +48,7 @@ namespace rk
      * @brief Gets the tileset name.
      * @return Tileset name as a std::string (empty if not available).
      */
-    const std::string& getName() const
+    const String& getName() const
     {
       return m_name;
     }
@@ -61,7 +61,7 @@ namespace rk
      *
      * @return Image key.
      */
-    const std::string& getImageKey() const
+    const String& getImageKey() const
     {
       return m_imageKey;
     }
@@ -91,8 +91,8 @@ namespace rk
     }
 
   private:
-    std::string m_name;                       ///< Tileset display name
-    std::string m_imageKey;                   ///< Derived key for engine assets
+    String m_name;                       ///< Tileset display name
+    String m_imageKey;                   ///< Derived key for engine assets
     Path m_imageFilepath;                     ///< Resolved image file path
     const tmr::TileSet* m_tmrTileSet;         ///< Non-owning pointer to parser tileset
   };

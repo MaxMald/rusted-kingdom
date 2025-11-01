@@ -50,6 +50,16 @@ namespace rk
     return true;
   }
 
+  TileSetsManager& TiledMap::getTileSetsManager()
+  {
+    return m_tileSetsManager;
+  }
+
+  const TileSetsManager& TiledMap::getTileSetsManager() const
+  {
+    return m_tileSetsManager;
+  }
+
   void TiledMap::clear()
   {
     if (m_tmrTiledMap)
