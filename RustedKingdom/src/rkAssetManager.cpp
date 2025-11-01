@@ -18,14 +18,14 @@ namespace rk
 
   bool AssetManager::loadTexture(
     const String& name,
-    const String& filename
+    const Path& filename
   )
   {
     if (hasTexture(name))
       return false;
 
     Texture* texture = new Texture();
-    String fullPath = String::Format("%s/%s", m_assetDirectory, filename.c_str());
+    Path fullPath = Path(m_assetDirectory) / filename.c_str();
     if (!texture->loadFromFile(fullPath.c_str()))
     {
       delete texture;
@@ -38,23 +38,21 @@ namespace rk
 
   bool AssetManager::loadTiledMap(
     const String& name,
-    const String& filename
+    const Path& filename
   )
   {
     if (hasTiledMap(name))
       return false;
 
     TiledMap* tiledMap = new TiledMap();
-    path fullPath = path(m_assetDirectory) / filename.c_str();
+    Path fullPath = Path(m_assetDirectory) / filename.c_str();
 
-    // Attempt to load; if loading fails clean up and return false
     if (!tiledMap->loadFromFile(fullPath))
     {
       delete tiledMap;
       return false;
     }
 
-    // Store the successfully loaded map
     m_tiledMaps[name] = tiledMap;
     return true;
   }
@@ -84,7 +82,12 @@ namespace rk
     if (it != m_textures.end())
       return it->second;
 
-    return nullptr;
+    throw RuntimeErrorException(
+      String::Format(
+        "AssetManager::getTexture: Texture with name '%s' not found.", 
+        name.c_str()
+      )
+    );
   }
 
   bool AssetManager::hasTexture(const String& name) const

@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <memory>
 #include <vector>
+#include <filesystem>
 
 namespace rk
 {
@@ -20,6 +21,7 @@ namespace rk
 
   using Bool = bool;
   using SizeT = std::size_t;
+  using Path = std::filesystem::path;
 
   template<typename K, typename V>
   using UnorderedMap = std::unordered_map<K,V>;

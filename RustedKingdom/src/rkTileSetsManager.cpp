@@ -15,7 +15,7 @@ namespace rk
   }
 
   bool TileSetsManager::load(
-    const std::filesystem::path& mapRootDirectory,
+    const Path& mapRootDirectory,
     const tmr::TiledMap* tiledMap)
   {
     clear();
@@ -23,8 +23,8 @@ namespace rk
     if (!tiledMap)
       return false;
 
-    const std::size_t count = tiledMap->getTileSetsCount();
-    for (std::size_t i = 0; i < count; ++i)
+    const SizeT count = tiledMap->getTileSetsCount();
+    for (SizeT i = 0; i < count; ++i)
     {
       const tmr::TileSet* tmrTileSet = tiledMap->getTileSetAt(i);
       if (!tmrTileSet)

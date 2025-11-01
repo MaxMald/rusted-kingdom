@@ -24,7 +24,7 @@ namespace rk
      *
      * Combines the provided \p mapRootDirectory with the image path from \p
      * tmrTileSet to form an absolute or normalized image filepath used by the
-     * engine. If \p tmrTileSet is null, the instance will be empty.
+     * engine.
      *
      * @param mapRootDirectory Filesystem path that is used as the base when
      * resolving relative image paths from the tileset.
@@ -32,7 +32,7 @@ namespace rk
      * owned;
      */
     TileSet(
-      const std::filesystem::path& mapRootDirectory,
+      const Path& mapRootDirectory,
       const tmr::TileSet* tmrTileSet
     );
 
@@ -75,7 +75,7 @@ namespace rk
      *
      * @return Filesystem path to the tileset image.
      */
-    const std::filesystem::path& getImageFilepath() const
+    const Path& getImageFilepath() const
     {
       return m_imageFilepath;
     }
@@ -93,7 +93,7 @@ namespace rk
   private:
     std::string m_name;                       ///< Tileset display name
     std::string m_imageKey;                   ///< Derived key for engine assets
-    std::filesystem::path m_imageFilepath;    ///< Resolved image file path
+    Path m_imageFilepath;                     ///< Resolved image file path
     const tmr::TileSet* m_tmrTileSet;         ///< Non-owning pointer to parser tileset
   };
 }

@@ -1,9 +1,6 @@
 #pragma once
 
 #include "rkPrerequisites.h"
-#include <filesystem>
-
-using std::filesystem::path;
 
 namespace sf
 { 
@@ -49,7 +46,7 @@ namespace rk
      * @param filename The file path to load the texture from.
      * @return True if loading succeeded, false otherwise.
      */
-    bool loadTexture(const String& name, const String& filename);
+    bool loadTexture(const String& name, const Path& filename);
 
     /**
      * @brief Retrieves a texture by name.
@@ -75,7 +72,7 @@ namespace rk
     /**
      * @brief Loads a tiled map from file and stores by name.
      */
-    bool loadTiledMap(const String& name, const String& filename);
+    bool loadTiledMap(const String& name, const Path& filename);
 
     bool hasTiledMap(const String& name);
 

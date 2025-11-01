@@ -4,17 +4,17 @@
 namespace rk
 {
   TileSet::TileSet(
-    const std::filesystem::path& mapRootDirectory,
+    const Path& mapRootDirectory,
     const tmr::TileSet* tmrTileSet
   ) :
     m_tmrTileSet(tmrTileSet)
   {
     const char* imageC = tmrTileSet->getImage();
-    std::filesystem::path imagePath = imageC ?
-      std::filesystem::path(imageC) :
-      std::filesystem::path();
+    Path imagePath = imageC ?
+      Path(imageC) :
+      Path();
 
-    std::filesystem::path finalPath;
+    Path finalPath;
     if (imagePath.is_absolute())
     {
       finalPath = imagePath;
@@ -31,5 +31,6 @@ namespace rk
 
   TileSet::~TileSet()
   {
+    // Does not own m_tmrTileSet; do not delete.
   }
 }

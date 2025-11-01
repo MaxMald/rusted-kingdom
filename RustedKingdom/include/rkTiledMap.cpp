@@ -17,7 +17,7 @@ namespace rk
     clear();
   }
 
-  bool TiledMap::loadFromFile(const std::filesystem::path& filename)
+  bool TiledMap::loadFromFile(const Path& filename)
   {
     clear();
 
@@ -33,7 +33,7 @@ namespace rk
 
       m_tmrTiledMap = loadedTiledMap;
 
-      std::filesystem::path rootDirectory = filename.parent_path();
+      Path rootDirectory = filename.parent_path();
       m_tileSetsManager.load(rootDirectory, loadedTiledMap);
     }
     catch (const std::exception& /*e*/)
