@@ -84,7 +84,7 @@ namespace rk
 
     throw RuntimeErrorException(
       String::Format(
-        "AssetManager::getTexture: Texture with name '%s' not found.", 
+        "AssetManager::getTexture: Texture with name '%s' not found.",
         name.c_str()
       )
     );
@@ -107,6 +107,20 @@ namespace rk
     }
 
     return false;
+  }
+
+  TiledMap* AssetManager::getTiledMap(const String& name) const
+  {
+    auto it = m_tiledMaps.find(name);
+    if (it != m_tiledMaps.end())
+      return it->second;
+
+    throw RuntimeErrorException(
+      String::Format(
+        "AssetManager::getTiledMap: TiledMap with name '%s' not found.",
+        name.c_str()
+      )
+    );
   }
 
   void AssetManager::clear()
