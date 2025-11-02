@@ -31,4 +31,16 @@ namespace rk
 
   template<typename T>
   using Vector = std::vector<T>;
+
+  template<typename T>
+  using SharedPtr = std::shared_ptr<T>;
+
+  template<typename T>
+  using WeakPtr = std::weak_ptr<T>;
+
+  template<typename T, typename... Args>
+  inline UniquePtr<T> MakeUnique(Args&&... args)
+  {
+    return std::make_unique<T>(std::forward<Args>(args)...);
+  }
 }
