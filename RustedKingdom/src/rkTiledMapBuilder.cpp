@@ -5,9 +5,7 @@
 #include "rkTiledMap.h"
 #include "rkTileSetsManager.h"
 #include "rkTileDescription.h"
-#include "rkAssetManager.h"
 #include "rkSpriteGameObject.h"
-#include "rkSceneGraph.h"
 #include "rkGameObjectsFactory.h"
 
 namespace rk

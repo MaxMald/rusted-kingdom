@@ -12,11 +12,8 @@ namespace tmr
 
 namespace rk
 {
-  class SceneGraph;
   class TiledMap;
-  class AssetManager;
   class TileSetsManager;
-  class TileDescription;
   class GameObjectsFactory;
 
   /**
