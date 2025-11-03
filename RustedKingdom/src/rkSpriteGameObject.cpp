@@ -35,6 +35,7 @@ namespace rk
     RenderTarget& renderTarget,
     RenderStates states) const
   {
+    states.transform *= m_worldTransform;
     renderTarget.draw(m_sprite, states);
   }
 }

@@ -8,13 +8,13 @@
 #include "rkAssetManager.h"
 #include "rkSpriteGameObject.h"
 #include "rkSceneGraph.h"
+#include "rkGameObjectsFactory.h"
 
 namespace rk
 {
   void TiledSceneBuilder::buildFromTiledMap(
-    SceneGraph& sceneGraph,
-    const TiledMap& tiledMap,
-    const AssetManager& assetManager
+    GameObjectsFactory& gameObjectsFactory,
+    const TiledMap& tiledMap
   )
   {
     if (tiledMap.getOrientation() != tmr::orientation::Type::Isometric)
@@ -38,23 +38,21 @@ namespace rk
         static_cast<const tmr::TileMapLayer*>(mapLayer);
 
       buildFromTileLayer(
-        sceneGraph,
+        gameObjectsFactory,
         tileWidth,
         tileHeight,
         *tileMapLayer,
-        tiledMap.getTileSetsManager(),
-        assetManager
+        tiledMap.getTileSetsManager()
       );
     }
   }
 
   void TiledSceneBuilder::buildFromTileLayer(
-    SceneGraph& sceneGraph,
+    GameObjectsFactory& gameObjectsFactory,
     const Int32& tileWidth,
     const Int32& tileHeight,
     const tmr::TileMapLayer& tileMapLayer,
-    const TileSetsManager& tileSetsManager,
-    const AssetManager& assetManager
+    const TileSetsManager& tileSetsManager
   )
   {
     Int32 numCols = tileMapLayer.getWidth();
@@ -72,6 +70,11 @@ namespace rk
         TileDescription tileDescription = tileSetsManager
           .getTileDescriptionByGid(gid);
 
+        SpriteGameObject* tile = gameObjectsFactory.createSpriteGameObject(
+          tileDescription.getTextureKey(),
+          tileDescription.getTextureRect()
+        );
+
         Vector2f tilePosition = computeTilePositionIsometric(
           col,
           row,
@@ -79,12 +82,7 @@ namespace rk
           tileHeight
         );
 
-        createSpriteFromTileDescription(
-          sceneGraph,
-          tilePosition,
-          tileDescription,
-          assetManager
-        );
+        tile->setPosition(tilePosition);
       }
     }
   }
@@ -103,36 +101,5 @@ namespace rk
     const float y = (static_cast<float>(col) + static_cast<float>(row)) * halfH;
 
     return Vector2f(x, y);
-  }
-
-  void TiledSceneBuilder::createSpriteFromTileDescription(
-    SceneGraph& sceneGraph,
-    const Vector2f& position,
-    const TileDescription& tileDescription,
-    const AssetManager& assetManager
-  )
-  {
-    const sf::Texture* texture = assetManager.getTexture(
-      tileDescription.getTextureKey()
-    );
-
-    auto spriteObj = MakeUnique<SpriteGameObject>(
-      texture,
-      tileDescription.getTextureRect()
-    );
-
-    // Set origin to bottom-center so the computed isometric position
-    // corresponds to the tile's bottom center (common convention).
-    const sf::IntRect rect = tileDescription.getTextureRect();
-    spriteObj->getSprite().setOrigin(
-      sf::Vector2f(
-        static_cast<float>(rect.size.x) * 0.5f,
-        static_cast<float>(rect.size.y)
-      )
-    );
-
-    spriteObj->setPosition(position);
-
-    sceneGraph.getRoot()->addChild(std::move(spriteObj));
   }
 }

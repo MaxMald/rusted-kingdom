@@ -5,41 +5,41 @@
 #include "rkSceneGraph.h"
 #include "rkSpriteSheet.h"
 #include "rkSpriteGameObject.h"
+#include "rkTiledMapBuilder.h"
+#include "rkGameObjectsFactory.h"
 
 int main()
 {
   String assetsPath = "C:/Users/nuup2/OneDrive/Documentos/Repositories/MaxMald/rusted-kingdom/assets";
   // std::string assetsPath = "F:/Repositories/MaxMald/rusted-kingdom/assets";
 
-  sf::RenderWindow window(sf::VideoMode({ 500, 500 }), "SFML works!");
+  sf::RenderWindow window(sf::VideoMode({ 1920, 1080 }), "SFML works!");
 
   rk::AssetManager assetManager(assetsPath.c_str());
-  assetManager.loadTexture(
-    "land_textures",
-    "textures/terrain/128x64 Ground Tiles - Update 1.png"
-  );
-
-  rk::SpriteSheet spriteSheet(
-    assetManager.getTexture("land_textures"),
-    128,
-    64
-  );
-
-  // Create a SpriteGameObject for a land tile
-  auto landTile = std::make_unique<rk::SpriteGameObject>(
-    assetManager.getTexture("land_textures"),
-    spriteSheet.getSpriteRect(0)
-  );
-  landTile->setPosition(sf::Vector2f(32.0f, 32.0f));
-
-  // Create the scene graph and add the land tile
   rk::SceneGraph sceneGraph;
-  sceneGraph.getRoot()->addChild(std::move(landTile));
 
-  String mapPath = assetsPath + "/maps/level-0.json";
+  rk::GameObjectsFactory gameObjectsFactory(
+    &sceneGraph,
+    &assetManager
+  );
 
-  assetManager.loadTiledMap("level-0", "maps/level-0.json");
-  assetManager.loadAssetsFromTiledMap("level-0");
+  bool result = false;
+  result = assetManager.loadTiledMap("level-0", "maps/level-0.json");
+  if (!result)
+    return -1;
+
+  result = assetManager.loadAssetsFromTiledMap("level-0");
+  if (!result)
+    return -1;
+
+  rk::TiledSceneBuilder::buildFromTiledMap(
+    gameObjectsFactory,
+    *assetManager.getTiledMap("level-0")
+  );
+
+  assetManager.loadTexture("testText", "textures/terrain/128x64 Dirt A to Dirt B.png");
+  rk::SpriteGameObject* testSprite = gameObjectsFactory.createSpriteGameObject("testText");
+  testSprite->setPosition({ 400.f, 300.f });
 
   while (window.isOpen())
   {

@@ -17,41 +17,50 @@ namespace rk
   class AssetManager;
   class TileSetsManager;
   class TileDescription;
+  class GameObjectsFactory;
 
+  /**
+   * @brief Helper class to construct a SceneGraph from a Tiled map.
+   */
   class TiledSceneBuilder
   {
   public:
     TiledSceneBuilder() = delete;
 
+    /**
+     * @brief Builds a scene graph from the provided Tiled map.
+     *
+     * @param gameObjectsFactory Factory used to create and register game
+     * objects into the scene graph.
+     * @param tiledMap Reference to the Tiled map to build the scene from.
+     */
     static void buildFromTiledMap(
-      SceneGraph& sceneGraph,
-      const TiledMap& tiledMap,
-      const AssetManager& assetManager
+      GameObjectsFactory& gameObjectsFactory,
+      const TiledMap& tiledMap
     );
 
   private:
 
+    /**
+     * @brief Processes a single tile layer and add its tiles to the scene
+     * graph.
+     */
     static void buildFromTileLayer(
-      SceneGraph& sceneGraph,
+      GameObjectsFactory& gameObjectsFactory,
       const Int32& tileWidth,
       const Int32& tileHeight,
       const tmr::TileMapLayer& tileMapLayer,
-      const TileSetsManager& tileSetsManager,
-      const AssetManager& assetManager
+      const TileSetsManager& tileSetsManager
     );
 
+    /**
+     * @brief Compute the world position for an isometric tile.
+     */
     static Vector2f computeTilePositionIsometric(
       const Int32& col,
       const Int32& row,
       const Int32& tileWidth,
       const Int32& tileHeight
-    );
-
-    static void createSpriteFromTileDescription(
-      SceneGraph& sceneGraph,
-      const Vector2f& position,
-      const TileDescription& tileDescription,
-      const AssetManager& assetManager
     );
   };
 }

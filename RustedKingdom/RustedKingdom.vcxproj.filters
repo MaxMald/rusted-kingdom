@@ -78,6 +78,9 @@
     <ClCompile Include="src\rkTiledMapBuilder.cpp">
       <Filter>Source Files\scene</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkGameObjectsFactory.cpp">
+      <Filter>Source Files\scene\gameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -124,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="include\rkTiledMapBuilder.h">
       <Filter>Header Files\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkGameObjectsFactory.h">
+      <Filter>Header Files\scene\gameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

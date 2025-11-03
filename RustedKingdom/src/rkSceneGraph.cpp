@@ -64,7 +64,19 @@ namespace rk
       gameObjects.end(),
       [](GameObject* a, GameObject* b)
       {
-        return a->getPosition().y < b->getPosition().y;
+        const sf::Vector2f aWorld = a->m_worldTransform.transformPoint(sf::Vector2f(0.0f, 0.0f));
+        const sf::Vector2f bWorld = b->m_worldTransform.transformPoint(sf::Vector2f(0.0f, 0.0f));
+
+        if (aWorld.y != bWorld.y)
+          return aWorld.y < bWorld.y;
+
+        // tie-breaker by world X (left objects drawn first) for deterministic
+        // order
+        if (aWorld.x != bWorld.x)
+          return aWorld.x < bWorld.x;
+
+        // final tie-breaker by pointer address
+        return a < b;
       });
   }
 }
