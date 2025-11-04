@@ -176,7 +176,6 @@
     <ClCompile Include="src\rkTileSet.cpp" />
     <ClCompile Include="src\rkTileSetsManager.cpp" />
     <ClCompile Include="src\rkViewsManager.cpp" />
-    <ClCompile Include="src\rkEventsManagerListener.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkEvent.h" />
