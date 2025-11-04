@@ -1,11 +1,15 @@
 #include "TMR/tmrTileSetParser.h"
-#include "TMR/tmrTileSet.h"
+
 #include <string>
 #include <stdexcept>
 
+#include "TMR/tmrTileSet.h"
+#include "TMR/tmrSpriteSheetTileSet.h"
+
 namespace tmr
 {
-  TileSetParser::TileSetParser()
+  TileSetParser::TileSetParser() :
+    m_spriteSheetTileSetParser()
   {
   }
 
@@ -15,41 +19,23 @@ namespace tmr
 
   TileSet* TileSetParser::parseFromJson(const Json& json)
   {
-    std::int32_t margin = json["margin"].getInt32();
     std::int32_t firstgid = json["firstgid"].getInt32();
-    std::uint32_t columns = static_cast<std::uint32_t>(json["columns"].getInt32());
-    std::uint32_t imageHeight = static_cast<std::uint32_t>(json["imageheight"].getInt32());
-    std::uint32_t imageWidth = static_cast<std::uint32_t>(json["imagewidth"].getInt32());
-    std::uint32_t spacing = static_cast<std::uint32_t>(json["spacing"].getInt32());
-    std::uint32_t tileCount = static_cast<std::uint32_t>(json["tilecount"].getInt32());
-    std::uint32_t tileHeight = static_cast<std::uint32_t>(json["tileheight"].getInt32());
-    std::uint32_t tileWidth = static_cast<std::uint32_t>(json["tilewidth"].getInt32());
 
-    // Parse image string
-    std::string imageStr;
-    imageStr.resize(json["image"].getStringLength() + 1);
-    json["image"].getString(&imageStr[0], imageStr.size());
-    // drop explicit terminator written by getString
-    imageStr.resize(imageStr.size() - 1);
-
-    // Parse name string
-    std::string nameStr;
-    nameStr.resize(json["name"].getStringLength() + 1);
-    json["name"].getString(&nameStr[0], nameStr.size());
-    nameStr.resize(nameStr.size() - 1);
-
-    return new TileSet(
-      margin,
-      firstgid,
-      columns,
-      imageHeight,
-      imageWidth,
-      spacing,
-      tileCount,
-      tileHeight,
-      tileWidth,
-      imageStr.c_str(),
-      nameStr.c_str()
-    );
+    if (json.contains("image"))
+    {
+      return m_spriteSheetTileSetParser.parseFromJson(firstgid, json);
+    }
+    else if (json.contains("tiles"))
+    {
+      throw std::runtime_error("TODO: Implement collection tileset parsing");
+    }
+    else if (json.contains("source"))
+    {
+      throw std::runtime_error("TODO: Implement source tileset parsing");
+    }
+    else
+    {
+      throw std::runtime_error("Unsupported tileset type in JSON.");
+    }
   }
 }

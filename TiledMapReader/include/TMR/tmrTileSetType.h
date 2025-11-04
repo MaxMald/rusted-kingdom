@@ -4,11 +4,12 @@
 
 namespace tmr
 {
-  namespace TileSetType
+  namespace tileSetType
   {
     enum Type : std::uint8_t
     {
       Unknown = 0,
+      Reference,
       SpriteSheet,
       ImageCollection
     };
