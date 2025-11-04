@@ -15,7 +15,7 @@ namespace rk
 
   const sf::View& ViewsManager::getWorldView() const
   {
-    // TODO: insert return statement here
+    return m_WorldView;
   }
 
   void ViewsManager::moveWorldView(const sf::Vector2f& offset)
