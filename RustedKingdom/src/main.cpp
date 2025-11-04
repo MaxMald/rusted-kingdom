@@ -24,7 +24,7 @@ int main()
   );
 
   bool result = false;
-  result = assetManager.loadTiledMap("level-0", "maps/level-0.json");
+  result = assetManager.loadTiledMap("level-0", "maps/level-1.json");
   if (!result)
     return -1;
 
@@ -38,10 +38,7 @@ int main()
   );
 
   sf::FloatRect initialRect(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(1920.0f, 1080.0f));
-  rk::ViewsManager viewsManager(
-    window, 
-    initialRect
-  );
+  rk::ViewsManager viewsManager(initialRect);
 
   sf::Clock deltaClock;
   while (window.isOpen())
