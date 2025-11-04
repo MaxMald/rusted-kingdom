@@ -179,6 +179,7 @@
     <ClCompile Include="src\rkEventsManagerListener.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Header.h" />
     <ClInclude Include="include\rkAssetManager.h" />
     <ClInclude Include="include\rkEventsManager.h" />
     <ClInclude Include="include\rkEventsManagerListener.h" />
