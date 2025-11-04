@@ -55,6 +55,12 @@
     <Filter Include="Source Files\inputManager">
       <UniqueIdentifier>{c33eba27-aa5d-4a65-ba2f-ffb0ed617d4c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\eventsManager">
+      <UniqueIdentifier>{4bc21eb9-d848-433d-ac47-07ca78b4ecf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\eventsManager">
+      <UniqueIdentifier>{0e4503d2-5330-48d4-9dbd-b7b0179ef7d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -98,6 +104,9 @@
     </ClCompile>
     <ClCompile Include="src\rkInputManager.cpp">
       <Filter>Source Files\inputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkEventsManager.cpp">
+      <Filter>Source Files\eventsManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="include\rkInputManagerListener.h">
       <Filter>Header Files\inputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkEventsManager.h">
+      <Filter>Header Files\eventsManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
