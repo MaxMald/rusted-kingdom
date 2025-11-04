@@ -17,7 +17,6 @@ int main()
 
   rk::AssetManager assetManager(assetsPath.c_str());
   rk::SceneGraph sceneGraph;
-
   rk::GameObjectsFactory gameObjectsFactory(
     &sceneGraph,
     &assetManager
@@ -36,10 +35,6 @@ int main()
     gameObjectsFactory,
     *assetManager.getTiledMap("level-0")
   );
-
-  assetManager.loadTexture("testText", "textures/terrain/128x64 Dirt A to Dirt B.png");
-  rk::SpriteGameObject* testSprite = gameObjectsFactory.createSpriteGameObject("testText");
-  testSprite->setPosition({ 400.f, 300.f });
 
   while (window.isOpen())
   {

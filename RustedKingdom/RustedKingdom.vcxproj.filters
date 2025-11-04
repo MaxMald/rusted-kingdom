@@ -43,6 +43,12 @@
     <Filter Include="Source Files\assetManager\tiledMap">
       <UniqueIdentifier>{3d845428-28ef-4635-9a39-fbff3154bdb1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\viewsManager">
+      <UniqueIdentifier>{21032ac6-e467-48b9-9532-b982b531aaa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\viewsManager">
+      <UniqueIdentifier>{56f70ba9-48e0-425a-813f-061f00ae469c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -80,6 +86,9 @@
     </ClCompile>
     <ClCompile Include="src\rkGameObjectsFactory.cpp">
       <Filter>Source Files\scene\gameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkViewsManager.cpp">
+      <Filter>Source Files\viewsManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="include\rkGameObjectsFactory.h">
       <Filter>Header Files\scene\gameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkViewsManager.h">
+      <Filter>Header Files\viewsManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

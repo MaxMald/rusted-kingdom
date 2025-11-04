@@ -173,6 +173,7 @@
     <ClCompile Include="src\rkTiledMapBuilder.cpp" />
     <ClCompile Include="src\rkTileSet.cpp" />
     <ClCompile Include="src\rkTileSetsManager.cpp" />
+    <ClCompile Include="src\rkViewsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkAssetManager.h" />
@@ -191,6 +192,7 @@
     <ClInclude Include="include\rkTileSet.h" />
     <ClInclude Include="include\rkTileSetsManager.h" />
     <ClInclude Include="include\rkTypeDefinitions.h" />
+    <ClInclude Include="include\rkViewsManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
