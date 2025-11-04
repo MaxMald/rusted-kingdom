@@ -8,9 +8,9 @@ namespace tmr
   {
     enum Type : std::uint8_t
     {
-      UNKNOWN = 0,
-      TILESET,
-      COLLECTION
+      Unknown = 0,
+      TileSet,
+      Collection
     };
   }
 }
