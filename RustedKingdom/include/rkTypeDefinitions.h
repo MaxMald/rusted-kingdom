@@ -5,6 +5,8 @@
 #include <unordered_map>
 #include <memory>
 #include <vector>
+#include <queue>
+#include <functional>
 #include <filesystem>
 
 namespace rk
@@ -37,6 +39,14 @@ namespace rk
 
   template<typename T>
   using WeakPtr = std::weak_ptr<T>;
+
+  // FIFO queue alias
+  template<typename T, typename Container = std::deque<T>>
+  using Queue = std::queue<T, Container>;
+
+  // Priority queue alias (max-heap by default). Customize Container and Compare if needed.
+  template<typename T, typename Container = std::vector<T>, typename Compare = std::less<T>>
+  using PriorityQueue = std::priority_queue<T, Container, Compare>;
 
   template<typename T, typename... Args>
   inline UniquePtr<T> MakeUnique(Args&&... args)
