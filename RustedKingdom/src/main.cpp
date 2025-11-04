@@ -7,6 +7,7 @@
 #include "rkSpriteGameObject.h"
 #include "rkTiledMapBuilder.h"
 #include "rkGameObjectsFactory.h"
+#include "rkViewsManager.h"
 
 int main()
 {
@@ -36,6 +37,13 @@ int main()
     *assetManager.getTiledMap("level-0")
   );
 
+  sf::FloatRect initialRect(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(1920.0f, 1080.0f));
+  rk::ViewsManager viewsManager(
+    window, 
+    initialRect
+  );
+
+  sf::Clock deltaClock;
   while (window.isOpen())
   {
     // Process events
@@ -46,10 +54,13 @@ int main()
         window.close();
     }
 
+    sf::Time deltaTime = deltaClock.restart();
+
+    viewsManager.update(deltaTime.asSeconds());
+    window.setView(viewsManager.getWorldView());
+
     window.clear();
-
     window.draw(sceneGraph);
-
     window.display();
   }
 

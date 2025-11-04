@@ -61,6 +61,9 @@
     <Filter Include="Source Files\eventsManager">
       <UniqueIdentifier>{0e4503d2-5330-48d4-9dbd-b7b0179ef7d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\eventsManager\events">
+      <UniqueIdentifier>{ae4d83e3-4372-4119-80e9-abb6596e9a0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -177,7 +180,7 @@
       <Filter>Header Files\eventsManager</Filter>
     </ClInclude>
     <ClInclude Include="include\rkEvent.h">
-      <Filter>Header Files\eventsManager</Filter>
+      <Filter>Header Files\eventsManager\events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
