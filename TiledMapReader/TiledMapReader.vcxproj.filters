@@ -125,5 +125,8 @@
     <ClInclude Include="include\TMR\tmrTileSetParser.h">
       <Filter>Header Files\parsers</Filter>
     </ClInclude>
+    <ClInclude Include="include\TMR\tmrTileSetType.h">
+      <Filter>Header Files\tilesets</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
