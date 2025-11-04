@@ -179,7 +179,7 @@
     <ClInclude Include="include\rkEventType.h">
       <Filter>Header Files\eventsManager</Filter>
     </ClInclude>
-    <ClInclude Include="include\Header.h">
+    <ClInclude Include="include\rkEvent.h">
       <Filter>Header Files\eventsManager</Filter>
     </ClInclude>
   </ItemGroup>
