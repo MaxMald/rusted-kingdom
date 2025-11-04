@@ -161,6 +161,8 @@
     <ClCompile Include="src\tmrMapLayerParser.cpp" />
     <ClCompile Include="src\tmrObjectGroupMapLayer.cpp" />
     <ClCompile Include="src\tmrObjectGroupMapLayerParser.cpp" />
+    <ClCompile Include="src\tmrReferenceTileSet.cpp" />
+    <ClCompile Include="src\tmrReferenceTileSetParser.cpp" />
     <ClCompile Include="src\tmrSpriteSheetTileSet.cpp" />
     <ClCompile Include="src\tmrSpriteSheetTileSetParser.cpp" />
     <ClCompile Include="src\tmrTiledMapReader.cpp" />
@@ -178,6 +180,8 @@
     <ClInclude Include="include\TMR\tmrMapLayerType.h" />
     <ClInclude Include="include\TMR\tmrObjectGroupMapLayer.h" />
     <ClInclude Include="include\TMR\tmrObjectGroupMapLayerParser.h" />
+    <ClInclude Include="include\TMR\tmrReferenceTileSet.h" />
+    <ClInclude Include="include\TMR\tmrReferenceTileSetParser.h" />
     <ClInclude Include="include\TMR\tmrSpriteSheetTileSet.h" />
     <ClInclude Include="include\TMR\tmrSpriteSheetTileSetParser.h" />
     <ClInclude Include="include\TMR\tmrTiledMapParser.h" />
