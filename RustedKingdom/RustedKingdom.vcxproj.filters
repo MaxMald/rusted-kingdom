@@ -176,5 +176,8 @@
     <ClInclude Include="include\rkEventsManagerListener.h">
       <Filter>Header Files\eventsManager</Filter>
     </ClInclude>
+    <ClInclude Include="include\rkEventType.h">
+      <Filter>Header Files\eventsManager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

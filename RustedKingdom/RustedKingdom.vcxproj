@@ -182,6 +182,7 @@
     <ClInclude Include="include\rkAssetManager.h" />
     <ClInclude Include="include\rkEventsManager.h" />
     <ClInclude Include="include\rkEventsManagerListener.h" />
+    <ClInclude Include="include\rkEventType.h" />
     <ClInclude Include="include\rkExceptions.h" />
     <ClInclude Include="include\rkGameObject.h" />
     <ClInclude Include="include\rkGameObjectsFactory.h" />
