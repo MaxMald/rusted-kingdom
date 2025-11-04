@@ -49,6 +49,12 @@
     <Filter Include="Source Files\viewsManager">
       <UniqueIdentifier>{56f70ba9-48e0-425a-813f-061f00ae469c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\inputManager">
+      <UniqueIdentifier>{93039089-27ea-47ad-9a21-d3afbb8af2eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\inputManager">
+      <UniqueIdentifier>{c33eba27-aa5d-4a65-ba2f-ffb0ed617d4c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -89,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="src\rkViewsManager.cpp">
       <Filter>Source Files\viewsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkInputManager.cpp">
+      <Filter>Source Files\inputManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +151,12 @@
     </ClInclude>
     <ClInclude Include="include\rkViewsManager.h">
       <Filter>Header Files\viewsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkInputManager.h">
+      <Filter>Header Files\inputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkInputManagerListener.h">
+      <Filter>Header Files\inputManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
