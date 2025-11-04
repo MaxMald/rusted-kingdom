@@ -108,6 +108,9 @@
     <ClCompile Include="src\rkEventsManager.cpp">
       <Filter>Source Files\eventsManager</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkEventsManagerListener.cpp">
+      <Filter>Source Files\eventsManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -168,6 +171,9 @@
       <Filter>Header Files\inputManager</Filter>
     </ClInclude>
     <ClInclude Include="include\rkEventsManager.h">
+      <Filter>Header Files\eventsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkEventsManagerListener.h">
       <Filter>Header Files\eventsManager</Filter>
     </ClInclude>
   </ItemGroup>

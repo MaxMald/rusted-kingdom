@@ -176,10 +176,12 @@
     <ClCompile Include="src\rkTileSet.cpp" />
     <ClCompile Include="src\rkTileSetsManager.cpp" />
     <ClCompile Include="src\rkViewsManager.cpp" />
+    <ClCompile Include="src\rkEventsManagerListener.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkAssetManager.h" />
     <ClInclude Include="include\rkEventsManager.h" />
+    <ClInclude Include="include\rkEventsManagerListener.h" />
     <ClInclude Include="include\rkExceptions.h" />
     <ClInclude Include="include\rkGameObject.h" />
     <ClInclude Include="include\rkGameObjectsFactory.h" />
