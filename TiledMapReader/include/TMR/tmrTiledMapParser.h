@@ -25,7 +25,6 @@ namespace tmr
     MapLayerParser m_mapLayerParser;
     TileSetParser m_tileSetParser;
 
-    orientation::Type parseOrientation(const char* orientationStr);
     renderOrder::Type parseRenderOrder(const char* renderOrderStr);
   };
 }

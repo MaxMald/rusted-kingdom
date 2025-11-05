@@ -1,6 +1,7 @@
 #include "TMR/tmrTiledMapParser.h"
 #include "TMR/tmrTiledMap.h"
 #include "TMR/tmrMapLayer.h"
+#include "TMR/tmrOrientationParser.h"
 #include <string>
 #include <stdexcept>
 
@@ -30,7 +31,7 @@ namespace tmr
     std::string orientationStr;
     orientationStr.resize(json["orientation"].getStringLength() + 1);
     json["orientation"].getString(&orientationStr[0], orientationStr.size());
-    orientation::Type orientationVal = parseOrientation(orientationStr.c_str());
+    orientation::Type orientationVal = orientationParser::parseFromString(orientationStr.c_str());
 
     // Parse render order
     std::string renderOrderStr;
@@ -89,19 +90,6 @@ namespace tmr
       tileSets,
       tileSetsArraySize
     );
-  }
-
-  orientation::Type TiledMapParser::parseOrientation(const char* orientationStr)
-  {
-    if (!orientationStr)
-      throw std::runtime_error("orientationStr is null");
-
-    std::string str(orientationStr);
-
-    if (str == "isometric")
-      return orientation::Type::Isometric;
-
-    throw std::runtime_error("Unknown orientation string: " + str);
   }
 
   renderOrder::Type TiledMapParser::parseRenderOrder(const char* renderOrderStr)

@@ -4,6 +4,7 @@
 #include "TMR/tmrJson.h"
 #include "TMR/tmrSpriteSheetTileSetParser.h"
 #include "TMR/tmrReferenceTileSetParser.h"
+#include "TMR/tmrImageCollectionTileSetParser.h"
 
 namespace tmr
 {
@@ -20,5 +21,6 @@ namespace tmr
   private:
     SpriteSheetTileSetParser m_spriteSheetTileSetParser;
     ReferenceTileSetParser m_referenceTileSetParser;
+    ImageCollectionTileSetParser m_imageCollectionTileSetParser;
   };
 }

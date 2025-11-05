@@ -6,12 +6,14 @@
 #include "TMR/tmrTileSet.h"
 #include "TMR/tmrSpriteSheetTileSet.h"
 #include "TMR/tmrReferenceTileSet.h"
+#include "TMR/tmrImageCollectionTileSet.h"
 
 namespace tmr
 {
   TileSetParser::TileSetParser() :
     m_spriteSheetTileSetParser(),
-    m_referenceTileSetParser()
+    m_referenceTileSetParser(),
+    m_imageCollectionTileSetParser()
   {
   }
 
@@ -29,11 +31,12 @@ namespace tmr
     }
     else if (json.contains("tiles"))
     {
-      return m_referenceTileSetParser.parseFromJson(firstgid, json);
+      return m_imageCollectionTileSetParser.parseFromJson(firstgid, json);
     }
     else if (json.contains("source"))
     {
-      throw std::runtime_error("TODO: Implement source tileset parsing");
+
+      return m_referenceTileSetParser.parseFromJson(firstgid, json);
     }
     else
     {
