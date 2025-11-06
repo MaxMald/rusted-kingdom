@@ -17,8 +17,10 @@ namespace tmr
 
       if (str == "isometric")
         return orientation::Type::Isometric;
-
-      throw std::runtime_error("Unknown orientation string: " + str);
+      else if (str == "orthogonal")
+        return orientation::Type::Orthogonal;
+      else
+        throw std::runtime_error("Unknown orientation string: " + str);
     }
   }
 }

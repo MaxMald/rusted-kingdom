@@ -6,6 +6,7 @@
 namespace tmr
 {
   class TiledMap;
+  class TileSet;
 }
 
 namespace rk
@@ -45,7 +46,7 @@ namespace rk
      */
     bool load(
       const Path& mapRootDirectory,
-      const tmr::TiledMap* tiledMap
+      const tmr::TiledMap& tiledMap
     );
 
     /**
@@ -86,18 +87,9 @@ namespace rk
      */
     Vector<TileSet*> m_tileSets;
 
-    /**
-     * @brief Check whether the provided global tile id (GID) belongs to the
-     * supplied tileset.
-     *
-     * @param tileSet Pointer to the rk::TileSet to test (not owned).
-     * @param gid Global tile id to check.
-     * 
-     * @return true if the gid lies within the tileset's range, false otherwise.
-     */
-    bool isGidInTileSetRange(
-      const TileSet* tileSet,
-      const Int32& gid
+    TileSet* createTileSetFromTmrTileSet(
+      const Path& mapRootDirectory,
+      const tmr::TileSet& tmrTileSet
     ) const;
   };
 }

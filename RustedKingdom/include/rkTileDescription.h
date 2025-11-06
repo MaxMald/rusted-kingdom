@@ -43,6 +43,41 @@ namespace rk
     }
 
     /**
+     * @brief Copy assignment.
+     */
+    TileDescription& operator=(const TileDescription& other)
+    {
+      if (this != &other)
+      {
+        m_textureKey = other.m_textureKey;
+        m_textureRect = other.m_textureRect;
+      }
+      return *this;
+    }
+
+    /**
+     * @brief Move constructor.
+     */
+    TileDescription(TileDescription&& other) noexcept :
+      m_textureKey(std::move(other.m_textureKey)),
+      m_textureRect(other.m_textureRect)
+    {
+    }
+
+    /**
+     * @brief Move assignment.
+     */
+    TileDescription& operator=(TileDescription&& other) noexcept
+    {
+      if (this != &other)
+      {
+        m_textureKey = std::move(other.m_textureKey);
+        m_textureRect = other.m_textureRect;
+      }
+      return *this;
+    }
+
+    /**
      * @return Reference to the texture key identifying the tileset/texture.
      */
     const String& getTextureKey() const

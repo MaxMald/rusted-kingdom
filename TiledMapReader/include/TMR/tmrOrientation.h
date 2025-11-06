@@ -13,7 +13,8 @@ namespace tmr
   {
     enum class Type : std::uint8_t
     {
-      Isometric /// Diamond-shaped tiles for isometric projection.
+      Isometric = 0,  /// Diamond-shaped tiles for isometric projection.
+      Orthogonal = 1, /// Standard grid of square tiles.
     };
   }
 }

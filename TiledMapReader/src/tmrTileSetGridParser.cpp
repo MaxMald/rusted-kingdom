@@ -19,11 +19,11 @@ namespace tmr
     std::uint32_t height = static_cast<std::uint32_t>(json["height"].getInt32());
 
     // Parse orientation
-    std::string nameStr;
-    nameStr.resize(json["name"].getStringLength() + 1);
-    json["name"].getString(&nameStr[0], nameStr.size());
-    nameStr.resize(nameStr.size() - 1);
-    orientation::Type orientation = orientationParser::parseFromString(nameStr.c_str());
+    std::string orientationStr;
+    orientationStr.resize(json["orientation"].getStringLength() + 1);
+    json["orientation"].getString(&orientationStr[0], orientationStr.size());
+    orientationStr.resize(orientationStr.size() - 1);
+    orientation::Type orientation = orientationParser::parseFromString(orientationStr.c_str());
 
     return new TileSetGrid(
       width,

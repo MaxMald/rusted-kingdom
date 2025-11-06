@@ -1,6 +1,10 @@
 #include "TMR/tmrTiledMap.h"
+
 #include <cstring>
 #include <stdexcept>
+
+#include "TMR/tmrMapLayer.h"
+#include "TMR/tmrTileSet.h"
 
 namespace tmr
 {

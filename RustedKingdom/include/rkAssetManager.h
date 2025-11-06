@@ -12,6 +12,9 @@ using sf::Texture;
 namespace rk
 {
   class TiledMap;
+  class TileSet;
+  class SpriteSheetTileSet;
+  class ImageCollectionTileSet;
 
   /**
    * @brief Manages loading and retrieval of texture assets.
@@ -101,6 +104,13 @@ namespace rk
     bool loadAssetsFromTiledMap(const String& name);
 
     /**
+     * @brief Loads all assets (textures) referenced by the specified tile set.
+     * @param tileSet The tile set to load assets from.
+     * @return True if all assets were loaded successfully, false otherwise.
+     */
+    bool loadAssetsFromTileSet(const TileSet& tileSet);
+
+    /**
      * @brief Clears all loaded textures.
      */
     void clear();
@@ -115,5 +125,8 @@ namespace rk
     const char* m_assetDirectory;
     UnorderedMap<String, Texture*> m_textures;
     UnorderedMap<String, TiledMap*> m_tiledMaps;
+
+    bool loadAssetsFromSpriteSheetTileSet(const SpriteSheetTileSet& tileSet);
+    bool loadAssetsFromImageCollectionTileSet(const ImageCollectionTileSet& tileSet);
   };
 }

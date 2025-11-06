@@ -1,7 +1,11 @@
 #include "rkAssetManager.h"
+
 #include <SFML/Graphics/Texture.hpp>
+
 #include "rkTiledMap.h"
 #include "rkTileSet.h"
+#include "rkImageCollectionTileSet.h"
+#include "rkSpriteSheetTileSet.h"
 
 namespace rk
 {
@@ -134,15 +138,28 @@ namespace rk
     {
       const TileSet* tileSet = tileSetmanager.getTileSetAt(i);
 
-      const String& textureName = tileSet->getImageKey();
-      const Path& texturePath = tileSet->getImageFilepath();
-      if (!hasTexture(textureName))
-      {
-        if (!loadTexture(textureName, texturePath))
-        {
-          return false;
-        }
-      }
+      if (!loadAssetsFromTileSet(*tileSet))
+        return false;
+    }
+
+    return true;
+  }
+
+  bool AssetManager::loadAssetsFromTileSet(const TileSet& tileSet)
+  {
+    tmr::tileSetType::Type tileSetType = tileSet.getType();
+    if (tileSetType == tmr::tileSetType::SpriteSheet)
+    {
+      return loadAssetsFromSpriteSheetTileSet(
+        static_cast<const SpriteSheetTileSet&>(tileSet)
+      );
+    }
+
+    else if (tileSetType == tmr::tileSetType::ImageCollection)
+    {
+      return loadAssetsFromImageCollectionTileSet(
+        static_cast<const ImageCollectionTileSet&>(tileSet)
+      );
     }
 
     return true;
@@ -161,5 +178,41 @@ namespace rk
   const char* AssetManager::getAssetDirectory() const
   {
     return m_assetDirectory;
+  }
+
+  bool AssetManager::loadAssetsFromSpriteSheetTileSet(
+    const SpriteSheetTileSet& tileSet
+  )
+  {
+    const String& textureName = tileSet.getImageKey();
+    const Path& texturePath = tileSet.getImageFilepath();
+    if (!hasTexture(textureName))
+    {
+      if (!loadTexture(textureName, texturePath))
+      {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  bool AssetManager::loadAssetsFromImageCollectionTileSet(
+    const ImageCollectionTileSet& tileSet
+  )
+  {
+    const Vector<TileSetTile>& tiles = tileSet.getTiles();
+    for (const TileSetTile& tile : tiles)
+    {
+      const String& textureName = tile.getImagePath().string();
+      const Path& texturePath = tile.getImagePath();
+      if (!hasTexture(textureName))
+      {
+        if (!loadTexture(textureName, texturePath))
+        {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 }

@@ -24,7 +24,7 @@ int main()
   );
 
   bool result = false;
-  result = assetManager.loadTiledMap("level-0", "maps/level-1.json");
+  result = assetManager.loadTiledMap("level-0", "maps/level-2.json");
   if (!result)
     return -1;
 

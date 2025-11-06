@@ -1,6 +1,15 @@
 #include "rkTileSetsManager.h"
 #include <TMR/tmrTiledMap.h>
+#include <TMR/tmrTileSet.h>
+#include <TMR/tmrReferenceTileSet.h>
+#include <TMR/tmrSpriteSheetTileSet.h>
+#include <TMR/tmrImageCollectionTileSet.h>
 #include "rkTileSet.h"
+#include "rkReferenceTileSet.h"
+#include "rkSpriteSheetTileSet.h"
+#include "rkImageCollectionTileSet.h"
+#include "rkTileSet.h"
+#include "rkAssertions.h"
 
 namespace rk
 {
@@ -16,26 +25,19 @@ namespace rk
 
   bool TileSetsManager::load(
     const Path& mapRootDirectory,
-    const tmr::TiledMap* tiledMap)
+    const tmr::TiledMap& tiledMap)
   {
     clear();
 
-    if (!tiledMap)
-      return false;
-
-    const SizeT count = tiledMap->getTileSetsCount();
+    const SizeT count = tiledMap.getTileSetsCount();
     for (SizeT i = 0; i < count; ++i)
     {
-      const tmr::TileSet* tmrTileSet = tiledMap->getTileSetAt(i);
-      if (!tmrTileSet)
-        continue;
+      const tmr::TileSet* tmrTileSet = tiledMap.getTileSetAt(i);
+      assertions::assertNotNull(tmrTileSet, "tmrTileSet");
 
-      TileSet* rsTileSet = new TileSet(
-        mapRootDirectory,
-        const_cast<tmr::TileSet*>(tmrTileSet)
+      m_tileSets.push_back(
+        createTileSetFromTmrTileSet(mapRootDirectory, *tmrTileSet)
       );
-
-      m_tileSets.push_back(rsTileSet);
     }
 
     return true;
@@ -43,15 +45,7 @@ namespace rk
 
   const TileSet* TileSetsManager::getTileSetAt(const SizeT& index) const
   {
-    if (index >= m_tileSets.size())
-      throw RuntimeErrorException(
-        String::Format(
-          "TileSetsManager::getTileSetAt: Index %zu is out of bounds (max %zu).",
-          index,
-          m_tileSets.size() - 1
-        )
-      );
-
+    assertions::assertIndexInRange(index, m_tileSets.size(), "Tile Set Index");
     return m_tileSets[index];
   }
 
@@ -61,16 +55,12 @@ namespace rk
   {
     for (const TileSet* tileSet : m_tileSets)
     {
-      if (!isGidInTileSetRange(tileSet, gid))
+      if (!tileSet->isGidInRange(gid))
         continue;
 
       const Int32 firstGid = tileSet->getFirstGid();
       const Int32 localId = gid - firstGid;
-
-      return TileDescription(
-        tileSet->getImageKey(),
-        tileSet->getTileTextureRect(localId)
-      );
+      return tileSet->getTileDescriptionAt(localId);
     }
 
     throw RuntimeErrorException(
@@ -89,13 +79,54 @@ namespace rk
     m_tileSets.clear();
   }
 
-  bool TileSetsManager::isGidInTileSetRange(
-    const TileSet* tileSet,
-    const Int32& gid
-  ) const
+  TileSet* TileSetsManager::createTileSetFromTmrTileSet(
+    const Path& mapRootDirectory,
+    const tmr::TileSet& tmrTileSet) const
   {
-    const Int32 firstGid = tileSet->getFirstGid();
-    const Int32 tileCount = static_cast<Int32>(tileSet->getTileCount());
-    return (gid >= firstGid && gid < firstGid + tileCount);
+    const tmr::tileSetType::Type& tileSetType = tmrTileSet.getType();
+    
+    if (tileSetType == tmr::tileSetType::Unknown)
+    {
+      throw RuntimeErrorException(
+        "TileSetsManager::load: TileSet has unknown type."
+      );
+    }
+
+    else if (tileSetType == tmr::tileSetType::Reference)
+    {
+      ReferenceTileSet* referenceTileSet = new ReferenceTileSet(
+        mapRootDirectory,
+        static_cast<const tmr::ReferenceTileSet&>(tmrTileSet)
+      );
+
+      return static_cast<rk::TileSet*>(referenceTileSet);
+    }
+
+    else if (tileSetType == tmr::tileSetType::SpriteSheet)
+    {
+      SpriteSheetTileSet* spriteSheetTileSet = new SpriteSheetTileSet(
+        mapRootDirectory,
+        static_cast<const tmr::SpriteSheetTileSet&>(tmrTileSet)
+      );
+
+      return static_cast<rk::TileSet*>(spriteSheetTileSet);
+    }
+
+    else if (tileSetType == tmr::tileSetType::ImageCollection)
+    {
+      ImageCollectionTileSet* imageCollectionTileSet = new ImageCollectionTileSet(
+        mapRootDirectory,
+        static_cast<const tmr::ImageCollectionTileSet&>(tmrTileSet)
+      );
+
+      return static_cast<rk::TileSet*>(imageCollectionTileSet);
+    }
+
+    else
+    {
+      throw RuntimeErrorException(
+        "TileSetsManager::load: Unsupported TileSet type."
+      );
+    }
   }
 }

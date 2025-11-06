@@ -111,6 +111,21 @@
     <ClCompile Include="src\rkEventsManager.cpp">
       <Filter>Source Files\eventsManager</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkReferenceTileSet.cpp">
+      <Filter>Source Files\assetManager\tiledMap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkSpriteSheetTileSet.cpp">
+      <Filter>Source Files\assetManager\tiledMap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkImageCollectionTileSet.cpp">
+      <Filter>Source Files\assetManager\tiledMap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTileSetGrid.cpp">
+      <Filter>Source Files\assetManager\tiledMap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTileSetTile.cpp">
+      <Filter>Source Files\assetManager\tiledMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -181,6 +196,24 @@
     </ClInclude>
     <ClInclude Include="include\rkEvent.h">
       <Filter>Header Files\eventsManager\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkReferenceTileSet.h">
+      <Filter>Header Files\assetManager\tiledMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkSpriteSheetTileSet.h">
+      <Filter>Header Files\assetManager\tiledMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkImageCollectionTileSet.h">
+      <Filter>Header Files\assetManager\tiledMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTileSetGrid.h">
+      <Filter>Header Files\assetManager\tiledMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTileSetTile.h">
+      <Filter>Header Files\assetManager\tiledMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkAssertions.h">
+      <Filter>Header Files\utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

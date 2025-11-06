@@ -33,7 +33,7 @@ namespace rk
       m_tmrTiledMap = loadedTiledMap;
 
       Path rootDirectory = filename.parent_path();
-      m_tileSetsManager.load(rootDirectory, loadedTiledMap);
+      m_tileSetsManager.load(rootDirectory, *loadedTiledMap);
     }
     catch (const std::exception& /*e*/)
     {

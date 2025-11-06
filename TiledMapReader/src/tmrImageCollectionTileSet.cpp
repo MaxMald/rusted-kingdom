@@ -1,5 +1,8 @@
 #include "TMR/tmrImageCollectionTileSet.h"
+
 #include <memory>
+
+#include "TMR/tmrTileSetTile.h"
 
 namespace tmr
 {
