@@ -19,7 +19,6 @@ int main()
   rk::AssetManager assetManager(assetsPath.c_str());
   rk::SceneGraph sceneGraph;
   rk::GameObjectsFactory gameObjectsFactory(
-    &sceneGraph,
     &assetManager
   );
 
@@ -34,6 +33,7 @@ int main()
 
   rk::TiledSceneBuilder::buildFromTiledMap(
     gameObjectsFactory,
+    sceneGraph,
     *assetManager.getTiledMap("level-0")
   );
 
@@ -55,6 +55,8 @@ int main()
 
     viewsManager.update(deltaTime.asSeconds());
     window.setView(viewsManager.getWorldView());
+
+    sceneGraph.update(deltaTime.asSeconds());
 
     window.clear();
     window.draw(sceneGraph);

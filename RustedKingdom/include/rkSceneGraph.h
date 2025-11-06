@@ -44,28 +44,6 @@ namespace rk
     void draw(RenderTarget& target, RenderStates states) const override;
 
   private:
-
     UniquePtr<GameObject> m_root;
-
-    /**
-     * @brief Recursively collects all GameObjects in the hierarchy starting from
-     * the given parent.
-     *
-     * @param parent Pointer to the GameObject to start traversal from.
-     * @param gameObjects Reference to a vector that will be filled with pointers
-     * to all found GameObjects.
-     */
-    void getAllGameObjectsRecursively(
-      GameObject* parent,
-      Vector<GameObject*>& gameObjects
-    ) const;
-
-    /**
-     * @brief Sorts a vector of GameObject pointers by their Y position.
-     *
-     * @param gameObjects Reference to a vector of GameObject pointers to be
-     * sorted.
-     */
-    void sortGameObjectsByYPosition(Vector<GameObject*>& gameObjects) const;
   };
 }

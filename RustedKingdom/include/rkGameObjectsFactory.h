@@ -11,12 +11,11 @@ namespace sf
 namespace rk
 {
   class AssetManager;
-  class SceneGraph;
   class SpriteGameObject;
+  class LayerGameObject;
 
   /**
-   * @brief Factory responsible for creating game objects and registering them
-   * into a SceneGraph.
+   * @brief Factory responsible for creating game objects.
    */
   class GameObjectsFactory
   {
@@ -25,16 +24,11 @@ namespace rk
     /**
      * @brief Construct a new GameObjectsFactory.
      *
-     * @param sceneGraph Pointer to the SceneGraph that will receive created
-     * objects. The factory will register newly created objects into this graph.
      * @param assetsManager Pointer to the AssetManager used to obtain textures
      * and other resources. The AssetManager must outlive the objects created by
      * this factory.
      */
-    GameObjectsFactory(
-      SceneGraph* sceneGraph,
-      const AssetManager* assetsManager
-    );
+    GameObjectsFactory(const AssetManager* assetsManager);
 
     /**
      * @brief Default destructor.
@@ -68,8 +62,6 @@ namespace rk
     );
 
   private:
-
-    SceneGraph* m_sceneGraph;              ///< SceneGraph where created objects are registered.
     const AssetManager* m_assetsManager;   ///< Asset manager used to resolve textures/resources.
   };
 }

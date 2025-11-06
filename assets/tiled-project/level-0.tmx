@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="20" tilewidth="128" tileheight="64" infinite="0" nextlayerid="8" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="20" tilewidth="128" tileheight="64" infinite="0" nextlayerid="9" nextobjectid="46">
  <editorsettings>
-  <export target="../maps/level-1.json" format="json"/>
+  <export target="../maps/level-2.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="dirt-a-to-sand-a" tilewidth="128" tileheight="64" tilecount="32" columns="4">
   <image source="../textures/terrain/128x64 Dirt A to Sand A.png" width="512" height="512"/>
@@ -313,29 +313,51 @@
 3,30,30,30,1,25,19,0,0,0,0,17,3,30,30,30,30,2,20,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="7" name="plants" width="30" height="20">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,50,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,50,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,111,111,0,0,0,0,0,61,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,111,111,0,0,0,0,56,61,61,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,56,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,39,39,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,39,89,89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,93,93,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,89,89,0,0,0,50,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,89,93,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
- <objectgroup id="2" name="Capa de Objetos 1"/>
+ <objectgroup id="2" name="plantas">
+  <object id="1" gid="64" x="572.667" y="318" width="256" height="128"/>
+  <object id="2" gid="64" x="566.667" y="257.333" width="256" height="128"/>
+  <object id="3" gid="64" x="494.667" y="286.667" width="256" height="128"/>
+  <object id="4" gid="111" x="496.333" y="834.333" width="128" height="64"/>
+  <object id="5" gid="107" x="432.667" y="866" width="128" height="64"/>
+  <object id="6" gid="107" x="378.667" y="857.333" width="128" height="64"/>
+  <object id="7" gid="111" x="460" y="801.333" width="128" height="64"/>
+  <object id="8" gid="111" x="458.333" y="748.333" width="128" height="64"/>
+  <object id="9" gid="50" x="427.333" y="819.333" width="128" height="128"/>
+  <object id="10" gid="51" x="411.333" y="764.667" width="128" height="64"/>
+  <object id="11" gid="51" x="199" y="361" width="128" height="64"/>
+  <object id="12" gid="51" x="204" y="309.333" width="128" height="64"/>
+  <object id="13" gid="51" x="162" y="332.667" width="128" height="64"/>
+  <object id="14" gid="98" x="182.667" y="289.333" width="256" height="128"/>
+  <object id="15" gid="98" x="903.667" y="869.667" width="256" height="128"/>
+  <object id="16" gid="97" x="856.667" y="959.333" width="256" height="128"/>
+  <object id="17" gid="93" x="822" y="875.333" width="256" height="128"/>
+  <object id="18" gid="105" x="888" y="789.333" width="256" height="128"/>
+  <object id="19" gid="105" x="830" y="474" width="256" height="128"/>
+  <object id="20" gid="111" x="861" y="456.333" width="128" height="64"/>
+  <object id="21" gid="111" x="1150.67" y="622.667" width="128" height="64"/>
+  <object id="22" gid="111" x="1130.67" y="538.667" width="128" height="64"/>
+  <object id="23" gid="111" x="1106" y="579.333" width="128" height="64"/>
+  <object id="24" gid="111" x="210.667" y="637.333" width="128" height="64"/>
+  <object id="25" gid="98" x="246.667" y="558.667" width="256" height="128"/>
+  <object id="26" gid="72" x="402.667" y="376" width="256" height="256"/>
+  <object id="27" gid="72" x="726.667" y="908" width="256" height="256"/>
+  <object id="28" gid="72" x="819.333" y="263.333" width="256" height="256"/>
+  <object id="29" gid="88" x="766.667" y="564" width="256" height="256"/>
+  <object id="30" gid="88" x="810.667" y="1186.67" width="256" height="256"/>
+  <object id="31" gid="84" x="970" y="723.333" width="256" height="256"/>
+  <object id="32" gid="84" x="286.667" y="788" width="256" height="256"/>
+  <object id="33" gid="84" x="453.333" y="96" width="256" height="256"/>
+  <object id="34" gid="84" x="115.333" y="687.333" width="256" height="256"/>
+  <object id="35" gid="88" x="561.333" y="102.667" width="256" height="256"/>
+  <object id="36" gid="88" x="164" y="780" width="256" height="256"/>
+  <object id="37" gid="88" x="558.667" y="1190.67" width="256" height="256"/>
+  <object id="38" gid="50" x="283.333" y="858" width="128" height="128"/>
+  <object id="39" gid="50" x="265.333" y="902.667" width="128" height="128"/>
+  <object id="40" gid="49" x="255.333" y="880.667" width="128" height="128"/>
+  <object id="41" gid="49" x="724" y="313.333" width="128" height="128"/>
+  <object id="42" gid="49" x="760.667" y="322" width="128" height="128"/>
+  <object id="43" gid="49" x="726.667" y="361.333" width="128" height="128"/>
+  <object id="44" gid="47" x="711.333" y="366" width="128" height="128"/>
+  <object id="45" gid="47" x="690.667" y="301.333" width="128" height="128"/>
+ </objectgroup>
 </map>

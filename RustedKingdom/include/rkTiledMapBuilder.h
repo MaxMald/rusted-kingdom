@@ -12,6 +12,7 @@ namespace tmr
 
 namespace rk
 {
+  class SceneGraph;
   class TiledMap;
   class TileSetsManager;
   class GameObjectsFactory;
@@ -33,6 +34,7 @@ namespace rk
      */
     static void buildFromTiledMap(
       GameObjectsFactory& gameObjectsFactory,
+      SceneGraph& sceneGraph,
       const TiledMap& tiledMap
     );
 
@@ -44,6 +46,7 @@ namespace rk
      */
     static void buildFromTileLayer(
       GameObjectsFactory& gameObjectsFactory,
+      SceneGraph& sceneGraph,
       const Int32& tileWidth,
       const Int32& tileHeight,
       const tmr::TileMapLayer& tileMapLayer,

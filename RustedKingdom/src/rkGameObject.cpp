@@ -116,10 +116,10 @@ namespace rk
 
   void GameObject::draw(RenderTarget& target, RenderStates states) const
   {
-    (void)target;
-    (void)states;
+    states.transform *= m_worldTransform;
 
-    // Custom drawing logic for derived classes can be implemented here.
+    for (auto& child : m_children)
+      child->draw(target, states);
   }
 
   void GameObject::onUpdate(float deltaTime)

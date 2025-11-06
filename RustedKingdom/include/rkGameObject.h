@@ -41,6 +41,10 @@ namespace rk
      */
     virtual ~GameObject();
 
+    /** @brief Returns the computed world transform for this object.*/
+    const sf::Transform & getWorldTransform() const { return m_worldTransform; }
+
+
     /**
      * @brief Adds a child GameObject to this object.
      *
@@ -125,6 +129,11 @@ namespace rk
     sf::Transform m_worldTransform;
 
     /**
+     * @brief The children of this GameObject.
+     */
+    Vector<UniquePtr<GameObject>> m_children;
+
+    /**
      * @brief Updates this GameObject and recursively updates its children.
      *
      * @param deltaTime Time elapsed since last update (in seconds).
@@ -159,7 +168,6 @@ namespace rk
 
     const char* m_name;
     GameObject* m_parent;
-    Vector<UniquePtr<GameObject>> m_children;
 
     friend class SceneGraph;
   };

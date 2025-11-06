@@ -1,16 +1,17 @@
 #include "rkGameObjectsFactory.h"
+
 #include <SFML/Graphics/Texture.hpp>
+
 #include "rkSceneGraph.h"
 #include "rkAssetManager.h"
 #include "rkSpriteGameObject.h"
+#include "rkLayerGameObject.h"
 
 namespace rk
 {
   GameObjectsFactory::GameObjectsFactory(
-    SceneGraph* sceneGraph,
     const AssetManager* assetsManager
   ) :
-    m_sceneGraph(sceneGraph),
     m_assetsManager(assetsManager)
   {
   }
@@ -23,10 +24,7 @@ namespace rk
     if (!texture)
       return nullptr;
 
-    auto obj = MakeUnique<SpriteGameObject>(texture);
-    SpriteGameObject* rawPtr = obj.get();
-    m_sceneGraph->getRoot()->addChild(std::move(obj));
-    return rawPtr;
+    return new SpriteGameObject(texture);
   }
 
   SpriteGameObject* GameObjectsFactory::createSpriteGameObject(
@@ -38,9 +36,6 @@ namespace rk
     if (!texture)
       return nullptr;
 
-    auto obj = MakeUnique<SpriteGameObject>(texture, textureRect);
-    SpriteGameObject* rawPtr = obj.get();
-    m_sceneGraph->getRoot()->addChild(std::move(obj));
-    return rawPtr;
+    return new SpriteGameObject(texture, textureRect);
   }
 }

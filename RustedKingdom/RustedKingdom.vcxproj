@@ -170,6 +170,7 @@
     <ClCompile Include="src\rkImageCollectionTileSet.cpp" />
     <ClCompile Include="src\rkInputManager.cpp" />
     <ClCompile Include="src\rkJson.cpp" />
+    <ClCompile Include="src\rkLayerGameObject.cpp" />
     <ClCompile Include="src\rkReferenceTileSet.cpp" />
     <ClCompile Include="src\rkSceneGraph.cpp" />
     <ClCompile Include="src\rkSpriteGameObject.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="include\rkInputManager.h" />
     <ClInclude Include="include\rkInputManagerListener.h" />
     <ClInclude Include="include\rkJson.h" />
+    <ClInclude Include="include\rkLayerGameObject.h" />
     <ClInclude Include="include\rkPrerequisites.h" />
     <ClInclude Include="include\rkReferenceTileSet.h" />
     <ClInclude Include="include\rkSceneGraph.h" />

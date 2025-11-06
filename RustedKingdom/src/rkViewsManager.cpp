@@ -27,7 +27,7 @@ namespace rk
   void ViewsManager::update(const float& deltaTime)
   {
     sf::Vector2f moveOffset(0.f, 0.f);
-    const float moveSpeed = 50.f;
+    const float moveSpeed = 400.f;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
       moveOffset.y -= moveSpeed;

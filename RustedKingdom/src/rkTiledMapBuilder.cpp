@@ -1,17 +1,22 @@
 #include "rkTiledMapBuilder.h"
+
 #include <SFML/Graphics/Texture.hpp>
 #include <TMR/tmrMapLayer.h>
 #include <TMR/tmrTileMapLayer.h>
+
+#include "rkSceneGraph.h"
 #include "rkTiledMap.h"
 #include "rkTileSetsManager.h"
 #include "rkTileDescription.h"
 #include "rkSpriteGameObject.h"
 #include "rkGameObjectsFactory.h"
+#include "rkLayerGameObject.h"
 
 namespace rk
 {
   void TiledSceneBuilder::buildFromTiledMap(
     GameObjectsFactory& gameObjectsFactory,
+    SceneGraph& sceneGraph,
     const TiledMap& tiledMap
   )
   {
@@ -37,6 +42,7 @@ namespace rk
 
       buildFromTileLayer(
         gameObjectsFactory,
+        sceneGraph,
         tileWidth,
         tileHeight,
         *tileMapLayer,
@@ -47,6 +53,7 @@ namespace rk
 
   void TiledSceneBuilder::buildFromTileLayer(
     GameObjectsFactory& gameObjectsFactory,
+    SceneGraph& sceneGraph,
     const Int32& tileWidth,
     const Int32& tileHeight,
     const tmr::TileMapLayer& tileMapLayer,
@@ -55,6 +62,12 @@ namespace rk
   {
     Int32 numCols = tileMapLayer.getWidth();
     Int32 numRows = tileMapLayer.getHeight();
+
+    LayerGameObject* layerGameObject = new LayerGameObject(
+      tileMapLayer.getName()
+    );
+
+    sceneGraph.getRoot()->addChild(UniquePtr<LayerGameObject>(layerGameObject));
 
     for (Int32 row = 0; row < numRows; ++row)
     {
@@ -81,6 +94,8 @@ namespace rk
         );
 
         tile->setPosition(tilePosition);
+
+        layerGameObject->addChild(UniquePtr<GameObject>(tile));
       }
     }
   }

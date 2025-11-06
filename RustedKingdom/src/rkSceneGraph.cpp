@@ -25,58 +25,12 @@ namespace rk
   {
     if (m_root)
       m_root->update(deltaTime);
+
+    m_root->updateTransform();
   }
 
   void SceneGraph::draw(RenderTarget& target, RenderStates states) const
   {
-    m_root->updateTransform();
-
-    Vector<GameObject*> sortedGameObjects;
-    getAllGameObjectsRecursively(m_root.get(), sortedGameObjects);
-    sortGameObjectsByYPosition(sortedGameObjects);
-
-    for (GameObject* gameObject : sortedGameObjects)
-      target.draw(*gameObject, states);
-  }
-
-  void SceneGraph::getAllGameObjectsRecursively(
-    GameObject* parent,
-    Vector<GameObject*>& gameObjects
-  ) const
-  {
-    if (!parent)
-      return;
-
-    gameObjects.push_back(parent);
-
-    for (const auto& childPtr : parent->getChildren())
-    {
-      getAllGameObjectsRecursively(childPtr.get(), gameObjects);
-    }
-  }
-
-  void SceneGraph::sortGameObjectsByYPosition(
-    Vector<GameObject*>& gameObjects
-  ) const
-  {
-    std::sort(
-      gameObjects.begin(),
-      gameObjects.end(),
-      [](GameObject* a, GameObject* b)
-      {
-        const sf::Vector2f aWorld = a->m_worldTransform.transformPoint(sf::Vector2f(0.0f, 0.0f));
-        const sf::Vector2f bWorld = b->m_worldTransform.transformPoint(sf::Vector2f(0.0f, 0.0f));
-
-        if (aWorld.y != bWorld.y)
-          return aWorld.y < bWorld.y;
-
-        // tie-breaker by world X (left objects drawn first) for deterministic
-        // order
-        if (aWorld.x != bWorld.x)
-          return aWorld.x < bWorld.x;
-
-        // final tie-breaker by pointer address
-        return a < b;
-      });
+    m_root->draw(target, states);
   }
 }

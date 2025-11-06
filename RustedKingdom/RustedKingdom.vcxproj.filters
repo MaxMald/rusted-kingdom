@@ -126,6 +126,9 @@
     <ClCompile Include="src\rkTileSetTile.cpp">
       <Filter>Source Files\assetManager\tiledMap</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkLayerGameObject.cpp">
+      <Filter>Source Files\scene\gameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -214,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="include\rkAssertions.h">
       <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkLayerGameObject.h">
+      <Filter>Header Files\scene\gameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
