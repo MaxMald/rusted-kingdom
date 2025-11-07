@@ -63,9 +63,6 @@
     <ClCompile Include="src\tmrTileMapLayer.cpp">
       <Filter>Source Files\mapLayers</Filter>
     </ClCompile>
-    <ClCompile Include="src\tmrObjectGroupMapLayer.cpp">
-      <Filter>Source Files\mapLayers</Filter>
-    </ClCompile>
     <ClCompile Include="src\tmrTileMapLayerPaser.cpp">
       <Filter>Source Files\parsers</Filter>
     </ClCompile>
@@ -116,6 +113,15 @@
     </ClCompile>
     <ClCompile Include="src\tmrObject.cpp">
       <Filter>Source Files\mapLayers\objectGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrObjectGroupMapLayer.cpp">
+      <Filter>Source Files\mapLayers\objectGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrObjectParser.cpp">
+      <Filter>Source Files\parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrDrawOrderParser.cpp">
+      <Filter>Source Files\parsers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +211,15 @@
     </ClInclude>
     <ClInclude Include="include\TMR\tmrObject.h">
       <Filter>Header Files\mapLayers\objectGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrObjectParser.h">
+      <Filter>Header Files\parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrDrawOrder.h">
+      <Filter>Header Files\mapLayers\objectGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrDrawOrderParser.h">
+      <Filter>Header Files\parsers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

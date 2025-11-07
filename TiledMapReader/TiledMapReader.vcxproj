@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\tmrDrawOrderParser.cpp" />
     <ClCompile Include="src\tmrImageCollectionTileSet.cpp" />
     <ClCompile Include="src\tmrImageCollectionTileSetParser.cpp" />
     <ClCompile Include="src\tmrMapLayer.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="src\tmrObject.cpp" />
     <ClCompile Include="src\tmrObjectGroupMapLayer.cpp" />
     <ClCompile Include="src\tmrObjectGroupMapLayerParser.cpp" />
+    <ClCompile Include="src\tmrObjectParser.cpp" />
     <ClCompile Include="src\tmrOrientationParser.cpp" />
     <ClCompile Include="src\tmrReferenceTileSet.cpp" />
     <ClCompile Include="src\tmrReferenceTileSetParser.cpp" />
@@ -183,8 +185,11 @@
     <ClCompile Include="src\tmrTileSetTileParser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\TMR\tmrDrawOrder.h" />
+    <ClInclude Include="include\TMR\tmrDrawOrderParser.h" />
     <ClInclude Include="include\TMR\tmrImageCollectionTileSetParser.h" />
     <ClInclude Include="include\TMR\tmrObject.h" />
+    <ClInclude Include="include\TMR\tmrObjectParser.h" />
     <ClInclude Include="include\TMR\tmrOrientationParser.h" />
     <ClInclude Include="include\TMR\tmrTileSetGridParser.h" />
     <ClInclude Include="include\TMR\tmrTileSetTile.h" />
