@@ -37,6 +37,12 @@
     <Filter Include="Source Files\tilesets">
       <UniqueIdentifier>{d5fbf756-6236-48bf-b2ee-7974a33b2e60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\mapLayers\objectGroup">
+      <UniqueIdentifier>{ad6b7f43-e5b8-4839-827f-e2e07a853fe6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\mapLayers\objectGroup">
+      <UniqueIdentifier>{d8caed94-3b1d-4238-b0ae-d439c13adb07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\tmrTiledMapReader.cpp">
@@ -108,6 +114,9 @@
     <ClCompile Include="src\tmrTileSetTileParser.cpp">
       <Filter>Source Files\parsers</Filter>
     </ClCompile>
+    <ClCompile Include="src\tmrObject.cpp">
+      <Filter>Source Files\mapLayers\objectGroup</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\TMR\tmrTiledMapReader.h">
@@ -138,9 +147,6 @@
       <Filter>Header Files\mapLayers</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrTileMapLayer.h">
-      <Filter>Header Files\mapLayers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\TMR\tmrObjectGroupMapLayer.h">
       <Filter>Header Files\mapLayers</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrTileMapLayerParser.h">
@@ -193,6 +199,12 @@
     </ClInclude>
     <ClInclude Include="include\TMR\tmrTileSetGridParser.h">
       <Filter>Header Files\parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrObjectGroupMapLayer.h">
+      <Filter>Header Files\mapLayers\objectGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrObject.h">
+      <Filter>Header Files\mapLayers\objectGroup</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
