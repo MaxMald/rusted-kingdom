@@ -8,6 +8,7 @@ using sf::Vector2f;
 namespace tmr
 {
   class TileMapLayer;
+  class ObjectGroupMapLayer;
 }
 
 namespace rk
@@ -51,6 +52,26 @@ namespace rk
       const Int32& tileHeight,
       const tmr::TileMapLayer& tileMapLayer,
       const TileSetsManager& tileSetsManager
+    );
+
+    /**
+     * @brief Processes a single object group layer and add its objects to the
+     * scene graph.
+     */
+    static void buildFromObjectGroupLayer(
+      GameObjectsFactory& gameObjectsFactory,
+      SceneGraph& sceneGraph,
+      const Int32& tileWidth,
+      const Int32& tileHeight,
+      const tmr::ObjectGroupMapLayer& objectGroupLayer,
+      const TileSetsManager& tileSetsManager
+    );
+
+    static Vector2f computeIsometricToWorldPosition(
+      const float& x,
+      const float& y,
+      const Int32& halfWidth,
+      const Int32& halfHeight
     );
 
     /**

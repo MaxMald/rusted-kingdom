@@ -24,7 +24,7 @@ namespace tmr
     virtual ~ObjectGroupMapLayer();
 
     const drawOrder::Type& getDrawOrder() const { return m_drawOrder; }
-    Object* getObjectAt(const std::uint32_t& index) { return m_objects[index]; }
+    const Object* getObjectAt(const std::uint32_t& index) const { return m_objects[index]; }
     std::size_t getObjectSize() const { return m_objectsSize; }
 
   private:
