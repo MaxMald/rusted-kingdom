@@ -144,6 +144,9 @@
     <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimation.cpp">
       <Filter>Source Files\animations</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimationDescription.cpp">
+      <Filter>Source Files\assetManager\animations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -241,6 +244,9 @@
     </ClInclude>
     <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimation.h">
       <Filter>Header Files\animations</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkJsonUtilities.h">
+      <Filter>Header Files\utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,11 +2,25 @@
 
 #include "rkPrerequisites.h"
 
+namespace tmr
+{
+  class Json;
+}
+
 namespace rk
 {
   class EightDirectionsSpriteSheetAnimationDescription
   {
   public:
+
+    EightDirectionsSpriteSheetAnimationDescription() :
+      m_animationKey(""),
+      m_textureKey(""),
+      m_frameWidth(0),
+      m_frameHeight(0),
+      m_animationLength(0),
+      m_framesPerSecond(0)
+    { }
 
     EightDirectionsSpriteSheetAnimationDescription(
       const String& animationKey,
@@ -89,6 +103,8 @@ namespace rk
     UInt32 getFrameHeight() const { return m_frameHeight; }
     UInt32 getAnimationLength() const { return m_animationLength; }
     float getFramesPerSecond() const { return m_framesPerSecond; }
+
+    bool loadFromJson(const tmr::Json& json);
 
   private:
     String m_animationKey;

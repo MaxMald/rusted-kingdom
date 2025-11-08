@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/System/Vector2.hpp>
-#include "rkPrerequisites.h";
+#include "rkPrerequisites.h"
 
 using sf::Vector2f;
 

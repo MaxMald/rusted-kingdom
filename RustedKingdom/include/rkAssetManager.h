@@ -15,6 +15,7 @@ namespace rk
   class TileSet;
   class SpriteSheetTileSet;
   class ImageCollectionTileSet;
+  class EightDirectionsSpriteSheetAnimationDescription;
 
   /**
    * @brief Manages loading and retrieval of texture assets.
@@ -75,26 +76,26 @@ namespace rk
     /**
      * @brief Loads a tiled map from file and stores by name.
      */
-    bool loadTiledMap(const String& name, const Path& filename);
+    bool loadTiledMap(const String& key, const Path& filename);
 
     /**
      * @brief Retrieves a tiled map by name.
      * @param name The key/name of the tiled map.
      */
-    bool hasTiledMap(const String& name) const;
+    bool hasTiledMap(const String& key) const;
 
     /**
      * @brief Removes a tiled map by name.
      * @param name The key/name of the tiled map.
      */
-    bool removeTiledMap(const String& name);
+    bool removeTiledMap(const String& key);
 
     /**
      * @brief Retrieves a tiled map by name.
      * @param name The key/name of the tiled map.
      * @return Pointer to the tiled map, or nullptr if not found.
      */
-    TiledMap* getTiledMap(const String& name) const;
+    TiledMap* getTiledMap(const String& key) const;
 
     /**
      * @brief Loads all assets (textures) referenced by the specified tiled map.
@@ -111,6 +112,31 @@ namespace rk
     bool loadAssetsFromTileSet(const TileSet& tileSet);
 
     /**
+     * @brief Loads an eight-direction animation bundle from the specified directory.
+     * @param directory The directory containing the animation frames.
+     * @return True if loading succeeded, false otherwise.
+     */
+    bool loadEightDirectionAnimationBundle(const Path& filePath);
+
+    /**
+     * @brief Retrieves an eight-direction animation description by name.
+     * @param name The key/name of the animation.
+     * @return Pointer to the animation description, or nullptr if not found.
+     */
+    EightDirectionsSpriteSheetAnimationDescription* getEightDirectionAnimation(
+      const String& key
+    ) const;
+
+    /**
+     * @brief Checks if an eight-direction animation with the given name exists.
+     * @param name The key/name of the animation.
+     * @return True if the animation exists, false otherwise.
+     */
+    bool hasEightDirectionAnimation(
+      const String& key
+    ) const;
+
+    /**
      * @brief Clears all loaded textures.
      */
     void clear();
@@ -125,6 +151,7 @@ namespace rk
     const char* m_assetDirectory;
     UnorderedMap<String, Texture*> m_textures;
     UnorderedMap<String, TiledMap*> m_tiledMaps;
+    UnorderedMap<String, EightDirectionsSpriteSheetAnimationDescription*> m_eightDirectionAnimations;
 
     bool loadAssetsFromSpriteSheetTileSet(const SpriteSheetTileSet& tileSet);
     bool loadAssetsFromImageCollectionTileSet(const ImageCollectionTileSet& tileSet);

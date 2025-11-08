@@ -165,6 +165,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkAssetManager.cpp" />
     <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimation.cpp" />
+    <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimationDescription.cpp" />
     <ClCompile Include="src\rkEventsManager.cpp" />
     <ClCompile Include="src\rkGameObject.cpp" />
     <ClCompile Include="src\rkGameObjectsFactory.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="include\rkInputManager.h" />
     <ClInclude Include="include\rkInputManagerListener.h" />
     <ClInclude Include="include\rkJson.h" />
+    <ClInclude Include="include\rkJsonUtilities.h" />
     <ClInclude Include="include\rkLayerGameObject.h" />
     <ClInclude Include="include\rkPrerequisites.h" />
     <ClInclude Include="include\rkReferenceTileSet.h" />

@@ -8,7 +8,7 @@ namespace tmr
    * @brief Wrapper class for nlohmann::json providing a simplified and
    * engine-friendly JSON interface.
    */
-  class Json
+  class TMR_API Json
   {
   public:
 

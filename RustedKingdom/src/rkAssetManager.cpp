@@ -1,18 +1,22 @@
 #include "rkAssetManager.h"
 
 #include <SFML/Graphics/Texture.hpp>
+#include <TMR/tmrJson.h>
 
 #include "rkTiledMap.h"
 #include "rkTileSet.h"
 #include "rkImageCollectionTileSet.h"
 #include "rkSpriteSheetTileSet.h"
+#include "rkEightDirectionsSpriteSheetAnimationDescription.h"
+
 
 namespace rk
 {
   AssetManager::AssetManager(const char* assetDirectory)
     : m_assetDirectory(assetDirectory),
     m_textures(),
-    m_tiledMaps()
+    m_tiledMaps(),
+    m_eightDirectionAnimations()
   {
   }
 
@@ -21,10 +25,7 @@ namespace rk
     clear();
   }
 
-  bool AssetManager::loadTexture(
-    const String& name,
-    const Path& filename
-  )
+  bool AssetManager::loadTexture(const String& name, const Path& filename)
   {
     if (hasTexture(name))
       return false;
@@ -165,14 +166,81 @@ namespace rk
     return true;
   }
 
+  bool AssetManager::loadEightDirectionAnimationBundle(const Path& filePath)
+  {
+    try
+    {
+      tmr::Json json = tmr::Json::loadFromFile(filePath.string().c_str());
+      tmr::Json animations = json["animations"];
+
+      if (!animations.isArray())
+        return false;
+
+      SizeT numAnimations = animations.getSize();
+      for (SizeT i = 0; i < numAnimations; ++i)
+      {
+        EightDirectionsSpriteSheetAnimationDescription* animDesc = 
+          new EightDirectionsSpriteSheetAnimationDescription();
+
+        if (!animDesc->loadFromJson(animations[i]))
+        {
+          delete animDesc;
+          return false;
+        }
+
+        String animationKey = animDesc->getAnimationKey();
+        if (hasEightDirectionAnimation(animationKey))
+        {
+          delete animDesc;
+          return false;
+        }
+
+        m_eightDirectionAnimations[animationKey] = animDesc;
+      }
+
+      return true;
+    }
+    catch (const std::exception&)
+    {
+      return false;
+    }
+  }
+
+  EightDirectionsSpriteSheetAnimationDescription* AssetManager::getEightDirectionAnimation(
+    const String& key
+  ) const
+  {
+    auto it = m_eightDirectionAnimations.find(key);
+    if (it != m_eightDirectionAnimations.end())
+      return it->second;
+
+    throw RuntimeErrorException(
+      String::Format(
+        "AssetManager::getEightDirectionAnimation: EightDirectionsSpriteSheetAnimationDescription with key '%s' not found.",
+        key.c_str()
+      )
+    );
+  }
+
+  bool AssetManager::hasEightDirectionAnimation(const String& key) const
+  {
+    return m_eightDirectionAnimations.find(key) != m_eightDirectionAnimations.end();
+  }
+
   void AssetManager::clear()
   {
-    for (auto& pair : m_textures)
-    {
+    for (auto& pair : m_eightDirectionAnimations)
       delete pair.second;
-    }
+
+    for (auto& pair : m_tiledMaps)
+      delete pair.second;
+
+    for (auto& pair : m_textures)
+      delete pair.second;
 
     m_textures.clear();
+    m_tiledMaps.clear();
+    m_eightDirectionAnimations.clear();
   }
 
   const char* AssetManager::getAssetDirectory() const
