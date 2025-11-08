@@ -14,14 +14,14 @@ namespace rk
       UInt32 frameWidth,
       UInt32 frameHeight,
       UInt32 animationLength,
-      float speed
+      float framesPerSecond
     ) :
       m_animationKey(animationKey),
       m_textureKey(textureKey),
       m_frameWidth(frameWidth),
       m_frameHeight(frameHeight),
       m_animationLength(animationLength),
-      m_speed(speed)
+      m_framesPerSecond(framesPerSecond)
     {
     }
 
@@ -33,7 +33,7 @@ namespace rk
       m_frameWidth(other.m_frameWidth),
       m_frameHeight(other.m_frameHeight),
       m_animationLength(other.m_animationLength),
-      m_speed(other.m_speed)
+      m_framesPerSecond(other.m_framesPerSecond)
     {
     }
 
@@ -46,7 +46,7 @@ namespace rk
       m_frameWidth = other.m_frameWidth;
       m_frameHeight = other.m_frameHeight;
       m_animationLength = other.m_animationLength;
-      m_speed = other.m_speed;
+      m_framesPerSecond = other.m_framesPerSecond;
     }
 
     ~EightDirectionsSpriteSheetAnimationDescription() = default;
@@ -62,7 +62,7 @@ namespace rk
         m_frameWidth = other.m_frameWidth;
         m_frameHeight = other.m_frameHeight;
         m_animationLength = other.m_animationLength;
-        m_speed = other.m_speed;
+        m_framesPerSecond = other.m_framesPerSecond;
       }
       return *this;
     }
@@ -78,7 +78,7 @@ namespace rk
         m_frameWidth = other.m_frameWidth;
         m_frameHeight = other.m_frameHeight;
         m_animationLength = other.m_animationLength;
-        m_speed = other.m_speed;
+        m_framesPerSecond = other.m_framesPerSecond;
       }
       return *this;
     }
@@ -88,7 +88,7 @@ namespace rk
     UInt32 getFrameWidth() const { return m_frameWidth; }
     UInt32 getFrameHeight() const { return m_frameHeight; }
     UInt32 getAnimationLength() const { return m_animationLength; }
-    float getSpeed() const { return m_speed; }
+    float getFramesPerSecond() const { return m_framesPerSecond; }
 
   private:
     String m_animationKey;
@@ -96,6 +96,6 @@ namespace rk
     UInt32 m_frameWidth;
     UInt32 m_frameHeight;
     UInt32 m_animationLength;
-    float m_speed;
+    float m_framesPerSecond;
   };
 }

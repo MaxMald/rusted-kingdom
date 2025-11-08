@@ -164,6 +164,7 @@
     <ClCompile Include="include\rkTiledMap.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkAssetManager.cpp" />
+    <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimation.cpp" />
     <ClCompile Include="src\rkEventsManager.cpp" />
     <ClCompile Include="src\rkGameObject.cpp" />
     <ClCompile Include="src\rkGameObjectsFactory.cpp" />
@@ -185,6 +186,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkAssertions.h" />
+    <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimation.h" />
+    <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimationDescription.h" />
     <ClInclude Include="include\rkEvent.h" />
     <ClInclude Include="include\rkAssetManager.h" />
     <ClInclude Include="include\rkEventsManager.h" />
@@ -214,7 +217,6 @@
     <ClInclude Include="include\rkTypeDefinitions.h" />
     <ClInclude Include="include\rkViewsManager.h" />
     <ClInclude Include="include\rkTileSetTile.h" />
-    <ClInclude Include="rkEightDirectionsSpriteSheetAnimationDescription.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
