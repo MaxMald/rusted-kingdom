@@ -30,7 +30,7 @@ namespace rk
     void play();
     void stop();
     void update(float deltaTime);
-    void setDirectionDegrees(sf::Angle angle);
+    void setDirectionAngle(sf::Angle angle);
 
   private:
     const EightDirectionsSpriteSheetAnimationDescription* m_description;

@@ -73,7 +73,7 @@ namespace rk
     m_sprite->setTextureRect(calculateTextureRect());
   }
 
-  void EightDirectionsSpriteSheetAnimation::setDirectionDegrees(sf::Angle angle)
+  void EightDirectionsSpriteSheetAnimation::setDirectionAngle(sf::Angle angle)
   {
     UInt32 spriteSheetColumn = getSpriteSheetColumnFromAngle(angle);
     m_currentRectY = spriteSheetColumn * m_description->getFrameHeight();
