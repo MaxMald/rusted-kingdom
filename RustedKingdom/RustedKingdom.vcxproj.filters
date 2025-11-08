@@ -64,6 +64,12 @@
     <Filter Include="Header Files\eventsManager\events">
       <UniqueIdentifier>{ae4d83e3-4372-4119-80e9-abb6596e9a0c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\assetManager\animations">
+      <UniqueIdentifier>{e8517f5e-9fa0-4eb7-b2f4-e680e89932c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\assetManager\animations">
+      <UniqueIdentifier>{29c474a1-0272-4280-9352-24aa93872275}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -220,6 +226,9 @@
     </ClInclude>
     <ClInclude Include="include\rkLayerGameObject.h">
       <Filter>Header Files\scene\gameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="rkEightDirectionsSpriteSheetAnimationDescription.h">
+      <Filter>Header Files\assetManager\animations</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -214,6 +214,7 @@
     <ClInclude Include="include\rkTypeDefinitions.h" />
     <ClInclude Include="include\rkViewsManager.h" />
     <ClInclude Include="include\rkTileSetTile.h" />
+    <ClInclude Include="rkEightDirectionsSpriteSheetAnimationDescription.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
