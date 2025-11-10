@@ -52,8 +52,6 @@ namespace rk
      */
     virtual void draw(RenderTarget& renderTarget, RenderStates states) const override;
 
-  private:
-
     sf::Sprite m_sprite;
     const sf::Texture* m_texture;
   };

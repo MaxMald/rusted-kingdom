@@ -9,7 +9,6 @@
 #include "rkSpriteSheetTileSet.h"
 #include "rkEightDirectionsSpriteSheetAnimationDescription.h"
 
-
 namespace rk
 {
   AssetManager::AssetManager(const char* assetDirectory)
@@ -170,7 +169,9 @@ namespace rk
   {
     try
     {
-      tmr::Json json = tmr::Json::loadFromFile(filePath.string().c_str());
+      Path fullPath = Path(m_assetDirectory) / filePath;
+
+      tmr::Json json = tmr::Json::loadFromFile(fullPath.string().c_str());
       tmr::Json animations = json["animations"];
 
       if (!animations.isArray())

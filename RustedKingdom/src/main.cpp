@@ -40,6 +40,15 @@ int main()
   sf::FloatRect initialRect(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(1920.0f, 1080.0f));
   rk::ViewsManager viewsManager(initialRect);
 
+  assetManager.loadTexture(
+   "lucius-walking",
+   "textures/characters/lucius/lucius-running.png"
+  );
+
+  assetManager.loadEightDirectionAnimationBundle(
+    "animations/luciusAnimationBundle.json"
+  );
+
   sf::Clock deltaClock;
   while (window.isOpen())
   {

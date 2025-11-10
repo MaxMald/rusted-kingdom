@@ -113,7 +113,7 @@ namespace rk
 
     /**
      * @brief Loads an eight-direction animation bundle from the specified directory.
-     * @param directory The directory containing the animation frames.
+     * @param directory The file path to load the eight-direction animation bundle.
      * @return True if loading succeeded, false otherwise.
      */
     bool loadEightDirectionAnimationBundle(const Path& filePath);
