@@ -2,13 +2,15 @@
 
 namespace rk
 {
-  Component::Component(GameObject& gameObject) :
-    m_gameObject(&gameObject)
+  Component::Component(GameObject& gameObject, componentType::Type type) :
+    m_gameObject(&gameObject),
+    m_type(type)
   {
   }
 
   Component::Component(Component&& other) noexcept :
-    m_gameObject(other.m_gameObject)
+    m_gameObject(other.m_gameObject),
+    m_type(other.m_type)
   {
     other.m_gameObject = nullptr;
   }
@@ -18,6 +20,7 @@ namespace rk
     if (this != &other)
     {
       m_gameObject = other.m_gameObject;
+      m_type = other.m_type;
       other.m_gameObject = nullptr;
     }
     return *this;
