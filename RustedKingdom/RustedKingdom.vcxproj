@@ -164,18 +164,19 @@
     <ClCompile Include="include\rkTiledMap.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkAssetManager.cpp" />
+    <ClCompile Include="src\rkComponent.cpp" />
     <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimation.cpp" />
     <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimationDescription.cpp" />
     <ClCompile Include="src\rkEventsManager.cpp" />
     <ClCompile Include="src\rkGameObject.cpp" />
-    <ClCompile Include="src\rkGameObjectsFactory.cpp" />
+    <ClCompile Include="src\rkGameObjectBuilder.cpp" />
     <ClCompile Include="src\rkImageCollectionTileSet.cpp" />
     <ClCompile Include="src\rkInputManager.cpp" />
     <ClCompile Include="src\rkJson.cpp" />
     <ClCompile Include="src\rkLayerGameObject.cpp" />
     <ClCompile Include="src\rkReferenceTileSet.cpp" />
     <ClCompile Include="src\rkSceneGraph.cpp" />
-    <ClCompile Include="src\rkSpriteGameObject.cpp" />
+    <ClCompile Include="src\rkSpriteComponent.cpp" />
     <ClCompile Include="src\rkSpriteSheet.cpp" />
     <ClCompile Include="src\rkSpriteSheetTileSet.cpp" />
     <ClCompile Include="src\rkTiledMapBuilder.cpp" />
@@ -187,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkAssertions.h" />
+    <ClInclude Include="include\rkComponent.h" />
     <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimation.h" />
     <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimationDescription.h" />
     <ClInclude Include="include\rkEvent.h" />
@@ -196,7 +198,7 @@
     <ClInclude Include="include\rkEventType.h" />
     <ClInclude Include="include\rkExceptions.h" />
     <ClInclude Include="include\rkGameObject.h" />
-    <ClInclude Include="include\rkGameObjectsFactory.h" />
+    <ClInclude Include="include\rkGameObjectBuilder.h" />
     <ClInclude Include="include\rkImageCollectionTileSet.h" />
     <ClInclude Include="include\rkInputManager.h" />
     <ClInclude Include="include\rkInputManagerListener.h" />
@@ -206,10 +208,10 @@
     <ClInclude Include="include\rkPrerequisites.h" />
     <ClInclude Include="include\rkReferenceTileSet.h" />
     <ClInclude Include="include\rkSceneGraph.h" />
-    <ClInclude Include="include\rkSpriteGameObject.h" />
     <ClInclude Include="include\rkSpriteSheet.h" />
     <ClInclude Include="include\rkSpriteSheetTileSet.h" />
     <ClInclude Include="include\rkString.h" />
+    <ClInclude Include="include\rkSpriteComponent.h" />
     <ClInclude Include="include\rkTileDescription.h" />
     <ClInclude Include="include\rkTiledMap.h" />
     <ClInclude Include="include\rkTiledMapBuilder.h" />

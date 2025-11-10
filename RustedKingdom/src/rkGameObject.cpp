@@ -1,5 +1,8 @@
 #include "rkGameObject.h"
+
 #include <SFML/Graphics/RenderStates.hpp>
+
+#include "rkComponent.h"
 
 namespace rk
 {
@@ -7,7 +10,8 @@ namespace rk
     m_name("Unnamed"),
     m_parent(nullptr),
     m_children(),
-    m_worldTransform()
+    m_worldTransform(),
+    m_components()
   {
   }
 
@@ -15,7 +19,8 @@ namespace rk
     m_name(name),
     m_parent(nullptr),
     m_children(),
-    m_worldTransform()
+    m_worldTransform(),
+    m_components()
   {
   }
 
@@ -28,6 +33,12 @@ namespace rk
   const char* GameObject::getName() const
   {
     return m_name;
+  }
+
+  void GameObject::addComponent(UniquePtr<Component> component)
+  {
+    if (component)
+      m_components.push_back(std::move(component));
   }
 
   void GameObject::addChild(UniquePtr<GameObject> child)
@@ -108,7 +119,8 @@ namespace rk
 
   void GameObject::update(float deltaTime)
   {
-    onUpdate(deltaTime);
+    for (auto& component: m_components)
+      component->onUpdate(deltaTime);
 
     for (auto& child : m_children)
       child->update(deltaTime);
@@ -118,19 +130,17 @@ namespace rk
   {
     states.transform *= m_worldTransform;
 
+    for (auto& component : m_components)
+      component->onDraw(target, states);
+
     for (auto& child : m_children)
       child->draw(target, states);
   }
 
-  void GameObject::onUpdate(float deltaTime)
-  {
-    (void)deltaTime;
-
-    // Custom update logic for derived classes can be implemented here.
-  }
-
   void GameObject::onDelete()
   {
-    // Custom deletion logic for derived classes can be implemented here.
+    for (auto& component : m_components)
+      component->onDelete();
+    m_components.clear();
   }
 }

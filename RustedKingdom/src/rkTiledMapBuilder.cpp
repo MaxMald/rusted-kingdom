@@ -10,14 +10,13 @@
 #include "rkTiledMap.h"
 #include "rkTileSetsManager.h"
 #include "rkTileDescription.h"
-#include "rkSpriteGameObject.h"
-#include "rkGameObjectsFactory.h"
 #include "rkLayerGameObject.h"
+#include "rkGameObjectBuilder.h"
 
 namespace rk
 {
   void TiledSceneBuilder::buildFromTiledMap(
-    GameObjectsFactory& gameObjectsFactory,
+    GameObjectBuilder& gameObjectBuilder,
     SceneGraph& sceneGraph,
     const TiledMap& tiledMap
   )
@@ -43,7 +42,7 @@ namespace rk
           static_cast<const tmr::TileMapLayer*>(mapLayer);
 
         buildFromTileLayer(
-          gameObjectsFactory,
+          gameObjectBuilder,
           sceneGraph,
           tileWidth,
           tileHeight,
@@ -58,7 +57,7 @@ namespace rk
           static_cast<const tmr::ObjectGroupMapLayer*>(mapLayer);
 
         buildFromObjectGroupLayer(
-          gameObjectsFactory,
+          gameObjectBuilder,
           sceneGraph,
           tileWidth,
           tileHeight,
@@ -70,7 +69,7 @@ namespace rk
   }
 
   void TiledSceneBuilder::buildFromTileLayer(
-    GameObjectsFactory& gameObjectsFactory,
+    GameObjectBuilder& gameObjectBuilder,
     SceneGraph& sceneGraph,
     const Int32& tileWidth,
     const Int32& tileHeight,
@@ -98,11 +97,6 @@ namespace rk
         TileDescription tileDescription = tileSetsManager
           .getTileDescriptionByGid(gid);
 
-        SpriteGameObject* tile = gameObjectsFactory.createSpriteGameObject(
-          tileDescription.getTextureKey(),
-          tileDescription.getTextureRect()
-        );
-
         Vector2f tilePosition = computeTilePositionIsometric(
           col,
           row,
@@ -110,14 +104,19 @@ namespace rk
           tileHeight
         );
 
-        tile->setPosition(tilePosition);
-        layerGameObject->addChild(UniquePtr<GameObject>(tile));
+        gameObjectBuilder.createGameObject()
+          .position(tilePosition)
+          .addSpriteComponent(
+            tileDescription.getTextureKey(),
+            tileDescription.getTextureRect()
+          )
+          .buildWithParent(*layerGameObject);
       }
     }
   }
 
   void TiledSceneBuilder::buildFromObjectGroupLayer(
-    GameObjectsFactory& gameObjectsFactory,
+    GameObjectBuilder& gameObjectBuilder,
     SceneGraph& sceneGraph,
     const Int32& tileWidth,
     const Int32& tileHeight,
@@ -144,20 +143,19 @@ namespace rk
       TileDescription tileDescription = tileSetsManager
         .getTileDescriptionByGid(object->getGid());
 
-      SpriteGameObject* tile = gameObjectsFactory.createSpriteGameObject(
-        tileDescription.getTextureKey(),
-        tileDescription.getTextureRect()
-      );
-
       Vector2f tilePosition = computeIsometricToWorldPosition(
         object->getX(),
         object->getY(),
         halfTileWidth,
         halfTileHeight
       );
-
-      tile->setPosition(tilePosition);
-      layerGameObject->addChild(UniquePtr<GameObject>(tile));
+      gameObjectBuilder.createGameObject()
+        .position(tilePosition)
+        .addSpriteComponent(
+          tileDescription.getTextureKey(),
+          tileDescription.getTextureRect()
+        )
+        .buildWithParent(*layerGameObject);
     }
   }
 

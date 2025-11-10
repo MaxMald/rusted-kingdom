@@ -13,9 +13,10 @@ namespace rk
   {
   }
 
-  void LayerGameObject::onUpdate(float deltaTime)
+  void LayerGameObject::update(float deltaTime)
   {
     sortChildrenByYPosition();
+    GameObject::update(deltaTime);
   }
 
   void LayerGameObject::sortChildrenByYPosition()

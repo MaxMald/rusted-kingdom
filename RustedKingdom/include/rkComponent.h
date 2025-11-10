@@ -1,0 +1,36 @@
+#pragma once
+
+#include <SFML/Graphics/RenderTarget.hpp>
+#include <SFML/Graphics/RenderStates.hpp>
+#include "rkPrerequisites.h"
+
+using sf::RenderTarget;
+using sf::RenderStates;
+
+namespace rk
+{
+  class GameObject;
+
+  class Component
+  {
+  public:
+    Component(GameObject& gameObject);
+
+    Component(const Component&) = delete;
+    Component& operator=(const Component&) = delete;
+
+    Component(Component&&) noexcept;
+    Component& operator=(Component&&) noexcept;
+
+    virtual ~Component() = default;
+
+  protected:
+    GameObject* m_gameObject;
+
+    virtual void onUpdate(float deltaTime);
+    virtual void onDraw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void onDelete();
+
+    friend class GameObject;
+  };
+}

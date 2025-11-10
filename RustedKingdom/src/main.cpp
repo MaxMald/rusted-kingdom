@@ -4,23 +4,20 @@
 #include "rkAssetManager.h"
 #include "rkSceneGraph.h"
 #include "rkSpriteSheet.h"
-#include "rkSpriteGameObject.h"
 #include "rkTiledMapBuilder.h"
-#include "rkGameObjectsFactory.h"
 #include "rkViewsManager.h"
+#include "rkGameObjectBuilder.h"
 
 int main()
 {
-  String assetsPath = "C:/Users/nuup2/OneDrive/Documentos/Repositories/MaxMald/rusted-kingdom/assets";
-  // std::string assetsPath = "F:/Repositories/MaxMald/rusted-kingdom/assets";
+  //String assetsPath = "C:/Users/nuup2/OneDrive/Documentos/Repositories/MaxMald/rusted-kingdom/assets";
+  String assetsPath = "F:/Repositories/MaxMald/rusted-kingdom/assets";
 
   sf::RenderWindow window(sf::VideoMode({ 1920, 1080 }), "SFML works!");
 
   rk::AssetManager assetManager(assetsPath.c_str());
+  rk::GameObjectBuilder gameObjectBuilder(assetManager);
   rk::SceneGraph sceneGraph;
-  rk::GameObjectsFactory gameObjectsFactory(
-    &assetManager
-  );
 
   bool result = false;
   result = assetManager.loadTiledMap("level-0", "maps/level-2.json");
@@ -32,7 +29,7 @@ int main()
     return -1;
 
   rk::TiledSceneBuilder::buildFromTiledMap(
-    gameObjectsFactory,
+    gameObjectBuilder,
     sceneGraph,
     *assetManager.getTiledMap("level-0")
   );

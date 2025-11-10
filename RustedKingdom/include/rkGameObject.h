@@ -10,6 +10,7 @@ using sf::RenderStates;
 namespace rk
 {
   class SceneGraph;
+  class Component;
 
   /**
   * @brief Represents a basic game object in the scene graph.
@@ -44,6 +45,11 @@ namespace rk
     /** @brief Returns the computed world transform for this object.*/
     const sf::Transform & getWorldTransform() const { return m_worldTransform; }
 
+    /**
+     * @brief Adds a component to this GameObject.
+     * @param component Unique pointer to the component to add.
+     */
+    void addComponent(UniquePtr<Component> component);
 
     /**
      * @brief Adds a child GameObject to this object.
@@ -138,7 +144,7 @@ namespace rk
      *
      * @param deltaTime Time elapsed since last update (in seconds).
      */
-    void update(float deltaTime);
+    virtual void update(float deltaTime);
 
     /**
      * @brief Draws this GameObject. Override to implement custom rendering.
@@ -151,13 +157,6 @@ namespace rk
     virtual void draw(RenderTarget& target, RenderStates states) const override;
 
     /**
-     * @brief Called during update to implement custom behavior.
-     *
-     * @param deltaTime Time elapsed since last update (in seconds).
-     */
-    virtual void onUpdate(float deltaTime);
-
-    /**
      * @brief Called when the GameObject is being deleted.
      *
      * Override to implement custom cleanup logic.
@@ -165,9 +164,9 @@ namespace rk
     virtual void onDelete();
 
   private:
-
     const char* m_name;
     GameObject* m_parent;
+    Vector<UniquePtr<Component>> m_components;
 
     friend class SceneGraph;
   };

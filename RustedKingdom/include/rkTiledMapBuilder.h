@@ -16,7 +16,7 @@ namespace rk
   class SceneGraph;
   class TiledMap;
   class TileSetsManager;
-  class GameObjectsFactory;
+  class GameObjectBuilder;
 
   /**
    * @brief Helper class to construct a SceneGraph from a Tiled map.
@@ -34,7 +34,7 @@ namespace rk
      * @param tiledMap Reference to the Tiled map to build the scene from.
      */
     static void buildFromTiledMap(
-      GameObjectsFactory& gameObjectsFactory,
+      GameObjectBuilder& gameObjectBuilder,
       SceneGraph& sceneGraph,
       const TiledMap& tiledMap
     );
@@ -46,7 +46,7 @@ namespace rk
      * graph.
      */
     static void buildFromTileLayer(
-      GameObjectsFactory& gameObjectsFactory,
+      GameObjectBuilder& gameObjectBuilder,
       SceneGraph& sceneGraph,
       const Int32& tileWidth,
       const Int32& tileHeight,
@@ -54,12 +54,8 @@ namespace rk
       const TileSetsManager& tileSetsManager
     );
 
-    /**
-     * @brief Processes a single object group layer and add its objects to the
-     * scene graph.
-     */
     static void buildFromObjectGroupLayer(
-      GameObjectsFactory& gameObjectsFactory,
+      GameObjectBuilder& gameObjectBuilder,
       SceneGraph& sceneGraph,
       const Int32& tileWidth,
       const Int32& tileHeight,

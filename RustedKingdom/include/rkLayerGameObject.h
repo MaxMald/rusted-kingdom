@@ -10,7 +10,7 @@ namespace rk
     LayerGameObject(const char* name);
     virtual ~LayerGameObject();
 
-    virtual void onUpdate(float deltaTime) override;
+    virtual void update(float deltaTime) override;
 
   protected:
     void sortChildrenByYPosition();
