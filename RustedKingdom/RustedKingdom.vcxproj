@@ -187,11 +187,13 @@
     <ClCompile Include="src\rkTileSetsManager.cpp" />
     <ClCompile Include="src\rkTileSetTile.cpp" />
     <ClCompile Include="src\rkViewsManager.cpp" />
+    <ClCompile Include="src\scripts\rkLucius.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkAnimationComponent.h" />
     <ClInclude Include="include\rkAssertions.h" />
     <ClInclude Include="include\rkComponent.h" />
+    <ClInclude Include="include\rkComponentType.h" />
     <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimation.h" />
     <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimationDescription.h" />
     <ClInclude Include="include\rkEvent.h" />
@@ -225,7 +227,7 @@
     <ClInclude Include="include\rkTypeDefinitions.h" />
     <ClInclude Include="include\rkViewsManager.h" />
     <ClInclude Include="include\rkTileSetTile.h" />
-    <ClInclude Include="src\rkComponentType.h" />
+    <ClInclude Include="include\scripts\rkLucius.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

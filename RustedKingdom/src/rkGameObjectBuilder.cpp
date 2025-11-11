@@ -1,6 +1,5 @@
 #include "rkGameObjectBuilder.h"
 #include "rkAssetManager.h"
-#include "rkGameObject.h"
 #include "rkSpriteComponent.h"
 #include "rkAnimationComponent.h"
 #include "rkEightDirectionsSpriteSheetAnimationDescription.h"
@@ -111,15 +110,6 @@ namespace rk
     m_current->addComponent(UniquePtr<Component>(animationComponent));
 
     animationComponent->setAnimation(*animationDescription, *texture);
-    return *this;
-  }
-
-  GameObjectBuilder& GameObjectBuilder::withComponent(
-    UniquePtr<Component> script
-  )
-  {
-    assertCurrentIsNotNull();
-    m_current->addComponent(std::move(script));
     return *this;
   }
 

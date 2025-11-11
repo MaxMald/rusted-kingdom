@@ -172,6 +172,9 @@
       <Filter>Source Files\scene\gameObjects\components</Filter>
     </ClCompile>
     <ClCompile Include="src\rkScriptComponent.cpp">
+      <Filter>Source Files\scene\gameObjects\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scripts\rkLucius.cpp">
       <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
     </ClCompile>
   </ItemGroup>
@@ -281,11 +284,14 @@
     <ClInclude Include="include\rkAnimationComponent.h">
       <Filter>Header Files\scene\gameObjects\components</Filter>
     </ClInclude>
-    <ClInclude Include="src\rkComponentType.h">
-      <Filter>Header Files\scene\gameObjects\components</Filter>
+    <ClInclude Include="include\scripts\rkLucius.h">
+      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\rkScriptComponent.h">
-      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
+      <Filter>Header Files\scene\gameObjects\components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkComponentType.h">
+      <Filter>Header Files\scene\gameObjects\components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,11 +3,11 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/System/Vector2.hpp>
 #include "rkPrerequisites.h"
+#include "rkGameObject.h"
 
 namespace rk
 {
   class Component;
-  class GameObject;
   class AssetManager;
 
   class GameObjectBuilder
@@ -35,7 +35,8 @@ namespace rk
     GameObjectBuilder& withAnimationComponent();
     GameObjectBuilder& withAnimationComponent(const String& animationKey);
 
-    GameObjectBuilder& withComponent(UniquePtr<Component> script);
+    template<typename T, typename... Args>
+    GameObjectBuilder& withComponent(Args&&... args);
     
     void buildWithParent(GameObject& parent);
     UniquePtr<GameObject> build();
@@ -49,4 +50,13 @@ namespace rk
     void assertCurrentIsNotNull() const;
     void assertAssetManagerHasTexture(const String& textureKey) const;
   };
+
+  template<typename T, typename... Args>
+  GameObjectBuilder& GameObjectBuilder::withComponent(Args&&... args)
+  {
+    assertCurrentIsNotNull();
+    UniquePtr<Component> component = MakeUnique<T>(*m_current, std::forward<Args>(args)...);
+    m_current->addComponent(std::move(component));
+    return *this;
+  }
 }

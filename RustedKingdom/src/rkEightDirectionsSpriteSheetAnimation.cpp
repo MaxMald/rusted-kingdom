@@ -68,6 +68,7 @@ namespace rk
     {
       m_currentTime -= m_timePerFrame;
       m_currentFrame = (m_currentFrame + 1) % m_description->getAnimationLength();
+      m_currentRectX = m_currentFrame * m_description->getFrameWidth();
     }
 
     m_sprite->setTextureRect(calculateTextureRect());
@@ -84,7 +85,7 @@ namespace rk
   ) const
   {
     float degrees = angle.asDegrees();
-    return static_cast<UInt32>(degrees * EightDirectionsAnimationAngleToColumn) % 8;
+    return static_cast<UInt32>((degrees * EightDirectionsAnimationAngleToColumn) + 3) % 8;
   }
 
   sf::IntRect EightDirectionsSpriteSheetAnimation::calculateTextureRect() const

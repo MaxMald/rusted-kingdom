@@ -9,6 +9,8 @@
 #include "rkGameObjectBuilder.h"
 #include "rkGameObject.h"
 
+#include "scripts/rkLucius.h"
+
 int main()
 {
   //String assetsPath = "C:/Users/nuup2/OneDrive/Documentos/Repositories/MaxMald/rusted-kingdom/assets";
@@ -47,11 +49,12 @@ int main()
     "animations/luciusAnimationBundle.json"
   );
 
-  rk::UniquePtr<rk::GameObject> lucius = gameObjectBuilder.createGameObject("Lucius")
-    .position(sf::Vector2f(400.0f, 300.0f))
+  gameObjectBuilder.createGameObject("Lucius")
+    .position(sf::Vector2f(0.0f, 0.0f))
     .withSpriteComponent("lucius-walking")
     .withAnimationComponent("lucius-walking-anim")
-    .build();
+    .withComponent<rk::Lucius>(window)
+    .buildWithParent(*sceneGraph.getRoot());
 
   sf::Clock deltaClock;
   while (window.isOpen())
