@@ -28,7 +28,6 @@ namespace rk
     ~EightDirectionsSpriteSheetAnimation();
 
     sf::Vector2i getFrameSize() const { return m_frameSize; }
-
     void setSpeedModifier(float speedModifier);
     void setDirectionAngle(sf::Angle angle);
 

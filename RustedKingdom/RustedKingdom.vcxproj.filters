@@ -183,6 +183,15 @@
     <ClCompile Include="src\rkAnimation.cpp">
       <Filter>Source Files\animations</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkAnimationState.cpp">
+      <Filter>Source Files\animations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkAnimationStateTransition.cpp">
+      <Filter>Source Files\animations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkAnimationStateMachine.cpp">
+      <Filter>Source Files\animations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -316,6 +325,9 @@
     </ClInclude>
     <ClInclude Include="include\rkAnimationType.h">
       <Filter>Header Files\animations</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkAnimationStateTransition.h">
+      <Filter>Header Files\animations\stateMachine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -165,6 +165,9 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkAnimation.cpp" />
     <ClCompile Include="src\rkAnimationComponent.cpp" />
+    <ClCompile Include="src\rkAnimationState.cpp" />
+    <ClCompile Include="src\rkAnimationStateMachine.cpp" />
+    <ClCompile Include="src\rkAnimationStateTransition.cpp" />
     <ClCompile Include="src\rkAssetManager.cpp" />
     <ClCompile Include="src\rkComponent.cpp" />
     <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimation.cpp" />
@@ -195,6 +198,7 @@
     <ClInclude Include="include\rkAnimationComponent.h" />
     <ClInclude Include="include\rkAnimationState.h" />
     <ClInclude Include="include\rkAnimationStateMachine.h" />
+    <ClInclude Include="include\rkAnimationStateTransition.h" />
     <ClInclude Include="include\rkAnimationType.h" />
     <ClInclude Include="include\rkAssertions.h" />
     <ClInclude Include="include\rkComponent.h" />
