@@ -7,7 +7,13 @@
 
 namespace rk
 {
-  namespace { constexpr float EightDirectionsAnimationAngleToColumn = 8.0f / 360.0f; }
+  namespace { 
+    constexpr float PiOver2 = 1.5707f;
+    constexpr float PiOver16 = 0.19635f;
+    constexpr float TwoPi = 6.28318f;
+    constexpr float EightDirectionsAnimationAngleToColumn = 8.0f / TwoPi;
+    constexpr sf::Angle AngleOffset = sf::radians(PiOver2 + PiOver16);
+  }
 
   EightDirectionsSpriteSheetAnimation::EightDirectionsSpriteSheetAnimation(
     const EightDirectionsSpriteSheetAnimationDescription& description,
@@ -38,6 +44,7 @@ namespace rk
   {
     m_currentFrame = 0;
     m_currentTime = 0.0f;
+    m_timePerFrame = 1.0f / m_description->getFramesPerSecond();
   }
 
   void EightDirectionsSpriteSheetAnimation::play()
@@ -74,6 +81,18 @@ namespace rk
     m_sprite->setTextureRect(calculateTextureRect());
   }
 
+  void EightDirectionsSpriteSheetAnimation::setSpeedModifier(float speedModifier)
+  {
+    if (speedModifier == 0.0f)
+    {
+      m_timePerFrame = 0;
+    } 
+    else
+    {
+      m_timePerFrame = 1.0f / (m_description->getFramesPerSecond() * speedModifier);
+    }
+  }
+
   void EightDirectionsSpriteSheetAnimation::setDirectionAngle(sf::Angle angle)
   {
     UInt32 spriteSheetColumn = getSpriteSheetColumnFromAngle(angle);
@@ -84,8 +103,9 @@ namespace rk
     sf::Angle angle
   ) const
   {
-    float degrees = angle.asDegrees();
-    return static_cast<UInt32>((degrees * EightDirectionsAnimationAngleToColumn) + 3) % 8;
+    float finalAngleAsRadians = (angle + AngleOffset).asRadians();
+    float desiredRow = finalAngleAsRadians * EightDirectionsAnimationAngleToColumn;
+    return static_cast<UInt32>(desiredRow) % 8;
   }
 
   sf::IntRect EightDirectionsSpriteSheetAnimation::calculateTextureRect() const

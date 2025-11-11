@@ -2,6 +2,8 @@
 
 #include "rkComponent.h"
 
+using sf::Vector2i;
+
 namespace sf
 {
   class Texture;
@@ -29,6 +31,8 @@ namespace rk
     void play();
     void stop();
     void setDirectionAngle(sf::Angle angle);
+    void setSpeedModifier(float speedModifier);
+    Vector2i getFrameSize() const;
 
   protected:
     virtual void onUpdate(float deltaTime) override;

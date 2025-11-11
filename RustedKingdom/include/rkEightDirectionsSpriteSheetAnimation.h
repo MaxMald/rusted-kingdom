@@ -25,11 +25,14 @@ namespace rk
     );
     ~EightDirectionsSpriteSheetAnimation();
 
+    sf::Vector2i getFrameSize() const { return m_frameSize; }
+
     bool isPlaying() const { return m_isPlaying; }
     void reset();
     void play();
     void stop();
     void update(float deltaTime);
+    void setSpeedModifier(float speedModifier);
     void setDirectionAngle(sf::Angle angle);
 
   private:

@@ -78,6 +78,19 @@ namespace rk
       m_animation->setDirectionAngle(angle);
   }
 
+  void AnimationComponent::setSpeedModifier(float speedModifier)
+  {
+    if (m_animation)
+      m_animation->setSpeedModifier(speedModifier);
+  }
+
+  Vector2i AnimationComponent::getFrameSize() const
+  {
+    if (m_animation)
+      return m_animation->getFrameSize();
+    return Vector2i(0, 0);
+  }
+
   void AnimationComponent::onUpdate(float deltaTime)
   {
     if (m_animation)

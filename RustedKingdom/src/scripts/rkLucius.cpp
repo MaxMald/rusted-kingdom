@@ -5,6 +5,7 @@
 
 #include "rkGameObject.h"
 #include "rkAnimationComponent.h"
+#include "rkSpriteComponent.h"
 
 namespace rk
 {
@@ -25,6 +26,20 @@ namespace rk
     m_animationComponent = gameObject
       .getComponent<AnimationComponent>(rk::componentType::Animation);
     m_animationComponent->play();
+
+    if (gameObject.hasComponent(rk::componentType::Sprite))
+    {
+      SpriteComponent* spriteComponent = gameObject
+        .getComponent<SpriteComponent>(rk::componentType::Sprite);
+
+      sf::Vector2i frameSize = m_animationComponent->getFrameSize();
+      sf::Vector2f spriteOrigin(
+        frameSize.x * 0.5f,
+        frameSize.y
+      );
+
+      spriteComponent->setOrigin(spriteOrigin);
+    }
   }
 
   Lucius::~Lucius()
@@ -57,5 +72,8 @@ namespace rk
 
     // Update animation based on velocity
     m_animationComponent->setDirectionAngle(m_currentVelocity.angle());
+
+    float speedModifier = m_currentVelocity.length() / maxSpeed;
+    m_animationComponent->setSpeedModifier(speedModifier);
   }
 }
