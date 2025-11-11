@@ -7,6 +7,7 @@
 #include "rkTiledMapBuilder.h"
 #include "rkViewsManager.h"
 #include "rkGameObjectBuilder.h"
+#include "rkGameObject.h"
 
 int main()
 {
@@ -45,6 +46,12 @@ int main()
   assetManager.loadEightDirectionAnimationBundle(
     "animations/luciusAnimationBundle.json"
   );
+
+  rk::UniquePtr<rk::GameObject> lucius = gameObjectBuilder.createGameObject("Lucius")
+    .position(sf::Vector2f(400.0f, 300.0f))
+    .withSpriteComponent("lucius-walking")
+    .withAnimationComponent("lucius-walking-anim")
+    .build();
 
   sf::Clock deltaClock;
   while (window.isOpen())

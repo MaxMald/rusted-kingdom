@@ -27,10 +27,13 @@ namespace rk
 
     GameObjectBuilder& position(const sf::Vector2f& position);
 
-    GameObjectBuilder& addSpriteComponent(const String& textureKey);
-    GameObjectBuilder& addSpriteComponent(const String& textureKey,
+    GameObjectBuilder& withSpriteComponent(const String& textureKey);
+    GameObjectBuilder& withSpriteComponent(const String& textureKey,
       const sf::IntRect& textureRect
     );
+
+    GameObjectBuilder& withAnimationComponent();
+    GameObjectBuilder& withAnimationComponent(const String& animationKey);
     
     void buildWithParent(GameObject& parent);
     UniquePtr<GameObject> build();
@@ -42,5 +45,6 @@ namespace rk
 
     void assertCurrentIsNull() const;
     void assertCurrentIsNotNull() const;
+    void assertAssetManagerHasTexture(const String& textureKey) const;
   };
 }

@@ -22,6 +22,7 @@ namespace rk
       String str;
       str.resize(json.getStringLength() + 1);
       json.getString(&str[0], str.size());
+      str.resize(json.getStringLength());
 
       return str;
     }

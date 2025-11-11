@@ -2,6 +2,8 @@
 #include "rkAssetManager.h"
 #include "rkGameObject.h"
 #include "rkSpriteComponent.h"
+#include "rkAnimationComponent.h"
+#include "rkEightDirectionsSpriteSheetAnimationDescription.h"
 
 namespace rk
 {
@@ -41,22 +43,12 @@ namespace rk
     return *this;
   }
 
-  GameObjectBuilder& GameObjectBuilder::addSpriteComponent(
+  GameObjectBuilder& GameObjectBuilder::withSpriteComponent(
     const String& textureKey
   )
   {
     assertCurrentIsNotNull();
-
-    if (!m_assetsManager->hasTexture(textureKey))
-    {
-      throw RuntimeErrorException(
-        String::Format(
-          "GameObjectBuilder error: Texture with key '%s' not found in "
-          "AssetManager.",
-          textureKey.c_str()
-        )
-      );
-    }
+    assertAssetManagerHasTexture(textureKey);
 
     const sf::Texture* texture = m_assetsManager->getTexture(textureKey);
     SpriteComponent* spriteComponent = new SpriteComponent(*m_current, *texture);
@@ -65,23 +57,13 @@ namespace rk
     return *this;
   }
 
-  GameObjectBuilder& GameObjectBuilder::addSpriteComponent(
+  GameObjectBuilder& GameObjectBuilder::withSpriteComponent(
     const String& textureKey, 
     const sf::IntRect& textureRect
   )
   {
     assertCurrentIsNotNull();
-    
-    if (!m_assetsManager->hasTexture(textureKey))
-    {
-      throw RuntimeErrorException(
-        String::Format(
-          "GameObjectBuilder error: Texture with key '%s' not found in "
-          "AssetManager.",
-          textureKey.c_str()
-        )
-      );
-    }
+    assertAssetManagerHasTexture(textureKey);
 
     const sf::Texture* texture = m_assetsManager->getTexture(textureKey);
     SpriteComponent* spriteComponent = new SpriteComponent(
@@ -90,6 +72,45 @@ namespace rk
     );
     spriteComponent->setTextureRect(textureRect);
     m_current->addComponent(UniquePtr<Component>(spriteComponent));
+    return *this;
+  }
+
+  GameObjectBuilder& GameObjectBuilder::withAnimationComponent()
+  {
+    assertCurrentIsNotNull();
+    AnimationComponent* animationComponent = new AnimationComponent(*m_current);
+    m_current->addComponent(UniquePtr<Component>(animationComponent));
+    return *this;
+  }
+
+  GameObjectBuilder& GameObjectBuilder::withAnimationComponent(
+    const String& animationKey
+  )
+  {
+    assertCurrentIsNotNull();
+    if (!m_assetsManager->hasEightDirectionAnimation(animationKey))
+    {
+      throw RuntimeErrorException(
+        String::Format(
+          "GameObjectBuilder error: Eight Direction Animation with key '%s' not found "
+          "in AssetManager.",
+          animationKey.c_str()
+        )
+      );
+    }
+
+    const EightDirectionsSpriteSheetAnimationDescription* animationDescription =
+      m_assetsManager->getEightDirectionAnimation(animationKey);
+
+    assertAssetManagerHasTexture(animationDescription->getTextureKey());
+    const sf::Texture* texture = m_assetsManager->getTexture(
+      animationDescription->getTextureKey()
+    );
+
+    AnimationComponent* animationComponent = new AnimationComponent(*m_current);
+    m_current->addComponent(UniquePtr<Component>(animationComponent));
+
+    animationComponent->setAnimation(*animationDescription, *texture);
     return *this;
   }
 
@@ -122,5 +143,21 @@ namespace rk
       throw RuntimeErrorException(
         "GameObjectBuilder error: Current GameObject is null."
       );
+  }
+
+  void GameObjectBuilder::assertAssetManagerHasTexture(
+    const String& textureKey
+  ) const
+  {
+    if (!m_assetsManager->hasTexture(textureKey))
+    {
+      throw RuntimeErrorException(
+        String::Format(
+          "GameObjectBuilder error: Texture with key '%s' not found in "
+          "AssetManager.",
+          textureKey.c_str()
+        )
+      );
+    }
   }
 }

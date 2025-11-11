@@ -3,6 +3,7 @@
 #include <SFML/Graphics/Transformable.hpp>
 #include <SFML/Graphics/Drawable.hpp>
 #include "rkPrerequisites.h"
+#include "rkComponentType.h"
 
 using sf::RenderTarget;
 using sf::RenderStates;
@@ -50,6 +51,29 @@ namespace rk
      * @param component Unique pointer to the component to add.
      */
     void addComponent(UniquePtr<Component> component);
+
+    /**
+     * @brief Checks if this GameObject has a component of the specified type.
+     * @param type The type of component to check for.
+     * @return True if the component exists, false otherwise.
+     */
+    bool hasComponent(componentType::Type type) const;
+
+    /**
+     * @brief Retrieves a component of the specified type.
+     * @param type The type of component to retrieve.
+     * @return Pointer to the component if found, nullptr otherwise.
+     */
+    template<typename T>
+    T* getComponent(componentType::Type type);
+
+    /**
+     * @brief Retrieves all components of the specified type.
+     * @param type The type of components to retrieve.
+     * @return Vector of pointers to the components found.
+     */
+    template<typename T>
+    Vector<T*> getComponents(componentType::Type type);
 
     /**
      * @brief Adds a child GameObject to this object.
@@ -170,4 +194,33 @@ namespace rk
 
     friend class SceneGraph;
   };
+
+  template<typename T>
+  T* GameObject::getComponent(componentType::Type type)
+  {
+    for (const auto& comp : m_components)
+    {
+      if (comp->getType() == type)
+      {
+        if (auto ptr = dynamic_cast<T*>(comp.get()))
+          return ptr;
+      }
+    }
+    return nullptr;
+  }
+
+  template<typename T>
+  Vector<T*> GameObject::getComponents(componentType::Type type)
+  {
+    Vector<T*> result;
+    for (const auto& comp : m_components)
+    {
+      if (comp->getType() == type)
+      {
+        if (auto ptr = dynamic_cast<T*>(comp.get()))
+          result.push_back(ptr);
+      }
+    }
+    return result;
+  }
 }

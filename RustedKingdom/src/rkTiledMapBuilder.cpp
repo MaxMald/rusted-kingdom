@@ -106,7 +106,7 @@ namespace rk
 
         gameObjectBuilder.createGameObject()
           .position(tilePosition)
-          .addSpriteComponent(
+          .withSpriteComponent(
             tileDescription.getTextureKey(),
             tileDescription.getTextureRect()
           )
@@ -151,7 +151,7 @@ namespace rk
       );
       gameObjectBuilder.createGameObject()
         .position(tilePosition)
-        .addSpriteComponent(
+        .withSpriteComponent(
           tileDescription.getTextureKey(),
           tileDescription.getTextureRect()
         )

@@ -16,6 +16,7 @@ namespace rk
     SpriteComponent(GameObject& gameObject, const Texture& texture);
     virtual ~SpriteComponent();
 
+    sf::Sprite& getSprite() { return m_sprite; }
     void setTexture(const sf::Texture& texture);
     void setTextureRect(const sf::IntRect& rect);
 

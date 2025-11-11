@@ -41,6 +41,16 @@ namespace rk
       m_components.push_back(std::move(component));
   }
 
+  bool GameObject::hasComponent(componentType::Type type) const
+  {
+    for (const auto& comp : m_components)
+    {
+      if (comp->getType() == type)
+        return true;
+    }
+    return false;
+  }
+
   void GameObject::addChild(UniquePtr<GameObject> child)
   {
     if (!child)
