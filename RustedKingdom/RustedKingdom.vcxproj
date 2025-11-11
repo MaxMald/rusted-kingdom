@@ -163,6 +163,7 @@
   <ItemGroup>
     <ClCompile Include="include\rkTiledMap.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\rkAnimation.cpp" />
     <ClCompile Include="src\rkAnimationComponent.cpp" />
     <ClCompile Include="src\rkAssetManager.cpp" />
     <ClCompile Include="src\rkComponent.cpp" />
@@ -190,7 +191,11 @@
     <ClCompile Include="src\scripts\rkLucius.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\rkAnimation.h" />
     <ClInclude Include="include\rkAnimationComponent.h" />
+    <ClInclude Include="include\rkAnimationState.h" />
+    <ClInclude Include="include\rkAnimationStateMachine.h" />
+    <ClInclude Include="include\rkAnimationType.h" />
     <ClInclude Include="include\rkAssertions.h" />
     <ClInclude Include="include\rkComponent.h" />
     <ClInclude Include="include\rkComponentType.h" />
@@ -216,6 +221,7 @@
     <ClInclude Include="include\rkScriptComponent.h" />
     <ClInclude Include="include\rkSpriteSheet.h" />
     <ClInclude Include="include\rkSpriteSheetTileSet.h" />
+    <ClInclude Include="include\rkSteerForces.h" />
     <ClInclude Include="include\rkString.h" />
     <ClInclude Include="include\rkSpriteComponent.h" />
     <ClInclude Include="include\rkTileDescription.h" />
@@ -225,6 +231,7 @@
     <ClInclude Include="include\rkTileSetGrid.h" />
     <ClInclude Include="include\rkTileSetsManager.h" />
     <ClInclude Include="include\rkTypeDefinitions.h" />
+    <ClInclude Include="include\rkVector2Utilities.h" />
     <ClInclude Include="include\rkViewsManager.h" />
     <ClInclude Include="include\rkTileSetTile.h" />
     <ClInclude Include="include\scripts\rkLucius.h" />

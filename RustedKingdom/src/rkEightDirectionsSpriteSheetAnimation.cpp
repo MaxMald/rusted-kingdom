@@ -20,6 +20,7 @@ namespace rk
     const sf::Texture& texture,
     sf::Sprite& sprite
   ) :
+    Animation(description.getAnimationKey(), animationType::Type::eightDirectional),
     m_description(&description),
     m_texture(&texture),
     m_sprite(&sprite),
@@ -31,8 +32,7 @@ namespace rk
     m_currentRectX(0),
     m_currentRectY(0),
     m_currentTime(0.0f),
-    m_timePerFrame(1.0f / description.getFramesPerSecond()),
-    m_isPlaying(false)
+    m_timePerFrame(1.0f / description.getFramesPerSecond())
   {
   }
 
@@ -84,13 +84,9 @@ namespace rk
   void EightDirectionsSpriteSheetAnimation::setSpeedModifier(float speedModifier)
   {
     if (speedModifier == 0.0f)
-    {
       m_timePerFrame = 0;
-    } 
     else
-    {
       m_timePerFrame = 1.0f / (m_description->getFramesPerSecond() * speedModifier);
-    }
   }
 
   void EightDirectionsSpriteSheetAnimation::setDirectionAngle(sf::Angle angle)

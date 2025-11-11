@@ -6,6 +6,7 @@
 #include "rkGameObject.h"
 #include "rkAnimationComponent.h"
 #include "rkSpriteComponent.h"
+#include "rkSteerForces.h"
 
 namespace rk
 {
@@ -34,8 +35,8 @@ namespace rk
 
       sf::Vector2i frameSize = m_animationComponent->getFrameSize();
       sf::Vector2f spriteOrigin(
-        frameSize.x * 0.5f,
-        frameSize.y
+        static_cast<float>(frameSize.x) * 0.5f,
+        static_cast<float>(frameSize.y)
       );
 
       spriteComponent->setOrigin(spriteOrigin);
@@ -54,25 +55,26 @@ namespace rk
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*m_renderWindow);
     Vector2f target = m_renderWindow->mapPixelToCoords(mousePosition);
 
-    Vector2f desiredVelocity = target - m_gameObject->getPosition();
-    desiredVelocity = desiredVelocity.normalized() * maxSpeed;
+    Vector2f seekForce = steerForces::seek(
+      m_gameObject->getPosition(),
+      target,
+      m_currentVelocity,
+      maxSpeed
+    );
 
-    Vector2f steering = desiredVelocity - m_currentVelocity;
-    if (steering.length() > 0.0f)
-      steering = steering.normalized() * maxSpeed;
-    steering = steering / mass;
+    if (seekForce.length() > 0.0f)
+      seekForce = seekForce / mass;
 
-    m_currentVelocity = m_currentVelocity + steering;
-    if (m_currentVelocity.length() > maxSpeed) // truncate
-      m_currentVelocity = m_currentVelocity.normalized() * maxSpeed;
+    m_currentVelocity = vector2Utilities::truncated(
+      m_currentVelocity + seekForce,
+      maxSpeed
+    );
 
     m_gameObject->setPosition(
       m_gameObject->getPosition() + m_currentVelocity * deltaTime
     );
 
-    // Update animation based on velocity
     m_animationComponent->setDirectionAngle(m_currentVelocity.angle());
-
     float speedModifier = m_currentVelocity.length() / maxSpeed;
     m_animationComponent->setSpeedModifier(speedModifier);
   }
