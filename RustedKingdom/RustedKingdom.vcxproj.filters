@@ -88,6 +88,12 @@
     <Filter Include="Source Files\scene\gameObjects\builder">
       <UniqueIdentifier>{d11e4267-765c-446a-bac9-20351a22213b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\scene\gameObjects\components\scripts">
+      <UniqueIdentifier>{d942f593-2184-43a5-9a06-ded32fbf4269}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\scene\gameObjects\components\scripts">
+      <UniqueIdentifier>{11095315-510e-46dd-b767-701cc2c72331}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -164,6 +170,9 @@
     </ClCompile>
     <ClCompile Include="src\rkAnimationComponent.cpp">
       <Filter>Source Files\scene\gameObjects\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkScriptComponent.cpp">
+      <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -274,6 +283,9 @@
     </ClInclude>
     <ClInclude Include="src\rkComponentType.h">
       <Filter>Header Files\scene\gameObjects\components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkScriptComponent.h">
+      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

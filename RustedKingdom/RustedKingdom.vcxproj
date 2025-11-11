@@ -177,6 +177,7 @@
     <ClCompile Include="src\rkLayerGameObject.cpp" />
     <ClCompile Include="src\rkReferenceTileSet.cpp" />
     <ClCompile Include="src\rkSceneGraph.cpp" />
+    <ClCompile Include="src\rkScriptComponent.cpp" />
     <ClCompile Include="src\rkSpriteComponent.cpp" />
     <ClCompile Include="src\rkSpriteSheet.cpp" />
     <ClCompile Include="src\rkSpriteSheetTileSet.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="include\rkPrerequisites.h" />
     <ClInclude Include="include\rkReferenceTileSet.h" />
     <ClInclude Include="include\rkSceneGraph.h" />
+    <ClInclude Include="include\rkScriptComponent.h" />
     <ClInclude Include="include\rkSpriteSheet.h" />
     <ClInclude Include="include\rkSpriteSheetTileSet.h" />
     <ClInclude Include="include\rkString.h" />

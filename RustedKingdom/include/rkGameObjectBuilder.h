@@ -34,6 +34,8 @@ namespace rk
 
     GameObjectBuilder& withAnimationComponent();
     GameObjectBuilder& withAnimationComponent(const String& animationKey);
+
+    GameObjectBuilder& withComponent(UniquePtr<Component> script);
     
     void buildWithParent(GameObject& parent);
     UniquePtr<GameObject> build();

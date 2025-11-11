@@ -12,6 +12,7 @@ namespace rk
 {
   class SceneGraph;
   class Component;
+  class ScriptComponent;
 
   /**
   * @brief Represents a basic game object in the scene graph.
@@ -74,6 +75,30 @@ namespace rk
      */
     template<typename T>
     Vector<T*> getComponents(componentType::Type type);
+
+    /**
+     * @brief Retrieves all components of the specified type as const pointers.
+     * @param type The type of components to retrieve.
+     * @return Vector of const pointers to the components found.
+     */
+    template<typename T>
+    Vector<const T*> getComponents(componentType::Type type) const;
+
+    /**
+     * @brief Checks if this GameObject has a ScriptComponent with the specified
+     * script name.
+     * @param scriptName Name of the script to check for.
+     * @return True if a ScriptComponent with the given name exists, false
+     * otherwise.
+     */
+    bool hasScriptComponentWithName(const String& scriptName) const;
+
+    /**
+     * @brief Retrieves the ScriptComponent with the specified script name.
+     * @param scriptName Name of the script to retrieve.
+     * @return Pointer to the ScriptComponent if found, nullptr otherwise.
+     */
+    ScriptComponent* getScriptComponentWithName(const String& scriptName);
 
     /**
      * @brief Adds a child GameObject to this object.
@@ -218,6 +243,21 @@ namespace rk
       if (comp->getType() == type)
       {
         if (auto ptr = dynamic_cast<T*>(comp.get()))
+          result.push_back(ptr);
+      }
+    }
+    return result;
+  }
+
+  template<typename T>
+  Vector<const T*> GameObject::getComponents(componentType::Type type) const
+  {
+    Vector<const T*> result;
+    for (const auto& comp : m_components)
+    {
+      if (comp->getType() == type)
+      {
+        if (auto ptr = dynamic_cast<const T*>(comp.get()))
           result.push_back(ptr);
       }
     }

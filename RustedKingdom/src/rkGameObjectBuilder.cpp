@@ -114,6 +114,15 @@ namespace rk
     return *this;
   }
 
+  GameObjectBuilder& GameObjectBuilder::withComponent(
+    UniquePtr<Component> script
+  )
+  {
+    assertCurrentIsNotNull();
+    m_current->addComponent(std::move(script));
+    return *this;
+  }
+
   void GameObjectBuilder::buildWithParent(GameObject& parent)
   {
     assertCurrentIsNotNull();

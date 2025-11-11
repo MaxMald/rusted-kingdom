@@ -3,6 +3,7 @@
 #include <SFML/Graphics/RenderStates.hpp>
 
 #include "rkComponent.h"
+#include "rkScriptComponent.h"
 
 namespace rk
 {
@@ -49,6 +50,36 @@ namespace rk
         return true;
     }
     return false;
+  }
+
+  bool GameObject::hasScriptComponentWithName(const String& scriptName) const
+  {
+    Vector<const ScriptComponent*> scripts = getComponents<ScriptComponent>(
+      componentType::Type::Script
+    );
+
+    for (const auto& script : scripts)
+    {
+      if (script->getScriptName() == scriptName)
+        return true;
+    }
+
+    return false;
+  }
+
+  ScriptComponent* GameObject::getScriptComponentWithName(const String& scriptName)
+  {
+    Vector<ScriptComponent*> scripts = getComponents<ScriptComponent>(
+      componentType::Type::Script
+    );
+
+    for (const auto& script : scripts)
+    {
+      if (script->getScriptName() == scriptName)
+        return script;
+    }
+
+    return nullptr;
   }
 
   void GameObject::addChild(UniquePtr<GameObject> child)
