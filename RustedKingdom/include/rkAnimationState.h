@@ -1,10 +1,11 @@
 #pragma once
 
-#include "rkAnimationStateTransition.h"
+#include "rkPrerequisites.h"
 
 namespace rk
 {
   class Animation;
+  class AnimationStateTransition;
 
   class AnimationState
   {
@@ -15,9 +16,16 @@ namespace rk
     Animation& getAnimation();
     const Animation& getAnimation() const;
     bool isActive() const { return m_isActive; }
-    const Vector<AnimationStateTransition>& getTransitions() const { return m_transitions; }
+    const Vector<const AnimationStateTransition*>& getTransitions() const { return m_transitions; }
 
-    void addTransition(const AnimationStateTransition& transition);
+    /**
+     * @brief Adds a transition to this animation state. Ownership of the
+     * transition is transferred to the state.
+     * 
+     * @param transition The transition to add.
+     */
+    void addTransition(const AnimationStateTransition* transition);
+
     void onEnter();
     void update(float deltaTime);
     void onExit();
@@ -25,6 +33,6 @@ namespace rk
   private:
     bool m_isActive;
     Animation* m_animation;
-    Vector<AnimationStateTransition> m_transitions;
+    Vector<const AnimationStateTransition*> m_transitions;
   };
 }

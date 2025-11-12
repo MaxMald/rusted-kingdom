@@ -97,6 +97,9 @@
     <Filter Include="Header Files\animations\stateMachine">
       <UniqueIdentifier>{9d37230f-a0c3-442d-8fef-b7b0d9fb2f26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\animations\stateMachine">
+      <UniqueIdentifier>{9f0ee1d5-6d54-4bb2-b5fc-e714a26ce70a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -186,11 +189,20 @@
     <ClCompile Include="src\rkAnimationState.cpp">
       <Filter>Source Files\animations</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkAnimationStateTransition.cpp">
-      <Filter>Source Files\animations</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkAnimationStateMachine.cpp">
-      <Filter>Source Files\animations</Filter>
+      <Filter>Source Files\animations\stateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkAnimationStateMachineBuilder.cpp">
+      <Filter>Source Files\animations\stateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkAnimationStateTransition.cpp">
+      <Filter>Source Files\animations\stateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkFloatComparisonAnimationStateTransition.cpp">
+      <Filter>Source Files\animations\stateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="include\rkBoolComparisonAnimationStateTransition.cpp">
+      <Filter>Source Files\animations\stateMachine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +339,21 @@
       <Filter>Header Files\animations</Filter>
     </ClInclude>
     <ClInclude Include="include\rkAnimationStateTransition.h">
+      <Filter>Header Files\animations\stateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkAnimationStateMachineBuilder.h">
+      <Filter>Header Files\animations\stateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkFloatComparisonAnimationStateTransition.h">
+      <Filter>Header Files\animations\stateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkLogicalComparisonType.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkLogicalComparisonUtilities.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkBoolComparisonAnimationStateTransition.h">
       <Filter>Header Files\animations\stateMachine</Filter>
     </ClInclude>
   </ItemGroup>

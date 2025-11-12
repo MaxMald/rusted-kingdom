@@ -1,5 +1,6 @@
 #include "rkAnimationStateMachine.h"
 #include "rkAnimationState.h"
+#include "rkAnimationStateTransition.h"
 
 namespace rk
 {
@@ -16,6 +17,56 @@ namespace rk
     m_states.clear();
   }
 
+  bool AnimationStateMachine::hasFloat(const String& key) const
+  {
+    return m_floatParameters.find(key) != m_floatParameters.end();
+  }
+
+  void AnimationStateMachine::addFloat(const String& key, float initialValue)
+  {
+    m_floatParameters[key] = initialValue;
+  }
+
+  void AnimationStateMachine::setFloat(const String& key, float value)
+  {
+    auto it = m_floatParameters.find(key);
+    if (it != m_floatParameters.end())
+      it->second = value;
+  }
+
+  float AnimationStateMachine::getFloat(const String& key) const
+  {
+    auto it = m_floatParameters.find(key);
+    if (it != m_floatParameters.end())
+      return it->second;
+    return 0.0f;
+  }
+
+  bool AnimationStateMachine::hasBool(const String& key) const
+  {
+    return m_boolParameters.find(key) != m_boolParameters.end();
+  }
+
+  void AnimationStateMachine::addBool(const String& key, bool initialValue)
+  {
+    m_boolParameters[key] = initialValue;
+  }
+
+  void AnimationStateMachine::setBool(const String& key, bool value)
+  {
+    auto it = m_boolParameters.find(key);
+    if (it != m_boolParameters.end())
+      it->second = value;
+  }
+
+  bool AnimationStateMachine::getBool(const String& key) const
+  {
+    auto it = m_boolParameters.find(key);
+    if (it != m_boolParameters.end())
+      return it->second;
+    return false;
+  }
+
   void AnimationStateMachine::addState(AnimationState* state)
   {
     m_states.push_back(state);
@@ -25,6 +76,7 @@ namespace rk
       m_currentState->onEnter();
     }
   }
+
   void AnimationStateMachine::update(float deltaTime)
   {
     if (!m_currentState)
@@ -32,10 +84,10 @@ namespace rk
 
     for (const auto& transition : m_currentState->getTransitions())
     {
-      if (transition.canTransition())
+      if (transition->canTransition(*this))
       {
         m_currentState->onExit();
-        m_currentState = transition.getToState();
+        m_currentState = transition->getToState();
         m_currentState->onEnter();
         break;
       }

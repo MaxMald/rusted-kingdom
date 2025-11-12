@@ -1,5 +1,6 @@
 #include "rkAnimationState.h"
 #include "rkAnimation.h"
+#include "rkAnimationStateTransition.h"
 
 namespace rk
 {
@@ -11,6 +12,9 @@ namespace rk
 
   AnimationState::~AnimationState()
   {
+    for (auto transition : m_transitions)
+      delete transition;
+    m_transitions.clear();
   }
 
   Animation& AnimationState::getAnimation()
@@ -23,7 +27,7 @@ namespace rk
     return *m_animation;
   }
 
-  void AnimationState::addTransition(const AnimationStateTransition& transition)
+  void AnimationState::addTransition(const AnimationStateTransition* transition)
   {
     m_transitions.push_back(transition);
   }

@@ -161,18 +161,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\rkBoolComparisonAnimationStateTransition.cpp" />
     <ClCompile Include="include\rkTiledMap.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkAnimation.cpp" />
     <ClCompile Include="src\rkAnimationComponent.cpp" />
     <ClCompile Include="src\rkAnimationState.cpp" />
     <ClCompile Include="src\rkAnimationStateMachine.cpp" />
+    <ClCompile Include="src\rkAnimationStateMachineBuilder.cpp" />
     <ClCompile Include="src\rkAnimationStateTransition.cpp" />
     <ClCompile Include="src\rkAssetManager.cpp" />
     <ClCompile Include="src\rkComponent.cpp" />
     <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimation.cpp" />
     <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimationDescription.cpp" />
     <ClCompile Include="src\rkEventsManager.cpp" />
+    <ClCompile Include="src\rkFloatComparisonAnimationStateTransition.cpp" />
     <ClCompile Include="src\rkGameObject.cpp" />
     <ClCompile Include="src\rkGameObjectBuilder.cpp" />
     <ClCompile Include="src\rkImageCollectionTileSet.cpp" />
@@ -198,9 +201,11 @@
     <ClInclude Include="include\rkAnimationComponent.h" />
     <ClInclude Include="include\rkAnimationState.h" />
     <ClInclude Include="include\rkAnimationStateMachine.h" />
+    <ClInclude Include="include\rkAnimationStateMachineBuilder.h" />
     <ClInclude Include="include\rkAnimationStateTransition.h" />
     <ClInclude Include="include\rkAnimationType.h" />
     <ClInclude Include="include\rkAssertions.h" />
+    <ClInclude Include="include\rkBoolComparisonAnimationStateTransition.h" />
     <ClInclude Include="include\rkComponent.h" />
     <ClInclude Include="include\rkComponentType.h" />
     <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimation.h" />
@@ -211,6 +216,7 @@
     <ClInclude Include="include\rkEventsManagerListener.h" />
     <ClInclude Include="include\rkEventType.h" />
     <ClInclude Include="include\rkExceptions.h" />
+    <ClInclude Include="include\rkFloatComparisonAnimationStateTransition.h" />
     <ClInclude Include="include\rkGameObject.h" />
     <ClInclude Include="include\rkGameObjectBuilder.h" />
     <ClInclude Include="include\rkImageCollectionTileSet.h" />
@@ -219,6 +225,8 @@
     <ClInclude Include="include\rkJson.h" />
     <ClInclude Include="include\rkJsonUtilities.h" />
     <ClInclude Include="include\rkLayerGameObject.h" />
+    <ClInclude Include="include\rkLogicalComparisonType.h" />
+    <ClInclude Include="include\rkLogicalComparisonUtilities.h" />
     <ClInclude Include="include\rkPrerequisites.h" />
     <ClInclude Include="include\rkReferenceTileSet.h" />
     <ClInclude Include="include\rkSceneGraph.h" />
