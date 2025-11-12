@@ -32,9 +32,10 @@ namespace rk
     m_transitions.push_back(transition);
   }
 
-  void AnimationState::onEnter()
+  void AnimationState::onEnter(Sprite& sprite)
   {
     m_isActive = true;
+    m_animation->prepareSprite(sprite);
     m_animation->reset();
     m_animation->play();
   }

@@ -77,7 +77,7 @@ namespace rk
     }
   }
 
-  void AnimationStateMachine::update(float deltaTime)
+  void AnimationStateMachine::update(float deltaTime, Sprite& sprite)
   {
     if (!m_currentState)
       return;
@@ -88,7 +88,7 @@ namespace rk
       {
         m_currentState->onExit();
         m_currentState = transition->getToState();
-        m_currentState->onEnter();
+        m_currentState->onEnter(sprite);
         break;
       }
     }

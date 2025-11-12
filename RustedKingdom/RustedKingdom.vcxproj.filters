@@ -100,6 +100,9 @@
     <Filter Include="Source Files\animations\stateMachine">
       <UniqueIdentifier>{9f0ee1d5-6d54-4bb2-b5fc-e714a26ce70a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\utilities\blackboard">
+      <UniqueIdentifier>{2fa6137e-082e-4b42-ac68-a4028126b5ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -355,6 +358,12 @@
     </ClInclude>
     <ClInclude Include="include\rkBoolComparisonAnimationStateTransition.h">
       <Filter>Header Files\animations\stateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkBlackboard.h">
+      <Filter>Header Files\utilities\blackboard</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkBlackboardValueGroup.h">
+      <Filter>Header Files\utilities\blackboard</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

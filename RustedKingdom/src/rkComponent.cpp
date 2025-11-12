@@ -8,24 +8,6 @@ namespace rk
   {
   }
 
-  Component::Component(Component&& other) noexcept :
-    m_gameObject(other.m_gameObject),
-    m_type(other.m_type)
-  {
-    other.m_gameObject = nullptr;
-  }
-
-  Component& Component::operator=(Component&& other) noexcept
-  {
-    if (this != &other)
-    {
-      m_gameObject = other.m_gameObject;
-      m_type = other.m_type;
-      other.m_gameObject = nullptr;
-    }
-    return *this;
-  }
-
   void Component::onUpdate(float deltaTime)
   {
     (void)deltaTime;
@@ -36,7 +18,6 @@ namespace rk
     (void)target;
     (void)states;
   }
-
 
   void Component::onDelete()
   {

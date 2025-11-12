@@ -20,8 +20,8 @@ namespace rk
     Component(const Component&) = delete;
     Component& operator=(const Component&) = delete;
 
-    Component(Component&&) noexcept;
-    Component& operator=(Component&&) noexcept;
+    Component(Component&&) noexcept = delete;
+    Component& operator=(Component&&) noexcept = delete;
 
     virtual ~Component() = default;
 

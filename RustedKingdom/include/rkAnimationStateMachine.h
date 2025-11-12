@@ -2,6 +2,13 @@
 
 #include "rkPrerequisites.h"
 
+namespace sf
+{
+  class Sprite;
+}
+
+using sf::Sprite;
+
 namespace rk
 {
   class AnimationState;
@@ -30,7 +37,7 @@ namespace rk
      * @param state The state to add.
      */
     void addState(AnimationState* state);
-    void update(float deltaTime);
+    void update(float deltaTime, Sprite& sprite);
 
   private:
     AnimationState* m_currentState;

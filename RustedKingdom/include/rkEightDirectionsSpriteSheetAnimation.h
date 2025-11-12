@@ -9,8 +9,9 @@
 namespace sf
 {
   class Texture;
-  class Sprite;
 }
+
+using sf::Texture;
 
 namespace rk
 {
@@ -21,9 +22,9 @@ namespace rk
   public:
 
     EightDirectionsSpriteSheetAnimation(
+      const AnimationStateMachine& animationStateMachine,
       const EightDirectionsSpriteSheetAnimationDescription& description,
-      const sf::Texture& texture,
-      sf::Sprite& sprite
+      const sf::Texture& texture
     );
     ~EightDirectionsSpriteSheetAnimation();
 
@@ -31,6 +32,7 @@ namespace rk
     void setSpeedModifier(float speedModifier);
     void setDirectionAngle(sf::Angle angle);
 
+    virtual void prepareSprite(Sprite& sprite) override;
     virtual void reset() override;
     virtual void play() override;
     virtual void stop() override;
@@ -49,5 +51,7 @@ namespace rk
 
     UInt32 getSpriteSheetColumnFromAngle(sf::Angle angle) const;
     sf::IntRect calculateTextureRect() const;
+
+    void assertSpriteIsNotNull() const;
   };
 }

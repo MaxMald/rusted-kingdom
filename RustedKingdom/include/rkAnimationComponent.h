@@ -12,20 +12,17 @@ namespace sf
 namespace rk
 {
   class SpriteComponent;
-  class EightDirectionsSpriteSheetAnimation;
-  class EightDirectionsSpriteSheetAnimationDescription;
+  class AnimationStateMachine;
 
   class AnimationComponent : public Component
   {
   public:
-    AnimationComponent(GameObject& gameObject);
+    AnimationComponent(
+      GameObject& gameObject,
+      AnimationStateMachine* animationStateMachine
+    );
     virtual ~AnimationComponent();
 
-    void setAnimation(
-      const EightDirectionsSpriteSheetAnimationDescription& description,
-      const sf::Texture& texture
-    );
-    bool hasAnimation() const;
     bool isPlaying() const;
     void reset();
     void play();
@@ -40,6 +37,7 @@ namespace rk
 
   private:
     SpriteComponent* m_spriteComponent;
+    AnimationStateMachine* m_animationStateMachine;
     EightDirectionsSpriteSheetAnimation* m_animation;
   };
 }

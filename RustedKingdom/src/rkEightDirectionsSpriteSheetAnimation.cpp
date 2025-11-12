@@ -16,14 +16,14 @@ namespace rk
   }
 
   EightDirectionsSpriteSheetAnimation::EightDirectionsSpriteSheetAnimation(
+    const AnimationStateMachine& animationStateMachine,
     const EightDirectionsSpriteSheetAnimationDescription& description,
-    const sf::Texture& texture,
-    sf::Sprite& sprite
+    const sf::Texture& texture
   ) :
     Animation(description.getAnimationKey(), animationType::Type::eightDirectional),
     m_description(&description),
     m_texture(&texture),
-    m_sprite(&sprite),
+    m_sprite(nullptr),
     m_frameSize(
       static_cast<Int32>(description.getFrameWidth()),
       static_cast<Int32>(description.getFrameHeight())
@@ -40,6 +40,16 @@ namespace rk
   {
   }
 
+  void EightDirectionsSpriteSheetAnimation::prepareSprite(Sprite& sprite)
+  {
+    m_sprite = &sprite;
+
+    assertions::assertNotNull(m_texture, "animation texture");
+    
+    m_sprite->setTexture(*m_texture);
+    m_sprite->setTextureRect(calculateTextureRect());
+  }
+
   void EightDirectionsSpriteSheetAnimation::reset()
   {
     m_currentFrame = 0;
@@ -49,11 +59,6 @@ namespace rk
 
   void EightDirectionsSpriteSheetAnimation::play()
   {
-    if (m_isPlaying)
-      return;
-
-    assertions::assertNotNull(m_texture, "animation texture");
-    m_sprite->setTexture(*m_texture);
     m_isPlaying = true;
   }
 
@@ -69,6 +74,8 @@ namespace rk
   {
     if (!m_isPlaying)
       return;
+
+    assertSpriteIsNotNull();
 
     m_currentTime += deltaTime;
     while (m_currentTime >= m_timePerFrame)
@@ -110,5 +117,9 @@ namespace rk
       sf::Vector2i(m_currentRectX, m_currentRectY),
       m_frameSize
     );
+  }
+
+  void EightDirectionsSpriteSheetAnimation::assertSpriteIsNotNull() const
+  {
   }
 }

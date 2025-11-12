@@ -205,6 +205,8 @@
     <ClInclude Include="include\rkAnimationStateTransition.h" />
     <ClInclude Include="include\rkAnimationType.h" />
     <ClInclude Include="include\rkAssertions.h" />
+    <ClInclude Include="include\rkBlackboard.h" />
+    <ClInclude Include="include\rkBlackboardValueGroup.h" />
     <ClInclude Include="include\rkBoolComparisonAnimationStateTransition.h" />
     <ClInclude Include="include\rkComponent.h" />
     <ClInclude Include="include\rkComponentType.h" />

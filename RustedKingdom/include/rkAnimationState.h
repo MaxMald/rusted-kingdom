@@ -2,6 +2,13 @@
 
 #include "rkPrerequisites.h"
 
+namespace sf
+{
+  class Sprite;
+}
+
+using sf::Sprite;
+
 namespace rk
 {
   class Animation;
@@ -26,7 +33,7 @@ namespace rk
      */
     void addTransition(const AnimationStateTransition* transition);
 
-    void onEnter();
+    void onEnter(Sprite& sprite);
     void update(float deltaTime);
     void onExit();
 
