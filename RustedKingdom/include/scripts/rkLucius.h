@@ -26,7 +26,7 @@ namespace rk
 
   private:
     AnimationStateMachineComponent* m_animationComponent;
-    const RenderWindow* m_renderWindow;
+    const RenderWindow& m_renderWindow;
     Vector2f m_currentVelocity;
 
     void updateAnimationStateMachine();

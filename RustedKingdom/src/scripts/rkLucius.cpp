@@ -13,20 +13,20 @@ namespace rk
 {
   Lucius::Lucius(GameObject& gameObject, const RenderWindow& renderWindow)
     : ScriptComponent(gameObject, "lucius"),
-    m_animationComponent(nullptr),
     m_currentVelocity(0.0f, 0.0f),
-    m_renderWindow(&renderWindow)
+    m_animationComponent(nullptr),
+    m_renderWindow(renderWindow)
   {
-    if (!gameObject.hasComponent(rk::componentType::Animation))
+    m_animationComponent = gameObject
+      .getComponent<AnimationStateMachineComponent>(rk::componentType::Animation);
+
+    if (m_animationComponent == nullptr)
     {
       throw RuntimeErrorException(
         "Lucius script component requires an Animation component to be present in"
         "the same GameObject."
       );
     }
-
-    m_animationComponent = gameObject
-      .getComponent<AnimationStateMachineComponent>(rk::componentType::Animation);
 
     if (gameObject.hasComponent(rk::componentType::Sprite))
     {
@@ -48,8 +48,8 @@ namespace rk
     const float maxSpeed = 100.0f;
     const float mass = 200.0f;
 
-    sf::Vector2i mousePosition = sf::Mouse::getPosition(*m_renderWindow);
-    Vector2f target = m_renderWindow->mapPixelToCoords(mousePosition);
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(m_renderWindow);
+    Vector2f target = m_renderWindow.mapPixelToCoords(mousePosition);
 
     Vector2f seekForce = steerForces::seek(
       m_gameObject->getPosition(),
