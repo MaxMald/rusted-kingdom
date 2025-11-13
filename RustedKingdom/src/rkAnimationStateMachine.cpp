@@ -35,7 +35,7 @@ namespace rk
       if (transition->canTransition(*this))
       {
         m_currentState->onExit();
-        m_currentState = transition->getToState();
+        m_currentState = &(transition->getToState());
         m_currentState->onEnter(sprite);
         break;
       }

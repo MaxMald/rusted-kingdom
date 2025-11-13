@@ -1,6 +1,7 @@
 #pragma once
 
 #include "rkAnimationType.h"
+#include "rkNonCopyable.h"
 
 namespace sf
 {
@@ -11,17 +12,11 @@ using sf::Sprite;
 
 namespace rk
 {
-  class Animation
+  class Animation : public NonCopyable
   {
   public:
     Animation(const String& animationKey, animationType::Type type);
     virtual ~Animation();
-
-    Animation(const Animation&) = delete;
-    Animation& operator=(const Animation&) = delete;
-
-    Animation(Animation&&) = delete;
-    Animation& operator=(Animation&&) = delete;
 
     animationType::Type getType() const { return m_type; }
     const String& getAnimationKey() const { return m_animationKey; }

@@ -5,6 +5,7 @@
 #include <SFML/System/Vector2.hpp>
 
 #include "rkPrerequisites.h"
+#include "rkNonCopyable.h"
 #include "rkLogicalComparisonType.h"
 
 namespace sf
@@ -25,18 +26,12 @@ namespace rk
   class Animation;
   class EightDirectionsSpriteSheetAnimationDescription;
 
-  class AnimationStateMachineBuilder
+  class AnimationStateMachineBuilder : public NonCopyable
   {
   public:
 
     AnimationStateMachineBuilder(AnimationFactory& animationFactory);
     ~AnimationStateMachineBuilder();
-
-    AnimationStateMachineBuilder(const AnimationStateMachineBuilder& other) = delete;
-    AnimationStateMachineBuilder& operator=(const AnimationStateMachineBuilder& other) = delete;
-
-    AnimationStateMachineBuilder(AnimationStateMachineBuilder&& other) noexcept = delete;
-    AnimationStateMachineBuilder& operator=(AnimationStateMachineBuilder&& other) noexcept = delete;
 
     AnimationStateMachineBuilder& createStateMachine(const String& initialStateKey);
     UniquePtr<AnimationStateMachine> build();

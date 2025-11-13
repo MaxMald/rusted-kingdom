@@ -9,21 +9,15 @@ namespace rk
   {
   public:
     FloatComparisonAnimationStateTransition(
-      AnimationState* fromState,
-      AnimationState* toState,
+      AnimationState& fromState,
+      AnimationState& toState,
       float leftValue,
       logicalComparisonType::Type comparisonType,
       const String& rightValueFloatKey
     );
     virtual ~FloatComparisonAnimationStateTransition();
 
-    FloatComparisonAnimationStateTransition(const FloatComparisonAnimationStateTransition&);
-    FloatComparisonAnimationStateTransition& operator=(const FloatComparisonAnimationStateTransition&);
-
-    FloatComparisonAnimationStateTransition(FloatComparisonAnimationStateTransition&&) noexcept;
-    FloatComparisonAnimationStateTransition& operator=(FloatComparisonAnimationStateTransition&&) noexcept;
-
-    bool canTransition(const AnimationStateMachine& stateMachine) const override;
+    bool canTransition(const AnimationStateMachine&) const override;
 
   private:
     String m_rightValueFloatKey;

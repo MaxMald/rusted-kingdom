@@ -202,8 +202,8 @@ namespace rk
 
     AnimationState* fromAnimationState = getAnimationState(fromStateKey);
     UniquePtr<AnimationStateTransition> transition = MakeUnique<BoolComparisonAnimationStateTransition>(
-      fromAnimationState,
-      getAnimationState(toStateKey),
+      *fromAnimationState,
+      *getAnimationState(toStateKey),
       expectedValue,
       boolKey
     );
@@ -224,8 +224,8 @@ namespace rk
 
     AnimationState* fromAnimationState = getAnimationState(fromStateKey);
     UniquePtr<AnimationStateTransition> transition = MakeUnique<FloatComparisonAnimationStateTransition>(
-      fromAnimationState,
-      getAnimationState(toStateKey),
+      *fromAnimationState,
+      *getAnimationState(toStateKey),
       leftValue,
       comparisonType,
       rightValueFloatKey

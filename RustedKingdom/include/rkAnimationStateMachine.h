@@ -1,6 +1,7 @@
 #pragma once
 
 #include "rkPrerequisites.h"
+#include "rkNonCopyable.h"
 #include "rkBlackboard.h"
 
 namespace sf
@@ -14,7 +15,7 @@ namespace rk
 {
   class AnimationState;
 
-  class AnimationStateMachine
+  class AnimationStateMachine : public NonCopyable
   {
   public:
     AnimationStateMachine(const String& initialStateKey);

@@ -6,8 +6,8 @@
 namespace rk
 {
   BoolComparisonAnimationStateTransition::BoolComparisonAnimationStateTransition(
-    AnimationState* fromState,
-    AnimationState* toState,
+    AnimationState& fromState,
+    AnimationState& toState,
     bool expectedValue,
     const String& boolKey
   ) :
@@ -19,54 +19,6 @@ namespace rk
 
   BoolComparisonAnimationStateTransition::~BoolComparisonAnimationStateTransition()
   {
-  }
-
-  BoolComparisonAnimationStateTransition::BoolComparisonAnimationStateTransition(
-    const BoolComparisonAnimationStateTransition& other
-  ) :
-    AnimationStateTransition(other),
-    m_expectedValue(other.m_expectedValue),
-    m_boolKey(other.m_boolKey)
-  {
-  }
-
-  BoolComparisonAnimationStateTransition& BoolComparisonAnimationStateTransition::operator=(
-    const BoolComparisonAnimationStateTransition& other
-    )
-  {
-    if (this != &other)
-    {
-      AnimationStateTransition::operator=(other);
-      m_expectedValue = other.m_expectedValue;
-      m_boolKey = other.m_boolKey;
-    }
-    return *this;
-  }
-
-  BoolComparisonAnimationStateTransition::BoolComparisonAnimationStateTransition(
-    BoolComparisonAnimationStateTransition&& other
-  ) noexcept :
-    AnimationStateTransition(std::move(other)),
-    m_expectedValue(other.m_expectedValue),
-    m_boolKey(std::move(other.m_boolKey))
-  {
-    other.m_expectedValue = false;
-    other.m_boolKey.clear();
-  }
-
-  BoolComparisonAnimationStateTransition& BoolComparisonAnimationStateTransition::operator=(
-    BoolComparisonAnimationStateTransition&& other
-  ) noexcept
-  {
-    if (this != &other)
-    {
-      AnimationStateTransition::operator=(std::move(other));
-      m_expectedValue = other.m_expectedValue;
-      m_boolKey = std::move(other.m_boolKey);
-      other.m_expectedValue = false;
-      other.m_boolKey.clear();
-    }
-    return *this;
   }
 
   bool BoolComparisonAnimationStateTransition::canTransition(

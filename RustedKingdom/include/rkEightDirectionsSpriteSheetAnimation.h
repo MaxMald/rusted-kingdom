@@ -12,6 +12,7 @@ namespace sf
 }
 
 using sf::Texture;
+using sf::Angle;
 
 namespace rk
 {
@@ -39,9 +40,9 @@ namespace rk
     virtual void update(float deltaTime) override;
 
   private:
-    const EightDirectionsSpriteSheetAnimationDescription* m_description;
-    const sf::Texture* m_texture;
-    const Blackboard* m_blackboard;
+    const EightDirectionsSpriteSheetAnimationDescription& m_description;
+    const sf::Texture& m_texture;
+    const Blackboard& m_blackboard;
     sf::Sprite* m_sprite;
     sf::Vector2i m_frameSize;
     UInt32 m_currentFrame;
@@ -50,9 +51,10 @@ namespace rk
     float m_currentTime;
     float m_timePerFrame;
 
-    UInt32 getSpriteSheetColumnFromAngle(sf::Angle angle) const;
+    UInt32 getSpriteSheetColumnFromAngle(const Angle&) const;
     sf::IntRect calculateTextureRect() const;
     void updateCurrentRectX();
+    void updateCurrentRectY(const Angle&);
 
     void assertSpriteIsNotNull() const;
   };
