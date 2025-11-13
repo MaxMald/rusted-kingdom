@@ -22,12 +22,14 @@ namespace rk
 
   Bool ReferenceTileSet::isGidInRange(const Int32& gid) const
   {
+    (void)gid;
     return false;
   }
 
   TileDescription ReferenceTileSet::getTileDescriptionAt(
     const Int32& localId) const
   {
+    (void)localId;
     throw RuntimeErrorException(
       "ReferenceTileSet::getTileDescriptionAt: Not implemented for Reference Tile Sets."
     );

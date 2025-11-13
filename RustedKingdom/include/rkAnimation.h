@@ -15,7 +15,7 @@ namespace rk
   {
   public:
     Animation(const String& animationKey, animationType::Type type);
-    ~Animation();
+    virtual ~Animation();
 
     Animation(const Animation&) = delete;
     Animation& operator=(const Animation&) = delete;

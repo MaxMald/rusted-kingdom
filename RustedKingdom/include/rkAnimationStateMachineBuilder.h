@@ -57,12 +57,14 @@ namespace rk
     );
 
     AnimationStateMachineBuilder& withBoolComparisonTransition(
+      const String& fromStateKey,
       const String& toStateKey,
       const String& boolKey,
       bool expectedValue
     );
 
     AnimationStateMachineBuilder& withFloatComparisonTransition(
+      const String& fromStateKey,
       const String& toStateKey,
       float leftValue,
       logicalComparisonType::Type comparisonType,
@@ -71,14 +73,12 @@ namespace rk
 
   private:
     AnimationStateMachine* m_currentAnimationStateMachine;
-    AnimationState* m_currentAnimationState;
     UnorderedMap<String, AnimationState*> m_statesMap;
     AnimationFactory& m_animationFactory;
 
     AnimationState* getAnimationState(const String& stateKey) const;
 
     void assertCurrentAnimationStateMachineNotNull() const;
-    void assertCurrentAnimationStateNotNull() const;
     void assertDoesNotHaveState(const String& stateKey) const;
   };
 }

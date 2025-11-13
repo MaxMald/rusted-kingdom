@@ -47,7 +47,12 @@ int main()
 
   assetManager.loadTexture(
    "lucius-walking",
-   "textures/characters/lucius/lucius-running.png"
+   "textures/characters/lucius/lucius-walking.png"
+  );
+
+  assetManager.loadTexture(
+    "lucius-running",
+    "textures/characters/lucius/lucius-running.png"
   );
 
   assetManager.loadEightDirectionAnimationBundle(

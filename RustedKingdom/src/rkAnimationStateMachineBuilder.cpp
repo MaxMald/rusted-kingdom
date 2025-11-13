@@ -14,7 +14,6 @@ namespace rk
     AnimationFactory& animationFactory
   ) :
     m_currentAnimationStateMachine(nullptr),
-    m_currentAnimationState(nullptr),
     m_statesMap(),
     m_animationFactory(animationFactory)
   {
@@ -25,7 +24,6 @@ namespace rk
     if (m_currentAnimationStateMachine)
       delete m_currentAnimationStateMachine;
     m_currentAnimationStateMachine = nullptr;
-    m_currentAnimationState = nullptr;
     m_statesMap.clear();
   }
 
@@ -51,7 +49,6 @@ namespace rk
     AnimationStateMachine* builtStateMachine = m_currentAnimationStateMachine;
 
     m_currentAnimationStateMachine = nullptr;
-    m_currentAnimationState = nullptr;
     m_statesMap.clear();
 
     return UniquePtr<AnimationStateMachine>(builtStateMachine);
@@ -112,7 +109,7 @@ namespace rk
 
     BlackboardValueGroup<Angle>& angleValueGroup =
       m_currentAnimationStateMachine->getBlackboard().getAngleValues();
-    
+
     if (angleValueGroup.hasValue(angleKey))
     {
       throw RuntimeErrorException(
@@ -165,7 +162,6 @@ namespace rk
     );
 
     m_statesMap[stateKey] = newState.get();
-    m_currentAnimationState = newState.get();
     m_currentAnimationStateMachine->addState(std::move(newState));
 
     return *this;
@@ -191,32 +187,33 @@ namespace rk
     );
 
     m_statesMap[stateKey] = newState.get();
-    m_currentAnimationState = newState.get();
     m_currentAnimationStateMachine->addState(std::move(newState));
     return *this;
   }
 
   AnimationStateMachineBuilder& AnimationStateMachineBuilder::withBoolComparisonTransition(
+    const String& fromStateKey,
     const String& toStateKey,
     const String& boolKey,
     bool expectedValue
   )
   {
     assertCurrentAnimationStateMachineNotNull();
-    assertCurrentAnimationStateNotNull();
 
+    AnimationState* fromAnimationState = getAnimationState(fromStateKey);
     UniquePtr<AnimationStateTransition> transition = MakeUnique<BoolComparisonAnimationStateTransition>(
-      m_currentAnimationState,
+      fromAnimationState,
       getAnimationState(toStateKey),
       expectedValue,
       boolKey
     );
 
-    m_currentAnimationState->addTransition(std::move(transition));
+    fromAnimationState->addTransition(std::move(transition));
     return *this;
   }
 
   AnimationStateMachineBuilder& AnimationStateMachineBuilder::withFloatComparisonTransition(
+    const String& fromStateKey,
     const String& toStateKey,
     float leftValue,
     logicalComparisonType::Type comparisonType,
@@ -224,17 +221,17 @@ namespace rk
   )
   {
     assertCurrentAnimationStateMachineNotNull();
-    assertCurrentAnimationStateNotNull();
 
+    AnimationState* fromAnimationState = getAnimationState(fromStateKey);
     UniquePtr<AnimationStateTransition> transition = MakeUnique<FloatComparisonAnimationStateTransition>(
-      m_currentAnimationState,
+      fromAnimationState,
       getAnimationState(toStateKey),
       leftValue,
       comparisonType,
       rightValueFloatKey
     );
 
-    m_currentAnimationState->addTransition(std::move(transition));
+    fromAnimationState->addTransition(std::move(transition));
     return *this;
   }
 
@@ -260,16 +257,6 @@ namespace rk
     {
       throw RuntimeErrorException(
         "AnimationStateMachineBuilder: No state machine is being built."
-      );
-    }
-  }
-
-  void AnimationStateMachineBuilder::assertCurrentAnimationStateNotNull() const
-  {
-    if (m_currentAnimationState == nullptr)
-    {
-      throw RuntimeErrorException(
-        "AnimationStateMachineBuilder: No animation state is currently selected."
       );
     }
   }

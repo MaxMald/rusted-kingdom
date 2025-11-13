@@ -76,11 +76,17 @@ namespace rk
   void Lucius::updateAnimationStateMachine()
   {
     m_animationComponent->getBlackboard()
+      .getFloatValues()
+      .setValue("luciusSpeed", m_currentVelocity.length() / 100.0f);
+
+    m_animationComponent->getBlackboard()
       .getAngleValues()
       .setValue("directionAngle", m_currentVelocity.angle());
 
+    /*
     m_animationComponent->getBlackboard()
       .getFloatValues()
       .setValue("speedModifier", m_currentVelocity.length() / 100.0f);
+    */
   }
 }
