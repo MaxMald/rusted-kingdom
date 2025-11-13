@@ -6,13 +6,17 @@
 #include "rkBoolComparisonAnimationStateTransition.h"
 #include "rkFloatComparisonAnimationStateTransition.h"
 #include "rkBlackboard.h"
+#include "rkAnimationFactory.h"
 
 namespace rk
 {
-  AnimationStateMachineBuilder::AnimationStateMachineBuilder()
-    : m_currentAnimationStateMachine(nullptr)
-    , m_currentAnimationState(nullptr)
-    , m_statesMap()
+  AnimationStateMachineBuilder::AnimationStateMachineBuilder(
+    AnimationFactory& animationFactory
+  ) :
+    m_currentAnimationStateMachine(nullptr),
+    m_currentAnimationState(nullptr),
+    m_statesMap(),
+    m_animationFactory(animationFactory)
   {
   }
 
@@ -62,7 +66,7 @@ namespace rk
     BlackboardValueGroup<float>& floatValueGroup =
       m_currentAnimationStateMachine->getBlackboard().getFloatValues();
 
-    if (!floatValueGroup.hasValue(floatKey))
+    if (floatValueGroup.hasValue(floatKey))
     {
       throw RuntimeErrorException(
         String::Format(
@@ -85,7 +89,7 @@ namespace rk
     BlackboardValueGroup<Bool>& boolValueGroup =
       m_currentAnimationStateMachine->getBlackboard().getBoolValues();
 
-    if (!boolValueGroup.hasValue(boolKey))
+    if (boolValueGroup.hasValue(boolKey))
     {
       throw RuntimeErrorException(
         String::Format(
@@ -96,6 +100,54 @@ namespace rk
     }
 
     boolValueGroup.setValue(boolKey, initialValue);
+    return *this;
+  }
+
+  AnimationStateMachineBuilder& AnimationStateMachineBuilder::withAngle(
+    const String& angleKey,
+    Angle initialValue
+  )
+  {
+    assertCurrentAnimationStateMachineNotNull();
+
+    BlackboardValueGroup<Angle>& angleValueGroup =
+      m_currentAnimationStateMachine->getBlackboard().getAngleValues();
+    
+    if (angleValueGroup.hasValue(angleKey))
+    {
+      throw RuntimeErrorException(
+        String::Format(
+          "AnimationStateMachineBuilder::withAngle: An angle parameter with key '%s' already exists.",
+          angleKey.c_str()
+        )
+      );
+    }
+
+    angleValueGroup.setValue(angleKey, initialValue);
+    return *this;
+  }
+
+  AnimationStateMachineBuilder& AnimationStateMachineBuilder::withVector2f(
+    const String& vectorKey,
+    Vector2f initialValue
+  )
+  {
+    assertCurrentAnimationStateMachineNotNull();
+
+    BlackboardValueGroup<Vector2f>& vector2fValueGroup =
+      m_currentAnimationStateMachine->getBlackboard().getVector2fValues();
+
+    if (vector2fValueGroup.hasValue(vectorKey))
+    {
+      throw RuntimeErrorException(
+        String::Format(
+          "AnimationStateMachineBuilder::withVector2f: A Vector2f parameter with key '%s' already exists.",
+          vectorKey.c_str()
+        )
+      );
+    }
+
+    vector2fValueGroup.setValue(vectorKey, initialValue);
     return *this;
   }
 
@@ -121,18 +173,17 @@ namespace rk
 
   AnimationStateMachineBuilder& AnimationStateMachineBuilder::withEightDirectionAnimationState(
     const String& stateKey,
-    const EightDirectionsSpriteSheetAnimationDescription& description,
-    const Texture& texture
+    const String& descriptionKey
   )
   {
     assertCurrentAnimationStateMachineNotNull();
     assertDoesNotHaveState(stateKey);
 
-    UniquePtr<Animation> newAnimation = MakeUnique<EightDirectionsSpriteSheetAnimation>(
-      description,
-      m_currentAnimationStateMachine->getBlackboard(),
-      texture
-    );
+    UniquePtr<Animation> newAnimation = m_animationFactory
+      .createEightDirectionsAnimation(
+        descriptionKey,
+        m_currentAnimationStateMachine->getBlackboard()
+      );
 
     UniquePtr<AnimationState> newState = MakeUnique<AnimationState>(
       stateKey,

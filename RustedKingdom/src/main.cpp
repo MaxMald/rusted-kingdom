@@ -9,6 +9,8 @@
 #include "rkGameObjectBuilder.h"
 #include "rkGameObject.h"
 #include "rkSpriteComponentFactory.h"
+#include "rkLuciusBlueprint.h"
+#include "rkAnimationFactory.h"
 
 #include "scripts/rkLucius.h"
 
@@ -52,6 +54,17 @@ int main()
     "animations/luciusAnimationBundle.json"
   );
 
+  rk::AnimationFactory animationFactory(assetManager);
+  rk::LuciusBlueprint luciusBlueprint(
+    gameObjectBuilder,
+    spriteComponentFactory,
+    animationFactory,
+    window
+  );
+
+  luciusBlueprint.instantiate(
+    *sceneGraph.getRoot()
+  );
 
   sf::Clock deltaClock;
   while (window.isOpen())

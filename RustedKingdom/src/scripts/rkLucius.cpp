@@ -46,7 +46,7 @@ namespace rk
   void Lucius::onUpdate(float deltaTime)
   {
     const float maxSpeed = 100.0f;
-    const float mass = 500.0f;
+    const float mass = 200.0f;
 
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*m_renderWindow);
     Vector2f target = m_renderWindow->mapPixelToCoords(mousePosition);
@@ -77,10 +77,10 @@ namespace rk
   {
     m_animationComponent->getBlackboard()
       .getAngleValues()
-      .setValue("", m_currentVelocity.angle());
+      .setValue("directionAngle", m_currentVelocity.angle());
 
     m_animationComponent->getBlackboard()
       .getFloatValues()
-      .setValue("", m_currentVelocity.length() / 100.0f);
+      .setValue("speedModifier", m_currentVelocity.length() / 100.0f);
   }
 }

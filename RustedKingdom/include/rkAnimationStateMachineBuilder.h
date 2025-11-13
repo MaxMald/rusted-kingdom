@@ -1,18 +1,25 @@
 #pragma once
 
 #include <functional>
+
+#include <SFML/System/Vector2.hpp>
+
 #include "rkPrerequisites.h"
 #include "rkLogicalComparisonType.h"
 
 namespace sf
 {
   class Texture;
+  class Angle;
 }
 
 using sf::Texture;
+using sf::Angle;
+using sf::Vector2f;
 
 namespace rk
 {
+  class AnimationFactory;
   class AnimationStateMachine;
   class AnimationState;
   class Animation;
@@ -22,7 +29,7 @@ namespace rk
   {
   public:
 
-    AnimationStateMachineBuilder();
+    AnimationStateMachineBuilder(AnimationFactory& animationFactory);
     ~AnimationStateMachineBuilder();
 
     AnimationStateMachineBuilder(const AnimationStateMachineBuilder& other) = delete;
@@ -36,6 +43,8 @@ namespace rk
 
     AnimationStateMachineBuilder& withFloat(const String& floatKey, float initialValue);
     AnimationStateMachineBuilder& withBool(const String& boolKey, bool initialValue);
+    AnimationStateMachineBuilder& withAngle(const String& angleKey, Angle initialValue);
+    AnimationStateMachineBuilder& withVector2f(const String& vectorKey, Vector2f initialValue);
 
     AnimationStateMachineBuilder& withAnimationState(
       const String& stateKey,
@@ -44,8 +53,7 @@ namespace rk
 
     AnimationStateMachineBuilder& withEightDirectionAnimationState(
       const String& stateKey,
-      const EightDirectionsSpriteSheetAnimationDescription& description,
-      const Texture& texture
+      const String& descriptionKey
     );
 
     AnimationStateMachineBuilder& withBoolComparisonTransition(
@@ -65,6 +73,7 @@ namespace rk
     AnimationStateMachine* m_currentAnimationStateMachine;
     AnimationState* m_currentAnimationState;
     UnorderedMap<String, AnimationState*> m_statesMap;
+    AnimationFactory& m_animationFactory;
 
     AnimationState* getAnimationState(const String& stateKey) const;
 

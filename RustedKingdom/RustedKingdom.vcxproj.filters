@@ -109,6 +109,18 @@
     <Filter Include="Header Files\scene\gameObjects\components\factories">
       <UniqueIdentifier>{ea0e3583-e8a5-494e-a775-9e2828c306d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\scene\gameObjects\blueprints">
+      <UniqueIdentifier>{f4b291ce-20dd-451f-a49f-95b034252b3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\scene\gameObjects\blueprints">
+      <UniqueIdentifier>{dd65f676-8395-4682-b73e-fb622ef44fd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\animations\factories">
+      <UniqueIdentifier>{b32a9299-3b1e-4333-84d8-5cdb7abd088a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\animations\factories">
+      <UniqueIdentifier>{c97c001d-82a2-4cb9-ba3f-37f140e7e316}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -215,6 +227,12 @@
     </ClCompile>
     <ClCompile Include="src\rkSpriteComponentFactory.cpp">
       <Filter>Source Files\scene\gameObjects\components\factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkLuciusBlueprint.cpp">
+      <Filter>Source Files\scene\gameObjects\blueprints</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkAnimationFactory.cpp">
+      <Filter>Source Files\animations\factories</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -376,6 +394,18 @@
     </ClInclude>
     <ClInclude Include="include\rkSpriteComponentFactory.h">
       <Filter>Header Files\scene\gameObjects\components\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkBlueprint.h">
+      <Filter>Header Files\scene\gameObjects\blueprints</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkNonCopyable.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkLuciusBlueprint.h">
+      <Filter>Header Files\scene\gameObjects\blueprints</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkAnimationFactory.h">
+      <Filter>Header Files\animations\factories</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
