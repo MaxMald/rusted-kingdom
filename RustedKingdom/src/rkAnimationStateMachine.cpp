@@ -4,7 +4,8 @@
 
 namespace rk
 {
-  AnimationStateMachine::AnimationStateMachine() :
+  AnimationStateMachine::AnimationStateMachine(const String& initialStateKey) :
+    m_initialStateKey(initialStateKey),
     m_currentState(nullptr),
     m_states()
   {
@@ -12,75 +13,22 @@ namespace rk
 
   AnimationStateMachine::~AnimationStateMachine()
   {
-    for (auto state : m_states)
-      delete state;
+    m_currentState = nullptr;
     m_states.clear();
   }
 
-  bool AnimationStateMachine::hasFloat(const String& key) const
+  void AnimationStateMachine::addState(UniquePtr<AnimationState> state)
   {
-    return m_floatParameters.find(key) != m_floatParameters.end();
-  }
-
-  void AnimationStateMachine::addFloat(const String& key, float initialValue)
-  {
-    m_floatParameters[key] = initialValue;
-  }
-
-  void AnimationStateMachine::setFloat(const String& key, float value)
-  {
-    auto it = m_floatParameters.find(key);
-    if (it != m_floatParameters.end())
-      it->second = value;
-  }
-
-  float AnimationStateMachine::getFloat(const String& key) const
-  {
-    auto it = m_floatParameters.find(key);
-    if (it != m_floatParameters.end())
-      return it->second;
-    return 0.0f;
-  }
-
-  bool AnimationStateMachine::hasBool(const String& key) const
-  {
-    return m_boolParameters.find(key) != m_boolParameters.end();
-  }
-
-  void AnimationStateMachine::addBool(const String& key, bool initialValue)
-  {
-    m_boolParameters[key] = initialValue;
-  }
-
-  void AnimationStateMachine::setBool(const String& key, bool value)
-  {
-    auto it = m_boolParameters.find(key);
-    if (it != m_boolParameters.end())
-      it->second = value;
-  }
-
-  bool AnimationStateMachine::getBool(const String& key) const
-  {
-    auto it = m_boolParameters.find(key);
-    if (it != m_boolParameters.end())
-      return it->second;
-    return false;
-  }
-
-  void AnimationStateMachine::addState(AnimationState* state)
-  {
-    m_states.push_back(state);
-    if (m_currentState == nullptr)
-    {
-      m_currentState = state;
-      m_currentState->onEnter();
-    }
+    m_states.push_back(std::move(state));
   }
 
   void AnimationStateMachine::update(float deltaTime, Sprite& sprite)
   {
     if (!m_currentState)
-      return;
+    {
+      m_currentState = getStateByKey(m_initialStateKey);
+      m_currentState->onEnter(sprite);
+    }
 
     for (const auto& transition : m_currentState->getTransitions())
     {
@@ -94,5 +42,23 @@ namespace rk
     }
     
     m_currentState->update(deltaTime);
+  }
+
+  AnimationState* AnimationStateMachine::getStateByKey(
+    const String& stateKey
+  ) const
+  {
+    for (const auto& state : m_states)
+    {
+      if (state->getKey() == stateKey)
+        return state.get();
+    }
+
+    throw RuntimeErrorException(
+      String::Format(
+        "AnimationStateMachine::getStateByKey: State '%s' does not exist.",
+        stateKey.c_str()
+      )
+    );
   }
 }

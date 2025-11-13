@@ -17,6 +17,7 @@ namespace rk
   class TiledMap;
   class TileSetsManager;
   class GameObjectBuilder;
+  class SpriteComponentFactory;
 
   /**
    * @brief Helper class to construct a SceneGraph from a Tiled map.
@@ -35,6 +36,7 @@ namespace rk
      */
     static void buildFromTiledMap(
       GameObjectBuilder& gameObjectBuilder,
+      SpriteComponentFactory& spriteComponentFactory,
       SceneGraph& sceneGraph,
       const TiledMap& tiledMap
     );
@@ -47,6 +49,7 @@ namespace rk
      */
     static void buildFromTileLayer(
       GameObjectBuilder& gameObjectBuilder,
+      SpriteComponentFactory& spriteComponentFactory,
       SceneGraph& sceneGraph,
       const Int32& tileWidth,
       const Int32& tileHeight,
@@ -56,6 +59,7 @@ namespace rk
 
     static void buildFromObjectGroupLayer(
       GameObjectBuilder& gameObjectBuilder,
+      SpriteComponentFactory& spriteComponentFactory,
       SceneGraph& sceneGraph,
       const Int32& tileWidth,
       const Int32& tileHeight,

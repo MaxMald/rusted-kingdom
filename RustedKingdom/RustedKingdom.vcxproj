@@ -186,6 +186,7 @@
     <ClCompile Include="src\rkSceneGraph.cpp" />
     <ClCompile Include="src\rkScriptComponent.cpp" />
     <ClCompile Include="src\rkSpriteComponent.cpp" />
+    <ClCompile Include="src\rkSpriteComponentFactory.cpp" />
     <ClCompile Include="src\rkSpriteSheet.cpp" />
     <ClCompile Include="src\rkSpriteSheetTileSet.cpp" />
     <ClCompile Include="src\rkTiledMapBuilder.cpp" />
@@ -198,7 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkAnimation.h" />
-    <ClInclude Include="include\rkAnimationComponent.h" />
+    <ClInclude Include="include\rkAnimationStateMachineComponent.h" />
     <ClInclude Include="include\rkAnimationState.h" />
     <ClInclude Include="include\rkAnimationStateMachine.h" />
     <ClInclude Include="include\rkAnimationStateMachineBuilder.h" />
@@ -233,6 +234,7 @@
     <ClInclude Include="include\rkReferenceTileSet.h" />
     <ClInclude Include="include\rkSceneGraph.h" />
     <ClInclude Include="include\rkScriptComponent.h" />
+    <ClInclude Include="include\rkSpriteComponentFactory.h" />
     <ClInclude Include="include\rkSpriteSheet.h" />
     <ClInclude Include="include\rkSpriteSheetTileSet.h" />
     <ClInclude Include="include\rkSteerForces.h" />

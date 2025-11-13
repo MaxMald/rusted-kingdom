@@ -11,16 +11,10 @@ using sf::Sprite;
 
 namespace rk
 {
-  class AnimationStateMachine;
-
   class Animation
   {
   public:
-    Animation(
-      const AnimationStateMachine& animationStateMachine,
-      const String& animationKey,
-      animationType::Type type
-    );
+    Animation(const String& animationKey, animationType::Type type);
     ~Animation();
 
     Animation(const Animation&) = delete;
@@ -41,7 +35,6 @@ namespace rk
 
   protected:
     bool m_isPlaying;
-    const AnimationStateMachine* m_animationStateMachine;
 
   private:
     animationType::Type m_type;

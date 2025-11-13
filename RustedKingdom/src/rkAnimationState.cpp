@@ -4,37 +4,29 @@
 
 namespace rk
 {
-  AnimationState::AnimationState(Animation& animation) :
-    m_animation(&animation),
-    m_isActive(false)
+  AnimationState::AnimationState(
+    const String& key,
+    UniquePtr<Animation> animation
+  ) :
+    m_key(key),
+    m_animation(std::move(animation))
   {
   }
 
   AnimationState::~AnimationState()
   {
-    for (auto transition : m_transitions)
-      delete transition;
     m_transitions.clear();
   }
 
-  Animation& AnimationState::getAnimation()
+  void AnimationState::addTransition(
+    UniquePtr<AnimationStateTransition> transition
+  )
   {
-    return *m_animation;
-  }
-
-  const Animation& AnimationState::getAnimation() const
-  {
-    return *m_animation;
-  }
-
-  void AnimationState::addTransition(const AnimationStateTransition* transition)
-  {
-    m_transitions.push_back(transition);
+    m_transitions.push_back(std::move(transition));
   }
 
   void AnimationState::onEnter(Sprite& sprite)
   {
-    m_isActive = true;
     m_animation->prepareSprite(sprite);
     m_animation->reset();
     m_animation->play();
@@ -42,13 +34,11 @@ namespace rk
 
   void AnimationState::update(float deltaTime)
   {
-    if (m_isActive)
-      m_animation->update(deltaTime);
+    m_animation->update(deltaTime);
   }
 
   void AnimationState::onExit()
   {
     m_animation->stop();
-    m_isActive = false;
   }
 }

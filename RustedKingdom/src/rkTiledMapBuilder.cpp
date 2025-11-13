@@ -12,11 +12,14 @@
 #include "rkTileDescription.h"
 #include "rkLayerGameObject.h"
 #include "rkGameObjectBuilder.h"
+#include "rkSpriteComponentFactory.h"
+#include "rkSpriteComponent.h"
 
 namespace rk
 {
   void TiledSceneBuilder::buildFromTiledMap(
     GameObjectBuilder& gameObjectBuilder,
+    SpriteComponentFactory& spriteComponentFactory,
     SceneGraph& sceneGraph,
     const TiledMap& tiledMap
   )
@@ -43,6 +46,7 @@ namespace rk
 
         buildFromTileLayer(
           gameObjectBuilder,
+          spriteComponentFactory,
           sceneGraph,
           tileWidth,
           tileHeight,
@@ -58,6 +62,7 @@ namespace rk
 
         buildFromObjectGroupLayer(
           gameObjectBuilder,
+          spriteComponentFactory,
           sceneGraph,
           tileWidth,
           tileHeight,
@@ -70,6 +75,7 @@ namespace rk
 
   void TiledSceneBuilder::buildFromTileLayer(
     GameObjectBuilder& gameObjectBuilder,
+    SpriteComponentFactory& spriteComponentFactory,
     SceneGraph& sceneGraph,
     const Int32& tileWidth,
     const Int32& tileHeight,
@@ -104,19 +110,25 @@ namespace rk
           tileHeight
         );
 
-        gameObjectBuilder.createGameObject()
-          .position(tilePosition)
-          .withSpriteComponent(
+        GameObject* tileGameObject = gameObjectBuilder
+          .createGameObject()
+          .withPosition(tilePosition)
+          .buildWithParent(*layerGameObject);
+
+        tileGameObject->addComponent(
+          spriteComponentFactory.createSpriteComponent(
+            *tileGameObject,
             tileDescription.getTextureKey(),
             tileDescription.getTextureRect()
           )
-          .buildWithParent(*layerGameObject);
+        );
       }
     }
   }
 
   void TiledSceneBuilder::buildFromObjectGroupLayer(
     GameObjectBuilder& gameObjectBuilder,
+    SpriteComponentFactory& spriteComponentFactory,
     SceneGraph& sceneGraph,
     const Int32& tileWidth,
     const Int32& tileHeight,
@@ -149,13 +161,19 @@ namespace rk
         halfTileWidth,
         halfTileHeight
       );
-      gameObjectBuilder.createGameObject()
-        .position(tilePosition)
-        .withSpriteComponent(
+
+      GameObject* objectGameObject =  gameObjectBuilder
+        .createGameObject()
+        .withPosition(tilePosition)
+        .buildWithParent(*layerGameObject);
+
+      objectGameObject->addComponent(
+        spriteComponentFactory.createSpriteComponent(
+          *objectGameObject,
           tileDescription.getTextureKey(),
           tileDescription.getTextureRect()
         )
-        .buildWithParent(*layerGameObject);
+      );
     }
   }
 

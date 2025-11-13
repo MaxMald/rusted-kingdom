@@ -8,6 +8,7 @@
 #include "rkViewsManager.h"
 #include "rkGameObjectBuilder.h"
 #include "rkGameObject.h"
+#include "rkSpriteComponentFactory.h"
 
 #include "scripts/rkLucius.h"
 
@@ -19,8 +20,9 @@ int main()
   sf::RenderWindow window(sf::VideoMode({ 1920, 1080 }), "SFML works!");
 
   rk::AssetManager assetManager(assetsPath.c_str());
-  rk::GameObjectBuilder gameObjectBuilder(assetManager);
+  rk::GameObjectBuilder gameObjectBuilder;
   rk::SceneGraph sceneGraph;
+  rk::SpriteComponentFactory spriteComponentFactory(assetManager);
 
   bool result = false;
   result = assetManager.loadTiledMap("level-0", "maps/level-2.json");
@@ -33,6 +35,7 @@ int main()
 
   rk::TiledSceneBuilder::buildFromTiledMap(
     gameObjectBuilder,
+    spriteComponentFactory,
     sceneGraph,
     *assetManager.getTiledMap("level-0")
   );
@@ -49,12 +52,6 @@ int main()
     "animations/luciusAnimationBundle.json"
   );
 
-  gameObjectBuilder.createGameObject("Lucius")
-    .position(sf::Vector2f(0.0f, 0.0f))
-    .withSpriteComponent("lucius-walking")
-    .withAnimationComponent("lucius-walking-anim")
-    .withComponent<rk::Lucius>(window)
-    .buildWithParent(*sceneGraph.getRoot());
 
   sf::Clock deltaClock;
   while (window.isOpen())

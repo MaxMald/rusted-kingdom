@@ -1,14 +1,19 @@
-#include "rkAnimationComponent.h"
+#include "rkAnimationStateMachineComponent.h"
 #include "rkGameObject.h"
 #include "rkEightDirectionsSpriteSheetAnimation.h"
+#include "rkAnimationStateMachine.h"
+#include "rkBlackboard.h"
 #include "rkSpriteComponent.h"
 
 namespace rk
 {
-  AnimationComponent::AnimationComponent(GameObject& gameObject) :
+  AnimationStateMachineComponent::AnimationStateMachineComponent(
+    GameObject& gameObject,
+    UniquePtr<AnimationStateMachine> animationStateMachine
+  ) :
     Component(gameObject, componentType::Type::Animation),
     m_spriteComponent(nullptr),
-    m_animation(nullptr)
+    m_animationStateMachine(std::move(animationStateMachine))
   {
     if (!gameObject.hasComponent(componentType::Type::Sprite))
     {
@@ -23,86 +28,25 @@ namespace rk
     );
   }
 
-  AnimationComponent::~AnimationComponent()
+  AnimationStateMachineComponent::~AnimationStateMachineComponent()
   {
-    clearAnimation();
   }
 
-  void AnimationComponent::setAnimation(
-    const EightDirectionsSpriteSheetAnimationDescription& description,
-    const sf::Texture& texture
-  )
+  Blackboard& AnimationStateMachineComponent::getBlackboard()
   {
-    clearAnimation();
+    return m_animationStateMachine->getBlackboard();
+  }
 
-    m_animation = new EightDirectionsSpriteSheetAnimation(
-      description,
-      texture,
+  const Blackboard& AnimationStateMachineComponent::getBlackboard() const
+  {
+    return m_animationStateMachine->getBlackboard();
+  }
+
+  void AnimationStateMachineComponent::onUpdate(float deltaTime)
+  {
+    m_animationStateMachine->update(
+      deltaTime,
       m_spriteComponent->getSprite()
     );
-  }
-
-  bool AnimationComponent::hasAnimation() const
-  {
-    return m_animation != nullptr;
-  }
-
-  bool AnimationComponent::isPlaying() const
-  {
-    if (m_animation)
-      return m_animation->isPlaying();
-    return false;
-  }
-
-  void AnimationComponent::reset()
-  {
-    if (m_animation)
-      m_animation->reset();
-  }
-
-  void AnimationComponent::play()
-  {
-    if (m_animation)
-      m_animation->play();
-  }
-
-  void AnimationComponent::stop()
-  {
-    if (m_animation)
-      m_animation->stop();
-  }
-
-  void AnimationComponent::setDirectionAngle(sf::Angle angle)
-  {
-    if (m_animation)
-      m_animation->setDirectionAngle(angle);
-  }
-
-  void AnimationComponent::setSpeedModifier(float speedModifier)
-  {
-    if (m_animation)
-      m_animation->setSpeedModifier(speedModifier);
-  }
-
-  Vector2i AnimationComponent::getFrameSize() const
-  {
-    if (m_animation)
-      return m_animation->getFrameSize();
-    return Vector2i(0, 0);
-  }
-
-  void AnimationComponent::onUpdate(float deltaTime)
-  {
-    if (m_animation)
-      m_animation->update(deltaTime);
-  }
-
-  void AnimationComponent::clearAnimation()
-  {
-    if (m_animation)
-    {
-      delete m_animation;
-      m_animation = nullptr;
-    }
   }
 }

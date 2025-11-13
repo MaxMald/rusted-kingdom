@@ -4,6 +4,8 @@
 
 #include "rkAnimationStateMachine.h"
 #include "rkLogicalComparisonUtilities.h"
+#include "rkBlackboard.h"
+#include "rkBlackboardValueGroup.h"
 
 namespace rk
 {
@@ -84,7 +86,10 @@ namespace rk
     const AnimationStateMachine& stateMachine
   ) const
   {
-    if (!stateMachine.hasFloat(m_rightValueFloatKey))
+    const BlackboardValueGroup<float>& floatGroup =
+      stateMachine.getBlackboard().getFloatValues();
+
+    if (!floatGroup.hasValue(m_rightValueFloatKey))
     {
       throw RuntimeErrorException(
         String::Format(
@@ -95,8 +100,7 @@ namespace rk
       );
     }
 
-    float rightValue = stateMachine.getFloat(m_rightValueFloatKey);
-
+    float rightValue = floatGroup.getValue(m_rightValueFloatKey);
     return logicalComparisonUtilities::evaluateFloatComparison(
       m_leftValue,
       rightValue,

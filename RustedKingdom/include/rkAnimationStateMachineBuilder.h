@@ -4,11 +4,19 @@
 #include "rkPrerequisites.h"
 #include "rkLogicalComparisonType.h"
 
+namespace sf
+{
+  class Texture;
+}
+
+using sf::Texture;
+
 namespace rk
 {
   class AnimationStateMachine;
   class AnimationState;
   class Animation;
+  class EightDirectionsSpriteSheetAnimationDescription;
 
   class AnimationStateMachineBuilder
   {
@@ -23,15 +31,21 @@ namespace rk
     AnimationStateMachineBuilder(AnimationStateMachineBuilder&& other) noexcept = delete;
     AnimationStateMachineBuilder& operator=(AnimationStateMachineBuilder&& other) noexcept = delete;
 
-    AnimationStateMachineBuilder& createStateMachine();
-    AnimationStateMachine* build();
+    AnimationStateMachineBuilder& createStateMachine(const String& initialStateKey);
+    UniquePtr<AnimationStateMachine> build();
 
     AnimationStateMachineBuilder& withFloat(const String& floatKey, float initialValue);
     AnimationStateMachineBuilder& withBool(const String& boolKey, bool initialValue);
 
     AnimationStateMachineBuilder& withAnimationState(
       const String& stateKey,
-      Animation& animation
+      UniquePtr<Animation> animation
+    );
+
+    AnimationStateMachineBuilder& withEightDirectionAnimationState(
+      const String& stateKey,
+      const EightDirectionsSpriteSheetAnimationDescription& description,
+      const Texture& texture
     );
 
     AnimationStateMachineBuilder& withBoolComparisonTransition(

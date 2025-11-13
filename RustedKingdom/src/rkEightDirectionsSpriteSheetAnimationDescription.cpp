@@ -20,6 +20,8 @@ namespace rk
       m_frameHeight = static_cast<UInt32>(json["frameHeight"].getInt32());
       m_animationLength = static_cast<UInt32>(json["animationLength"].getInt32());
       m_framesPerSecond = json["framesPerSecond"].getFloat();
+      m_directionAngleKey = jsonUtilities::getStringFromJson(json["directionAngleKey"]);
+      m_speedModifierKey = jsonUtilities::getStringFromJson(json["speedModifierKey"]);
 
       return true;
     }

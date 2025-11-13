@@ -11,35 +11,29 @@ using sf::Sprite;
 
 namespace rk
 {
+  class Blackboard;
   class Animation;
   class AnimationStateTransition;
 
   class AnimationState
   {
   public:
-    AnimationState(Animation& animation);
+    AnimationState(const String& key, UniquePtr<Animation> animation);
     ~AnimationState();
 
-    Animation& getAnimation();
-    const Animation& getAnimation() const;
-    bool isActive() const { return m_isActive; }
-    const Vector<const AnimationStateTransition*>& getTransitions() const { return m_transitions; }
+    Animation& getAnimation() { return *m_animation; }
+    const Animation& getAnimation() const { return *m_animation; }
+    const String& getKey() const { return m_key; }
+    const Vector<UniquePtr<AnimationStateTransition>>& getTransitions() const { return m_transitions; }
 
-    /**
-     * @brief Adds a transition to this animation state. Ownership of the
-     * transition is transferred to the state.
-     * 
-     * @param transition The transition to add.
-     */
-    void addTransition(const AnimationStateTransition* transition);
-
+    void addTransition(UniquePtr<AnimationStateTransition> transition);
     void onEnter(Sprite& sprite);
     void update(float deltaTime);
     void onExit();
 
   private:
-    bool m_isActive;
-    Animation* m_animation;
-    Vector<const AnimationStateTransition*> m_transitions;
+    String m_key;
+    UniquePtr<Animation> m_animation;
+    Vector<UniquePtr<AnimationStateTransition>> m_transitions;
   };
 }

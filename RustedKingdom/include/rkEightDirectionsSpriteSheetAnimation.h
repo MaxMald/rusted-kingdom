@@ -15,22 +15,22 @@ using sf::Texture;
 
 namespace rk
 {
+  class Blackboard;
   class EightDirectionsSpriteSheetAnimationDescription;
 
   class EightDirectionsSpriteSheetAnimation : public Animation
   {
   public:
-
     EightDirectionsSpriteSheetAnimation(
-      const AnimationStateMachine& animationStateMachine,
       const EightDirectionsSpriteSheetAnimationDescription& description,
+      const Blackboard& blackboard,
       const sf::Texture& texture
     );
-    ~EightDirectionsSpriteSheetAnimation();
+    virtual ~EightDirectionsSpriteSheetAnimation();
 
     sf::Vector2i getFrameSize() const { return m_frameSize; }
-    void setSpeedModifier(float speedModifier);
-    void setDirectionAngle(sf::Angle angle);
+    void updateSpeedModifier();
+    void updateDirectionAngle();
 
     virtual void prepareSprite(Sprite& sprite) override;
     virtual void reset() override;
@@ -41,6 +41,7 @@ namespace rk
   private:
     const EightDirectionsSpriteSheetAnimationDescription* m_description;
     const sf::Texture* m_texture;
+    const Blackboard* m_blackboard;
     sf::Sprite* m_sprite;
     sf::Vector2i m_frameSize;
     UInt32 m_currentFrame;

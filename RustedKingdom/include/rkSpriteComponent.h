@@ -14,6 +14,11 @@ namespace rk
   {
   public:
     SpriteComponent(GameObject& gameObject, const Texture& texture);
+    SpriteComponent(
+      GameObject& gameObject,
+      const Texture& texture,
+      const sf::IntRect& textureRect
+    );
     virtual ~SpriteComponent();
 
     sf::Sprite& getSprite() { return m_sprite; }

@@ -103,6 +103,12 @@
     <Filter Include="Header Files\utilities\blackboard">
       <UniqueIdentifier>{2fa6137e-082e-4b42-ac68-a4028126b5ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\scene\gameObjects\components\factories">
+      <UniqueIdentifier>{34d0baa3-6398-4e9e-8304-e448942771fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\scene\gameObjects\components\factories">
+      <UniqueIdentifier>{ea0e3583-e8a5-494e-a775-9e2828c306d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -206,6 +212,9 @@
     </ClCompile>
     <ClCompile Include="include\rkBoolComparisonAnimationStateTransition.cpp">
       <Filter>Source Files\animations\stateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkSpriteComponentFactory.cpp">
+      <Filter>Source Files\scene\gameObjects\components\factories</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -311,7 +320,7 @@
     <ClInclude Include="include\rkGameObjectBuilder.h">
       <Filter>Header Files\scene\gameObjects\builder</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkAnimationComponent.h">
+    <ClInclude Include="include\rkAnimationStateMachineComponent.h">
       <Filter>Header Files\scene\gameObjects\components</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkLucius.h">
@@ -364,6 +373,9 @@
     </ClInclude>
     <ClInclude Include="include\rkBlackboardValueGroup.h">
       <Filter>Header Files\utilities\blackboard</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkSpriteComponentFactory.h">
+      <Filter>Header Files\scene\gameObjects\components\factories</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

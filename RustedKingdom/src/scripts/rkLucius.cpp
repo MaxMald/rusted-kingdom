@@ -4,7 +4,8 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "rkGameObject.h"
-#include "rkAnimationComponent.h"
+#include "rkAnimationStateMachineComponent.h"
+#include "rkBlackboard.h"
 #include "rkSpriteComponent.h"
 #include "rkSteerForces.h"
 
@@ -25,19 +26,14 @@ namespace rk
     }
 
     m_animationComponent = gameObject
-      .getComponent<AnimationComponent>(rk::componentType::Animation);
-    m_animationComponent->play();
+      .getComponent<AnimationStateMachineComponent>(rk::componentType::Animation);
 
     if (gameObject.hasComponent(rk::componentType::Sprite))
     {
       SpriteComponent* spriteComponent = gameObject
         .getComponent<SpriteComponent>(rk::componentType::Sprite);
 
-      sf::Vector2i frameSize = m_animationComponent->getFrameSize();
-      sf::Vector2f spriteOrigin(
-        static_cast<float>(frameSize.x) * 0.5f,
-        static_cast<float>(frameSize.y)
-      );
+      sf::Vector2f spriteOrigin(50.0f, 100.0f);
 
       spriteComponent->setOrigin(spriteOrigin);
     }
@@ -74,8 +70,17 @@ namespace rk
       m_gameObject->getPosition() + m_currentVelocity * deltaTime
     );
 
-    m_animationComponent->setDirectionAngle(m_currentVelocity.angle());
-    float speedModifier = m_currentVelocity.length() / maxSpeed;
-    m_animationComponent->setSpeedModifier(speedModifier);
+    updateAnimationStateMachine();
+  }
+
+  void Lucius::updateAnimationStateMachine()
+  {
+    m_animationComponent->getBlackboard()
+      .getAngleValues()
+      .setValue("", m_currentVelocity.angle());
+
+    m_animationComponent->getBlackboard()
+      .getFloatValues()
+      .setValue("", m_currentVelocity.length() / 100.0f);
   }
 }

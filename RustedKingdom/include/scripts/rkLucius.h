@@ -13,7 +13,7 @@ using sf::RenderWindow;
 
 namespace rk
 {
-  class AnimationComponent;
+  class AnimationStateMachineComponent;
 
   class Lucius : public ScriptComponent
   {
@@ -21,11 +21,14 @@ namespace rk
     Lucius(GameObject& gameObject, const RenderWindow& renderWindow);
     virtual ~Lucius();
 
+  protected:
+    virtual void onUpdate(float deltaTime) override;
+
   private:
-    AnimationComponent* m_animationComponent;
+    AnimationStateMachineComponent* m_animationComponent;
     const RenderWindow* m_renderWindow;
     Vector2f m_currentVelocity;
 
-    virtual void onUpdate(float deltaTime) override;
+    void updateAnimationStateMachine();
   };
 }

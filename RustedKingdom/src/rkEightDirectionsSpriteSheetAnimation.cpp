@@ -4,10 +4,11 @@
 #include <SFML/Graphics/Sprite.hpp>
 
 #include "rkAssertions.h"
+#include "rkBlackboard.h"
 
 namespace rk
 {
-  namespace { 
+  namespace {
     constexpr float PiOver2 = 1.5707f;
     constexpr float PiOver16 = 0.19635f;
     constexpr float TwoPi = 6.28318f;
@@ -16,12 +17,16 @@ namespace rk
   }
 
   EightDirectionsSpriteSheetAnimation::EightDirectionsSpriteSheetAnimation(
-    const AnimationStateMachine& animationStateMachine,
     const EightDirectionsSpriteSheetAnimationDescription& description,
+    const Blackboard& blackboard,
     const sf::Texture& texture
   ) :
-    Animation(description.getAnimationKey(), animationType::Type::eightDirectional),
+    Animation(
+      description.getAnimationKey(), 
+      animationType::Type::eightDirectional
+    ),
     m_description(&description),
+    m_blackboard(&blackboard),
     m_texture(&texture),
     m_sprite(nullptr),
     m_frameSize(
@@ -45,7 +50,6 @@ namespace rk
     m_sprite = &sprite;
 
     assertions::assertNotNull(m_texture, "animation texture");
-    
     m_sprite->setTexture(*m_texture);
     m_sprite->setTextureRect(calculateTextureRect());
   }
@@ -76,6 +80,8 @@ namespace rk
       return;
 
     assertSpriteIsNotNull();
+    updateSpeedModifier();
+    updateDirectionAngle();
 
     m_currentTime += deltaTime;
     while (m_currentTime >= m_timePerFrame)
@@ -88,16 +94,38 @@ namespace rk
     m_sprite->setTextureRect(calculateTextureRect());
   }
 
-  void EightDirectionsSpriteSheetAnimation::setSpeedModifier(float speedModifier)
+  void EightDirectionsSpriteSheetAnimation::updateSpeedModifier()
   {
+    float speedModifier = 1.0f;
+    String speedModifierKey = m_description->getSpeedModifierKey();
+    if (!speedModifierKey.empty())
+    {
+      const BlackboardValueGroup<float>& floatValues =
+        m_blackboard->getFloatValues();
+
+      if (floatValues.hasValue(speedModifierKey))
+        speedModifier = floatValues.getValue(speedModifierKey);
+    }
+
     if (speedModifier == 0.0f)
       m_timePerFrame = 0;
     else
       m_timePerFrame = 1.0f / (m_description->getFramesPerSecond() * speedModifier);
   }
 
-  void EightDirectionsSpriteSheetAnimation::setDirectionAngle(sf::Angle angle)
+  void EightDirectionsSpriteSheetAnimation::updateDirectionAngle()
   {
+    Angle angle = sf::radians(0.0f);
+    String directionAngleKey = m_description->getDirectionAngleKey();
+    if (!directionAngleKey.empty())
+    {
+      const BlackboardValueGroup<Angle>& angleValues =
+        m_blackboard->getAngleValues();
+
+      if (angleValues.hasValue(directionAngleKey))
+        angle = angleValues.getValue(directionAngleKey);
+    }
+
     UInt32 spriteSheetColumn = getSpriteSheetColumnFromAngle(angle);
     m_currentRectY = spriteSheetColumn * m_description->getFrameHeight();
   }
@@ -121,5 +149,6 @@ namespace rk
 
   void EightDirectionsSpriteSheetAnimation::assertSpriteIsNotNull() const
   {
+    assertions::assertNotNull(m_sprite, "animation sprite");
   }
 }

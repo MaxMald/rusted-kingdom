@@ -19,7 +19,9 @@ namespace rk
       m_frameWidth(0),
       m_frameHeight(0),
       m_animationLength(0),
-      m_framesPerSecond(0)
+      m_framesPerSecond(0),
+      m_directionAngleKey(""),
+      m_speedModifierKey("")
     { }
 
     EightDirectionsSpriteSheetAnimationDescription(
@@ -28,14 +30,18 @@ namespace rk
       UInt32 frameWidth,
       UInt32 frameHeight,
       UInt32 animationLength,
-      float framesPerSecond
+      float framesPerSecond,
+      const String& directionAngleKey,
+      const String& speedModifierKey
     ) :
       m_animationKey(animationKey),
       m_textureKey(textureKey),
       m_frameWidth(frameWidth),
       m_frameHeight(frameHeight),
       m_animationLength(animationLength),
-      m_framesPerSecond(framesPerSecond)
+      m_framesPerSecond(framesPerSecond),
+      m_directionAngleKey(directionAngleKey),
+      m_speedModifierKey(speedModifierKey)
     {
     }
 
@@ -47,7 +53,9 @@ namespace rk
       m_frameWidth(other.m_frameWidth),
       m_frameHeight(other.m_frameHeight),
       m_animationLength(other.m_animationLength),
-      m_framesPerSecond(other.m_framesPerSecond)
+      m_framesPerSecond(other.m_framesPerSecond),
+      m_directionAngleKey(other.m_directionAngleKey),
+      m_speedModifierKey(other.m_speedModifierKey)
     {
     }
 
@@ -61,6 +69,8 @@ namespace rk
       m_frameHeight = other.m_frameHeight;
       m_animationLength = other.m_animationLength;
       m_framesPerSecond = other.m_framesPerSecond;
+      m_directionAngleKey = std::move(other.m_directionAngleKey);
+      m_speedModifierKey = std::move(other.m_speedModifierKey);
     }
 
     ~EightDirectionsSpriteSheetAnimationDescription() = default;
@@ -77,6 +87,8 @@ namespace rk
         m_frameHeight = other.m_frameHeight;
         m_animationLength = other.m_animationLength;
         m_framesPerSecond = other.m_framesPerSecond;
+        m_directionAngleKey = other.m_directionAngleKey;
+        m_speedModifierKey = other.m_speedModifierKey;
       }
       return *this;
     }
@@ -93,12 +105,16 @@ namespace rk
         m_frameHeight = other.m_frameHeight;
         m_animationLength = other.m_animationLength;
         m_framesPerSecond = other.m_framesPerSecond;
+        m_directionAngleKey = std::move(other.m_directionAngleKey);
+        m_speedModifierKey = std::move(other.m_speedModifierKey);
       }
       return *this;
     }
 
     const String& getAnimationKey() const { return m_animationKey; }
     const String& getTextureKey() const { return m_textureKey; }
+    const String& getDirectionAngleKey() const { return m_directionAngleKey; }
+    const String& getSpeedModifierKey() const { return m_speedModifierKey; }
     UInt32 getFrameWidth() const { return m_frameWidth; }
     UInt32 getFrameHeight() const { return m_frameHeight; }
     UInt32 getAnimationLength() const { return m_animationLength; }
@@ -109,6 +125,8 @@ namespace rk
   private:
     String m_animationKey;
     String m_textureKey;
+    String m_directionAngleKey;
+    String m_speedModifierKey;
     UInt32 m_frameWidth;
     UInt32 m_frameHeight;
     UInt32 m_animationLength;

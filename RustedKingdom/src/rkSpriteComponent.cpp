@@ -9,6 +9,16 @@ namespace rk
   {
   }
 
+  SpriteComponent::SpriteComponent(
+    GameObject& gameObject,
+    const Texture& texture,
+    const sf::IntRect& textureRect
+  ) :
+    Component(gameObject, componentType::Type::Sprite),
+    m_sprite(texture, textureRect)
+  {
+  }
+
   SpriteComponent::~SpriteComponent()
   {
   }
