@@ -48,13 +48,16 @@ namespace rk
 
     AnimationStateMachineBuilder animBuilder(m_animationFactory);
     UniquePtr<AnimationStateMachine> animStateMachine = animBuilder
-      .createStateMachine("walking")
+      .createStateMachine("idle")
       .withFloat("luciusSpeed", 0.0f)
       .withAngle("directionAngle", sf::radians(0.0f))
       .withFloat("speedModifierKey", 1.0f)
+      .withEightDirectionAnimationState("idle", "lucius-idle-anim")
       .withEightDirectionAnimationState("walking", "lucius-walking-anim")
       .withEightDirectionAnimationState("running", "lucius-running-anim")
+      .withFloatComparisonTransition("idle", "walking", 0.01f, logicalComparisonType::Less, "luciusSpeed")
       .withFloatComparisonTransition("walking", "running", 0.5f, logicalComparisonType::Less, "luciusSpeed")
+      .withFloatComparisonTransition("walking", "idle", 0.01f, logicalComparisonType::GreaterEqual, "luciusSpeed")
       .withFloatComparisonTransition("running", "walking", 0.5f, logicalComparisonType::GreaterEqual, "luciusSpeed")
       .build();
 

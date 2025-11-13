@@ -56,9 +56,14 @@ namespace rk
 
   void EightDirectionsSpriteSheetAnimation::reset()
   {
-    m_currentFrame = 0;
+    m_currentFrame = m_description->getInitialFrame();
     m_currentTime = 0.0f;
-    m_timePerFrame = 1.0f / m_description->getFramesPerSecond();
+
+    float framesPerSecond = m_description->getFramesPerSecond();
+    if (framesPerSecond != 0.0f)
+      m_timePerFrame = 1.0f / framesPerSecond;
+
+    updateCurrentRectX();
   }
 
   void EightDirectionsSpriteSheetAnimation::play()
@@ -83,12 +88,16 @@ namespace rk
     updateSpeedModifier();
     updateDirectionAngle();
 
-    m_currentTime += deltaTime;
+    if (m_timePerFrame > 0.0f)
+      m_currentTime += deltaTime;
+    else
+      m_currentTime = -1.0f;
+
     while (m_currentTime >= m_timePerFrame)
     {
       m_currentTime -= m_timePerFrame;
       m_currentFrame = (m_currentFrame + 1) % m_description->getAnimationLength();
-      m_currentRectX = m_currentFrame * m_description->getFrameWidth();
+      updateCurrentRectX();
     }
 
     m_sprite->setTextureRect(calculateTextureRect());
@@ -145,6 +154,11 @@ namespace rk
       sf::Vector2i(m_currentRectX, m_currentRectY),
       m_frameSize
     );
+  }
+
+  void EightDirectionsSpriteSheetAnimation::updateCurrentRectX()
+  {
+    m_currentRectX = m_currentFrame * m_description->getFrameWidth();
   }
 
   void EightDirectionsSpriteSheetAnimation::assertSpriteIsNotNull() const

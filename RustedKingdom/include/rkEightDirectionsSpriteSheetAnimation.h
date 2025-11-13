@@ -52,6 +52,7 @@ namespace rk
 
     UInt32 getSpriteSheetColumnFromAngle(sf::Angle angle) const;
     sf::IntRect calculateTextureRect() const;
+    void updateCurrentRectX();
 
     void assertSpriteIsNotNull() const;
   };
