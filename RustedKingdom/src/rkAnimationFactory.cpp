@@ -22,16 +22,16 @@ namespace rk
     const Blackboard& blackboard
   )
   {
-    EightDirectionsSpriteSheetAnimationDescription* description = m_assetManager
+    const EightDirectionsSpriteSheetAnimationDescription& description = m_assetManager
       .getEightDirectionAnimation(descriptionKey);
 
-    sf::Texture* texture = m_assetManager
-      .getTexture(description->getTextureKey());
+    const sf::Texture& texture = m_assetManager
+      .getTexture(description.getTextureKey());
 
     return MakeUnique<EightDirectionsSpriteSheetAnimation>(
-      *description,
+      description,
       blackboard,
-      *texture
+      texture
     );
   }
 }

@@ -81,11 +81,25 @@ namespace rk
     return false;
   }
 
-  Texture* AssetManager::getTexture(const String& name) const
+  const Texture& AssetManager::getTexture(const String& name) const
   {
     auto it = m_textures.find(name);
     if (it != m_textures.end())
-      return it->second;
+      return *(it->second);
+
+    throw RuntimeErrorException(
+      String::Format(
+        "AssetManager::getTexture: Texture with name '%s' not found.",
+        name.c_str()
+      )
+    );
+  }
+
+  Texture& AssetManager::getTexture(const String& name)
+  {
+    auto it = m_textures.find(name);
+    if (it != m_textures.end())
+      return *(it->second);
 
     throw RuntimeErrorException(
       String::Format(
@@ -114,11 +128,11 @@ namespace rk
     return false;
   }
 
-  TiledMap* AssetManager::getTiledMap(const String& name) const
+  const TiledMap& AssetManager::getTiledMap(const String& name) const
   {
     auto it = m_tiledMaps.find(name);
     if (it != m_tiledMaps.end())
-      return it->second;
+      return *(it->second);
 
     throw RuntimeErrorException(
       String::Format(
@@ -128,17 +142,30 @@ namespace rk
     );
   }
 
+  TiledMap& AssetManager::getTiledMap(const String& key)
+  {
+    auto it = m_tiledMaps.find(key);
+    if (it != m_tiledMaps.end())
+      return *(it->second);
+
+    throw RuntimeErrorException(
+      String::Format(
+        "AssetManager::getTiledMap: TiledMap with name '%s' not found.",
+        key.c_str()
+      )
+    );
+  }
+
   bool AssetManager::loadAssetsFromTiledMap(const String& name)
   {
-    TiledMap* tiledMap = getTiledMap(name);
-    const TileSetsManager& tileSetmanager = tiledMap->getTileSetsManager();
+    TiledMap& tiledMap = getTiledMap(name);
+    const TileSetsManager& tileSetmanager = tiledMap.getTileSetsManager();
 
     SizeT tileSetCount = tileSetmanager.getTileSetsCount();
     for (SizeT i = 0; i < tileSetCount; ++i)
     {
-      const TileSet* tileSet = tileSetmanager.getTileSetAt(i);
-
-      if (!loadAssetsFromTileSet(*tileSet))
+      const TileSet& tileSet = tileSetmanager.getTileSetAt(i);
+      if (!loadAssetsFromTileSet(tileSet))
         return false;
     }
 
@@ -207,13 +234,27 @@ namespace rk
     }
   }
 
-  EightDirectionsSpriteSheetAnimationDescription* AssetManager::getEightDirectionAnimation(
-    const String& key
-  ) const
+  const EightDirectionsSpriteSheetAnimationDescription&
+    AssetManager::getEightDirectionAnimation(const String& key) const
   {
     auto it = m_eightDirectionAnimations.find(key);
     if (it != m_eightDirectionAnimations.end())
-      return it->second;
+      return *(it->second);
+
+    throw RuntimeErrorException(
+      String::Format(
+        "AssetManager::getEightDirectionAnimation: EightDirectionsSpriteSheetAnimationDescription with key '%s' not found.",
+        key.c_str()
+      )
+    );
+  }
+
+  EightDirectionsSpriteSheetAnimationDescription& 
+    AssetManager::getEightDirectionAnimation(const String& key)
+  {
+    auto it = m_eightDirectionAnimations.find(key);
+    if (it != m_eightDirectionAnimations.end())
+      return *(it->second);
 
     throw RuntimeErrorException(
       String::Format(

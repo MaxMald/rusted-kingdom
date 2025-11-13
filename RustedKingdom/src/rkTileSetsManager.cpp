@@ -43,10 +43,10 @@ namespace rk
     return true;
   }
 
-  const TileSet* TileSetsManager::getTileSetAt(const SizeT& index) const
+  const TileSet& TileSetsManager::getTileSetAt(const SizeT& index) const
   {
     assertions::assertIndexInRange(index, m_tileSets.size(), "Tile Set Index");
-    return m_tileSets[index];
+    return *(m_tileSets[index]);
   }
 
   TileDescription TileSetsManager::getTileDescriptionByGid(

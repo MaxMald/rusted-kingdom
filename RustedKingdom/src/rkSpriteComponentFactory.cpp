@@ -20,8 +20,8 @@ namespace rk
   )
   {
     assertAssetManagerHasTexture(textureKey);
-    Texture* texture = m_assetManager->getTexture(textureKey);
-    return  MakeUnique<SpriteComponent>(gameObject, *texture);
+    const Texture& texture = m_assetManager->getTexture(textureKey);
+    return  MakeUnique<SpriteComponent>(gameObject, texture);
   }
 
   UniquePtr<SpriteComponent> SpriteComponentFactory::createSpriteComponent(
@@ -31,10 +31,10 @@ namespace rk
   )
   {
     assertAssetManagerHasTexture(textureKey);
-    Texture* texture = m_assetManager->getTexture(textureKey);
+    const Texture& texture = m_assetManager->getTexture(textureKey);
     return MakeUnique<SpriteComponent>(
       gameObject,
-      *texture,
+      texture,
       textureRect
     );
   }

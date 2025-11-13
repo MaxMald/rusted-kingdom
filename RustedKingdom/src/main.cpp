@@ -39,7 +39,7 @@ int main()
     gameObjectBuilder,
     spriteComponentFactory,
     sceneGraph,
-    *assetManager.getTiledMap("level-0")
+    assetManager.getTiledMap("level-0")
   );
 
   sf::FloatRect initialRect(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(1920.0f, 1080.0f));

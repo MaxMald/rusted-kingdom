@@ -4,26 +4,17 @@
 namespace rk
 {
   SpriteSheet::SpriteSheet(
-    sf::Texture* texture,
+    const sf::Texture& texture,
     UInt32 spriteWidth,
     UInt32 spriteHeight
-  )
-    : m_texture(texture)
-    , m_spriteWidth(spriteWidth)
-    , m_spriteHeight(spriteHeight)
+  ) :
+    m_texture(texture),
+    m_spriteWidth(spriteWidth),
+    m_spriteHeight(spriteHeight)
   {
-    if (m_texture)
-    {
-      m_numSpritesX = m_texture->getSize().x / m_spriteWidth;
-      m_numSpritesY = m_texture->getSize().y / m_spriteHeight;
-      m_totalNumSprites = m_numSpritesX * m_numSpritesY;
-    }
-    else
-    {
-      m_numSpritesX = 0;
-      m_numSpritesY = 0;
-      m_totalNumSprites = 0;
-    }
+    m_numSpritesX = m_texture.getSize().x / m_spriteWidth;
+    m_numSpritesY = m_texture.getSize().y / m_spriteHeight;
+    m_totalNumSprites = m_numSpritesX * m_numSpritesY;
   }
 
   SpriteSheet::~SpriteSheet()
@@ -33,12 +24,12 @@ namespace rk
 
   const sf::Texture& SpriteSheet::getTexture() const
   {
-    return *m_texture;
+    return m_texture;
   }
 
   sf::IntRect SpriteSheet::getSpriteRect(UInt32 index) const
   {
-    if (m_numSpritesX == 0 || m_numSpritesY == 0 || !m_texture)
+    if (m_numSpritesX == 0 || m_numSpritesY == 0)
     {
       throw OutOfRangeException(
         "SpriteSheet::getSpriteRect: No sprites available in the sprite sheet."
@@ -52,7 +43,7 @@ namespace rk
 
   sf::IntRect SpriteSheet::getSpriteRect(UInt32 xIndex, UInt32 yIndex) const
   {
-    if (!m_texture || xIndex >= m_numSpritesX || yIndex >= m_numSpritesY)
+    if (xIndex >= m_numSpritesX || yIndex >= m_numSpritesY)
     {
       throw OutOfRangeException(
         String::Format(

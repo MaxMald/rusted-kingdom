@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics/Rect.hpp>
 #include "rkPrerequisites.h"
+#include "rkNonCopyable.h"
 
 namespace sf
 {
@@ -19,7 +20,7 @@ namespace rk
    * rectangles by index or grid position, and query the number of sprites in
    * each dimension.
    */
-  class SpriteSheet
+  class SpriteSheet : public NonCopyable
   {
   public:
       /**
@@ -29,7 +30,7 @@ namespace rk
        * @param spriteWidth Width of each individual sprite in pixels.
        * @param spriteHeight Height of each individual sprite in pixels.
        */
-      SpriteSheet(sf::Texture* texture, UInt32 spriteWidth, UInt32 spriteHeight);
+      SpriteSheet(const sf::Texture& texture, UInt32 spriteWidth, UInt32 spriteHeight);
 
       /**
        * @brief Destructor.
@@ -37,10 +38,6 @@ namespace rk
        * Does not delete the texture, which is managed externally.
        */
       ~SpriteSheet();
-
-      // Non-copyable
-      SpriteSheet(const SpriteSheet& other) = delete;
-      SpriteSheet& operator=(const SpriteSheet& other) = delete;
 
       /**
        * @brief Gets the underlying SFML texture.
@@ -90,11 +87,7 @@ namespace rk
       UInt32 getTotalNumSprites() const;
     
   private:
-
-      /**
-       * Pointer to the SFML texture (not owned).
-       */
-      sf::Texture* m_texture;
+      const sf::Texture& m_texture;
       UInt32 m_spriteWidth;
       UInt32 m_spriteHeight;
       UInt32 m_numSpritesX;
