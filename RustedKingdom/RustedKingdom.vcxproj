@@ -163,6 +163,8 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkBoolComparisonAnimationStateTransition.cpp" />
+    <ClCompile Include="src\rkCircleCollider.cpp" />
+    <ClCompile Include="src\rkCollider.cpp" />
     <ClCompile Include="src\rkRigidBodyComponent.cpp" />
     <ClCompile Include="src\rkAnimation.cpp" />
     <ClCompile Include="src\rkAnimationComponent.cpp" />
@@ -216,10 +218,13 @@
     <ClInclude Include="include\rkBlackboardValueGroup.h" />
     <ClInclude Include="include\rkBlueprint.h" />
     <ClInclude Include="include\rkBoolComparisonAnimationStateTransition.h" />
+    <ClInclude Include="include\rkCollider.h" />
+    <ClInclude Include="include\rkColliderType.h" />
     <ClInclude Include="include\rkComponent.h" />
     <ClInclude Include="include\rkComponentType.h" />
     <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimation.h" />
     <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimationDescription.h" />
+    <ClInclude Include="include\rkCircleCollider.h" />
     <ClInclude Include="include\rkEvent.h" />
     <ClInclude Include="include\rkAssetManager.h" />
     <ClInclude Include="include\rkEventsManager.h" />
