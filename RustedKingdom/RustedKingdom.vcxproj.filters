@@ -258,6 +258,9 @@
     <ClCompile Include="src\rkRigidBodyComponentFactory.cpp">
       <Filter>Source Files\scene\gameObjects\components\factories</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkRigidBodyDebuggedComponent.cpp">
+      <Filter>Source Files\scene\gameObjects\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -454,6 +457,9 @@
     </ClInclude>
     <ClInclude Include="include\rkRigidBodyComponentFactory.h">
       <Filter>Header Files\scene\gameObjects\components\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkRigidBodyDebuggedComponent.h">
+      <Filter>Header Files\scene\gameObjects\components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

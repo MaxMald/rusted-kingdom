@@ -30,7 +30,7 @@ namespace rk
     Collider& getCollider() { return *m_collider; }
     const Collider& getCollider() const { return *m_collider; }
 
-  private:
+  protected:
     RigidBody* m_rigidBody;
     UniquePtr<Collider> m_collider;
     PhysicWorld& m_physicWorld;
