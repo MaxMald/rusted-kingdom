@@ -10,10 +10,12 @@ using sf::Vector2f;
 
 namespace rk
 {
+  class GameObject;
+
   class RigidBody : public NonCopyable
   {
   public:
-    RigidBody(rigidBodyType::Type type);
+    RigidBody(rigidBodyType::Type type, GameObject& gameObject);
     ~RigidBody();
 
     float getMass() const { return m_mass; }
@@ -25,8 +27,11 @@ namespace rk
     void setVelocity(const Vector2f& velocity) { m_velocity = velocity; }
 
     void update(float deltaTime);
+    void syncRigidBodyPositionToGameObject();
+    void syncGameObjectPositionToRigidBody();
 
   private:
+    GameObject& m_gameObject;
     float m_mass;
     rigidBodyType::Type m_type;
     Vector2f m_position;

@@ -7,6 +7,7 @@
 namespace rk
 {
   class RigidBody;
+  class GameObject;
 
   /**
   * @brief Manages the simulation and lifetime of all RigidBody instances in the
@@ -23,7 +24,7 @@ namespace rk
     PhysicWorld();
     ~PhysicWorld();
 
-    RigidBody* createRigidBody(rigidBodyType::Type type);
+    RigidBody* createRigidBody(rigidBodyType::Type, GameObject&);
     void destroyRigidBody(RigidBody* rigidBody);
     void update(float deltaTime);
     void clear();
