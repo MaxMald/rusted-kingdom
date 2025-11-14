@@ -35,7 +35,7 @@ namespace rk
       SpriteComponent* spriteComponent = gameObject
         .getComponent<SpriteComponent>(rk::componentType::Sprite);
 
-      sf::Vector2f spriteOrigin(50.0f, 100.0f);
+      sf::Vector2f spriteOrigin(50.0f, 80.0f);
 
       spriteComponent->setOrigin(spriteOrigin);
     }

@@ -77,7 +77,8 @@ namespace rk
         *lucius,
         rigidBodyType::Type::Kinematic,
         Vector2f(0.0f, 0.0f),
-        40.0f
+        20.0f,
+        true
       )
     );
 

@@ -23,7 +23,8 @@ namespace rk
       GameObject& gameObject,
       rigidBodyType::Type type,
       const Vector2f& center,
-      float radius
+      float radius,
+      bool debug = false
     );
 
   private:

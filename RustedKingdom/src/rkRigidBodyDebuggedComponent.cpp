@@ -38,12 +38,13 @@ namespace rk
       const CircleCollider* circleCollider = static_cast<const CircleCollider*>(
         m_collider.get()
       );
+
       debugCircleCollider(target, states, *circleCollider);
     }
   }
   void RigidBodyDebuggedComponent::debugCircleCollider(
     sf::RenderTarget& target,
-    sf::RenderStates states,
+    sf::RenderStates,
     const CircleCollider& circleCollider
   ) const
   {
@@ -55,6 +56,6 @@ namespace rk
     debugShape.setFillColor(sf::Color::Transparent);
     debugShape.setOutlineColor(sf::Color::Green);
     debugShape.setOutlineThickness(2.0f);
-    target.draw(debugShape, states);
+    target.draw(debugShape);
   }
 }
