@@ -1,12 +1,18 @@
 #include "rkRigidBody.h"
 #include "rkGameObject.h"
+#include "rkCollider.h"
 
 using sf::Transform;
 
 namespace rk
 {
-  RigidBody::RigidBody(rigidBodyType::Type type, GameObject& gameObject) :
+  RigidBody::RigidBody(
+    rigidBodyType::Type type,
+    Collider& collider,
+    GameObject& gameObject
+  ) :
     m_gameObject(gameObject),
+    m_collider(collider),
     m_mass(1.0f),
     m_type(type),
     m_position(0.0f, 0.0f),
@@ -22,10 +28,15 @@ namespace rk
   {
     if (m_type == rigidBodyType::Kinematic)
       m_position = m_position + (m_velocity * deltaTime);
+
+    m_collider.setCenter(m_position);
   }
 
   void RigidBody::syncRigidBodyPositionToGameObject()
   {
+    if (m_type == rigidBodyType::Static)
+      return;
+
     GameObject* parent = m_gameObject.getParent();
     Transform parentWorldTransform = parent
       ? parent->getWorldTransform()

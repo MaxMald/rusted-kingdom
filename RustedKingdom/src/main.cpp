@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <TMR/tmrTiledMapReader.h>
 #include <TMR/tmrTiledMap.h>
+
 #include "rkAssetManager.h"
 #include "rkSceneGraph.h"
 #include "rkSpriteSheet.h"
@@ -12,6 +13,7 @@
 #include "rkLuciusBlueprint.h"
 #include "rkAnimationFactory.h"
 #include "rkPhysicWorld.h"
+#include "rkRigidBodyComponentFactory.h"
 
 #include "scripts/rkLucius.h"
 
@@ -62,11 +64,12 @@ int main()
   );
 
   rk::AnimationFactory animationFactory(assetManager);
+  rk::RigidBodyComponentFactory rigidBodyComponentFactory(physicWorld);
   rk::LuciusBlueprint luciusBlueprint(
     gameObjectBuilder,
     spriteComponentFactory,
     animationFactory,
-    physicWorld,
+    rigidBodyComponentFactory,
     window
   );
 

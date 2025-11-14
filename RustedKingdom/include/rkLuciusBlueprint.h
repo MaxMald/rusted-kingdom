@@ -15,7 +15,7 @@ namespace rk
   class GameObjectBuilder;
   class SpriteComponentFactory;
   class AnimationFactory;
-  class PhysicWorld;
+  class RigidBodyComponentFactory;
 
   class LuciusBlueprint : public Blueprint
   {
@@ -24,7 +24,7 @@ namespace rk
       GameObjectBuilder& gameObjectBuilder,
       SpriteComponentFactory& spriteComponentFactory,
       AnimationFactory& animationFactory,
-      PhysicWorld& physicWorld,
+      RigidBodyComponentFactory& rigidBodyComponentFactory,
       const RenderWindow& renderWindow
     );
     ~LuciusBlueprint() override;
@@ -35,7 +35,7 @@ namespace rk
     GameObjectBuilder& m_gameObjectBuilder;
     SpriteComponentFactory& m_spriteComponentFactory;
     AnimationFactory& m_animationFactory;
-    PhysicWorld& m_physicWorld;
+    RigidBodyComponentFactory& m_rigidBodyComponentFactory;
     const RenderWindow& m_renderWindow;
   };
 }

@@ -9,7 +9,7 @@
 #include "rkAnimationStateMachineComponent.h"
 #include "rkAnimationStateMachine.h"
 #include "rkRigidBodyComponent.h"
-#include "rkPhysicWorld.h"
+#include "rkRigidBodyComponentFactory.h"
 #include "scripts/rkLucius.h"
 
 using sf::IntRect;
@@ -21,13 +21,13 @@ namespace rk
     GameObjectBuilder& gameObjectBuilder, 
     SpriteComponentFactory& spriteComponentFactory, 
     AnimationFactory& animationFactory,
-    PhysicWorld& physicWorld,
+    RigidBodyComponentFactory& rigidBodyComponentFactory,
     const RenderWindow& renderWindow
   ) :
     m_gameObjectBuilder(gameObjectBuilder),
     m_spriteComponentFactory(spriteComponentFactory),
     m_animationFactory(animationFactory),
-    m_physicWorld(physicWorld),
+    m_rigidBodyComponentFactory(rigidBodyComponentFactory),
     m_renderWindow(renderWindow)
   {
   }
@@ -73,10 +73,11 @@ namespace rk
     );
 
     lucius->addComponent(
-      MakeUnique<RigidBodyComponent>(
+      m_rigidBodyComponentFactory.createWithCircleCollider(
         *lucius,
-        m_physicWorld,
-        rigidBodyType::Kinematic
+        rigidBodyType::Type::Kinematic,
+        Vector2f(0.0f, 0.0f),
+        40.0f
       )
     );
 

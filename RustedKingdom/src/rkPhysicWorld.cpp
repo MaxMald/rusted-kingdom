@@ -15,10 +15,16 @@ namespace rk
 
   RigidBody* PhysicWorld::createRigidBody(
     rigidBodyType::Type type,
+    Collider& collider,
     GameObject& gameObject
   )
   {
-    UniquePtr<RigidBody> rigidBody = MakeUnique<RigidBody>(type, gameObject);
+    UniquePtr<RigidBody> rigidBody = MakeUnique<RigidBody>(
+      type,
+      collider,
+      gameObject
+    );
+
     RigidBody* rawPtr = rigidBody.get();
     m_rigidBodies.push_back(std::move(rigidBody));
     return rawPtr;
@@ -40,13 +46,13 @@ namespace rk
   }
 
   void PhysicWorld::update(float deltaTime)
-  { 
+  {
     for (const auto& rigidBody : m_rigidBodies)
       rigidBody->syncGameObjectPositionToRigidBody();
 
     for (const auto& rigidBody : m_rigidBodies)
       rigidBody->update(deltaTime);
-    
+
     for (const auto& rigidBody : m_rigidBodies)
       rigidBody->syncRigidBodyPositionToGameObject();
   }

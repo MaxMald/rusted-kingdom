@@ -189,6 +189,7 @@
     <ClCompile Include="src\rkPhysicWorld.cpp" />
     <ClCompile Include="src\rkReferenceTileSet.cpp" />
     <ClCompile Include="src\rkRigidBody.cpp" />
+    <ClCompile Include="src\rkRigidBodyComponentFactory.cpp" />
     <ClCompile Include="src\rkSceneGraph.cpp" />
     <ClCompile Include="src\rkScriptComponent.cpp" />
     <ClCompile Include="src\rkSpriteComponent.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="include\rkBlueprint.h" />
     <ClInclude Include="include\rkBoolComparisonAnimationStateTransition.h" />
     <ClInclude Include="include\rkCollider.h" />
+    <ClInclude Include="include\rkRigidBodyComponentFactory.h" />
     <ClInclude Include="include\rkColliderType.h" />
     <ClInclude Include="include\rkComponent.h" />
     <ClInclude Include="include\rkComponentType.h" />

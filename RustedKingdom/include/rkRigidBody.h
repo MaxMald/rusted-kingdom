@@ -11,11 +11,12 @@ using sf::Vector2f;
 namespace rk
 {
   class GameObject;
+  class Collider;
 
   class RigidBody : public NonCopyable
   {
   public:
-    RigidBody(rigidBodyType::Type type, GameObject& gameObject);
+    RigidBody(rigidBodyType::Type, Collider&, GameObject&);
     ~RigidBody();
 
     float getMass() const { return m_mass; }
@@ -32,6 +33,7 @@ namespace rk
 
   private:
     GameObject& m_gameObject;
+    Collider& m_collider;
     float m_mass;
     rigidBodyType::Type m_type;
     Vector2f m_position;
