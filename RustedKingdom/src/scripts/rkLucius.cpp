@@ -8,6 +8,7 @@
 #include "rkBlackboard.h"
 #include "rkSpriteComponent.h"
 #include "rkSteerForces.h"
+#include "rkRigidBodyComponent.h"
 
 namespace rk
 {
@@ -15,6 +16,7 @@ namespace rk
     : ScriptComponent(gameObject, "lucius"),
     m_currentVelocity(0.0f, 0.0f),
     m_animationComponent(nullptr),
+    m_rigidBodyComponent(nullptr),
     m_renderWindow(renderWindow)
   {
     m_animationComponent = gameObject
@@ -37,6 +39,17 @@ namespace rk
 
       spriteComponent->setOrigin(spriteOrigin);
     }
+
+    m_rigidBodyComponent = gameObject
+      .getComponent<RigidBodyComponent>(rk::componentType::RigidBody);
+
+    if (m_rigidBodyComponent == nullptr)
+    {
+      throw RuntimeErrorException(
+        "Lucius script component requires a RigidBody component to be present in"
+        "the same GameObject."
+      );
+    }
   }
 
   Lucius::~Lucius()
@@ -45,6 +58,8 @@ namespace rk
 
   void Lucius::onUpdate(float deltaTime)
   {
+    (void)deltaTime;
+
     const float maxSpeed = 100.0f;
     const float mass = 200.0f;
 
@@ -65,28 +80,25 @@ namespace rk
       m_currentVelocity + seekForce,
       maxSpeed
     );
-
-    m_gameObject->setPosition(
-      m_gameObject->getPosition() + m_currentVelocity * deltaTime
-    );
+    m_rigidBodyComponent->setVelocity(m_currentVelocity);
 
     updateAnimationStateMachine();
   }
 
   void Lucius::updateAnimationStateMachine()
   {
+    Vector2f velocity = m_rigidBodyComponent->getVelocity();
+
     m_animationComponent->getBlackboard()
       .getFloatValues()
-      .setValue("luciusSpeed", m_currentVelocity.length() / 100.0f);
+      .setValue("luciusSpeed", velocity.length() / 100.0f);
 
     m_animationComponent->getBlackboard()
       .getAngleValues()
-      .setValue("directionAngle", m_currentVelocity.angle());
+      .setValue("directionAngle", velocity.angle());
 
-    /*
     m_animationComponent->getBlackboard()
       .getFloatValues()
-      .setValue("speedModifier", m_currentVelocity.length() / 100.0f);
-    */
+      .setValue("speedModifier", velocity.length() / 100.0f);
   }
 }

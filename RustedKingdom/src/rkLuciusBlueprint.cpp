@@ -8,6 +8,8 @@
 #include "rkSpriteComponent.h"
 #include "rkAnimationStateMachineComponent.h"
 #include "rkAnimationStateMachine.h"
+#include "rkRigidBodyComponent.h"
+#include "rkPhysicWorld.h"
 #include "scripts/rkLucius.h"
 
 using sf::IntRect;
@@ -18,12 +20,14 @@ namespace rk
   LuciusBlueprint::LuciusBlueprint(
     GameObjectBuilder& gameObjectBuilder, 
     SpriteComponentFactory& spriteComponentFactory, 
-    AnimationFactory& animationFactory, 
+    AnimationFactory& animationFactory,
+    PhysicWorld& physicWorld,
     const RenderWindow& renderWindow
   ) :
     m_gameObjectBuilder(gameObjectBuilder),
     m_spriteComponentFactory(spriteComponentFactory),
     m_animationFactory(animationFactory),
+    m_physicWorld(physicWorld),
     m_renderWindow(renderWindow)
   {
   }
@@ -65,6 +69,14 @@ namespace rk
       MakeUnique<AnimationStateMachineComponent>(
         *lucius,
         std::move(animStateMachine)
+      )
+    );
+
+    lucius->addComponent(
+      MakeUnique<RigidBodyComponent>(
+        *lucius,
+        m_physicWorld,
+        rigidBodyType::Kinematic
       )
     );
 

@@ -161,9 +161,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="include\rkBoolComparisonAnimationStateTransition.cpp" />
-    <ClCompile Include="include\rkTiledMap.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\rkBoolComparisonAnimationStateTransition.cpp" />
+    <ClCompile Include="src\rkRigidBodyComponent.cpp" />
     <ClCompile Include="src\rkAnimation.cpp" />
     <ClCompile Include="src\rkAnimationComponent.cpp" />
     <ClCompile Include="src\rkAnimationFactory.cpp" />
@@ -193,6 +193,7 @@
     <ClCompile Include="src\rkSpriteComponentFactory.cpp" />
     <ClCompile Include="src\rkSpriteSheet.cpp" />
     <ClCompile Include="src\rkSpriteSheetTileSet.cpp" />
+    <ClCompile Include="src\rkTiledMap.cpp" />
     <ClCompile Include="src\rkTiledMapBuilder.cpp" />
     <ClCompile Include="src\rkTileSet.cpp" />
     <ClCompile Include="src\rkTileSetGrid.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="include\rkPrerequisites.h" />
     <ClInclude Include="include\rkReferenceTileSet.h" />
     <ClInclude Include="include\rkRigidBody.h" />
+    <ClInclude Include="include\rkRigidBodyComponent.h" />
     <ClInclude Include="include\rkRigidBodyType.h" />
     <ClInclude Include="include\rkSceneGraph.h" />
     <ClInclude Include="include\rkScriptComponent.h" />

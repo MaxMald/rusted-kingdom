@@ -14,6 +14,7 @@ using sf::RenderWindow;
 namespace rk
 {
   class AnimationStateMachineComponent;
+  class RigidBodyComponent;
 
   class Lucius : public ScriptComponent
   {
@@ -26,6 +27,7 @@ namespace rk
 
   private:
     AnimationStateMachineComponent* m_animationComponent;
+    RigidBodyComponent* m_rigidBodyComponent;
     const RenderWindow& m_renderWindow;
     Vector2f m_currentVelocity;
 

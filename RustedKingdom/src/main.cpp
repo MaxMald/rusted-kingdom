@@ -11,6 +11,7 @@
 #include "rkSpriteComponentFactory.h"
 #include "rkLuciusBlueprint.h"
 #include "rkAnimationFactory.h"
+#include "rkPhysicWorld.h"
 
 #include "scripts/rkLucius.h"
 
@@ -25,6 +26,7 @@ int main()
   rk::GameObjectBuilder gameObjectBuilder;
   rk::SceneGraph sceneGraph;
   rk::SpriteComponentFactory spriteComponentFactory(assetManager);
+  rk::PhysicWorld physicWorld;
 
   bool result = false;
   result = assetManager.loadTiledMap("level-0", "maps/level-2.json");
@@ -64,6 +66,7 @@ int main()
     gameObjectBuilder,
     spriteComponentFactory,
     animationFactory,
+    physicWorld,
     window
   );
 
@@ -87,6 +90,7 @@ int main()
     viewsManager.update(deltaTime.asSeconds());
     window.setView(viewsManager.getWorldView());
 
+    physicWorld.update(deltaTime.asSeconds());
     sceneGraph.update(deltaTime.asSeconds());
 
     window.clear();

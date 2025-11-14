@@ -47,6 +47,9 @@ namespace rk
     /** @brief Returns the computed world transform for this object.*/
     const sf::Transform & getWorldTransform() const { return m_worldTransform; }
 
+    /** @brief Returns the world position of this GameObject.*/
+    sf::Vector2f getWorldPosition() const;
+
     /**
      * @brief Adds a component to this GameObject.
      * @param component Unique pointer to the component to add.

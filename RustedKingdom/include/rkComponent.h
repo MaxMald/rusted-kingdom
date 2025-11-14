@@ -4,6 +4,7 @@
 #include <SFML/Graphics/RenderStates.hpp>
 #include "rkPrerequisites.h"
 #include "rkComponentType.h"
+#include "rkNonCopyable.h"
 
 using sf::RenderTarget;
 using sf::RenderStates;
@@ -12,17 +13,10 @@ namespace rk
 {
   class GameObject;
 
-  class Component
+  class Component : NonCopyable
   {
   public:
     Component(GameObject& gameObject, componentType::Type type);
-
-    Component(const Component&) = delete;
-    Component& operator=(const Component&) = delete;
-
-    Component(Component&&) noexcept = delete;
-    Component& operator=(Component&&) noexcept = delete;
-
     virtual ~Component() = default;
 
     componentType::Type getType() const { return m_type; }

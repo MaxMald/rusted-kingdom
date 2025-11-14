@@ -31,6 +31,11 @@ namespace rk
     clearChildren();
   }
 
+  sf::Vector2f GameObject::getWorldPosition() const
+  {
+    return m_worldTransform.transformPoint(sf::Vector2f(0.0f, 0.0f));
+  }
+
   const char* GameObject::getName() const
   {
     return m_name;

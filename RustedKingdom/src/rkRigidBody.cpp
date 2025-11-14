@@ -21,7 +21,7 @@ namespace rk
   void RigidBody::update(float deltaTime)
   {
     if (m_type == rigidBodyType::Kinematic)
-      m_position += m_velocity * deltaTime;
+      m_position = m_position + (m_velocity * deltaTime);
   }
 
   void RigidBody::syncRigidBodyPositionToGameObject()
@@ -40,8 +40,6 @@ namespace rk
 
   void RigidBody::syncGameObjectPositionToRigidBody()
   {
-    m_position = m_gameObject
-      .getWorldTransform()
-      .transformPoint(m_gameObject.getPosition());
+    m_position = m_gameObject.getWorldPosition();
   }
 }

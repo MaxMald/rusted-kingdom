@@ -147,9 +147,6 @@
     <ClCompile Include="src\rkSpriteSheet.cpp">
       <Filter>Source Files\assetManager</Filter>
     </ClCompile>
-    <ClCompile Include="include\rkTiledMap.cpp">
-      <Filter>Source Files\assetManager\tiledMap</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkTileSet.cpp">
       <Filter>Source Files\assetManager\tiledMap</Filter>
     </ClCompile>
@@ -228,9 +225,6 @@
     <ClCompile Include="src\rkFloatComparisonAnimationStateTransition.cpp">
       <Filter>Source Files\animations\stateMachine</Filter>
     </ClCompile>
-    <ClCompile Include="include\rkBoolComparisonAnimationStateTransition.cpp">
-      <Filter>Source Files\animations\stateMachine</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkSpriteComponentFactory.cpp">
       <Filter>Source Files\scene\gameObjects\components\factories</Filter>
     </ClCompile>
@@ -245,6 +239,15 @@
     </ClCompile>
     <ClCompile Include="src\rkPhysicWorld.cpp">
       <Filter>Source Files\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkRigidBodyComponent.cpp">
+      <Filter>Source Files\scene\gameObjects\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkBoolComparisonAnimationStateTransition.cpp">
+      <Filter>Source Files\animations\stateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledMap.cpp">
+      <Filter>Source Files\assetManager\tiledMap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -427,6 +430,9 @@
     </ClInclude>
     <ClInclude Include="include\rkPhysicWorld.h">
       <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkRigidBodyComponent.h">
+      <Filter>Header Files\scene\gameObjects\components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,6 +11,8 @@ namespace rk
       Sprite = 0,
       Animation = 1,
       Script = 2,
+      Collider = 3,
+      RigidBody = 4,
       countTypes
     };
   }

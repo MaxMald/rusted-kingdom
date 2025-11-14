@@ -6,7 +6,7 @@
       "frameWidth": 100,
       "frameHeight": 100,
       "animationLength": 8,
-      "framesPerSecond": 16,
+      "framesPerSecond": 24,
       "initialFrame": 0,
       "directionAngleKey": "directionAngle",
       "speedModifierKey": "speedModifier"

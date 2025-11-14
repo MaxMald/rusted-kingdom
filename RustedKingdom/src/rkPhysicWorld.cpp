@@ -26,10 +26,13 @@ namespace rk
 
   void PhysicWorld::destroyRigidBody(RigidBody* rigidBody)
   {
-    auto it = std::find(
+    auto it = std::find_if(
       m_rigidBodies.begin(),
       m_rigidBodies.end(),
-      rigidBody
+      [rigidBody](const UniquePtr<RigidBody>& ptr)
+      {
+        return ptr.get() == rigidBody;
+      }
     );
 
     if (it != m_rigidBodies.end())
@@ -37,13 +40,13 @@ namespace rk
   }
 
   void PhysicWorld::update(float deltaTime)
-  {
+  { 
     for (const auto& rigidBody : m_rigidBodies)
       rigidBody->syncGameObjectPositionToRigidBody();
 
     for (const auto& rigidBody : m_rigidBodies)
       rigidBody->update(deltaTime);
-
+    
     for (const auto& rigidBody : m_rigidBodies)
       rigidBody->syncRigidBodyPositionToGameObject();
   }
