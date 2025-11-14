@@ -185,6 +185,7 @@
     <ClCompile Include="src\rkLayerGameObject.cpp" />
     <ClCompile Include="src\rkLuciusBlueprint.cpp" />
     <ClCompile Include="src\rkReferenceTileSet.cpp" />
+    <ClCompile Include="src\rkRigidBody.cpp" />
     <ClCompile Include="src\rkSceneGraph.cpp" />
     <ClCompile Include="src\rkScriptComponent.cpp" />
     <ClCompile Include="src\rkSpriteComponent.cpp" />
@@ -238,6 +239,8 @@
     <ClInclude Include="include\rkNonCopyable.h" />
     <ClInclude Include="include\rkPrerequisites.h" />
     <ClInclude Include="include\rkReferenceTileSet.h" />
+    <ClInclude Include="include\rkRigidBody.h" />
+    <ClInclude Include="include\rkRigidBodyType.h" />
     <ClInclude Include="include\rkSceneGraph.h" />
     <ClInclude Include="include\rkScriptComponent.h" />
     <ClInclude Include="include\rkSpriteComponentFactory.h" />
