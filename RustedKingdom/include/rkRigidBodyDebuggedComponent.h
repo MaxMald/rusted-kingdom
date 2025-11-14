@@ -31,5 +31,12 @@ namespace rk
       sf::RenderStates states,
       const CircleCollider& circleCollider
     ) const;
+
+    void debugVelocityArrow(
+      sf::RenderTarget& target,
+      sf::RenderStates states,
+      const Vector2f& position,
+      const Vector2f& velocity
+    ) const;
   };
 }
