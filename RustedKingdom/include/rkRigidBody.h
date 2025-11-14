@@ -14,7 +14,7 @@ namespace rk
   {
   public:
     RigidBody(rigidBodyType::Type type);
-    virtual ~RigidBody();
+    ~RigidBody();
 
     float getMass() const { return m_mass; }
     void setMass(float mass){ m_mass = mass; }

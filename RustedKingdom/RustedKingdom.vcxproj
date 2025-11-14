@@ -184,6 +184,7 @@
     <ClCompile Include="src\rkJson.cpp" />
     <ClCompile Include="src\rkLayerGameObject.cpp" />
     <ClCompile Include="src\rkLuciusBlueprint.cpp" />
+    <ClCompile Include="src\rkPhysicWorld.cpp" />
     <ClCompile Include="src\rkReferenceTileSet.cpp" />
     <ClCompile Include="src\rkRigidBody.cpp" />
     <ClCompile Include="src\rkSceneGraph.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="include\rkLogicalComparisonUtilities.h" />
     <ClInclude Include="include\rkLuciusBlueprint.h" />
     <ClInclude Include="include\rkNonCopyable.h" />
+    <ClInclude Include="include\rkPhysicWorld.h" />
     <ClInclude Include="include\rkPrerequisites.h" />
     <ClInclude Include="include\rkReferenceTileSet.h" />
     <ClInclude Include="include\rkRigidBody.h" />

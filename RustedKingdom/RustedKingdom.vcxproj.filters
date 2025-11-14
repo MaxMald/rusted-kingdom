@@ -124,6 +124,9 @@
     <Filter Include="Header Files\physics">
       <UniqueIdentifier>{c5f01241-4af3-4956-8b63-8d1086b353eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\physics">
+      <UniqueIdentifier>{28ce9d3b-2b4f-4749-b901-553c5bac9b3c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -238,7 +241,10 @@
       <Filter>Source Files\animations\factories</Filter>
     </ClCompile>
     <ClCompile Include="src\rkRigidBody.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkPhysicWorld.cpp">
+      <Filter>Source Files\physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -417,6 +423,9 @@
       <Filter>Header Files\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\rkRigidBodyType.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkPhysicWorld.h">
       <Filter>Header Files\physics</Filter>
     </ClInclude>
   </ItemGroup>
