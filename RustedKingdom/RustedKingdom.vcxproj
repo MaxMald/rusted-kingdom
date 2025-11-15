@@ -165,6 +165,10 @@
     <ClCompile Include="src\rkBoolComparisonAnimationStateTransition.cpp" />
     <ClCompile Include="src\rkCircleCollider.cpp" />
     <ClCompile Include="src\rkCollider.cpp" />
+    <ClCompile Include="src\rkNode.cpp" />
+    <ClCompile Include="src\rkNodeLink.cpp" />
+    <ClCompile Include="src\rkNodeMesh.cpp" />
+    <ClCompile Include="src\rkPathfinder.cpp" />
     <ClCompile Include="src\rkRigidBodyComponent.cpp" />
     <ClCompile Include="src\rkAnimation.cpp" />
     <ClCompile Include="src\rkAnimationComponent.cpp" />
@@ -193,6 +197,7 @@
     <ClCompile Include="src\rkRigidBodyDebuggedComponent.cpp" />
     <ClCompile Include="src\rkSceneGraph.cpp" />
     <ClCompile Include="src\rkScriptComponent.cpp" />
+    <ClCompile Include="src\rkSearchNode.cpp" />
     <ClCompile Include="src\rkSpriteComponent.cpp" />
     <ClCompile Include="src\rkSpriteComponentFactory.cpp" />
     <ClCompile Include="src\rkSpriteSheet.cpp" />
@@ -221,6 +226,10 @@
     <ClInclude Include="include\rkBlueprint.h" />
     <ClInclude Include="include\rkBoolComparisonAnimationStateTransition.h" />
     <ClInclude Include="include\rkCollider.h" />
+    <ClInclude Include="include\rkNode.h" />
+    <ClInclude Include="include\rkNodeLink.h" />
+    <ClInclude Include="include\rkNodeMesh.h" />
+    <ClInclude Include="include\rkPathfinder.h" />
     <ClInclude Include="include\rkRigidBodyComponentFactory.h" />
     <ClInclude Include="include\rkColliderType.h" />
     <ClInclude Include="include\rkComponent.h" />
@@ -256,6 +265,7 @@
     <ClInclude Include="include\rkRigidBodyType.h" />
     <ClInclude Include="include\rkSceneGraph.h" />
     <ClInclude Include="include\rkScriptComponent.h" />
+    <ClInclude Include="include\rkSearchNode.h" />
     <ClInclude Include="include\rkSpriteComponentFactory.h" />
     <ClInclude Include="include\rkSpriteSheet.h" />
     <ClInclude Include="include\rkSpriteSheetTileSet.h" />
