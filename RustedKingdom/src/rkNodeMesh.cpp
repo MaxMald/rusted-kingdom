@@ -13,7 +13,7 @@ namespace rk
     m_xSpacing(xSpacing),
     m_ySpacing(ySpacing)
   {
-    m_nodes.resize(width * height);
+    m_nodes.reserve(width * height);
     for (UInt32 x = 0; x < width; ++x)
     {
       for (UInt32 y = 0; y < height; ++y)

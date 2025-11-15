@@ -28,8 +28,8 @@ namespace rk
     Vector<SharedPtr<SearchNode>> closedList;
     float m_meshWidth;
     float m_meshHeight;
-    float m_1overXSpacing;
-    float m_1overYSpacing;
+    float m_1OverXSpacing;
+    float m_1OverYSpacing;
 
     void clearLists();
     void sortOpenListByFCost();

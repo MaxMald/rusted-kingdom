@@ -27,8 +27,8 @@ namespace rk
 
     m_meshWidth = static_cast<float>(width * xSpacing);
     m_meshHeight = static_cast<float>(height * ySpacing);
-    m_1overXSpacing = 1.0f / static_cast<float>(xSpacing);
-    m_1overYSpacing = 1.0f / static_cast<float>(ySpacing);
+    m_1OverXSpacing = 1.0f / static_cast<float>(xSpacing);
+    m_1OverYSpacing = 1.0f / static_cast<float>(ySpacing);
   }
 
   Pathfinder::~Pathfinder()
@@ -117,9 +117,9 @@ namespace rk
         float bFCost = b->getFCost();
 
         if (aFCost != bFCost)
-          return aFCost - bFCost;
+          return aFCost < bFCost;
         else
-          return a->getHCost() - b->getHCost();
+          return a->getHCost() < b->getHCost();
       }
     );
   }
@@ -238,14 +238,14 @@ namespace rk
     else if (position.x >= m_meshWidth)
       closestX = m_width - 1;
     else
-      closestX = static_cast<UInt32>(round(position.x * m_1overXSpacing));
+      closestX = static_cast<UInt32>(round(position.x * m_1OverXSpacing));
 
     if (position.y < 0.0f)
       closestY = 0;
     else if (position.y >= m_meshHeight)
       closestY = m_height - 1;
     else
-      closestY = static_cast<UInt32>(round(position.y * m_1overYSpacing));
+      closestY = static_cast<UInt32>(round(position.y * m_1OverYSpacing));
 
     return getNodeAt(closestX, closestY);
   }
