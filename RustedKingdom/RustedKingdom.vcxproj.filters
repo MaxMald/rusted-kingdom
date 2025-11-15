@@ -282,6 +282,12 @@
     <ClCompile Include="src\rkNodeLink.cpp">
       <Filter>Source Files\pathfinder</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkPathfinderView.cpp">
+      <Filter>Source Files\pathfinder</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkIsometricTransformation.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -496,6 +502,12 @@
     </ClInclude>
     <ClInclude Include="include\rkNodeLink.h">
       <Filter>Header Files\pathfinder</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkPathfinderView.h">
+      <Filter>Header Files\pathfinder</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkIsometricTransformation.h">
+      <Filter>Header Files\utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
