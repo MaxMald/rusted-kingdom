@@ -21,6 +21,7 @@ namespace rk
     m_isometricPositionTransformer(isometricPositionTransformer),
     m_renderWindow(renderWindow),
     m_agentPathMovement(nullptr),
+    m_pathfinderComponent(nullptr),
     m_currentState(luciusStates::Type::Idle)
   {
   }

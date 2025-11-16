@@ -57,7 +57,11 @@ namespace rk
 
       // Goal check
       if (currentNode->getNode() == endNode)
-        return reconstructPath(currentNode);
+      {
+        Vector<Vector2f> path = reconstructPath(currentNode);
+        addStartAndEndPositionsToPath(path, start, end);
+        return path;
+      }
 
       // For each child (neighbor)
       for (const auto& nodeLink : currentNode->getNode()->getChildren())
@@ -238,15 +242,53 @@ namespace rk
     else if (position.x >= m_meshWidth)
       closestX = m_width - 1;
     else
-      closestX = static_cast<UInt32>(round(position.x * m_1OverXSpacing));
+      closestX = static_cast<UInt32>(round(position.x * m_1OverXSpacing)) % m_width;
 
     if (position.y < 0.0f)
       closestY = 0;
     else if (position.y >= m_meshHeight)
       closestY = m_height - 1;
     else
-      closestY = static_cast<UInt32>(round(position.y * m_1OverYSpacing));
+      closestY = static_cast<UInt32>(round(position.y * m_1OverYSpacing)) % m_height;
 
     return getNodeAt(closestX, closestY);
+  }
+
+  void Pathfinder::addStartAndEndPositionsToPath(
+    Vector<Vector2f>& path,
+    const Vector2f& start,
+    const Vector2f& end
+  ) const
+  {
+    if (path.size() < 2)
+      return;
+
+    // If the distance between the first node and the start position is less than
+    // the distance between the first node and the next node, replace the first
+    // node with the start position.
+
+    Vector2f firstNodePos = path.front();
+    Vector2f nextNodePos = path[1];
+
+    float dtFirstToNext = (nextNodePos - firstNodePos).length();
+    float dtStartToNext = (firstNodePos - start).length();
+
+    if (dtStartToNext < dtFirstToNext)
+      path[0] = start;
+
+    // If the distance between the last node and the end position is less than
+    // the distance between the last node and the previous node, replace the last
+    // node with the end position. Otherwise, append the end position.
+
+    Vector2f lastNodePos = path.back();
+    Vector2f prevNodePos = path[path.size() - 2];
+
+    float dtLastToPrev = (lastNodePos - prevNodePos).length();
+    float dtLastToEnd = (lastNodePos - end).length();
+
+    if (dtLastToEnd < dtLastToPrev)
+      path.back() = end;
+    else
+      path.push_back(end);
   }
 }

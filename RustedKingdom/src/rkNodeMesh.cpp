@@ -49,6 +49,22 @@ namespace rk
         {
           currentNode->addChild(getNodeAt(x, y - 1));
         }
+        if (x + 1 < width && y + 1 < height) // bottom-right neighbor
+        {
+          currentNode->addChild(getNodeAt(x + 1, y + 1));
+        }
+        if (x > 0 && y + 1 < height) // bottom-left neighbor
+        {
+          currentNode->addChild(getNodeAt(x - 1, y + 1));
+        }
+        if (x + 1 < width && y > 0) // top-right neighbor
+        {
+          currentNode->addChild(getNodeAt(x + 1, y - 1));
+        }
+        if (x > 0 && y > 0) // top-left neighbor
+        {
+          currentNode->addChild(getNodeAt(x - 1, y - 1));
+        }
       }
     }
   }

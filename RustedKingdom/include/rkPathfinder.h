@@ -68,5 +68,11 @@ namespace rk
     SharedPtr<Node> getClosestNodeToPosition(
       const Vector2f& position
     ) const;
+
+    void addStartAndEndPositionsToPath(
+      Vector<Vector2f>& path,
+      const Vector2f& start,
+      const Vector2f& end
+    ) const;
   };
 }
