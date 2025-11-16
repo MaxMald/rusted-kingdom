@@ -61,8 +61,10 @@ namespace rk
 
     m_pathfinderComponent = m_gameObject
       ->getComponentOrFail<PathfinderComponent>(rk::componentType::Pathfinder);
+
     m_agentPathMovement = m_gameObject
       ->getScriptComponentWithNameOrFail<AgentPathMovement>("agent-path-movement");
+    m_agentPathMovement->setSpeed(100.0f);
   }
 
   void Lucius::onUpdate(float)

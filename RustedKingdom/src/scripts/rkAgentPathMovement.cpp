@@ -4,6 +4,7 @@
 
 #include "rkGameObject.h"
 #include "rkRigidBodyComponent.h"
+#include "rkCollider.h"
 
 namespace rk
 {
@@ -11,7 +12,8 @@ namespace rk
     : ScriptComponent(gameObject, "agent-path-movement"),
     m_rigidBodyComponent(nullptr),
     m_currentPathPointIndex(0),
-    m_isMoving(false)
+    m_isMoving(false),
+    m_speed(0.0f)
   {
   }
 
@@ -33,6 +35,7 @@ namespace rk
   {
     m_pathPoints.clear();
     m_currentPathPointIndex = 0;
+    m_rigidBodyComponent->setVelocity(Vector2f(0.0f, 0.0f));
     m_isMoving = false;
   }
 
@@ -50,11 +53,8 @@ namespace rk
     if (m_pathPoints.empty())
       return;
 
-    Vector2f currentPosition = m_gameObject->getPosition();
     Vector2f targetPosition = m_pathPoints[m_currentPathPointIndex];
-    Vector2f direction = targetPosition - currentPosition;
-    float distance = direction.length();
-    if (distance < 1.0f) // TODO should be based on collision checking
+    if (m_rigidBodyComponent->getCollider().checkCollision(targetPosition))
     {
       m_currentPathPointIndex++;
       if (m_currentPathPointIndex >= m_pathPoints.size())
@@ -64,14 +64,11 @@ namespace rk
       }
 
       targetPosition = m_pathPoints[m_currentPathPointIndex];
-      direction = targetPosition - currentPosition;
-      distance = direction.length();
     }
 
-    Vector2f normalizedDirection = direction / distance;
-    float speed = 100.0f; // Units per second
-    Vector2f velocity = normalizedDirection * speed;
-    m_rigidBodyComponent->setVelocity(velocity);
+    Vector2f currentPosition = m_gameObject->getPosition();
+    Vector2f direction = (targetPosition - currentPosition).normalized();
+    m_rigidBodyComponent->setVelocity(direction * m_speed);
   }
 
   void AgentPathMovement::onDraw(

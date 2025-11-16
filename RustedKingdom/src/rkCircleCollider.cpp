@@ -3,30 +3,34 @@
 namespace rk
 {
   CircleCollider::CircleCollider() : 
-    Collider(colliderType::Circle), 
-    m_center(0.0f, 0.0f), 
-    m_radius(0.0f)
+    Collider(colliderType::Circle),
+    m_center(0.0f, 0.0f),
+    m_radius(0.0f),
+    m_radiusPow2(0.0f)
   {
   }
 
   CircleCollider::CircleCollider(const Vector2f& center, float radius) : 
     Collider(colliderType::Circle),
     m_center(center),
-    m_radius(radius)
+    m_radius(radius),
+    m_radiusPow2(radius * radius)
   {
   }
 
   CircleCollider::CircleCollider(const CircleCollider& other) : 
     Collider(colliderType::Circle),
     m_center(other.m_center),
-    m_radius(other.m_radius)
+    m_radius(other.m_radius),
+    m_radiusPow2(other.m_radiusPow2)
   {
   }
 
   CircleCollider::CircleCollider(CircleCollider&& other) noexcept :
     Collider(colliderType::Circle),
     m_center(std::move(other.m_center)),
-    m_radius(other.m_radius)
+    m_radius(other.m_radius),
+    m_radiusPow2(other.m_radiusPow2)
   {
   }
 
@@ -40,6 +44,7 @@ namespace rk
     {
       m_center = other.m_center;
       m_radius = other.m_radius;
+      m_radiusPow2 = other.m_radiusPow2;
     }
     return *this;
   }
@@ -50,6 +55,7 @@ namespace rk
     {
       m_center = std::move(other.m_center);
       m_radius = other.m_radius;
+      m_radiusPow2 = other.m_radiusPow2;
     }
     return *this;
   }
@@ -72,6 +78,7 @@ namespace rk
   void CircleCollider::setRadius(float radius)
   {
     m_radius = radius;
+    m_radiusPow2 = radius * radius;
   }
 
   bool CircleCollider::checkCollision(const Collider& other) const
@@ -88,6 +95,12 @@ namespace rk
     throw RuntimeErrorException(
       "CircleCollider::checkCollision: Unsupported collider type."
     );
+  }
+
+  bool CircleCollider::checkCollision(const Vector2f& point) const
+  {
+    Vector2f diff = point - getCenter();
+    return diff.lengthSquared() <= m_radiusPow2;
   }
 
   bool CircleCollider::checkCollisionWithCircle(const CircleCollider& other) const

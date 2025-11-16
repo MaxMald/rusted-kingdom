@@ -25,6 +25,7 @@ namespace rk
     colliderType::Type getType() const { return m_type; }
 
     virtual bool checkCollision(const Collider& other) const = 0;
+    virtual bool checkCollision(const Vector2f& point) const = 0;
 
   private:
     colliderType::Type m_type;

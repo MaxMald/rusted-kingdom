@@ -17,6 +17,8 @@ namespace rk
     virtual ~AgentPathMovement();
 
     bool isMoving() const { return m_isMoving; }
+    float getSpeed() const { return m_speed; }
+    void setSpeed(float speed) { m_speed = speed; }
 
     void start(const Vector<Vector2f>& pathPoints);
     void stop();
@@ -28,8 +30,9 @@ namespace rk
 
   private:
     RigidBodyComponent* m_rigidBodyComponent;
-    bool m_isMoving;
     Vector<Vector2f> m_pathPoints;
     SizeT m_currentPathPointIndex;
+    bool m_isMoving;
+    float m_speed;
   };
 }
