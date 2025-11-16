@@ -21,12 +21,22 @@
  </tile>
  <tile id="6">
   <image source="../../textures/plants/plants-01/bigtree01.png" width="256" height="256"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" type="collider" x="128.842" y="200.921" width="23.8421" height="23.8421">
+    <ellipse/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="7">
   <image source="../../textures/plants/plants-01/bigtree02.png" width="256" height="256"/>
  </tile>
  <tile id="8">
   <image source="../../textures/plants/plants-01/bigtree03.png" width="256" height="256"/>
+  <objectgroup draworder="index" id="2">
+   <object id="2" type="collider" x="133.97" y="204.5" width="24" height="24">
+    <ellipse/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="9">
   <image source="../../textures/plants/plants-01/bush01.png" width="256" height="128"/>
