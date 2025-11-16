@@ -282,11 +282,20 @@
     <ClCompile Include="src\rkNodeLink.cpp">
       <Filter>Source Files\pathfinder</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkPathfinderView.cpp">
+    <ClCompile Include="src\rkPathfinderFactory.cpp">
       <Filter>Source Files\pathfinder</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkIsometricTransformation.cpp">
+    <ClCompile Include="src\rkPathfinderComponent.cpp">
+      <Filter>Source Files\scene\gameObjects\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkIsometricPositionTransformer.cpp">
       <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scripts\rkLuciusAnimation.cpp">
+      <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scripts\rkAgentPathMovement.cpp">
+      <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -503,11 +512,23 @@
     <ClInclude Include="include\rkNodeLink.h">
       <Filter>Header Files\pathfinder</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkPathfinderView.h">
+    <ClInclude Include="include\rkPathfinderFactory.h">
       <Filter>Header Files\pathfinder</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkIsometricTransformation.h">
+    <ClInclude Include="include\rkPathfinderComponent.h">
+      <Filter>Header Files\scene\gameObjects\components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkIsometricPositionTransformer.h">
       <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scripts\rkLuciusStates.h">
+      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scripts\rkLuciusAnimation.h">
+      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scripts\rkAgentPathMovement.h">
+      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

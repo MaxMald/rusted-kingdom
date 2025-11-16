@@ -14,9 +14,9 @@ namespace rk
     m_ySpacing(ySpacing)
   {
     m_nodes.reserve(width * height);
-    for (UInt32 x = 0; x < width; ++x)
+    for (UInt32 y = 0; y < height; ++y)
     {
-      for (UInt32 y = 0; y < height; ++y)
+      for (UInt32 x = 0; x < width; ++x)
       {
         m_nodes.push_back(MakeShared<Node>(
           Vector2f(

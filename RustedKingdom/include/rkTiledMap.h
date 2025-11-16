@@ -4,6 +4,7 @@
 #include <TMR/tmrRenderOrder.h>
 #include "rkPrerequisites.h"
 #include "rkTileSetsManager.h"
+#include "rkIsometricPositionTransformer.h"
 
 namespace tmr
 {
@@ -42,14 +43,16 @@ namespace rk
     String getVersion() const;
     SizeT getLayersCount() const;
     const tmr::MapLayer* getLayerAt(const SizeT& index) const;
-
     TileSetsManager& getTileSetsManager();
     const TileSetsManager& getTileSetsManager() const;
+    const IsometricPositionTransformer& getIsometricPositionTransformer() const;
 
   private:
     tmr::TiledMap* m_tmrTiledMap;
     TileSetsManager m_tileSetsManager;
+    IsometricPositionTransformer m_isometricPositionTransformer;
 
     void clear();
+    void updateIsometricPositionTransformer();
   };
 }

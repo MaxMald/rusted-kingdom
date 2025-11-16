@@ -10,7 +10,11 @@
 #include "rkAnimationStateMachine.h"
 #include "rkRigidBodyComponent.h"
 #include "rkRigidBodyComponentFactory.h"
+#include "rkPathfinderComponent.h"
+
 #include "scripts/rkLucius.h"
+#include "scripts/rkLuciusAnimation.h"
+#include "scripts/rkAgentPathMovement.h"
 
 using sf::IntRect;
 using sf::Vector2i;
@@ -22,12 +26,16 @@ namespace rk
     SpriteComponentFactory& spriteComponentFactory, 
     AnimationFactory& animationFactory,
     RigidBodyComponentFactory& rigidBodyComponentFactory,
+    SharedPtr<Pathfinder> pathfinder,
+    const IsometricPositionTransformer isometricPositionTransformer,
     const RenderWindow& renderWindow
   ) :
     m_gameObjectBuilder(gameObjectBuilder),
     m_spriteComponentFactory(spriteComponentFactory),
     m_animationFactory(animationFactory),
     m_rigidBodyComponentFactory(rigidBodyComponentFactory),
+    m_pathfinder(pathfinder),
+    m_isometricPositionTransformer(isometricPositionTransformer),
     m_renderWindow(renderWindow)
   {
   }
@@ -83,8 +91,22 @@ namespace rk
     );
 
     lucius->addComponent(
-      MakeUnique<Lucius>(*lucius, m_renderWindow)
+      MakeUnique<PathfinderComponent>(*lucius, m_pathfinder)
     );
+
+    lucius->addComponent(
+      MakeUnique<Lucius>(*lucius, m_renderWindow, m_isometricPositionTransformer)
+    );
+
+    lucius->addComponent(
+      MakeUnique<LuciusAnimation>(*lucius)
+    );
+
+    lucius->addComponent(
+      MakeUnique<AgentPathMovement>(*lucius)
+    );
+
+    lucius->onCreate(); // TODO Should not be exposed
 
     return lucius;
   }

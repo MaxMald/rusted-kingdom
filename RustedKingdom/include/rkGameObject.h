@@ -72,6 +72,17 @@ namespace rk
     T* getComponent(componentType::Type type);
 
     /**
+     * @brief Retrieves a component of the specified type, throwing an exception
+     * if not found.
+     * 
+     * @param type The type of component to retrieve.
+     * @return Pointer to the component.
+     * @throws RuntimeErrorException if the component is not found.
+     */
+    template<typename T>
+    T* getComponentOrFail(componentType::Type type);
+
+    /**
      * @brief Retrieves all components of the specified type.
      * @param type The type of components to retrieve.
      * @return Vector of pointers to the components found.
@@ -101,7 +112,19 @@ namespace rk
      * @param scriptName Name of the script to retrieve.
      * @return Pointer to the ScriptComponent if found, nullptr otherwise.
      */
-    ScriptComponent* getScriptComponentWithName(const String& scriptName);
+    template<typename T>
+    T* getScriptComponentWithName(const String& scriptName);
+
+    /**
+     * @brief Retrieves the ScriptComponent with the specified script name,
+     * throwing an exception if not found.
+     * 
+     * @param scriptName Name of the script to retrieve.
+     * @return Pointer to the ScriptComponent.
+     * @throws RuntimeErrorException if the ScriptComponent is not found.
+     */
+    template<typename T>
+    T* getScriptComponentWithNameOrFail(const String& scriptName);
 
     /**
      * @brief Adds a child GameObject to this object.
@@ -178,6 +201,11 @@ namespace rk
      */
     void updateTransform();
 
+    /**
+     * @brief Called when the GameObject is created.
+     */
+    void onCreate();
+
   protected:
 
     /**
@@ -238,6 +266,23 @@ namespace rk
   }
 
   template<typename T>
+  T* GameObject::getComponentOrFail(componentType::Type type)
+  {
+    T* component = getComponent<T>(type);
+    if (!component)
+    {
+      throw RuntimeErrorException(
+        String::Format(
+          "GameObject::getComponentOrFail: Component of type %d not found in GameObject '%s'.",
+          static_cast<int>(type),
+          m_name
+        )
+      );
+    }
+    return component;
+  }
+
+  template<typename T>
   Vector<T*> GameObject::getComponents(componentType::Type type)
   {
     Vector<T*> result;
@@ -265,5 +310,38 @@ namespace rk
       }
     }
     return result;
+  }
+
+  template<typename T>
+  T* GameObject::getScriptComponentWithName(const String& scriptName)
+  {
+    Vector<ScriptComponent*> scripts = getComponents<ScriptComponent>(componentType::Type::Script);
+    for (const auto& script : scripts)
+    {
+      if (script->getScriptName() == scriptName)
+        return dynamic_cast<T*>(script);
+    }
+
+    return nullptr;
+  }
+
+  template<typename T>
+  T* GameObject::getScriptComponentWithNameOrFail(const String& scriptName)
+  {
+    T* script = getScriptComponentWithName<T>(scriptName);
+
+    if (!script)
+    {
+      throw RuntimeErrorException(
+        String::Format(
+          "GameObject::getScriptComponentWithNameOrFail: "
+          "ScriptComponent with name '%s' not found in GameObject '%s'.",
+          scriptName.c_str(),
+          m_name
+        )
+      );
+    }
+
+    return script;
   }
 }

@@ -72,21 +72,6 @@ namespace rk
     return false;
   }
 
-  ScriptComponent* GameObject::getScriptComponentWithName(const String& scriptName)
-  {
-    Vector<ScriptComponent*> scripts = getComponents<ScriptComponent>(
-      componentType::Type::Script
-    );
-
-    for (const auto& script : scripts)
-    {
-      if (script->getScriptName() == scriptName)
-        return script;
-    }
-
-    return nullptr;
-  }
-
   void GameObject::addChild(UniquePtr<GameObject> child)
   {
     if (!child)
@@ -188,5 +173,14 @@ namespace rk
     for (auto& component : m_components)
       component->onDelete();
     m_components.clear();
+  }
+
+  void GameObject::onCreate()
+  {
+    for (auto& component : m_components)
+      component->onCreate();
+
+    for (auto& child : m_children)
+      child->onCreate();
   }
 }

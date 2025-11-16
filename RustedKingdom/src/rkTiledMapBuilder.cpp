@@ -14,7 +14,6 @@
 #include "rkGameObjectBuilder.h"
 #include "rkSpriteComponentFactory.h"
 #include "rkSpriteComponent.h"
-#include "rkIsometricTransformation.h"
 
 namespace rk
 {
@@ -35,6 +34,8 @@ namespace rk
     const SizeT numLayers = tiledMap.getLayersCount();
     const Int32 tileWidth = tiledMap.getTileWidth();
     const Int32 tileHeight = tiledMap.getTileHeight();
+    const IsometricPositionTransformer isometricPositionTransformer =
+      tiledMap.getIsometricPositionTransformer();
 
     for (SizeT layerIndex = 0; layerIndex < numLayers; ++layerIndex)
     {
@@ -52,7 +53,8 @@ namespace rk
           tileWidth,
           tileHeight,
           *tileMapLayer,
-          tiledMap.getTileSetsManager()
+          tiledMap.getTileSetsManager(),
+          isometricPositionTransformer
         );
       }
 
@@ -65,10 +67,9 @@ namespace rk
           gameObjectBuilder,
           spriteComponentFactory,
           sceneGraph,
-          tileWidth,
-          tileHeight,
           *objectGroupLayer,
-          tiledMap.getTileSetsManager()
+          tiledMap.getTileSetsManager(),
+          isometricPositionTransformer
         );
       }
     }
@@ -81,13 +82,13 @@ namespace rk
     const Int32& tileWidth,
     const Int32& tileHeight,
     const tmr::TileMapLayer& tileMapLayer,
-    const TileSetsManager& tileSetsManager
+    const TileSetsManager& tileSetsManager,
+    const IsometricPositionTransformer& isometricPositionTransformer
   )
   {
     Int32 numCols = tileMapLayer.getWidth();
     Int32 numRows = tileMapLayer.getHeight();
-    UInt32 halfTileWidth = static_cast<UInt32>(tileWidth) * 0.5f;
-    UInt32 halfTileHeight = static_cast<UInt32>(tileHeight) * 0.5f;
+    float halfTileWidth = static_cast<float>(tileWidth) * 0.5f;
 
     LayerGameObject* layerGameObject = new LayerGameObject(
       tileMapLayer.getName()
@@ -106,11 +107,9 @@ namespace rk
         TileDescription tileDescription = tileSetsManager
           .getTileDescriptionByGid(gid);
 
-        Vector2f tilePosition = isometricTransformation::isometricToWorld(
-          static_cast<float>(col),
-          static_cast<float>(row),
-          halfTileWidth,
-          halfTileHeight
+        Vector2f tilePosition = isometricPositionTransformer.isometricToWorld(
+          static_cast<float>(col) * tileHeight,
+          static_cast<float>(row) * tileHeight
         );
 
         GameObject* tileGameObject = gameObjectBuilder
@@ -126,10 +125,7 @@ namespace rk
           );
 
         spriteComponent->setOrigin(
-          Vector2f(
-            static_cast<float>(tileWidth) * 0.5f,
-            0.0f
-          )
+          Vector2f(halfTileWidth, 0.0f)
         );
 
         tileGameObject->addComponent(std::move(spriteComponent));
@@ -141,16 +137,11 @@ namespace rk
     GameObjectBuilder& gameObjectBuilder,
     SpriteComponentFactory& spriteComponentFactory,
     SceneGraph& sceneGraph,
-    const Int32& tileWidth,
-    const Int32& tileHeight,
     const tmr::ObjectGroupMapLayer& objectGroupLayer,
-    const TileSetsManager& tileSetsManager
+    const TileSetsManager& tileSetsManager,
+    const IsometricPositionTransformer& isometricPositionTransformer
   )
   {
-    const float halfTileWidth = static_cast<float>(tileWidth) * 0.5f;
-    const float halfTileHeight = static_cast<float>(tileHeight) * 0.5f;
-    const float normalizationFactor = 1.0f / static_cast<float>(tileHeight);
-
     LayerGameObject* layerGameObject = new LayerGameObject(
       objectGroupLayer.getName()
     );
@@ -167,11 +158,9 @@ namespace rk
       TileDescription tileDescription = tileSetsManager
         .getTileDescriptionByGid(object->getGid());
 
-      Vector2f tilePosition = isometricTransformation::isometricToWorld(
-        object->getX() * normalizationFactor,
-        object->getY() * normalizationFactor,
-        static_cast<UInt32>(halfTileWidth),
-        static_cast<UInt32>(halfTileHeight)
+      Vector2f tilePosition = isometricPositionTransformer.isometricToWorld(
+        object->getX(),
+        object->getY()
       );
 
       GameObject* objectGameObject =  gameObjectBuilder
@@ -187,33 +176,5 @@ namespace rk
         )
       );
     }
-  }
-
-  Vector2f TiledSceneBuilder::computeIsometricToWorldPosition(
-    const float& x,
-    const float& y,
-    const Int32& halfWidth,
-    const Int32& halfHeight
-  )
-  {
-    float wX = ((static_cast<float>(x)) - static_cast<float>(y)) + halfWidth;
-    float wY = ((static_cast<float>(x)) + static_cast<float>(y)) * halfHeight / halfWidth;
-    return Vector2f(wX, wY);
-  }
-
-  Vector2f TiledSceneBuilder::computeTilePositionIsometric(
-    const Int32& col,
-    const Int32& row,
-    const Int32& tileWidth,
-    const Int32& tileHeight
-  )
-  {
-    const float halfW = static_cast<float>(tileWidth) * 0.5f;
-    const float halfH = static_cast<float>(tileHeight) * 0.5f;
-
-    float x = ((static_cast<float>(col) - static_cast<float>(row)) * halfW);
-    float y = (static_cast<float>(col) + static_cast<float>(row)) * halfH;
-
-    return Vector2f(x, y);
   }
 }

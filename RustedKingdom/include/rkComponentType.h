@@ -13,6 +13,7 @@ namespace rk
       Script = 2,
       Collider = 3,
       RigidBody = 4,
+      Pathfinder = 5,
       countTypes
     };
   }

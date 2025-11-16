@@ -7,7 +7,8 @@ namespace rk
 {
   TiledMap::TiledMap() :
     m_tmrTiledMap(nullptr),
-    m_tileSetsManager()
+    m_tileSetsManager(),
+    m_isometricPositionTransformer()
   {
   }
 
@@ -34,6 +35,8 @@ namespace rk
 
       Path rootDirectory = filename.parent_path();
       m_tileSetsManager.load(rootDirectory, *loadedTiledMap);
+
+      updateIsometricPositionTransformer();
     }
     catch (const std::exception& /*e*/)
     {
@@ -129,6 +132,11 @@ namespace rk
     return m_tileSetsManager;
   }
 
+  const IsometricPositionTransformer& TiledMap::getIsometricPositionTransformer() const
+  {
+    return m_isometricPositionTransformer;
+  }
+
   void TiledMap::clear()
   {
     if (m_tmrTiledMap)
@@ -138,5 +146,16 @@ namespace rk
     }
 
     m_tileSetsManager.clear();
+  }
+
+  void TiledMap::updateIsometricPositionTransformer()
+  {
+    if (m_tmrTiledMap->getOrientation() == tmr::orientation::Type::Isometric)
+    {
+      m_isometricPositionTransformer = IsometricPositionTransformer(
+        static_cast<UInt32>(m_tmrTiledMap->getTileWidth()),
+        static_cast<UInt32>(m_tmrTiledMap->getTileHeight())
+      );
+    }
   }
 }

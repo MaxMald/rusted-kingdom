@@ -24,6 +24,7 @@ namespace rk
   protected:
     GameObject* m_gameObject;
 
+    virtual void onCreate();
     virtual void onUpdate(float deltaTime);
     virtual void onDraw(sf::RenderTarget& target, sf::RenderStates states) const;
     virtual void onDelete();

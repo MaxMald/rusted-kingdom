@@ -8,6 +8,10 @@ namespace rk
   {
   }
 
+  void Component::onCreate()
+  {
+  }
+
   void Component::onUpdate(float deltaTime)
   {
     (void)deltaTime;

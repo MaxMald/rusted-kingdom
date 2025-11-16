@@ -6,6 +6,7 @@
 #include "rkSceneGraph.h"
 #include "rkSpriteSheet.h"
 #include "rkTiledMapBuilder.h"
+#include "rkTiledMap.h"
 #include "rkViewsManager.h"
 #include "rkGameObjectBuilder.h"
 #include "rkGameObject.h"
@@ -15,7 +16,7 @@
 #include "rkPhysicWorld.h"
 #include "rkRigidBodyComponentFactory.h"
 #include "rkPathfinder.h"
-#include "rkPathfinderView.h";
+#include "rkPathfinderFactory.h"
 
 #include "scripts/rkLucius.h"
 
@@ -65,6 +66,11 @@ int main()
     "animations/luciusAnimationBundle.json"
   );
 
+  rk::TiledMap& tiledMap = assetManager.getTiledMap("level-0");
+  rk::SharedPtr<rk::Pathfinder> pathfinder = rk::pathfinderFactory::createFromIsometricTiledMap(
+    tiledMap
+  );
+
   rk::AnimationFactory animationFactory(assetManager);
   rk::RigidBodyComponentFactory rigidBodyComponentFactory(physicWorld);
   rk::LuciusBlueprint luciusBlueprint(
@@ -72,20 +78,14 @@ int main()
     spriteComponentFactory,
     animationFactory,
     rigidBodyComponentFactory,
+    pathfinder,
+    tiledMap.getIsometricPositionTransformer(),
     window
   );
 
   luciusBlueprint.instantiate(
     *sceneGraph.getRoot()
   );
-
-  rk::Pathfinder pathfinder(10, 10, 64, 64);
-  rk::Vector<sf::Vector2f> path = pathfinder.findPath(
-    sf::Vector2f(34.0f, 34.0f),
-    sf::Vector2f(750.0f, 750.0f)
-  );
-
-  rk::PathfinderView pathfinderView(pathfinder);
   
   sf::Clock deltaClock;
   while (window.isOpen())
@@ -108,7 +108,6 @@ int main()
 
     window.clear();
     window.draw(sceneGraph);
-    window.draw(pathfinderView);
     window.display();
   }
 

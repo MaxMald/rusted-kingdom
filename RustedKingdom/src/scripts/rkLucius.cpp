@@ -4,101 +4,79 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "rkGameObject.h"
-#include "rkAnimationStateMachineComponent.h"
-#include "rkBlackboard.h"
 #include "rkSpriteComponent.h"
 #include "rkSteerForces.h"
-#include "rkRigidBodyComponent.h"
+#include "rkPathfinderComponent.h"
+
+#include "scripts/rkAgentPathMovement.h"
 
 namespace rk
 {
-  Lucius::Lucius(GameObject& gameObject, const RenderWindow& renderWindow)
+  Lucius::Lucius(
+    GameObject& gameObject, 
+    const RenderWindow& renderWindow,
+    const IsometricPositionTransformer isometricPositionTransformer
+  )
     : ScriptComponent(gameObject, "lucius"),
-    m_currentVelocity(0.0f, 0.0f),
-    m_animationComponent(nullptr),
-    m_rigidBodyComponent(nullptr),
-    m_renderWindow(renderWindow)
+    m_isometricPositionTransformer(isometricPositionTransformer),
+    m_renderWindow(renderWindow),
+    m_agentPathMovement(nullptr),
+    m_currentState(luciusStates::Type::Idle)
   {
-    m_animationComponent = gameObject
-      .getComponent<AnimationStateMachineComponent>(rk::componentType::Animation);
-
-    if (m_animationComponent == nullptr)
-    {
-      throw RuntimeErrorException(
-        "Lucius script component requires an Animation component to be present in"
-        "the same GameObject."
-      );
-    }
-
-    if (gameObject.hasComponent(rk::componentType::Sprite))
-    {
-      SpriteComponent* spriteComponent = gameObject
-        .getComponent<SpriteComponent>(rk::componentType::Sprite);
-
-      sf::Vector2f spriteOrigin(50.0f, 80.0f);
-
-      spriteComponent->setOrigin(spriteOrigin);
-    }
-
-    m_rigidBodyComponent = gameObject
-      .getComponent<RigidBodyComponent>(rk::componentType::RigidBody);
-
-    if (m_rigidBodyComponent == nullptr)
-    {
-      throw RuntimeErrorException(
-        "Lucius script component requires a RigidBody component to be present in"
-        "the same GameObject."
-      );
-    }
   }
 
   Lucius::~Lucius()
   {
   }
 
-  void Lucius::onUpdate(float deltaTime)
+  void Lucius::goTo(const Vector2f& position)
   {
-    (void)deltaTime;
-
-    const float maxSpeed = 100.0f;
-    const float mass = 200.0f;
-
-    sf::Vector2i mousePosition = sf::Mouse::getPosition(m_renderWindow);
-    Vector2f target = m_renderWindow.mapPixelToCoords(mousePosition);
-
-    Vector2f seekForce = steerForces::seek(
-      m_gameObject->getPosition(),
-      target,
-      m_currentVelocity,
-      maxSpeed
+    Vector2f startIso = m_isometricPositionTransformer.worldToIsometric(
+      m_gameObject->getPosition()
     );
 
-    if (seekForce.length() > 0.0f)
-      seekForce = seekForce / mass;
-
-    m_currentVelocity = vector2Utilities::truncated(
-      m_currentVelocity + seekForce,
-      maxSpeed
+    Vector2f endIso = m_isometricPositionTransformer.worldToIsometric(
+      position
     );
-    m_rigidBodyComponent->setVelocity(m_currentVelocity);
 
-    updateAnimationStateMachine();
+    Vector<Vector2f> path = m_pathfinderComponent->findPath(startIso, endIso);
+
+    if (path.empty())
+      return;
+
+    for (Vector2f& pathPoint : path)
+      pathPoint = m_isometricPositionTransformer.isometricToWorld(pathPoint);
+
+    m_agentPathMovement->start(path);
   }
 
-  void Lucius::updateAnimationStateMachine()
+  void Lucius::onCreate()
   {
-    Vector2f velocity = m_rigidBodyComponent->getVelocity();
+    SpriteComponent* spriteComponent = m_gameObject
+      ->getComponentOrFail<SpriteComponent>(rk::componentType::Sprite);
 
-    m_animationComponent->getBlackboard()
-      .getFloatValues()
-      .setValue("luciusSpeed", velocity.length() / 100.0f);
+    sf::Vector2f spriteOrigin(50.0f, 80.0f);
+    spriteComponent->setOrigin(spriteOrigin);
 
-    m_animationComponent->getBlackboard()
-      .getAngleValues()
-      .setValue("directionAngle", velocity.angle());
+    m_pathfinderComponent = m_gameObject
+      ->getComponentOrFail<PathfinderComponent>(rk::componentType::Pathfinder);
+    m_agentPathMovement = m_gameObject
+      ->getScriptComponentWithNameOrFail<AgentPathMovement>("agent-path-movement");
+  }
 
-    m_animationComponent->getBlackboard()
-      .getFloatValues()
-      .setValue("speedModifier", velocity.length() / 100.0f);
+  void Lucius::onUpdate(float)
+  {
+    // Check for left mouse button press
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
+    {
+      // Get mouse position in window coordinates
+      sf::Vector2i mousePixelPos = sf::Mouse::getPosition(m_renderWindow);
+
+      // Convert to world coordinates using the window's current view
+      sf::Vector2f mouseWorldPos = m_renderWindow.mapPixelToCoords(mousePixelPos);
+
+      // Call goTo with the world position
+      goTo(mouseWorldPos);
+    }
   }
 }

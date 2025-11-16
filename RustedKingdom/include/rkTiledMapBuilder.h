@@ -18,6 +18,7 @@ namespace rk
   class TileSetsManager;
   class GameObjectBuilder;
   class SpriteComponentFactory;
+  class IsometricPositionTransformer;
 
   /**
    * @brief Helper class to construct a SceneGraph from a Tiled map.
@@ -54,34 +55,17 @@ namespace rk
       const Int32& tileWidth,
       const Int32& tileHeight,
       const tmr::TileMapLayer& tileMapLayer,
-      const TileSetsManager& tileSetsManager
+      const TileSetsManager& tileSetsManager,
+      const IsometricPositionTransformer& isometricPositionTransformer
     );
 
     static void buildFromObjectGroupLayer(
       GameObjectBuilder& gameObjectBuilder,
       SpriteComponentFactory& spriteComponentFactory,
       SceneGraph& sceneGraph,
-      const Int32& tileWidth,
-      const Int32& tileHeight,
       const tmr::ObjectGroupMapLayer& objectGroupLayer,
-      const TileSetsManager& tileSetsManager
-    );
-
-    static Vector2f computeIsometricToWorldPosition(
-      const float& x,
-      const float& y,
-      const Int32& halfWidth,
-      const Int32& halfHeight
-    );
-
-    /**
-     * @brief Compute the world position for an isometric tile.
-     */
-    static Vector2f computeTilePositionIsometric(
-      const Int32& col,
-      const Int32& row,
-      const Int32& tileWidth,
-      const Int32& tileHeight
+      const TileSetsManager& tileSetsManager,
+      const IsometricPositionTransformer& isometricPositionTransformer
     );
   };
 }

@@ -1,7 +1,10 @@
 #pragma once
 
 #include <SFML/System/Vector2.hpp>
+
 #include "rkScriptComponent.h"
+#include "rkIsometricPositionTransformer.h"
+#include "scripts/rkLuciusStates.h"
 
 namespace sf
 {
@@ -13,24 +16,30 @@ using sf::RenderWindow;
 
 namespace rk
 {
-  class AnimationStateMachineComponent;
-  class RigidBodyComponent;
+  class PathfinderComponent;
+  class AgentPathMovement;
 
   class Lucius : public ScriptComponent
   {
   public:
-    Lucius(GameObject& gameObject, const RenderWindow& renderWindow);
+    Lucius(
+      GameObject& gameObject, 
+      const RenderWindow& renderWindow,
+      const IsometricPositionTransformer isometricPositionTransformer
+    );
     virtual ~Lucius();
 
+    void goTo(const Vector2f& position);
+
   protected:
+    virtual void onCreate() override;
     virtual void onUpdate(float deltaTime) override;
 
   private:
-    AnimationStateMachineComponent* m_animationComponent;
-    RigidBodyComponent* m_rigidBodyComponent;
+    IsometricPositionTransformer m_isometricPositionTransformer;
+    PathfinderComponent* m_pathfinderComponent;
+    AgentPathMovement* m_agentPathMovement;
     const RenderWindow& m_renderWindow;
-    Vector2f m_currentVelocity;
-
-    void updateAnimationStateMachine();
+    luciusStates::Type m_currentState;
   };
 }
