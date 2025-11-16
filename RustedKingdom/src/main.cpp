@@ -83,8 +83,9 @@ int main()
     window
   );
 
-  luciusBlueprint.instantiate(
-    *sceneGraph.getRoot()
+  sceneGraph.instantiateGameObject(
+    luciusBlueprint,
+    sf::Vector2f(200.0f, 200.0f)
   );
   
   sf::Clock deltaClock;

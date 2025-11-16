@@ -201,11 +201,6 @@ namespace rk
      */
     void updateTransform();
 
-    /**
-     * @brief Called when the GameObject is created.
-     */
-    void onCreate();
-
   protected:
 
     /**
@@ -247,6 +242,11 @@ namespace rk
     const char* m_name;
     GameObject* m_parent;
     Vector<UniquePtr<Component>> m_components;
+
+    /**
+     * @brief Called when the GameObject is created.
+     */
+    void onCreate();
 
     friend class SceneGraph;
   };

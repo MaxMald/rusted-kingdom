@@ -1,7 +1,7 @@
 #pragma once
 
 #include "rkPrerequisites.h"
-#include "rkBlueprint.h"
+#include "rkGameObjectBlueprint.h"
 #include "rkIsometricPositionTransformer.h"
 
 namespace sf
@@ -19,7 +19,7 @@ namespace rk
   class RigidBodyComponentFactory;
   class Pathfinder;
 
-  class LuciusBlueprint : public Blueprint
+  class LuciusBlueprint : public GameObjectBlueprint
   {
   public:
     LuciusBlueprint(
@@ -33,7 +33,8 @@ namespace rk
     );
     ~LuciusBlueprint() override;
 
-    virtual GameObject* instantiate(GameObject& parent) override;
+  protected:
+    virtual GameObject* instantiate(GameObject& parent) const override;
 
   private:
     GameObjectBuilder& m_gameObjectBuilder;

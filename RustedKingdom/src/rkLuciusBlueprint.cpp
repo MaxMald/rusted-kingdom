@@ -44,7 +44,7 @@ namespace rk
   {
   }
 
-  GameObject* LuciusBlueprint::instantiate(GameObject& parent)
+  GameObject* LuciusBlueprint::instantiate(GameObject& parent) const
   {
     GameObject* lucius = m_gameObjectBuilder
       .createGameObject("lucius")
@@ -93,20 +93,15 @@ namespace rk
     lucius->addComponent(
       MakeUnique<PathfinderComponent>(*lucius, m_pathfinder)
     );
-
     lucius->addComponent(
       MakeUnique<Lucius>(*lucius, m_renderWindow, m_isometricPositionTransformer)
     );
-
     lucius->addComponent(
       MakeUnique<LuciusAnimation>(*lucius)
     );
-
     lucius->addComponent(
       MakeUnique<AgentPathMovement>(*lucius)
     );
-
-    lucius->onCreate(); // TODO Should not be exposed
 
     return lucius;
   }

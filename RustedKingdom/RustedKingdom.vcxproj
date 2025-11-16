@@ -228,7 +228,7 @@
     <ClInclude Include="include\rkAssertions.h" />
     <ClInclude Include="include\rkBlackboard.h" />
     <ClInclude Include="include\rkBlackboardValueGroup.h" />
-    <ClInclude Include="include\rkBlueprint.h" />
+    <ClInclude Include="include\rkGameObjectBlueprint.h" />
     <ClInclude Include="include\rkBoolComparisonAnimationStateTransition.h" />
     <ClInclude Include="include\rkCollider.h" />
     <ClInclude Include="include\rkIsometricPositionTransformer.h" />

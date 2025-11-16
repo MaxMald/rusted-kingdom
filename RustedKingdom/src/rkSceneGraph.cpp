@@ -1,7 +1,10 @@
 #include "rkSceneGraph.h"
+
 #include <algorithm>
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
+
+#include "rkGameObjectBlueprint.h"
 
 namespace rk
 {
@@ -19,6 +22,30 @@ namespace rk
   GameObject* SceneGraph::getRoot() const
   {
     return m_root.get();
+  }
+
+  GameObject* SceneGraph::instantiateGameObject(
+    const GameObjectBlueprint& blueprint,
+    const Vector2f& position
+  )
+  {
+    GameObject* newGameObject = blueprint.instantiate(*m_root);
+    newGameObject->updateTransform();
+    newGameObject->setPosition(position);
+    newGameObject->onCreate();
+    return newGameObject;
+  }
+
+  GameObject* SceneGraph::instantiateGameObject(
+    const GameObjectBlueprint& blueprint,
+    const Vector2f& position,
+    GameObject& parent
+  )
+  {
+    GameObject* newGameObject = blueprint.instantiate(parent);
+    newGameObject->setPosition(position);
+    newGameObject->onCreate();
+    return newGameObject;
   }
 
   void SceneGraph::update(float deltaTime)

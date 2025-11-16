@@ -7,11 +7,13 @@ namespace rk
 {
   class GameObject;
 
-  class Blueprint : public NonCopyable
+  class GameObjectBlueprint : public NonCopyable
   {
   public:
-    Blueprint() : NonCopyable() {}
-    virtual ~Blueprint() {}
+    GameObjectBlueprint() : NonCopyable() {}
+    virtual ~GameObjectBlueprint() {}
+
+  protected:
 
     /**
      * @brief Instantiates a new GameObject based on this blueprint and adds it
@@ -21,6 +23,8 @@ namespace rk
      * @return A pointer to the newly instantiated GameObject, owned by the
      * parent.
      */
-    virtual GameObject* instantiate(GameObject& parent) = 0;
+    virtual GameObject* instantiate(GameObject& parent) const = 0;
+
+    friend class SceneGraph;
   };
 }

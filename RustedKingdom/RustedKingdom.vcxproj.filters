@@ -458,7 +458,7 @@
     <ClInclude Include="include\rkSpriteComponentFactory.h">
       <Filter>Header Files\scene\gameObjects\components\factories</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkBlueprint.h">
+    <ClInclude Include="include\rkGameObjectBlueprint.h">
       <Filter>Header Files\scene\gameObjects\blueprints</Filter>
     </ClInclude>
     <ClInclude Include="include\rkNonCopyable.h">
