@@ -45,7 +45,7 @@ namespace rk
       ->getComponentOrFail<RigidBodyComponent>(componentType::Type::RigidBody);
   }
 
-  void AgentPathMovement::onUpdate(float deltaTime)
+  void AgentPathMovement::onUpdate(float)
   {
     if (!m_isMoving)
       return;

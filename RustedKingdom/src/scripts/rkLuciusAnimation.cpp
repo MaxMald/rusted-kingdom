@@ -27,7 +27,7 @@ namespace rk
       ->getComponentOrFail<RigidBodyComponent>(rk::componentType::RigidBody);
   }
 
-  void LuciusAnimation::onUpdate(float deltaTime)
+  void LuciusAnimation::onUpdate(float)
   {
     Vector2f velocity = m_rigidBodyComponent->getVelocity();
 

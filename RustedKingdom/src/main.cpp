@@ -5,7 +5,7 @@
 #include "rkAssetManager.h"
 #include "rkSceneGraph.h"
 #include "rkSpriteSheet.h"
-#include "rkTiledMapBuilder.h"
+#include "rkTiledSceneFactory.h"
 #include "rkTiledMap.h"
 #include "rkViewsManager.h"
 #include "rkGameObjectBuilder.h"
@@ -33,6 +33,12 @@ int main()
   rk::SpriteComponentFactory spriteComponentFactory(assetManager);
   rk::PhysicWorld physicWorld;
   rk::RigidBodyComponentFactory rigidBodyComponentFactory(physicWorld);
+  rk::TiledSceneFactory tiledSceneFactory(
+    gameObjectBuilder,
+    spriteComponentFactory,
+    rigidBodyComponentFactory,
+    sceneGraph
+  );
 
   bool result = false;
   result = assetManager.loadTiledMap("level-0", "maps/level-3.json");
@@ -43,13 +49,7 @@ int main()
   if (!result)
     return -1;
 
-  rk::TiledSceneBuilder::buildFromTiledMap(
-    gameObjectBuilder,
-    spriteComponentFactory,
-    rigidBodyComponentFactory,
-    sceneGraph,
-    assetManager.getTiledMap("level-0")
-  );
+  tiledSceneFactory.create(assetManager.getTiledMap("level-0"));
 
   sf::FloatRect initialRect(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(1920.0f, 1080.0f));
   rk::ViewsManager viewsManager(initialRect);
