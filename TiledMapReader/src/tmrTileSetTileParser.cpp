@@ -24,7 +24,7 @@ namespace tmr
     json["image"].getString(&imageStr[0], imageStr.size());
     imageStr.resize(imageStr.size() - 1);
 
-    ObjectGroupMapLayer* objectGroup = nullptr;
+    ObjectGroup* objectGroup = nullptr;
     if (json.contains("objectgroup"))
       objectGroup = m_objectGroupParser.parseFromJson(json["objectgroup"]);
 

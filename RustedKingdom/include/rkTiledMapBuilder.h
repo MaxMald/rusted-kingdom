@@ -9,15 +9,20 @@ namespace tmr
 {
   class TileMapLayer;
   class ObjectGroupMapLayer;
+  class Object;
 }
 
 namespace rk
 {
   class SceneGraph;
   class TiledMap;
+  class TiledObject;
   class TileSetsManager;
+  class TileSetTile;
   class GameObjectBuilder;
+  class GameObject;
   class SpriteComponentFactory;
+  class RigidBodyComponentFactory;
   class IsometricPositionTransformer;
 
   /**
@@ -38,6 +43,7 @@ namespace rk
     static void buildFromTiledMap(
       GameObjectBuilder& gameObjectBuilder,
       SpriteComponentFactory& spriteComponentFactory,
+      RigidBodyComponentFactory& rigidBodyComponentFactory,
       SceneGraph& sceneGraph,
       const TiledMap& tiledMap
     );
@@ -62,10 +68,19 @@ namespace rk
     static void buildFromObjectGroupLayer(
       GameObjectBuilder& gameObjectBuilder,
       SpriteComponentFactory& spriteComponentFactory,
+      RigidBodyComponentFactory& rigidBodyComponentFactory,
       SceneGraph& sceneGraph,
       const tmr::ObjectGroupMapLayer& objectGroupLayer,
       const TileSetsManager& tileSetsManager,
       const IsometricPositionTransformer& isometricPositionTransformer
+    );
+
+    static const TiledObject& getColliderObject(const TileSetTile& tileSetTile);
+    static bool hasCollider(const TileSetTile& tileSetTile);
+    static void addCollider(
+      GameObject& gameObject,
+      const TiledObject& colliderObject,
+      RigidBodyComponentFactory& rigidBodyComponentFactory
     );
   };
 }

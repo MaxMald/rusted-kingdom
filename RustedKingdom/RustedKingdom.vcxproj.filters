@@ -297,6 +297,12 @@
     <ClCompile Include="src\scripts\rkAgentPathMovement.cpp">
       <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkTiledObject.cpp">
+      <Filter>Source Files\assetManager\tiledMap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledObjectGroup.cpp">
+      <Filter>Source Files\assetManager\tiledMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -529,6 +535,12 @@
     </ClInclude>
     <ClInclude Include="include\scripts\rkAgentPathMovement.h">
       <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledObject.h">
+      <Filter>Header Files\assetManager\tiledMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledObjectGroup.h">
+      <Filter>Header Files\assetManager\tiledMap</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

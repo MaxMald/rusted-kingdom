@@ -7,7 +7,8 @@ namespace rk
     m_id(0),
     m_imageWidth(0),
     m_imageHeight(0),
-    m_imagePath()
+    m_imagePath(),
+    m_tiledObjectGroup()
   {
   }
 
@@ -15,7 +16,8 @@ namespace rk
     m_id(other.m_id),
     m_imageWidth(other.m_imageWidth),
     m_imageHeight(other.m_imageHeight),
-    m_imagePath(other.m_imagePath)
+    m_imagePath(other.m_imagePath),
+    m_tiledObjectGroup(other.m_tiledObjectGroup)
   {
   }
 
@@ -28,6 +30,7 @@ namespace rk
     m_imageWidth = other.m_imageWidth;
     m_imageHeight = other.m_imageHeight;
     m_imagePath = other.m_imagePath;
+    m_tiledObjectGroup = other.m_tiledObjectGroup;
 
     return *this;
   }
@@ -36,7 +39,8 @@ namespace rk
     m_id(other.m_id),
     m_imageWidth(other.m_imageWidth),
     m_imageHeight(other.m_imageHeight),
-    m_imagePath(std::move(other.m_imagePath))
+    m_imagePath(std::move(other.m_imagePath)),
+    m_tiledObjectGroup(std::move(other.m_tiledObjectGroup))
   {
     other.m_id = 0;
     other.m_imageWidth = 0;
@@ -52,6 +56,7 @@ namespace rk
     m_imageWidth = other.m_imageWidth;
     m_imageHeight = other.m_imageHeight;
     m_imagePath = std::move(other.m_imagePath);
+    m_tiledObjectGroup = std::move(other.m_tiledObjectGroup);
 
     other.m_id = 0;
     other.m_imageWidth = 0;
@@ -68,6 +73,10 @@ namespace rk
     m_imageHeight(tileSetTile.getImageHeight())
   {
     m_imagePath = mapRootDirectory / Path(tileSetTile.getImage());
+
+    tmr::ObjectGroup* tmrObjectGroup = tileSetTile.getObjectGroup();
+    if (tmrObjectGroup)
+      m_tiledObjectGroup = TiledObjectGroup(*tmrObjectGroup);
   }
 
   TileSetTile::~TileSetTile()

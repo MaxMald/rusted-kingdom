@@ -3,23 +3,29 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <TMR/tmrMapLayer.h>
 #include <TMR/tmrTileMapLayer.h>
+#include <TMR/tmrTileSetTile.h>
 #include <TMR/tmrObjectGroupMapLayer.h>
+#include <TMR/tmrObjectGroup.h>
 #include <TMR/tmrObject.h>
 
 #include "rkSceneGraph.h"
 #include "rkTiledMap.h"
 #include "rkTileSetsManager.h"
 #include "rkTileDescription.h"
+#include "rkTileSetTile.h"
 #include "rkLayerGameObject.h"
 #include "rkGameObjectBuilder.h"
 #include "rkSpriteComponentFactory.h"
 #include "rkSpriteComponent.h"
+#include "rkRigidBodyComponentFactory.h"
+#include "rkRigidBodyComponent.h"
 
 namespace rk
 {
   void TiledSceneBuilder::buildFromTiledMap(
     GameObjectBuilder& gameObjectBuilder,
     SpriteComponentFactory& spriteComponentFactory,
+    RigidBodyComponentFactory& rigidBodyComponentFactory,
     SceneGraph& sceneGraph,
     const TiledMap& tiledMap
   )
@@ -66,6 +72,7 @@ namespace rk
         buildFromObjectGroupLayer(
           gameObjectBuilder,
           spriteComponentFactory,
+          rigidBodyComponentFactory,
           sceneGraph,
           *objectGroupLayer,
           tiledMap.getTileSetsManager(),
@@ -136,6 +143,7 @@ namespace rk
   void TiledSceneBuilder::buildFromObjectGroupLayer(
     GameObjectBuilder& gameObjectBuilder,
     SpriteComponentFactory& spriteComponentFactory,
+    RigidBodyComponentFactory& rigidBodyComponentFactory,
     SceneGraph& sceneGraph,
     const tmr::ObjectGroupMapLayer& objectGroupLayer,
     const TileSetsManager& tileSetsManager,
@@ -168,13 +176,84 @@ namespace rk
         .withPosition(tilePosition)
         .buildWithParent(*layerGameObject);
 
-      objectGameObject->addComponent(
+      UniquePtr<SpriteComponent> spriteComponent =
         spriteComponentFactory.createSpriteComponent(
           *objectGameObject,
           tileDescription.getTextureKey(),
           tileDescription.getTextureRect()
+        );
+
+      spriteComponent->setOrigin(
+        Vector2f(
+          static_cast<float>(tileDescription.getTextureRect().size.x) * 0.5f,
+          static_cast<float>(tileDescription.getTextureRect().size.y)
         )
       );
+
+      objectGameObject->addComponent(std::move(spriteComponent));
+
+      const TileSetTile& tileSetTile = tileSetsManager.getTileSetTileByGid(
+        object->getGid()
+      );
+
+      if (!hasCollider(tileSetTile))
+        continue;
+
+      const TiledObject& colliderObject = getColliderObject(tileSetTile);
+      addCollider(*objectGameObject, colliderObject, rigidBodyComponentFactory);
     }
+  }
+
+  const TiledObject& TiledSceneBuilder::getColliderObject(
+    const TileSetTile& tileSetTile
+  )
+  {
+    const TiledObjectGroup& objectGroup = tileSetTile.getTiledObjectGroup();
+    for (const TiledObject& tiledObject : objectGroup.getObjects())
+    {
+      if (tiledObject.getType() == "collider")
+        return tiledObject;
+    }
+
+    throw RuntimeErrorException(
+      "TiledSceneBuilder::getColliderObject: No collider object found in TileSetTile."
+    );
+  }
+
+  bool TiledSceneBuilder::hasCollider(const TileSetTile& tmrTileSetTile)
+  {
+    const TiledObjectGroup& objectGroup = tmrTileSetTile.getTiledObjectGroup();
+    if (objectGroup.getSize() == 0)
+      return false;
+
+    for (const TiledObject& tiledObject : objectGroup.getObjects())
+    {
+      if (tiledObject.getType() == "collider")
+        return true;
+    }
+
+    return false;
+  }
+
+  void TiledSceneBuilder::addCollider(
+    GameObject& gameObject,
+    const TiledObject& colliderObject,
+    RigidBodyComponentFactory& rigidBodyComponentFactory
+  )
+  {
+    float circleColliderRadius = colliderObject.getSize().x * 0.5f;
+    UniquePtr<RigidBodyComponent> rigidBody = rigidBodyComponentFactory
+      .createWithCircleCollider(
+        gameObject, 
+        rigidBodyType::Static,
+        Vector2f(
+          colliderObject.getPosition().x + circleColliderRadius,
+          colliderObject.getPosition().y + circleColliderRadius
+        ),
+        circleColliderRadius,
+        true
+    );
+
+    gameObject.addComponent(std::move(rigidBody));
   }
 }

@@ -12,6 +12,7 @@ namespace tmr
 namespace rk
 {
   class TileSet;
+  class TileSetTile;
 
   /**
    * @class TileSetsManager
@@ -28,6 +29,7 @@ namespace rk
 
     SizeT getTileSetsCount() const { return m_tileSets.size(); }
     const TileSet& getTileSetAt(const SizeT& index) const;
+    const TileSetTile& getTileSetTileByGid(const Int32& gid) const;
     TileDescription getTileDescriptionByGid(const Int32& gid) const;
 
     void clear();

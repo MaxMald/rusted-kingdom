@@ -1,14 +1,16 @@
 #include "rkTileSetsManager.h"
+
 #include <TMR/tmrTiledMap.h>
 #include <TMR/tmrTileSet.h>
 #include <TMR/tmrReferenceTileSet.h>
 #include <TMR/tmrSpriteSheetTileSet.h>
 #include <TMR/tmrImageCollectionTileSet.h>
+
 #include "rkTileSet.h"
+#include "rkTileSetTile.h"
 #include "rkReferenceTileSet.h"
 #include "rkSpriteSheetTileSet.h"
 #include "rkImageCollectionTileSet.h"
-#include "rkTileSet.h"
 #include "rkAssertions.h"
 
 namespace rk
@@ -47,6 +49,42 @@ namespace rk
   {
     assertions::assertIndexInRange(index, m_tileSets.size(), "Tile Set Index");
     return *(m_tileSets[index]);
+  }
+
+  const TileSetTile& TileSetsManager::getTileSetTileByGid(
+    const Int32& gid
+  ) const
+  {
+    for (const TileSet* tileSet : m_tileSets)
+    {
+      if (!tileSet->isGidInRange(gid))
+        continue;
+
+      const Int32 firstGid = tileSet->getFirstGid();
+      const Int32 localId = gid - firstGid;
+
+      if (tileSet->getType() != tmr::tileSetType::ImageCollection)
+      {
+        throw RuntimeErrorException(
+          String::Format(
+            "TileSetsManager::getTileSetByGid: TileSet with GID %d is not an Image Collection tileset.",
+            gid
+          )
+        );
+      }
+
+      const ImageCollectionTileSet* imageCollectionTileSet =
+        static_cast<const ImageCollectionTileSet*>(tileSet);
+
+      return imageCollectionTileSet->getTiles()[localId];
+    }
+
+    throw RuntimeErrorException(
+      String::Format(
+        "TileSetsManager::getTileSetByGid: GID %d not found in any loaded tileset.",
+        gid
+      )
+    );
   }
 
   TileDescription TileSetsManager::getTileDescriptionByGid(

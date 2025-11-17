@@ -43,6 +43,12 @@
     <Filter Include="Source Files\mapLayers\objectGroup">
       <UniqueIdentifier>{d8caed94-3b1d-4238-b0ae-d439c13adb07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\objectGroup">
+      <UniqueIdentifier>{a3031eef-1c81-4493-8a66-b4132fe6657c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\objectGroup">
+      <UniqueIdentifier>{377838c9-d663-48b0-b07d-8fff29fcbeec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\tmrTiledMapReader.cpp">
@@ -111,9 +117,6 @@
     <ClCompile Include="src\tmrTileSetTileParser.cpp">
       <Filter>Source Files\parsers</Filter>
     </ClCompile>
-    <ClCompile Include="src\tmrObject.cpp">
-      <Filter>Source Files\mapLayers\objectGroup</Filter>
-    </ClCompile>
     <ClCompile Include="src\tmrObjectGroupMapLayer.cpp">
       <Filter>Source Files\mapLayers\objectGroup</Filter>
     </ClCompile>
@@ -121,6 +124,15 @@
       <Filter>Source Files\parsers</Filter>
     </ClCompile>
     <ClCompile Include="src\tmrDrawOrderParser.cpp">
+      <Filter>Source Files\parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrObject.cpp">
+      <Filter>Source Files\objectGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrObjectGroup.cpp">
+      <Filter>Source Files\objectGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrObjectGroupParser.cpp">
       <Filter>Source Files\parsers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -209,9 +221,6 @@
     <ClInclude Include="include\TMR\tmrObjectGroupMapLayer.h">
       <Filter>Header Files\mapLayers\objectGroup</Filter>
     </ClInclude>
-    <ClInclude Include="include\TMR\tmrObject.h">
-      <Filter>Header Files\mapLayers\objectGroup</Filter>
-    </ClInclude>
     <ClInclude Include="include\TMR\tmrObjectParser.h">
       <Filter>Header Files\parsers</Filter>
     </ClInclude>
@@ -219,6 +228,15 @@
       <Filter>Header Files\mapLayers\objectGroup</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrDrawOrderParser.h">
+      <Filter>Header Files\parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrObject.h">
+      <Filter>Header Files\objectGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrObjectGroup.h">
+      <Filter>Header Files\objectGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrObjectGroupParser.h">
       <Filter>Header Files\parsers</Filter>
     </ClInclude>
   </ItemGroup>

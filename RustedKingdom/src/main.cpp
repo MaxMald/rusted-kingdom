@@ -32,9 +32,10 @@ int main()
   rk::SceneGraph sceneGraph;
   rk::SpriteComponentFactory spriteComponentFactory(assetManager);
   rk::PhysicWorld physicWorld;
+  rk::RigidBodyComponentFactory rigidBodyComponentFactory(physicWorld);
 
   bool result = false;
-  result = assetManager.loadTiledMap("level-0", "maps/level-2.json");
+  result = assetManager.loadTiledMap("level-0", "maps/level-3.json");
   if (!result)
     return -1;
 
@@ -45,6 +46,7 @@ int main()
   rk::TiledSceneBuilder::buildFromTiledMap(
     gameObjectBuilder,
     spriteComponentFactory,
+    rigidBodyComponentFactory,
     sceneGraph,
     assetManager.getTiledMap("level-0")
   );
@@ -72,7 +74,6 @@ int main()
   );
 
   rk::AnimationFactory animationFactory(assetManager);
-  rk::RigidBodyComponentFactory rigidBodyComponentFactory(physicWorld);
   rk::LuciusBlueprint luciusBlueprint(
     gameObjectBuilder,
     spriteComponentFactory,

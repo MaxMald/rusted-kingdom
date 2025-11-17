@@ -1,6 +1,6 @@
 #include "TMR/tmrTileSetTile.h"
 #include <cstring>
-#include "TMR/tmrObjectGroupMapLayer.h"
+#include "TMR/tmrObjectGroup.h"
 
 namespace tmr
 {
@@ -9,7 +9,7 @@ namespace tmr
     std::uint32_t imageWidth,
     std::uint32_t imageHeight,
     const char* image,
-    ObjectGroupMapLayer* objectGroup
+    ObjectGroup* objectGroup
   ) :
     m_id(id),
     m_imageWidth(imageWidth),

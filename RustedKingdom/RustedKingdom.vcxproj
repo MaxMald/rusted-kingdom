@@ -207,6 +207,8 @@
     <ClCompile Include="src\rkSpriteSheetTileSet.cpp" />
     <ClCompile Include="src\rkTiledMap.cpp" />
     <ClCompile Include="src\rkTiledMapBuilder.cpp" />
+    <ClCompile Include="src\rkTiledObject.cpp" />
+    <ClCompile Include="src\rkTiledObjectGroup.cpp" />
     <ClCompile Include="src\rkTileSet.cpp" />
     <ClCompile Include="src\rkTileSetGrid.cpp" />
     <ClCompile Include="src\rkTileSetsManager.cpp" />
@@ -283,6 +285,8 @@
     <ClInclude Include="include\rkTileDescription.h" />
     <ClInclude Include="include\rkTiledMap.h" />
     <ClInclude Include="include\rkTiledMapBuilder.h" />
+    <ClInclude Include="include\rkTiledObject.h" />
+    <ClInclude Include="include\rkTiledObjectGroup.h" />
     <ClInclude Include="include\rkTileSet.h" />
     <ClInclude Include="include\rkTileSetGrid.h" />
     <ClInclude Include="include\rkTileSetsManager.h" />

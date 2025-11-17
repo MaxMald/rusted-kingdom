@@ -1,6 +1,7 @@
 #pragma once
 
 #include "rkPrerequisites.h"
+#include "rkTiledObjectGroup.h"
 
 namespace tmr
 {
@@ -24,11 +25,13 @@ namespace rk
     UInt32 getImageWidth() const { return m_imageWidth; }
     UInt32 getImageHeight() const { return m_imageHeight; }
     const Path& getImagePath() const { return m_imagePath; }
+    const TiledObjectGroup& getTiledObjectGroup() const { return m_tiledObjectGroup; }
 
   private:
     UInt32 m_id;
     UInt32 m_imageWidth;
     UInt32 m_imageHeight;
     Path m_imagePath;
+    TiledObjectGroup m_tiledObjectGroup;
   };
 }

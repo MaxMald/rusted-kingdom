@@ -2,7 +2,7 @@
 
 #include <TMR/tmrPrerequisites.h>
 #include <TMR/tmrJson.h>
-#include <TMR/tmrObjectGroupMapLayerParser.h>
+#include <TMR/tmrObjectGroupParser.h>
 
 namespace tmr
 {
@@ -17,6 +17,6 @@ namespace tmr
     TileSetTile* parseFromJson(const Json& json);
 
   private:
-    ObjectGroupMapLayerParser m_objectGroupParser;
+    ObjectGroupParser m_objectGroupParser;
   };
 }
