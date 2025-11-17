@@ -55,4 +55,28 @@ namespace tmr
       objectsSize
     );
   }
+
+  ObjectGroupMapLayer* ObjectGroupMapLayerParser::parseFromJson(const Json& json)
+  {
+    std::int32_t id = static_cast<std::int32_t>(json["id"].getInt32());
+    std::int32_t x = static_cast<std::int32_t>(json["x"].getInt32());
+    std::int32_t y = static_cast<std::int32_t>(json["y"].getInt32());
+    bool visible = json["visible"].getBool();
+    float opacity = json["opacity"].getFloat();
+
+    // Parse name
+    std::string nameStr;
+    nameStr.resize(json["name"].getStringLength() + 1);
+    json["name"].getString(&nameStr[0], nameStr.size());
+    nameStr.resize(nameStr.size() - 1);
+
+    return parseFromJson(
+      id,
+      x, y,
+      visible,
+      opacity,
+      nameStr.c_str(),
+      json
+    );
+  }
 }

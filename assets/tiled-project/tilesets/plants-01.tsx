@@ -22,7 +22,7 @@
  <tile id="6">
   <image source="../../textures/plants/plants-01/bigtree01.png" width="256" height="256"/>
   <objectgroup draworder="index" id="2">
-   <object id="1" type="collider" x="128.842" y="200.921" width="23.8421" height="23.8421">
+   <object id="1" type="collider" x="130.342" y="204.421" width="23.8421" height="23.8421">
     <ellipse/>
    </object>
   </objectgroup>

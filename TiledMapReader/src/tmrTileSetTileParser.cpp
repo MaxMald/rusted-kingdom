@@ -1,6 +1,6 @@
 #include "TMR/tmrTileSetTileParser.h"
-#include "TMR/tmrTileSetTile.h"
 #include <string>
+#include "TMR/tmrTileSetTile.h"
 
 namespace tmr
 {
@@ -24,11 +24,16 @@ namespace tmr
     json["image"].getString(&imageStr[0], imageStr.size());
     imageStr.resize(imageStr.size() - 1);
 
+    ObjectGroupMapLayer* objectGroup = nullptr;
+    if (json.contains("objectgroup"))
+      objectGroup = m_objectGroupParser.parseFromJson(json["objectgroup"]);
+
     return new TileSetTile(
       id,
       imageWidth,
       imageHeight,
-      imageStr.c_str()
+      imageStr.c_str(),
+      objectGroup
     );
   }
 }

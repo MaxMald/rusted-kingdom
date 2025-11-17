@@ -4,6 +4,8 @@
 
 namespace tmr
 {
+  class ObjectGroupMapLayer;
+
   /**
    * @brief Represents a single tile in a tileset.
    *
@@ -25,7 +27,8 @@ namespace tmr
       std::uint32_t id,
       std::uint32_t imageWidth,
       std::uint32_t imageHeight,
-      const char* image
+      const char* image,
+      ObjectGroupMapLayer* objectGroup = nullptr
     );
 
     ~TileSetTile();
@@ -42,10 +45,14 @@ namespace tmr
     /** @return Null-terminated image source path. */
     const char* getImage() const { return m_image; }
 
+    /** @return The object group associated with this tile, if any. */
+    ObjectGroupMapLayer* getObjectGroup() const { return m_objectGroup; }
+
   private:
     std::uint32_t m_id;
     std::uint32_t m_imageWidth;
     std::uint32_t m_imageHeight;
+    ObjectGroupMapLayer* m_objectGroup;
     char* m_image;
   };
 }

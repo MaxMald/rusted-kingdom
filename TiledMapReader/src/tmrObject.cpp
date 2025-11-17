@@ -10,6 +10,7 @@ namespace tmr
     std::uint32_t height,
     std::uint32_t width,
     bool visible,
+    bool ellipse,
     float rotation,
     float x,
     float y,
@@ -21,6 +22,7 @@ namespace tmr
     m_height(height),
     m_width(width),
     m_visible(visible),
+    m_ellipse(ellipse),
     m_rotation(rotation),
     m_x(x),
     m_y(y)

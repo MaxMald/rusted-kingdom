@@ -13,6 +13,7 @@ namespace tmr
         std::uint32_t height,
         std::uint32_t width,
         bool visible,
+        bool ellipse,
         float rotation,
         float x,
         float y,
@@ -26,6 +27,7 @@ namespace tmr
       std::uint32_t getHeight() const noexcept { return m_height; }
       std::uint32_t getWidth() const noexcept { return m_width; }
       bool isVisible() const noexcept { return m_visible; }
+      bool isEllipse() const noexcept { return m_ellipse; }
       float getRotation() const noexcept { return m_rotation; }
       float getX() const noexcept { return m_x; }
       float getY() const noexcept { return m_y; }
@@ -37,6 +39,7 @@ namespace tmr
       std::uint32_t m_id;
       std::uint32_t m_height;
       std::uint32_t m_width;
+      bool m_ellipse;
       bool m_visible;
       float m_rotation;
       float m_x;

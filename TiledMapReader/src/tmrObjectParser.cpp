@@ -16,7 +16,14 @@ namespace tmr
 
   Object* ObjectParser::parseFromJson(const Json& json)
   {
-    std::uint32_t gid = static_cast<std::uint32_t>(json["gid"].getInt32());
+    std::uint32_t gid = 0;
+    if (json.contains("gid"))
+      gid = static_cast<std::uint32_t>(json["gid"].getInt32());
+
+    bool ellipse = false;
+    if (json.contains("ellipse"))
+      ellipse = json["ellipse"].getBool();
+
     std::uint32_t id = static_cast<std::uint32_t>(json["id"].getInt32());
     std::uint32_t height = static_cast<std::uint32_t>(json["height"].getInt32());
     std::uint32_t width = static_cast<std::uint32_t>(json["width"].getInt32());
@@ -44,6 +51,7 @@ namespace tmr
       height,
       width,
       visible,
+      ellipse,
       rotation,
       x,
       y,

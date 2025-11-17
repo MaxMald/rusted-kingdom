@@ -24,6 +24,8 @@ namespace tmr
       const Json& json
     );
 
+    ObjectGroupMapLayer* parseFromJson(const Json& json);
+
   private:
     ObjectParser m_objectParser;
   };

@@ -1,5 +1,6 @@
 #include "TMR/tmrTileSetTile.h"
 #include <cstring>
+#include "TMR/tmrObjectGroupMapLayer.h"
 
 namespace tmr
 {
@@ -7,12 +8,14 @@ namespace tmr
     std::uint32_t id,
     std::uint32_t imageWidth,
     std::uint32_t imageHeight,
-    const char* image
+    const char* image,
+    ObjectGroupMapLayer* objectGroup
   ) :
     m_id(id),
     m_imageWidth(imageWidth),
     m_imageHeight(imageHeight),
-    m_image(nullptr)
+    m_image(nullptr),
+    m_objectGroup(objectGroup)
   {
     m_image = image ? new char[std::strlen(image) + 1] : nullptr;
     if (m_image)
@@ -22,5 +25,11 @@ namespace tmr
   TileSetTile::~TileSetTile()
   {
     delete[] m_image;
+
+    if (m_objectGroup)
+    {
+      delete m_objectGroup;
+      m_objectGroup = nullptr;
+    }
   }
 }

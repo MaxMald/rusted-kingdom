@@ -15,6 +15,8 @@ namespace tmr
 
       if(drawOrderStr == "topdown")
         return drawOrder::Type::TopDown;
+      else if(drawOrderStr == "index")
+        return drawOrder::Type::Index;
       else
         throw std::runtime_error("Unknown draw order string: " + drawOrderStr);
     }

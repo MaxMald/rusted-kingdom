@@ -8,7 +8,8 @@ namespace tmr
   {
     enum Type : std::uint8_t
     {
-      TopDown
+      TopDown = 0,
+      Index = 1
     };
   }
 }
