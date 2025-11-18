@@ -250,6 +250,7 @@ namespace rk
     float circleColliderRadius = colliderObject.getSize().x * 0.5f;
     Vector2f colliderLocalPosition = colliderObject.getPosition();
     Vector2f position = colliderLocalPosition - spriteOrigin;
+    position += Vector2f(circleColliderRadius, circleColliderRadius);
 
     UniquePtr<CircleColliderComponent> collider = m_colliderComponentFactory
       .createCircle(
