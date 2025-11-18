@@ -10,7 +10,6 @@ namespace rk
 {
   class PhysicWorld;
   class RigidBody;
-  class Collider;
 
   class RigidBodyComponent : public Component
   {
@@ -18,8 +17,7 @@ namespace rk
     RigidBodyComponent(
       GameObject&,
       PhysicWorld&,
-      rigidBodyType::Type,
-      UniquePtr<Collider>
+      rigidBodyType::Type
     );
     virtual ~RigidBodyComponent();
 
@@ -27,12 +25,9 @@ namespace rk
     float getMass() const;
     void setVelocity(const Vector2f& velocity);
     const Vector2f& getVelocity() const;
-    Collider& getCollider() { return *m_collider; }
-    const Collider& getCollider() const { return *m_collider; }
 
   protected:
     RigidBody* m_rigidBody;
-    UniquePtr<Collider> m_collider;
     PhysicWorld& m_physicWorld;
   };
 }

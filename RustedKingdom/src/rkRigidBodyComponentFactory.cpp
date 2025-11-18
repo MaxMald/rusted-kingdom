@@ -19,34 +19,25 @@ namespace rk
   }
 
   UniquePtr<RigidBodyComponent>
-  RigidBodyComponentFactory::createWithCircleCollider(
+  RigidBodyComponentFactory::create(
     GameObject& gameObject,
     rigidBodyType::Type type,
-    const Vector2f& center,
-    float radius,
     bool debug
   )
   {
-    UniquePtr<Collider> collider = MakeUnique<CircleCollider>(
-      center,
-      radius
-    );
-
     if (debug)
     {
       return MakeUnique<RigidBodyDebuggedComponent>(
         gameObject,
         m_physicWorld,
-        type,
-        std::move(collider)
+        type
       );
     }
 
     return MakeUnique<RigidBodyComponent>(
       gameObject,
       m_physicWorld,
-      type,
-      std::move(collider)
+      type
     );
   }
 }

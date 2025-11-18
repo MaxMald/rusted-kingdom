@@ -2,31 +2,21 @@
 #include "rkRigidBody.h"
 #include "rkPhysicWorld.h"
 #include "rkGameObject.h"
-#include "rkCollider.h"
 
 namespace rk
 {
   RigidBodyComponent::RigidBodyComponent(
     GameObject& gameObject,
     PhysicWorld& physicWorld,
-    rigidBodyType::Type type,
-    UniquePtr<Collider> collider
+    rigidBodyType::Type type
   ) :
     Component(gameObject, componentType::RigidBody),
     m_physicWorld(physicWorld),
-    m_collider(std::move(collider)),
     m_rigidBody(nullptr)
   {
-    if (!m_collider)
-    {
-      throw std::runtime_error(
-        "RigidBodyComponent constructor error: collider is nullptr"
-      );
-    }
 
     m_rigidBody = physicWorld.createRigidBody(
       type,
-      *m_collider,
       gameObject
     );
   }

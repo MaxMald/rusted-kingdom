@@ -54,7 +54,7 @@ namespace rk
       return;
 
     Vector2f targetPosition = m_pathPoints[m_currentPathPointIndex];
-    if (m_rigidBodyComponent->getCollider().checkCollision(targetPosition))
+    if (false /* check collision */)
     {
       m_currentPathPointIndex++;
       if (m_currentPathPointIndex >= m_pathPoints.size())

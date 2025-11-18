@@ -133,6 +133,12 @@
     <Filter Include="Source Files\pathfinder">
       <UniqueIdentifier>{7a727191-bf2f-453e-b8e8-4b8b3e23c942}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\physics\colliders">
+      <UniqueIdentifier>{1b5341f9-5304-441c-98ab-73528344d645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\physics\colliders">
+      <UniqueIdentifier>{6a5364a8-4493-4554-8a75-22a15fc10727}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -255,12 +261,6 @@
     <ClCompile Include="src\rkTiledMap.cpp">
       <Filter>Source Files\assetManager\tiledMap</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkCircleCollider.cpp">
-      <Filter>Source Files\physics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkCollider.cpp">
-      <Filter>Source Files\physics</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkRigidBodyComponentFactory.cpp">
       <Filter>Source Files\scene\gameObjects\components\factories</Filter>
     </ClCompile>
@@ -302,6 +302,12 @@
     </ClCompile>
     <ClCompile Include="src\rkTiledObjectGroup.cpp">
       <Filter>Source Files\assetManager\tiledMap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkCircleCollider.cpp">
+      <Filter>Source Files\physics\colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkCollider.cpp">
+      <Filter>Source Files\physics\colliders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -485,15 +491,6 @@
     <ClInclude Include="include\rkRigidBodyComponent.h">
       <Filter>Header Files\scene\gameObjects\components</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkCollider.h">
-      <Filter>Header Files\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkCircleCollider.h">
-      <Filter>Header Files\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkColliderType.h">
-      <Filter>Header Files\physics</Filter>
-    </ClInclude>
     <ClInclude Include="include\rkRigidBodyComponentFactory.h">
       <Filter>Header Files\scene\gameObjects\components\factories</Filter>
     </ClInclude>
@@ -541,6 +538,15 @@
     </ClInclude>
     <ClInclude Include="include\rkTiledSceneFactory.h">
       <Filter>Header Files\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkCircleCollider.h">
+      <Filter>Header Files\physics\colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkCollider.h">
+      <Filter>Header Files\physics\colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkColliderType.h">
+      <Filter>Header Files\physics\colliders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -237,15 +237,9 @@ namespace rk
   {
     float circleColliderRadius = colliderObject.getSize().x * 0.5f;
     UniquePtr<RigidBodyComponent> rigidBody = m_rigidBodyComponentFactory
-      .createWithCircleCollider(
+      .create(
         gameObject,
-        rigidBodyType::Static,
-        Vector2f(
-          colliderObject.getPosition().x + circleColliderRadius,
-          colliderObject.getPosition().y + circleColliderRadius
-        ),
-        circleColliderRadius,
-        true
+        rigidBodyType::Static
       );
 
     gameObject.addComponent(std::move(rigidBody));

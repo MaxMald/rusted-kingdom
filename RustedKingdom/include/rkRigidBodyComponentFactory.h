@@ -19,11 +19,9 @@ namespace rk
     RigidBodyComponentFactory(PhysicWorld&);
     ~RigidBodyComponentFactory();
 
-    UniquePtr<RigidBodyComponent> createWithCircleCollider(
+    UniquePtr<RigidBodyComponent> create(
       GameObject& gameObject,
       rigidBodyType::Type type,
-      const Vector2f& center,
-      float radius,
       bool debug = false
     );
 

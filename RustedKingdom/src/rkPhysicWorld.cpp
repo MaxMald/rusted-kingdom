@@ -15,13 +15,11 @@ namespace rk
 
   RigidBody* PhysicWorld::createRigidBody(
     rigidBodyType::Type type,
-    Collider& collider,
     GameObject& gameObject
   )
   {
     UniquePtr<RigidBody> rigidBody = MakeUnique<RigidBody>(
       type,
-      collider,
       gameObject
     );
 

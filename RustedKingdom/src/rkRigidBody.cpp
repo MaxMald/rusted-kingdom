@@ -8,11 +8,9 @@ namespace rk
 {
   RigidBody::RigidBody(
     rigidBodyType::Type type,
-    Collider& collider,
     GameObject& gameObject
   ) :
     m_gameObject(gameObject),
-    m_collider(collider),
     m_mass(1.0f),
     m_type(type),
     m_position(0.0f, 0.0f),
@@ -28,8 +26,6 @@ namespace rk
   {
     if (m_type == rigidBodyType::Kinematic)
       m_position = m_position + (m_velocity * deltaTime);
-
-    m_collider.setCenter(m_position);
   }
 
   void RigidBody::syncRigidBodyPositionToGameObject()

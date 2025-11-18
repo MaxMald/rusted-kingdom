@@ -81,11 +81,9 @@ namespace rk
     );
 
     lucius->addComponent(
-      m_rigidBodyComponentFactory.createWithCircleCollider(
+      m_rigidBodyComponentFactory.create(
         *lucius,
         rigidBodyType::Type::Kinematic,
-        Vector2f(0.0f, 0.0f),
-        20.0f,
         true
       )
     );

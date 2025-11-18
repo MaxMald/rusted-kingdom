@@ -25,7 +25,7 @@ namespace rk
     PhysicWorld();
     ~PhysicWorld();
 
-    RigidBody* createRigidBody(rigidBodyType::Type, Collider&, GameObject&);
+    RigidBody* createRigidBody(rigidBodyType::Type, GameObject&);
     void destroyRigidBody(RigidBody* rigidBody);
     void update(float deltaTime);
     void clear();
