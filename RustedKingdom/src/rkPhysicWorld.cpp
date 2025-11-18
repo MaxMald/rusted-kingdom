@@ -1,5 +1,6 @@
 #include "rkPhysicWorld.h"
 #include "rkRigidBody.h"
+#include "rkCircleCollider.h"
 
 namespace rk
 {
@@ -28,6 +29,21 @@ namespace rk
     return rawPtr;
   }
 
+  void PhysicWorld::destroyCollider(Collider* collider)
+  {
+    auto it = std::find_if(
+      m_colliders.begin(),
+      m_colliders.end(),
+      [collider](const UniquePtr<Collider>& ptr)
+      {
+        return ptr.get() == collider;
+      }
+    );
+
+    if (it != m_colliders.end())
+      m_colliders.erase(it);
+  }
+
   void PhysicWorld::destroyRigidBody(RigidBody* rigidBody)
   {
     auto it = std::find_if(
@@ -43,6 +59,29 @@ namespace rk
       m_rigidBodies.erase(it);
   }
 
+  Collider* PhysicWorld::createCollider(
+    GameObject& gameObject,
+    colliderType::Type type
+  )
+  {
+    if (type == colliderType::Circle)
+    {
+      UniquePtr<Collider> collider = MakeUnique<CircleCollider>(
+        gameObject
+      );
+      Collider* rawPtr = collider.get();
+      m_colliders.push_back(std::move(collider));
+      return rawPtr;
+    }
+
+    throw RuntimeErrorException(
+      String::Format(
+        "PhysicWorld::createCollider: Unsupported collider type %d.",
+        static_cast<int>(type)
+      )
+    );
+  }
+
   void PhysicWorld::update(float deltaTime)
   {
     for (const auto& rigidBody : m_rigidBodies)
@@ -53,6 +92,9 @@ namespace rk
 
     for (const auto& rigidBody : m_rigidBodies)
       rigidBody->syncRigidBodyPositionToGameObject();
+
+    for (const auto& collider : m_colliders)
+      collider->syncGameObjectPositionToCollider();
   }
 
   void PhysicWorld::clear()

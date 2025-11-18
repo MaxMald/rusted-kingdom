@@ -10,6 +10,8 @@
 #include "rkAnimationStateMachine.h"
 #include "rkRigidBodyComponent.h"
 #include "rkRigidBodyComponentFactory.h"
+#include "rkColliderComponentFactory.h"
+#include "rkCircleColliderComponent.h"
 #include "rkPathfinderComponent.h"
 
 #include "scripts/rkLucius.h"
@@ -26,6 +28,7 @@ namespace rk
     SpriteComponentFactory& spriteComponentFactory, 
     AnimationFactory& animationFactory,
     RigidBodyComponentFactory& rigidBodyComponentFactory,
+    ColliderComponentFactory& colliderComponentFactory,
     SharedPtr<Pathfinder> pathfinder,
     const IsometricPositionTransformer isometricPositionTransformer,
     const RenderWindow& renderWindow
@@ -34,6 +37,7 @@ namespace rk
     m_spriteComponentFactory(spriteComponentFactory),
     m_animationFactory(animationFactory),
     m_rigidBodyComponentFactory(rigidBodyComponentFactory),
+    m_colliderComponentFactory(colliderComponentFactory),
     m_pathfinder(pathfinder),
     m_isometricPositionTransformer(isometricPositionTransformer),
     m_renderWindow(renderWindow)
@@ -87,6 +91,16 @@ namespace rk
         true
       )
     );
+
+    UniquePtr<CircleColliderComponent> circleCollider =
+      m_colliderComponentFactory.createCircle(
+        *lucius,
+        Vector2f(0.0f, 0.0f),
+        20.0f
+      );
+    circleCollider->setDebug(true);
+
+    lucius->addComponent(std::move(circleCollider));
 
     lucius->addComponent(
       MakeUnique<PathfinderComponent>(*lucius, m_pathfinder)

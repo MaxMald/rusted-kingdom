@@ -2,72 +2,15 @@
 
 namespace rk
 {
-  CircleCollider::CircleCollider() : 
-    Collider(colliderType::Circle),
-    m_center(0.0f, 0.0f),
-    m_radius(0.0f),
-    m_radiusPow2(0.0f)
-  {
-  }
-
-  CircleCollider::CircleCollider(const Vector2f& center, float radius) : 
-    Collider(colliderType::Circle),
-    m_center(center),
-    m_radius(radius),
-    m_radiusPow2(radius * radius)
-  {
-  }
-
-  CircleCollider::CircleCollider(const CircleCollider& other) : 
-    Collider(colliderType::Circle),
-    m_center(other.m_center),
-    m_radius(other.m_radius),
-    m_radiusPow2(other.m_radiusPow2)
-  {
-  }
-
-  CircleCollider::CircleCollider(CircleCollider&& other) noexcept :
-    Collider(colliderType::Circle),
-    m_center(std::move(other.m_center)),
-    m_radius(other.m_radius),
-    m_radiusPow2(other.m_radiusPow2)
+  CircleCollider::CircleCollider(GameObject& gameObject) :
+    Collider(gameObject, colliderType::Circle),
+    m_radius(1.0f),
+    m_radiusPow2(1.0f)
   {
   }
 
   CircleCollider::~CircleCollider()
   {
-  }
-
-  CircleCollider& CircleCollider::operator=(const CircleCollider& other)
-  {
-    if (this != &other)
-    {
-      m_center = other.m_center;
-      m_radius = other.m_radius;
-      m_radiusPow2 = other.m_radiusPow2;
-    }
-    return *this;
-  }
-
-  CircleCollider& CircleCollider::operator=(CircleCollider&& other) noexcept
-  {
-    if (this != &other)
-    {
-      m_center = std::move(other.m_center);
-      m_radius = other.m_radius;
-      m_radiusPow2 = other.m_radiusPow2;
-    }
-    return *this;
-  }
-
-  const Vector2f& CircleCollider::getCenter() const
-  {
-    return m_center;
-  }
-
-  void CircleCollider::setCenter(const Vector2f& center)
-  {
-    m_center = center;
   }
 
   float CircleCollider::getRadius() const
@@ -99,13 +42,16 @@ namespace rk
 
   bool CircleCollider::checkCollision(const Vector2f& point) const
   {
-    Vector2f diff = point - getCenter();
+    Vector2f thisPosition = m_position + m_center;
+    Vector2f diff = point - thisPosition;
     return diff.lengthSquared() <= m_radiusPow2;
   }
 
   bool CircleCollider::checkCollisionWithCircle(const CircleCollider& other) const
   {
-    Vector2f diff = other.getCenter() - getCenter();
+    Vector2f thisPosition = m_position + m_center;
+    Vector2f otherPosition = other.m_position + other.m_center;
+    Vector2f diff = thisPosition - otherPosition;
     float distanceSquared = diff.lengthSquared();
     float radiusSum = m_radius + other.getRadius();
     return distanceSquared <= (radiusSum * radiusSum);

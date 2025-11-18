@@ -3,6 +3,7 @@
 #include "rkPrerequisites.h"
 #include "rkNonCopyable.h"
 #include "rkRigidBodyType.h"
+#include "rkColliderType.h"
 
 namespace rk
 {
@@ -27,10 +28,13 @@ namespace rk
 
     RigidBody* createRigidBody(rigidBodyType::Type, GameObject&);
     void destroyRigidBody(RigidBody* rigidBody);
+    Collider* createCollider(GameObject&, colliderType::Type type);
+    void destroyCollider(Collider* collider);
     void update(float deltaTime);
     void clear();
 
   private:
     Vector<UniquePtr<RigidBody>> m_rigidBodies;
+    Vector<UniquePtr<Collider>> m_colliders;
   };
 }

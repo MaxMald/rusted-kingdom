@@ -15,6 +15,7 @@
 #include "rkAnimationFactory.h"
 #include "rkPhysicWorld.h"
 #include "rkRigidBodyComponentFactory.h"
+#include "rkColliderComponentFactory.h"
 #include "rkPathfinder.h"
 #include "rkPathfinderFactory.h"
 
@@ -33,10 +34,12 @@ int main()
   rk::SpriteComponentFactory spriteComponentFactory(assetManager);
   rk::PhysicWorld physicWorld;
   rk::RigidBodyComponentFactory rigidBodyComponentFactory(physicWorld);
+  rk::ColliderComponentFactory colliderComponentFactory(physicWorld);
   rk::TiledSceneFactory tiledSceneFactory(
     gameObjectBuilder,
     spriteComponentFactory,
     rigidBodyComponentFactory,
+    colliderComponentFactory,
     sceneGraph
   );
 
@@ -79,6 +82,7 @@ int main()
     spriteComponentFactory,
     animationFactory,
     rigidBodyComponentFactory,
+    colliderComponentFactory,
     pathfinder,
     tiledMap.getIsometricPositionTransformer(),
     window

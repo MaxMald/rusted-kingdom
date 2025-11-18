@@ -9,6 +9,7 @@ using sf::Vector2f;
 namespace rk
 {
   class RigidBodyComponent;
+  class ColliderComponent;
 
   class AgentPathMovement : public ScriptComponent
   {
@@ -30,6 +31,7 @@ namespace rk
 
   private:
     RigidBodyComponent* m_rigidBodyComponent;
+    ColliderComponent* m_colliderComponent;
     Vector<Vector2f> m_pathPoints;
     SizeT m_currentPathPointIndex;
     bool m_isMoving;

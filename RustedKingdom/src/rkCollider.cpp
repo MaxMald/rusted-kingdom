@@ -1,46 +1,22 @@
 #include "rkCollider.h"
+#include "rkGameObject.h"
 
 namespace rk
 {
-  Collider::Collider()
-    : m_type(colliderType::Undefined)
+  Collider::Collider(GameObject& gameObject, colliderType::Type type) :
+    m_gameObject(gameObject),
+    m_type(type),
+    m_center(0.0f, 0.0f),
+    m_position(0.0f, 0.0f)
   {
-  }
-
-  Collider::Collider(colliderType::Type type)
-    : m_type(type)
-  {
-  }
-
-  Collider::Collider(const Collider& other)
-    : m_type(other.m_type)
-  {
-  }
-
-  Collider::Collider(Collider&& other) noexcept
-    : m_type(other.m_type)
-  {
-    other.m_type = colliderType::Undefined;
   }
 
   Collider::~Collider()
   {
   }
 
-  Collider& Collider::operator=(const Collider& other)
+  void Collider::syncGameObjectPositionToCollider()
   {
-    if (this != &other)
-      m_type = other.m_type;
-    return *this;
-  }
-
-  Collider& Collider::operator=(Collider&& other) noexcept
-  {
-    if (this != &other)
-    {
-      m_type = other.m_type;
-      other.m_type = colliderType::Undefined;
-    }
-    return *this;
+    m_position = m_gameObject.getWorldPosition();
   }
 }

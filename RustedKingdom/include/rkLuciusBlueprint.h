@@ -17,6 +17,7 @@ namespace rk
   class SpriteComponentFactory;
   class AnimationFactory;
   class RigidBodyComponentFactory;
+  class ColliderComponentFactory;
   class Pathfinder;
 
   class LuciusBlueprint : public GameObjectBlueprint
@@ -27,6 +28,7 @@ namespace rk
       SpriteComponentFactory& spriteComponentFactory,
       AnimationFactory& animationFactory,
       RigidBodyComponentFactory& rigidBodyComponentFactory,
+      ColliderComponentFactory& colliderComponentFactory,
       SharedPtr<Pathfinder> pathfinder,
       const IsometricPositionTransformer isometricPositionTransformer,
       const RenderWindow& renderWindow
@@ -39,6 +41,7 @@ namespace rk
   private:
     GameObjectBuilder& m_gameObjectBuilder;
     SpriteComponentFactory& m_spriteComponentFactory;
+    ColliderComponentFactory& m_colliderComponentFactory;
     AnimationFactory& m_animationFactory;
     RigidBodyComponentFactory& m_rigidBodyComponentFactory;
     SharedPtr<Pathfinder> m_pathfinder;

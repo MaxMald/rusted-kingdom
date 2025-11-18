@@ -164,7 +164,10 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkBoolComparisonAnimationStateTransition.cpp" />
     <ClCompile Include="src\rkCircleCollider.cpp" />
+    <ClCompile Include="src\rkCircleColliderComponent.cpp" />
     <ClCompile Include="src\rkCollider.cpp" />
+    <ClCompile Include="src\rkColliderComponent.cpp" />
+    <ClCompile Include="src\rkColliderComponentFactory.cpp" />
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp" />
     <ClCompile Include="src\rkNode.cpp" />
     <ClCompile Include="src\rkNodeLink.cpp" />
@@ -230,6 +233,9 @@
     <ClInclude Include="include\rkAssertions.h" />
     <ClInclude Include="include\rkBlackboard.h" />
     <ClInclude Include="include\rkBlackboardValueGroup.h" />
+    <ClInclude Include="include\rkCircleColliderComponent.h" />
+    <ClInclude Include="include\rkColliderComponent.h" />
+    <ClInclude Include="include\rkColliderComponentFactory.h" />
     <ClInclude Include="include\rkGameObjectBlueprint.h" />
     <ClInclude Include="include\rkBoolComparisonAnimationStateTransition.h" />
     <ClInclude Include="include\rkCollider.h" />

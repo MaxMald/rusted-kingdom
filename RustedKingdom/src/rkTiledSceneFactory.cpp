@@ -19,6 +19,8 @@
 #include "rkSpriteComponent.h"
 #include "rkRigidBodyComponentFactory.h"
 #include "rkRigidBodyComponent.h"
+#include "rkColliderComponentFactory.h"
+#include "rkCircleColliderComponent.h"
 
 namespace rk
 {
@@ -26,11 +28,13 @@ namespace rk
     GameObjectBuilder& gameObjectBuilder,
     SpriteComponentFactory& spriteComponentFactory,
     RigidBodyComponentFactory& rigidBodyComponentFactory,
+    ColliderComponentFactory& colliderComponentFactory,
     SceneGraph& sceneGraph
   ) :
     m_gameObjectBuilder(gameObjectBuilder),
     m_spriteComponentFactory(spriteComponentFactory),
     m_rigidBodyComponentFactory(rigidBodyComponentFactory),
+    m_colliderComponentFactory(colliderComponentFactory),
     sceneGraph(sceneGraph)
   {
   }
@@ -209,12 +213,12 @@ namespace rk
           tileDescription.getTextureRect()
         );
 
-      spriteComponent->setOrigin(
-        Vector2f(
-          static_cast<float>(tileDescription.getTextureRect().size.x) * 0.5f,
-          static_cast<float>(tileDescription.getTextureRect().size.y)
-        )
+      Vector2f spriteOrigin = Vector2f(
+        static_cast<float>(tileDescription.getTextureRect().size.x) * 0.5f,
+        static_cast<float>(tileDescription.getTextureRect().size.y)
       );
+
+      spriteComponent->setOrigin(spriteOrigin);
 
       objectGameObject->addComponent(std::move(spriteComponent));
 
@@ -226,22 +230,35 @@ namespace rk
         continue;
 
       const TiledObject& colliderObject = GetColliderObject(tileSetTile);
-      addCollider(*objectGameObject, colliderObject);
+      addCollider(*objectGameObject, colliderObject, spriteOrigin);
     }
   }
 
   void TiledSceneFactory::addCollider(
     GameObject& gameObject,
-    const TiledObject& colliderObject
+    const TiledObject& colliderObject,
+    const Vector2f& spriteOrigin
   )
   {
-    float circleColliderRadius = colliderObject.getSize().x * 0.5f;
     UniquePtr<RigidBodyComponent> rigidBody = m_rigidBodyComponentFactory
       .create(
         gameObject,
         rigidBodyType::Static
       );
-
     gameObject.addComponent(std::move(rigidBody));
+
+    float circleColliderRadius = colliderObject.getSize().x * 0.5f;
+    Vector2f colliderLocalPosition = colliderObject.getPosition();
+    Vector2f position = colliderLocalPosition - spriteOrigin;
+
+    UniquePtr<CircleColliderComponent> collider = m_colliderComponentFactory
+      .createCircle(
+        gameObject,
+        position,
+        circleColliderRadius
+     );
+    collider->setDebug(true);
+
+    gameObject.addComponent(std::move(collider));
   }
 }

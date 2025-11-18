@@ -4,6 +4,7 @@
 
 #include "rkGameObject.h"
 #include "rkRigidBodyComponent.h"
+#include "rkColliderComponent.h"
 #include "rkCollider.h"
 
 namespace rk
@@ -43,6 +44,8 @@ namespace rk
   {
     m_rigidBodyComponent = m_gameObject
       ->getComponentOrFail<RigidBodyComponent>(componentType::Type::RigidBody);
+    m_colliderComponent = m_gameObject
+      ->getComponentOrFail<ColliderComponent>(componentType::Type::Collider);
   }
 
   void AgentPathMovement::onUpdate(float)
@@ -54,7 +57,7 @@ namespace rk
       return;
 
     Vector2f targetPosition = m_pathPoints[m_currentPathPointIndex];
-    if (false /* check collision */)
+    if (m_colliderComponent->checkCollision(targetPosition))
     {
       m_currentPathPointIndex++;
       if (m_currentPathPointIndex >= m_pathPoints.size())
