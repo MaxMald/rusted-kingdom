@@ -1,34 +1,36 @@
 #pragma once
 
-#include "rkPrerequisites.h"
 #include <SFML/Graphics/View.hpp>
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/System/Vector2.hpp>
+
+#include "rkIService.h"
+
+namespace sf
+{
+  class RenderWindow;
+}
+
+using sf::RenderWindow;
 
 namespace rk
 {
   /**
    * @brief Manages the main world camera (SFML view).
    */
-  class ViewsManager
+  class ViewsManager : public IService
   {
   public:
 
     /**
      * @brief Construct a new ViewsManager.
-     *
-     * Initializes the internal view using the provided world rectangle.
-     *
-     * @param worldRect Rectangle that defines the world extents (origin, size)
-     * used to initialize the view. The referenced object must remain valid for
-     * the lifetime of this ViewsManager.
      */
-    ViewsManager(sf::FloatRect& worldRect);
+    ViewsManager();
 
     /**
      * @brief Destroy the ViewsManager.
      */
-    ~ViewsManager();
+    virtual ~ViewsManager();
 
     /**
      * @brief Get a const reference to the current world view.
@@ -51,8 +53,15 @@ namespace rk
      */
     void update(const float& deltaTime);
 
+  protected:
+
+    virtual void init(ServiceLocator& serviceLocator) override;
+    virtual void destroy() override;
+
   private:
-    /// The SFML view representing the camera for the world.
     sf::View m_worldView;
+    RenderWindow* m_renderWindow;
+
+    void updateRenderWindowView();
   };
 }

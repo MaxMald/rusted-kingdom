@@ -1,12 +1,16 @@
 #include "rkViewsManager.h"
+
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Keyboard.hpp>
-#include <cmath>
+
+#include "rkWindowManager.h"
+#include "rkServiceLocator.h"
 
 namespace rk
 {
-  ViewsManager::ViewsManager(sf::FloatRect& worldRect) :
-    m_worldView(worldRect)
+  ViewsManager::ViewsManager() :
+    m_worldView(),
+    m_renderWindow(nullptr)
   {
   }
 
@@ -50,5 +54,29 @@ namespace rk
 
       moveWorldView(moveOffset * deltaTime);
     }
+
+    updateRenderWindowView();
+  }
+
+  void ViewsManager::init(ServiceLocator& serviceLocator)
+  {
+    SharedPtr<WindowManager> windowManager =
+      serviceLocator.getService<WindowManager>();
+
+    RenderWindow& renderWindow = windowManager->getRenderWindow();
+    m_worldView = renderWindow.getDefaultView();
+
+    m_renderWindow = &renderWindow;
+  }
+
+  void ViewsManager::destroy()
+  {
+    m_renderWindow = nullptr;
+  }
+
+  void ViewsManager::updateRenderWindowView()
+  {
+    if (m_renderWindow)
+      m_renderWindow->setView(m_worldView);
   }
 }

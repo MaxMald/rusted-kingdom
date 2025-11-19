@@ -1,5 +1,5 @@
 #include "rkScenesManager.h"
-#include "rkScene.h"
+#include "rkIScene.h"
 
 namespace rk
 {
