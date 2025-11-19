@@ -327,7 +327,7 @@
     <ClCompile Include="src\rkCollidersGroup.cpp">
       <Filter>Source Files\physics\colliders</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkScene.cpp">
+    <ClCompile Include="src\rkIScene.cpp">
       <Filter>Source Files\scene</Filter>
     </ClCompile>
     <ClCompile Include="src\rkScenesManager.cpp">
@@ -342,8 +342,11 @@
     <ClCompile Include="src\rkAssetManager.cpp">
       <Filter>Source Files\services</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkLevelScene.cpp">
+    <ClCompile Include="src\rkILevelScene.cpp">
       <Filter>Source Files\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkPathfinderManager.cpp">
+      <Filter>Source Files\pathfinder</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -599,7 +602,7 @@
     <ClInclude Include="include\rkCollidersGroup.h">
       <Filter>Header Files\physics\colliders</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkScene.h">
+    <ClInclude Include="include\rkIScene.h">
       <Filter>Header Files\scene</Filter>
     </ClInclude>
     <ClInclude Include="include\rkServiceLocator.h">
@@ -620,8 +623,11 @@
     <ClInclude Include="include\rkAssetManager.h">
       <Filter>Header Files\services</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkLevelScene.h">
+    <ClInclude Include="include\rkILevelScene.h">
       <Filter>Header Files\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkPathfinderManager.h">
+      <Filter>Header Files\pathfinder</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

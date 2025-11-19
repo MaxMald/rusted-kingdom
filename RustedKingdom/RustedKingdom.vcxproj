@@ -171,7 +171,7 @@
     <ClCompile Include="src\rkColliderComponentFactory.cpp" />
     <ClCompile Include="src\rkCollidersGroup.cpp" />
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp" />
-    <ClCompile Include="src\rkLevelScene.cpp" />
+    <ClCompile Include="src\rkILevelScene.cpp" />
     <ClCompile Include="src\rkNode.cpp" />
     <ClCompile Include="src\rkNodeLink.cpp" />
     <ClCompile Include="src\rkNodeMesh.cpp" />
@@ -179,6 +179,7 @@
     <ClCompile Include="src\rkPathfinderCollisionMaskUpdater.cpp" />
     <ClCompile Include="src\rkPathfinderComponent.cpp" />
     <ClCompile Include="src\rkPathfinderFactory.cpp" />
+    <ClCompile Include="src\rkPathfinderManager.cpp" />
     <ClCompile Include="src\rkRigidBodyComponent.cpp" />
     <ClCompile Include="src\rkAnimation.cpp" />
     <ClCompile Include="src\rkAnimationComponent.cpp" />
@@ -205,7 +206,7 @@
     <ClCompile Include="src\rkRigidBody.cpp" />
     <ClCompile Include="src\rkRigidBodyComponentFactory.cpp" />
     <ClCompile Include="src\rkRigidBodyDebuggedComponent.cpp" />
-    <ClCompile Include="src\rkScene.cpp" />
+    <ClCompile Include="src\rkIScene.cpp" />
     <ClCompile Include="src\rkSceneGraph.cpp" />
     <ClCompile Include="src\rkScenesManager.cpp" />
     <ClCompile Include="src\rkScriptComponent.cpp" />
@@ -250,7 +251,7 @@
     <ClInclude Include="include\rkCollider.h" />
     <ClInclude Include="include\rkIService.h" />
     <ClInclude Include="include\rkIsometricPositionTransformer.h" />
-    <ClInclude Include="include\rkLevelScene.h" />
+    <ClInclude Include="include\rkILevelScene.h" />
     <ClInclude Include="include\rkNode.h" />
     <ClInclude Include="include\rkNodeLink.h" />
     <ClInclude Include="include\rkNodeMesh.h" />
@@ -258,6 +259,7 @@
     <ClInclude Include="include\rkPathfinderCollisionMaskUpdater.h" />
     <ClInclude Include="include\rkPathfinderComponent.h" />
     <ClInclude Include="include\rkPathfinderFactory.h" />
+    <ClInclude Include="include\rkPathfinderManager.h" />
     <ClInclude Include="include\rkPhysicWorldListener.h" />
     <ClInclude Include="include\rkRigidBodyComponentFactory.h" />
     <ClInclude Include="include\rkColliderType.h" />
@@ -292,7 +294,7 @@
     <ClInclude Include="include\rkRigidBodyComponent.h" />
     <ClInclude Include="include\rkRigidBodyDebuggedComponent.h" />
     <ClInclude Include="include\rkRigidBodyType.h" />
-    <ClInclude Include="include\rkScene.h" />
+    <ClInclude Include="include\rkIScene.h" />
     <ClInclude Include="include\rkSceneGraph.h" />
     <ClInclude Include="include\rkScenesManager.h" />
     <ClInclude Include="include\rkScriptComponent.h" />

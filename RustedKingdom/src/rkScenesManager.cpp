@@ -15,7 +15,7 @@ namespace rk
 
   void ScenesManager::registerScene(
     const String& key,
-    SharedPtr<Scene> scene
+    SharedPtr<IScene> scene
   )
   {
     m_scenes[key] = scene;

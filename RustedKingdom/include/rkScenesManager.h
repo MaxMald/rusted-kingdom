@@ -14,7 +14,7 @@ using sf::RenderStates;
 
 namespace rk
 {
-  class Scene;
+  class IScene;
 
   class ScenesManager : public IService
   {
@@ -22,7 +22,7 @@ namespace rk
     ScenesManager();
     virtual ~ScenesManager();
 
-    void registerScene(const String& key, SharedPtr<Scene> scene);
+    void registerScene(const String& key, SharedPtr<IScene> scene);
     void setNextScene(const String& key);
 
   protected:
@@ -33,9 +33,9 @@ namespace rk
     void update(float deltaTime);
     void draw(RenderTarget& window, RenderStates states) const;
 
-    UnorderedMap<String, SharedPtr<Scene>> m_scenes;
-    SharedPtr<Scene> m_activeScene;
-    SharedPtr<Scene> m_nextScene;
+    UnorderedMap<String, SharedPtr<IScene>> m_scenes;
+    SharedPtr<IScene> m_activeScene;
+    SharedPtr<IScene> m_nextScene;
 
     friend class Application;
   };

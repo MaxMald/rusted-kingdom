@@ -17,11 +17,11 @@ using sf::RenderStates;
 
 namespace rk
 {
-  class Scene : public NonCopyable
+  class IScene : public NonCopyable
   {
   public:
-    Scene(const String& key);
-    virtual ~Scene();
+    IScene(const String& key);
+    virtual ~IScene();
 
     const String& getKey() const { return m_key; }
     SceneGraph& getSceneGraph() { return m_sceneGraph; }
@@ -33,8 +33,8 @@ namespace rk
     SceneGraph m_sceneGraph;
     PhysicWorld m_physicsWorld;
 
-    virtual void onLoad();
-    virtual void onUnload();
+    virtual void onLoad() = 0;
+    virtual void onUnload() = 0;
 
   private:
     String m_key;
