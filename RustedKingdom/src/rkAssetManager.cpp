@@ -11,12 +11,14 @@
 
 namespace rk
 {
-  AssetManager::AssetManager(const char* assetDirectory)
-    : m_assetDirectory(assetDirectory),
+  AssetManager::AssetManager()
+    : m_assetDirectory(),
     m_textures(),
     m_tiledMaps(),
     m_eightDirectionAnimations()
   {
+    //String assetsPath = "C:/Users/nuup2/OneDrive/Documentos/Repositories/MaxMald/rusted-kingdom/assets";
+    m_assetDirectory = "F:/Repositories/MaxMald/rusted-kingdom/assets";
   }
 
   AssetManager::~AssetManager()
@@ -196,7 +198,7 @@ namespace rk
   {
     try
     {
-      Path fullPath = Path(m_assetDirectory) / filePath;
+      Path fullPath = Path(m_assetDirectory.c_str()) / filePath;
 
       tmr::Json json = tmr::Json::loadFromFile(fullPath.string().c_str());
       tmr::Json animations = json["animations"];
@@ -285,9 +287,19 @@ namespace rk
     m_eightDirectionAnimations.clear();
   }
 
-  const char* AssetManager::getAssetDirectory() const
+  const Path& AssetManager::getAssetDirectory() const
   {
     return m_assetDirectory;
+  }
+
+  void AssetManager::init(ServiceLocator&)
+  {
+    // Intentionally left blank.
+  }
+
+  void AssetManager::destroy()
+  {
+    clear();
   }
 
   bool AssetManager::loadAssetsFromSpriteSheetTileSet(

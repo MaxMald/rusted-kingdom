@@ -24,12 +24,9 @@
 
 int main()
 {
-  //String assetsPath = "C:/Users/nuup2/OneDrive/Documentos/Repositories/MaxMald/rusted-kingdom/assets";
-  String assetsPath = "F:/Repositories/MaxMald/rusted-kingdom/assets";
-
   sf::RenderWindow window(sf::VideoMode({ 1920, 1080 }), "SFML works!");
 
-  rk::AssetManager assetManager(assetsPath.c_str());
+  rk::AssetManager assetManager;
   rk::GameObjectBuilder gameObjectBuilder;
   rk::SceneGraph sceneGraph;
   rk::SpriteComponentFactory spriteComponentFactory(assetManager);

@@ -4,6 +4,7 @@
 
 #include "rkScenesManager.h"
 #include "rkWindowManager.h"
+#include "rkAssetManager.h"
 
 using std::optional;
 using sf::Time;
@@ -86,6 +87,7 @@ namespace rk
 
   void Application::registerServices()
   {
+    m_serviceLocator.registerService(MakeShared<AssetManager>());
     m_serviceLocator.registerService(MakeShared<ScenesManager>());
     m_serviceLocator.registerService(MakeShared<WindowManager>());
   }

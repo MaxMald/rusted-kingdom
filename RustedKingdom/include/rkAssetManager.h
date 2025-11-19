@@ -1,7 +1,6 @@
 #pragma once
 
-#include "rkPrerequisites.h"
-#include "rkNonCopyable.h"
+#include "rkIService.h"
 
 namespace sf
 {
@@ -18,18 +17,11 @@ namespace rk
   class ImageCollectionTileSet;
   class EightDirectionsSpriteSheetAnimationDescription;
 
-  /**
-   * @brief Manages loading and retrieval of texture assets.
-   *
-   * AssetManager loads textures from a specified asset directory and provides
-   * access to them by name. It owns the loaded Texture objects and releases
-   * them on destruction.
-   */
-  class AssetManager : public NonCopyable
+  class AssetManager : public IService
   {
   public:
-    explicit AssetManager(const char* assetDirectory);
-    ~AssetManager();
+    AssetManager();
+    virtual ~AssetManager();
 
     bool loadTexture(const String& key, const Path& filename);
     const Texture& getTexture(const String& key) const;
@@ -50,25 +42,21 @@ namespace rk
 
     const EightDirectionsSpriteSheetAnimationDescription&
       getEightDirectionAnimation(const String& key) const;
-    
+
     EightDirectionsSpriteSheetAnimationDescription&
       getEightDirectionAnimation(const String& key);
-    
+
     bool hasEightDirectionAnimation(const String& key) const;
 
-    /**
-     * @brief Clears all loaded textures.
-     */
     void clear();
+    const Path& getAssetDirectory() const;
 
-    /**
-     * @brief Gets the asset directory path.
-     * @return The asset directory as a C-string.
-     */
-    const char* getAssetDirectory() const;
+  protected:
+    virtual void init(ServiceLocator& serviceLocator) override;
+    virtual void destroy() override;
 
   private:
-    const char* m_assetDirectory;
+    Path m_assetDirectory;
     UnorderedMap<String, Texture*> m_textures;
     UnorderedMap<String, TiledMap*> m_tiledMaps;
     UnorderedMap<String, EightDirectionsSpriteSheetAnimationDescription*> m_eightDirectionAnimations;

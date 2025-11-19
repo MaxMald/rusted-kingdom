@@ -16,14 +16,8 @@
     <Filter Include="Header Files\utilities">
       <UniqueIdentifier>{5b531374-526c-42b4-a62b-73b132fa9885}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\assetManager">
-      <UniqueIdentifier>{4222a4a4-a9bf-4455-8e86-a87169fee78e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\utilities">
       <UniqueIdentifier>{864f1969-89c8-41a2-b942-2c26ffbde874}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\assetManager">
-      <UniqueIdentifier>{aa0eb773-2a25-4cf5-9041-7115b756396a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\scene">
       <UniqueIdentifier>{96f0154f-1977-4f1d-bcf0-b7a6b8b0a3c0}</UniqueIdentifier>
@@ -36,12 +30,6 @@
     </Filter>
     <Filter Include="Source Files\scene\gameObjects">
       <UniqueIdentifier>{5636a2fb-4114-47ab-b71e-98de9f50d66c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\assetManager\tiledMap">
-      <UniqueIdentifier>{a1fa749b-969f-4355-bdc3-f8cebc583c74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\assetManager\tiledMap">
-      <UniqueIdentifier>{3d845428-28ef-4635-9a39-fbff3154bdb1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\viewsManager">
       <UniqueIdentifier>{21032ac6-e467-48b9-9532-b982b531aaa7}</UniqueIdentifier>
@@ -63,12 +51,6 @@
     </Filter>
     <Filter Include="Header Files\eventsManager\events">
       <UniqueIdentifier>{ae4d83e3-4372-4119-80e9-abb6596e9a0c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\assetManager\animations">
-      <UniqueIdentifier>{e8517f5e-9fa0-4eb7-b2f4-e680e89932c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\assetManager\animations">
-      <UniqueIdentifier>{29c474a1-0272-4280-9352-24aa93872275}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\animations">
       <UniqueIdentifier>{2fa6b5de-39b0-4eb4-ab39-7884d54dc9a1}</UniqueIdentifier>
@@ -145,6 +127,24 @@
     <Filter Include="Source Files\services">
       <UniqueIdentifier>{3a0b928f-928a-48cf-bd23-1c422aeb92fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\assets">
+      <UniqueIdentifier>{4222a4a4-a9bf-4455-8e86-a87169fee78e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\assets\tiledMap">
+      <UniqueIdentifier>{a1fa749b-969f-4355-bdc3-f8cebc583c74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\assets\animations">
+      <UniqueIdentifier>{e8517f5e-9fa0-4eb7-b2f4-e680e89932c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\assets">
+      <UniqueIdentifier>{aa0eb773-2a25-4cf5-9041-7115b756396a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\assets\tiledMap">
+      <UniqueIdentifier>{3d845428-28ef-4635-9a39-fbff3154bdb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\assets\animations">
+      <UniqueIdentifier>{29c474a1-0272-4280-9352-24aa93872275}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -153,9 +153,6 @@
     <ClCompile Include="src\rkJson.cpp">
       <Filter>Source Files\utilities</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkAssetManager.cpp">
-      <Filter>Source Files\assetManager</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkSceneGraph.cpp">
       <Filter>Source Files\scene</Filter>
     </ClCompile>
@@ -163,13 +160,13 @@
       <Filter>Source Files\scene\gameObjects</Filter>
     </ClCompile>
     <ClCompile Include="src\rkSpriteSheet.cpp">
-      <Filter>Source Files\assetManager</Filter>
+      <Filter>Source Files\assets</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTileSet.cpp">
-      <Filter>Source Files\assetManager\tiledMap</Filter>
+      <Filter>Source Files\assets\tiledMap</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTileSetsManager.cpp">
-      <Filter>Source Files\assetManager\tiledMap</Filter>
+      <Filter>Source Files\assets\tiledMap</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTiledSceneFactory.cpp">
       <Filter>Source Files\scene</Filter>
@@ -184,19 +181,19 @@
       <Filter>Source Files\eventsManager</Filter>
     </ClCompile>
     <ClCompile Include="src\rkReferenceTileSet.cpp">
-      <Filter>Source Files\assetManager\tiledMap</Filter>
+      <Filter>Source Files\assets\tiledMap</Filter>
     </ClCompile>
     <ClCompile Include="src\rkSpriteSheetTileSet.cpp">
-      <Filter>Source Files\assetManager\tiledMap</Filter>
+      <Filter>Source Files\assets\tiledMap</Filter>
     </ClCompile>
     <ClCompile Include="src\rkImageCollectionTileSet.cpp">
-      <Filter>Source Files\assetManager\tiledMap</Filter>
+      <Filter>Source Files\assets\tiledMap</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTileSetGrid.cpp">
-      <Filter>Source Files\assetManager\tiledMap</Filter>
+      <Filter>Source Files\assets\tiledMap</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTileSetTile.cpp">
-      <Filter>Source Files\assetManager\tiledMap</Filter>
+      <Filter>Source Files\assets\tiledMap</Filter>
     </ClCompile>
     <ClCompile Include="src\rkLayerGameObject.cpp">
       <Filter>Source Files\scene\gameObjects</Filter>
@@ -205,7 +202,7 @@
       <Filter>Source Files\animations</Filter>
     </ClCompile>
     <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimationDescription.cpp">
-      <Filter>Source Files\assetManager\animations</Filter>
+      <Filter>Source Files\assets\animations</Filter>
     </ClCompile>
     <ClCompile Include="src\rkComponent.cpp">
       <Filter>Source Files\scene\gameObjects\components</Filter>
@@ -265,7 +262,7 @@
       <Filter>Source Files\animations\stateMachine</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTiledMap.cpp">
-      <Filter>Source Files\assetManager\tiledMap</Filter>
+      <Filter>Source Files\assets\tiledMap</Filter>
     </ClCompile>
     <ClCompile Include="src\rkRigidBodyComponentFactory.cpp">
       <Filter>Source Files\scene\gameObjects\components\factories</Filter>
@@ -304,10 +301,10 @@
       <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTiledObject.cpp">
-      <Filter>Source Files\assetManager\tiledMap</Filter>
+      <Filter>Source Files\assets\tiledMap</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTiledObjectGroup.cpp">
-      <Filter>Source Files\assetManager\tiledMap</Filter>
+      <Filter>Source Files\assets\tiledMap</Filter>
     </ClCompile>
     <ClCompile Include="src\rkCircleCollider.cpp">
       <Filter>Source Files\physics\colliders</Filter>
@@ -342,6 +339,9 @@
     <ClCompile Include="src\rkWindowManager.cpp">
       <Filter>Source Files\services</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkAssetManager.cpp">
+      <Filter>Source Files\services</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -359,9 +359,6 @@
     <ClInclude Include="include\rkString.h">
       <Filter>Header Files\utilities</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkAssetManager.h">
-      <Filter>Header Files\assetManager</Filter>
-    </ClInclude>
     <ClInclude Include="include\rkSceneGraph.h">
       <Filter>Header Files\scene</Filter>
     </ClInclude>
@@ -369,19 +366,19 @@
       <Filter>Header Files\scene\gameObjects</Filter>
     </ClInclude>
     <ClInclude Include="include\rkSpriteSheet.h">
-      <Filter>Header Files\assetManager</Filter>
+      <Filter>Header Files\assets</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTiledMap.h">
-      <Filter>Header Files\assetManager\tiledMap</Filter>
+      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTileSet.h">
-      <Filter>Header Files\assetManager\tiledMap</Filter>
+      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTileSetsManager.h">
-      <Filter>Header Files\assetManager\tiledMap</Filter>
+      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTileDescription.h">
-      <Filter>Header Files\assetManager\tiledMap</Filter>
+      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkViewsManager.h">
       <Filter>Header Files\viewsManager</Filter>
@@ -405,19 +402,19 @@
       <Filter>Header Files\eventsManager\events</Filter>
     </ClInclude>
     <ClInclude Include="include\rkReferenceTileSet.h">
-      <Filter>Header Files\assetManager\tiledMap</Filter>
+      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkSpriteSheetTileSet.h">
-      <Filter>Header Files\assetManager\tiledMap</Filter>
+      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkImageCollectionTileSet.h">
-      <Filter>Header Files\assetManager\tiledMap</Filter>
+      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTileSetGrid.h">
-      <Filter>Header Files\assetManager\tiledMap</Filter>
+      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTileSetTile.h">
-      <Filter>Header Files\assetManager\tiledMap</Filter>
+      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkAssertions.h">
       <Filter>Header Files\utilities</Filter>
@@ -426,7 +423,7 @@
       <Filter>Header Files\scene\gameObjects</Filter>
     </ClInclude>
     <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimationDescription.h">
-      <Filter>Header Files\assetManager\animations</Filter>
+      <Filter>Header Files\assets\animations</Filter>
     </ClInclude>
     <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimation.h">
       <Filter>Header Files\animations</Filter>
@@ -564,10 +561,10 @@
       <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTiledObject.h">
-      <Filter>Header Files\assetManager\tiledMap</Filter>
+      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTiledObjectGroup.h">
-      <Filter>Header Files\assetManager\tiledMap</Filter>
+      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTiledSceneFactory.h">
       <Filter>Header Files\scene</Filter>
@@ -615,6 +612,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\rkWindowManager.h">
+      <Filter>Header Files\services</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkAssetManager.h">
       <Filter>Header Files\services</Filter>
     </ClInclude>
   </ItemGroup>
