@@ -20,7 +20,7 @@ namespace rk
     ~Application();
 
     void prepare();
-    void run();
+    void run(const String& initialScene);
     void destroy();
 
   private:
@@ -29,6 +29,7 @@ namespace rk
     SharedPtr<WindowManager> m_windowManager;
 
     void registerServices();
+    void registerScenes();
     void update(float deltaTime);
     void draw(RenderWindow&);
   };

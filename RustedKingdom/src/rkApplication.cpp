@@ -35,10 +35,13 @@ namespace rk
 
     m_windowManager->createWindow();
     m_serviceLocator.initializeServices();
+
+    registerScenes();
   }
 
-  void Application::run()
+  void Application::run(const String& initialScene)
   {
+    m_scenesManager->setNextScene(initialScene);
     RenderWindow& renderWindow = m_windowManager->getRenderWindow();
 
     Clock deltaClock;
@@ -90,5 +93,9 @@ namespace rk
     m_serviceLocator.registerService(MakeShared<AssetManager>());
     m_serviceLocator.registerService(MakeShared<ScenesManager>());
     m_serviceLocator.registerService(MakeShared<WindowManager>());
+  }
+
+  void Application::registerScenes()
+  {
   }
 }
