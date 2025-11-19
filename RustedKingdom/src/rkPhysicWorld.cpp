@@ -17,9 +17,7 @@ namespace rk
   }
 
   PhysicWorld::~PhysicWorld()
-  {
-    clear();
-  }
+  {}
 
   RigidBody* PhysicWorld::createRigidBody(
     rigidBodyType::Type type,
@@ -175,7 +173,7 @@ namespace rk
     }
   }
 
-  void PhysicWorld::clear()
+  void PhysicWorld::destroy()
   {
     m_rigidBodies.clear();
     m_collidersGroups.clear();

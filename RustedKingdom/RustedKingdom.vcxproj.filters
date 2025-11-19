@@ -324,6 +324,9 @@
     <ClCompile Include="src\rkCollidersGroup.cpp">
       <Filter>Source Files\physics\colliders</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkScene.cpp">
+      <Filter>Source Files\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -580,6 +583,9 @@
     </ClInclude>
     <ClInclude Include="include\rkCollidersGroup.h">
       <Filter>Header Files\physics\colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkScene.h">
+      <Filter>Header Files\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

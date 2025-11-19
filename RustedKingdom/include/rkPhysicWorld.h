@@ -42,7 +42,7 @@ namespace rk
     void removeListener(PhysicWorldListener* listener);
 
     void update(float deltaTime);
-    void clear();
+    void destroy();
 
   private:
     Vector<UniquePtr<RigidBody>> m_rigidBodies;
