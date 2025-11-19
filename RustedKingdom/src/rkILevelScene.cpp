@@ -2,8 +2,8 @@
 
 namespace rk
 {
-  ILevelScene::ILevelScene(const String& key)
-    : IScene(key),
+  ILevelScene::ILevelScene(const String& key, ServiceLocator& serviceLocator)
+    : IScene(key, serviceLocator),
     m_pathfinderManager()
   {
   }

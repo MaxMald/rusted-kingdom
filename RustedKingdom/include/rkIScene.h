@@ -17,10 +17,12 @@ using sf::RenderStates;
 
 namespace rk
 {
+  class ServiceLocator;
+
   class IScene : public NonCopyable
   {
   public:
-    IScene(const String& key);
+    IScene(const String& key, ServiceLocator&);
     virtual ~IScene();
 
     const String& getKey() const { return m_key; }
@@ -32,6 +34,7 @@ namespace rk
   protected:
     SceneGraph m_sceneGraph;
     PhysicWorld m_physicsWorld;
+    ServiceLocator& m_serviceLocator;
 
     virtual void onLoad() = 0;
     virtual void onUnload() = 0;

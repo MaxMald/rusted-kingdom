@@ -2,10 +2,11 @@
 
 namespace rk
 {
-  IScene::IScene(const String& key) :
+  IScene::IScene(const String& key, ServiceLocator& serviceLocator) :
     m_key(key),
     m_sceneGraph(),
-    m_physicsWorld()
+    m_physicsWorld(),
+    m_serviceLocator(serviceLocator)
   {
   }
 

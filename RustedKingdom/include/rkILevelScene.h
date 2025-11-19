@@ -8,7 +8,7 @@ namespace rk
   class ILevelScene : public IScene
   {
   public:
-    ILevelScene(const String& key);
+    ILevelScene(const String& key, ServiceLocator&);
     virtual ~ILevelScene();
 
   protected:
