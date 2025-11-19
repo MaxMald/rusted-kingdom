@@ -222,6 +222,7 @@
     <ClCompile Include="src\rkTileSetsManager.cpp" />
     <ClCompile Include="src\rkTileSetTile.cpp" />
     <ClCompile Include="src\rkViewsManager.cpp" />
+    <ClCompile Include="src\rkWindowManager.cpp" />
     <ClCompile Include="src\scripts\rkAgentPathMovement.cpp" />
     <ClCompile Include="src\scripts\rkLucius.cpp" />
     <ClCompile Include="src\scripts\rkLuciusAnimation.cpp" />
@@ -313,6 +314,7 @@
     <ClInclude Include="include\rkVector2Utilities.h" />
     <ClInclude Include="include\rkViewsManager.h" />
     <ClInclude Include="include\rkTileSetTile.h" />
+    <ClInclude Include="include\rkWindowManager.h" />
     <ClInclude Include="include\scripts\rkAgentPathMovement.h" />
     <ClInclude Include="include\scripts\rkLucius.h" />
     <ClInclude Include="include\scripts\rkLuciusAnimation.h" />

@@ -11,6 +11,7 @@ using sf::RenderWindow;
 namespace rk
 {
   class ScenesManager;
+  class WindowManager;
 
   class Application : public NonCopyable
   {
@@ -23,14 +24,12 @@ namespace rk
     void destroy();
 
   private:
-    RenderWindow* m_window;
     ServiceLocator m_serviceLocator;
     SharedPtr<ScenesManager> m_scenesManager;
+    SharedPtr<WindowManager> m_windowManager;
 
-    void update(float deltaTime);
-    void draw();
-
-    void createWindow();
     void registerServices();
+    void update(float deltaTime);
+    void draw(RenderWindow&);
   };
 }

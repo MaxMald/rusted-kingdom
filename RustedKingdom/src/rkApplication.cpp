@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "rkScenesManager.h"
+#include "rkWindowManager.h"
 
 using std::optional;
 using sf::Time;
@@ -12,8 +13,8 @@ using sf::Clock;
 namespace rk
 {
   Application::Application() :
-    m_window(nullptr),
     m_scenesManager(nullptr),
+    m_windowManager(nullptr),
     m_serviceLocator()
   {
   }
@@ -24,42 +25,44 @@ namespace rk
 
   void Application::prepare()
   {
-    createWindow();
     registerServices();
-    m_serviceLocator.initializeServices();
 
-    m_scenesManager = 
+    m_scenesManager =
       m_serviceLocator.getService<ScenesManager>();
+    m_windowManager =
+      m_serviceLocator.getService<WindowManager>();
+
+    m_windowManager->createWindow();
+    m_serviceLocator.initializeServices();
   }
 
   void Application::run()
   {
-    if (!m_window)
-      return;
+    RenderWindow& renderWindow = m_windowManager->getRenderWindow();
 
     Clock deltaClock;
-    while (m_window->isOpen())
+    while (renderWindow.isOpen())
     {
-      while (const optional event = m_window->pollEvent())
+      while (const optional event = renderWindow.pollEvent())
       {
         if (event->is<sf::Event::Closed>())
-          m_window->close();
+          renderWindow.close();
       }
 
       try
       {
         update(deltaClock.restart().asSeconds());
-        draw();
+        draw(renderWindow);
       }
       catch (const std::exception& ex)
       {
         std::cerr << "Exception in main loop: " << ex.what() << std::endl;
-        m_window->close();
+        renderWindow.close();
       }
       catch (...)
       {
         std::cerr << "Unknown exception in main loop." << std::endl;
-        m_window->close();
+        renderWindow.close();
       }
     }
   }
@@ -67,9 +70,6 @@ namespace rk
   void Application::destroy()
   {
     m_serviceLocator.destroy();
-
-    if (m_window)
-      delete m_window;
   }
 
   void Application::update(float deltaTime)
@@ -77,32 +77,16 @@ namespace rk
     m_scenesManager->update(deltaTime);
   }
 
-  void Application::draw()
+  void Application::draw(RenderWindow& renderWindow)
   {
-    m_window->clear(sf::Color::Black);
-    m_scenesManager->draw(*m_window, RenderStates::Default);
-    m_window->display();
-  }
-
-  void Application::createWindow()
-  {
-    m_window = new RenderWindow(
-      sf::VideoMode({ 1920, 1080 }),
-      "Rusted Kingdom"
-    );
-
-    if (!m_window->isOpen())
-    {
-      delete m_window;
-
-      throw RuntimeErrorException(
-        "Failed to create RenderWindow."
-      );
-    }
+    renderWindow.clear(sf::Color::Black);
+    m_scenesManager->draw(renderWindow, RenderStates::Default);
+    renderWindow.display();
   }
 
   void Application::registerServices()
   {
     m_serviceLocator.registerService(MakeShared<ScenesManager>());
+    m_serviceLocator.registerService(MakeShared<WindowManager>());
   }
 }
