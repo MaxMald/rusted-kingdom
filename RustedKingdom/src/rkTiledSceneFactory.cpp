@@ -9,6 +9,7 @@
 #include <TMR/tmrObject.h>
 
 #include "rkSceneGraph.h"
+#include "rkPhysicWorld.h"
 #include "rkTiledMap.h"
 #include "rkTileSetsManager.h"
 #include "rkTileDescription.h"
@@ -29,13 +30,15 @@ namespace rk
     SpriteComponentFactory& spriteComponentFactory,
     RigidBodyComponentFactory& rigidBodyComponentFactory,
     ColliderComponentFactory& colliderComponentFactory,
-    SceneGraph& sceneGraph
+    SceneGraph& sceneGraph,
+    PhysicWorld& physicWorld
   ) :
     m_gameObjectBuilder(gameObjectBuilder),
     m_spriteComponentFactory(spriteComponentFactory),
     m_rigidBodyComponentFactory(rigidBodyComponentFactory),
     m_colliderComponentFactory(colliderComponentFactory),
-    sceneGraph(sceneGraph)
+    m_sceneGraph(sceneGraph),
+    m_physicWorld(physicWorld)
   {
   }
 
@@ -134,7 +137,7 @@ namespace rk
     LayerGameObject* layerGameObject = new LayerGameObject(
       tileMapLayer.getName()
     );
-    sceneGraph.getRoot()->addChild(UniquePtr<LayerGameObject>(layerGameObject));
+    m_sceneGraph.getRoot()->addChild(UniquePtr<LayerGameObject>(layerGameObject));
 
     for (Int32 row = 0; row < numRows; ++row)
     {
@@ -180,10 +183,17 @@ namespace rk
     const IsometricPositionTransformer& isometricPositionTransformer
   )
   {
+    String objectGroupName = objectGroupLayer.getName();
+
     LayerGameObject* layerGameObject = new LayerGameObject(
-      objectGroupLayer.getName()
+      objectGroupName.c_str()
     );
-    sceneGraph.getRoot()->addChild(UniquePtr<LayerGameObject>(layerGameObject));
+
+    m_physicWorld.createCollidersGroup(
+      objectGroupName
+    );
+
+    m_sceneGraph.getRoot()->addChild(UniquePtr<LayerGameObject>(layerGameObject));
 
     SizeT objectsSize = objectGroupLayer.getObjectSize();
     for (SizeT objIndex = 0; objIndex < objectsSize; ++objIndex)
@@ -230,13 +240,19 @@ namespace rk
         continue;
 
       const TiledObject& colliderObject = GetColliderObject(tileSetTile);
-      addCollider(*objectGameObject, colliderObject, spriteOrigin);
+      addCollider(
+        *objectGameObject,
+        colliderObject,
+        objectGroupName,
+        spriteOrigin
+      );
     }
   }
 
   void TiledSceneFactory::addCollider(
     GameObject& gameObject,
     const TiledObject& colliderObject,
+    const String& colliderGroupKey,
     const Vector2f& spriteOrigin
   )
   {
@@ -256,7 +272,8 @@ namespace rk
       .createCircle(
         gameObject,
         position,
-        circleColliderRadius
+        circleColliderRadius,
+        colliderGroupKey
      );
     collider->setDebug(true);
 

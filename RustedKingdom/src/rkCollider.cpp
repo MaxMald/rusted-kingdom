@@ -7,8 +7,11 @@ namespace rk
     m_gameObject(gameObject),
     m_type(type),
     m_center(0.0f, 0.0f),
-    m_position(0.0f, 0.0f)
+    m_position(0.0f, 0.0f),
+    m_isDirty(true),
+    m_collidersGroupKey("")
   {
+    syncGameObjectPositionToCollider();
   }
 
   Collider::~Collider()
@@ -17,6 +20,8 @@ namespace rk
 
   void Collider::syncGameObjectPositionToCollider()
   {
-    m_position = m_gameObject.getWorldPosition();
+    Vector2f desiredPosition = m_gameObject.getWorldPosition();
+    if (m_position != desiredPosition)
+      setPosition(desiredPosition);
   }
 }

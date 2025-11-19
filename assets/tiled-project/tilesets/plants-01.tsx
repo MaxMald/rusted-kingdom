@@ -22,7 +22,7 @@
  <tile id="6">
   <image source="../../textures/plants/plants-01/bigtree01.png" width="256" height="256"/>
   <objectgroup draworder="index" id="2">
-   <object id="1" type="collider" x="128.842" y="201.421" width="23.8421" height="23.8421">
+   <object id="1" type="collider" x="58.842" y="76.0877" width="168.509" height="168.509">
     <ellipse/>
    </object>
   </objectgroup>
@@ -33,7 +33,7 @@
  <tile id="8">
   <image source="../../textures/plants/plants-01/bigtree03.png" width="256" height="256"/>
   <objectgroup draworder="index" id="2">
-   <object id="2" type="collider" x="133.97" y="204.5" width="24" height="24">
+   <object id="2" type="collider" x="72.97" y="95.8333" width="138.333" height="138.333">
     <ellipse/>
    </object>
   </objectgroup>
@@ -149,8 +149,13 @@
  <tile id="45">
   <image source="../../textures/plants/plants-01/pine-half06.png" width="256" height="256"/>
  </tile>
- <tile id="46">
+ <tile id="46" type="collider">
   <image source="../../textures/plants/plants-01/pine-half07.png" width="256" height="256"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="38" y="74.6667" width="180.251" height="170.667">
+    <ellipse/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="47">
   <image source="../../textures/plants/plants-01/pine-half08.png" width="256" height="256"/>

@@ -27,6 +27,7 @@ namespace rk
   class RigidBodyComponentFactory;
   class ColliderComponentFactory;
   class IsometricPositionTransformer;
+  class PhysicWorld;
 
   class TiledSceneFactory : public NonCopyable
   {
@@ -36,7 +37,8 @@ namespace rk
       SpriteComponentFactory&,
       RigidBodyComponentFactory&,
       ColliderComponentFactory&,
-      SceneGraph&
+      SceneGraph&,
+      PhysicWorld&
     );
     ~TiledSceneFactory();
 
@@ -47,7 +49,8 @@ namespace rk
     SpriteComponentFactory& m_spriteComponentFactory;
     RigidBodyComponentFactory& m_rigidBodyComponentFactory;
     ColliderComponentFactory& m_colliderComponentFactory;
-    SceneGraph& sceneGraph;
+    SceneGraph& m_sceneGraph;
+    PhysicWorld& m_physicWorld;
 
     static const TiledObject& GetColliderObject(const TileSetTile& tileSetTile);
     static bool HasCollider(const TileSetTile& tileSetTile);
@@ -68,6 +71,7 @@ namespace rk
     void addCollider(
       GameObject&,
       const TiledObject&,
+      const String& colliderGroupKey,
       const Vector2f& spriteOrigin
     );
   };

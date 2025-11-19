@@ -67,6 +67,8 @@ namespace rk
      */
     void draw(RenderTarget& target, RenderStates states) const override;
 
+    void destroy();
+
   private:
     UniquePtr<GameObject> m_root;
   };

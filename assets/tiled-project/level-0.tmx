@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="20" tilewidth="128" tileheight="64" infinite="0" nextlayerid="9" nextobjectid="90">
+<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="20" tilewidth="128" tileheight="64" infinite="0" nextlayerid="9" nextobjectid="148">
  <editorsettings>
   <export target="../maps/level-3.json" format="json"/>
  </editorsettings>
@@ -47,7 +47,7 @@
   <tile id="6">
    <image source="../textures/plants/plants-01/bigtree01.png" width="256" height="256"/>
    <objectgroup draworder="index" id="2">
-    <object id="1" type="collider" x="128.842" y="200.921" width="23.8421" height="23.8421">
+    <object id="1" type="collider" x="58.842" y="76.0877" width="168.509" height="168.509">
      <ellipse/>
     </object>
    </objectgroup>
@@ -58,7 +58,7 @@
   <tile id="8">
    <image source="../textures/plants/plants-01/bigtree03.png" width="256" height="256"/>
    <objectgroup draworder="index" id="2">
-    <object id="2" type="collider" x="133.97" y="204.5" width="24" height="24">
+    <object id="2" type="collider" x="72.97" y="95.8333" width="138.333" height="138.333">
      <ellipse/>
     </object>
    </objectgroup>
@@ -174,8 +174,13 @@
   <tile id="45">
    <image source="../textures/plants/plants-01/pine-half06.png" width="256" height="256"/>
   </tile>
-  <tile id="46">
+  <tile id="46" type="collider">
    <image source="../textures/plants/plants-01/pine-half07.png" width="256" height="256"/>
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="38" y="74.6667" width="180.251" height="170.667">
+     <ellipse/>
+    </object>
+   </objectgroup>
   </tile>
   <tile id="47">
    <image source="../textures/plants/plants-01/pine-half08.png" width="256" height="256"/>
@@ -323,44 +328,22 @@
 </data>
  </layer>
  <objectgroup id="2" name="plantas">
-  <object id="48" gid="41" x="1210.42" y="1012.36" width="256" height="256"/>
-  <object id="49" gid="49" x="92" y="396" width="128" height="128"/>
-  <object id="50" gid="49" x="132" y="394" width="128" height="128"/>
-  <object id="51" gid="49" x="120.5" y="345.5" width="128" height="128"/>
-  <object id="52" gid="50" x="129.334" y="74.6667" width="128" height="128"/>
-  <object id="53" gid="50" x="182" y="68" width="128" height="128"/>
-  <object id="54" gid="51" x="269.5" y="148.5" width="128" height="64"/>
-  <object id="55" gid="51" x="247.5" y="170.5" width="128" height="64"/>
-  <object id="56" gid="51" x="239.5" y="202.5" width="128" height="64"/>
-  <object id="57" gid="51" x="270.5" y="186.167" width="128" height="64"/>
-  <object id="58" gid="64" x="191" y="699" width="256" height="128"/>
-  <object id="59" gid="64" x="147" y="729" width="256" height="128"/>
-  <object id="63" gid="79" x="355" y="233" width="256" height="256"/>
-  <object id="64" gid="79" x="271.5" y="234.5" width="256" height="256"/>
-  <object id="65" gid="88" x="312.5" y="137.5" width="256" height="256"/>
-  <object id="66" gid="88" x="491.5" y="704.5" width="256" height="256"/>
-  <object id="67" gid="98" x="637" y="905" width="256" height="128"/>
-  <object id="68" gid="105" x="547" y="859" width="256" height="128"/>
-  <object id="69" gid="107" x="960" y="328" width="128" height="64"/>
-  <object id="70" gid="107" x="935" y="371" width="128" height="64"/>
-  <object id="71" gid="79" x="700.5" y="167.5" width="256" height="256"/>
-  <object id="72" gid="72" x="774" y="514" width="256" height="256"/>
-  <object id="73" gid="72" x="740.5" y="595.5" width="256" height="256"/>
-  <object id="74" gid="76" x="825" y="597" width="256" height="256"/>
-  <object id="75" gid="76" x="672" y="486" width="256" height="256"/>
-  <object id="76" gid="72" x="1372.64" y="763.061" width="256" height="256"/>
-  <object id="77" gid="75" x="1373.14" y="680.561" width="256" height="256"/>
-  <object id="78" gid="75" x="1271.14" y="734.561" width="256" height="256"/>
-  <object id="79" gid="98" x="173.5" y="910.5" width="256" height="128"/>
-  <object id="80" gid="98" x="622" y="594" width="256" height="128"/>
-  <object id="81" gid="95" x="562.667" y="616" width="256" height="128"/>
-  <object id="82" gid="95" x="626" y="534" width="256" height="128"/>
-  <object id="83" gid="39" x="930.667" y="837.333" width="256" height="256"/>
-  <object id="84" gid="41" x="414" y="452.667" width="256" height="256"/>
-  <object id="85" gid="39" x="546" y="816.667" width="256" height="256"/>
-  <object id="86" gid="41" x="768.667" y="860.667" width="256" height="256"/>
-  <object id="87" gid="41" x="960.667" y="543.333" width="256" height="256"/>
-  <object id="88" gid="41" x="217.333" y="596" width="256" height="256"/>
-  <object id="89" gid="41" x="620.667" y="230" width="256" height="256"/>
+  <object id="131" gid="79" x="606.667" y="246.667" width="256" height="256"/>
+  <object id="132" gid="79" x="296" y="610.667" width="256" height="256"/>
+  <object id="133" gid="79" x="558" y="906" width="256" height="256"/>
+  <object id="134" gid="79" x="770.667" y="554.667" width="256" height="256"/>
+  <object id="135" gid="79" x="995.333" y="634" width="256" height="256"/>
+  <object id="136" gid="79" x="1087.33" y="971.333" width="256" height="256"/>
+  <object id="137" gid="79" x="459.333" y="487.333" width="256" height="256"/>
+  <object id="138" gid="79" x="774.667" y="1094.67" width="256" height="256"/>
+  <object id="139" gid="41" x="458" y="286" width="256" height="256"/>
+  <object id="140" gid="41" x="687.333" y="723.333" width="256" height="256"/>
+  <object id="141" gid="41" x="349.333" y="829.333" width="256" height="256"/>
+  <object id="142" gid="41" x="658.667" y="1197.33" width="256" height="256"/>
+  <object id="143" gid="41" x="800.667" y="335.333" width="256" height="256"/>
+  <object id="144" gid="41" x="604" y="62.6667" width="256" height="256"/>
+  <object id="145" gid="41" x="191.333" y="446" width="256" height="256"/>
+  <object id="146" gid="41" x="951.333" y="1096.67" width="256" height="256"/>
+  <object id="147" gid="41" x="1308.67" y="966" width="256" height="256"/>
  </objectgroup>
 </map>

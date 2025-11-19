@@ -60,4 +60,9 @@ namespace rk
   {
     m_root->draw(target, states);
   }
+
+  void SceneGraph::destroy()
+  {
+    m_root = nullptr;
+  }
 }

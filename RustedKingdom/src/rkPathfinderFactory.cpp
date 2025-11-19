@@ -1,6 +1,8 @@
 #include "rkPathfinderFactory.h"
 #include "rkPathfinder.h"
 #include "rkTiledMap.h"
+#include "rkCollider.h"
+#include "rkIsometricPositionTransformer.h"
 
 namespace rk
 {

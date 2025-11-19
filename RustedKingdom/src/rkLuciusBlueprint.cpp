@@ -96,7 +96,8 @@ namespace rk
       m_colliderComponentFactory.createCircle(
         *lucius,
         Vector2f(0.0f, 0.0f),
-        20.0f
+        20.0f,
+        "characters"
       );
     circleCollider->setDebug(true);
 

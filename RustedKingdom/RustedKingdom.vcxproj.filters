@@ -318,6 +318,12 @@
     <ClCompile Include="src\rkColliderComponentFactory.cpp">
       <Filter>Source Files\scene\gameObjects\components\factories</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkPathfinderCollisionMaskUpdater.cpp">
+      <Filter>Source Files\pathfinder</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkCollidersGroup.cpp">
+      <Filter>Source Files\physics\colliders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -565,6 +571,15 @@
     </ClInclude>
     <ClInclude Include="include\rkColliderComponentFactory.h">
       <Filter>Header Files\scene\gameObjects\components\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkPhysicWorldListener.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkPathfinderCollisionMaskUpdater.h">
+      <Filter>Header Files\pathfinder</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkCollidersGroup.h">
+      <Filter>Header Files\physics\colliders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

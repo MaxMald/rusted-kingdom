@@ -69,6 +69,11 @@ namespace rk
       const Vector2f& position
     ) const;
 
+    void removeEndNodePositionIfNotWalkable(
+      Vector<Vector2f>& path,
+      const SharedPtr<Node>& endNode
+    ) const;
+
     void addStartAndEndPositionsToPath(
       Vector<Vector2f>& path,
       const Vector2f& start,

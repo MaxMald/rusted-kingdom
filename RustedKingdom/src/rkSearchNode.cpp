@@ -53,4 +53,9 @@ namespace rk
     m_gCost = gCost;
     m_fCost = m_gCost + m_hCost;
   }
+
+  bool SearchNode::isWalkable() const
+  {
+    return m_node->isWalkable();
+  }
 }

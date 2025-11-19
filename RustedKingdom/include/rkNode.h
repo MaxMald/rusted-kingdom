@@ -22,6 +22,8 @@ namespace rk
     Vector2f getPosition() const { return m_position; }
     float getWeight() const { return m_weight; }
     void setWeight(float weight) { m_weight = weight; }
+    bool isWalkable() const { return m_walkable; }
+    void setWalkable(bool walkable) { m_walkable = walkable; }
 
     void addChild(SharedPtr<Node> child);
     const Vector<SharedPtr<NodeLink>>& getChildren() const;
@@ -30,5 +32,6 @@ namespace rk
     Vector<SharedPtr<NodeLink>> m_children;
     Vector2f m_position;
     float m_weight;
+    bool m_walkable;
   };
 }

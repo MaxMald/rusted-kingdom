@@ -17,12 +17,14 @@ namespace rk
   UniquePtr<CircleColliderComponent> ColliderComponentFactory::createCircle(
     GameObject& gameObject,
     const Vector2f& center,
-    float radius
+    float radius,
+    const String& colliderGroupKey
   )
   {
     Collider* collider = m_physicWorld.createCollider(
       gameObject,
-      colliderType::Circle
+      colliderType::Circle,
+      colliderGroupKey
     );
 
     CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);

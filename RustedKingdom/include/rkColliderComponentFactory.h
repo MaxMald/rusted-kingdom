@@ -21,7 +21,8 @@ namespace rk
     UniquePtr<CircleColliderComponent> createCircle(
       GameObject& gameObject,
       const Vector2f& center,
-      float radius
+      float radius,
+      const String& colliderGroupKey
     );
     
   private:

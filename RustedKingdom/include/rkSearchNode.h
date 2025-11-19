@@ -30,6 +30,7 @@ namespace rk
     void setGCost(float gCost);
     float getHCost() const { return m_hCost; }
     float getFCost() const { return m_fCost; }
+    bool isWalkable() const;
 
   protected:
     SharedPtr<Node> m_node;

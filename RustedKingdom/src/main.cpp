@@ -18,6 +18,7 @@
 #include "rkColliderComponentFactory.h"
 #include "rkPathfinder.h"
 #include "rkPathfinderFactory.h"
+#include "rkPathfinderCollisionMaskUpdater.h"
 
 #include "scripts/rkLucius.h"
 
@@ -40,8 +41,11 @@ int main()
     spriteComponentFactory,
     rigidBodyComponentFactory,
     colliderComponentFactory,
-    sceneGraph
+    sceneGraph,
+    physicWorld
   );
+
+  physicWorld.createCollidersGroup("characters");
 
   bool result = false;
   result = assetManager.loadTiledMap("level-0", "maps/level-3.json");
@@ -74,6 +78,13 @@ int main()
   rk::TiledMap& tiledMap = assetManager.getTiledMap("level-0");
   rk::SharedPtr<rk::Pathfinder> pathfinder = rk::pathfinderFactory::createFromIsometricTiledMap(
     tiledMap
+  );
+
+  rk::PathfinderCollisionMaskUpdater pathfinderCollisionMaskUpdater(
+    pathfinder,
+    physicWorld,
+    "plantas",
+    tiledMap.getIsometricPositionTransformer()
   );
 
   rk::AnimationFactory animationFactory(assetManager);
@@ -117,5 +128,6 @@ int main()
     window.display();
   }
 
+  sceneGraph.destroy();
   assetManager.clear();
 }

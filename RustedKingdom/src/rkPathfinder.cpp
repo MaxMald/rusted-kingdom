@@ -49,7 +49,7 @@ namespace rk
       return {};
 
     openList.push_back(createStartSearchNode(startNode, end));
-
+    
     while (!openList.empty())
     {
       sortOpenListByFCost();
@@ -59,6 +59,7 @@ namespace rk
       if (currentNode->getNode() == endNode)
       {
         Vector<Vector2f> path = reconstructPath(currentNode);
+        removeEndNodePositionIfNotWalkable(path, endNode);
         addStartAndEndPositionsToPath(path, start, end);
         return path;
       }
@@ -66,7 +67,12 @@ namespace rk
       // For each child (neighbor)
       for (const auto& nodeLink : currentNode->getNode()->getChildren())
       {
+        // Skip nodes already in closed list
         if (isNodeInList(nodeLink->getNode(), closedList))
+          continue;
+
+        // Skip non-walkable nodes (except the end node)
+        if (nodeLink->getNode() != endNode && !nodeLink->getNode()->isWalkable())
           continue;
 
         // Check if already in open list
@@ -252,6 +258,15 @@ namespace rk
       closestY = static_cast<UInt32>(round(position.y * m_1OverYSpacing)) % m_height;
 
     return getNodeAt(closestX, closestY);
+  }
+
+  void Pathfinder::removeEndNodePositionIfNotWalkable(
+    Vector<Vector2f>& path,
+    const SharedPtr<Node>& endNode
+  ) const
+  {
+    if (!endNode->isWalkable())
+      path.pop_back();
   }
 
   void Pathfinder::addStartAndEndPositionsToPath(
