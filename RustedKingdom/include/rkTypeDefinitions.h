@@ -8,6 +8,8 @@
 #include <queue>
 #include <functional>
 #include <filesystem>
+#include <typeindex>
+#include <type_traits>
 
 namespace rk
 {
@@ -24,6 +26,7 @@ namespace rk
   using Bool = bool;
   using SizeT = std::size_t;
   using Path = std::filesystem::path;
+  using TypeIndex = std::type_index;
 
   template<typename K, typename V>
   using UnorderedMap = std::unordered_map<K,V>;
@@ -59,4 +62,7 @@ namespace rk
   {
     return std::make_shared<T>(std::forward<Args>(args)...);
   }
+
+  template<typename Base, typename Derived>
+  using IsBaseOf = std::is_base_of<Base, Derived>;
 }

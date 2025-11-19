@@ -243,6 +243,7 @@
     <ClInclude Include="include\rkGameObjectBlueprint.h" />
     <ClInclude Include="include\rkBoolComparisonAnimationStateTransition.h" />
     <ClInclude Include="include\rkCollider.h" />
+    <ClInclude Include="include\rkIService.h" />
     <ClInclude Include="include\rkIsometricPositionTransformer.h" />
     <ClInclude Include="include\rkNode.h" />
     <ClInclude Include="include\rkNodeLink.h" />
@@ -289,6 +290,7 @@
     <ClInclude Include="include\rkSceneGraph.h" />
     <ClInclude Include="include\rkScriptComponent.h" />
     <ClInclude Include="include\rkSearchNode.h" />
+    <ClInclude Include="include\rkServiceLocator.h" />
     <ClInclude Include="include\rkSpriteComponentFactory.h" />
     <ClInclude Include="include\rkSpriteSheet.h" />
     <ClInclude Include="include\rkSpriteSheetTileSet.h" />

@@ -139,6 +139,9 @@
     <Filter Include="Source Files\physics\colliders">
       <UniqueIdentifier>{6a5364a8-4493-4554-8a75-22a15fc10727}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\services">
+      <UniqueIdentifier>{a08bc1c2-b3c2-40f5-b525-ad745d6b97a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -586,6 +589,12 @@
     </ClInclude>
     <ClInclude Include="include\rkScene.h">
       <Filter>Header Files\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkServiceLocator.h">
+      <Filter>Header Files\services</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkIService.h">
+      <Filter>Header Files\services</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
