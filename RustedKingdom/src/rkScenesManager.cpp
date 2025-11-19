@@ -32,6 +32,11 @@ namespace rk
     );
   }
 
+  void ScenesManager::init(ServiceLocator&)
+  {
+    // Intentionally left blank.
+  }
+
   void ScenesManager::destroy()
   {
     m_scenes.clear();

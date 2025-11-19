@@ -5,6 +5,8 @@
 
 namespace rk
 {
+  class ServiceLocator;
+
   class IService : public NonCopyable
   {
   public:
@@ -12,6 +14,10 @@ namespace rk
     virtual ~IService() = default;
 
   protected:
+
+    virtual void init(ServiceLocator& serviceLocator) = 0;
     virtual void destroy() = 0;
+
+    friend class ServiceLocator;
   };
 }

@@ -336,6 +336,9 @@
     <ClCompile Include="src\rkScenesManager.cpp">
       <Filter>Source Files\services</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkApplication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -604,6 +607,9 @@
     </ClInclude>
     <ClInclude Include="include\rkScenesManager.h">
       <Filter>Header Files\services</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkApplication.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -27,26 +27,26 @@ namespace rk
 
     /**
      * @brief Registers a service instance of type T.
-     * 
+     *
      * @tparam T Service type, must derive from IService.
      * @param service Shared pointer to the service instance.
      */
     template<typename T>
-    void registerService(SharedPtr<T> service) 
+    void registerService(SharedPtr<T> service)
     {
       static_assert(
-        IsBaseOf<IService, T>::value, 
+        IsBaseOf<IService, T>::value,
         "Service must derive from IService"
-      );
+        );
 
       m_services[typeid(T)] = service;
     }
 
     /**
      * @brief Retrieves a registered service instance of type T.
-     * 
+     *
      * @tparam T Service type, must derive from IService.
-     * 
+     *
      * @return Shared pointer to the requested service.
      * @throws RuntimeErrorException if the service is not found.
      */
@@ -56,7 +56,7 @@ namespace rk
       static_assert(
         IsBaseOf<IService, T>::value,
         "Service must derive from rkIService"
-      );
+        );
 
       auto it = m_services.find(typeid(T));
       if (it != m_services.end()) {
@@ -70,7 +70,7 @@ namespace rk
 
     /**
      * @brief Unregisters a service instance of type T.
-     * 
+     *
      * @tparam T Service type, must derive from IService.
      */
     template<typename T>
@@ -78,19 +78,33 @@ namespace rk
       static_assert(
         IsBaseOf<IService, T>::value,
         "Service must derive from rkIService"
-      );
+        );
       m_services.erase(typeid(T));
-    }
-
-    /**
-     * @brief Removes all registered services.
-     */
-    void clear() {
-      m_services.clear();
     }
 
   private:
     /// Internal storage for registered services, keyed by type.
     UnorderedMap<TypeIndex, SharedPtr<IService>> m_services;
+
+    /**
+     * @brief Initializes all registered services.
+     */
+    void initializeServices()
+    {
+      for (auto& [type, service] : m_services)
+        service->init(*this);
+    }
+
+    /**
+     * @brief Destroys all registered services and clears the registry.
+     */
+    void destroy()
+    {
+      for (auto& [type, service] : m_services)
+        service->destroy();
+      m_services.clear();
+    }
+
+    friend class Application;
   };
 }

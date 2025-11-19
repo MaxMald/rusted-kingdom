@@ -162,6 +162,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\rkApplication.cpp" />
     <ClCompile Include="src\rkBoolComparisonAnimationStateTransition.cpp" />
     <ClCompile Include="src\rkCircleCollider.cpp" />
     <ClCompile Include="src\rkCircleColliderComponent.cpp" />
@@ -234,6 +235,7 @@
     <ClInclude Include="include\rkAnimationStateMachineBuilder.h" />
     <ClInclude Include="include\rkAnimationStateTransition.h" />
     <ClInclude Include="include\rkAnimationType.h" />
+    <ClInclude Include="include\rkApplication.h" />
     <ClInclude Include="include\rkAssertions.h" />
     <ClInclude Include="include\rkBlackboard.h" />
     <ClInclude Include="include\rkBlackboardValueGroup.h" />

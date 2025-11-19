@@ -26,6 +26,7 @@ namespace rk
     void setNextScene(const String& key);
 
   protected:
+    virtual void init(ServiceLocator& serviceLocator) override;
     virtual void destroy() override;
 
   private:
@@ -35,5 +36,7 @@ namespace rk
     UnorderedMap<String, SharedPtr<Scene>> m_scenes;
     SharedPtr<Scene> m_activeScene;
     SharedPtr<Scene> m_nextScene;
+
+    friend class Application;
   };
 }
