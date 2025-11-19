@@ -10,5 +10,8 @@ namespace rk
   public:
     IService() = default;
     virtual ~IService() = default;
+
+  protected:
+    virtual void destroy() = 0;
   };
 }

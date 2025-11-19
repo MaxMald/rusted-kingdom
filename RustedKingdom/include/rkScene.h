@@ -44,6 +44,6 @@ namespace rk
     void update(float deltaTime);
     void draw(RenderTarget& window, RenderStates states) const;
 
-    friend class SceneManager;
+    friend class ScenesManager;
   };
 }

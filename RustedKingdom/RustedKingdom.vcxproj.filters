@@ -142,6 +142,9 @@
     <Filter Include="Header Files\services">
       <UniqueIdentifier>{a08bc1c2-b3c2-40f5-b525-ad745d6b97a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\services">
+      <UniqueIdentifier>{3a0b928f-928a-48cf-bd23-1c422aeb92fe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -329,6 +332,9 @@
     </ClCompile>
     <ClCompile Include="src\rkScene.cpp">
       <Filter>Source Files\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkScenesManager.cpp">
+      <Filter>Source Files\services</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -594,6 +600,9 @@
       <Filter>Header Files\services</Filter>
     </ClInclude>
     <ClInclude Include="include\rkIService.h">
+      <Filter>Header Files\services</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkScenesManager.h">
       <Filter>Header Files\services</Filter>
     </ClInclude>
   </ItemGroup>

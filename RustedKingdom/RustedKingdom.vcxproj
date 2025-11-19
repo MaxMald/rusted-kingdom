@@ -205,6 +205,7 @@
     <ClCompile Include="src\rkRigidBodyDebuggedComponent.cpp" />
     <ClCompile Include="src\rkScene.cpp" />
     <ClCompile Include="src\rkSceneGraph.cpp" />
+    <ClCompile Include="src\rkScenesManager.cpp" />
     <ClCompile Include="src\rkScriptComponent.cpp" />
     <ClCompile Include="src\rkSearchNode.cpp" />
     <ClCompile Include="src\rkSpriteComponent.cpp" />
@@ -288,6 +289,7 @@
     <ClInclude Include="include\rkRigidBodyType.h" />
     <ClInclude Include="include\rkScene.h" />
     <ClInclude Include="include\rkSceneGraph.h" />
+    <ClInclude Include="include\rkScenesManager.h" />
     <ClInclude Include="include\rkScriptComponent.h" />
     <ClInclude Include="include\rkSearchNode.h" />
     <ClInclude Include="include\rkServiceLocator.h" />
