@@ -635,5 +635,11 @@
     <ClInclude Include="include\rkMainScene.h">
       <Filter>Header Files\scene\levels</Filter>
     </ClInclude>
+    <ClInclude Include="include\rkIAsset.h">
+      <Filter>Header Files\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkAssetGroup.h">
+      <Filter>Header Files\assets</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
