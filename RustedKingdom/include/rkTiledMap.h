@@ -2,7 +2,8 @@
 
 #include <TMR/tmrOrientation.h>
 #include <TMR/tmrRenderOrder.h>
-#include "rkPrerequisites.h"
+
+#include "rkIAsset.h"
 #include "rkTileSetsManager.h"
 #include "rkIsometricPositionTransformer.h"
 
@@ -22,13 +23,12 @@ namespace rk
   * project's TMR reader and coordinates creation/loading of engine-facing
   * tileset wrappers via rk::TileSetsManager.
   */
-  class TiledMap
+  class TiledMap : public IAsset
   {
   public:
     TiledMap();
     ~TiledMap();
-    
-    bool loadFromFile(const Path& filename);
+
     bool isInfinite() const;
     Int32 getHeight() const;
     Int32 getWidth() const;
@@ -47,12 +47,15 @@ namespace rk
     const TileSetsManager& getTileSetsManager() const;
     const IsometricPositionTransformer& getIsometricPositionTransformer() const;
 
+  protected:
+    virtual bool loadFromFile(const Path& filename) override;
+    virtual void unload() override;
+
   private:
     tmr::TiledMap* m_tmrTiledMap;
     TileSetsManager m_tileSetsManager;
     IsometricPositionTransformer m_isometricPositionTransformer;
 
-    void clear();
     void updateIsometricPositionTransformer();
   };
 }

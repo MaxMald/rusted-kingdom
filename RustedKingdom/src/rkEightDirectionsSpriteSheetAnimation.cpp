@@ -5,6 +5,7 @@
 
 #include "rkAssertions.h"
 #include "rkBlackboard.h"
+#include "rkEightDirAnimationDesc.h"
 
 namespace rk
 {
@@ -17,12 +18,12 @@ namespace rk
   }
 
   EightDirectionsSpriteSheetAnimation::EightDirectionsSpriteSheetAnimation(
-    const EightDirectionsSpriteSheetAnimationDescription& description,
+    const EightDirAnimationDesc& description,
     const Blackboard& blackboard,
     const sf::Texture& texture
   ) :
     Animation(
-      description.getAnimationKey(), 
+      description.getAnimationKey(),
       animationType::Type::eightDirectional
     ),
     m_description(description),

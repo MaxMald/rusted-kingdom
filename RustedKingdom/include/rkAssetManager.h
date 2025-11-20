@@ -1,21 +1,23 @@
 #pragma once
 
 #include "rkIService.h"
-
-namespace sf
-{
-  class Texture;
-}
-
-using sf::Texture;
+#include "rkAssetGroup.h"
+#include "rkEightDirAnimationDesc.h"
+#include "rkTiledMap.h"
+#include "rkTexture.h"
 
 namespace rk
 {
-  class TiledMap;
   class TileSet;
   class SpriteSheetTileSet;
   class ImageCollectionTileSet;
-  class EightDirectionsSpriteSheetAnimationDescription;
+  //class EightDirAnimationDesc;
+  //class Texture;
+  //class TiledMap;
+
+  using TextureGroup = AssetGroup<Texture>;
+  using EightDirAnimationDescGroup = AssetGroup<EightDirAnimationDesc>;
+  using TiledMapGroup = AssetGroup<TiledMap>;
 
   class AssetManager : public IService
   {
@@ -23,33 +25,19 @@ namespace rk
     AssetManager();
     virtual ~AssetManager();
 
-    bool loadTexture(const String& key, const Path& filename);
-    const Texture& getTexture(const String& key) const;
-    Texture& getTexture(const String& key);
-    bool hasTexture(const String& key) const;
-    bool removeTexture(const String& key);
+    const Path& getAssetDirectory() const;
+    Path combineAssetDirectoryWithPath(const Path& relativePath) const;
 
-    bool loadTiledMap(const String& key, const Path& filename);
-    bool hasTiledMap(const String& key) const;
-    bool removeTiledMap(const String& key);
-    const TiledMap& getTiledMap(const String& key) const;
-    TiledMap& getTiledMap(const String& key);
+    TextureGroup& getTextureGroup() { return m_textureGroup; }
+    const TextureGroup& getTextureGroup() const { return m_textureGroup; }
+    TiledMapGroup& getTiledMapGroup() { return m_tiledMapGroup; }
+    EightDirAnimationDescGroup& getEightDirAnimationDescGroup() { return m_eightDirAnimationDescGroup; }
+    const EightDirAnimationDescGroup& getEightDirAnimationDescGroup() const { return m_eightDirAnimationDescGroup; }
 
     bool loadAssetsFromTiledMap(const String& key);
     bool loadAssetsFromTileSet(const TileSet& tileSet);
 
-    bool loadEightDirectionAnimationBundle(const Path& filePath);
-
-    const EightDirectionsSpriteSheetAnimationDescription&
-      getEightDirectionAnimation(const String& key) const;
-
-    EightDirectionsSpriteSheetAnimationDescription&
-      getEightDirectionAnimation(const String& key);
-
-    bool hasEightDirectionAnimation(const String& key) const;
-
-    void clear();
-    const Path& getAssetDirectory() const;
+    void unloadAll();
 
   protected:
     virtual void init(ServiceLocator& serviceLocator) override;
@@ -57,9 +45,9 @@ namespace rk
 
   private:
     Path m_assetDirectory;
-    UnorderedMap<String, Texture*> m_textures;
-    UnorderedMap<String, TiledMap*> m_tiledMaps;
-    UnorderedMap<String, EightDirectionsSpriteSheetAnimationDescription*> m_eightDirectionAnimations;
+    TextureGroup m_textureGroup;
+    TiledMapGroup m_tiledMapGroup;
+    EightDirAnimationDescGroup m_eightDirAnimationDescGroup;
 
     bool loadAssetsFromSpriteSheetTileSet(const SpriteSheetTileSet& tileSet);
     bool loadAssetsFromImageCollectionTileSet(const ImageCollectionTileSet& tileSet);

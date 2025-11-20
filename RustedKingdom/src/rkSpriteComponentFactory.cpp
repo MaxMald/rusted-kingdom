@@ -1,7 +1,11 @@
 #include "rkSpriteComponentFactory.h"
+
+#include <SFML/Graphics/Texture.hpp>
+
 #include "rkAssetManager.h"
 #include "rkGameObject.h"
 #include "rkSpriteComponent.h"
+#include "rkTexture.h"
 
 namespace rk
 {
@@ -19,9 +23,10 @@ namespace rk
     const String& textureKey
   )
   {
-    assertAssetManagerHasTexture(textureKey);
-    const Texture& texture = m_assetManager->getTexture(textureKey);
-    return  MakeUnique<SpriteComponent>(gameObject, texture);
+    const SharedPtr<rk::Texture> texture = m_assetManager->getTextureGroup()
+      .get(textureKey);
+
+    return  MakeUnique<SpriteComponent>(gameObject, texture->getSFMLTexture());
   }
 
   UniquePtr<SpriteComponent> SpriteComponentFactory::createSpriteComponent(
@@ -30,27 +35,13 @@ namespace rk
     const sf::IntRect& textureRect
   )
   {
-    assertAssetManagerHasTexture(textureKey);
-    const Texture& texture = m_assetManager->getTexture(textureKey);
+    const SharedPtr<rk::Texture> texture = m_assetManager->getTextureGroup()
+      .get(textureKey);
+
     return MakeUnique<SpriteComponent>(
       gameObject,
-      texture,
+      texture->getSFMLTexture(),
       textureRect
     );
-  }
-
-  void SpriteComponentFactory::assertAssetManagerHasTexture(
-    const String& textureKey
-  ) const
-  {
-    if (!m_assetManager->hasTexture(textureKey))
-    {
-      throw RuntimeErrorException(
-        String::Format(
-          "Texture with key '%s' not found in AssetManager.",
-          textureKey.c_str()
-        )
-      );
-    }
   }
 }

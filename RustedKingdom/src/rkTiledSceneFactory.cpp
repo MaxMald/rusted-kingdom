@@ -198,7 +198,8 @@ namespace rk
     SizeT objectsSize = objectGroupLayer.getObjectSize();
     for (SizeT objIndex = 0; objIndex < objectsSize; ++objIndex)
     {
-      const tmr::Object* object = objectGroupLayer.getObjectAt(objIndex);
+      const tmr::Object* object = objectGroupLayer
+        .getObjectAt(static_cast<UInt32>(objIndex));
 
       if (!object->isVisible())
         continue;

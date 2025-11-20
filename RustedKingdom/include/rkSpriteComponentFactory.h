@@ -3,7 +3,6 @@
 #include <SFML/Graphics/Rect.hpp>
 #include "rkPrerequisites.h"
 
-
 namespace rk
 {
   class SpriteComponent;
@@ -29,7 +28,5 @@ namespace rk
 
   private:
     AssetManager* m_assetManager;
-
-    void assertAssetManagerHasTexture(const String& textureKey) const;
   };
 }

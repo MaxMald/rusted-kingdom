@@ -24,7 +24,7 @@ namespace rk
   class AnimationStateMachine;
   class AnimationState;
   class Animation;
-  class EightDirectionsSpriteSheetAnimationDescription;
+  class EightDirAnimationDesc;
 
   class AnimationStateMachineBuilder : public NonCopyable
   {

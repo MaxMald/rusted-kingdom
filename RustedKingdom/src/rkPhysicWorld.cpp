@@ -54,7 +54,7 @@ namespace rk
       throw InvalidArgumentException(
         String::Format(
           "PhysicWorld::getColliders: Colliders group '%s' not found.",
-          collidersGroupKey
+          collidersGroupKey.c_str()
         )
       );
     }
@@ -99,7 +99,7 @@ namespace rk
       throw InvalidArgumentException(
         String::Format(
           "PhysicWorld::createCollidersGroup: Colliders group '%s' already created.",
-          key
+          key.c_str()
         )
       );
     }
@@ -191,7 +191,7 @@ namespace rk
       throw InvalidArgumentException(
         String::Format(
           "PhysicWorld::getColliders: Colliders group '%s' not found.",
-          key
+          key.c_str()
         )
       );
     }

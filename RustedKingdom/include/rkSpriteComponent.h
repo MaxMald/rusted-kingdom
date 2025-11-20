@@ -6,17 +6,15 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Rect.hpp>
 
-using sf::Texture;
-
 namespace rk
 {
   class SpriteComponent : public Component
   {
   public:
-    SpriteComponent(GameObject& gameObject, const Texture& texture);
+    SpriteComponent(GameObject& gameObject, const sf::Texture& texture);
     SpriteComponent(
       GameObject& gameObject,
-      const Texture& texture,
+      const sf::Texture& texture,
       const sf::IntRect& textureRect
     );
     virtual ~SpriteComponent();

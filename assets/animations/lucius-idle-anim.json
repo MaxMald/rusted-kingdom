@@ -1,0 +1,11 @@
+{
+  "animationKey": "lucius-idle-anim",
+  "textureKey": "lucius-walking",
+  "frameWidth": 100,
+  "frameHeight": 100,
+  "animationLength": 8,
+  "framesPerSecond": 0,
+  "initialFrame": 4,
+  "directionAngleKey": "directionAngle",
+  "speedModifierKey": "speedModifier"
+}

@@ -4,7 +4,6 @@
 #include <SFML/System/Angle.hpp>
 
 #include "rkAnimation.h"
-#include "rkEightDirectionsSpriteSheetAnimationDescription.h"
 
 namespace sf
 {
@@ -17,13 +16,13 @@ using sf::Angle;
 namespace rk
 {
   class Blackboard;
-  class EightDirectionsSpriteSheetAnimationDescription;
+  class EightDirAnimationDesc;
 
   class EightDirectionsSpriteSheetAnimation : public Animation
   {
   public:
     EightDirectionsSpriteSheetAnimation(
-      const EightDirectionsSpriteSheetAnimationDescription& description,
+      const EightDirAnimationDesc& description,
       const Blackboard& blackboard,
       const sf::Texture& texture
     );
@@ -40,7 +39,7 @@ namespace rk
     virtual void update(float deltaTime) override;
 
   private:
-    const EightDirectionsSpriteSheetAnimationDescription& m_description;
+    const EightDirAnimationDesc& m_description;
     const sf::Texture& m_texture;
     const Blackboard& m_blackboard;
     sf::Sprite* m_sprite;

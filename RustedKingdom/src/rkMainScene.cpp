@@ -51,18 +51,31 @@ namespace rk
 
   void MainScene::loadAssets()
   {
-    m_assetManager->loadTiledMap("level-0", "maps/level-3.json");
+    m_assetManager->getTiledMapGroup().loadFromFile(
+      "level-0",
+      m_assetManager->combineAssetDirectoryWithPath("maps/level-3.json")
+    );
     m_assetManager->loadAssetsFromTiledMap("level-0");
-    m_assetManager->loadTexture(
+
+    m_assetManager->getTextureGroup().loadFromFile(
       "lucius-walking",
-      "textures/characters/lucius/lucius-walking.png"
+      m_assetManager->combineAssetDirectoryWithPath("textures/characters/lucius/lucius-walking.png")
     );
-    m_assetManager->loadTexture(
+    m_assetManager->getTextureGroup().loadFromFile(
       "lucius-running",
-      "textures/characters/lucius/lucius-running.png"
+      m_assetManager->combineAssetDirectoryWithPath("textures/characters/lucius/lucius-running.png")
     );
-    m_assetManager->loadEightDirectionAnimationBundle(
-      "animations/luciusAnimationBundle.json"
+    m_assetManager->getEightDirAnimationDescGroup().loadFromFile(
+      "lucius-idle-anim",
+      m_assetManager->combineAssetDirectoryWithPath("animations/lucius-idle-anim.json")
+    );
+    m_assetManager->getEightDirAnimationDescGroup().loadFromFile(
+      "lucius-walking-anim",
+      m_assetManager->combineAssetDirectoryWithPath("animations/lucius-walking-anim.json")
+    );
+    m_assetManager->getEightDirAnimationDescGroup().loadFromFile(
+      "lucius-running-anim",
+      m_assetManager->combineAssetDirectoryWithPath("animations/lucius-running-anim.json")
     );
   }
 
@@ -82,11 +95,11 @@ namespace rk
     );
 
     m_physicsWorld.createCollidersGroup("characters");
-    TiledMap& tiledMap = m_assetManager->getTiledMap("level-0");
-    tiledSceneFactory.create(tiledMap);
+    SharedPtr<TiledMap> tiledMap = m_assetManager->getTiledMapGroup().get("level-0");
+    tiledSceneFactory.create(*tiledMap);
 
     createPathfinders();
-    
+
     // Create Lucius
     AnimationFactory animationFactory(*m_assetManager);
     LuciusBlueprint luciusBlueprint(
@@ -96,7 +109,7 @@ namespace rk
       rigidBodyComponentFactory,
       colliderComponentFactory,
       m_pathfinderManager.getPathfinder("characters"),
-      tiledMap.getIsometricPositionTransformer(),
+      tiledMap->getIsometricPositionTransformer(),
       m_windowManager->getRenderWindow()
     );
 
@@ -108,9 +121,9 @@ namespace rk
 
   void MainScene::createPathfinders()
   {
-    TiledMap& tiledMap = m_assetManager->getTiledMap("level-0");
+    SharedPtr<TiledMap> tiledMap = m_assetManager->getTiledMapGroup().get("level-0");
     SharedPtr<Pathfinder> pathfinder = pathfinderFactory::createFromIsometricTiledMap(
-      tiledMap
+      *tiledMap
     );
 
     m_pathfinderManager.addPathfinder("characters", pathfinder);
@@ -119,7 +132,7 @@ namespace rk
       pathfinder,
       m_physicsWorld,
       "plantas",
-      tiledMap.getIsometricPositionTransformer()
+      tiledMap->getIsometricPositionTransformer()
     );
   }
 }

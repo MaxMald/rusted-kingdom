@@ -192,7 +192,7 @@
     <ClCompile Include="src\rkAssetManager.cpp" />
     <ClCompile Include="src\rkComponent.cpp" />
     <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimation.cpp" />
-    <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimationDescription.cpp" />
+    <ClCompile Include="src\rkEightDirAnimationDesc.cpp" />
     <ClCompile Include="src\rkEventsManager.cpp" />
     <ClCompile Include="src\rkFloatComparisonAnimationStateTransition.cpp" />
     <ClCompile Include="src\rkGameObject.cpp" />
@@ -216,6 +216,7 @@
     <ClCompile Include="src\rkSpriteComponentFactory.cpp" />
     <ClCompile Include="src\rkSpriteSheet.cpp" />
     <ClCompile Include="src\rkSpriteSheetTileSet.cpp" />
+    <ClCompile Include="src\rkTexture.cpp" />
     <ClCompile Include="src\rkTiledMap.cpp" />
     <ClCompile Include="src\rkTiledSceneFactory.cpp" />
     <ClCompile Include="src\rkTiledObject.cpp" />
@@ -270,7 +271,7 @@
     <ClInclude Include="include\rkComponent.h" />
     <ClInclude Include="include\rkComponentType.h" />
     <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimation.h" />
-    <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimationDescription.h" />
+    <ClInclude Include="include\rkEightDirAnimationDesc.h" />
     <ClInclude Include="include\rkCircleCollider.h" />
     <ClInclude Include="include\rkEvent.h" />
     <ClInclude Include="include\rkAssetManager.h" />
@@ -310,6 +311,7 @@
     <ClInclude Include="include\rkSteerForces.h" />
     <ClInclude Include="include\rkString.h" />
     <ClInclude Include="include\rkSpriteComponent.h" />
+    <ClInclude Include="include\rkTexture.h" />
     <ClInclude Include="include\rkTileDescription.h" />
     <ClInclude Include="include\rkTiledMap.h" />
     <ClInclude Include="include\rkTiledSceneFactory.h" />

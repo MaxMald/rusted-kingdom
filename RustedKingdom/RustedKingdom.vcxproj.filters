@@ -198,7 +198,7 @@
     <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimation.cpp">
       <Filter>Source Files\animations</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimationDescription.cpp">
+    <ClCompile Include="src\rkEightDirAnimationDesc.cpp">
       <Filter>Source Files\assets\animations</Filter>
     </ClCompile>
     <ClCompile Include="src\rkComponent.cpp">
@@ -351,6 +351,9 @@
     <ClCompile Include="src\rkMainScene.cpp">
       <Filter>Source Files\scene\levels</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkTexture.cpp">
+      <Filter>Source Files\assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -428,7 +431,7 @@
     <ClInclude Include="include\rkLayerGameObject.h">
       <Filter>Header Files\scene\gameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimationDescription.h">
+    <ClInclude Include="include\rkEightDirAnimationDesc.h">
       <Filter>Header Files\assets\animations</Filter>
     </ClInclude>
     <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimation.h">
@@ -639,6 +642,9 @@
       <Filter>Header Files\assets</Filter>
     </ClInclude>
     <ClInclude Include="include\rkAssetGroup.h">
+      <Filter>Header Files\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTexture.h">
       <Filter>Header Files\assets</Filter>
     </ClInclude>
   </ItemGroup>

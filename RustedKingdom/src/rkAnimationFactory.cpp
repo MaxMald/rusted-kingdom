@@ -3,8 +3,9 @@
 #include <SFML/Graphics/Texture.hpp>
 
 #include "rkAssetManager.h"
-#include "rkEightDirectionsSpriteSheetAnimationDescription.h"
+#include "rkEightDirAnimationDesc.h"
 #include "rkEightDirectionsSpriteSheetAnimation.h"
+#include "rkTexture.h"
 
 namespace rk
 {
@@ -22,16 +23,16 @@ namespace rk
     const Blackboard& blackboard
   )
   {
-    const EightDirectionsSpriteSheetAnimationDescription& description = m_assetManager
-      .getEightDirectionAnimation(descriptionKey);
+    const SharedPtr<EightDirAnimationDesc> description = m_assetManager
+      .getEightDirAnimationDescGroup().get(descriptionKey);
 
-    const sf::Texture& texture = m_assetManager
-      .getTexture(description.getTextureKey());
+    const SharedPtr<rk::Texture> texture = m_assetManager
+      .getTextureGroup().get(description->getTextureKey());
 
     return MakeUnique<EightDirectionsSpriteSheetAnimation>(
-      description,
+      *description,
       blackboard,
-      texture
+      texture->getSFMLTexture()
     );
   }
 }

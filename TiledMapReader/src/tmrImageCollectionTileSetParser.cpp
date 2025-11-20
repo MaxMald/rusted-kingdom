@@ -39,7 +39,10 @@ namespace tmr
     }
 
     TileSetGrid* tileSetGrid = m_tileSetGridParser.parseFromJson(json["grid"]);
-    TileSetTile** tiles = parseTileSetArray(tileCount, json["tiles"]);
+    TileSetTile** tiles = parseTileSetArray(
+      static_cast<std::uint32_t>(tileCount), 
+      json["tiles"]
+    );
 
     ImageCollectionTileSet* imageCollectionSet = new ImageCollectionTileSet(
       firstgid,

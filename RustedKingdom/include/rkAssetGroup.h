@@ -25,24 +25,25 @@ namespace rk
      * @return Shared pointer to the loaded asset.
      * @throws RuntimeErrorException if the key already exists or loading fails.
      */
-    SharedPtr<T> loadFromFile(const String& key, const String& filename)
+    SharedPtr<T> loadFromFile(const String& key, const Path& filename)
     {
       if (has(key))
       {
         throw RuntimeErrorException(
-          String::Format("Asset with key '{}' already exists", key)
+          String::Format("Asset with key '{}' already exists", key.c_str())
         );
       }
 
       SharedPtr<T> asset = std::make_shared<T>();
-      if (!asset->loadFromFile(filename))
+      SharedPtr<IAsset> assetBase = std::static_pointer_cast<IAsset>(asset);
+      if (!assetBase->loadFromFile(filename))
       {
         throw RuntimeErrorException(
-          String::Format("Failed to load asset from file '{}'", filename)
+          String::Format("Failed to load asset from file '{}'", filename.c_str())
         );
       }
 
-      m_assets[key] = asset;
+      m_assets[key] = assetBase;
       return asset;
     }
 
@@ -54,7 +55,7 @@ namespace rk
      * @return Shared pointer to the asset.
      * @throws RuntimeErrorException if the asset is not found.
      */
-    SharedPtr<T> get(const String& key)
+    const SharedPtr<T> get(const String& key) const
     {
       auto it = m_assets.find(key);
       if (it != m_assets.end())
@@ -63,7 +64,7 @@ namespace rk
       }
 
       throw RuntimeErrorException(
-        String::Format("Asset with key '{}' not found", key)
+        String::Format("Asset with key '{}' not found", key.c_str())
       );
     }
 
@@ -80,7 +81,7 @@ namespace rk
       if (has(key))
       {
         throw RuntimeErrorException(
-          String::Format("Asset with key '{}' already exists", key)
+          String::Format("Asset with key '{}' already exists", key.c_str())
         );
       }
 

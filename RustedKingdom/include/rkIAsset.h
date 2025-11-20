@@ -11,8 +11,8 @@ namespace rk
     IAsset() = default;
     virtual ~IAsset() = default;
 
-  private:
-    virtual bool loadFromFile(const String& filename) = 0;
+  protected:
+    virtual bool loadFromFile(const Path& filename) = 0;
     virtual void unload() = 0;
 
     template<typename T>

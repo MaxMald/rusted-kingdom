@@ -1,19 +1,34 @@
-#include "rkEightDirectionsSpriteSheetAnimationDescription.h"
+#include "rkEightDirAnimationDesc.h"
 
-#include <TMR/tmrJson.h>
 #include <vector>
 #include <cstring>
+#include <TMR/tmrJson.h>
 
 #include "rkJsonUtilities.h"
 
+using tmr::Json;
+
 namespace rk
 {
-  bool EightDirectionsSpriteSheetAnimationDescription::loadFromJson(
-    const tmr::Json& json
-  )
+  EightDirAnimationDesc::EightDirAnimationDesc() :
+    m_animationKey(""),
+    m_textureKey(""),
+    m_frameWidth(0),
+    m_frameHeight(0),
+    m_animationLength(0),
+    m_framesPerSecond(0),
+    m_directionAngleKey(""),
+    m_speedModifierKey(""),
+    m_initialFrame(0)
+  {
+  }
+
+  bool EightDirAnimationDesc::loadFromFile(const Path& filename)
   {
     try
     {
+      Json json = Json::loadFromFile(filename.string().c_str());
+
       m_animationKey = jsonUtilities::getStringFromJson(json["animationKey"]);
       m_textureKey = jsonUtilities::getStringFromJson(json["textureKey"]);
       m_frameWidth = static_cast<UInt32>(json["frameWidth"].getInt32());

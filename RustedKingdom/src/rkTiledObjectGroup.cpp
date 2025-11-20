@@ -27,7 +27,9 @@ namespace rk
 
     for (SizeT objIndex = 0; objIndex < objSize; ++objIndex)
     {
-      const tmr::Object* tmrObject = objectGroup.getObjectAt(objIndex);
+      const tmr::Object* tmrObject = objectGroup
+        .getObjectAt(static_cast<UInt32>(objIndex));
+
       TiledObject tiledObject(*tmrObject);
       m_objects.push_back(tiledObject);
     }

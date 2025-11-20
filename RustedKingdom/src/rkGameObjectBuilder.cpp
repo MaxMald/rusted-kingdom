@@ -1,7 +1,7 @@
 #include "rkGameObjectBuilder.h"
 #include "rkAssetManager.h"
 #include "rkSpriteComponent.h"
-#include "rkEightDirectionsSpriteSheetAnimationDescription.h"
+#include "rkEightDirAnimationDesc.h"
 
 namespace rk
 {
