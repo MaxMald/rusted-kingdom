@@ -5,9 +5,7 @@
 namespace rk
 {
   /**
-   * @brief Manages a collection of assets of type T.
-   *
-   * @tparam T Asset type, must derive from IAsset.
+   * @brief Manages a collection of assets.
    */
   class AssetGroup : public NonCopyable
   {

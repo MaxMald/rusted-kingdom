@@ -4,6 +4,9 @@
 
 namespace rk
 {
+  /**
+   * @brief Manages a collection of typed assets.
+   */
   template<typename T>
   class TypedAssetGroup : public AssetGroup
   {

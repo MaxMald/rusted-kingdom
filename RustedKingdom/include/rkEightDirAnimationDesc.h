@@ -4,6 +4,9 @@
 
 namespace rk
 {
+  /**
+   * @brief Describes an eight-directional sprite sheet animation asset.
+   */
   class EightDirAnimationDesc : public IAsset
   {
   public:
