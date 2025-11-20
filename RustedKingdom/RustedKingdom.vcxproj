@@ -171,6 +171,7 @@
     <ClCompile Include="src\rkColliderComponent.cpp" />
     <ClCompile Include="src\rkColliderComponentFactory.cpp" />
     <ClCompile Include="src\rkCollidersGroup.cpp" />
+    <ClCompile Include="src\rkIAsset.cpp" />
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp" />
     <ClCompile Include="src\rkILevelScene.cpp" />
     <ClCompile Include="src\rkMainScene.cpp" />

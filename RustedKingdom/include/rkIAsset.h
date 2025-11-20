@@ -11,8 +11,8 @@ namespace rk
   class IAsset : public NonCopyable
   {
   public:
-    IAsset() = default;
-    virtual ~IAsset() = default;
+    IAsset();
+    virtual ~IAsset();
 
   protected:
     /**
@@ -28,6 +28,14 @@ namespace rk
     * @brief Unloads the asset and releases its resources.
     */
     virtual void unload() = 0;
+
+    bool isDependencyTagsEmpty() const;
+    bool hasDependencyTag(const String& tag) const;
+    void addDependencyTag(const String& tag);
+    void removeDependencyTag(const String& tag);
+
+  private:
+    Vector<String> m_dependencyTag;
 
     friend class AssetGroup;
     template<typename T>
