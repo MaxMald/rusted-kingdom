@@ -172,6 +172,7 @@
     <ClCompile Include="src\rkCollidersGroup.cpp" />
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp" />
     <ClCompile Include="src\rkILevelScene.cpp" />
+    <ClCompile Include="src\rkMainScene.cpp" />
     <ClCompile Include="src\rkNode.cpp" />
     <ClCompile Include="src\rkNodeLink.cpp" />
     <ClCompile Include="src\rkNodeMesh.cpp" />
@@ -252,6 +253,7 @@
     <ClInclude Include="include\rkIService.h" />
     <ClInclude Include="include\rkIsometricPositionTransformer.h" />
     <ClInclude Include="include\rkILevelScene.h" />
+    <ClInclude Include="include\rkMainScene.h" />
     <ClInclude Include="include\rkNode.h" />
     <ClInclude Include="include\rkNodeLink.h" />
     <ClInclude Include="include\rkNodeMesh.h" />

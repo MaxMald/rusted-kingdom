@@ -25,7 +25,10 @@ namespace rk
   {
     auto it = m_scenes.find(key);
     if (it != m_scenes.end())
+    {
       m_nextScene = it->second;
+      return;
+    }
 
     throw RuntimeErrorException(
       String::Format("Scene with key '%s' not found.", key.c_str())
@@ -39,6 +42,9 @@ namespace rk
 
   void ScenesManager::destroy()
   {
+    if (m_activeScene)
+      m_activeScene->unload();
+
     m_scenes.clear();
     m_activeScene = nullptr;
     m_nextScene = nullptr;
@@ -67,5 +73,11 @@ namespace rk
   {
     if (m_activeScene)
       m_activeScene->draw(window, states);
+  }
+
+  void ScenesManager::initScenes(ServiceLocator& serviceLocator)
+  {
+    for (auto& pair : m_scenes)
+      pair.second->init(serviceLocator);
   }
 }

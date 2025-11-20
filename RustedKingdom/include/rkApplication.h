@@ -12,6 +12,7 @@ namespace rk
 {
   class ScenesManager;
   class WindowManager;
+  class ViewsManager;
 
   class Application : public NonCopyable
   {
@@ -27,6 +28,7 @@ namespace rk
     ServiceLocator m_serviceLocator;
     SharedPtr<ScenesManager> m_scenesManager;
     SharedPtr<WindowManager> m_windowManager;
+    SharedPtr<ViewsManager> m_viewManager;
 
     void registerServices();
     void registerScenes();

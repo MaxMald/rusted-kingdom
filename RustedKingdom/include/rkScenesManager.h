@@ -32,6 +32,7 @@ namespace rk
   private:
     void update(float deltaTime);
     void draw(RenderTarget& window, RenderStates states) const;
+    void initScenes(ServiceLocator&);
 
     UnorderedMap<String, SharedPtr<IScene>> m_scenes;
     SharedPtr<IScene> m_activeScene;

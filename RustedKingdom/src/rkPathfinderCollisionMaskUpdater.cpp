@@ -25,6 +25,7 @@ namespace rk
 
   PathfinderCollisionMaskUpdater::~PathfinderCollisionMaskUpdater()
   {
+    m_physicWorld.removeListener(this);
   }
 
   void PathfinderCollisionMaskUpdater::onColliderChanged(Collider* collider)

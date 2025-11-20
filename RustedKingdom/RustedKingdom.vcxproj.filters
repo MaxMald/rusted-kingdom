@@ -31,12 +31,6 @@
     <Filter Include="Source Files\scene\gameObjects">
       <UniqueIdentifier>{5636a2fb-4114-47ab-b71e-98de9f50d66c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\viewsManager">
-      <UniqueIdentifier>{21032ac6-e467-48b9-9532-b982b531aaa7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\viewsManager">
-      <UniqueIdentifier>{56f70ba9-48e0-425a-813f-061f00ae469c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\inputManager">
       <UniqueIdentifier>{93039089-27ea-47ad-9a21-d3afbb8af2eb}</UniqueIdentifier>
     </Filter>
@@ -145,6 +139,12 @@
     <Filter Include="Source Files\assets\animations">
       <UniqueIdentifier>{29c474a1-0272-4280-9352-24aa93872275}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\scene\levels">
+      <UniqueIdentifier>{04a54d5e-7c0c-43ca-b1f2-010db40e1bf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\scene\levels">
+      <UniqueIdentifier>{8803d9cf-88a7-4eb8-845f-2744685e65ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -170,9 +170,6 @@
     </ClCompile>
     <ClCompile Include="src\rkTiledSceneFactory.cpp">
       <Filter>Source Files\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkViewsManager.cpp">
-      <Filter>Source Files\viewsManager</Filter>
     </ClCompile>
     <ClCompile Include="src\rkInputManager.cpp">
       <Filter>Source Files\inputManager</Filter>
@@ -348,6 +345,12 @@
     <ClCompile Include="src\rkPathfinderManager.cpp">
       <Filter>Source Files\pathfinder</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkViewsManager.cpp">
+      <Filter>Source Files\services</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkMainScene.cpp">
+      <Filter>Source Files\scene\levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -385,9 +388,6 @@
     </ClInclude>
     <ClInclude Include="include\rkTileDescription.h">
       <Filter>Header Files\assets\tiledMap</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkViewsManager.h">
-      <Filter>Header Files\viewsManager</Filter>
     </ClInclude>
     <ClInclude Include="include\rkInputManager.h">
       <Filter>Header Files\inputManager</Filter>
@@ -628,6 +628,12 @@
     </ClInclude>
     <ClInclude Include="include\rkPathfinderManager.h">
       <Filter>Header Files\pathfinder</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkViewsManager.h">
+      <Filter>Header Files\services</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkMainScene.h">
+      <Filter>Header Files\scene\levels</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

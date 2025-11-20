@@ -22,10 +22,9 @@ namespace rk
   class IScene : public NonCopyable
   {
   public:
-    IScene(const String& key, ServiceLocator&);
+    IScene();
     virtual ~IScene();
 
-    const String& getKey() const { return m_key; }
     SceneGraph& getSceneGraph() { return m_sceneGraph; }
     const SceneGraph& getSceneGraph() const { return m_sceneGraph; }
     PhysicWorld& getPhysicWorld() { return m_physicsWorld; }
@@ -34,14 +33,12 @@ namespace rk
   protected:
     SceneGraph m_sceneGraph;
     PhysicWorld m_physicsWorld;
-    ServiceLocator& m_serviceLocator;
 
+    virtual void init(ServiceLocator&) = 0;
     virtual void onLoad() = 0;
     virtual void onUnload() = 0;
 
   private:
-    String m_key;
-
     void load();
     void unload();
     void update(float deltaTime);

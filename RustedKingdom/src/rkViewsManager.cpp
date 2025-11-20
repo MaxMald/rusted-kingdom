@@ -64,7 +64,7 @@ namespace rk
       serviceLocator.getService<WindowManager>();
 
     RenderWindow& renderWindow = windowManager->getRenderWindow();
-    m_worldView = renderWindow.getDefaultView();
+    m_worldView = sf::View(renderWindow.getDefaultView());
 
     m_renderWindow = &renderWindow;
   }
@@ -76,7 +76,7 @@ namespace rk
 
   void ViewsManager::updateRenderWindowView()
   {
-    if (m_renderWindow)
+    if (m_renderWindow != nullptr)
       m_renderWindow->setView(m_worldView);
   }
 }
