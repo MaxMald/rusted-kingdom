@@ -14,9 +14,7 @@ namespace rk
 {
   AssetManager::AssetManager() :
     m_assetDirectory(),
-    m_textureGroup(),
-    m_tiledMapGroup(),
-    m_eightDirAnimationDescGroup()
+    m_assetGroups()
   {
     //String assetsPath = "C:/Users/nuup2/OneDrive/Documentos/Repositories/MaxMald/rusted-kingdom/assets";
     m_assetDirectory = "F:/Repositories/MaxMald/rusted-kingdom/assets";
@@ -28,7 +26,7 @@ namespace rk
 
   bool AssetManager::loadAssetsFromTiledMap(const String& name)
   {
-    SharedPtr<TiledMap> tiledMap = m_tiledMapGroup.get(name);
+    SharedPtr<TiledMap> tiledMap = getAssetGroup<TiledMap>().get(name);
     const TileSetsManager& tileSetmanager = tiledMap->getTileSetsManager();
 
     SizeT tileSetCount = tileSetmanager.getTileSetsCount();
@@ -40,6 +38,32 @@ namespace rk
     }
 
     return true;
+  }
+
+  void AssetManager::unloadAll()
+  {
+    for (auto& pair : m_assetGroups)
+      pair.second->unloadAll();
+  }
+
+  const Path& AssetManager::getAssetDirectory() const
+  {
+    return m_assetDirectory;
+  }
+
+  Path AssetManager::combineAssetDirectoryWithPath(const Path& relativePath) const
+  {
+    return Path(m_assetDirectory) / relativePath;
+  }
+
+  void AssetManager::init(ServiceLocator&)
+  {
+    registerAssetGroups();
+  }
+
+  void AssetManager::destroy()
+  {
+    unloadAll();
   }
 
   bool AssetManager::loadAssetsFromTileSet(const TileSet& tileSet)
@@ -62,42 +86,16 @@ namespace rk
     return true;
   }
 
-  void AssetManager::unloadAll()
-  {
-    m_textureGroup.unloadAll();
-    m_tiledMapGroup.unloadAll();
-    m_eightDirAnimationDescGroup.unloadAll();
-  }
-
-  const Path& AssetManager::getAssetDirectory() const
-  {
-    return m_assetDirectory;
-  }
-
-  Path AssetManager::combineAssetDirectoryWithPath(const Path& relativePath) const
-  {
-    return Path(m_assetDirectory) / relativePath;
-  }
-
-  void AssetManager::init(ServiceLocator&)
-  {
-    // Intentionally left blank.
-  }
-
-  void AssetManager::destroy()
-  {
-    unloadAll();
-  }
-
   bool AssetManager::loadAssetsFromSpriteSheetTileSet(
     const SpriteSheetTileSet& tileSet
   )
   {
     const String& textureName = tileSet.getImageKey();
-    const Path& texturePath = tileSet.getImageFilepath();
-    if (!m_textureGroup.has(textureName))
+    const Path& texturePath = tileSet.getImageFilepath();    
+    TypedAssetGroup<Texture>& textureGroup = getAssetGroup<Texture>();
+    if (!textureGroup.has(textureName))
     {
-      if (!m_textureGroup.loadFromFile(textureName, texturePath))
+      if (!textureGroup.loadFromFile(textureName, texturePath))
         return false;
     }
     return true;
@@ -112,12 +110,20 @@ namespace rk
     {
       const String& textureName = tile.getImagePath().string();
       const Path& texturePath = tile.getImagePath();
-      if (!m_textureGroup.has(textureName))
+      TypedAssetGroup<Texture>& textureGroup = getAssetGroup<Texture>();
+      if (!textureGroup.has(textureName))
       {
-        if (!m_textureGroup.loadFromFile(textureName, texturePath))
+        if (!textureGroup.loadFromFile(textureName, texturePath))
           return false;
       }
     }
     return true;
+  }
+
+  void AssetManager::registerAssetGroups()
+  {
+    m_assetGroups[typeid(Texture)] = MakeShared<TypedAssetGroup<Texture>>();
+    m_assetGroups[typeid(TiledMap)] = MakeShared<TypedAssetGroup<TiledMap>>();
+    m_assetGroups[typeid(EightDirAnimationDesc)] = MakeShared<TypedAssetGroup<EightDirAnimationDesc>>();
   }
 }

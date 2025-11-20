@@ -12,6 +12,8 @@
 #include "rkRigidBodyComponentFactory.h"
 #include "rkColliderComponentFactory.h"
 #include "rkTiledSceneFactory.h"
+#include "rkTexture.h"
+#include "rkEightDirAnimationDesc.h"
 
 #include "rkLuciusBlueprint.h"
 
@@ -51,29 +53,29 @@ namespace rk
 
   void MainScene::loadAssets()
   {
-    m_assetManager->getTiledMapGroup().loadFromFile(
+    m_assetManager->getAssetGroup<TiledMap>().loadFromFile(
       "level-0",
       m_assetManager->combineAssetDirectoryWithPath("maps/level-3.json")
     );
     m_assetManager->loadAssetsFromTiledMap("level-0");
 
-    m_assetManager->getTextureGroup().loadFromFile(
+    m_assetManager->getAssetGroup<Texture>().loadFromFile(
       "lucius-walking",
       m_assetManager->combineAssetDirectoryWithPath("textures/characters/lucius/lucius-walking.png")
     );
-    m_assetManager->getTextureGroup().loadFromFile(
+    m_assetManager->getAssetGroup<Texture>().loadFromFile(
       "lucius-running",
       m_assetManager->combineAssetDirectoryWithPath("textures/characters/lucius/lucius-running.png")
     );
-    m_assetManager->getEightDirAnimationDescGroup().loadFromFile(
+    m_assetManager->getAssetGroup<EightDirAnimationDesc>().loadFromFile(
       "lucius-idle-anim",
       m_assetManager->combineAssetDirectoryWithPath("animations/lucius-idle-anim.json")
     );
-    m_assetManager->getEightDirAnimationDescGroup().loadFromFile(
+    m_assetManager->getAssetGroup<EightDirAnimationDesc>().loadFromFile(
       "lucius-walking-anim",
       m_assetManager->combineAssetDirectoryWithPath("animations/lucius-walking-anim.json")
     );
-    m_assetManager->getEightDirAnimationDescGroup().loadFromFile(
+    m_assetManager->getAssetGroup<EightDirAnimationDesc>().loadFromFile(
       "lucius-running-anim",
       m_assetManager->combineAssetDirectoryWithPath("animations/lucius-running-anim.json")
     );
@@ -95,7 +97,9 @@ namespace rk
     );
 
     m_physicsWorld.createCollidersGroup("characters");
-    SharedPtr<TiledMap> tiledMap = m_assetManager->getTiledMapGroup().get("level-0");
+    SharedPtr<TiledMap> tiledMap = m_assetManager->getAssetGroup<TiledMap>()
+      .get("level-0");
+
     tiledSceneFactory.create(*tiledMap);
 
     createPathfinders();
@@ -121,7 +125,8 @@ namespace rk
 
   void MainScene::createPathfinders()
   {
-    SharedPtr<TiledMap> tiledMap = m_assetManager->getTiledMapGroup().get("level-0");
+    SharedPtr<TiledMap> tiledMap = m_assetManager->getAssetGroup<TiledMap>()
+      .get("level-0");
     SharedPtr<Pathfinder> pathfinder = pathfinderFactory::createFromIsometricTiledMap(
       *tiledMap
     );

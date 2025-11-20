@@ -163,6 +163,7 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkApplication.cpp" />
+    <ClCompile Include="src\rkAssetGroup.cpp" />
     <ClCompile Include="src\rkBoolComparisonAnimationStateTransition.cpp" />
     <ClCompile Include="src\rkCircleCollider.cpp" />
     <ClCompile Include="src\rkCircleColliderComponent.cpp" />
@@ -320,6 +321,7 @@
     <ClInclude Include="include\rkTileSet.h" />
     <ClInclude Include="include\rkTileSetGrid.h" />
     <ClInclude Include="include\rkTileSetsManager.h" />
+    <ClInclude Include="include\rkTypedAssetGroup.h" />
     <ClInclude Include="include\rkTypeDefinitions.h" />
     <ClInclude Include="include\rkVector2Utilities.h" />
     <ClInclude Include="include\rkViewsManager.h" />

@@ -24,10 +24,10 @@ namespace rk
   )
   {
     const SharedPtr<EightDirAnimationDesc> description = m_assetManager
-      .getEightDirAnimationDescGroup().get(descriptionKey);
+      .getAssetGroup<EightDirAnimationDesc>().get(descriptionKey);
 
     const SharedPtr<rk::Texture> texture = m_assetManager
-      .getTextureGroup().get(description->getTextureKey());
+      .getAssetGroup<rk::Texture>().get(description->getTextureKey());
 
     return MakeUnique<EightDirectionsSpriteSheetAnimation>(
       *description,

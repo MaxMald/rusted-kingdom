@@ -15,7 +15,8 @@ namespace rk
     virtual bool loadFromFile(const Path& filename) = 0;
     virtual void unload() = 0;
 
-    template<typename T>
     friend class AssetGroup;
+    template<typename T>
+    friend class TypedAssetGroup;
   };
 }

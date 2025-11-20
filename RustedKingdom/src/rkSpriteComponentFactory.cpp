@@ -23,7 +23,7 @@ namespace rk
     const String& textureKey
   )
   {
-    const SharedPtr<rk::Texture> texture = m_assetManager->getTextureGroup()
+    const SharedPtr<rk::Texture> texture = m_assetManager->getAssetGroup<rk::Texture>()
       .get(textureKey);
 
     return  MakeUnique<SpriteComponent>(gameObject, texture->getSFMLTexture());
@@ -35,7 +35,7 @@ namespace rk
     const sf::IntRect& textureRect
   )
   {
-    const SharedPtr<rk::Texture> texture = m_assetManager->getTextureGroup()
+    const SharedPtr<rk::Texture> texture = m_assetManager->getAssetGroup<rk::Texture>()
       .get(textureKey);
 
     return MakeUnique<SpriteComponent>(
