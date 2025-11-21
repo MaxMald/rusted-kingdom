@@ -135,6 +135,9 @@
     <ClCompile Include="src\tmrObjectGroupParser.cpp">
       <Filter>Source Files\parsers</Filter>
     </ClCompile>
+    <ClCompile Include="src\tinyxml2.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\TMR\tmrTiledMapReader.h">
@@ -238,6 +241,9 @@
     </ClInclude>
     <ClInclude Include="include\TMR\tmrObjectGroupParser.h">
       <Filter>Header Files\parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tinyxml2.h">
+      <Filter>Header Files\utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
