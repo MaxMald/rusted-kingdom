@@ -186,6 +186,7 @@
     <ClCompile Include="src\tmrTileSetParser.cpp" />
     <ClCompile Include="src\tmrTileSetTile.cpp" />
     <ClCompile Include="src\tmrTileSetTileParser.cpp" />
+    <ClCompile Include="src\tmrTileSetXmlLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\TMR\tinyxml2.h" />
@@ -223,6 +224,7 @@
     <ClInclude Include="include\TMR\tmrTileSetParser.h" />
     <ClInclude Include="include\TMR\tmrTileSetTileParser.h" />
     <ClInclude Include="include\TMR\tmrTileSetType.h" />
+    <ClInclude Include="include\TMR\tmrTileSetXmlLoader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
