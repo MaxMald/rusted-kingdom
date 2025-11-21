@@ -4,6 +4,7 @@
 
 using std::string;
 
+#include "TMR/tinyxml2.h"
 #include "TMR/tmrOrientation.h"
 #include "TMR/tmrOrientationParser.h"
 #include "TMR/tmrTileSetGrid.h"
@@ -11,6 +12,8 @@ using std::string;
 #include "TMR/tmrImageCollectionTileSet.h"
 #include "TMR/tmrSpriteSheetTileSet.h"
 #include "TMR/tmrImage.h"
+
+using namespace tinyxml2;
 
 namespace tmr
 {
@@ -50,30 +53,17 @@ namespace tmr
       uint32_t tileHeight = tilesetElement->UnsignedAttribute("tileheight", 0);
       uint32_t tileWidth = tilesetElement->UnsignedAttribute("tilewidth", 0);
       const char* nameCStr = tilesetElement->Attribute("name");
-
-      uint32_t imageWidth = 0;
-      uint32_t imageHeight = 0;
-      const char* imageSource = nullptr;
-
-      XMLElement* imageElement = tilesetElement->FirstChildElement("image");
-      if (imageElement)
-      {
-        imageWidth = imageElement->UnsignedAttribute("width", 0);
-        imageHeight = imageElement->UnsignedAttribute("height", 0);
-        imageSource = imageElement->Attribute("source");
-      }
+      Image* image = parseImage(tilesetElement->FirstChildElement("image"));
 
       return new SpriteSheetTileSet(
+        image,
+        margin,
         firstGid,
         columns,
-        margin,
         spacing,
+        tileCount,
         tileHeight,
         tileWidth,
-        tileCount,
-        imageWidth,
-        imageHeight,
-        imageSource ? imageSource : "",
         nameCStr ? nameCStr : ""
       );
     }
@@ -90,16 +80,12 @@ namespace tmr
       uint32_t tileHeight = tilesetElement->UnsignedAttribute("tileheight", 0);
       uint32_t tileWidth = tilesetElement->UnsignedAttribute("tilewidth", 0);
       const char* nameCStr = tilesetElement->Attribute("name");
-
-      TileSetGrid* tileSetGrid = parseTileSetGrid(
-        tilesetElement->FirstChildElement("grid")
-      );
-
+      TileSetGrid* tileSetGrid = parseTileSetGrid(tilesetElement->FirstChildElement("grid"));
       TileSetTile** tiles = parseTileSetTileArray(tilesetElement, tileCount);
 
-      ImageCollectionTileSet* imageCollectionSet = new ImageCollectionTileSet(
+      return new ImageCollectionTileSet(
         firstGid,
-        *tileSetGrid,
+        tileSetGrid,
         tiles,
         tileCount,
         columns,
@@ -109,9 +95,6 @@ namespace tmr
         tileWidth,
         nameCStr ? nameCStr : ""
       );
-
-      delete tileSetGrid;
-      return imageCollectionSet;
     }
 
     TileSetGrid* parseTileSetGrid(XMLElement* gridElement)
@@ -155,24 +138,12 @@ namespace tmr
 
     TileSetTile* parseTileSetTile(XMLElement* tileElement)
     {
+      if (!tileElement)
+        return nullptr;
+
       uint32_t id = tileElement->UnsignedAttribute("id", 0);
-
-      XMLElement* imageElement = tileElement->FirstChildElement("image");
-      if (imageElement)
-      {
-        uint32_t imageWidth = imageElement->UnsignedAttribute("width", 0);
-        uint32_t imageHeight = imageElement->UnsignedAttribute("height", 0);
-        const char* imageSource = imageElement->Attribute("source");
-        
-        return new TileSetTile(
-          id,
-          imageWidth,
-          imageHeight,
-          imageSource ? imageSource : ""
-        );
-      }
-
-      return nullptr;
+      Image* image = parseImage(tileElement->FirstChildElement("image"));
+      return new TileSetTile(id, image);
     }
 
     Image* parseImage(XMLElement* imageElement)

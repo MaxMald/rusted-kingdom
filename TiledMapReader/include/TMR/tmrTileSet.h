@@ -1,6 +1,6 @@
 #pragma once
 
-#include "TMR/tmrPrerequisites.h"
+#include "TMR/tmrNonCopyable.h"
 #include "TMR/tmrTileSetType.h"
 
 namespace tmr
@@ -11,7 +11,7 @@ namespace tmr
    *
    * TileSet stores tileset metadata parsed from a Tiled JSON file.
    */
-  class TMR_API TileSet
+  class TMR_API TileSet : public NonCopyable
   {
   public:
     /**
@@ -22,7 +22,7 @@ namespace tmr
      */
     TileSet(
       tileSetType::Type type,
-      const std::int32_t& firstgid
+      const int32_t& firstgid
     );
 
     /**
@@ -34,10 +34,10 @@ namespace tmr
     tileSetType::Type getType() const noexcept { return m_type; }
 
     /** @return first global tile id */
-    std::int32_t getFirstGid() const noexcept { return m_firstgid; }
+    int32_t getFirstGid() const noexcept { return m_firstgid; }
 
   private:
     tileSetType::Type m_type;
-    std::int32_t m_firstgid;
+    int32_t m_firstgid;
   };
 }

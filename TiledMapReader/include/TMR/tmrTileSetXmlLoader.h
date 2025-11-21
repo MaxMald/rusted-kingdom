@@ -3,11 +3,12 @@
 #include "TMR/tmrPrerequisites.h"
 #include "TMR/tinyxml2.h"
 
-using namespace tinyxml2;
+namespace tinyxml2
+{
+  class XMLElement;
+}
 
-using std::uint32_t;
-using std::int32_t;
-using std::size_t;
+using tinyxml2::XMLElement;
 
 namespace tmr
 {

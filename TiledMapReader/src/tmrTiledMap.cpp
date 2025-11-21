@@ -103,4 +103,24 @@ namespace tmr
     }
     return m_tileSets[index];
   }
+
+  TileSet* TiledMap::getTileSetAt(const std::size_t& index)
+  {
+    if (index >= m_tileSetsCount)
+    {
+      throw std::out_of_range("TiledMap::getTileSetAt: Index out of range.");
+    }
+    return m_tileSets[index];
+  }
+
+  void TiledMap::replaceTileSetAt(const size_t& index, TileSet* tileSet)
+  {
+    if (index >= m_tileSetsCount)
+    {
+      throw std::out_of_range("TiledMap::replaceTileSetAt: Index out of range.");
+    }
+
+    delete m_tileSets[index];
+    m_tileSets[index] = tileSet;
+  }
 }

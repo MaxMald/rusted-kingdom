@@ -25,4 +25,17 @@ namespace tmr
       m_source = nullptr;
     }
   }
+
+  void Image::setSource(const char* source)
+  {
+    if (m_source)
+    {
+      delete[] m_source;
+      m_source = nullptr;
+    }
+
+    m_source = source ? new char[std::strlen(source) + 1] : nullptr;
+    if (m_source)
+      std::strcpy(m_source, source);
+  }
 }

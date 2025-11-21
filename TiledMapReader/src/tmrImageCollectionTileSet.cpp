@@ -2,13 +2,14 @@
 
 #include <memory>
 
+#include "TMR/tmrTileSetGrid.h"
 #include "TMR/tmrTileSetTile.h"
 
 namespace tmr
 {
     ImageCollectionTileSet::ImageCollectionTileSet(
       const std::int32_t& firstgid,
-      const TileSetGrid& grid,
+      TileSetGrid* grid,
       TileSetTile** tiles,
       const std::size_t& tileCount,
       const std::uint32_t& columns,
@@ -35,6 +36,12 @@ namespace tmr
 
     ImageCollectionTileSet::~ImageCollectionTileSet()
     {
+      if (m_grid)
+      {
+        delete m_grid;
+        m_grid = nullptr;
+      }
+
       if (m_tiles)
       {
         for (std::size_t i = 0; i < m_tileCount; ++i)
@@ -44,7 +51,10 @@ namespace tmr
         m_tiles = nullptr;
       }
 
-      delete[] m_name;
-      m_name = nullptr;
+      if (m_name)
+      {
+        delete[] m_name;
+        m_name = nullptr;
+      }
     }
 }

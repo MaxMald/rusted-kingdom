@@ -87,9 +87,6 @@
     <ClCompile Include="src\tmrSpriteSheetTileSet.cpp">
       <Filter>Source Files\tilesets</Filter>
     </ClCompile>
-    <ClCompile Include="src\tmrSpriteSheetTileSetParser.cpp">
-      <Filter>Source Files\parsers</Filter>
-    </ClCompile>
     <ClCompile Include="src\tmrReferenceTileSet.cpp">
       <Filter>Source Files\tilesets</Filter>
     </ClCompile>
@@ -105,16 +102,7 @@
     <ClCompile Include="src\tmrTileSetTile.cpp">
       <Filter>Source Files\tilesets</Filter>
     </ClCompile>
-    <ClCompile Include="src\tmrImageCollectionTileSetParser.cpp">
-      <Filter>Source Files\parsers</Filter>
-    </ClCompile>
     <ClCompile Include="src\tmrOrientationParser.cpp">
-      <Filter>Source Files\parsers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tmrTileSetGridParser.cpp">
-      <Filter>Source Files\parsers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tmrTileSetTileParser.cpp">
       <Filter>Source Files\parsers</Filter>
     </ClCompile>
     <ClCompile Include="src\tmrObjectGroupMapLayer.cpp">
@@ -143,6 +131,12 @@
     </ClCompile>
     <ClCompile Include="src\tmrImage.cpp">
       <Filter>Source Files\tilesets</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrTileSetsEmbedder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrPathUtilities.cpp">
+      <Filter>Source Files\utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -197,9 +191,6 @@
     <ClInclude Include="include\TMR\tmrSpriteSheetTileSet.h">
       <Filter>Header Files\tilesets</Filter>
     </ClInclude>
-    <ClInclude Include="include\TMR\tmrSpriteSheetTileSetParser.h">
-      <Filter>Header Files\parsers</Filter>
-    </ClInclude>
     <ClInclude Include="include\TMR\tmrReferenceTileSet.h">
       <Filter>Header Files\tilesets</Filter>
     </ClInclude>
@@ -215,16 +206,7 @@
     <ClInclude Include="include\TMR\tmrTileSetTile.h">
       <Filter>Header Files\tilesets</Filter>
     </ClInclude>
-    <ClInclude Include="include\TMR\tmrImageCollectionTileSetParser.h">
-      <Filter>Header Files\parsers</Filter>
-    </ClInclude>
     <ClInclude Include="include\TMR\tmrOrientationParser.h">
-      <Filter>Header Files\parsers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\TMR\tmrTileSetTileParser.h">
-      <Filter>Header Files\parsers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\TMR\tmrTileSetGridParser.h">
       <Filter>Header Files\parsers</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrObjectGroupMapLayer.h">
@@ -258,6 +240,12 @@
       <Filter>Header Files\tilesets</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrNonCopyable.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrTileSetsEmbedder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrPathUtilities.h">
       <Filter>Header Files\utilities</Filter>
     </ClInclude>
   </ItemGroup>

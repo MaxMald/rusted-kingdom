@@ -1,11 +1,11 @@
 #pragma once
 
 #include "TMR/tmrTileSet.h"
-#include "TMR/tmrTileSetGrid.h"
 
 namespace tmr
 {
   class TileSetTile;
+  class TileSetGrid;
 
   /**
    * @brief Tileset backed by a collection of individual images.
@@ -13,7 +13,6 @@ namespace tmr
   class TMR_API ImageCollectionTileSet : public TileSet
   {
   public:
-
     /**
      * @brief Construct a new ImageCollectionTileSet instance.
      *
@@ -35,7 +34,7 @@ namespace tmr
      */
     ImageCollectionTileSet(
       const std::int32_t& firstgid,
-      const TileSetGrid& grid,
+      TileSetGrid* grid,
       TileSetTile** tiles,
       const std::size_t& tileCount,
       const std::uint32_t& columns,
@@ -50,10 +49,18 @@ namespace tmr
     virtual ~ImageCollectionTileSet();
 
     /** @return tileset grid */
-    const TileSetGrid& getGrid() const noexcept { return m_grid; }
+    const TileSetGrid* getGrid() const noexcept { return m_grid; }
 
     /** @return tile at position. */
     const TileSetTile* getTileAt(const std::size_t& index) const
+    {
+      if (index >= m_tileCount)
+        return nullptr;
+      return m_tiles[index];
+    }
+
+    /** @return tile at position. */
+    TileSetTile* getTileAt(const std::size_t& index)
     {
       if (index >= m_tileCount)
         return nullptr;
@@ -82,7 +89,7 @@ namespace tmr
     const char* getName() const noexcept { return m_name; }
 
   private:
-    TileSetGrid m_grid;
+    TileSetGrid* m_grid;
     TileSetTile** m_tiles;
     std::size_t m_tileCount;
     std::uint32_t m_columns;

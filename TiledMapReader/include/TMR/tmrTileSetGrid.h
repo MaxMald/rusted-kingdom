@@ -1,6 +1,6 @@
 #pragma once
 
-#include "TMR/tmrPrerequisites.h"
+#include "TMR/tmrNonCopyable.h"
 #include "TMR/tmrOrientation.h"
 
 namespace tmr
@@ -11,7 +11,7 @@ namespace tmr
    * TileSetGrid encapsulates the dimensions and orientation of a tile grid used
    * in a TileSet.
    */
-  class TMR_API TileSetGrid
+  class TMR_API TileSetGrid : public NonCopyable
   {
   public:
      /**
@@ -21,28 +21,25 @@ namespace tmr
      * @param tileHeight Height of a single tile in pixels.
      */
     TileSetGrid(
-      const std::int32_t& width,
-      const std::int32_t& height,
+      const int32_t& width,
+      const int32_t& height,
       const orientation::Type& orientation
     );
-
-    /** Copy constructor. */
-    TileSetGrid(const TileSetGrid& other);
 
     ~TileSetGrid();
 
     /** @return grid width. */
-    std::int32_t getWidth() const noexcept { return m_width; }
+    int32_t getWidth() const noexcept { return m_width; }
 
     /** @return grid height. */
-    std::int32_t getHeight() const noexcept { return m_height; }
+    int32_t getHeight() const noexcept { return m_height; }
 
     /** @return grid orientation. */
     orientation::Type getOrientation() const noexcept { return m_orientation; }
 
   private:
-    std::int32_t m_width;
-    std::int32_t m_height;
+    int32_t m_width;
+    int32_t m_height;
     orientation::Type m_orientation;
   };
 }

@@ -39,6 +39,13 @@ namespace tmr
     const char* getSource() const { return m_source; }
 
     /**
+     * @brief Sets the source path of the image.
+     * 
+     * @param source New path to the image file. Source is copied internally.
+     */
+    void setSource(const char* source);
+
+    /**
      * @brief Gets the width of the image in pixels.
      * 
      * @return Width of the image.

@@ -4,6 +4,8 @@
 
 namespace tmr
 {
+  class Image;
+
   /**
    * @brief Tileset backed by a single spritesheet image.
    *
@@ -34,32 +36,30 @@ namespace tmr
      * copied.
      */
     SpriteSheetTileSet(
+      Image* image,
       const std::int32_t& margin,
       const std::int32_t& firstgid,
       const std::uint32_t& columns,
-      const std::uint32_t& imageHeight,
-      const std::uint32_t& imageWidth,
       const std::uint32_t& spacing,
       const std::uint32_t& tileCount,
       const std::uint32_t& tileHeight,
       const std::uint32_t& tileWidth,
-      const char* image,
       const char* name
     );
 
     virtual ~SpriteSheetTileSet();
+
+    /** @return source image */
+    const Image* getImage() const noexcept { return m_image; }
+
+    /** @return source image */
+    Image* getImage() noexcept { return m_image; }
 
     /** @return margin in pixels */
     std::int32_t getMargin() const noexcept { return m_margin; }
 
     /** @return number of columns in the source image */
     std::uint32_t getColumns() const noexcept { return m_columns; }
-
-    /** @return source image height in pixels */
-    std::uint32_t getImageHeight() const noexcept { return m_imageHeight; }
-
-    /** @return source image width in pixels */
-    std::uint32_t getImageWidth() const noexcept { return m_imageWidth; }
 
     /** @return spacing in pixels between tiles */
     std::uint32_t getSpacing() const noexcept { return m_spacing; }
@@ -73,22 +73,17 @@ namespace tmr
     /** @return tile width in pixels */
     std::uint32_t getTileWidth() const noexcept { return m_tileWidth; }
 
-    /** @return null-terminated copied image path */
-    const char* getImage() const noexcept { return m_image; }
-
     /** @return null-terminated copied tileset name*/
     const char* getName() const noexcept { return m_name; }
 
   private:
-    std::int32_t m_margin;
-    std::uint32_t m_columns;
-    std::uint32_t m_imageHeight;
-    std::uint32_t m_imageWidth;
-    std::uint32_t m_spacing;
-    std::uint32_t m_tileCount;
-    std::uint32_t m_tileHeight;
-    std::uint32_t m_tileWidth;
-    char* m_image;
+    Image* m_image;
+    int32_t m_margin;
+    uint32_t m_columns;
+    uint32_t m_spacing;
+    uint32_t m_tileCount;
+    uint32_t m_tileHeight;
+    uint32_t m_tileWidth;
     char* m_name;
   };
 }

@@ -174,6 +174,22 @@ namespace tmr
      */
     const TileSet* getTileSetAt(const std::size_t& index) const;
 
+    /**
+     * @brief Gets the tile set at the specified index (non-const version).
+     * 
+     * @param index Index of the tile set to retrieve.
+     * @return Pointer to the TileSet at the specified index.
+     */
+    TileSet* getTileSetAt(const std::size_t& index);
+
+    /**
+     * @brief Replaces the tile set at the specified index with a new tile set.
+     * 
+     * @param index Index of the tile set to replace.
+     * @param tileSet Pointer to the new TileSet to set.
+     */
+    void replaceTileSetAt(const size_t& index, TileSet* tileSet);
+
   private:
     bool m_infinite;
     std::int32_t m_height;

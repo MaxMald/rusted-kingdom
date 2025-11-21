@@ -2,9 +2,7 @@
 
 #include "TMR/tmrPrerequisites.h"
 #include "TMR/tmrJson.h"
-#include "TMR/tmrSpriteSheetTileSetParser.h"
 #include "TMR/tmrReferenceTileSetParser.h"
-#include "TMR/tmrImageCollectionTileSetParser.h"
 
 namespace tmr
 {
@@ -19,8 +17,6 @@ namespace tmr
     TileSet* parseFromJson(const Json& json);
 
   private:
-    SpriteSheetTileSetParser m_spriteSheetTileSetParser;
     ReferenceTileSetParser m_referenceTileSetParser;
-    ImageCollectionTileSetParser m_imageCollectionTileSetParser;
   };
 }

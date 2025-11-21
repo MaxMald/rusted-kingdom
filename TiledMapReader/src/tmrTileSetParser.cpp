@@ -11,9 +11,7 @@
 namespace tmr
 {
   TileSetParser::TileSetParser() :
-    m_spriteSheetTileSetParser(),
-    m_referenceTileSetParser(),
-    m_imageCollectionTileSetParser()
+    m_referenceTileSetParser()
   {
   }
 
@@ -27,15 +25,14 @@ namespace tmr
 
     if (json.contains("image"))
     {
-      return m_spriteSheetTileSetParser.parseFromJson(firstgid, json);
+      throw std::runtime_error("Unsupported tileset type in JSON.");
     }
     else if (json.contains("tiles"))
     {
-      return m_imageCollectionTileSetParser.parseFromJson(firstgid, json);
+      throw std::runtime_error("Unsupported tileset type in JSON.");
     }
     else if (json.contains("source"))
     {
-
       return m_referenceTileSetParser.parseFromJson(firstgid, json);
     }
     else

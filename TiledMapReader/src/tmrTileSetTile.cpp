@@ -1,30 +1,30 @@
 #include "TMR/tmrTileSetTile.h"
+
 #include <cstring>
+
 #include "TMR/tmrObjectGroup.h"
+#include "TMR/tmrImage.h"
 
 namespace tmr
 {
   TileSetTile::TileSetTile(
     std::uint32_t id,
-    std::uint32_t imageWidth,
-    std::uint32_t imageHeight,
-    const char* image,
+    Image* image,
     ObjectGroup* objectGroup
   ) :
     m_id(id),
-    m_imageWidth(imageWidth),
-    m_imageHeight(imageHeight),
-    m_image(nullptr),
+    m_image(image),
     m_objectGroup(objectGroup)
   {
-    m_image = image ? new char[std::strlen(image) + 1] : nullptr;
-    if (m_image)
-      std::strcpy(m_image, image);
   }
 
   TileSetTile::~TileSetTile()
   {
-    delete[] m_image;
+    if (m_image)
+    {
+      delete m_image;
+      m_image = nullptr;
+    }
 
     if (m_objectGroup)
     {
