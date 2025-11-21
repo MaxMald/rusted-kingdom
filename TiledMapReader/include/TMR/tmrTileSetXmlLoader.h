@@ -14,6 +14,7 @@ namespace tmr
   class TileSet;
   class TileSetTile;
   class TileSetGrid;
+  class Image;
 
   namespace tileSetXmlLoader
   {
@@ -23,5 +24,6 @@ namespace tmr
     TileSetGrid* parseTileSetGrid(XMLElement* gridElement);
     TileSetTile** parseTileSetTileArray(XMLElement* tilesetElement, size_t tileCount);
     TileSetTile* parseTileSetTile(XMLElement* tileElement);
+    Image* parseImage(XMLElement* imageElement);
   };
 }

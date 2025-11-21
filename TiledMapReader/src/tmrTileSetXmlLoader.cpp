@@ -10,6 +10,7 @@ using std::string;
 #include "TMR/tmrTileSetTile.h"
 #include "TMR/tmrImageCollectionTileSet.h"
 #include "TMR/tmrSpriteSheetTileSet.h"
+#include "TMR/tmrImage.h"
 
 namespace tmr
 {
@@ -172,6 +173,22 @@ namespace tmr
       }
 
       return nullptr;
+    }
+
+    Image* parseImage(XMLElement* imageElement)
+    {
+      if (!imageElement)
+        return nullptr;
+
+      const char* source = imageElement->Attribute("source");
+      uint32_t width = imageElement->UnsignedAttribute("width", 0);
+      uint32_t height = imageElement->UnsignedAttribute("height", 0);
+
+      return new Image(
+        source ? source : "",
+        width,
+        height
+      );
     }
   };
 }
