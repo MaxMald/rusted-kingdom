@@ -26,7 +26,7 @@ namespace tmr
      * @param tiledMap Reference to the TiledMap to embed tilesets into.
      * @param tiledMapPath Path to the Tiled map file.
      */
-    TMR_API void embedTileSets(TiledMap& tiledMap, const char* tiledMapPath);
+    TMR_API void embedTileSets(TiledMap& tiledMap, const char* rootPath);
 
     /**
      * @brief Loads a tileset from a reference in the Tiled map.

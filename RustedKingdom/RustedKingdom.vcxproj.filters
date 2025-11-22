@@ -360,6 +360,9 @@
     <ClCompile Include="src\rkIAsset.cpp">
       <Filter>Source Files\assets</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkTiledImage.cpp">
+      <Filter>Source Files\assets\tiledMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -389,15 +392,6 @@
     <ClInclude Include="include\rkTiledMap.h">
       <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkTileSet.h">
-      <Filter>Header Files\assets\tiledMap</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkTileSetsManager.h">
-      <Filter>Header Files\assets\tiledMap</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkTileDescription.h">
-      <Filter>Header Files\assets\tiledMap</Filter>
-    </ClInclude>
     <ClInclude Include="include\rkInputManager.h">
       <Filter>Header Files\inputManager</Filter>
     </ClInclude>
@@ -415,21 +409,6 @@
     </ClInclude>
     <ClInclude Include="include\rkEvent.h">
       <Filter>Header Files\eventsManager\events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkReferenceTileSet.h">
-      <Filter>Header Files\assets\tiledMap</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkSpriteSheetTileSet.h">
-      <Filter>Header Files\assets\tiledMap</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkImageCollectionTileSet.h">
-      <Filter>Header Files\assets\tiledMap</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkTileSetGrid.h">
-      <Filter>Header Files\assets\tiledMap</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkTileSetTile.h">
-      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkAssertions.h">
       <Filter>Header Files\utilities</Filter>
@@ -574,12 +553,6 @@
     </ClInclude>
     <ClInclude Include="include\scripts\rkAgentPathMovement.h">
       <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkTiledObject.h">
-      <Filter>Header Files\assets\tiledMap</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkTiledObjectGroup.h">
-      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTiledSceneFactory.h">
       <Filter>Header Files\scene</Filter>

@@ -1,284 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="20" tilewidth="128" tileheight="64" infinite="0" nextlayerid="9" nextobjectid="148">
+<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="20" tilewidth="128" tileheight="64" infinite="0" nextlayerid="9" nextobjectid="153">
  <editorsettings>
   <export target="../maps/level-3.json" format="json"/>
  </editorsettings>
- <tileset firstgid="1" name="dirt-a-to-sand-a" tilewidth="128" tileheight="64" tilecount="32" columns="4" objectalignment="topleft">
-  <image source="../textures/terrain/128x64 Dirt A to Sand A.png" width="512" height="512"/>
-  <wangsets>
-   <wangset name="Dirt A to Sand" type="corner" tile="29">
-    <wangcolor name="" color="#ff0000" tile="29" probability="1"/>
-    <wangtile tileid="0" wangid="0,0,0,1,0,1,0,1"/>
-    <wangtile tileid="1" wangid="0,1,0,0,0,1,0,1"/>
-    <wangtile tileid="2" wangid="0,1,0,1,0,0,0,1"/>
-    <wangtile tileid="3" wangid="0,1,0,1,0,1,0,0"/>
-    <wangtile tileid="16" wangid="0,1,0,0,0,0,0,0"/>
-    <wangtile tileid="17" wangid="0,0,0,1,0,0,0,0"/>
-    <wangtile tileid="18" wangid="0,0,0,0,0,1,0,0"/>
-    <wangtile tileid="19" wangid="0,0,0,0,0,0,0,1"/>
-    <wangtile tileid="20" wangid="0,0,0,0,0,1,0,1"/>
-    <wangtile tileid="22" wangid="0,1,0,1,0,0,0,0"/>
-    <wangtile tileid="24" wangid="0,0,0,1,0,1,0,0"/>
-    <wangtile tileid="26" wangid="0,1,0,0,0,0,0,1"/>
-    <wangtile tileid="29" wangid="0,1,0,1,0,1,0,1"/>
-   </wangset>
-  </wangsets>
- </tileset>
- <tileset firstgid="33" name="plants-01" tilewidth="256" tileheight="256" tilecount="79" columns="0">
-  <grid orientation="orthogonal" width="1" height="1"/>
-  <tile id="0">
-   <image source="../textures/plants/plants-01/bamboo01.png" width="256" height="128"/>
-  </tile>
-  <tile id="1">
-   <image source="../textures/plants/plants-01/bamboo02.png" width="256" height="128"/>
-  </tile>
-  <tile id="2">
-   <image source="../textures/plants/plants-01/bamboo03.png" width="256" height="128"/>
-  </tile>
-  <tile id="3">
-   <image source="../textures/plants/plants-01/bamboo04.png" width="256" height="128"/>
-  </tile>
-  <tile id="4">
-   <image source="../textures/plants/plants-01/bamboo05.png" width="256" height="128"/>
-  </tile>
-  <tile id="5">
-   <image source="../textures/plants/plants-01/bamboo06.png" width="256" height="128"/>
-  </tile>
-  <tile id="6">
-   <image source="../textures/plants/plants-01/bigtree01.png" width="256" height="256"/>
-   <objectgroup draworder="index" id="2">
-    <object id="1" type="collider" x="58.842" y="76.0877" width="168.509" height="168.509">
-     <ellipse/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="7">
-   <image source="../textures/plants/plants-01/bigtree02.png" width="256" height="256"/>
-  </tile>
-  <tile id="8">
-   <image source="../textures/plants/plants-01/bigtree03.png" width="256" height="256"/>
-   <objectgroup draworder="index" id="2">
-    <object id="2" type="collider" x="72.97" y="95.8333" width="138.333" height="138.333">
-     <ellipse/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="9">
-   <image source="../textures/plants/plants-01/bush01.png" width="256" height="128"/>
-  </tile>
-  <tile id="10">
-   <image source="../textures/plants/plants-01/bush02.png" width="128" height="64"/>
-  </tile>
-  <tile id="11">
-   <image source="../textures/plants/plants-01/bush03.png" width="128" height="64"/>
-  </tile>
-  <tile id="12">
-   <image source="../textures/plants/plants-01/bush04.png" width="128" height="64"/>
-  </tile>
-  <tile id="13">
-   <image source="../textures/plants/plants-01/bush05.png" width="256" height="128"/>
-  </tile>
-  <tile id="14">
-   <image source="../textures/plants/plants-01/cactus01.png" width="128" height="128"/>
-  </tile>
-  <tile id="15">
-   <image source="../textures/plants/plants-01/cactus02.png" width="128" height="128"/>
-  </tile>
-  <tile id="16">
-   <image source="../textures/plants/plants-01/cactus03.png" width="128" height="128"/>
-  </tile>
-  <tile id="17">
-   <image source="../textures/plants/plants-01/cactus04.png" width="128" height="128"/>
-  </tile>
-  <tile id="18">
-   <image source="../textures/plants/plants-01/grasses01.png" width="128" height="64"/>
-  </tile>
-  <tile id="19">
-   <image source="../textures/plants/plants-01/grasses02.png" width="128" height="64"/>
-  </tile>
-  <tile id="20">
-   <image source="../textures/plants/plants-01/grasses03.png" width="128" height="64"/>
-  </tile>
-  <tile id="21">
-   <image source="../textures/plants/plants-01/grasses04.png" width="128" height="64"/>
-  </tile>
-  <tile id="22">
-   <image source="../textures/plants/plants-01/grasses05.png" width="128" height="64"/>
-  </tile>
-  <tile id="23">
-   <image source="../textures/plants/plants-01/hemp01.png" width="256" height="128"/>
-  </tile>
-  <tile id="24">
-   <image source="../textures/plants/plants-01/hemp02.png" width="256" height="128"/>
-  </tile>
-  <tile id="25">
-   <image source="../textures/plants/plants-01/hemp03.png" width="256" height="128"/>
-  </tile>
-  <tile id="26">
-   <image source="../textures/plants/plants-01/palm01.png" width="256" height="128"/>
-  </tile>
-  <tile id="27">
-   <image source="../textures/plants/plants-01/palm02.png" width="256" height="128"/>
-  </tile>
-  <tile id="28">
-   <image source="../textures/plants/plants-01/palm03.png" width="256" height="128"/>
-  </tile>
-  <tile id="29">
-   <image source="../textures/plants/plants-01/palm04.png" width="256" height="128"/>
-  </tile>
-  <tile id="30">
-   <image source="../textures/plants/plants-01/palm05.png" width="256" height="128"/>
-  </tile>
-  <tile id="31">
-   <image source="../textures/plants/plants-01/palm06.png" width="256" height="128"/>
-  </tile>
-  <tile id="32">
-   <image source="../textures/plants/plants-01/pine-full01.png" width="256" height="256"/>
-  </tile>
-  <tile id="33">
-   <image source="../textures/plants/plants-01/pine-full02.png" width="256" height="256"/>
-  </tile>
-  <tile id="34">
-   <image source="../textures/plants/plants-01/pine-full03.png" width="256" height="256"/>
-  </tile>
-  <tile id="35">
-   <image source="../textures/plants/plants-01/pine-full04.png" width="256" height="256"/>
-  </tile>
-  <tile id="36">
-   <image source="../textures/plants/plants-01/pine-full05.png" width="256" height="256"/>
-  </tile>
-  <tile id="37">
-   <image source="../textures/plants/plants-01/pine-full06.png" width="256" height="256"/>
-  </tile>
-  <tile id="38">
-   <image source="../textures/plants/plants-01/pine-full07.png" width="256" height="256"/>
-  </tile>
-  <tile id="39">
-   <image source="../textures/plants/plants-01/pine-full08.png" width="256" height="256"/>
-  </tile>
-  <tile id="40">
-   <image source="../textures/plants/plants-01/pine-half01.png" width="256" height="256"/>
-  </tile>
-  <tile id="41">
-   <image source="../textures/plants/plants-01/pine-half02.png" width="256" height="256"/>
-  </tile>
-  <tile id="42">
-   <image source="../textures/plants/plants-01/pine-half03.png" width="256" height="256"/>
-  </tile>
-  <tile id="43">
-   <image source="../textures/plants/plants-01/pine-half04.png" width="256" height="256"/>
-  </tile>
-  <tile id="44">
-   <image source="../textures/plants/plants-01/pine-half05.png" width="256" height="256"/>
-  </tile>
-  <tile id="45">
-   <image source="../textures/plants/plants-01/pine-half06.png" width="256" height="256"/>
-  </tile>
-  <tile id="46" type="collider">
-   <image source="../textures/plants/plants-01/pine-half07.png" width="256" height="256"/>
-   <objectgroup draworder="index" id="2">
-    <object id="1" x="38" y="74.6667" width="180.251" height="170.667">
-     <ellipse/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="47">
-   <image source="../textures/plants/plants-01/pine-half08.png" width="256" height="256"/>
-  </tile>
-  <tile id="48">
-   <image source="../textures/plants/plants-01/pine-none01.png" width="256" height="256"/>
-  </tile>
-  <tile id="49">
-   <image source="../textures/plants/plants-01/pine-none02.png" width="256" height="256"/>
-  </tile>
-  <tile id="50">
-   <image source="../textures/plants/plants-01/pine-none03.png" width="256" height="256"/>
-  </tile>
-  <tile id="51">
-   <image source="../textures/plants/plants-01/pine-none04.png" width="256" height="256"/>
-  </tile>
-  <tile id="52">
-   <image source="../textures/plants/plants-01/pine-none05.png" width="256" height="256"/>
-  </tile>
-  <tile id="53">
-   <image source="../textures/plants/plants-01/pine-none06.png" width="256" height="256"/>
-  </tile>
-  <tile id="54">
-   <image source="../textures/plants/plants-01/pine-none07.png" width="256" height="256"/>
-  </tile>
-  <tile id="55">
-   <image source="../textures/plants/plants-01/pine-none08.png" width="256" height="256"/>
-  </tile>
-  <tile id="56">
-   <image source="../textures/plants/plants-01/shrub1-01.png" width="256" height="128"/>
-  </tile>
-  <tile id="57">
-   <image source="../textures/plants/plants-01/shrub1-02.png" width="256" height="128"/>
-  </tile>
-  <tile id="58">
-   <image source="../textures/plants/plants-01/shrub1-03.png" width="256" height="128"/>
-  </tile>
-  <tile id="59">
-   <image source="../textures/plants/plants-01/shrub1-04.png" width="256" height="128"/>
-  </tile>
-  <tile id="60">
-   <image source="../textures/plants/plants-01/shrub1-05.png" width="256" height="128"/>
-  </tile>
-  <tile id="61">
-   <image source="../textures/plants/plants-01/shrub2-01.png" width="256" height="128"/>
-  </tile>
-  <tile id="62">
-   <image source="../textures/plants/plants-01/shrub2-02.png" width="256" height="128"/>
-  </tile>
-  <tile id="63">
-   <image source="../textures/plants/plants-01/shrub2-03.png" width="256" height="128"/>
-  </tile>
-  <tile id="64">
-   <image source="../textures/plants/plants-01/shrub2-04.png" width="256" height="128"/>
-  </tile>
-  <tile id="65">
-   <image source="../textures/plants/plants-01/shrub2-05.png" width="256" height="128"/>
-  </tile>
-  <tile id="66">
-   <image source="../textures/plants/plants-01/swirl01.png" width="128" height="64"/>
-  </tile>
-  <tile id="67">
-   <image source="../textures/plants/plants-01/swirl02.png" width="128" height="64"/>
-  </tile>
-  <tile id="68">
-   <image source="../textures/plants/plants-01/tropical01.png" width="256" height="128"/>
-  </tile>
-  <tile id="69">
-   <image source="../textures/plants/plants-01/tropical02.png" width="256" height="128"/>
-  </tile>
-  <tile id="70">
-   <image source="../textures/plants/plants-01/tropical03.png" width="256" height="128"/>
-  </tile>
-  <tile id="71">
-   <image source="../textures/plants/plants-01/tropical04.png" width="256" height="128"/>
-  </tile>
-  <tile id="72">
-   <image source="../textures/plants/plants-01/tropical05.png" width="256" height="128"/>
-  </tile>
-  <tile id="73">
-   <image source="../textures/plants/plants-01/weed01.png" width="128" height="64"/>
-  </tile>
-  <tile id="74">
-   <image source="../textures/plants/plants-01/weed02.png" width="128" height="64"/>
-  </tile>
-  <tile id="75">
-   <image source="../textures/plants/plants-01/weed03.png" width="128" height="64"/>
-  </tile>
-  <tile id="76">
-   <image source="../textures/plants/plants-01/weed04.png" width="128" height="64"/>
-  </tile>
-  <tile id="77">
-   <image source="../textures/plants/plants-01/weed05.png" width="128" height="64"/>
-  </tile>
-  <tile id="78">
-   <image source="../textures/plants/plants-01/weed06.png" width="128" height="64"/>
-  </tile>
- </tileset>
+ <tileset firstgid="1" source="tilesets/terrain-dirt-a-to-sand-a.tsx"/>
+ <tileset firstgid="33" source="tilesets/plants-01.tsx"/>
  <layer id="3" name="sand" width="30" height="20" locked="1">
   <data encoding="csv">
 32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,
@@ -305,45 +31,33 @@
  </layer>
  <layer id="6" name="dirt" width="30" height="20" locked="1">
   <data encoding="csv">
-30,30,21,0,0,0,0,0,0,17,3,30,30,30,30,30,30,30,30,30,30,30,30,21,0,0,0,0,0,0,
-30,2,20,0,0,0,0,0,0,0,17,3,30,30,30,30,30,30,30,30,30,30,30,21,0,0,0,0,0,0,
-30,21,0,0,0,0,0,0,0,0,0,23,30,30,2,3,30,30,30,30,30,2,27,20,0,0,0,0,0,0,
-3,21,0,0,0,18,25,19,0,0,0,17,27,27,20,17,3,30,30,2,27,20,0,0,0,0,0,0,0,0,
-17,20,0,18,25,4,30,1,19,0,0,0,0,0,0,0,17,3,30,1,19,0,0,0,0,0,0,18,25,25,
-0,0,0,17,3,30,30,30,1,19,0,0,0,0,0,0,0,23,30,30,21,0,0,0,18,25,25,4,30,30,
-0,0,0,18,4,30,30,30,30,1,19,0,0,0,0,0,0,23,30,30,21,0,0,0,23,30,30,30,30,30,
-0,0,18,4,30,30,30,30,30,30,1,19,0,0,0,0,0,17,27,27,20,0,0,0,23,30,30,30,30,30,
-0,0,23,30,30,30,30,30,30,30,30,21,0,0,0,0,0,0,0,0,0,0,0,0,23,30,30,30,30,30,
-0,0,17,3,30,30,30,30,30,30,30,21,0,0,18,25,19,0,18,19,18,25,19,0,17,27,27,3,30,30,
-0,0,0,17,27,27,27,27,3,30,30,21,0,0,23,30,1,25,4,1,4,30,1,19,0,0,0,23,30,30,
-0,0,0,0,0,0,0,0,23,30,30,21,0,0,23,30,30,30,30,30,30,30,30,21,0,0,0,23,30,30,
-0,0,0,0,0,0,0,0,17,3,30,21,0,0,17,27,3,30,30,30,30,30,30,1,19,0,0,17,3,30,
-0,0,0,0,0,0,0,0,0,17,27,20,0,0,0,0,23,30,30,30,30,30,30,30,1,19,0,0,23,30,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,17,27,27,27,27,27,3,30,30,21,0,0,23,30,
-25,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,30,30,21,0,0,17,3,
-30,21,0,0,0,0,0,0,0,0,0,0,0,18,25,19,0,0,0,0,0,0,17,27,27,20,0,0,0,17,
-30,1,25,19,0,0,0,0,0,0,0,18,25,4,30,1,19,0,0,0,0,0,0,0,0,0,0,0,0,0,
-30,30,30,1,19,0,0,0,0,0,0,23,30,30,30,30,1,25,19,0,0,0,0,0,0,0,0,0,0,0,
-3,30,30,30,1,25,19,0,0,0,0,17,3,30,30,30,30,2,20,0,0,0,0,0,0,0,0,0,0,0
+0,23,30,30,30,30,30,30,1,19,0,0,0,0,0,23,30,30,30,30,30,30,1,19,0,0,0,0,0,0,
+18,4,30,30,30,30,30,30,30,21,0,0,0,0,0,17,27,3,30,30,30,30,30,21,0,0,0,0,0,0,
+23,30,30,30,30,30,30,30,30,21,0,0,0,0,0,0,0,17,3,30,30,30,30,1,19,0,0,0,0,0,
+17,3,30,30,30,30,2,27,27,20,0,0,0,0,0,0,0,0,17,3,30,30,30,2,20,0,0,0,0,0,
+0,17,27,3,30,30,21,0,0,0,18,25,25,19,0,0,0,0,0,23,30,30,2,20,0,0,0,0,0,0,
+0,0,0,17,3,30,21,18,25,25,4,30,30,1,19,0,0,0,0,17,27,27,20,0,0,0,0,0,0,0,
+0,0,0,0,17,27,20,23,30,30,30,30,30,30,21,0,0,18,19,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,18,4,30,30,30,30,30,30,21,0,0,23,1,25,19,18,25,19,0,0,0,0,0,0,
+0,0,0,0,0,0,23,30,30,30,30,30,30,30,21,0,0,23,30,30,1,4,30,1,19,0,0,0,0,0,
+0,0,0,0,0,0,17,3,30,30,30,30,30,30,21,0,0,17,3,30,30,30,30,30,21,0,18,25,25,19,
+0,0,0,0,0,0,0,17,27,3,30,30,30,2,20,0,0,0,17,3,30,30,30,30,1,25,4,30,30,1,
+18,25,19,0,0,0,0,0,0,17,27,27,27,20,0,0,0,0,0,17,27,3,30,30,30,30,30,30,30,30,
+4,30,1,25,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,17,3,30,30,30,30,30,30,30,
+3,30,30,30,1,19,0,0,0,0,0,0,0,0,0,0,18,25,25,19,0,0,17,3,30,30,30,30,30,2,
+17,3,30,30,30,1,19,0,0,0,0,0,0,0,0,18,4,30,30,1,19,0,0,23,30,30,30,30,2,20,
+0,17,27,3,30,30,1,25,25,19,0,0,0,0,18,4,30,30,30,30,1,19,0,17,3,30,30,30,21,0,
+0,0,0,17,3,30,30,30,30,21,0,0,0,18,4,30,30,30,30,30,30,1,19,0,23,30,30,2,20,0,
+0,0,0,0,23,30,30,30,30,1,19,0,0,23,30,30,30,30,30,30,30,30,21,0,17,3,2,20,0,0,
+0,0,0,0,23,30,30,30,30,30,1,19,0,17,3,30,30,30,30,30,30,30,1,19,0,23,21,0,0,0,
+0,0,0,0,17,3,30,2,3,30,2,20,0,0,17,3,30,30,30,30,30,30,2,20,0,17,20,0,0,0
 </data>
  </layer>
  <objectgroup id="2" name="plantas">
-  <object id="131" gid="79" x="606.667" y="246.667" width="256" height="256"/>
-  <object id="132" gid="79" x="296" y="610.667" width="256" height="256"/>
-  <object id="133" gid="79" x="558" y="906" width="256" height="256"/>
-  <object id="134" gid="79" x="770.667" y="554.667" width="256" height="256"/>
-  <object id="135" gid="79" x="995.333" y="634" width="256" height="256"/>
-  <object id="136" gid="79" x="1087.33" y="971.333" width="256" height="256"/>
-  <object id="137" gid="79" x="459.333" y="487.333" width="256" height="256"/>
-  <object id="138" gid="79" x="774.667" y="1094.67" width="256" height="256"/>
-  <object id="139" gid="41" x="458" y="286" width="256" height="256"/>
-  <object id="140" gid="41" x="687.333" y="723.333" width="256" height="256"/>
-  <object id="141" gid="41" x="349.333" y="829.333" width="256" height="256"/>
-  <object id="142" gid="41" x="658.667" y="1197.33" width="256" height="256"/>
-  <object id="143" gid="41" x="800.667" y="335.333" width="256" height="256"/>
-  <object id="144" gid="41" x="604" y="62.6667" width="256" height="256"/>
-  <object id="145" gid="41" x="191.333" y="446" width="256" height="256"/>
-  <object id="146" gid="41" x="951.333" y="1096.67" width="256" height="256"/>
-  <object id="147" gid="41" x="1308.67" y="966" width="256" height="256"/>
+  <object id="148" gid="39" x="508.667" y="203.333" width="256" height="256"/>
+  <object id="149" gid="39" x="256" y="461.333" width="256" height="256"/>
+  <object id="150" gid="39" x="649.333" y="593.333" width="256" height="256"/>
+  <object id="151" gid="39" x="1072" y="570.667" width="256" height="256"/>
+  <object id="152" gid="39" x="626" y="963.333" width="256" height="256"/>
  </objectgroup>
 </map>

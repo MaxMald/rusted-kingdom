@@ -3,6 +3,7 @@
 #include <TMR/tmrSpriteSheetTileSet.h>
 
 #include "rkAssertions.h"
+#include "rkTiledImage.h"
 
 namespace rk
 {
@@ -15,36 +16,24 @@ namespace rk
       tmrSpriteSheetTileSet.getFirstGid()
     ),
     m_name(tmrSpriteSheetTileSet.getName()),
-    m_imageKey(),
-    m_imageFilepath(),
+    m_image(nullptr),
     m_margin(tmrSpriteSheetTileSet.getMargin()),
     m_columns(tmrSpriteSheetTileSet.getColumns()),
-    m_imageHeight(tmrSpriteSheetTileSet.getImageHeight()),
-    m_imageWidth(tmrSpriteSheetTileSet.getImageWidth()),
     m_spacing(tmrSpriteSheetTileSet.getSpacing()),
     m_tileCount(tmrSpriteSheetTileSet.getTileCount()),
     m_tileHeight(tmrSpriteSheetTileSet.getTileHeight()),
     m_tileWidth(tmrSpriteSheetTileSet.getTileWidth())
   {
-    const char* imageC = tmrSpriteSheetTileSet.getImage();
-    Path imagePath = imageC ? Path(imageC) : Path();
-
-    Path finalPath;
-    if (imagePath.is_absolute())
-    {
-      finalPath = imagePath;
-    }
-    else
-    {
-      finalPath = mapRootDirectory / imagePath;
-    }
-
-    m_imageFilepath = finalPath;
-    m_imageKey = finalPath.lexically_normal().string().c_str();
+    m_image = new TiledImage(tmrSpriteSheetTileSet.getImage());
   }
 
   SpriteSheetTileSet::~SpriteSheetTileSet()
   {
+    if (m_image)
+    {
+      delete m_image;
+      m_image = nullptr;
+    }
   }
 
   Bool SpriteSheetTileSet::isGidInRange(const Int32& gid) const

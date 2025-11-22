@@ -16,5 +16,15 @@ namespace tmr
      * Returned pointer must be freed when no longer needed.
      */
     char* combinePaths(const char* path1, const char* path2);
+
+    /**
+     * @brief Extracts the directory part from a given file path.
+     *
+     * @param filePath The file path to extract the directory from.
+     *
+     * @return A newly allocated string containing the directory part of the file
+     * path. Returned pointer must be freed when no longer needed.
+     */
+    char* getDirectoryFromPath(const char* filePath);
   }
 }

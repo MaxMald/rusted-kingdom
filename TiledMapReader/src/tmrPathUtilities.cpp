@@ -22,5 +22,17 @@ namespace tmr
 
       return result;
     }
+
+    char* getDirectoryFromPath(const char* filePath)
+    {
+      path p(filePath);
+      path directory = p.parent_path();
+
+      std::string directoryStr = directory.string();
+      char* result = new char[directoryStr.size() + 1];
+      std::strcpy(result, directoryStr.c_str());
+
+      return result;
+    }
   }
 }

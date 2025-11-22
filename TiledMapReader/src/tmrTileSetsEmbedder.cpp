@@ -14,7 +14,7 @@ namespace tmr
 {
   namespace tileSetsEmbedder
   {
-    void embedTileSets(TiledMap& tiledMap, const char* tiledMapPath)
+    void embedTileSets(TiledMap& tiledMap, const char* rootPath)
     {
       size_t tileSetsCount = tiledMap.getTileSetsCount();
       for (size_t i = 0; i < tileSetsCount; ++i)
@@ -25,7 +25,7 @@ namespace tmr
           continue;
 
         TileSet* loadedTileSet = loadTileSetFromReference(
-          tiledMapPath,
+          rootPath,
           static_cast<ReferenceTileSet*>(tileSet)
         );
 
@@ -37,87 +37,92 @@ namespace tmr
     }
 
     TileSet* loadTileSetFromReference(
-      const char* tiledMapPath,
+      const char* rootPath,
       ReferenceTileSet* tileSet
     )
     {
-      if (tileSet == nullptr || tiledMapPath == nullptr)
+      if (tileSet == nullptr || rootPath == nullptr)
         return nullptr;
 
       const char* sourcePath = tileSet->getSource();
-      char* tileSetPath = pathUtilities::combinePaths(tiledMapPath, sourcePath);
+      char* tileSetAbsolutePath = pathUtilities::combinePaths(rootPath, sourcePath);
 
       TileSet* loadedTileSet = tileSetXmlLoader::loadFromFile(
-        tileSetPath,
+        tileSetAbsolutePath,
         tileSet->getFirstGid()
       );
 
-      delete[] tileSetPath;
+      char* tileSetDirectoryPath = pathUtilities::getDirectoryFromPath(
+        tileSetAbsolutePath
+      );
 
-      resolveTileSetPaths(loadedTileSet, sourcePath);
+      resolveTileSetPaths(loadedTileSet, tileSetDirectoryPath);
+
+      delete[] tileSetAbsolutePath;
+      delete[] tileSetDirectoryPath;
 
       return loadedTileSet;
     }
 
-    void resolveTileSetPaths(TileSet* tileSet, const char* tileSetSourcePath)
+    void resolveTileSetPaths(TileSet* tileSet, const char* tileSetDirectoryPath)
     {
-      if (tileSet == nullptr || tileSetSourcePath == nullptr)
+      if (tileSet == nullptr || tileSetDirectoryPath == nullptr)
         return;
 
       if (tileSet->getType() == tileSetType::SpriteSheet)
       {
         resolveSpriteSheetTileSetPaths(
           static_cast<SpriteSheetTileSet*>(tileSet),
-          tileSetSourcePath
+          tileSetDirectoryPath
         );
       }
       else if (tileSet->getType() == tileSetType::ImageCollection)
       {
         resolveImageCollectionTileSetPaths(
           static_cast<ImageCollectionTileSet*>(tileSet),
-          tileSetSourcePath
+          tileSetDirectoryPath
         );
       }
     }
 
     void resolveSpriteSheetTileSetPaths(
       SpriteSheetTileSet* tileSet,
-      const char* tileSetSourcePath
+      const char* tileSetDirectoryPath
     )
     {
-      if (tileSet == nullptr || tileSetSourcePath == nullptr)
+      if (tileSet == nullptr || tileSetDirectoryPath == nullptr)
         return;
 
       Image* image = tileSet->getImage();
       if (image == nullptr)
         return;
 
-      resolveImagePath(image, tileSetSourcePath);
+      resolveImagePath(image, tileSetDirectoryPath);
     }
 
     void resolveImageCollectionTileSetPaths(
       ImageCollectionTileSet* tileSet,
-      const char* tileSetSourcePath
+      const char* tileSetDirectoryPath
     )
     {
-      if (tileSet == nullptr || tileSetSourcePath == nullptr)
+      if (tileSet == nullptr || tileSetDirectoryPath == nullptr)
         return;
 
       size_t tileCount = tileSet->getTileCount();
       for (size_t i = 0; i < tileCount; ++i)
-        resolveTileSetTilePath(tileSet->getTileAt(i), tileSetSourcePath);
+        resolveTileSetTilePath(tileSet->getTileAt(i), tileSetDirectoryPath);
     }
 
-    void resolveTileSetTilePath(TileSetTile* tile, const char* tileSetSourcePath)
+    void resolveTileSetTilePath(TileSetTile* tile, const char* tileSetDirectoryPath)
     {
-      if (tile == nullptr || tileSetSourcePath == nullptr)
+      if (tile == nullptr || tileSetDirectoryPath == nullptr)
         return;
 
       Image* image = tile->getImage();
       if (image == nullptr)
         return;
 
-      resolveImagePath(image, tileSetSourcePath);
+      resolveImagePath(image, tileSetDirectoryPath);
     }
   
     void resolveImagePath(Image* image, const char* tileSetSourcePath)

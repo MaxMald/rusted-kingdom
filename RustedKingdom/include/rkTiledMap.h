@@ -4,7 +4,6 @@
 #include <TMR/tmrRenderOrder.h>
 
 #include "rkIAsset.h"
-#include "rkTileSetsManager.h"
 #include "rkIsometricPositionTransformer.h"
 
 namespace tmr
@@ -29,33 +28,16 @@ namespace rk
     TiledMap();
     ~TiledMap();
 
-    bool isInfinite() const;
-    Int32 getHeight() const;
-    Int32 getWidth() const;
-    Int32 getNextLayerId() const;
-    Int32 getNextObjectId() const;
-    Int32 getTileHeight() const;
-    Int32 getTileWidth() const;
-    tmr::orientation::Type getOrientation() const;
-    tmr::renderOrder::Type getRenderOrder() const;
-    String getTiledVersion() const;
-    String getType() const;
-    String getVersion() const;
-    SizeT getLayersCount() const;
-    const tmr::MapLayer* getLayerAt(const SizeT& index) const;
-    TileSetsManager& getTileSetsManager();
-    const TileSetsManager& getTileSetsManager() const;
-    const IsometricPositionTransformer& getIsometricPositionTransformer() const;
+    const tmr::TiledMap* getTmrTiledMap() const { return m_tmrTiledMap; }
+    tmr::TiledMap* getTmrTiledMap() { return m_tmrTiledMap; }
+    Path getTiledMapFilename() const { return m_tiledMapFilename; }
 
   protected:
     virtual bool loadFromFile(const Path& filename) override;
     virtual void unload() override;
 
   private:
+    Path m_tiledMapFilename;
     tmr::TiledMap* m_tmrTiledMap;
-    TileSetsManager m_tileSetsManager;
-    IsometricPositionTransformer m_isometricPositionTransformer;
-
-    void updateIsometricPositionTransformer();
   };
 }
