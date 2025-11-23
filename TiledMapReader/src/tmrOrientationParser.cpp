@@ -1,17 +1,31 @@
 #include "TMR/tmrOrientationParser.h"
+
 #include <string>
 #include <stdexcept>
+
+#include "TMR/tinyxml2.h"
+
+using namespace tinyxml2;
 
 namespace tmr
 {
   namespace orientationParser
   {
+    orientation::Type parseFromXmlElement(XMLElement* element)
+    {
+      if (!element)
+        return orientation::Type::Undefined;
+
+      const char* orientationStr = element->Attribute("orientation");
+      return parseFromString(orientationStr);
+    }
+
     orientation::Type parseFromString(
       const char* orientationStr
     )
     {
       if (!orientationStr)
-        throw std::runtime_error("orientationStr is null");
+        return orientation::Type::Undefined;
 
       std::string str(orientationStr);
 

@@ -1,10 +1,11 @@
 #pragma once
 
 #include "TMR/tmrPrerequisites.h"
+#include "TMR/tmrNonCopyable.h"
 
 namespace tmr
 {
-    class TMR_API Object
+    class TMR_API Object : public NonCopyable
     {
     public:
       Object(

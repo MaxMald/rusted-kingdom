@@ -1,6 +1,7 @@
 #pragma once
 
 #include "TMR/tmrPrerequisites.h"
+#include "TMR/tmrNonCopyable.h"
 
 namespace tmr
 {
@@ -13,7 +14,7 @@ namespace tmr
    * TileSetTile represents a single tile in a tileset, including its unique
    * identifier and image properties.
    */
-  class TMR_API TileSetTile
+  class TMR_API TileSetTile : public NonCopyable
   {
   public:
     TileSetTile(

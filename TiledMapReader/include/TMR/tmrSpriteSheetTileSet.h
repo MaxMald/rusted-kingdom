@@ -4,6 +4,7 @@
 
 namespace tmr
 {
+  class TileSetGrid;
   class Image;
 
   /**
@@ -36,6 +37,7 @@ namespace tmr
      * copied.
      */
     SpriteSheetTileSet(
+      TileSetGrid* grid,
       Image* image,
       const std::int32_t& margin,
       const std::int32_t& firstgid,
@@ -48,6 +50,8 @@ namespace tmr
     );
 
     virtual ~SpriteSheetTileSet();
+
+    const TileSetGrid* getGrid() const noexcept { return m_grid; }
 
     /** @return source image */
     const Image* getImage() const noexcept { return m_image; }
@@ -77,6 +81,7 @@ namespace tmr
     const char* getName() const noexcept { return m_name; }
 
   private:
+    TileSetGrid* m_grid;
     Image* m_image;
     int32_t m_margin;
     uint32_t m_columns;

@@ -7,6 +7,7 @@
 namespace tmr
 {
   SpriteSheetTileSet::SpriteSheetTileSet(
+    TileSetGrid* grid,
     Image* image,
     const int32_t& margin,
     const int32_t& firstgid,
@@ -18,6 +19,7 @@ namespace tmr
     const char* name
   ) :
     TileSet(tileSetType::Type::SpriteSheet, firstgid),
+    m_grid(grid),
     m_image(image),
     m_margin(margin),
     m_columns(columns),

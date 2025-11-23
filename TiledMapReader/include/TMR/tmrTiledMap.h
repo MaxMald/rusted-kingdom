@@ -3,63 +3,41 @@
 #include "TMR/tmrPrerequisites.h"
 #include "TMR/tmrOrientation.h"
 #include "TMR/tmrRenderOrder.h"
+#include "TMR/tmrNonCopyable.h"
 
 namespace tmr
 {
-  class MapLayer;
+  class TileMapLayer;
+  class ObjectGroup;
   class TileSet;
 
   /**
    * @class TiledMap
    * @brief Represents a Tiled map and its properties.
    */
-  class TMR_API TiledMap
+  class TMR_API TiledMap : public NonCopyable
   {
   public:
-    /**
-      * @brief Constructs a TiledMap object with initialization.
-      * 
-      * @param infinite True if the map is infinite.
-      * @param height Height of the map in tiles.
-      * @param width Width of the map in tiles.
-      * @param nextLayerId Next available layer ID.
-      * @param nextObjectId Next available object ID.
-      * @param tileHeight Height of a tile in pixels.
-      * @param tileWidth Width of a tile in pixels.
-      * @param orientation Orientation of the map.
-      * @param renderOrder Render order of the map.
-      * @param tiledVersion Tiled version string.
-      * @param type Type string of the map.
-      * @param version Version string of the map.
-      * @param layers Array of pointers to MapLayer objects. Ownership 
-      * is transferred to TiledMap.
-      * @param layersCount Number of layers in the map.
-      * @param tileSets Array of pointers to TileSet objects. Ownership
-      * is transferred to TiledMap.
-      * @param tileSetsCount Number of tile sets in the map.
-      */
     TiledMap(
       bool infinite,
-      std::int32_t height,
-      std::int32_t width,
-      std::int32_t nextLayerId,
-      std::int32_t nextObjectId,
-      std::int32_t tileHeight,
-      std::int32_t tileWidth,
+      int32_t height,
+      int32_t width,
+      int32_t nextLayerId,
+      int32_t nextObjectId,
+      int32_t tileHeight,
+      int32_t tileWidth,
       orientation::Type orientation,
       renderOrder::Type renderOrder,
       const char* tiledVersion,
       const char* type,
       const char* version,
-      MapLayer** layers,
-      const std::size_t& layersCount,
+      TileMapLayer** layers,
+      const size_t& layersCount,
+      ObjectGroup** objectGroups,
+      const size_t& objectGroupsCount,
       TileSet** tileSets,
-      const std::size_t& tileSetsCount
+      const size_t& tileSetsCount
     );
-
-    /**
-     * @brief Destroys the TiledMap object.
-     */
     ~TiledMap();
 
     /**
@@ -156,9 +134,24 @@ namespace tmr
      * @brief Gets the map layer at the specified index.
      * 
      * @param index Index of the layer to retrieve.
-     * @return Pointer to the MapLayer at the specified index.
+     * @return Pointer to the TileMapLayer at the specified index.
      */
-    const MapLayer* getLayerAt(const std::size_t& index) const;
+    const TileMapLayer* getLayerAt(const std::size_t& index) const;
+
+    /**
+     * @brief Gets the number of object groups in the map.
+     * 
+     * @return The number of object groups.
+     */
+    const std::size_t& getObjectGroupsCount() const { return m_objectGroupsCount; }
+
+    /**
+     * @brief Gets the object group at the specified index.
+     * 
+     * @param index Index of the object group to retrieve.
+     * @return Pointer to the ObjectGroup at the specified index.
+     */
+    const ObjectGroup* getObjectGroupAt(const std::size_t& index) const;
 
     /**
      * @brief Gets the number of tile sets in the map.
@@ -203,8 +196,10 @@ namespace tmr
     char* m_tiledVersion;
     char* m_type;
     char* m_version;
-    MapLayer** m_layers;
+    TileMapLayer** m_layers;
     std::size_t m_layersCount;
+    ObjectGroup** m_objectGroups;
+    std::size_t m_objectGroupsCount;
     TileSet** m_tileSets;
     std::size_t m_tileSetsCount;
   };

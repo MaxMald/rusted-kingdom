@@ -1,55 +1,49 @@
 #include "TMR/tmrTileMapLayer.h"
+
 #include <stdexcept>
+
+#include "TMR/tmrData.h"
 
 namespace tmr
 {
   TileMapLayer::TileMapLayer(
     const std::int32_t& id,
-    const std::int32_t& x,
-    const std::int32_t& y,
-    const bool& visible,
-    const float& opacity,
     const char* name,
     const std::int32_t& width,
     const std::int32_t& height,
-    const std::size_t& dataSize,
-    std::int32_t* data
+    Data* data
   ) :
-    MapLayer(
-      mapLayerType::TileLayer,
-      id,
-      x,
-      y,
-      visible,
-      opacity,
-      name
-    ),
+    m_id(id),
     m_height(height),
     m_width(width),
-    m_dataSize(dataSize),
     m_data(data)
   {
+    m_name = name ? new char[std::strlen(name) + 1] : nullptr;
+    if (m_name)
+      std::strcpy(m_name, name);
   }
 
   TileMapLayer::~TileMapLayer()
   {
-    delete[] m_data;
-  }
-
-  const std::int32_t& TileMapLayer::getDataAt(const std::int32_t index) const
-  {
-    if (index < 0 || index >= m_dataSize)
+    if (m_data)
     {
-      throw std::out_of_range("Index out of range in TileMapLayer::getDataAt");
+      delete m_data;
+      m_data = nullptr;
     }
 
-    return m_data[index];
+    if (m_name)
+    {
+      delete[] m_name;
+      m_name = nullptr;
+    }
   }
 
-  const std::int32_t& TileMapLayer::getDataAt(
-    const std::int32_t column,
-    const std::int32_t row
-  ) const
+  int32_t TileMapLayer::getDataAt(const size_t& index) const
+  {
+    return m_data->getDataAt(index);
+  }
+
+  int32_t TileMapLayer::getDataAt(const int32_t& column, const int32_t& row) const
   {
     if (column < 0 || column >= m_width || row < 0 || row >= m_height)
     {
@@ -57,7 +51,7 @@ namespace tmr
         "Column or row out of range in TileMapLayer::getDataAt");
     }
 
-    const std::int32_t index = row * m_width + column;
-    return m_data[index];
+    const int32_t index = row * m_width + column;
+    return m_data->getDataAt(static_cast<size_t>(index));
   }
 }

@@ -20,11 +20,14 @@ namespace tmr
   namespace tileSetXmlLoader
   {
     TileSet* loadFromFile(const char* filePath, const int32_t firstGid);
-    TileSet* parseSpriteSheetTileSet(XMLElement* tilesetElement, const int32_t firstGid);
-    TileSet* parseImageCollectionTileSet(XMLElement* tilesetElement, const int32_t firstGid);
+    TileSet* parseFromXmlElement(XMLElement* tilesetElement, const int32_t firstGid, const char* sourcePath);
+    TileSet* parseFromXmlElement(XMLElement* tilesetElement, const char* sourcePath);
+    TileSet* parseSpriteSheetTileSet(XMLElement* tilesetElement, const int32_t firstGid, const char* source);
+    TileSet* parseImageCollectionTileSet(XMLElement* tilesetElement, const int32_t firstGid, const char* source);
+    TileSet** parseTileSetArray(XMLElement* tileSetParent, size_t& outTileCount, const char* source);
     TileSetGrid* parseTileSetGrid(XMLElement* gridElement);
-    TileSetTile** parseTileSetTileArray(XMLElement* tilesetElement, size_t tileCount);
-    TileSetTile* parseTileSetTile(XMLElement* tileElement);
-    Image* parseImage(XMLElement* imageElement);
+    TileSetTile** parseTileSetTileArray(XMLElement* tilesetElement, size_t tileCount, const char* source);
+    TileSetTile* parseTileSetTile(XMLElement* tileElement, const char* source);
+    Image* parseImage(XMLElement* imageElement, const char* source);
   };
 }

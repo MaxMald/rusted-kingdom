@@ -3,8 +3,9 @@
 #include <cstring>
 #include <stdexcept>
 
-#include "TMR/tmrMapLayer.h"
+#include "TMR/tmrTileMapLayer.h"
 #include "TMR/tmrTileSet.h"
+#include "TMR/tmrObjectGroup.h"
 
 namespace tmr
 {
@@ -21,8 +22,10 @@ namespace tmr
     const char* tiledVersion,
     const char* type,
     const char* version,
-    MapLayer** layers,
+    TileMapLayer** layers,
     const std::size_t& layersCount,
+    ObjectGroup** objectGroups,
+    const std::size_t& objectGroupsCount,
     TileSet** tileSets,
     const std::size_t& tileSetsCount
   ) :
@@ -37,6 +40,8 @@ namespace tmr
     m_renderOrder(renderOrder),
     m_layers(layers),
     m_layersCount(layersCount),
+    m_objectGroups(objectGroups),
+    m_objectGroupsCount(objectGroupsCount),
     m_tileSets(tileSets),
     m_tileSetsCount(tileSetsCount)
   {
@@ -61,9 +66,23 @@ namespace tmr
 
   TiledMap::~TiledMap()
   {
-    delete[] m_tiledVersion;
-    delete[] m_type;
-    delete[] m_version;
+    if (m_tiledVersion)
+    {
+      delete[] m_tiledVersion;
+      m_tiledVersion = nullptr;
+    }
+
+    if (m_type)
+    {
+      delete[] m_type;
+      m_type = nullptr;
+    }
+    
+    if (m_version)
+    {
+      delete[] m_version;
+      m_version = nullptr;
+    }
 
     if (m_layers)
     {
@@ -73,6 +92,16 @@ namespace tmr
       delete[] m_layers;
       m_layers = nullptr;
       m_layersCount = 0;
+    }
+
+    if (m_objectGroups)
+    {
+      for (std::size_t i = 0; i < m_objectGroupsCount; ++i)
+        delete m_objectGroups[i];
+
+      delete[] m_objectGroups;
+      m_objectGroups = nullptr;
+      m_objectGroupsCount = 0;
     }
 
     if (m_tileSets)
@@ -86,13 +115,23 @@ namespace tmr
     }
   }
 
-  const MapLayer* TiledMap::getLayerAt(const std::size_t& index) const
+  const TileMapLayer* TiledMap::getLayerAt(const std::size_t& index) const
   {
     if (index >= m_layersCount)
     {
       throw std::out_of_range("TiledMap::getLayerAt: Index out of range.");
     }
     return m_layers[index];
+  }
+
+  const ObjectGroup* TiledMap::getObjectGroupAt(const std::size_t& index) const
+  {
+    if (index >= m_objectGroupsCount)
+    {
+      throw std::out_of_range("TiledMap::getObjectGroupAt: Index out of range.");
+    }
+
+    return m_objectGroups[index];
   }
 
   const TileSet* TiledMap::getTileSetAt(const std::size_t& index) const

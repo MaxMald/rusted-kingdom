@@ -13,10 +13,11 @@ namespace tmr
   {
     enum class Type : std::uint8_t
     {
-      RightDown, ///< Layers are rendered from right to left, then top to bottom.
-      RightUp,   ///< Layers are rendered from right to left, then bottom to top.
-      LeftDown,  ///< Layers are rendered from left to right, then top to bottom.
-      LeftUp     ///< Layers are rendered from left to right, then bottom to top.
+      Undefined = 0, ///< Undefined render order.
+      RightDown = 1, ///< Layers are rendered from right to left, then top to bottom.
+      RightUp = 2,   ///< Layers are rendered from right to left, then bottom to top.
+      LeftDown = 3,  ///< Layers are rendered from left to right, then top to bottom.
+      LeftUp = 4     ///< Layers are rendered from left to right, then bottom to top.
     };
   }
 }

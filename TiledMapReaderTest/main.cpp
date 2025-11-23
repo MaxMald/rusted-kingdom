@@ -1,18 +1,12 @@
-#include <TMR/tmrTiledMapReader.h>
-#include <TMR/tmrTileSetsEmbedder.h>
+#include <TMR/tmrTiledMapLoader.h>
+#include <TMR/tmrTiledMap.h>
 
 void main()
 {
-    tmr::TiledMapReader reader;
-    tmr::TiledMap* map = reader.readFromFile(
-      "F:/Repositories/MaxMald/rusted-kingdom/assets/maps/level-4.json"
+    tmr::TiledMap* map = tmr::tiledMapLoader::loadFromFile(
+      "F:/Repositories/MaxMald/rusted-kingdom/assets/maps/level-5.tmx"
     );
 
-    tmr::tileSetsEmbedder::embedTileSets(
-      *map,
-      "F:/Repositories/MaxMald/rusted-kingdom/assets/maps/"
-    );
-    
     if (map)
     {
         // Successfully loaded the map
