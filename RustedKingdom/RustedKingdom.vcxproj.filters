@@ -174,9 +174,6 @@
     <ClCompile Include="src\rkSpriteSheet.cpp">
       <Filter>Source Files\assets</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkTiledSceneFactory.cpp">
-      <Filter>Source Files\scene</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkInputManager.cpp">
       <Filter>Source Files\inputManager</Filter>
     </ClCompile>
@@ -365,9 +362,6 @@
     </ClCompile>
     <ClCompile Include="src\rkTiledObjectBlueprint.cpp">
       <Filter>Source Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkTiledObjectBlueprintMapper.cpp">
-      <Filter>Source Files\scene\tiledSceneCreator</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp">
       <Filter>Source Files\scene\tiledSceneCreator</Filter>
@@ -655,9 +649,6 @@
     </ClInclude>
     <ClInclude Include="include\rkTiledObjectBlueprint.h">
       <Filter>Header Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
-    </ClInclude>
-    <ClInclude Include="src\rkTiledObjectBlueprintMapper.h">
-      <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTiledObjectSpriteDescriptor.h">
       <Filter>Header Files\scene\tiledSceneCreator</Filter>

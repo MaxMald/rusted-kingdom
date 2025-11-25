@@ -1,4 +1,4 @@
-#include "rkTileGameObjectDescription.h"
+#include "rkTiledObjectSpriteDescriptor.h"
 
 namespace rk
 {

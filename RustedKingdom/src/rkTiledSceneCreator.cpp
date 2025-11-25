@@ -64,6 +64,11 @@ namespace rk
       const sf::Vector2f& position,
       Int32 tileGid
     );
+
+    GameObject* createLayerGameObject(
+      const String& name,
+      SceneGraph& sceneGraph
+    );
   }
 }
 
@@ -166,8 +171,8 @@ namespace rk
         for (Int32 column = 0; column < width; ++column)
         {
           Vector2f position = isometricPosTransformer.isometricToWorld(
-            row * spriteHeight,
-            column * spriteHeight
+            column * spriteHeight,
+            row * spriteHeight
           );
 
           createTile(
@@ -198,6 +203,8 @@ namespace rk
         tiledObjectSpriteDescriptorFactory::create(tileGid, tiledMap);
 
       tileSpriteDesc.setOrigin(0.5f, 0.0f);
+
+      tileGameObjectBlueprint.setDescription(tileSpriteDesc);
 
       sceneGraph.instantiateGameObject(
         tileGameObjectBlueprint,
@@ -247,6 +254,8 @@ namespace rk
           tiledObjectSpriteDescriptorFactory::create(gid, tiledMap);
 
         tileSpriteDesc.setOrigin(0.5f, 1.0f);
+
+        tileGameObjectBlueprint.setDescription(tileSpriteDesc);
 
         sceneGraph.instantiateGameObject(
           tileGameObjectBlueprint,

@@ -5,10 +5,6 @@
 
 namespace rk
 {
-  class TileSet;
-  class SpriteSheetTileSet;
-  class ImageCollectionTileSet;
-
   /**
    * @brief Manages loading, retrieval, and organization of game assets.
    *
@@ -99,16 +95,7 @@ namespace rk
 
       return *typedGroup;
     }
-
-    /**
-     * @brief Loads all assets referenced by the specified tiled map.
-     * 
-     * @param key Unique string identifier for the tiled map.
-     * 
-     * @return True if assets were loaded successfully, false otherwise.
-     */
-    bool loadAssetsFromTiledMap(const String& key);
-
+    
     /**
      * @brief Unloads all assets managed by the AssetManager.
      */
@@ -121,11 +108,6 @@ namespace rk
   private:
     Path m_assetDirectory;
     UnorderedMap<TypeIndex, SharedPtr<AssetGroup>> m_assetGroups;
-
-    // TODO this type of loaders should be handle by other kind of class.
-    bool loadAssetsFromTileSet(const TileSet& tileSet);
-    bool loadAssetsFromSpriteSheetTileSet(const SpriteSheetTileSet& tileSet);
-    bool loadAssetsFromImageCollectionTileSet(const ImageCollectionTileSet& tileSet);
 
     void registerAssetGroups();
   };

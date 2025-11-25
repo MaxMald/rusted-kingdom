@@ -1,4 +1,7 @@
 #include "rkPathfinderFactory.h"
+
+#include <TMR/tmrTiledMap.h>
+
 #include "rkPathfinder.h"
 #include "rkTiledMap.h"
 #include "rkCollider.h"
@@ -12,7 +15,9 @@ namespace rk
       const TiledMap& tiledMap
     )
     {
-      if (tiledMap.getOrientation() != tmr::orientation::Type::Isometric)
+      const tmr::TiledMap* tmrTiledMap = tiledMap.getTmrTiledMap();
+
+      if (tmrTiledMap->getOrientation() != tmr::orientation::Type::Isometric)
       {
         throw RuntimeErrorException(
           "pathfinderFactory::createFromIsometricTiledMap: "
@@ -20,9 +25,9 @@ namespace rk
         );
       }
 
-      UInt32 width = static_cast<UInt32>(tiledMap.getWidth());
-      UInt32 height = static_cast<UInt32>(tiledMap.getHeight());
-      UInt32 tileHeight = static_cast<UInt32>(tiledMap.getTileHeight());
+      UInt32 width = static_cast<UInt32>(tmrTiledMap->getWidth());
+      UInt32 height = static_cast<UInt32>(tmrTiledMap->getHeight());
+      UInt32 tileHeight = static_cast<UInt32>(tmrTiledMap->getTileHeight());
 
       return MakeShared<Pathfinder>(
         width,

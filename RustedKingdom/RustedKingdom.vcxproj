@@ -221,10 +221,8 @@
     <ClCompile Include="src\rkTiledMap.cpp" />
     <ClCompile Include="src\rkTiledMapAssetLoader.cpp" />
     <ClCompile Include="src\rkTiledObjectBlueprint.cpp" />
-    <ClCompile Include="src\rkTiledObjectBlueprintMapper.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp" />
     <ClCompile Include="src\rkTiledSceneCreator.cpp" />
-    <ClCompile Include="src\rkTiledSceneFactory.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptor.cpp" />
     <ClCompile Include="src\rkTileGameObjectBlueprint.cpp" />
     <ClCompile Include="src\rkViewsManager.cpp" />
@@ -330,7 +328,6 @@
     <ClInclude Include="include\scripts\rkLuciusAnimation.h" />
     <ClInclude Include="include\scripts\rkLuciusStates.h" />
     <ClInclude Include="include\rkTiledObjectSpriteDescriptorFactory.h" />
-    <ClInclude Include="src\rkTiledObjectBlueprintMapper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

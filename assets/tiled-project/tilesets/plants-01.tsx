@@ -159,6 +159,14 @@
  </tile>
  <tile id="47">
   <image source="../../textures/plants/plants-01/pine-half08.png" width="256" height="256"/>
+  <objectgroup draworder="index" id="3">
+   <object id="3" x="178.1" y="58.3343">
+    <polygon points="0,0 37.685,152.805 -40.7824,183.263 -109.958,147.126 -112.539,124.928 -67.1103,28.3928 -40.2662,29.9415"/>
+   </object>
+   <object id="4" x="67.6265" y="14.9708">
+    <polygon points="0,0 -42.8473,18.0682 -39.2337,62.4642 6.71103,45.9447"/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="48">
   <image source="../../textures/plants/plants-01/pine-none01.png" width="256" height="256"/>
@@ -179,6 +187,9 @@
   <image source="../../textures/plants/plants-01/pine-none06.png" width="256" height="256"/>
  </tile>
  <tile id="54">
+  <properties>
+   <property name="script" value="lucius"/>
+  </properties>
   <image source="../../textures/plants/plants-01/pine-none07.png" width="256" height="256"/>
  </tile>
  <tile id="55">

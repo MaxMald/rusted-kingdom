@@ -11,9 +11,11 @@
 #include "rkSpriteComponentFactory.h"
 #include "rkRigidBodyComponentFactory.h"
 #include "rkColliderComponentFactory.h"
-#include "rkTiledSceneFactory.h"
 #include "rkTexture.h"
 #include "rkEightDirAnimationDesc.h"
+#include "rkTiledMapAssetsLoader.h"
+#include "rkTiledSceneCreator.h"
+#include "rkIsometricPositionTransformerFactory.h"
 
 #include "rkLuciusBlueprint.h"
 
@@ -55,9 +57,9 @@ namespace rk
   {
     m_assetManager->getAssetGroup<TiledMap>().loadFromFile(
       "level-0",
-      m_assetManager->combineAssetDirectoryWithPath("maps/level-3.json")
+      m_assetManager->combineAssetDirectoryWithPath("maps/level-5.tmx")
     );
-    m_assetManager->loadAssetsFromTiledMap("level-0");
+    tiledMapAssetLoader::loadTiledMapAssets(*m_assetManager, "level-0");
 
     m_assetManager->getAssetGroup<Texture>().loadFromFile(
       "lucius-walking",
@@ -87,20 +89,18 @@ namespace rk
     SpriteComponentFactory spriteComponentFactory(*m_assetManager);
     RigidBodyComponentFactory rigidBodyComponentFactory(m_physicsWorld);
     ColliderComponentFactory colliderComponentFactory(m_physicsWorld);
-    TiledSceneFactory tiledSceneFactory(
-      gameObjectBuilder,
-      spriteComponentFactory,
-      rigidBodyComponentFactory,
-      colliderComponentFactory,
-      m_sceneGraph,
-      m_physicsWorld
-    );
 
     m_physicsWorld.createCollidersGroup("characters");
+    m_physicsWorld.createCollidersGroup("plantas");
     SharedPtr<TiledMap> tiledMap = m_assetManager->getAssetGroup<TiledMap>()
       .get("level-0");
 
-    tiledSceneFactory.create(*tiledMap);
+    tiledSceneCreator::create(
+      "level-0",
+      *m_assetManager,
+      spriteComponentFactory,
+      m_sceneGraph
+    );
 
     createPathfinders();
 
@@ -113,7 +113,7 @@ namespace rk
       rigidBodyComponentFactory,
       colliderComponentFactory,
       m_pathfinderManager.getPathfinder("characters"),
-      tiledMap->getIsometricPositionTransformer(),
+      isometricPositionTransformerFactory::create(*tiledMap),
       m_windowManager->getRenderWindow()
     );
 
@@ -137,7 +137,7 @@ namespace rk
       pathfinder,
       m_physicsWorld,
       "plantas",
-      tiledMap->getIsometricPositionTransformer()
+      isometricPositionTransformerFactory::create(*tiledMap)
     );
   }
 }

@@ -62,7 +62,7 @@ namespace rk
       }
 
       throw RuntimeErrorException(
-        String::Format("Asset with key '{}' not found", key.c_str())
+        String::Format("Asset with key '%s' not found", key.c_str())
       );
     }
   };
