@@ -124,17 +124,11 @@
     <Filter Include="Header Files\assets">
       <UniqueIdentifier>{4222a4a4-a9bf-4455-8e86-a87169fee78e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\assets\tiledMap">
-      <UniqueIdentifier>{a1fa749b-969f-4355-bdc3-f8cebc583c74}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\assets\animations">
       <UniqueIdentifier>{e8517f5e-9fa0-4eb7-b2f4-e680e89932c4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\assets">
       <UniqueIdentifier>{aa0eb773-2a25-4cf5-9041-7115b756396a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\assets\tiledMap">
-      <UniqueIdentifier>{3d845428-28ef-4635-9a39-fbff3154bdb1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\assets\animations">
       <UniqueIdentifier>{29c474a1-0272-4280-9352-24aa93872275}</UniqueIdentifier>
@@ -144,6 +138,24 @@
     </Filter>
     <Filter Include="Header Files\scene\levels">
       <UniqueIdentifier>{8803d9cf-88a7-4eb8-845f-2744685e65ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\loaders">
+      <UniqueIdentifier>{b820910b-ccce-4f39-a061-8f7042bcbb6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\loaders">
+      <UniqueIdentifier>{d0e1abee-9e77-4a63-b5b1-c39bb5a1fe2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\scene\tiledSceneCreator">
+      <UniqueIdentifier>{9ad21efb-e218-47f1-a743-4fb445403cfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\scene\tiledSceneCreator">
+      <UniqueIdentifier>{e8eace36-12dd-467e-8297-8f7c986d88e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\scene\tiledSceneCreator\gameObjectBlueprints">
+      <UniqueIdentifier>{e58e06fe-12cb-4352-80fe-6d9184037dd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\scene\tiledSceneCreator\gameObjectBlueprints">
+      <UniqueIdentifier>{d670d7c8-17be-4989-a09b-4ff355bc2bf6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -162,12 +174,6 @@
     <ClCompile Include="src\rkSpriteSheet.cpp">
       <Filter>Source Files\assets</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkTileSet.cpp">
-      <Filter>Source Files\assets\tiledMap</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkTileSetsManager.cpp">
-      <Filter>Source Files\assets\tiledMap</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkTiledSceneFactory.cpp">
       <Filter>Source Files\scene</Filter>
     </ClCompile>
@@ -176,21 +182,6 @@
     </ClCompile>
     <ClCompile Include="src\rkEventsManager.cpp">
       <Filter>Source Files\eventsManager</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkReferenceTileSet.cpp">
-      <Filter>Source Files\assets\tiledMap</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkSpriteSheetTileSet.cpp">
-      <Filter>Source Files\assets\tiledMap</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkImageCollectionTileSet.cpp">
-      <Filter>Source Files\assets\tiledMap</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkTileSetGrid.cpp">
-      <Filter>Source Files\assets\tiledMap</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkTileSetTile.cpp">
-      <Filter>Source Files\assets\tiledMap</Filter>
     </ClCompile>
     <ClCompile Include="src\rkLayerGameObject.cpp">
       <Filter>Source Files\scene\gameObjects</Filter>
@@ -258,9 +249,6 @@
     <ClCompile Include="src\rkBoolComparisonAnimationStateTransition.cpp">
       <Filter>Source Files\animations\stateMachine</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkTiledMap.cpp">
-      <Filter>Source Files\assets\tiledMap</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkRigidBodyComponentFactory.cpp">
       <Filter>Source Files\scene\gameObjects\components\factories</Filter>
     </ClCompile>
@@ -296,12 +284,6 @@
     </ClCompile>
     <ClCompile Include="src\scripts\rkAgentPathMovement.cpp">
       <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkTiledObject.cpp">
-      <Filter>Source Files\assets\tiledMap</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkTiledObjectGroup.cpp">
-      <Filter>Source Files\assets\tiledMap</Filter>
     </ClCompile>
     <ClCompile Include="src\rkCircleCollider.cpp">
       <Filter>Source Files\physics\colliders</Filter>
@@ -360,8 +342,35 @@
     <ClCompile Include="src\rkIAsset.cpp">
       <Filter>Source Files\assets</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkTiledImage.cpp">
-      <Filter>Source Files\assets\tiledMap</Filter>
+    <ClCompile Include="src\rkTiledMapAssetLoader.cpp">
+      <Filter>Source Files\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledMap.cpp">
+      <Filter>Source Files\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkIsometricPositionTransformerFactory.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledSceneCreator.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTileGameObjectBlueprint.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledObjectSpriteDescriptor.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkLayerGameObjectBlueprint.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledObjectBlueprint.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledObjectBlueprintMapper.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -388,9 +397,6 @@
     </ClInclude>
     <ClInclude Include="include\rkSpriteSheet.h">
       <Filter>Header Files\assets</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkTiledMap.h">
-      <Filter>Header Files\assets\tiledMap</Filter>
     </ClInclude>
     <ClInclude Include="include\rkInputManager.h">
       <Filter>Header Files\inputManager</Filter>
@@ -628,6 +634,36 @@
     </ClInclude>
     <ClInclude Include="include\rkTypedAssetGroup.h">
       <Filter>Header Files\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledMapAssetsLoader.h">
+      <Filter>Header Files\loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledMap.h">
+      <Filter>Header Files\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledSceneCreator.h">
+      <Filter>Header Files\scene\tiledSceneCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkIsometricPositionTransformerFactory.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTileGameObjectBlueprint.h">
+      <Filter>Header Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkLayerGameObjectBlueprint.h">
+      <Filter>Header Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledObjectBlueprint.h">
+      <Filter>Header Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rkTiledObjectBlueprintMapper.h">
+      <Filter>Header Files\scene\tiledSceneCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledObjectSpriteDescriptor.h">
+      <Filter>Header Files\scene\tiledSceneCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledObjectSpriteDescriptorFactory.h">
+      <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

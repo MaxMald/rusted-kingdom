@@ -13,7 +13,7 @@ namespace tmr
 {
   class TiledMap;
   class TileSet;
-  class TileMapLayer;
+  class GridDataLayer;
   class ObjectGroup;
 
   namespace tiledMapXmlLoader

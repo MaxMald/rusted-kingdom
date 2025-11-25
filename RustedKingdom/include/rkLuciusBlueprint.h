@@ -36,7 +36,10 @@ namespace rk
     ~LuciusBlueprint() override;
 
   protected:
-    virtual GameObject* instantiate(GameObject& parent) const override;
+    virtual GameObject* instantiate(
+      const String& name,
+      GameObject& parent
+    ) const override;
 
   private:
     GameObjectBuilder& m_gameObjectBuilder;

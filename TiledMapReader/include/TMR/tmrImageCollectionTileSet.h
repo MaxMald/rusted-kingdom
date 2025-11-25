@@ -13,25 +13,6 @@ namespace tmr
   class TMR_API ImageCollectionTileSet : public TileSet
   {
   public:
-    /**
-     * @brief Construct a new ImageCollectionTileSet instance.
-     *
-     * @param firstgid The first global tile ID for this tileset (as provided by
-     * Tiled).
-     * @param grid Grid metadata that describes how tiles are arranged when
-     * applicable.
-     * @param tiles Pointer to an array of TileSetTile objects. Ownership is
-     * transferred to this object; may be nullptr if \p tileCount is 0.
-     * @param tileCount Number of tiles contained in the \p tiles array.
-     * @param columns Number of columns in the tileset (used by consumers to
-     * compute texture rectangles).
-     * @param margin Pixel margin around tiles in the source images.
-     * @param spacing Pixel spacing between tiles in the source images.
-     * @param tileHeight Tile image height in pixels.
-     * @param tileWidth Tile image width in pixels.
-     * @param name Optional null-terminated tileset display name. The value will
-     * be copied and owned by this object; may be nullptr.
-     */
     ImageCollectionTileSet(
       const std::int32_t& firstgid,
       TileSetGrid* grid,

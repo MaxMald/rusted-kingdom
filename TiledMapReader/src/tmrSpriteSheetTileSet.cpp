@@ -18,7 +18,11 @@ namespace tmr
     const uint32_t& tileWidth,
     const char* name
   ) :
-    TileSet(tileSetType::Type::SpriteSheet, firstgid),
+    TileSet(
+      tileSetType::Type::SpriteSheet,
+      firstgid,
+      static_cast<size_t>(tileCount)
+    ),
     m_grid(grid),
     m_image(image),
     m_margin(margin),

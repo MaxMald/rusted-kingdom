@@ -48,10 +48,10 @@ namespace rk
   {
   }
 
-  GameObject* LuciusBlueprint::instantiate(GameObject& parent) const
+  GameObject* LuciusBlueprint::instantiate(const String& name, GameObject& parent) const
   {
     GameObject* lucius = m_gameObjectBuilder
-      .createGameObject("lucius")
+      .createGameObject(name)
       .buildWithParent(parent);
 
     lucius->addComponent(

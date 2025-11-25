@@ -4,7 +4,7 @@
 
 namespace tmr
 {
-  namespace mapLayerType
+  namespace layerType
   {
     /**
      * @enum Type
@@ -12,8 +12,9 @@ namespace tmr
      */
     enum Type : std::uint8_t
     {
-      TileLayer,    ///< A layer containing tile data.
-      ObjectGroup   ///< A layer containing objects.
+      Undefined = 0,
+      GridData = 1,
+      ObjectGroup = 2
     };
   }
 }

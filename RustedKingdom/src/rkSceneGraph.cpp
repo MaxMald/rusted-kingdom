@@ -29,7 +29,7 @@ namespace rk
     const Vector2f& position
   )
   {
-    GameObject* newGameObject = blueprint.instantiate(*m_root);
+    GameObject* newGameObject = blueprint.instantiate("", *m_root);
     newGameObject->updateTransform();
     newGameObject->setPosition(position);
     newGameObject->onCreate();
@@ -42,7 +42,17 @@ namespace rk
     GameObject& parent
   )
   {
-    GameObject* newGameObject = blueprint.instantiate(parent);
+    return instantiateGameObject(blueprint, "", position, parent);
+  }
+
+  GameObject* SceneGraph::instantiateGameObject(
+    const GameObjectBlueprint& blueprint,
+    const String& name,
+    const Vector2f& position,
+    GameObject& parent
+  )
+  {
+    GameObject* newGameObject = blueprint.instantiate(name, parent);
     newGameObject->setPosition(position);
     newGameObject->onCreate();
     return newGameObject;

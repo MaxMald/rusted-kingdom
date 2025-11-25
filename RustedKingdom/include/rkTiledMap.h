@@ -30,14 +30,12 @@ namespace rk
 
     const tmr::TiledMap* getTmrTiledMap() const { return m_tmrTiledMap; }
     tmr::TiledMap* getTmrTiledMap() { return m_tmrTiledMap; }
-    Path getTiledMapFilename() const { return m_tiledMapFilename; }
 
   protected:
     virtual bool loadFromFile(const Path& filename) override;
     virtual void unload() override;
 
   private:
-    Path m_tiledMapFilename;
     tmr::TiledMap* m_tmrTiledMap;
   };
 }

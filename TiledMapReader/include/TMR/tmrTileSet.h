@@ -14,15 +14,10 @@ namespace tmr
   class TMR_API TileSet : public NonCopyable
   {
   public:
-    /**
-     * @brief Constructs a TileSet with the specified properties.
-     *
-     * @param margin Pixel margin around the tiles in the source image.
-     * @param firstgid The first global tile id for this tileset.
-     */
     TileSet(
       tileSetType::Type type,
-      const int32_t& firstgid
+      const int32_t& firstgid,
+      const size_t& size
     );
 
     /**
@@ -36,8 +31,12 @@ namespace tmr
     /** @return first global tile id */
     int32_t getFirstGid() const noexcept { return m_firstgid; }
 
+    /** @return number of tiles in the tileset */
+    size_t getSize() const noexcept { return m_size; }
+
   private:
     tileSetType::Type m_type;
     int32_t m_firstgid;
+    size_t m_size;
   };
 }

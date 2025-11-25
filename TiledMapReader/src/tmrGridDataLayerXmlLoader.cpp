@@ -1,4 +1,4 @@
-#include "TMR/tmrTileMapLayerXmlLoader.h"
+#include "TMR/tmrGridDataLayerXmlLoader.h"
 
 #include <vector>
 #include <string>
@@ -6,7 +6,7 @@
 #include <cstdint>
 #include <algorithm>
 
-#include "TMR/tmrTileMapLayer.h"
+#include "TMR/tmrGridDataLayer.h"
 #include "TMR/tmrData.h"
 #include "TMR/tinyxml2.h"
 
@@ -14,7 +14,7 @@ using namespace tinyxml2;
 
 namespace tmr
 {
-  namespace tileMapLayerXmlLoader
+  namespace gridDataLayerXmlLoader
   {
     std::vector<int32_t> parseCsvData(const char* csvText)
     {
@@ -32,7 +32,7 @@ namespace tmr
       return tiles;
     }
 
-    TileMapLayer* parseLayerFromXmlElement(XMLElement* layerElement)
+    GridDataLayer* parseLayerFromXmlElement(XMLElement* layerElement)
     {
       if (layerElement == nullptr)
         return nullptr;
@@ -48,10 +48,10 @@ namespace tmr
       if (!data)
         return nullptr;
 
-      return new TileMapLayer(id, name, width, height, data);
+      return new GridDataLayer(id, name, width, height, data);
     }
 
-    TileMapLayer** parseLayerArrayFromXmlElement(
+    GridDataLayer** parseLayerArrayFromXmlElement(
       XMLElement* layersParentElement,
       size_t& outLayerCount
     )
@@ -69,7 +69,7 @@ namespace tmr
       if (outLayerCount == 0)
         return nullptr;
 
-      TileMapLayer** layers = new TileMapLayer * [outLayerCount];
+      GridDataLayer** layers = new GridDataLayer * [outLayerCount];
 
       size_t index = 0;
       XMLElement* layerIterator = layersParentElement->FirstChildElement("layer");

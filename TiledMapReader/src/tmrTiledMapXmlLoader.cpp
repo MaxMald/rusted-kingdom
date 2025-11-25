@@ -1,24 +1,52 @@
 #include "TMR/tmrTiledMapXmlLoader.h"
 
+#include <vector>
+
 #include "TMR/tinyxml2.h"
+#include "TMR/tmrLayer.h"
 #include "TMR/tmrTiledMap.h"
-#include "TMR/tmrTileMapLayer.h"
 #include "TMR/tmrTileSet.h"
 #include "TMR/tmrOrientationParser.h"
 #include "TMR/tmrOrientation.h"
 #include "TMR/tmrRenderOrder.h"
 #include "TMR/tmrRenderOrderParser.h"
 #include "TMR/tmrTileSetXmlLoader.h"
-#include "TMR/tmrTileMapLayerXmlLoader.h"
 #include "TMR/tmrObjectGroupXmlLoader.h"
+#include "TMR/tmrLayerXmlLoader.h"
 #include "TMR/tmrPathUtilities.h"
 
 using namespace tinyxml2;
+using std::vector;
 
 namespace tmr
 {
   namespace tiledMapXmlLoader
   {
+    static Layer** parseLayers(XMLElement* mapElement, size_t& outLayerCount)
+    {
+      outLayerCount = 0;
+      vector<Layer*> layers;
+
+      XMLElement* nextChild = mapElement->FirstChildElement();
+      while (nextChild != nullptr)
+      {
+        if (layerXmlLoader::isLayerXmlElement(nextChild))
+          layers.push_back(layerXmlLoader::parseLayerFromXmlElement(nextChild));
+
+        nextChild = nextChild->NextSiblingElement();
+      }
+
+      outLayerCount = layers.size();
+      if (outLayerCount == 0)
+        return nullptr;
+
+      Layer** layerArray = new Layer * [outLayerCount];
+      for (size_t i = 0; i < outLayerCount; ++i)
+        layerArray[i] = layers[i];
+
+      return layerArray;
+    }
+
     TiledMap* loadFromFile(const char* filename)
     {
       XMLDocument doc;
@@ -53,16 +81,7 @@ namespace tmr
       renderOrder::Type renderOrder = renderOrderParser::parseFromXmlElement(mapElement);
 
       size_t layerCount = 0;
-      TileMapLayer** layers = tileMapLayerXmlLoader::parseLayerArrayFromXmlElement(
-        mapElement,
-        layerCount
-      );
-
-      size_t objectGroupCount = 0;
-      ObjectGroup** objectGroups = objectGroupXmlLoader::parseObjectGroupArrayFromXmlElement(
-        mapElement,
-        objectGroupCount
-      );
+      Layer** layers = parseLayers(mapElement, layerCount);
 
       size_t tileSetCount = 0;
       TileSet** tileSets = tileSetXmlLoader::parseTileSetArray(
@@ -86,8 +105,6 @@ namespace tmr
         version ? version : "",
         layers,
         layerCount,
-        objectGroups,
-        objectGroupCount,
         tileSets,
         tileSetCount
       );

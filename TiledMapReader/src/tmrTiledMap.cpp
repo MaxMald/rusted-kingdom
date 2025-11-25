@@ -3,9 +3,8 @@
 #include <cstring>
 #include <stdexcept>
 
-#include "TMR/tmrTileMapLayer.h"
+#include "TMR/tmrLayer.h"
 #include "TMR/tmrTileSet.h"
-#include "TMR/tmrObjectGroup.h"
 
 namespace tmr
 {
@@ -22,10 +21,8 @@ namespace tmr
     const char* tiledVersion,
     const char* type,
     const char* version,
-    TileMapLayer** layers,
+    Layer** layers,
     const std::size_t& layersCount,
-    ObjectGroup** objectGroups,
-    const std::size_t& objectGroupsCount,
     TileSet** tileSets,
     const std::size_t& tileSetsCount
   ) :
@@ -40,8 +37,6 @@ namespace tmr
     m_renderOrder(renderOrder),
     m_layers(layers),
     m_layersCount(layersCount),
-    m_objectGroups(objectGroups),
-    m_objectGroupsCount(objectGroupsCount),
     m_tileSets(tileSets),
     m_tileSetsCount(tileSetsCount)
   {
@@ -94,16 +89,6 @@ namespace tmr
       m_layersCount = 0;
     }
 
-    if (m_objectGroups)
-    {
-      for (std::size_t i = 0; i < m_objectGroupsCount; ++i)
-        delete m_objectGroups[i];
-
-      delete[] m_objectGroups;
-      m_objectGroups = nullptr;
-      m_objectGroupsCount = 0;
-    }
-
     if (m_tileSets)
     {
       for (std::size_t i = 0; i < m_tileSetsCount; ++i)
@@ -115,23 +100,13 @@ namespace tmr
     }
   }
 
-  const TileMapLayer* TiledMap::getLayerAt(const std::size_t& index) const
+  const Layer* TiledMap::getLayerAt(const size_t& index) const
   {
     if (index >= m_layersCount)
     {
       throw std::out_of_range("TiledMap::getLayerAt: Index out of range.");
     }
     return m_layers[index];
-  }
-
-  const ObjectGroup* TiledMap::getObjectGroupAt(const std::size_t& index) const
-  {
-    if (index >= m_objectGroupsCount)
-    {
-      throw std::out_of_range("TiledMap::getObjectGroupAt: Index out of range.");
-    }
-
-    return m_objectGroups[index];
   }
 
   const TileSet* TiledMap::getTileSetAt(const std::size_t& index) const

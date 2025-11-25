@@ -50,6 +50,17 @@ namespace rk
     );
 
     /**
+     * @brief Instantiates a new GameObject from the given blueprint and adds it
+     * as a child to the specified parent GameObject.
+     */
+    GameObject* instantiateGameObject(
+      const GameObjectBlueprint& blueprint,
+      const String& name,
+      const Vector2f& position,
+      GameObject& parent
+    );
+
+    /**
      * @brief Updates the entire scene graph.
      *
      * @param deltaTime Time elapsed since last update (in seconds).

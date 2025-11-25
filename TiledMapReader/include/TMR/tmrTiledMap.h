@@ -7,9 +7,8 @@
 
 namespace tmr
 {
-  class TileMapLayer;
-  class ObjectGroup;
   class TileSet;
+  class Layer;
 
   /**
    * @class TiledMap
@@ -31,10 +30,8 @@ namespace tmr
       const char* tiledVersion,
       const char* type,
       const char* version,
-      TileMapLayer** layers,
+      Layer** layers,
       const size_t& layersCount,
-      ObjectGroup** objectGroups,
-      const size_t& objectGroupsCount,
       TileSet** tileSets,
       const size_t& tileSetsCount
     );
@@ -52,42 +49,42 @@ namespace tmr
      * 
      * @return The map height.
      */
-    std::int32_t getHeight() const { return m_height; }
+    int32_t getHeight() const { return m_height; }
 
     /**
      * @brief Gets the width of the map in tiles.
      * 
      * @return The map width.
      */
-    std::int32_t getWidth() const { return m_width; }
+    int32_t getWidth() const { return m_width; }
 
     /**
      * @brief Gets the next available layer ID.
      * 
      * @return The next layer ID.
      */
-    std::int32_t getNextLayerId() const { return m_nextLayerId; }
+    int32_t getNextLayerId() const { return m_nextLayerId; }
 
     /**
      * @brief Gets the next available object ID.
      * 
      * @return The next object ID.
      */
-    std::int32_t getNextObjectId() const { return m_nextObjectId; }
+    int32_t getNextObjectId() const { return m_nextObjectId; }
 
     /**
      * @brief Gets the height of a tile in pixels.
      * 
      * @return The tile height.
      */
-    std::int32_t getTileHeight() const { return m_tileHeight; }
+    int32_t getTileHeight() const { return m_tileHeight; }
 
     /**
      * @brief Gets the width of a tile in pixels.
      * 
      * @return The tile width.
      */
-    std::int32_t getTileWidth() const { return m_tileWidth; }
+    int32_t getTileWidth() const { return m_tileWidth; }
 
     /**
      * @brief Gets the orientation of the map.
@@ -128,7 +125,7 @@ namespace tmr
      * @brief Gets the number of layers in the map.
      * @return The number of layers.
      */
-    const std::size_t& getLayersCount() const { return m_layersCount; }
+    const size_t& getLayersCount() const { return m_layersCount; }
 
     /**
      * @brief Gets the map layer at the specified index.
@@ -136,28 +133,13 @@ namespace tmr
      * @param index Index of the layer to retrieve.
      * @return Pointer to the TileMapLayer at the specified index.
      */
-    const TileMapLayer* getLayerAt(const std::size_t& index) const;
-
-    /**
-     * @brief Gets the number of object groups in the map.
-     * 
-     * @return The number of object groups.
-     */
-    const std::size_t& getObjectGroupsCount() const { return m_objectGroupsCount; }
-
-    /**
-     * @brief Gets the object group at the specified index.
-     * 
-     * @param index Index of the object group to retrieve.
-     * @return Pointer to the ObjectGroup at the specified index.
-     */
-    const ObjectGroup* getObjectGroupAt(const std::size_t& index) const;
+    const Layer* getLayerAt(const size_t& index) const;
 
     /**
      * @brief Gets the number of tile sets in the map.
      * @return The number of tile sets.
      */
-    const std::size_t& getTileSetsCount() const { return m_tileSetsCount; }
+    const size_t& getTileSetsCount() const { return m_tileSetsCount; }
 
     /**
      * @brief Gets the tile set at the specified index.
@@ -165,7 +147,7 @@ namespace tmr
      * @param index Index of the tile set to retrieve.
      * @return Pointer to the TileSet at the specified index.
      */
-    const TileSet* getTileSetAt(const std::size_t& index) const;
+    const TileSet* getTileSetAt(const size_t& index) const;
 
     /**
      * @brief Gets the tile set at the specified index (non-const version).
@@ -173,7 +155,7 @@ namespace tmr
      * @param index Index of the tile set to retrieve.
      * @return Pointer to the TileSet at the specified index.
      */
-    TileSet* getTileSetAt(const std::size_t& index);
+    TileSet* getTileSetAt(const size_t& index);
 
     /**
      * @brief Replaces the tile set at the specified index with a new tile set.
@@ -185,22 +167,20 @@ namespace tmr
 
   private:
     bool m_infinite;
-    std::int32_t m_height;
-    std::int32_t m_width;
-    std::int32_t m_nextLayerId;
-    std::int32_t m_nextObjectId;
-    std::int32_t m_tileHeight;
-    std::int32_t m_tileWidth;
+    int32_t m_height;
+    int32_t m_width;
+    int32_t m_nextLayerId;
+    int32_t m_nextObjectId;
+    int32_t m_tileHeight;
+    int32_t m_tileWidth;
     orientation::Type m_orientation;
     renderOrder::Type m_renderOrder;
     char* m_tiledVersion;
     char* m_type;
     char* m_version;
-    TileMapLayer** m_layers;
-    std::size_t m_layersCount;
-    ObjectGroup** m_objectGroups;
-    std::size_t m_objectGroupsCount;
+    Layer** m_layers;
+    size_t m_layersCount;
     TileSet** m_tileSets;
-    std::size_t m_tileSetsCount;
+    size_t m_tileSetsCount;
   };
 }

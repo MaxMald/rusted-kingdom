@@ -25,12 +25,6 @@
     <Filter Include="Source Files\parsers">
       <UniqueIdentifier>{92d8e78e-e638-4775-914e-c8cc60b335a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\mapLayers">
-      <UniqueIdentifier>{b515af21-58e2-4463-aa5d-663662f36f2a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\mapLayers">
-      <UniqueIdentifier>{bff6329b-f422-4971-8519-d38488a2a8c2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\tilesets">
       <UniqueIdentifier>{de835462-98e8-4efb-b8f6-4d280d1055c0}</UniqueIdentifier>
     </Filter>
@@ -43,6 +37,12 @@
     <Filter Include="Source Files\objectGroup">
       <UniqueIdentifier>{377838c9-d663-48b0-b07d-8fff29fcbeec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\layers">
+      <UniqueIdentifier>{b515af21-58e2-4463-aa5d-663662f36f2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\layers">
+      <UniqueIdentifier>{bff6329b-f422-4971-8519-d38488a2a8c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\tmrTiledMapLoader.cpp">
@@ -54,8 +54,8 @@
     <ClCompile Include="src\tmrJson.cpp">
       <Filter>Source Files\utilities</Filter>
     </ClCompile>
-    <ClCompile Include="src\tmrTileMapLayer.cpp">
-      <Filter>Source Files\mapLayers</Filter>
+    <ClCompile Include="src\tmrGridDataLayer.cpp">
+      <Filter>Source Files\layers</Filter>
     </ClCompile>
     <ClCompile Include="src\tmrTileSet.cpp">
       <Filter>Source Files\tilesets</Filter>
@@ -108,11 +108,20 @@
     <ClCompile Include="src\tmrRenderOrderParser.cpp">
       <Filter>Source Files\parsers</Filter>
     </ClCompile>
-    <ClCompile Include="src\tmrTileMapLayerXmlLoader.cpp">
+    <ClCompile Include="src\tmrGridDataLayerXmlLoader.cpp">
       <Filter>Source Files\parsers</Filter>
     </ClCompile>
     <ClCompile Include="src\tmrData.cpp">
-      <Filter>Source Files\mapLayers</Filter>
+      <Filter>Source Files\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrLayer.cpp">
+      <Filter>Source Files\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrObjectGroupLayer.cpp">
+      <Filter>Source Files\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrLayerXmlLoader.cpp">
+      <Filter>Source Files\parsers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,11 +134,11 @@
     <ClInclude Include="include\TMR\tmrJson.h">
       <Filter>Header Files\utilities</Filter>
     </ClInclude>
-    <ClInclude Include="include\TMR\tmrMapLayerType.h">
-      <Filter>Header Files\mapLayers</Filter>
+    <ClInclude Include="include\TMR\tmrLayerType.h">
+      <Filter>Header Files\layers</Filter>
     </ClInclude>
-    <ClInclude Include="include\TMR\tmrTileMapLayer.h">
-      <Filter>Header Files\mapLayers</Filter>
+    <ClInclude Include="include\TMR\tmrGridDataLayer.h">
+      <Filter>Header Files\layers</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrTileSet.h">
       <Filter>Header Files\tilesets</Filter>
@@ -188,11 +197,11 @@
     <ClInclude Include="include\TMR\tmrRenderOrderParser.h">
       <Filter>Header Files\parsers</Filter>
     </ClInclude>
-    <ClInclude Include="include\TMR\tmrTileMapLayerXmlLoader.h">
+    <ClInclude Include="include\TMR\tmrGridDataLayerXmlLoader.h">
       <Filter>Header Files\parsers</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrData.h">
-      <Filter>Header Files\mapLayers</Filter>
+      <Filter>Header Files\layers</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrDrawOrder.h">
       <Filter>Header Files\utilities</Filter>
@@ -205,6 +214,15 @@
     </ClInclude>
     <ClInclude Include="include\TMR\tmrRenderOrder.h">
       <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrLayer.h">
+      <Filter>Header Files\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrObjectGroupLayer.h">
+      <Filter>Header Files\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrLayerXmlLoader.h">
+      <Filter>Header Files\parsers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

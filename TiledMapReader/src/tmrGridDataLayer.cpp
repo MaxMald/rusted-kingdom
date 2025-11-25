@@ -1,4 +1,4 @@
-#include "TMR/tmrTileMapLayer.h"
+#include "TMR/tmrGridDataLayer.h"
 
 #include <stdexcept>
 
@@ -6,44 +6,35 @@
 
 namespace tmr
 {
-  TileMapLayer::TileMapLayer(
-    const std::int32_t& id,
+  GridDataLayer::GridDataLayer(
+    const int32_t& id,
     const char* name,
-    const std::int32_t& width,
-    const std::int32_t& height,
+    const int32_t& width,
+    const int32_t& height,
     Data* data
   ) :
-    m_id(id),
+    Layer(id, name, layerType::GridData),
     m_height(height),
     m_width(width),
     m_data(data)
   {
-    m_name = name ? new char[std::strlen(name) + 1] : nullptr;
-    if (m_name)
-      std::strcpy(m_name, name);
   }
 
-  TileMapLayer::~TileMapLayer()
+  GridDataLayer::~GridDataLayer()
   {
     if (m_data)
     {
       delete m_data;
       m_data = nullptr;
     }
-
-    if (m_name)
-    {
-      delete[] m_name;
-      m_name = nullptr;
-    }
   }
 
-  int32_t TileMapLayer::getDataAt(const size_t& index) const
+  int32_t GridDataLayer::getDataAt(const size_t& index) const
   {
     return m_data->getDataAt(index);
   }
 
-  int32_t TileMapLayer::getDataAt(const int32_t& column, const int32_t& row) const
+  int32_t GridDataLayer::getDataAt(const int32_t& column, const int32_t& row) const
   {
     if (column < 0 || column >= m_width || row < 0 || row >= m_height)
     {

@@ -1,15 +1,13 @@
 #include "rkTiledMap.h"
 
-#include <TMR/tmrTiledMapReader.h>
 #include <TMR/tmrTiledMap.h>
 #include <TMR/tmrTileSet.h>
-#include <TMR/tmrTileSetsEmbedder.h>
+#include <TMR/tmrTiledMapLoader.h>
 
 namespace rk
 {
   TiledMap::TiledMap() :
-    m_tmrTiledMap(nullptr),
-    m_tiledMapFilename()
+    m_tmrTiledMap(nullptr)
   {
   }
 
@@ -21,22 +19,14 @@ namespace rk
   {
     try
     {
-      tmr::TiledMapReader tiledMapReader;
-      tmr::TiledMap* loadedTiledMap = tiledMapReader.readFromFile(
+      tmr::TiledMap* loadedTiledMap = tmr::tiledMapLoader::loadFromFile(
         filename.string().c_str()
-      );
-
-      String tiledMapfolder = filename.parent_path().string();
-      tmr::tileSetsEmbedder::embedTileSets(
-        *loadedTiledMap,
-        tiledMapfolder.c_str()
       );
 
       if (!loadedTiledMap)
         return false;
 
       m_tmrTiledMap = loadedTiledMap;
-      m_tiledMapFilename = filename;
     }
     catch (const std::exception&)
     {
@@ -59,7 +49,5 @@ namespace rk
       delete m_tmrTiledMap;
       m_tmrTiledMap = nullptr;
     }
-
-    m_tiledMapFilename = Path();
   }
 }

@@ -18,7 +18,7 @@ namespace tmr
       const std::uint32_t& tileHeight,
       const std::uint32_t& tileWidth,
       const char* name) :
-      TileSet(tileSetType::ImageCollection, firstgid),
+      TileSet(tileSetType::ImageCollection, firstgid, tileCount),
       m_grid(grid),
       m_tiles(tiles),
       m_tileCount(tileCount),

@@ -11,13 +11,13 @@ using tinyxml2::XMLElement;
 
 namespace tmr
 {
-  class TileMapLayer;
+  class GridDataLayer;
   class Data;
 
-  namespace tileMapLayerXmlLoader
+  namespace gridDataLayerXmlLoader
   {
-    TileMapLayer* parseLayerFromXmlElement(XMLElement* layerElement);
-    TileMapLayer** parseLayerArrayFromXmlElement(
+    GridDataLayer* parseLayerFromXmlElement(XMLElement* layerElement);
+    GridDataLayer** parseLayerArrayFromXmlElement(
       XMLElement* layersParentElement,
       size_t& outLayerCount
     );
