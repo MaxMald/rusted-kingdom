@@ -24,6 +24,25 @@ namespace rk
     return m_root.get();
   }
 
+  void SceneGraph::registerGameObject(UniquePtr<GameObject> gameObject)
+  {
+    GameObject* gameObjectPtr = gameObject.get();
+    m_root->addChild(std::move(gameObject));
+    gameObjectPtr->updateTransform();
+    gameObjectPtr->onCreate();
+  }
+
+  void SceneGraph::registerGameObject(
+    UniquePtr<GameObject> gameObject,
+    GameObject& parent
+  )
+  {
+    GameObject* gameObjectPtr = gameObject.get();
+    parent.addChild(std::move(gameObject));
+    gameObjectPtr->updateTransform();
+    gameObjectPtr->onCreate();
+  }
+
   GameObject* SceneGraph::instantiateGameObject(
     const GameObjectBlueprint& blueprint,
     const Vector2f& position

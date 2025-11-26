@@ -123,6 +123,15 @@
     <ClCompile Include="src\tmrLayerXmlLoader.cpp">
       <Filter>Source Files\parsers</Filter>
     </ClCompile>
+    <ClCompile Include="src\tmrTileReferenceObject.cpp">
+      <Filter>Source Files\objectGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrEllipseObject.cpp">
+      <Filter>Source Files\objectGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrObjectXmlLoader.cpp">
+      <Filter>Source Files\parsers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\TMR\tmrTiledMapLoader.h">
@@ -222,6 +231,18 @@
       <Filter>Header Files\layers</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrLayerXmlLoader.h">
+      <Filter>Header Files\parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrTileReferenceObject.h">
+      <Filter>Header Files\objectGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrObjectType.h">
+      <Filter>Header Files\objectGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrEllipseObject.h">
+      <Filter>Header Files\objectGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrObjectXmlLoader.h">
       <Filter>Header Files\parsers</Filter>
     </ClInclude>
   </ItemGroup>

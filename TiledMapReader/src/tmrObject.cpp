@@ -5,25 +5,17 @@
 namespace tmr
 {
   Object::Object(
-    std::uint32_t gid,
-    std::uint32_t id,
-    std::uint32_t height,
-    std::uint32_t width,
-    bool visible,
-    bool ellipse,
-    float rotation,
+    objectType::Type objectType,
+    uint32_t id,
     float x,
     float y,
+    bool visible,
     const char* name,
     const char* type
   ) :
-    m_gid(gid),
+    m_objectType(objectType),
     m_id(id),
-    m_height(height),
-    m_width(width),
     m_visible(visible),
-    m_ellipse(ellipse),
-    m_rotation(rotation),
     m_x(x),
     m_y(y)
   {

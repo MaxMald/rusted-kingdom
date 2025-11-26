@@ -6,6 +6,7 @@
 #include "TMR/tmrObjectGroup.h"
 #include "TMR/tmrObject.h"
 #include "TMR/tmrDrawOrderParser.h"
+#include "TMR/tmrObjectXmlLoader.h"
 
 using namespace tinyxml2;
 
@@ -23,7 +24,7 @@ namespace tmr
       drawOrder::Type drawOrder = drawOrderParser::parseFromXmlElement(objectGroupElement);
 
       size_t objectsSize = 0;
-      Object** objectsArray = parseObjectArrayFromXmlElement(
+      Object** objectsArray = objectXmlLoader::parseObjectArrayFromXmlElement(
         objectGroupElement,
         objectsSize
       );
@@ -67,70 +68,6 @@ namespace tmr
       }
 
       return objectGroups;
-    }
-
-    Object* parseObjectFromXmlElement(XMLElement* objectElement)
-    {
-      if (objectElement == nullptr)
-        return nullptr;
-
-      uint32_t gid = objectElement->UnsignedAttribute("gid", 0);
-      uint32_t id = objectElement->UnsignedAttribute("id", 0);
-      uint32_t height = objectElement->UnsignedAttribute("height", 0);
-      uint32_t width = objectElement->UnsignedAttribute("width", 0);
-      bool visible = objectElement->BoolAttribute("visible", true);
-      bool ellipse = (objectElement->FirstChildElement("ellipse") != nullptr);
-      float rotation = objectElement->FloatAttribute("rotation", 0.0f);
-      float x = objectElement->FloatAttribute("x", 0.0f);
-      float y = objectElement->FloatAttribute("y", 0.0f);
-      const char* name = objectElement->Attribute("name");
-      const char* type = objectElement->Attribute("type");
-
-      return new Object(
-        gid,
-        id,
-        height,
-        width,
-        visible,
-        ellipse,
-        rotation,
-        x,
-        y,
-        name ? name : "",
-        type ? type : ""
-      );
-    }
-
-    Object** parseObjectArrayFromXmlElement(
-      XMLElement* parentElement,
-      size_t& outObjectCount
-    )
-    {
-      if (parentElement == nullptr)
-      {
-        outObjectCount = 0;
-        return nullptr;
-      }
-
-      outObjectCount = static_cast<size_t>(
-        parentElement->ChildElementCount("object")
-      );
-
-      if (outObjectCount == 0)
-        return nullptr;
-
-      Object** objects = new Object * [outObjectCount];
-
-      size_t index = 0;
-      XMLElement* objectElement = parentElement->FirstChildElement("object");
-      while (objectElement)
-      {
-        objects[index] = parseObjectFromXmlElement(objectElement);
-        objectElement = objectElement->NextSiblingElement("object");
-        ++index;
-      }
-
-      return objects;
     }
   }
 }

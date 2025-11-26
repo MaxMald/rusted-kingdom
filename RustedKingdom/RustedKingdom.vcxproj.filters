@@ -345,9 +345,6 @@
     <ClCompile Include="src\rkTiledMap.cpp">
       <Filter>Source Files\assets</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkIsometricPositionTransformerFactory.cpp">
-      <Filter>Source Files\utilities</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkTiledSceneCreator.cpp">
       <Filter>Source Files\scene\tiledSceneCreator</Filter>
     </ClCompile>
@@ -363,8 +360,17 @@
     <ClCompile Include="src\rkTiledObjectBlueprint.cpp">
       <Filter>Source Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp">
+    <ClCompile Include="src\rkTiledObjectCreator.cpp">
       <Filter>Source Files\scene\tiledSceneCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledMapUtilities.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkGameObjectUtilities.cpp">
+      <Filter>Source Files\scene\gameObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -638,9 +644,6 @@
     <ClInclude Include="include\rkTiledSceneCreator.h">
       <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkIsometricPositionTransformerFactory.h">
-      <Filter>Header Files\utilities</Filter>
-    </ClInclude>
     <ClInclude Include="include\rkTileGameObjectBlueprint.h">
       <Filter>Header Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
     </ClInclude>
@@ -653,8 +656,17 @@
     <ClInclude Include="include\rkTiledObjectSpriteDescriptor.h">
       <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkTiledObjectSpriteDescriptorFactory.h">
+    <ClInclude Include="include\rkTiledObjectCreator.h">
       <Filter>Header Files\scene\tiledSceneCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledMapUtilities.h">
+      <Filter>Header Files\scene\tiledSceneCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledObjectSpriteDescriptorFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkGameObjectUtilities.h">
+      <Filter>Header Files\scene\gameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

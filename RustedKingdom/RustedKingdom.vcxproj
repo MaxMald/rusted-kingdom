@@ -171,10 +171,10 @@
     <ClCompile Include="src\rkColliderComponent.cpp" />
     <ClCompile Include="src\rkColliderComponentFactory.cpp" />
     <ClCompile Include="src\rkCollidersGroup.cpp" />
+    <ClCompile Include="src\rkGameObjectUtilities.cpp" />
     <ClCompile Include="src\rkIAsset.cpp" />
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp" />
     <ClCompile Include="src\rkILevelScene.cpp" />
-    <ClCompile Include="src\rkIsometricPositionTransformerFactory.cpp" />
     <ClCompile Include="src\rkLayerGameObjectBlueprint.cpp" />
     <ClCompile Include="src\rkMainScene.cpp" />
     <ClCompile Include="src\rkNode.cpp" />
@@ -220,8 +220,10 @@
     <ClCompile Include="src\rkTexture.cpp" />
     <ClCompile Include="src\rkTiledMap.cpp" />
     <ClCompile Include="src\rkTiledMapAssetLoader.cpp" />
+    <ClCompile Include="src\rkTiledMapUtilities.cpp" />
     <ClCompile Include="src\rkTiledObjectBlueprint.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp" />
+    <ClCompile Include="src\rkTiledObjectCreator.cpp" />
     <ClCompile Include="src\rkTiledSceneCreator.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptor.cpp" />
     <ClCompile Include="src\rkTileGameObjectBlueprint.cpp" />
@@ -252,11 +254,11 @@
     <ClInclude Include="include\rkGameObjectBlueprint.h" />
     <ClInclude Include="include\rkBoolComparisonAnimationStateTransition.h" />
     <ClInclude Include="include\rkCollider.h" />
+    <ClInclude Include="include\rkGameObjectUtilities.h" />
     <ClInclude Include="include\rkIAsset.h" />
     <ClInclude Include="include\rkIService.h" />
     <ClInclude Include="include\rkIsometricPositionTransformer.h" />
     <ClInclude Include="include\rkILevelScene.h" />
-    <ClInclude Include="include\rkIsometricPositionTransformerFactory.h" />
     <ClInclude Include="include\rkLayerGameObjectBlueprint.h" />
     <ClInclude Include="include\rkMainScene.h" />
     <ClInclude Include="include\rkNode.h" />
@@ -313,7 +315,9 @@
     <ClInclude Include="include\rkTexture.h" />
     <ClInclude Include="include\rkTiledMap.h" />
     <ClInclude Include="include\rkTiledMapAssetsLoader.h" />
+    <ClInclude Include="include\rkTiledMapUtilities.h" />
     <ClInclude Include="include\rkTiledObjectBlueprint.h" />
+    <ClInclude Include="include\rkTiledObjectCreator.h" />
     <ClInclude Include="include\rkTiledSceneCreator.h" />
     <ClInclude Include="include\rkTiledSceneFactory.h" />
     <ClInclude Include="include\rkTileGameObjectBlueprint.h" />

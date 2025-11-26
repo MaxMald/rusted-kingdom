@@ -8,6 +8,8 @@
 #include <TMR/tmrTileSetTile.h>
 #include <TMR/tmrImage.h>
 
+#include "rkTiledMapUtilities.h"
+
 using sf::Vector2f;
 using sf::Vector2i;
 using sf::IntRect;
@@ -16,21 +18,16 @@ namespace rk
 {
   namespace tiledObjectSpriteDescriptorFactory
   {
-    static tmr::TileSet* getTileSetWithGid(
-      tmr::TiledMap* tiledMap,
-      Int32 gid
-    );
-
     static TiledObjectSpriteDescriptor createFromImageCollection(
       Int32 gid,
-      tmr::TiledMap* tiledMap,
-      tmr::ImageCollectionTileSet* tileSet
+      const tmr::TiledMap* tiledMap,
+      const tmr::ImageCollectionTileSet* tileSet
     );
 
     static TiledObjectSpriteDescriptor createFromSpriteSheet(
       Int32 gid,
-      tmr::TiledMap* tiledMap,
-      tmr::SpriteSheetTileSet* tileSet
+      const tmr::TiledMap* tiledMap,
+      const tmr::SpriteSheetTileSet* tileSet
     );
   }
 }
@@ -41,10 +38,10 @@ namespace rk
   {
     TiledObjectSpriteDescriptor create(
       Int32 gid,
-      tmr::TiledMap* tiledMap
+      const tmr::TiledMap* tiledMap
     )
     {
-      tmr::TileSet* tileset = getTileSetWithGid(tiledMap, gid);
+      const tmr::TileSet* tileset = tiledMapUtilities::getTileSetWithGid(tiledMap, gid);
       tmr::tileSetType::Type type = tileset->getType();
 
       if (type == tmr::tileSetType::Type::ImageCollection)
@@ -52,7 +49,7 @@ namespace rk
         return createFromImageCollection(
           gid,
           tiledMap,
-          static_cast<tmr::ImageCollectionTileSet*>(tileset)
+          static_cast<const tmr::ImageCollectionTileSet*>(tileset)
         );
       }
       else if (type == tmr::tileSetType::Type::SpriteSheet)
@@ -60,7 +57,7 @@ namespace rk
         return createFromSpriteSheet(
           gid,
           tiledMap,
-          static_cast<tmr::SpriteSheetTileSet*>(tileset)
+          static_cast<const tmr::SpriteSheetTileSet*>(tileset)
         );
       }
       else
@@ -74,33 +71,16 @@ namespace rk
       }
     }
 
-    static tmr::TileSet* getTileSetWithGid(tmr::TiledMap* tiledMap, Int32 gid)
-    {
-      SizeT tileSetCount = tiledMap->getTileSetsCount();
-      for (SizeT i = 0; i < tileSetCount; ++i)
-      {
-        tmr::TileSet* tileSet = tiledMap->getTileSetAt(i);
-
-        Int32 tileSetLastGid =
-          tileSet->getFirstGid() + static_cast<Int32>(tileSet->getSize());
-
-        if (gid >= tileSet->getFirstGid() && gid < tileSetLastGid)
-          return tileSet;
-      }
-
-      throw RuntimeErrorException(
-        String::Format("No tileset found for GID %d", gid)
-      );
-    }
-
     static TiledObjectSpriteDescriptor createFromImageCollection(
       Int32 gid,
-      tmr::TiledMap* tiledMap,
-      tmr::ImageCollectionTileSet* tileSet
+      const tmr::TiledMap* tiledMap,
+      const tmr::ImageCollectionTileSet* tileSet
     )
     {
       Int32 localId = gid - tileSet->getFirstGid();
-      tmr::TileSetTile* tile = tileSet->getTileAt(static_cast<SizeT>(localId));
+      const tmr::TileSetTile* tile = tileSet->getTileAt(
+        static_cast<SizeT>(localId)
+      );
 
       if (tile == nullptr)
       {
@@ -130,8 +110,8 @@ namespace rk
 
     static TiledObjectSpriteDescriptor createFromSpriteSheet(
       Int32 gid,
-      tmr::TiledMap* tiledMap,
-      tmr::SpriteSheetTileSet* tileSet
+      const tmr::TiledMap* tiledMap,
+      const tmr::SpriteSheetTileSet* tileSet
     )
     {
       Int32 localId = gid - tileSet->getFirstGid();
@@ -149,7 +129,7 @@ namespace rk
         Vector2i(x, y),
         Vector2i(tileWidth, tileHeight)
       );
-      ;
+
       return TiledObjectSpriteDescriptor(
         gid,
         tileSet->getImage()->getSource(),

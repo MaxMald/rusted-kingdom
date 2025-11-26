@@ -14,9 +14,9 @@
 #include "rkTexture.h"
 #include "rkEightDirAnimationDesc.h"
 #include "rkTiledMapAssetsLoader.h"
+#include "rkTiledMapUtilities.h"
 #include "rkTiledSceneCreator.h"
-#include "rkIsometricPositionTransformerFactory.h"
-
+#include "rkTiledObjectCreator.h"
 #include "rkLuciusBlueprint.h"
 
 namespace rk
@@ -95,9 +95,12 @@ namespace rk
     SharedPtr<TiledMap> tiledMap = m_assetManager->getAssetGroup<TiledMap>()
       .get("level-0");
 
+    TiledObjectCreator tiledObjectCreator(spriteComponentFactory);
+
     tiledSceneCreator::create(
       "level-0",
       *m_assetManager,
+      tiledObjectCreator,
       spriteComponentFactory,
       m_sceneGraph
     );
@@ -105,6 +108,9 @@ namespace rk
     createPathfinders();
 
     // Create Lucius
+    IsometricPositionTransformer isometricPositionTransformer =
+      tiledMapUtilities::getIsometricPositionTransformer(*tiledMap);
+
     AnimationFactory animationFactory(*m_assetManager);
     LuciusBlueprint luciusBlueprint(
       gameObjectBuilder,
@@ -113,7 +119,7 @@ namespace rk
       rigidBodyComponentFactory,
       colliderComponentFactory,
       m_pathfinderManager.getPathfinder("characters"),
-      isometricPositionTransformerFactory::create(*tiledMap),
+      isometricPositionTransformer,
       m_windowManager->getRenderWindow()
     );
 
@@ -137,7 +143,7 @@ namespace rk
       pathfinder,
       m_physicsWorld,
       "plantas",
-      isometricPositionTransformerFactory::create(*tiledMap)
+      tiledMapUtilities::getIsometricPositionTransformer(*tiledMap)
     );
   }
 }

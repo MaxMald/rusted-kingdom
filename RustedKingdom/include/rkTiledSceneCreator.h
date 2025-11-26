@@ -4,6 +4,7 @@
 
 namespace rk
 {
+  class TiledObjectCreator;
   class SpriteComponentFactory;
   class AssetManager;
   class SceneGraph;
@@ -13,6 +14,7 @@ namespace rk
     void create(
       const String& tiledMapKey,
       const AssetManager& assetManager,
+      TiledObjectCreator& tiledObjectCreator,
       SpriteComponentFactory& spriteComponentFactory,
       SceneGraph& sceneGraph
     );

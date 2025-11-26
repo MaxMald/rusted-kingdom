@@ -30,6 +30,10 @@ namespace rk
      */
     GameObject* getRoot() const;
 
+    void registerGameObject(UniquePtr<GameObject> gameObject);
+
+    void registerGameObject(UniquePtr<GameObject> gameObject, GameObject& parent);
+
     /**
      * @brief Instantiates a new GameObject from the given blueprint and adds it
      * as a child to the root GameObject.

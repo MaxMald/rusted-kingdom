@@ -14,7 +14,7 @@ namespace rk
   {
     TiledObjectSpriteDescriptor create(
       Int32 gid,
-      tmr::TiledMap* tiledMap
+      const tmr::TiledMap* tiledMap
     );
   }
 }

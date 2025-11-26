@@ -11,9 +11,11 @@
 #include <TMR/tmrImage.h>
 #include <TMR/tmrTileSetTile.h>
 #include <TMR/tmrObject.h>
+#include <TMR/tmrTileReferenceObject.h>
 
 #include "rkAssetManager.h"
 #include "rkTiledMap.h"
+#include "rkTiledMapUtilities.h"
 #include "rkSceneGraph.h"
 #include "rkTiledObjectSpriteDescriptorFactory.h"
 #include "rkTileGameObjectBlueprint.h"
@@ -21,9 +23,9 @@
 #include "rkSpriteComponentFactory.h"
 #include "rkGameObject.h"
 #include "rkLayerGameObjectBlueprint.h"
-
 #include "rkIsometricPositionTransformer.h"
-#include "rkIsometricPositionTransformerFactory.h"
+#include "rkTiledObjectCreator.h"
+#include "rkGameObjectUtilities.h"
 
 using sf::Vector2f;
 using sf::Vector2i;
@@ -33,15 +35,16 @@ namespace rk
   namespace tiledSceneCreator
   {
     static void createLayer(
-      tmr::TiledMap* tiledMap,
+      const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
       SpriteComponentFactory& spriteComponentFactory,
+      TiledObjectCreator& tiledObjectCreator,
       IsometricPositionTransformer isometricPosTransformer,
       const tmr::Layer* tmrLayer
     );
 
     static void createGridDataLayer(
-      tmr::TiledMap* tiledMap,
+      const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
       SpriteComponentFactory& spriteComponentFactory,
       IsometricPositionTransformer isometricPosTransformer,
@@ -49,15 +52,15 @@ namespace rk
     );
 
     static void createObjectGroupLayer(
-      tmr::TiledMap* tiledMap,
+      const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
-      SpriteComponentFactory& spriteComponentFactory,
+      TiledObjectCreator& tiledObjectCreator,
       IsometricPositionTransformer isometricPosTransformer,
       const tmr::ObjectGroupLayer* tmrLayer
     );
 
     static void createTile(
-      tmr::TiledMap* tiledMap,
+      const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
       GameObject& parent,
       TileGameObjectBlueprint& tileGameObjectBlueprint,
@@ -79,6 +82,7 @@ namespace rk
     void create(
       const String& tiledMapKey,
       const AssetManager& assetManager,
+      TiledObjectCreator& tiledObjectCreator,
       SpriteComponentFactory& spriteComponentFactory,
       SceneGraph& sceneGraph
     )
@@ -90,7 +94,7 @@ namespace rk
       tmr::TiledMap* tmrTiledMap = tiledMap->getTmrTiledMap();
 
       IsometricPositionTransformer isometricPosTransformer =
-        isometricPositionTransformerFactory::create(*tmrTiledMap);
+        tiledMapUtilities::getIsometricPositionTransformer(*tmrTiledMap);
 
       SizeT layerCount = tmrTiledMap->getLayersCount();
       for (SizeT i = 0; i < layerCount; ++i)
@@ -99,6 +103,7 @@ namespace rk
           tmrTiledMap,
           sceneGraph,
           spriteComponentFactory,
+          tiledObjectCreator,
           isometricPosTransformer,
           tmrTiledMap->getLayerAt(i)
         );
@@ -106,9 +111,10 @@ namespace rk
     }
 
     static void createLayer(
-      tmr::TiledMap* tiledMap,
+      const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
       SpriteComponentFactory& spriteComponentFactory,
+      TiledObjectCreator& tiledObjectCreator,
       IsometricPositionTransformer isometricPosTransformer,
       const tmr::Layer* tmrLayer
     )
@@ -129,7 +135,7 @@ namespace rk
         createObjectGroupLayer(
           tiledMap,
           sceneGraph,
-          spriteComponentFactory,
+          tiledObjectCreator,
           isometricPosTransformer,
           static_cast<const tmr::ObjectGroupLayer*>(tmrLayer)
         );
@@ -146,7 +152,7 @@ namespace rk
     }
 
     static void createGridDataLayer(
-      tmr::TiledMap* tiledMap,
+      const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
       SpriteComponentFactory& spriteComponentFactory,
       IsometricPositionTransformer isometricPosTransformer,
@@ -188,7 +194,7 @@ namespace rk
     }
 
     static void createTile(
-      tmr::TiledMap* tiledMap,
+      const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
       GameObject& parent,
       TileGameObjectBlueprint& tileGameObjectBlueprint,
@@ -214,9 +220,9 @@ namespace rk
     }
 
     static void createObjectGroupLayer(
-      tmr::TiledMap* tiledMap,
+      const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
-      SpriteComponentFactory& spriteComponentFactory,
+      TiledObjectCreator& tiledObjectCreator,
       IsometricPositionTransformer isometricPosTransformer,
       const tmr::ObjectGroupLayer* tmrLayer
     )
@@ -224,10 +230,6 @@ namespace rk
       GameObject* layerGameObject = createLayerGameObject(
         tmrLayer->getName(),
         sceneGraph
-      );
-
-      TileGameObjectBlueprint tileGameObjectBlueprint(
-        spriteComponentFactory
       );
 
       const tmr::ObjectGroup* tmrObjectGroup = tmrLayer->getObjectGroup();
@@ -241,25 +243,24 @@ namespace rk
         if (!tmrObject->isVisible())
           continue;
 
-        Int32 gid = tmrObject->getGid();
-        if (gid == 0)
+        if (tmrObject->getObjectType() != tmr::objectType::Type::TileReference)
           continue;
+
+        GameObject* tileGameObject = tiledObjectCreator.create(
+          tiledMap,
+          tmrObject
+        );
 
         Vector2f position = isometricPosTransformer.isometricToWorld(
           tmrObject->getX(),
           tmrObject->getY()
         );
 
-        TiledObjectSpriteDescriptor tileSpriteDesc =
-          tiledObjectSpriteDescriptorFactory::create(gid, tiledMap);
+        tileGameObject->setPosition(position);
+        gameObjectUtilities::setOrigin(*tileGameObject, 0.5f, 1.0f);
 
-        tileSpriteDesc.setOrigin(0.5f, 1.0f);
-
-        tileGameObjectBlueprint.setDescription(tileSpriteDesc);
-
-        sceneGraph.instantiateGameObject(
-          tileGameObjectBlueprint,
-          position,
+        sceneGraph.registerGameObject(
+          UniquePtr<GameObject>(tileGameObject),
           *layerGameObject
         );
       }

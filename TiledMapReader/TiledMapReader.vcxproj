@@ -160,6 +160,7 @@
     <ClCompile Include="src\tinyxml2.cpp" />
     <ClCompile Include="src\tmrData.cpp" />
     <ClCompile Include="src\tmrDrawOrderParser.cpp" />
+    <ClCompile Include="src\tmrEllipseObject.cpp" />
     <ClCompile Include="src\tmrImage.cpp" />
     <ClCompile Include="src\tmrImageCollectionTileSet.cpp" />
     <ClCompile Include="src\tmrLayer.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="src\tmrObjectGroup.cpp" />
     <ClCompile Include="src\tmrObjectGroupLayer.cpp" />
     <ClCompile Include="src\tmrObjectGroupXmlLoader.cpp" />
+    <ClCompile Include="src\tmrObjectXmlLoader.cpp" />
     <ClCompile Include="src\tmrOrientationParser.cpp" />
     <ClCompile Include="src\tmrPathUtilities.cpp" />
     <ClCompile Include="src\tmrReferenceTileSet.cpp" />
@@ -179,12 +181,14 @@
     <ClCompile Include="src\tmrTiledMapXmlLoader.cpp" />
     <ClCompile Include="src\tmrGridDataLayer.cpp" />
     <ClCompile Include="src\tmrGridDataLayerXmlLoader.cpp" />
+    <ClCompile Include="src\tmrTileReferenceObject.cpp" />
     <ClCompile Include="src\tmrTileSet.cpp" />
     <ClCompile Include="src\tmrTileSetGrid.cpp" />
     <ClCompile Include="src\tmrTileSetTile.cpp" />
     <ClCompile Include="src\tmrTileSetXmlLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\TMR\tmrEllipseObject.h" />
     <ClInclude Include="include\TMR\tmrLayerXmlLoader.h" />
     <ClInclude Include="include\TMR\tmrObjectGroupLayer.h" />
     <ClInclude Include="include\TMR\tinyxml2.h" />
@@ -197,11 +201,14 @@
     <ClInclude Include="include\TMR\tmrObject.h" />
     <ClInclude Include="include\TMR\tmrObjectGroup.h" />
     <ClInclude Include="include\TMR\tmrObjectGroupXmlLoader.h" />
+    <ClInclude Include="include\TMR\tmrObjectType.h" />
+    <ClInclude Include="include\TMR\tmrObjectXmlLoader.h" />
     <ClInclude Include="include\TMR\tmrOrientationParser.h" />
     <ClInclude Include="include\TMR\tmrPathUtilities.h" />
     <ClInclude Include="include\TMR\tmrRenderOrderParser.h" />
     <ClInclude Include="include\TMR\tmrTiledMapXmlLoader.h" />
     <ClInclude Include="include\TMR\tmrGridDataLayerXmlLoader.h" />
+    <ClInclude Include="include\TMR\tmrTileReferenceObject.h" />
     <ClInclude Include="include\TMR\tmrTileSetTile.h" />
     <ClInclude Include="include\TMR\tmrImageCollectionTileSet.h" />
     <ClInclude Include="include\TMR\tmrLayerType.h" />

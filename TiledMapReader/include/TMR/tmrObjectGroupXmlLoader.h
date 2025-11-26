@@ -21,10 +21,5 @@ namespace tmr
       XMLElement* parentElement,
       size_t& outObjectGroupCount
     );
-    Object* parseObjectFromXmlElement(XMLElement* objectElement);
-    Object** parseObjectArrayFromXmlElement(
-      XMLElement* parentElement,
-      size_t& outObjectCount
-    );
   }
 }
