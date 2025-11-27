@@ -7,6 +7,7 @@
 #include <TMR/tmrSpriteSheetTileSet.h>
 #include <TMR/tmrTileSetTile.h>
 #include <TMR/tmrObject.h>
+#include <TMR/tmrObjectGroup.h>
 #include <TMR/tmrEllipseObject.h>
 #include <TMR/tmrTileReferenceObject.h>
 #include <TMR/tmrImage.h>
@@ -15,6 +16,8 @@
 #include "rkGameObject.h"
 #include "rkSpriteComponentFactory.h"
 #include "rkSpriteComponent.h"
+#include "rkTiledColliderComponentFactory.h"
+#include "rkColliderComponent.h"
 
 using sf::Vector2f;
 using sf::Vector2i;
@@ -22,9 +25,12 @@ using sf::Vector2i;
 namespace rk
 {
   TiledObjectCreator::TiledObjectCreator(
-    SpriteComponentFactory& spriteComponentFactory
+    SpriteComponentFactory& spriteComponentFactory,
+    TiledColliderComponentFactory& tiledColliderComponentFactory
   ) :
-    m_spriteComponentFactory(spriteComponentFactory)
+    m_spriteComponentFactory(spriteComponentFactory),
+    m_tiledColliderComponentFactory(tiledColliderComponentFactory),
+    m_colliderGroupKey("")
   {
   }
 
@@ -114,8 +120,8 @@ namespace rk
     );
 
     addSpriteComponent(*tileGameObject, tile->getImage()->getSource());
-
-    // TODO Add colliders
+    addColliders(tile->getObjectGroup(), *tileGameObject, "plantas");
+    
     return tileGameObject;
   }
 
@@ -179,5 +185,35 @@ namespace rk
         textureRect
       )
     );
+  }
+  void TiledObjectCreator::addColliders(
+    const tmr::ObjectGroup* objectGroup,
+    GameObject& gameObject,
+    const String& colliderGroupKey
+  )
+  {
+    if (objectGroup == nullptr)
+      return;
+
+    SizeT objectCount = objectGroup->getObjectSize();
+    for (SizeT i = 0; i < objectCount; ++i)
+    {
+      const tmr::Object* collider = objectGroup->getObjectAt(i);
+      if (!collider)
+        continue;
+
+      UniquePtr<ColliderComponent> colliderComponent =
+        m_tiledColliderComponentFactory.create(
+          collider,
+          gameObject,
+          colliderGroupKey
+        );
+
+      if (!colliderComponent)
+        continue;
+
+      gameObject.addComponent(std::move(colliderComponent));
+      return; // Only one collider per object is supported for now
+    }
   }
 }

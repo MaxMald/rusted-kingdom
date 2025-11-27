@@ -35,7 +35,7 @@ namespace rk
      *
      * @param name Name of the GameObject.
      */
-    GameObject(const char* name);
+    GameObject(const String& name);
 
     /**
      * @brief Virtual destructor.
@@ -167,9 +167,9 @@ namespace rk
     /**
      * @brief Gets the name of the GameObject.
      *
-     * @return Name as a C-style string.
+     * @return Name.
      */
-    const char* getName() const;
+    const String& getName() const;
 
     /**
      * @brief Finds a child GameObject by name (recursive search). It returns the
@@ -179,7 +179,7 @@ namespace rk
      *
      * @return Pointer to the child GameObject, or nullptr if not found.
      */
-    GameObject* findChildByName(const char* name);
+    GameObject* findChildByName(const String& name);
 
     /**
      * @brief Gets the parent GameObject.
@@ -239,7 +239,7 @@ namespace rk
     virtual void onDelete();
 
   private:
-    const char* m_name;
+    String m_name;
     GameObject* m_parent;
     Vector<UniquePtr<Component>> m_components;
 

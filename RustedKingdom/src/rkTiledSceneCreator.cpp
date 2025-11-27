@@ -26,6 +26,7 @@
 #include "rkIsometricPositionTransformer.h"
 #include "rkTiledObjectCreator.h"
 #include "rkGameObjectUtilities.h"
+#include "rkColliderComponent.h"
 
 using sf::Vector2f;
 using sf::Vector2i;
@@ -68,7 +69,10 @@ namespace rk
       Int32 tileGid
     );
 
-    GameObject* createLayerGameObject(
+    static void fixColliderCenterBaseOnOrigin(GameObject& gameObject);
+    static void activeDebugCollider(GameObject& gameObject);
+
+    static GameObject* createLayerGameObject(
       const String& name,
       SceneGraph& sceneGraph
     );
@@ -227,10 +231,13 @@ namespace rk
       const tmr::ObjectGroupLayer* tmrLayer
     )
     {
+      String layerName = tmrLayer->getName();
       GameObject* layerGameObject = createLayerGameObject(
-        tmrLayer->getName(),
+        layerName,
         sceneGraph
       );
+
+      tiledObjectCreator.setColliderGroupKey(layerName);
 
       const tmr::ObjectGroup* tmrObjectGroup = tmrLayer->getObjectGroup();
       SizeT objectCount = tmrObjectGroup->getObjectSize();
@@ -257,7 +264,9 @@ namespace rk
         );
 
         tileGameObject->setPosition(position);
-        gameObjectUtilities::setOrigin(*tileGameObject, 0.5f, 1.0f);
+        gameObjectUtilities::setSpriteOrigin(*tileGameObject, 0.5f, 1.0f);
+        fixColliderCenterBaseOnOrigin(*tileGameObject);
+        activeDebugCollider(*tileGameObject);
 
         sceneGraph.registerGameObject(
           UniquePtr<GameObject>(tileGameObject),
@@ -266,7 +275,37 @@ namespace rk
       }
     }
 
-    GameObject* createLayerGameObject(const String& name, SceneGraph& sceneGraph)
+    static void fixColliderCenterBaseOnOrigin(GameObject& gameObject)
+    {
+      ColliderComponent* colliderComponent = gameObject
+        .getComponent<ColliderComponent>(componentType::Collider);
+
+      SpriteComponent* spriteComponent = gameObject
+        .getComponent<SpriteComponent>(componentType::Sprite);
+
+      if (!colliderComponent || !spriteComponent)
+        return;
+
+      colliderComponent->setCenter(
+        colliderComponent->getCenter() - spriteComponent->getOrigin()
+      );
+    }
+
+    static void activeDebugCollider(GameObject& gameObject)
+    {
+      ColliderComponent* colliderComponent = gameObject
+        .getComponent<ColliderComponent>(componentType::Collider);
+
+      if (!colliderComponent)
+        return;
+
+      colliderComponent->setDebug(true);
+    }
+
+    static GameObject* createLayerGameObject(
+      const String& name,
+      SceneGraph& sceneGraph
+    )
     {
       LayerGameObjectBlueprint layerGameObjectBlueprint;
       return sceneGraph.instantiateGameObject(

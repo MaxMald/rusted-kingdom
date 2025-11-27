@@ -6,6 +6,8 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Rect.hpp>
 
+using sf::Vector2f;
+
 namespace rk
 {
   class SpriteComponent : public Component
@@ -20,7 +22,8 @@ namespace rk
     virtual ~SpriteComponent();
 
     sf::Sprite& getSprite() { return m_sprite; }
-    void setOrigin(const sf::Vector2f& origin);
+    void setOrigin(const Vector2f& origin);
+    Vector2f getOrigin() const;
     void setTexture(const sf::Texture& texture);
     void setTextureRect(const sf::IntRect& rect);
 

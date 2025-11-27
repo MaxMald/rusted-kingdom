@@ -12,19 +12,24 @@ namespace tmr
   class ImageCollectionTileSet;
   class SpriteSheetTileSet;
   class Object;
+  class ObjectGroup;
 }
 
 using sf::IntRect;
 
 namespace rk
 {
+  class TiledColliderComponentFactory;
   class SpriteComponentFactory;
   class GameObject;
 
   class TiledObjectCreator : public NonCopyable
   {
   public:
-    TiledObjectCreator(SpriteComponentFactory&);
+    TiledObjectCreator(
+      SpriteComponentFactory&,
+      TiledColliderComponentFactory&
+    );
     ~TiledObjectCreator();
 
     GameObject* create(
@@ -32,8 +37,12 @@ namespace rk
       const tmr::Object*
     );
 
+    void setColliderGroupKey(const String& colliderGroupKey) { m_colliderGroupKey = colliderGroupKey; }
+
   private:
+    String m_colliderGroupKey;
     SpriteComponentFactory& m_spriteComponentFactory;
+    TiledColliderComponentFactory& m_tiledColliderComponentFactory;
 
     GameObject* createTileReference(
       const tmr::TiledMap*,
@@ -56,6 +65,12 @@ namespace rk
       GameObject&,
       const String& textureKey,
       const IntRect& textureRect
+    );
+
+    void addColliders(
+      const tmr::ObjectGroup*,
+      GameObject&,
+      const String& colliderGroupKey
     );
   };
 }

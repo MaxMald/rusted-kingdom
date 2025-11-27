@@ -17,6 +17,7 @@
 #include "rkTiledMapUtilities.h"
 #include "rkTiledSceneCreator.h"
 #include "rkTiledObjectCreator.h"
+#include "rkTiledColliderComponentFactory.h"
 #include "rkLuciusBlueprint.h"
 
 namespace rk
@@ -95,7 +96,8 @@ namespace rk
     SharedPtr<TiledMap> tiledMap = m_assetManager->getAssetGroup<TiledMap>()
       .get("level-0");
 
-    TiledObjectCreator tiledObjectCreator(spriteComponentFactory);
+    TiledColliderComponentFactory tiledColliderComponentFactory(colliderComponentFactory);
+    TiledObjectCreator tiledObjectCreator(spriteComponentFactory, tiledColliderComponentFactory);
 
     tiledSceneCreator::create(
       "level-0",
@@ -123,9 +125,12 @@ namespace rk
       m_windowManager->getRenderWindow()
     );
 
+    GameObject* plantas = m_sceneGraph.getRoot()->findChildByName("plantas");
+
     m_sceneGraph.instantiateGameObject(
       luciusBlueprint,
-      sf::Vector2f(200.0f, 200.0f)
+      sf::Vector2f(200.0f, 200.0f),
+      *plantas
     );
   }
 

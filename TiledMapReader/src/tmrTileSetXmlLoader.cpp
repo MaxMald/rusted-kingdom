@@ -13,6 +13,7 @@ using std::string;
 #include "TMR/tmrSpriteSheetTileSet.h"
 #include "TMR/tmrImage.h"
 #include "TMR/tmrPathUtilities.h"
+#include "TMR/tmrObjectGroupXmlLoader.h"
 
 using namespace tinyxml2;
 
@@ -220,7 +221,11 @@ namespace tmr
 
       uint32_t id = tileElement->UnsignedAttribute("id", 0);
       Image* image = parseImage(tileElement->FirstChildElement("image"), source);
-      return new TileSetTile(id, image);
+      ObjectGroup* objectGroup = objectGroupXmlLoader::parseObjectGroupFromXmlElement(
+        tileElement->FirstChildElement("objectgroup")
+      );
+
+      return new TileSetTile(id, image, objectGroup);
     }
 
     Image* parseImage(XMLElement* imageElement, const char* source)

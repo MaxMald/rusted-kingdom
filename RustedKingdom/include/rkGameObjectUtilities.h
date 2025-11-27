@@ -21,6 +21,6 @@ namespace rk
      * @param x Normalized horizontal origin (0.0 = left, 1.0 = right).
      * @param y Normalized vertical origin (0.0 = top, 1.0 = bottom).
      */
-    void setOrigin(GameObject& gameObject, float x, float y);
+    void setSpriteOrigin(GameObject& gameObject, float x, float y);
   }
 }

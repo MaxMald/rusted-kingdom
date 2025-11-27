@@ -12,7 +12,8 @@ namespace rk
   ) :
     Component(gameObject, componentType::Type::Collider),
     m_physicWorld(physicWorld),
-    m_collider(collider)
+    m_collider(collider),
+    m_debug(false)
   {
     if (collider == nullptr)
     {

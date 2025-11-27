@@ -29,6 +29,11 @@
  </tile>
  <tile id="7">
   <image source="../../textures/plants/plants-01/bigtree02.png" width="256" height="256"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="55.7532" y="97.0518" width="133.704" height="133.704">
+    <ellipse/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="8">
   <image source="../../textures/plants/plants-01/bigtree03.png" width="256" height="256"/>
@@ -224,6 +229,11 @@
  </tile>
  <tile id="65">
   <image source="../../textures/plants/plants-01/shrub2-05.png" width="256" height="128"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="85.1785" y="20.1331" width="97.5681" height="97.5681">
+    <ellipse/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="66">
   <image source="../../textures/plants/plants-01/swirl01.png" width="128" height="64"/>

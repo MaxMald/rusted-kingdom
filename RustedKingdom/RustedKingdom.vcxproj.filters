@@ -372,6 +372,9 @@
     <ClCompile Include="src\rkGameObjectUtilities.cpp">
       <Filter>Source Files\scene\gameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkTiledColliderComponentFactory.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -560,9 +563,6 @@
     <ClInclude Include="include\scripts\rkAgentPathMovement.h">
       <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkTiledSceneFactory.h">
-      <Filter>Header Files\scene</Filter>
-    </ClInclude>
     <ClInclude Include="include\rkCircleCollider.h">
       <Filter>Header Files\physics\colliders</Filter>
     </ClInclude>
@@ -667,6 +667,9 @@
     </ClInclude>
     <ClInclude Include="include\rkGameObjectUtilities.h">
       <Filter>Header Files\scene\gameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledColliderComponentFactory.h">
+      <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

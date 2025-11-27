@@ -16,7 +16,7 @@ namespace rk
   {
   }
 
-  GameObject::GameObject(const char* name) :
+  GameObject::GameObject(const String& name) :
     m_name(name),
     m_parent(nullptr),
     m_children(),
@@ -36,7 +36,7 @@ namespace rk
     return m_worldTransform.transformPoint(sf::Vector2f(0.0f, 0.0f));
   }
 
-  const char* GameObject::getName() const
+  const String& GameObject::getName() const
   {
     return m_name;
   }
@@ -113,11 +113,11 @@ namespace rk
     m_children.clear();
   }
 
-  GameObject* GameObject::findChildByName(const char* name)
+  GameObject* GameObject::findChildByName(const String& name)
   {
     for (auto& child : m_children)
     {
-      if (child->getName() && std::strcmp(child->getName(), name) == 0)
+      if (child->getName() == name)
         return child.get();
 
       GameObject* found = child->findChildByName(name);

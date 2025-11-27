@@ -13,8 +13,7 @@ namespace rk
     CircleCollider* circleCollider
   ) :
     ColliderComponent(gameObject, physicWorld, circleCollider),
-    m_circleCollider(circleCollider),
-    m_debug(false)
+    m_circleCollider(circleCollider)
   {
   }
 

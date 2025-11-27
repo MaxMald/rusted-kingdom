@@ -28,6 +28,11 @@ namespace rk
     m_sprite.setOrigin(origin);
   }
 
+  sf::Vector2f SpriteComponent::getOrigin() const
+  {
+    return m_sprite.getOrigin();
+  }
+
   void SpriteComponent::setTexture(const sf::Texture& texture)
   {
     m_sprite.setTexture(texture);

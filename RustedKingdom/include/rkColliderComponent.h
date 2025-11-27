@@ -24,6 +24,7 @@ namespace rk
     const Vector2f& getCenter() const;
     void setCenter(const Vector2f& center);
     const colliderType::Type getColliderType() const;
+    void setDebug(bool debug) { m_debug = debug; }
 
     bool checkCollision(const ColliderComponent& other) const;
     bool checkCollision(const Vector2f& point) const;
@@ -31,5 +32,6 @@ namespace rk
   protected:
     Collider* m_collider;
     PhysicWorld& m_physicWorld;
+    bool m_debug;
   };
 }
