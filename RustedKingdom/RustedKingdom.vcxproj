@@ -175,7 +175,6 @@
     <ClCompile Include="src\rkIAsset.cpp" />
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp" />
     <ClCompile Include="src\rkILevelScene.cpp" />
-    <ClCompile Include="src\rkLayerGameObjectBlueprint.cpp" />
     <ClCompile Include="src\rkMainScene.cpp" />
     <ClCompile Include="src\rkNode.cpp" />
     <ClCompile Include="src\rkNodeLink.cpp" />
@@ -203,7 +202,7 @@
     <ClCompile Include="src\rkGameObjectBuilder.cpp" />
     <ClCompile Include="src\rkInputManager.cpp" />
     <ClCompile Include="src\rkJson.cpp" />
-    <ClCompile Include="src\rkLayerGameObject.cpp" />
+    <ClCompile Include="src\rkIsometricLayerGameObject.cpp" />
     <ClCompile Include="src\rkLuciusBlueprint.cpp" />
     <ClCompile Include="src\rkPhysicWorld.cpp" />
     <ClCompile Include="src\rkRigidBody.cpp" />
@@ -260,7 +259,6 @@
     <ClInclude Include="include\rkIService.h" />
     <ClInclude Include="include\rkIsometricPositionTransformer.h" />
     <ClInclude Include="include\rkILevelScene.h" />
-    <ClInclude Include="include\rkLayerGameObjectBlueprint.h" />
     <ClInclude Include="include\rkMainScene.h" />
     <ClInclude Include="include\rkNode.h" />
     <ClInclude Include="include\rkNodeLink.h" />
@@ -291,7 +289,7 @@
     <ClInclude Include="include\rkInputManagerListener.h" />
     <ClInclude Include="include\rkJson.h" />
     <ClInclude Include="include\rkJsonUtilities.h" />
-    <ClInclude Include="include\rkLayerGameObject.h" />
+    <ClInclude Include="include\rkIsometricLayerGameObject.h" />
     <ClInclude Include="include\rkLogicalComparisonType.h" />
     <ClInclude Include="include\rkLogicalComparisonUtilities.h" />
     <ClInclude Include="include\rkLuciusBlueprint.h" />

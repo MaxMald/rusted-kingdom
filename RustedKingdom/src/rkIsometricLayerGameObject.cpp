@@ -1,25 +1,28 @@
-#include "rkLayerGameObject.h"
+#include "rkIsometricLayerGameObject.h"
 
 #include <SFML/Graphics/RenderStates.hpp>
 
 namespace rk
 {
-  LayerGameObject::LayerGameObject(const char* name) :
-    GameObject(name)
+  IsometricLayerGameObject::IsometricLayerGameObject(const String& name) :
+    GameObject(name),
+    m_staticLayer(true)
   {
   }
 
-  LayerGameObject::~LayerGameObject()
+  IsometricLayerGameObject::~IsometricLayerGameObject()
   {
   }
 
-  void LayerGameObject::update(float deltaTime)
+  void IsometricLayerGameObject::update(float deltaTime)
   {
-    sortChildrenByYPosition();
+    if (!m_staticLayer)
+      sortChildrenByYPosition();
+
     GameObject::update(deltaTime);
   }
 
-  void LayerGameObject::sortChildrenByYPosition()
+  void IsometricLayerGameObject::sortChildrenByYPosition()
   {
     std::stable_sort(
       m_children.begin(), m_children.end(),

@@ -180,7 +180,7 @@
     <ClCompile Include="src\rkEventsManager.cpp">
       <Filter>Source Files\eventsManager</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkLayerGameObject.cpp">
+    <ClCompile Include="src\rkIsometricLayerGameObject.cpp">
       <Filter>Source Files\scene\gameObjects</Filter>
     </ClCompile>
     <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimation.cpp">
@@ -354,9 +354,6 @@
     <ClCompile Include="src\rkTiledObjectSpriteDescriptor.cpp">
       <Filter>Source Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkLayerGameObjectBlueprint.cpp">
-      <Filter>Source Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkTiledObjectBlueprint.cpp">
       <Filter>Source Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
     </ClCompile>
@@ -422,7 +419,7 @@
     <ClInclude Include="include\rkAssertions.h">
       <Filter>Header Files\utilities</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkLayerGameObject.h">
+    <ClInclude Include="include\rkIsometricLayerGameObject.h">
       <Filter>Header Files\scene\gameObjects</Filter>
     </ClInclude>
     <ClInclude Include="include\rkEightDirAnimationDesc.h">
@@ -645,9 +642,6 @@
       <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTileGameObjectBlueprint.h">
-      <Filter>Header Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkLayerGameObjectBlueprint.h">
       <Filter>Header Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTiledObjectBlueprint.h">

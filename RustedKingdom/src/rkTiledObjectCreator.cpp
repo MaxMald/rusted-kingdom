@@ -198,7 +198,7 @@ namespace rk
     SizeT objectCount = objectGroup->getObjectSize();
     for (SizeT i = 0; i < objectCount; ++i)
     {
-      const tmr::Object* collider = objectGroup->getObjectAt(i);
+      const tmr::Object* collider = objectGroup->getObjectAt(static_cast<UInt32>(i));
       if (!collider)
         continue;
 

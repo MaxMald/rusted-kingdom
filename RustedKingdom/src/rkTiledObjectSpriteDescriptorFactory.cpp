@@ -20,13 +20,11 @@ namespace rk
   {
     static TiledObjectSpriteDescriptor createFromImageCollection(
       Int32 gid,
-      const tmr::TiledMap* tiledMap,
       const tmr::ImageCollectionTileSet* tileSet
     );
 
     static TiledObjectSpriteDescriptor createFromSpriteSheet(
       Int32 gid,
-      const tmr::TiledMap* tiledMap,
       const tmr::SpriteSheetTileSet* tileSet
     );
   }
@@ -48,7 +46,6 @@ namespace rk
       {
         return createFromImageCollection(
           gid,
-          tiledMap,
           static_cast<const tmr::ImageCollectionTileSet*>(tileset)
         );
       }
@@ -56,7 +53,6 @@ namespace rk
       {
         return createFromSpriteSheet(
           gid,
-          tiledMap,
           static_cast<const tmr::SpriteSheetTileSet*>(tileset)
         );
       }
@@ -73,7 +69,6 @@ namespace rk
 
     static TiledObjectSpriteDescriptor createFromImageCollection(
       Int32 gid,
-      const tmr::TiledMap* tiledMap,
       const tmr::ImageCollectionTileSet* tileSet
     )
     {
@@ -110,7 +105,6 @@ namespace rk
 
     static TiledObjectSpriteDescriptor createFromSpriteSheet(
       Int32 gid,
-      const tmr::TiledMap* tiledMap,
       const tmr::SpriteSheetTileSet* tileSet
     )
     {

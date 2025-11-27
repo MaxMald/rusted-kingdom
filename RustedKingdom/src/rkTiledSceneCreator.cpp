@@ -22,11 +22,11 @@
 #include "rkSpriteComponent.h"
 #include "rkSpriteComponentFactory.h"
 #include "rkGameObject.h"
-#include "rkLayerGameObjectBlueprint.h"
 #include "rkIsometricPositionTransformer.h"
 #include "rkTiledObjectCreator.h"
 #include "rkGameObjectUtilities.h"
 #include "rkColliderComponent.h"
+#include "rkIsometricLayerGameObject.h"
 
 using sf::Vector2f;
 using sf::Vector2i;
@@ -74,6 +74,7 @@ namespace rk
 
     static GameObject* createLayerGameObject(
       const String& name,
+      bool isStatic,
       SceneGraph& sceneGraph
     );
   }
@@ -165,10 +166,10 @@ namespace rk
     {
       GameObject* layerGameObject = createLayerGameObject(
         tmrLayer->getName(),
+        false, // TODO Capture from tmrLayer
         sceneGraph
       );
 
-      Int32 spriteWidth = tiledMap->getTileWidth();
       Int32 spriteHeight = tiledMap->getTileHeight();
       Int32 width = tmrLayer->getWidth();
       Int32 height = tmrLayer->getHeight();
@@ -181,8 +182,8 @@ namespace rk
         for (Int32 column = 0; column < width; ++column)
         {
           Vector2f position = isometricPosTransformer.isometricToWorld(
-            column * spriteHeight,
-            row * spriteHeight
+            static_cast<float>(column * spriteHeight),
+            static_cast<float>(row * spriteHeight)
           );
 
           createTile(
@@ -234,6 +235,7 @@ namespace rk
       String layerName = tmrLayer->getName();
       GameObject* layerGameObject = createLayerGameObject(
         layerName,
+        false, // TODO Capture from tmrLayer
         sceneGraph
       );
 
@@ -304,16 +306,19 @@ namespace rk
 
     static GameObject* createLayerGameObject(
       const String& name,
+      bool isStatic,
       SceneGraph& sceneGraph
     )
     {
-      LayerGameObjectBlueprint layerGameObjectBlueprint;
-      return sceneGraph.instantiateGameObject(
-        layerGameObjectBlueprint,
-        name,
-        Vector2f(0.0f, 0.0f),
-        *sceneGraph.getRoot()
+      IsometricLayerGameObject* layerGameObject
+        = new IsometricLayerGameObject(name);
+      layerGameObject->setStaticLayer(isStatic);
+
+      sceneGraph.registerGameObject(
+        UniquePtr<GameObject>(layerGameObject)
       );
+
+      return layerGameObject;
     }
   }
 }

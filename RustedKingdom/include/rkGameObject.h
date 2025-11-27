@@ -275,7 +275,7 @@ namespace rk
         String::Format(
           "GameObject::getComponentOrFail: Component of type %d not found in GameObject '%s'.",
           static_cast<int>(type),
-          m_name
+          m_name.c_str()
         )
       );
     }
@@ -337,7 +337,7 @@ namespace rk
           "GameObject::getScriptComponentWithNameOrFail: "
           "ScriptComponent with name '%s' not found in GameObject '%s'.",
           scriptName.c_str(),
-          m_name
+          m_name.c_str()
         )
       );
     }
