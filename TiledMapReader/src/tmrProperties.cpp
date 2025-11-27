@@ -2,6 +2,8 @@
 
 #include <stdexcept>
 
+#include "TMR/tmrProperty.h"
+
 namespace tmr
 {
   Properties::Properties(Property** properties, size_t propertyCount) :

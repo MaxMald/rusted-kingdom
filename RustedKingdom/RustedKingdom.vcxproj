@@ -224,6 +224,7 @@
     <ClCompile Include="src\rkTiledObjectBlueprint.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp" />
     <ClCompile Include="src\rkTiledObjectCreator.cpp" />
+    <ClCompile Include="src\rkTiledPropertiesHandler.cpp" />
     <ClCompile Include="src\rkTiledSceneCreator.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptor.cpp" />
     <ClCompile Include="src\rkTileGameObjectBlueprint.cpp" />
@@ -318,6 +319,7 @@
     <ClInclude Include="include\rkTiledMapUtilities.h" />
     <ClInclude Include="include\rkTiledObjectBlueprint.h" />
     <ClInclude Include="include\rkTiledObjectCreator.h" />
+    <ClInclude Include="include\rkTiledPropertiesHandler.h" />
     <ClInclude Include="include\rkTiledSceneCreator.h" />
     <ClInclude Include="include\rkTileGameObjectBlueprint.h" />
     <ClInclude Include="include\rkTiledObjectSpriteDescriptor.h" />
