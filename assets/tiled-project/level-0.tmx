@@ -6,6 +6,15 @@
  <tileset firstgid="1" source="tilesets/terrain-dirt-a-to-sand-a.tsx"/>
  <tileset firstgid="33" source="tilesets/plants-01.tsx"/>
  <layer id="3" name="sand" width="30" height="20" locked="1">
+  <properties>
+   <property name="colorProperty" type="color" value="#ffaa0000"/>
+   <property name="fileProperty" type="file" value="../../../../../Programs/Tiled/AUTHORS.txt"/>
+   <property name="floatProperty" type="float" value="0.5"/>
+   <property name="intProperty" type="int" value="5"/>
+   <property name="isStatic" type="bool" value="false"/>
+   <property name="objectProperty" type="object" value="207"/>
+   <property name="stringProperty" value="hola"/>
+  </properties>
   <data encoding="csv">
 32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,
 32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,

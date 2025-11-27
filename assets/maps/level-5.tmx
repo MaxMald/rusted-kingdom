@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="20" tilewidth="128" tileheight="64" infinite="0" nextlayerid="12" nextobjectid="208">
+<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="20" tilewidth="128" tileheight="64" infinite="0" nextlayerid="12" nextobjectid="209">
  <tileset firstgid="1" source="../tiled-project/tilesets/terrain-dirt-a-to-sand-a.tsx"/>
  <tileset firstgid="33" source="../tiled-project/tilesets/plants-01.tsx"/>
  <layer id="3" name="sand" width="30" height="20" locked="1">
+  <properties>
+   <property name="colorProperty" type="color" value="#ffaa0000"/>
+   <property name="fileProperty" type="file" value="../../../../../Programs/Tiled/AUTHORS.txt"/>
+   <property name="floatProperty" type="float" value="0.5"/>
+   <property name="intProperty" type="int" value="5"/>
+   <property name="isStatic" type="bool" value="false"/>
+   <property name="objectProperty" type="object" value="207"/>
+   <property name="stringProperty" value="hola"/>
+  </properties>
   <data encoding="csv">
 32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,
 32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,
@@ -56,9 +65,6 @@
   <object id="150" gid="39" x="649.333" y="593.333" width="256" height="256"/>
   <object id="151" gid="39" x="1072" y="570.667" width="256" height="256"/>
   <object id="152" gid="39" x="626" y="963.333" width="256" height="256"/>
-  <object id="153" x="69" y="717.667" width="244" height="264">
-   <ellipse/>
-  </object>
   <object id="164" gid="40" x="846.667" y="316" width="256" height="256"/>
   <object id="165" gid="40" x="932.667" y="811.333" width="256" height="256"/>
   <object id="166" gid="40" x="342.667" y="294.667" width="256" height="256"/>

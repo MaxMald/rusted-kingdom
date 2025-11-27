@@ -6,9 +6,10 @@ namespace tmr
   ObjectGroupLayer::ObjectGroupLayer(
     const int32_t& id,
     const char* name,
+    Properties* properties,
     ObjectGroup* objectGroup
   ) :
-    Layer(id, name, layerType::ObjectGroup),
+    Layer(id, name, properties, layerType::ObjectGroup),
     m_objectGroup(objectGroup)
   {
   }

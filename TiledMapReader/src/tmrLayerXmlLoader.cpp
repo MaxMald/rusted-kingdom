@@ -7,6 +7,7 @@
 #include "TMR/tmrObjectGroupLayer.h"
 #include "TMR/tmrObjectGroupXmlLoader.h"
 #include "TMR/tmrGridDataLayerXmlLoader.h"
+#include "TMR/tmrPropertiesXmlLoader.h"
 
 using namespace tinyxml2;
 using std::string;
@@ -26,7 +27,11 @@ namespace tmr
       if (objectGroup == nullptr)
         return nullptr;
 
-      return new ObjectGroupLayer(id, name ? name : "", objectGroup);
+      Properties* properties = propertiesXmlLoader::loadProperties(
+        layerElement->FirstChildElement("properties")
+      );
+
+      return new ObjectGroupLayer(id, name ? name : "", properties, objectGroup);
     }
 
     Layer* parseLayerFromXmlElement(XMLElement* layerElement)

@@ -9,6 +9,7 @@
 #include "TMR/tmrGridDataLayer.h"
 #include "TMR/tmrData.h"
 #include "TMR/tinyxml2.h"
+#include "TMR/tmrPropertiesXmlLoader.h"
 
 using namespace tinyxml2;
 
@@ -48,7 +49,11 @@ namespace tmr
       if (!data)
         return nullptr;
 
-      return new GridDataLayer(id, name, width, height, data);
+      Properties* properties = propertiesXmlLoader::loadProperties(
+        layerElement->FirstChildElement("properties")
+      );
+
+      return new GridDataLayer(id, name, properties, width, height, data);
     }
 
     GridDataLayer** parseLayerArrayFromXmlElement(

@@ -12,6 +12,7 @@ namespace tmr
     GridDataLayer(
       const int32_t& id,
       const char* name,
+      Properties* properties,
       const int32_t& width,
       const int32_t& height,
       Data* data

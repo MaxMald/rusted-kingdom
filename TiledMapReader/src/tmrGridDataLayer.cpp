@@ -9,11 +9,12 @@ namespace tmr
   GridDataLayer::GridDataLayer(
     const int32_t& id,
     const char* name,
+    Properties* properties,
     const int32_t& width,
     const int32_t& height,
     Data* data
   ) :
-    Layer(id, name, layerType::GridData),
+    Layer(id, name, properties, layerType::GridData),
     m_height(height),
     m_width(width),
     m_data(data)

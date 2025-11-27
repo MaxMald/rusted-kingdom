@@ -12,6 +12,7 @@ namespace tmr
     ObjectGroupLayer(
       const int32_t& id,
       const char* name,
+      Properties* properties,
       ObjectGroup* objectGroup
     );
     virtual ~ObjectGroupLayer();

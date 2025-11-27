@@ -43,6 +43,12 @@
     <Filter Include="Source Files\layers">
       <UniqueIdentifier>{bff6329b-f422-4971-8519-d38488a2a8c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\properties">
+      <UniqueIdentifier>{70e1ef79-4937-4afe-a261-436983e2c6ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\properties">
+      <UniqueIdentifier>{8adc6b26-0e73-4f41-8d72-6c319ed4a1c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\tmrTiledMapLoader.cpp">
@@ -130,6 +136,36 @@
       <Filter>Source Files\objectGroup</Filter>
     </ClCompile>
     <ClCompile Include="src\tmrObjectXmlLoader.cpp">
+      <Filter>Source Files\parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrProperty.cpp">
+      <Filter>Source Files\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrProperties.cpp">
+      <Filter>Source Files\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrBoolProperty.cpp">
+      <Filter>Source Files\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrColorProperty.cpp">
+      <Filter>Source Files\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrFileProperty.cpp">
+      <Filter>Source Files\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrIntProperty.cpp">
+      <Filter>Source Files\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrFloatProperty.cpp">
+      <Filter>Source Files\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrObjectProperty.cpp">
+      <Filter>Source Files\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrStringProperty.cpp">
+      <Filter>Source Files\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tmrPropertiesXmlLoader.cpp">
       <Filter>Source Files\parsers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -243,6 +279,39 @@
       <Filter>Header Files\objectGroup</Filter>
     </ClInclude>
     <ClInclude Include="include\TMR\tmrObjectXmlLoader.h">
+      <Filter>Header Files\parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrProperties.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrProperty.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrPropertyType.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrColorProperty.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrFileProperty.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrFloatProperty.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrIntProperty.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrBoolProperty.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrObjectProperty.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrStringProperty.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TMR\tmrPropertiesXmlLoader.h">
       <Filter>Header Files\parsers</Filter>
     </ClInclude>
   </ItemGroup>
