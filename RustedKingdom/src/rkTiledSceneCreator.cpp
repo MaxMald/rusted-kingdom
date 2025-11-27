@@ -12,6 +12,7 @@
 #include <TMR/tmrTileSetTile.h>
 #include <TMR/tmrObject.h>
 #include <TMR/tmrTileReferenceObject.h>
+#include <TMR/tmrProperties.h>
 
 #include "rkAssetManager.h"
 #include "rkTiledMap.h"
@@ -27,6 +28,7 @@
 #include "rkGameObjectUtilities.h"
 #include "rkColliderComponent.h"
 #include "rkIsometricLayerGameObject.h"
+#include "rkTiledPropertiesHandler.h"
 
 using sf::Vector2f;
 using sf::Vector2i;
@@ -74,7 +76,7 @@ namespace rk
 
     static GameObject* createLayerGameObject(
       const String& name,
-      bool isStatic,
+      const tmr::Properties* layerProperties,
       SceneGraph& sceneGraph
     );
   }
@@ -166,7 +168,7 @@ namespace rk
     {
       GameObject* layerGameObject = createLayerGameObject(
         tmrLayer->getName(),
-        false, // TODO Capture from tmrLayer
+        tmrLayer->getProperties(),
         sceneGraph
       );
 
@@ -235,7 +237,7 @@ namespace rk
       String layerName = tmrLayer->getName();
       GameObject* layerGameObject = createLayerGameObject(
         layerName,
-        false, // TODO Capture from tmrLayer
+        tmrLayer->getProperties(),
         sceneGraph
       );
 
@@ -306,12 +308,17 @@ namespace rk
 
     static GameObject* createLayerGameObject(
       const String& name,
-      bool isStatic,
+      const tmr::Properties* layerProperties,
       SceneGraph& sceneGraph
     )
     {
       IsometricLayerGameObject* layerGameObject
         = new IsometricLayerGameObject(name);
+
+      TiledPropertiesHandler propertiesHandler(layerProperties);
+      
+      bool isStatic = false;
+      propertiesHandler.tryGetBool("isStatic", isStatic);
       layerGameObject->setStaticLayer(isStatic);
 
       sceneGraph.registerGameObject(
