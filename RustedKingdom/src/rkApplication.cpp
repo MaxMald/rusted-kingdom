@@ -84,7 +84,7 @@ namespace rk
 
   void Application::update(float deltaTime)
   {
-    m_viewManager->update(deltaTime);
+    m_viewManager->updateRenderWindowView();
     m_scenesManager->update(deltaTime);
   }
 

@@ -14,6 +14,7 @@ namespace rk
       Collider = 3,
       RigidBody = 4,
       Pathfinder = 5,
+      View = 6,
       countTypes
     };
   }

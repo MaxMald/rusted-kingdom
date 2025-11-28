@@ -228,6 +228,9 @@
     <ClCompile Include="src\rkTiledSceneCreator.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptor.cpp" />
     <ClCompile Include="src\rkTileGameObjectBlueprint.cpp" />
+    <ClCompile Include="src\rkViewComponent.cpp" />
+    <ClCompile Include="src\rkViewComponentFactory.cpp" />
+    <ClCompile Include="src\rkViewController.cpp" />
     <ClCompile Include="src\rkViewsManager.cpp" />
     <ClCompile Include="src\rkWindowManager.cpp" />
     <ClCompile Include="src\scripts\rkAgentPathMovement.cpp" />
@@ -326,6 +329,9 @@
     <ClInclude Include="include\rkTypedAssetGroup.h" />
     <ClInclude Include="include\rkTypeDefinitions.h" />
     <ClInclude Include="include\rkVector2Utilities.h" />
+    <ClInclude Include="include\rkViewComponent.h" />
+    <ClInclude Include="include\rkViewComponentFactory.h" />
+    <ClInclude Include="include\rkViewController.h" />
     <ClInclude Include="include\rkViewsManager.h" />
     <ClInclude Include="include\rkWindowManager.h" />
     <ClInclude Include="include\scripts\rkAgentPathMovement.h" />

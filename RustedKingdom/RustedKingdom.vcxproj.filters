@@ -157,6 +157,12 @@
     <Filter Include="Source Files\scene\tiledSceneCreator\gameObjectBlueprints">
       <UniqueIdentifier>{d670d7c8-17be-4989-a09b-4ff355bc2bf6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\services\viewsManager">
+      <UniqueIdentifier>{e74f2fa8-45ee-463f-871b-5b72736214a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\services\viewsManager">
+      <UniqueIdentifier>{f61b5292-f837-471a-aa44-98b721dbabd8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -324,9 +330,6 @@
     <ClCompile Include="src\rkPathfinderManager.cpp">
       <Filter>Source Files\pathfinder</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkViewsManager.cpp">
-      <Filter>Source Files\services</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkMainScene.cpp">
       <Filter>Source Files\scene\levels</Filter>
     </ClCompile>
@@ -374,6 +377,18 @@
     </ClCompile>
     <ClCompile Include="src\rkTiledPropertiesHandler.cpp">
       <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkViewsManager.cpp">
+      <Filter>Source Files\services\viewsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkViewController.cpp">
+      <Filter>Source Files\services\viewsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkViewComponent.cpp">
+      <Filter>Source Files\scene\gameObjects\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkViewComponentFactory.cpp">
+      <Filter>Source Files\scene\gameObjects\components\factories</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -617,9 +632,6 @@
     <ClInclude Include="include\rkPathfinderManager.h">
       <Filter>Header Files\pathfinder</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkViewsManager.h">
-      <Filter>Header Files\services</Filter>
-    </ClInclude>
     <ClInclude Include="include\rkMainScene.h">
       <Filter>Header Files\scene\levels</Filter>
     </ClInclude>
@@ -670,6 +682,18 @@
     </ClInclude>
     <ClInclude Include="include\rkTiledPropertiesHandler.h">
       <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkViewsManager.h">
+      <Filter>Header Files\services\viewsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkViewController.h">
+      <Filter>Header Files\services\viewsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkViewComponent.h">
+      <Filter>Header Files\scene\gameObjects\components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkViewComponentFactory.h">
+      <Filter>Header Files\scene\gameObjects\components\factories</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
