@@ -36,6 +36,12 @@ namespace rk
     return m_worldTransform.transformPoint(sf::Vector2f(0.0f, 0.0f));
   }
 
+  void GameObject::addComponent(UniquePtr<Component> component)
+  {
+    if (component)
+      m_components.push_back(std::move(component));
+  }
+
   const String& GameObject::getName() const
   {
     return m_name;

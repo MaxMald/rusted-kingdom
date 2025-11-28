@@ -51,18 +51,7 @@ namespace rk
     /** @brief Returns the world position of this GameObject.*/
     sf::Vector2f getWorldPosition() const;
 
-    
-    template<typename T>
-    void addComponent(UniquePtr<T> component)
-    {
-      static_assert(
-        IsBaseOf<Component, T>::value,
-        "Component must derive from rk::Component"
-      );
-
-      if (component)
-        m_components.push_back(std::move(component));
-    }
+    void addComponent(UniquePtr<Component> component);
 
     template<typename T>
     bool hasComponent() const

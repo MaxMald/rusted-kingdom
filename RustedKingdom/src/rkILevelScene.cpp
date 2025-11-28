@@ -39,10 +39,8 @@ namespace rk
       *viewGameObject,
       "main-view"
     );
-    viewGameObject->addComponent<ViewComponent>(std::move(viewComponent));
-    viewGameObject->addComponent<ViewControllerScript>(
-      MakeUnique<ViewControllerScript>(*viewGameObject)
-    );
+    viewGameObject->addComponent(std::move(viewComponent));
+    viewGameObject->addComponent(MakeUnique<ViewControllerScript>(*viewGameObject));
 
     m_sceneGraph.registerGameObject(std::move(viewGameObject));
   }
