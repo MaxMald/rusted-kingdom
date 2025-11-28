@@ -6,7 +6,7 @@ namespace rk
     GameObject& gameObject,
     SharedPtr<ViewController> viewController
   ) :
-    Component(gameObject, componentType::View),
+    Component(gameObject),
     m_viewController(viewController)
   {
   }

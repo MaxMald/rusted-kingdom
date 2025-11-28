@@ -10,7 +10,7 @@ namespace rk
     PhysicWorld& physicWorld,
     rigidBodyType::Type type
   ) :
-    Component(gameObject, componentType::RigidBody),
+    Component(gameObject),
     m_physicWorld(physicWorld),
     m_rigidBody(nullptr)
   {

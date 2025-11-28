@@ -2,9 +2,8 @@
 
 namespace rk
 {
-  Component::Component(GameObject& gameObject, componentType::Type type) :
-    m_gameObject(&gameObject),
-    m_type(type)
+  Component::Component(GameObject& gameObject) :
+    m_gameObject(&gameObject)
   {
   }
 
@@ -12,15 +11,12 @@ namespace rk
   {
   }
 
-  void Component::onUpdate(float deltaTime)
+  void Component::onUpdate(float)
   {
-    (void)deltaTime;
   }
 
-  void Component::onDraw(sf::RenderTarget& target, sf::RenderStates states) const
+  void Component::onDraw(sf::RenderTarget&, sf::RenderStates) const
   {
-    (void)target;
-    (void)states;
   }
 
   void Component::onDelete()

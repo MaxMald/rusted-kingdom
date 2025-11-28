@@ -3,8 +3,11 @@
 
 namespace rk
 {
-  SpriteComponent::SpriteComponent(GameObject& gameObject, const sf::Texture& texture) :
-    Component(gameObject, componentType::Type::Sprite),
+  SpriteComponent::SpriteComponent(
+    GameObject& gameObject, 
+    const sf::Texture& texture
+  ) :
+    Component(gameObject),
     m_sprite(texture)
   {
   }
@@ -14,7 +17,7 @@ namespace rk
     const sf::Texture& texture,
     const sf::IntRect& textureRect
   ) :
-    Component(gameObject, componentType::Type::Sprite),
+    Component(gameObject),
     m_sprite(texture, textureRect)
   {
   }

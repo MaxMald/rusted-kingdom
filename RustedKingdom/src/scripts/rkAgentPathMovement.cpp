@@ -11,7 +11,7 @@
 namespace rk
 {
   AgentPathMovement::AgentPathMovement(GameObject& gameObject)
-    : ScriptComponent(gameObject, "agent-path-movement"),
+    : ScriptComponent(gameObject),
     m_rigidBodyComponent(nullptr),
     m_colliderComponent(nullptr),
     m_currentPathPointIndex(0),

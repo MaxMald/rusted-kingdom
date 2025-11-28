@@ -11,7 +11,7 @@ namespace rk
     GameObject& gameObject,
     UniquePtr<AnimationStateMachine> animationStateMachine
   ) :
-    Component(gameObject, componentType::Type::Animation),
+    Component(gameObject),
     m_spriteComponent(nullptr),
     m_animationStateMachine(std::move(animationStateMachine))
   {

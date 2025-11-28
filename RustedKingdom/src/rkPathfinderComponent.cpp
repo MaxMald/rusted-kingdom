@@ -7,7 +7,7 @@ namespace rk
     GameObject& gameObject,
     SharedPtr<Pathfinder> pathfinder
   ) :
-    Component(gameObject, componentType::Type::Pathfinder),
+    Component(gameObject),
     m_pathfinder(nullptr),
     m_drawPoints(false)
   {

@@ -7,12 +7,7 @@ namespace rk
   class ScriptComponent : public Component
   {
   public:
-    ScriptComponent(GameObject& gameObject, const String& scriptName);
+    ScriptComponent(GameObject& gameObject);
     virtual ~ScriptComponent();
-
-    const String& getScriptName() const { return m_scriptName; }
-
-  private:
-    String m_scriptName;
   };
 }

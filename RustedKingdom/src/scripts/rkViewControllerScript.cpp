@@ -10,7 +10,7 @@
 namespace rk
 {
   ViewControllerScript::ViewControllerScript(GameObject& gameObject) :
-    ScriptComponent(gameObject, "view-controller"),
+    ScriptComponent(gameObject),
     m_viewComponent(nullptr)
   {
   }

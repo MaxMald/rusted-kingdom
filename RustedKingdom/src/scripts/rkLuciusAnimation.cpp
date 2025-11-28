@@ -9,7 +9,7 @@ using sf::Vector2f;
 namespace rk
 {
   LuciusAnimation::LuciusAnimation(GameObject& gameObject)
-    : ScriptComponent(gameObject, "lucius-animation"),
+    : ScriptComponent(gameObject),
     m_animationComponent(nullptr),
     m_rigidBodyComponent(nullptr)
   {

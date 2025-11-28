@@ -10,7 +10,7 @@ namespace rk
     PhysicWorld& physicWorld,
     Collider* collider
   ) :
-    Component(gameObject, componentType::Type::Collider),
+    Component(gameObject),
     m_physicWorld(physicWorld),
     m_collider(collider),
     m_debug(false)

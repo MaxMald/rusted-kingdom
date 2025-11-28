@@ -278,7 +278,6 @@
     <ClInclude Include="include\rkRigidBodyComponentFactory.h" />
     <ClInclude Include="include\rkColliderType.h" />
     <ClInclude Include="include\rkComponent.h" />
-    <ClInclude Include="include\rkComponentType.h" />
     <ClInclude Include="include\rkEightDirectionsSpriteSheetAnimation.h" />
     <ClInclude Include="include\rkEightDirAnimationDesc.h" />
     <ClInclude Include="include\rkCircleCollider.h" />

@@ -17,7 +17,7 @@ namespace rk
     const RenderWindow& renderWindow,
     const IsometricPositionTransformer isometricPositionTransformer
   )
-    : ScriptComponent(gameObject, "lucius"),
+    : ScriptComponent(gameObject),
     m_isometricPositionTransformer(isometricPositionTransformer),
     m_renderWindow(renderWindow),
     m_agentPathMovement(nullptr),

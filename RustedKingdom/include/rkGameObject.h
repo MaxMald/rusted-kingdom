@@ -3,7 +3,6 @@
 #include <SFML/Graphics/Transformable.hpp>
 #include <SFML/Graphics/Drawable.hpp>
 #include "rkPrerequisites.h"
-#include "rkComponentType.h"
 
 using sf::RenderTarget;
 using sf::RenderStates;
