@@ -15,6 +15,16 @@ namespace rk
   {
   }
 
+  const String& ViewComponent::getViewName() const
+  {
+    if (m_viewController)
+      return m_viewController->getName();
+    
+    throw RuntimeErrorException(
+      "ViewComponent has no associated ViewController"
+    );
+  }
+
   void ViewComponent::move(const sf::Vector2f& offset)
   {
     if (m_viewController)

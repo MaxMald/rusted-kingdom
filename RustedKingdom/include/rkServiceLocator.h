@@ -15,15 +15,17 @@ namespace rk
   class ServiceLocator : public NonCopyable
   {
   public:
-    /**
-     * @brief Default constructor.
-     */
-    ServiceLocator() = default;
+    static ServiceLocator& Instance()
+    {
+      if (_Instance == nullptr)
+      {
+        throw RuntimeErrorException(
+          "ServiceLocator is not prepared. Call Prepare() before using."
+        );
+      }
 
-    /**
-     * @brief Default destructor.
-     */
-    ~ServiceLocator() = default;
+      return *_Instance;
+    }
 
     /**
      * @brief Registers a service instance of type T.
@@ -83,8 +85,29 @@ namespace rk
     }
 
   private:
-    /// Internal storage for registered services, keyed by type.
+    static ServiceLocator* _Instance;
+
     UnorderedMap<TypeIndex, SharedPtr<IService>> m_services;
+
+    ServiceLocator() = default;
+    ~ServiceLocator() = default;
+
+    static void Prepare()
+    {
+      if (!_Instance)
+        _Instance = new ServiceLocator();
+    }
+
+    static void Shutdown()
+    {
+      if (_Instance)
+      {
+        _Instance->destroy();
+
+        delete _Instance;
+        _Instance = nullptr;
+      }
+    }
 
     /**
      * @brief Initializes all registered services.

@@ -11,6 +11,7 @@ namespace rk
     ViewComponent(GameObject&, SharedPtr<ViewController>);
     virtual ~ViewComponent();
 
+    const String& getViewName() const;
     void move(const sf::Vector2f& offset);
 
   private:

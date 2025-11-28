@@ -324,9 +324,6 @@
     <ClCompile Include="src\rkAssetManager.cpp">
       <Filter>Source Files\services</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkILevelScene.cpp">
-      <Filter>Source Files\scene</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkPathfinderManager.cpp">
       <Filter>Source Files\pathfinder</Filter>
     </ClCompile>
@@ -389,6 +386,15 @@
     </ClCompile>
     <ClCompile Include="src\rkViewComponentFactory.cpp">
       <Filter>Source Files\scene\gameObjects\components\factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scripts\rkViewControllerScript.cpp">
+      <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkILevelScene.cpp">
+      <Filter>Source Files\scene\levels</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkServiceLocator.cpp">
+      <Filter>Source Files\services</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -626,9 +632,6 @@
     <ClInclude Include="include\rkAssetManager.h">
       <Filter>Header Files\services</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkILevelScene.h">
-      <Filter>Header Files\scene</Filter>
-    </ClInclude>
     <ClInclude Include="include\rkPathfinderManager.h">
       <Filter>Header Files\pathfinder</Filter>
     </ClInclude>
@@ -694,6 +697,12 @@
     </ClInclude>
     <ClInclude Include="include\rkViewComponentFactory.h">
       <Filter>Header Files\scene\gameObjects\components\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scripts\rkViewControllerScript.h">
+      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkILevelScene.h">
+      <Filter>Header Files\scene\levels</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

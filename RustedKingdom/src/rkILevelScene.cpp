@@ -1,5 +1,10 @@
 #include "rkILevelScene.h"
 
+#include "rkServiceLocator.h"
+#include "rkViewsManager.h"
+#include "rkViewComponentFactory.h"
+#include "scripts/rkViewControllerScript.h"
+
 namespace rk
 {
   ILevelScene::ILevelScene()
@@ -14,11 +19,31 @@ namespace rk
 
   void ILevelScene::onLoad()
   {
-    // TODO
+    createView();
   }
 
   void ILevelScene::onUnload()
   {
     m_pathfinderManager.clear();
+  }
+
+  void ILevelScene::createView()
+  {
+    ViewComponentFactory viewComponentFactory(
+      ServiceLocator::Instance().getService<ViewsManager>()
+    );
+
+    UniquePtr<GameObject> viewGameObject = MakeUnique<GameObject>("main-view");
+
+    UniquePtr<ViewComponent> viewComponent = viewComponentFactory.create(
+      *viewGameObject,
+      "main-view"
+    );
+    viewGameObject->addComponent<ViewComponent>(std::move(viewComponent));
+    viewGameObject->addComponent<ViewControllerScript>(
+      MakeUnique<ViewControllerScript>(*viewGameObject)
+    );
+
+    m_sceneGraph.registerGameObject(std::move(viewGameObject));
   }
 }

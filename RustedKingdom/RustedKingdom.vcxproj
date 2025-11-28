@@ -213,6 +213,7 @@
     <ClCompile Include="src\rkScenesManager.cpp" />
     <ClCompile Include="src\rkScriptComponent.cpp" />
     <ClCompile Include="src\rkSearchNode.cpp" />
+    <ClCompile Include="src\rkServiceLocator.cpp" />
     <ClCompile Include="src\rkSpriteComponent.cpp" />
     <ClCompile Include="src\rkSpriteComponentFactory.cpp" />
     <ClCompile Include="src\rkSpriteSheet.cpp" />
@@ -236,6 +237,7 @@
     <ClCompile Include="src\scripts\rkAgentPathMovement.cpp" />
     <ClCompile Include="src\scripts\rkLucius.cpp" />
     <ClCompile Include="src\scripts\rkLuciusAnimation.cpp" />
+    <ClCompile Include="src\scripts\rkViewControllerScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkAnimation.h" />
@@ -339,6 +341,7 @@
     <ClInclude Include="include\scripts\rkLuciusAnimation.h" />
     <ClInclude Include="include\scripts\rkLuciusStates.h" />
     <ClInclude Include="include\rkTiledObjectSpriteDescriptorFactory.h" />
+    <ClInclude Include="include\scripts\rkViewControllerScript.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

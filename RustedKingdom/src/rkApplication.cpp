@@ -19,7 +19,7 @@ namespace rk
     m_scenesManager(nullptr),
     m_windowManager(nullptr),
     m_viewManager(nullptr),
-    m_serviceLocator()
+    m_serviceLocator(nullptr)
   {
   }
 
@@ -29,20 +29,23 @@ namespace rk
 
   void Application::prepare()
   {
+    ServiceLocator::Prepare();
+    m_serviceLocator = &ServiceLocator::Instance();
+
     registerServices();
 
     m_scenesManager =
-      m_serviceLocator.getService<ScenesManager>();
+      m_serviceLocator->getService<ScenesManager>();
     m_windowManager =
-      m_serviceLocator.getService<WindowManager>();
+      m_serviceLocator->getService<WindowManager>();
     m_viewManager =
-      m_serviceLocator.getService<ViewsManager>();
+      m_serviceLocator->getService<ViewsManager>();
 
     m_windowManager->createWindow();
-    m_serviceLocator.initializeServices();
+    m_serviceLocator->initializeServices();
 
     registerScenes();
-    m_scenesManager->initScenes(m_serviceLocator);
+    m_scenesManager->initScenes(*m_serviceLocator);
   }
 
   void Application::run(const String& initialScene)
@@ -79,7 +82,7 @@ namespace rk
 
   void Application::destroy()
   {
-    m_serviceLocator.destroy();
+    ServiceLocator::Shutdown();
   }
 
   void Application::update(float deltaTime)
@@ -97,10 +100,10 @@ namespace rk
 
   void Application::registerServices()
   {
-    m_serviceLocator.registerService(MakeShared<AssetManager>());
-    m_serviceLocator.registerService(MakeShared<ScenesManager>());
-    m_serviceLocator.registerService(MakeShared<WindowManager>());
-    m_serviceLocator.registerService(MakeShared<ViewsManager>());
+    m_serviceLocator->registerService(MakeShared<AssetManager>());
+    m_serviceLocator->registerService(MakeShared<ScenesManager>());
+    m_serviceLocator->registerService(MakeShared<WindowManager>());
+    m_serviceLocator->registerService(MakeShared<ViewsManager>());
   }
 
   void Application::registerScenes()

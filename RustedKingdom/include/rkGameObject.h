@@ -13,6 +13,7 @@ namespace rk
   class SceneGraph;
   class Component;
   class ScriptComponent;
+  class ServiceLocator;
 
   /**
   * @brief Represents a basic game object in the scene graph.

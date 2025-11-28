@@ -25,7 +25,7 @@ namespace rk
     void destroy();
 
   private:
-    ServiceLocator m_serviceLocator;
+    ServiceLocator* m_serviceLocator;
     SharedPtr<ScenesManager> m_scenesManager;
     SharedPtr<WindowManager> m_windowManager;
     SharedPtr<ViewsManager> m_viewManager;

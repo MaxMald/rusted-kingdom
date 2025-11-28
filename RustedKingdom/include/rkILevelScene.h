@@ -16,5 +16,8 @@ namespace rk
 
     virtual void onLoad() override;
     virtual void onUnload() override;
+
+  private:
+    void createView();
   };
 }
