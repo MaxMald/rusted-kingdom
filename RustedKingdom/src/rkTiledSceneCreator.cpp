@@ -29,6 +29,7 @@
 #include "rkColliderComponent.h"
 #include "rkIsometricLayerGameObject.h"
 #include "rkTiledPropertiesHandler.h"
+#include "rkCircleColliderComponent.h"
 
 using sf::Vector2f;
 using sf::Vector2i;
@@ -281,14 +282,17 @@ namespace rk
 
     static void fixColliderCenterBaseOnOrigin(GameObject& gameObject)
     {
+      if (!gameObject.hasComponent<CircleColliderComponent>() ||
+          !gameObject.hasComponent<SpriteComponent>())
+      {
+        return;
+      }
+
       ColliderComponent* colliderComponent = gameObject
-        .getComponent<ColliderComponent>(componentType::Collider);
+        .getComponent<CircleColliderComponent>();
 
       SpriteComponent* spriteComponent = gameObject
-        .getComponent<SpriteComponent>(componentType::Sprite);
-
-      if (!colliderComponent || !spriteComponent)
-        return;
+        .getComponent<SpriteComponent>();
 
       colliderComponent->setCenter(
         colliderComponent->getCenter() - spriteComponent->getOrigin()
@@ -297,11 +301,11 @@ namespace rk
 
     static void activeDebugCollider(GameObject& gameObject)
     {
-      ColliderComponent* colliderComponent = gameObject
-        .getComponent<ColliderComponent>(componentType::Collider);
-
-      if (!colliderComponent)
+      if (!gameObject.hasComponent<CircleColliderComponent>())
         return;
+
+      ColliderComponent* colliderComponent = gameObject
+        .getComponent<CircleColliderComponent>();
 
       colliderComponent->setDebug(true);
     }

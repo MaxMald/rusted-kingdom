@@ -5,6 +5,7 @@
 #include "rkGameObject.h"
 #include "rkRigidBodyComponent.h"
 #include "rkColliderComponent.h"
+#include "rkCircleColliderComponent.h"
 #include "rkCollider.h"
 
 namespace rk
@@ -12,6 +13,7 @@ namespace rk
   AgentPathMovement::AgentPathMovement(GameObject& gameObject)
     : ScriptComponent(gameObject, "agent-path-movement"),
     m_rigidBodyComponent(nullptr),
+    m_colliderComponent(nullptr),
     m_currentPathPointIndex(0),
     m_isMoving(false),
     m_speed(0.0f)
@@ -42,10 +44,8 @@ namespace rk
 
   void AgentPathMovement::onCreate()
   {
-    m_rigidBodyComponent = m_gameObject
-      ->getComponentOrFail<RigidBodyComponent>(componentType::Type::RigidBody);
-    m_colliderComponent = m_gameObject
-      ->getComponentOrFail<ColliderComponent>(componentType::Type::Collider);
+    m_rigidBodyComponent = m_gameObject->getComponent<RigidBodyComponent>();
+    m_colliderComponent = m_gameObject->getComponent<CircleColliderComponent>();
   }
 
   void AgentPathMovement::onUpdate(float)

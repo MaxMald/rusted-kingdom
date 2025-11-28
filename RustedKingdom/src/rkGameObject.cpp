@@ -41,37 +41,6 @@ namespace rk
     return m_name;
   }
 
-  void GameObject::addComponent(UniquePtr<Component> component)
-  {
-    if (component)
-      m_components.push_back(std::move(component));
-  }
-
-  bool GameObject::hasComponent(componentType::Type type) const
-  {
-    for (const auto& comp : m_components)
-    {
-      if (comp->getType() == type)
-        return true;
-    }
-    return false;
-  }
-
-  bool GameObject::hasScriptComponentWithName(const String& scriptName) const
-  {
-    Vector<const ScriptComponent*> scripts = getComponents<ScriptComponent>(
-      componentType::Type::Script
-    );
-
-    for (const auto& script : scripts)
-    {
-      if (script->getScriptName() == scriptName)
-        return true;
-    }
-
-    return false;
-  }
-
   void GameObject::addChild(UniquePtr<GameObject> child)
   {
     if (!child)

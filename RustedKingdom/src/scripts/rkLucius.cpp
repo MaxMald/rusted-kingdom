@@ -53,17 +53,12 @@ namespace rk
 
   void Lucius::onCreate()
   {
-    SpriteComponent* spriteComponent = m_gameObject
-      ->getComponentOrFail<SpriteComponent>(rk::componentType::Sprite);
-
+    SpriteComponent* spriteComponent = m_gameObject->getComponent<SpriteComponent>();
     sf::Vector2f spriteOrigin(50.0f, 80.0f);
     spriteComponent->setOrigin(spriteOrigin);
 
-    m_pathfinderComponent = m_gameObject
-      ->getComponentOrFail<PathfinderComponent>(rk::componentType::Pathfinder);
-
-    m_agentPathMovement = m_gameObject
-      ->getScriptComponentWithNameOrFail<AgentPathMovement>("agent-path-movement");
+    m_pathfinderComponent = m_gameObject->getComponent<PathfinderComponent>();
+    m_agentPathMovement = m_gameObject->getComponent<AgentPathMovement>();
     m_agentPathMovement->setSpeed(100.0f);
   }
 

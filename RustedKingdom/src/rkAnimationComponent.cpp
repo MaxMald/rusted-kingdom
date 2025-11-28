@@ -15,17 +15,7 @@ namespace rk
     m_spriteComponent(nullptr),
     m_animationStateMachine(std::move(animationStateMachine))
   {
-    if (!gameObject.hasComponent(componentType::Type::Sprite))
-    {
-      throw RuntimeErrorException(
-        "AnimationComponent error: Associated GameObject does not have a "
-        "SpriteComponent."
-      );
-    }
-
-    m_spriteComponent = gameObject.getComponent<SpriteComponent>(
-      componentType::Type::Sprite
-    );
+    m_spriteComponent = gameObject.getComponent<SpriteComponent>();
   }
 
   AnimationStateMachineComponent::~AnimationStateMachineComponent()

@@ -50,18 +50,35 @@ namespace rk
     /** @brief Returns the world position of this GameObject.*/
     sf::Vector2f getWorldPosition() const;
 
-    /**
-     * @brief Adds a component to this GameObject.
-     * @param component Unique pointer to the component to add.
-     */
-    void addComponent(UniquePtr<Component> component);
+    
+    template<typename T>
+    void addComponent(UniquePtr<T> component)
+    {
+      static_assert(
+        IsBaseOf<Component, T>::value,
+        "Component must derive from rk::Component"
+      );
 
-    /**
-     * @brief Checks if this GameObject has a component of the specified type.
-     * @param type The type of component to check for.
-     * @return True if the component exists, false otherwise.
-     */
-    bool hasComponent(componentType::Type type) const;
+      if (component)
+        m_components.push_back(std::move(component));
+    }
+
+    template<typename T>
+    bool hasComponent() const
+    {
+      static_assert(
+        IsBaseOf<Component, T>::value,
+        "Component must derive from rk::Component"
+      );
+
+      for (const auto& comp : m_components)
+      {
+        if (typeid(T) == typeid(*comp))
+          return true;
+      }
+
+      return false;
+    }
 
     /**
      * @brief Retrieves a component of the specified type.
@@ -69,18 +86,23 @@ namespace rk
      * @return Pointer to the component if found, nullptr otherwise.
      */
     template<typename T>
-    T* getComponent(componentType::Type type);
+    T* getComponent()
+    {
+      static_assert(
+        IsBaseOf<Component, T>::value,
+        "Component must derive from rk::Component"
+      );
 
-    /**
-     * @brief Retrieves a component of the specified type, throwing an exception
-     * if not found.
-     * 
-     * @param type The type of component to retrieve.
-     * @return Pointer to the component.
-     * @throws RuntimeErrorException if the component is not found.
-     */
-    template<typename T>
-    T* getComponentOrFail(componentType::Type type);
+      for (const auto& comp : m_components)
+      {
+        if (typeid(T) == typeid(*comp))
+          return static_cast<T*>(comp.get());
+      }
+
+      throw RuntimeErrorException(
+        String::Format("Component of type %s not found", typeid(T).name())
+      );
+    }
 
     /**
      * @brief Retrieves all components of the specified type.
@@ -88,43 +110,22 @@ namespace rk
      * @return Vector of pointers to the components found.
      */
     template<typename T>
-    Vector<T*> getComponents(componentType::Type type);
+    Vector<T*> getComponents() const
+    {
+      static_assert(
+        IsBaseOf<Component, T>::value,
+        "Component must derive from rk::Component"
+      );
 
-    /**
-     * @brief Retrieves all components of the specified type as const pointers.
-     * @param type The type of components to retrieve.
-     * @return Vector of const pointers to the components found.
-     */
-    template<typename T>
-    Vector<const T*> getComponents(componentType::Type type) const;
+      Vector<T*> result;
+      for (const auto& comp : m_components)
+      {
+        if (typeid(T) == typeid(*comp))
+          result.push_back(static_cast<T*>(comp.get()));
+      }
 
-    /**
-     * @brief Checks if this GameObject has a ScriptComponent with the specified
-     * script name.
-     * @param scriptName Name of the script to check for.
-     * @return True if a ScriptComponent with the given name exists, false
-     * otherwise.
-     */
-    bool hasScriptComponentWithName(const String& scriptName) const;
-
-    /**
-     * @brief Retrieves the ScriptComponent with the specified script name.
-     * @param scriptName Name of the script to retrieve.
-     * @return Pointer to the ScriptComponent if found, nullptr otherwise.
-     */
-    template<typename T>
-    T* getScriptComponentWithName(const String& scriptName);
-
-    /**
-     * @brief Retrieves the ScriptComponent with the specified script name,
-     * throwing an exception if not found.
-     * 
-     * @param scriptName Name of the script to retrieve.
-     * @return Pointer to the ScriptComponent.
-     * @throws RuntimeErrorException if the ScriptComponent is not found.
-     */
-    template<typename T>
-    T* getScriptComponentWithNameOrFail(const String& scriptName);
+      return result;
+    }
 
     /**
      * @brief Adds a child GameObject to this object.
@@ -250,98 +251,4 @@ namespace rk
 
     friend class SceneGraph;
   };
-
-  template<typename T>
-  T* GameObject::getComponent(componentType::Type type)
-  {
-    for (const auto& comp : m_components)
-    {
-      if (comp->getType() == type)
-      {
-        if (auto ptr = dynamic_cast<T*>(comp.get()))
-          return ptr;
-      }
-    }
-    return nullptr;
-  }
-
-  template<typename T>
-  T* GameObject::getComponentOrFail(componentType::Type type)
-  {
-    T* component = getComponent<T>(type);
-    if (!component)
-    {
-      throw RuntimeErrorException(
-        String::Format(
-          "GameObject::getComponentOrFail: Component of type %d not found in GameObject '%s'.",
-          static_cast<int>(type),
-          m_name.c_str()
-        )
-      );
-    }
-    return component;
-  }
-
-  template<typename T>
-  Vector<T*> GameObject::getComponents(componentType::Type type)
-  {
-    Vector<T*> result;
-    for (const auto& comp : m_components)
-    {
-      if (comp->getType() == type)
-      {
-        if (auto ptr = dynamic_cast<T*>(comp.get()))
-          result.push_back(ptr);
-      }
-    }
-    return result;
-  }
-
-  template<typename T>
-  Vector<const T*> GameObject::getComponents(componentType::Type type) const
-  {
-    Vector<const T*> result;
-    for (const auto& comp : m_components)
-    {
-      if (comp->getType() == type)
-      {
-        if (auto ptr = dynamic_cast<const T*>(comp.get()))
-          result.push_back(ptr);
-      }
-    }
-    return result;
-  }
-
-  template<typename T>
-  T* GameObject::getScriptComponentWithName(const String& scriptName)
-  {
-    Vector<ScriptComponent*> scripts = getComponents<ScriptComponent>(componentType::Type::Script);
-    for (const auto& script : scripts)
-    {
-      if (script->getScriptName() == scriptName)
-        return dynamic_cast<T*>(script);
-    }
-
-    return nullptr;
-  }
-
-  template<typename T>
-  T* GameObject::getScriptComponentWithNameOrFail(const String& scriptName)
-  {
-    T* script = getScriptComponentWithName<T>(scriptName);
-
-    if (!script)
-    {
-      throw RuntimeErrorException(
-        String::Format(
-          "GameObject::getScriptComponentWithNameOrFail: "
-          "ScriptComponent with name '%s' not found in GameObject '%s'.",
-          scriptName.c_str(),
-          m_name.c_str()
-        )
-      );
-    }
-
-    return script;
-  }
 }

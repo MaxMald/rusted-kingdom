@@ -88,7 +88,7 @@ namespace rk
       m_rigidBodyComponentFactory.create(
         *lucius,
         rigidBodyType::Type::Kinematic,
-        true
+        false
       )
     );
 

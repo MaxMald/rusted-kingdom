@@ -21,10 +21,8 @@ namespace rk
 
   void LuciusAnimation::onCreate()
   {
-    m_animationComponent = m_gameObject
-      ->getComponentOrFail<AnimationStateMachineComponent>(rk::componentType::Animation);
-    m_rigidBodyComponent = m_gameObject
-      ->getComponentOrFail<RigidBodyComponent>(rk::componentType::RigidBody);
+    m_animationComponent = m_gameObject->getComponent<AnimationStateMachineComponent>();
+    m_rigidBodyComponent = m_gameObject->getComponent<RigidBodyComponent>();
   }
 
   void LuciusAnimation::onUpdate(float)

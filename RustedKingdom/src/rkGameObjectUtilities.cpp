@@ -8,9 +8,7 @@ namespace rk
   {
     void setSpriteOrigin(GameObject& gameObject, float x, float y)
     {
-      SpriteComponent* spriteComponent = gameObject.getComponent<SpriteComponent>(
-        componentType::Sprite
-      );
+      SpriteComponent* spriteComponent = gameObject.getComponent<SpriteComponent>();
 
       if (!spriteComponent)
         return;
