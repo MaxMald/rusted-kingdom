@@ -37,6 +37,9 @@ namespace rk
     virtual void init(ServiceLocator&) = 0;
     virtual void onLoad() = 0;
     virtual void onUnload() = 0;
+    virtual void preUpdate(float deltaTime) = 0;
+    virtual void postUpdate(float deltaTime) = 0;
+    virtual void postDraw(RenderTarget& window, RenderStates states) const;
 
   private:
     void load();

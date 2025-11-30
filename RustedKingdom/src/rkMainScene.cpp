@@ -36,6 +36,7 @@ namespace rk
 
   void MainScene::init(ServiceLocator& serviceLocator)
   {
+    ILevelScene::init(serviceLocator);
     m_assetManager = serviceLocator.getService<AssetManager>();
     m_windowManager = serviceLocator.getService<WindowManager>();
   }

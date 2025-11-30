@@ -12,6 +12,11 @@ namespace rk
   {
   }
 
+  void IScene::postDraw(RenderTarget&, RenderStates) const
+  {
+    // Implement in derived classes if needed
+  }
+
   void IScene::load()
   {
     onLoad();
@@ -27,11 +32,15 @@ namespace rk
   void IScene::update(float deltaTime)
   {
     m_physicsWorld.update(deltaTime);
+
+    preUpdate(deltaTime);
     m_sceneGraph.update(deltaTime);
+    postUpdate(deltaTime);
   }
 
   void IScene::draw(RenderTarget& window, RenderStates states) const
   {
     m_sceneGraph.draw(window, states);
+    postDraw(window, states);
   }
 }
