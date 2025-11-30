@@ -297,9 +297,6 @@
     <ClCompile Include="src\rkColliderComponent.cpp">
       <Filter>Source Files\scene\gameObjects\components</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkCircleColliderComponent.cpp">
-      <Filter>Source Files\scene\gameObjects\components</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkColliderComponentFactory.cpp">
       <Filter>Source Files\scene\gameObjects\components\factories</Filter>
     </ClCompile>
@@ -591,9 +588,6 @@
       <Filter>Header Files\physics\colliders</Filter>
     </ClInclude>
     <ClInclude Include="include\rkColliderComponent.h">
-      <Filter>Header Files\scene\gameObjects\components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkCircleColliderComponent.h">
       <Filter>Header Files\scene\gameObjects\components</Filter>
     </ClInclude>
     <ClInclude Include="include\rkColliderComponentFactory.h">

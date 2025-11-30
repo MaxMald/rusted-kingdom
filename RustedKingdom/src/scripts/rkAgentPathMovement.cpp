@@ -5,7 +5,6 @@
 #include "rkGameObject.h"
 #include "rkRigidBodyComponent.h"
 #include "rkColliderComponent.h"
-#include "rkCircleColliderComponent.h"
 #include "rkCollider.h"
 
 namespace rk
@@ -45,7 +44,7 @@ namespace rk
   void AgentPathMovement::onCreate()
   {
     m_rigidBodyComponent = m_gameObject->getComponent<RigidBodyComponent>();
-    m_colliderComponent = m_gameObject->getComponent<CircleColliderComponent>();
+    m_colliderComponent = m_gameObject->getComponent<ColliderComponent>();
   }
 
   void AgentPathMovement::onUpdate(float)

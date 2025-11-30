@@ -1,6 +1,10 @@
 #include "rkColliderComponent.h"
+
+#include <SFML/Graphics/CircleShape.hpp>
+
 #include "rkPhysicWorld.h"
 #include "rkCollider.h"
+#include "rkCircleCollider.h"
 #include "rkGameObject.h"
 
 namespace rk
@@ -43,6 +47,11 @@ namespace rk
     return m_collider->getType();
   }
 
+  const Collider* ColliderComponent::getCollider() const
+  {
+    return m_collider;
+  }
+
   bool ColliderComponent::checkCollision(const ColliderComponent& other) const
   {
     return m_collider->checkCollision(*other.m_collider);
@@ -51,5 +60,40 @@ namespace rk
   bool ColliderComponent::checkCollision(const Vector2f& point) const
   {
     return m_collider->checkCollision(point);
+  }
+
+  void ColliderComponent::onDraw(
+    RenderTarget& target,
+    RenderStates states
+  ) const
+  {
+    if (!m_debug)
+      return;
+
+    if (m_collider->getType() == colliderType::Circle)
+    {
+      debugCircleCollider(
+        static_cast<const CircleCollider*>(m_collider),
+        target
+      );
+    }
+  }
+
+  void ColliderComponent::debugCircleCollider(
+    const CircleCollider* circleCollider,
+    RenderTarget& target
+  ) const
+  {
+    const float radius = circleCollider->getRadius();
+    const Vector2f position = circleCollider->getPosition()
+      + circleCollider->getCenter();
+
+    sf::CircleShape circle(radius);
+    circle.setPosition(position - Vector2f(radius, radius));
+    circle.setFillColor(sf::Color::Transparent);
+    circle.setOutlineColor(sf::Color::Red);
+    circle.setOutlineThickness(1.f);
+
+    target.draw(circle);
   }
 }

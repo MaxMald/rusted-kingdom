@@ -23,7 +23,7 @@ namespace rk
 
     virtual void onCreate();
     virtual void onUpdate(float deltaTime);
-    virtual void onDraw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void onDraw(RenderTarget& target, RenderStates states) const;
     virtual void onDelete();
 
     friend class GameObject;

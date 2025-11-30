@@ -30,7 +30,7 @@ namespace rk
       const String& colliderGroupKey
     );
 
-    UniquePtr<CircleColliderComponent> createCircle(
+    UniquePtr<ColliderComponent> createCircle(
       const tmr::EllipseObject*,
       GameObject&,
       const String& colliderGroupKey

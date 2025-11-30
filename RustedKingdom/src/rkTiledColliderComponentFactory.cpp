@@ -4,7 +4,7 @@
 
 #include "rkPhysicWorld.h"
 #include "rkColliderComponentFactory.h"
-#include "rkCircleColliderComponent.h"
+#include "rkColliderComponent.h"
 
 namespace rk
 {
@@ -39,7 +39,7 @@ namespace rk
     }
   }
 
-  UniquePtr<CircleColliderComponent> TiledColliderComponentFactory::createCircle(
+  UniquePtr<ColliderComponent> TiledColliderComponentFactory::createCircle(
     const tmr::EllipseObject* ellipse,
     GameObject& gameObject,
     const String& colliderGroupKey

@@ -11,7 +11,7 @@
 #include "rkRigidBodyComponent.h"
 #include "rkRigidBodyComponentFactory.h"
 #include "rkColliderComponentFactory.h"
-#include "rkCircleColliderComponent.h"
+#include "rkColliderComponent.h"
 #include "rkPathfinderComponent.h"
 
 #include "scripts/rkLucius.h"
@@ -92,7 +92,7 @@ namespace rk
       )
     );
 
-    UniquePtr<CircleColliderComponent> circleCollider =
+    UniquePtr<ColliderComponent> circleCollider =
       m_colliderComponentFactory.createCircle(
         *lucius,
         Vector2f(0.0f, 0.0f),

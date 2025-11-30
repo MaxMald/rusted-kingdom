@@ -10,7 +10,7 @@ namespace rk
 {
   class GameObject;
   class PhysicWorld;
-  class CircleColliderComponent;
+  class ColliderComponent;
 
   class ColliderComponentFactory : public NonCopyable
   {
@@ -18,7 +18,7 @@ namespace rk
     ColliderComponentFactory(PhysicWorld& physicWorld);
     ~ColliderComponentFactory();
 
-    UniquePtr<CircleColliderComponent> createCircle(
+    UniquePtr<ColliderComponent> createCircle(
       GameObject& gameObject,
       const Vector2f& center,
       float radius,

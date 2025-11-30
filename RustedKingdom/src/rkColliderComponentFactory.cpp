@@ -1,7 +1,7 @@
 #include "rkColliderComponentFactory.h"
 #include "rkPhysicWorld.h"
 #include "rkCircleCollider.h"
-#include "rkCircleColliderComponent.h"
+#include "rkColliderComponent.h"
 
 namespace rk
 {
@@ -14,7 +14,7 @@ namespace rk
   {
   }
 
-  UniquePtr<CircleColliderComponent> ColliderComponentFactory::createCircle(
+  UniquePtr<ColliderComponent> ColliderComponentFactory::createCircle(
     GameObject& gameObject,
     const Vector2f& center,
     float radius,
@@ -31,7 +31,7 @@ namespace rk
     circleCollider->setCenter(center);
     circleCollider->setRadius(radius);
 
-    return MakeUnique<CircleColliderComponent>(
+    return MakeUnique<ColliderComponent>(
       gameObject,
       m_physicWorld,
       circleCollider
