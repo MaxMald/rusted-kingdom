@@ -29,7 +29,7 @@
 #include "rkColliderComponent.h"
 #include "rkIsometricLayerGameObject.h"
 #include "rkTiledPropertiesHandler.h"
-#include "rkColliderComponent.h"
+#include "rkTiledLayerGameObjectCreator.h"
 
 using sf::Vector2f;
 using sf::Vector2i;
@@ -71,12 +71,6 @@ namespace rk
 
     static void fixColliderCenterBaseOnOrigin(GameObject& gameObject);
     static void activeDebugCollider(GameObject& gameObject);
-
-    static GameObject* createLayerGameObject(
-      const String& name,
-      const tmr::Properties* layerProperties,
-      SceneGraph& sceneGraph
-    );
   }
 }
 
@@ -156,9 +150,9 @@ namespace rk
       const tmr::GridDataLayer* tmrLayer
     )
     {
-      GameObject* layerGameObject = createLayerGameObject(
-        tmrLayer->getName(),
-        tmrLayer->getProperties(),
+      GameObject* layerGameObject = tiledLayerGameObjectCreator::create(
+        tiledMap,
+        tmrLayer,
         sceneGraph
       );
 
@@ -225,14 +219,14 @@ namespace rk
       TiledObjectCreator& tiledObjectCreator,
       const tmr::ObjectGroupLayer* tmrLayer
     )
-    {
-      String layerName = tmrLayer->getName();
-      GameObject* layerGameObject = createLayerGameObject(
-        layerName,
-        tmrLayer->getProperties(),
+    { 
+      GameObject* layerGameObject = tiledLayerGameObjectCreator::create(
+        tiledMap,
+        tmrLayer,
         sceneGraph
       );
 
+      String layerName = tmrLayer->getName();
       tiledObjectCreator.setColliderGroupKey(layerName);
       SharedPtr<IPositionTransformer> positionTransformer = 
         tiledMapUtilities::getPositionTransformer(*tiledMap);
@@ -304,28 +298,6 @@ namespace rk
         .getComponent<ColliderComponent>();
 
       colliderComponent->setDebug(true);
-    }
-
-    static GameObject* createLayerGameObject(
-      const String& name,
-      const tmr::Properties* layerProperties,
-      SceneGraph& sceneGraph
-    )
-    {
-      IsometricLayerGameObject* layerGameObject
-        = new IsometricLayerGameObject(name);
-
-      TiledPropertiesHandler propertiesHandler(layerProperties);
-      
-      bool isStatic = false;
-      propertiesHandler.tryGetBool("isStatic", isStatic);
-      layerGameObject->setStaticLayer(isStatic);
-
-      sceneGraph.registerGameObject(
-        UniquePtr<GameObject>(layerGameObject)
-      );
-
-      return layerGameObject;
     }
   }
 }

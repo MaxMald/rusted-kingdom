@@ -396,6 +396,9 @@
     <ClCompile Include="src\rkServiceLocator.cpp">
       <Filter>Source Files\utilities\services</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkTiledLayerGameObjectCreator.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -703,6 +706,9 @@
     </ClInclude>
     <ClInclude Include="include\rkOrthogonalPositionTransformer.h">
       <Filter>Header Files\utilities\positionTransformer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledLayerGameObjectCreator.h">
+      <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

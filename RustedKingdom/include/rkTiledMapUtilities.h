@@ -14,6 +14,7 @@ namespace tmr
 
 namespace rk
 {
+  class GameObject;
   class IPositionTransformer;
   class TiledMap;
 
