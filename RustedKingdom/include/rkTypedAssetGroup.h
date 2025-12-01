@@ -13,6 +13,30 @@ namespace rk
   public:
     TypedAssetGroup() = default;
     virtual ~TypedAssetGroup() = default;
+
+    /**
+     * @brief Registers an asset in the group with a unique key.
+     *
+     * Adds the provided asset to the group under the specified key. If an asset
+     * with the same key already exists, a RuntimeErrorException is thrown.
+     *
+     * @param key Unique string identifier for the asset.
+     * @param asset Shared pointer to the asset to register.
+     *
+     * @throws RuntimeErrorException if an asset with the given key already
+     * exists.
+     */
+    void registerAsset(const String& key, const SharedPtr<T>& asset)
+    {
+      if (has(key))
+      {
+        throw RuntimeErrorException(
+          String::Format("Asset with key '{}' already exists", key.c_str())
+        );
+      }
+
+      m_assets[key] = std::static_pointer_cast<IAsset>(asset);
+    }
     
     /**
      * @brief Loads an asset from file and adds it to the group.

@@ -7,6 +7,16 @@ namespace rk
   {
   }
 
+  Texture::Texture(sf::Texture* sfmlTexture) :
+    m_texture(*sfmlTexture)
+  {
+  }
+
+  Texture::Texture(const sf::Texture& sfmlTexture) :
+    m_texture(sfmlTexture)
+  {
+  }
+
   Texture::~Texture()
   {
   }

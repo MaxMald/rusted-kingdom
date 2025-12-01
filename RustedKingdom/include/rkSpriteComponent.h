@@ -22,6 +22,7 @@ namespace rk
     virtual ~SpriteComponent();
 
     sf::Sprite& getSprite() { return m_sprite; }
+    const sf::Sprite& getSprite() const { return m_sprite; }
     void setOrigin(const Vector2f& origin);
     Vector2f getOrigin() const;
     void setTexture(const sf::Texture& texture);

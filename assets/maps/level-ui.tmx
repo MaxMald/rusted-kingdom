@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="1" nextlayerid="3" nextobjectid="2">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="1" nextlayerid="4" nextobjectid="7">
  <tileset firstgid="1" source="../tiled-project/tilesets/level-ui-resources.tsx"/>
- <objectgroup id="2" name="ui">
+ <objectgroup id="2" name="base" locked="1">
   <object id="1" gid="1" x="0" y="780" width="1920" height="300"/>
+ </objectgroup>
+ <objectgroup id="3" name="textures">
+  <object id="6" name="minimap" gid="2" x="1509" y="826" width="405" height="248"/>
  </objectgroup>
 </map>

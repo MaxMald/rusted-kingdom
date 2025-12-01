@@ -166,6 +166,12 @@
     <Filter Include="Header Files\utilities\positionTransformer">
       <UniqueIdentifier>{cb49a8d0-0121-4fbb-86e2-0abf3609c328}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\minimap">
+      <UniqueIdentifier>{e454745e-bd09-4dd4-a54e-51e410906d02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\minimap">
+      <UniqueIdentifier>{3fae0189-166e-4c27-96dc-0228236cf86f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -398,6 +404,15 @@
     </ClCompile>
     <ClCompile Include="src\rkTiledLayerGameObjectCreator.cpp">
       <Filter>Source Files\scene\tiledSceneCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkMinimapTextureCreator.cpp">
+      <Filter>Source Files\minimap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkRectUtilities.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkMinimapUtilities.cpp">
+      <Filter>Source Files\minimap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -709,6 +724,15 @@
     </ClInclude>
     <ClInclude Include="include\rkTiledLayerGameObjectCreator.h">
       <Filter>Header Files\scene\tiledSceneCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkMinimapTextureCreator.h">
+      <Filter>Header Files\minimap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkRectUtilities.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkMinimapUtilities.h">
+      <Filter>Header Files\minimap</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

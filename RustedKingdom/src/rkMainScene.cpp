@@ -47,6 +47,10 @@ namespace rk
 
     loadAssets();
     createScene();
+
+    prepareMinimap(
+      m_assetManager->getAssetGroup<TiledMap>().get("level-0")->getTmrTiledMap()
+    );
   }
 
   void MainScene::onUnload()

@@ -5,6 +5,7 @@
  <layer id="3" name="sand" width="30" height="30" locked="1">
   <properties>
    <property name="isStatic" type="bool" value="true"/>
+   <property name="minimap" type="bool" value="true"/>
   </properties>
   <data encoding="csv">
 32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,
@@ -39,9 +40,10 @@
 32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32
 </data>
  </layer>
- <layer id="11" name="dirt" width="30" height="30">
+ <layer id="11" name="dirt" width="30" height="30" locked="1">
   <properties>
    <property name="isStatic" type="bool" value="true"/>
+   <property name="minimap" type="bool" value="true"/>
   </properties>
   <data encoding="csv">
 24,30,30,30,30,30,5,26,19,0,17,28,15,30,30,2,10,0,0,0,0,17,15,30,30,30,30,30,30,30,
@@ -79,6 +81,7 @@
  <objectgroup id="2" name="plantas">
   <properties>
    <property name="isStatic" type="bool" value="false"/>
+   <property name="minimap" type="bool" value="true"/>
   </properties>
   <object id="148" gid="39" x="508.667" y="203.333" width="256" height="256"/>
   <object id="149" gid="39" x="256" y="461.333" width="256" height="256"/>

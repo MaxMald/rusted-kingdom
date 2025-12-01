@@ -3,6 +3,11 @@
 #include "rkIScene.h"
 #include "rkPathfinderManager.h"
 
+namespace tmr
+{
+  class TiledMap;
+}
+
 namespace rk
 {
   class ViewsManager;
@@ -23,6 +28,8 @@ namespace rk
     virtual void preUpdate(float deltaTime) override;
     virtual void postUpdate(float deltaTime) override;
     virtual void postDraw(RenderTarget& window, RenderStates states) const override;
+
+    void prepareMinimap(const tmr::TiledMap* tiledMap);
 
   private:
     SharedPtr<ViewsManager> m_viewsManager;

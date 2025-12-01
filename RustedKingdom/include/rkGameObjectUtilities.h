@@ -1,6 +1,10 @@
 #pragma once
 
+#include <SFML/Graphics/Rect.hpp>
+
 #include "rkPrerequisites.h"
+
+using sf::FloatRect;
 
 namespace rk
 {
@@ -22,5 +26,7 @@ namespace rk
      * @param y Normalized vertical origin (0.0 = top, 1.0 = bottom).
      */
     void setSpriteOrigin(GameObject& gameObject, float x, float y);
+
+    FloatRect calculateBounds(const GameObject& gameObject);
   }
 }

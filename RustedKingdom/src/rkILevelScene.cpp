@@ -4,6 +4,7 @@
 #include "rkViewsManager.h"
 #include "rkViewComponentFactory.h"
 #include "rkViewController.h"
+#include "rkMinimapUtilities.h"
 #include "scripts/rkViewControllerScript.h"
 
 namespace rk
@@ -50,6 +51,19 @@ namespace rk
   ) const
   {
     drawUi(window, states);
+  }
+
+  void ILevelScene::prepareMinimap(
+    const tmr::TiledMap* tiledMap
+  )
+  {
+    m_sceneGraph.getRoot()->updateTransform();
+
+    minimapUtilities::prepare(
+      m_uiSceneGraph.getRoot()->findChildByName("minimap"),
+      tiledMap,
+      m_sceneGraph
+    );
   }
 
   void ILevelScene::createView()

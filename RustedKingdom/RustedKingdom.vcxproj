@@ -175,6 +175,8 @@
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp" />
     <ClCompile Include="src\rkILevelScene.cpp" />
     <ClCompile Include="src\rkMainScene.cpp" />
+    <ClCompile Include="src\rkMinimapTextureCreator.cpp" />
+    <ClCompile Include="src\rkMinimapUtilities.cpp" />
     <ClCompile Include="src\rkNode.cpp" />
     <ClCompile Include="src\rkNodeLink.cpp" />
     <ClCompile Include="src\rkNodeMesh.cpp" />
@@ -183,6 +185,7 @@
     <ClCompile Include="src\rkPathfinderComponent.cpp" />
     <ClCompile Include="src\rkPathfinderFactory.cpp" />
     <ClCompile Include="src\rkPathfinderManager.cpp" />
+    <ClCompile Include="src\rkRectUtilities.cpp" />
     <ClCompile Include="src\rkRigidBodyComponent.cpp" />
     <ClCompile Include="src\rkAnimation.cpp" />
     <ClCompile Include="src\rkAnimationComponent.cpp" />
@@ -240,6 +243,7 @@
     <ClCompile Include="src\scripts\rkViewControllerScript.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\rkMinimapUtilities.h" />
     <ClInclude Include="include\rkAnimation.h" />
     <ClInclude Include="include\rkAnimationFactory.h" />
     <ClInclude Include="include\rkAnimationStateMachineComponent.h" />
@@ -266,6 +270,7 @@
     <ClInclude Include="include\rkIsometricPositionTransformer.h" />
     <ClInclude Include="include\rkILevelScene.h" />
     <ClInclude Include="include\rkMainScene.h" />
+    <ClInclude Include="include\rkMinimapTextureCreator.h" />
     <ClInclude Include="include\rkNode.h" />
     <ClInclude Include="include\rkNodeLink.h" />
     <ClInclude Include="include\rkNodeMesh.h" />
@@ -276,6 +281,7 @@
     <ClInclude Include="include\rkPathfinderFactory.h" />
     <ClInclude Include="include\rkPathfinderManager.h" />
     <ClInclude Include="include\rkPhysicWorldListener.h" />
+    <ClInclude Include="include\rkRectUtilities.h" />
     <ClInclude Include="include\rkRigidBodyComponentFactory.h" />
     <ClInclude Include="include\rkColliderType.h" />
     <ClInclude Include="include\rkComponent.h" />

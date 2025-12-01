@@ -93,6 +93,25 @@ namespace rk
       );
     }
 
+    template <typename T>
+    const T* getComponent() const
+    {
+      static_assert(
+        IsBaseOf<Component, T>::value,
+        "Component must derive from rk::Component"
+      );
+
+      for (const auto& comp : m_components)
+      {
+        if (typeid(T) == typeid(*comp))
+          return static_cast<const T*>(comp.get());
+      }
+
+      throw RuntimeErrorException(
+        String::Format("Component of type %s not found", typeid(T).name())
+      );
+    }
+
     /**
      * @brief Retrieves all components of the specified type.
      * @param type The type of components to retrieve.
@@ -191,6 +210,16 @@ namespace rk
      */
     void updateTransform();
 
+    /**
+     * @brief Draws this GameObject. Override to implement custom rendering.
+     *
+     * @param target The SFML render target to draw onto (e.g., window or
+     * texture).
+     * @param states The current render states (transform, blend mode, etc.) to
+     * use for drawing.
+     */
+    virtual void draw(RenderTarget& target, RenderStates states) const override;
+
   protected:
 
     /**
@@ -210,16 +239,6 @@ namespace rk
      * @param deltaTime Time elapsed since last update (in seconds).
      */
     virtual void update(float deltaTime);
-
-    /**
-     * @brief Draws this GameObject. Override to implement custom rendering.
-     *
-     * @param target The SFML render target to draw onto (e.g., window or
-     * texture).
-     * @param states The current render states (transform, blend mode, etc.) to
-     * use for drawing.
-     */
-    virtual void draw(RenderTarget& target, RenderStates states) const override;
 
     /**
      * @brief Called when the GameObject is being deleted.

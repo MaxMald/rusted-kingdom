@@ -18,6 +18,8 @@ namespace rk
   {
   public:
     Texture();
+    Texture(sf::Texture*);
+    Texture(const sf::Texture&);
     virtual ~Texture();
 
     const sf::Texture& getSFMLTexture() const { return m_texture; }
