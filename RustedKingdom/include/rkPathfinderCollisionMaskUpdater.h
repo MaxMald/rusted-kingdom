@@ -1,7 +1,7 @@
 #pragma once
 
 #include "rkPrerequisites.h"
-#include "rkIsometricPositionTransformer.h"
+#include "rkIPositionTransformer.h"
 #include "rkPhysicWorldListener.h"
 #include "rkNonCopyable.h"
 
@@ -20,7 +20,7 @@ namespace rk
       SharedPtr<Pathfinder> pathfinder,
       PhysicWorld& physicWorld,
       const String& collidersGroupKey,
-      const IsometricPositionTransformer& isometricPositionTransformer
+      SharedPtr<IPositionTransformer> positionTransformer
     );
     virtual ~PathfinderCollisionMaskUpdater();
 
@@ -29,7 +29,7 @@ namespace rk
   private:
     SharedPtr<Pathfinder> m_pathfinder;
     PhysicWorld& m_physicWorld;
-    IsometricPositionTransformer m_isometricPositionTransformer;
+    SharedPtr<IPositionTransformer> m_positionTransformer;
     String m_collidersGroupKey;
 
     void setNodesAsWalkable();

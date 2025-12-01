@@ -1,6 +1,10 @@
 #pragma once
 
+#include <SFML/System/Vector2.hpp>
+
 #include "rkPrerequisites.h"
+
+using sf::Vector2f;
 
 namespace tmr
 {
@@ -10,7 +14,7 @@ namespace tmr
 
 namespace rk
 {
-  class IsometricPositionTransformer;
+  class IPositionTransformer;
   class TiledMap;
 
   namespace tiledMapUtilities
@@ -20,12 +24,16 @@ namespace rk
       Int32 gid
     );
 
-    IsometricPositionTransformer getIsometricPositionTransformer(
+    SharedPtr<IPositionTransformer> getPositionTransformer(
       const tmr::TiledMap& tiledMap
     );
 
-    IsometricPositionTransformer getIsometricPositionTransformer(
+    SharedPtr<IPositionTransformer> getPositionTransformer(
       const rk::TiledMap& tiledMap
+    );
+
+    Vector2f getObjectOrigin(
+      const tmr::TiledMap& tiledMap
     );
   }
 }

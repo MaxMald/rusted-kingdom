@@ -63,6 +63,12 @@ namespace rk
     );
     tiledMapAssetLoader::loadTiledMapAssets(*m_assetManager, "level-0");
 
+    m_assetManager->getAssetGroup<TiledMap>().loadFromFile(
+      "ui",
+      m_assetManager->combineAssetDirectoryWithPath("maps/level-ui.tmx")
+    );
+    tiledMapAssetLoader::loadTiledMapAssets(*m_assetManager, "ui");
+
     m_assetManager->getAssetGroup<Texture>().loadFromFile(
       "lucius-walking",
       m_assetManager->combineAssetDirectoryWithPath("textures/characters/lucius/lucius-walking.png")
@@ -108,11 +114,19 @@ namespace rk
       m_sceneGraph
     );
 
+    tiledSceneCreator::create(
+      "ui",
+      *m_assetManager,
+      tiledObjectCreator,
+      spriteComponentFactory,
+      m_uiSceneGraph
+    );
+
     createPathfinders();
 
     // Create Lucius
-    IsometricPositionTransformer isometricPositionTransformer =
-      tiledMapUtilities::getIsometricPositionTransformer(*tiledMap);
+    SharedPtr<IPositionTransformer> positionTransform =
+      tiledMapUtilities::getPositionTransformer(*tiledMap);
 
     AnimationFactory animationFactory(*m_assetManager);
     LuciusBlueprint luciusBlueprint(
@@ -122,7 +136,7 @@ namespace rk
       rigidBodyComponentFactory,
       colliderComponentFactory,
       m_pathfinderManager.getPathfinder("characters"),
-      isometricPositionTransformer,
+      positionTransform,
       m_windowManager->getRenderWindow()
     );
 
@@ -149,7 +163,7 @@ namespace rk
       pathfinder,
       m_physicsWorld,
       "plantas",
-      tiledMapUtilities::getIsometricPositionTransformer(*tiledMap)
+      tiledMapUtilities::getPositionTransformer(*tiledMap)
     );
   }
 }

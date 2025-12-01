@@ -260,6 +260,7 @@
     <ClInclude Include="include\rkCollider.h" />
     <ClInclude Include="include\rkGameObjectUtilities.h" />
     <ClInclude Include="include\rkIAsset.h" />
+    <ClInclude Include="include\rkIPositionTransformer.h" />
     <ClInclude Include="include\rkIService.h" />
     <ClInclude Include="include\rkIsometricPositionTransformer.h" />
     <ClInclude Include="include\rkILevelScene.h" />
@@ -267,6 +268,7 @@
     <ClInclude Include="include\rkNode.h" />
     <ClInclude Include="include\rkNodeLink.h" />
     <ClInclude Include="include\rkNodeMesh.h" />
+    <ClInclude Include="include\rkOrthogonalPositionTransformer.h" />
     <ClInclude Include="include\rkPathfinder.h" />
     <ClInclude Include="include\rkPathfinderCollisionMaskUpdater.h" />
     <ClInclude Include="include\rkPathfinderComponent.h" />

@@ -15,10 +15,10 @@ namespace rk
   Lucius::Lucius(
     GameObject& gameObject, 
     const RenderWindow& renderWindow,
-    const IsometricPositionTransformer isometricPositionTransformer
+    SharedPtr<IPositionTransformer> positionTransformer
   )
     : ScriptComponent(gameObject),
-    m_isometricPositionTransformer(isometricPositionTransformer),
+    m_positionTransformer(positionTransformer),
     m_renderWindow(renderWindow),
     m_agentPathMovement(nullptr),
     m_pathfinderComponent(nullptr),
@@ -32,11 +32,11 @@ namespace rk
 
   void Lucius::goTo(const Vector2f& position)
   {
-    Vector2f startIso = m_isometricPositionTransformer.worldToIsometric(
+    Vector2f startIso = m_positionTransformer->transform(
       m_gameObject->getPosition()
     );
 
-    Vector2f endIso = m_isometricPositionTransformer.worldToIsometric(
+    Vector2f endIso = m_positionTransformer->transform(
       position
     );
 
@@ -46,7 +46,7 @@ namespace rk
       return;
 
     for (Vector2f& pathPoint : path)
-      pathPoint = m_isometricPositionTransformer.isometricToWorld(pathPoint);
+      pathPoint = m_positionTransformer->inverseTransform(pathPoint);
 
     m_agentPathMovement->start(path);
   }

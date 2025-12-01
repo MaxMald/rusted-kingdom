@@ -5,6 +5,7 @@
 
 #include "rkTiledMap.h"
 #include "rkIsometricPositionTransformer.h"
+#include "rkOrthogonalPositionTransformer.h"
 
 namespace rk
 {
@@ -29,25 +30,40 @@ namespace rk
       );
     }
 
-    IsometricPositionTransformer getIsometricPositionTransformer(
+    SharedPtr<IPositionTransformer> getPositionTransformer(
       const tmr::TiledMap& tiledMap
     )
     {
-      return IsometricPositionTransformer(
+      if (tiledMap.getOrientation() == tmr::orientation::Type::Orthogonal)
+        return MakeShared<OrthogonalPositionTransformer>();
+
+      return MakeShared<IsometricPositionTransformer>(
         static_cast<UInt32>(tiledMap.getTileWidth()),
         static_cast<UInt32>(tiledMap.getTileHeight())
       );
     }
 
-    IsometricPositionTransformer getIsometricPositionTransformer(
+    SharedPtr<IPositionTransformer> getPositionTransformer(
       const rk::TiledMap& tiledMap
     )
     {
       const tmr::TiledMap* tmrTiledMap = tiledMap.getTmrTiledMap();
-      return IsometricPositionTransformer(
+
+      if (tmrTiledMap->getOrientation() == tmr::orientation::Type::Orthogonal)
+        return MakeShared<OrthogonalPositionTransformer>();
+
+      return MakeShared<IsometricPositionTransformer>(
         static_cast<UInt32>(tmrTiledMap->getTileWidth()),
         static_cast<UInt32>(tmrTiledMap->getTileHeight())
       );
+    }
+
+    Vector2f getObjectOrigin(const tmr::TiledMap& tiledMap)
+    {
+      if (tiledMap.getOrientation() == tmr::orientation::Type::Orthogonal)
+        return Vector2f(0.0f, 0.0f);
+
+      return Vector2f(0.5f, 1.0f);
     }
   }
 }

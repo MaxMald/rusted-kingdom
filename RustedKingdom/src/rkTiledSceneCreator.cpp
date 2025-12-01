@@ -43,7 +43,6 @@ namespace rk
       SceneGraph& sceneGraph,
       SpriteComponentFactory& spriteComponentFactory,
       TiledObjectCreator& tiledObjectCreator,
-      IsometricPositionTransformer isometricPosTransformer,
       const tmr::Layer* tmrLayer
     );
 
@@ -51,7 +50,6 @@ namespace rk
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
       SpriteComponentFactory& spriteComponentFactory,
-      IsometricPositionTransformer isometricPosTransformer,
       const tmr::GridDataLayer* tmrLayer
     );
 
@@ -59,7 +57,6 @@ namespace rk
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
       TiledObjectCreator& tiledObjectCreator,
-      IsometricPositionTransformer isometricPosTransformer,
       const tmr::ObjectGroupLayer* tmrLayer
     );
 
@@ -101,9 +98,6 @@ namespace rk
 
       tmr::TiledMap* tmrTiledMap = tiledMap->getTmrTiledMap();
 
-      IsometricPositionTransformer isometricPosTransformer =
-        tiledMapUtilities::getIsometricPositionTransformer(*tmrTiledMap);
-
       SizeT layerCount = tmrTiledMap->getLayersCount();
       for (SizeT i = 0; i < layerCount; ++i)
       {
@@ -112,7 +106,6 @@ namespace rk
           sceneGraph,
           spriteComponentFactory,
           tiledObjectCreator,
-          isometricPosTransformer,
           tmrTiledMap->getLayerAt(i)
         );
       }
@@ -123,7 +116,6 @@ namespace rk
       SceneGraph& sceneGraph,
       SpriteComponentFactory& spriteComponentFactory,
       TiledObjectCreator& tiledObjectCreator,
-      IsometricPositionTransformer isometricPosTransformer,
       const tmr::Layer* tmrLayer
     )
     {
@@ -134,7 +126,6 @@ namespace rk
           tiledMap,
           sceneGraph,
           spriteComponentFactory,
-          isometricPosTransformer,
           static_cast<const tmr::GridDataLayer*>(tmrLayer)
         );
       }
@@ -144,7 +135,6 @@ namespace rk
           tiledMap,
           sceneGraph,
           tiledObjectCreator,
-          isometricPosTransformer,
           static_cast<const tmr::ObjectGroupLayer*>(tmrLayer)
         );
       }
@@ -163,7 +153,6 @@ namespace rk
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
       SpriteComponentFactory& spriteComponentFactory,
-      IsometricPositionTransformer isometricPosTransformer,
       const tmr::GridDataLayer* tmrLayer
     )
     {
@@ -180,11 +169,14 @@ namespace rk
         spriteComponentFactory
       );
 
+      SharedPtr<IPositionTransformer> positionTransformer = 
+        tiledMapUtilities::getPositionTransformer(*tiledMap);
+
       for (Int32 row = 0; row < height; ++row)
       {
         for (Int32 column = 0; column < width; ++column)
         {
-          Vector2f position = isometricPosTransformer.isometricToWorld(
+          Vector2f position = positionTransformer->inverseTransform(
             static_cast<float>(column * spriteHeight),
             static_cast<float>(row * spriteHeight)
           );
@@ -231,7 +223,6 @@ namespace rk
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
       TiledObjectCreator& tiledObjectCreator,
-      IsometricPositionTransformer isometricPosTransformer,
       const tmr::ObjectGroupLayer* tmrLayer
     )
     {
@@ -243,6 +234,8 @@ namespace rk
       );
 
       tiledObjectCreator.setColliderGroupKey(layerName);
+      SharedPtr<IPositionTransformer> positionTransformer = 
+        tiledMapUtilities::getPositionTransformer(*tiledMap);
 
       const tmr::ObjectGroup* tmrObjectGroup = tmrLayer->getObjectGroup();
       SizeT objectCount = tmrObjectGroup->getObjectSize();
@@ -263,13 +256,16 @@ namespace rk
           tmrObject
         );
 
-        Vector2f position = isometricPosTransformer.isometricToWorld(
+        Vector2f position = positionTransformer->inverseTransform(
           tmrObject->getX(),
           tmrObject->getY()
         );
 
         tileGameObject->setPosition(position);
-        gameObjectUtilities::setSpriteOrigin(*tileGameObject, 0.5f, 1.0f);
+
+        Vector2f origin = tiledMapUtilities::getObjectOrigin(*tiledMap);
+        gameObjectUtilities::setSpriteOrigin(*tileGameObject, origin.x, origin.y);
+
         fixColliderCenterBaseOnOrigin(*tileGameObject);
         activeDebugCollider(*tileGameObject);
 

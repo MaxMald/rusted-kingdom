@@ -10,12 +10,12 @@ namespace rk
     SharedPtr<Pathfinder> pathfinder,
     PhysicWorld& physicWorld,
     const String& collidersGroupKey,
-    const IsometricPositionTransformer& isometricPositionTransformer
+    SharedPtr<IPositionTransformer> positionTransformer
   ) : 
     m_pathfinder(pathfinder),
     m_physicWorld(physicWorld),
     m_collidersGroupKey(collidersGroupKey),
-    m_isometricPositionTransformer(isometricPositionTransformer)
+    m_positionTransformer(positionTransformer)
   {
     m_physicWorld.addListener(this);
 
@@ -66,8 +66,8 @@ namespace rk
       {
         SharedPtr<Node> node = m_pathfinder->getNodeAt(x, y);
         Vector2f nodePosition = node->getPosition();
-        Vector2f transformedPosition = m_isometricPositionTransformer
-          .isometricToWorld(nodePosition);
+        Vector2f transformedPosition = 
+          m_positionTransformer->inverseTransform(nodePosition);
 
         if (collider->checkCollision(transformedPosition))
           node->setWalkable(false);

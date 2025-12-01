@@ -69,6 +69,26 @@ namespace rk
     return *this;
   }
 
+  Vector2f IsometricPositionTransformer::transform(const Vector2f& position) const
+  {
+    return worldToIsometric(position);
+  }
+
+  Vector2f IsometricPositionTransformer::transform(float x, float y) const
+  {
+    return worldToIsometric(x, y);
+  }
+
+  Vector2f IsometricPositionTransformer::inverseTransform(const Vector2f& position) const
+  {
+    return isometricToWorld(position);
+  }
+
+  Vector2f IsometricPositionTransformer::inverseTransform(float x, float y) const
+  {
+    return isometricToWorld(x, y);
+  }
+
   Vector2f IsometricPositionTransformer::worldToIsometric(
     float x,
     float y

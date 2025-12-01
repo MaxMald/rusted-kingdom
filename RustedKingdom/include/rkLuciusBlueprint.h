@@ -2,7 +2,7 @@
 
 #include "rkPrerequisites.h"
 #include "rkGameObjectBlueprint.h"
-#include "rkIsometricPositionTransformer.h"
+#include "rkIPositionTransformer.h"
 
 namespace sf
 {
@@ -30,7 +30,7 @@ namespace rk
       RigidBodyComponentFactory& rigidBodyComponentFactory,
       ColliderComponentFactory& colliderComponentFactory,
       SharedPtr<Pathfinder> pathfinder,
-      const IsometricPositionTransformer isometricPositionTransformer,
+      SharedPtr<IPositionTransformer> positionTransform,
       const RenderWindow& renderWindow
     );
     ~LuciusBlueprint() override;
@@ -48,7 +48,7 @@ namespace rk
     AnimationFactory& m_animationFactory;
     RigidBodyComponentFactory& m_rigidBodyComponentFactory;
     SharedPtr<Pathfinder> m_pathfinder;
-    IsometricPositionTransformer m_isometricPositionTransformer;
+    SharedPtr<IPositionTransformer> m_positionTransform;
     const RenderWindow& m_renderWindow;
   };
 }

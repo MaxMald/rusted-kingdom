@@ -2,6 +2,7 @@
 
 #include <SFML/System/Vector2.hpp>
 #include "rkPrerequisites.h"
+#include "rkIPositionTransformer.h"
 
 using sf::Vector2f;
 
@@ -14,7 +15,7 @@ namespace rk
    * (orthogonal) coordinates and isometric coordinates, using the specified tile
    * width and height.
    */
-  class IsometricPositionTransformer
+  class IsometricPositionTransformer : public IPositionTransformer
   {
   public:
     /**
@@ -55,6 +56,11 @@ namespace rk
     IsometricPositionTransformer& operator=(
       IsometricPositionTransformer&&
     ) noexcept;
+
+    virtual Vector2f transform(const Vector2f& position) const override;
+    virtual Vector2f transform(float x, float y) const override;
+    virtual Vector2f inverseTransform(const Vector2f& position) const override;
+    virtual Vector2f inverseTransform(float x, float y) const override;
 
     /**
      * @brief Convert world coordinates to isometric coordinates.

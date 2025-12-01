@@ -3,7 +3,7 @@
 #include <SFML/System/Vector2.hpp>
 
 #include "rkScriptComponent.h"
-#include "rkIsometricPositionTransformer.h"
+#include "rkIPositionTransformer.h"
 #include "scripts/rkLuciusStates.h"
 
 namespace sf
@@ -25,7 +25,7 @@ namespace rk
     Lucius(
       GameObject& gameObject, 
       const RenderWindow& renderWindow,
-      const IsometricPositionTransformer isometricPositionTransformer
+      SharedPtr<IPositionTransformer> positionTransformer
     );
     virtual ~Lucius();
 
@@ -36,7 +36,7 @@ namespace rk
     virtual void onUpdate(float deltaTime) override;
 
   private:
-    IsometricPositionTransformer m_isometricPositionTransformer;
+    SharedPtr<IPositionTransformer> m_positionTransformer;
     PathfinderComponent* m_pathfinderComponent;
     AgentPathMovement* m_agentPathMovement;
     const RenderWindow& m_renderWindow;

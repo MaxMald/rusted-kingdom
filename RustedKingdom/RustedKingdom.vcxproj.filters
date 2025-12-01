@@ -118,9 +118,6 @@
     <Filter Include="Header Files\services">
       <UniqueIdentifier>{a08bc1c2-b3c2-40f5-b525-ad745d6b97a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\services">
-      <UniqueIdentifier>{3a0b928f-928a-48cf-bd23-1c422aeb92fe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\assets">
       <UniqueIdentifier>{4222a4a4-a9bf-4455-8e86-a87169fee78e}</UniqueIdentifier>
     </Filter>
@@ -160,8 +157,14 @@
     <Filter Include="Header Files\services\viewsManager">
       <UniqueIdentifier>{e74f2fa8-45ee-463f-871b-5b72736214a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\services\viewsManager">
+    <Filter Include="Source Files\utilities\services">
+      <UniqueIdentifier>{3a0b928f-928a-48cf-bd23-1c422aeb92fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utilities\services\viewsManager">
       <UniqueIdentifier>{f61b5292-f837-471a-aa44-98b721dbabd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utilities\positionTransformer">
+      <UniqueIdentifier>{cb49a8d0-0121-4fbb-86e2-0abf3609c328}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -310,16 +313,16 @@
       <Filter>Source Files\scene</Filter>
     </ClCompile>
     <ClCompile Include="src\rkScenesManager.cpp">
-      <Filter>Source Files\services</Filter>
+      <Filter>Source Files\utilities\services</Filter>
     </ClCompile>
     <ClCompile Include="src\rkApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\rkWindowManager.cpp">
-      <Filter>Source Files\services</Filter>
+      <Filter>Source Files\utilities\services</Filter>
     </ClCompile>
     <ClCompile Include="src\rkAssetManager.cpp">
-      <Filter>Source Files\services</Filter>
+      <Filter>Source Files\utilities\services</Filter>
     </ClCompile>
     <ClCompile Include="src\rkPathfinderManager.cpp">
       <Filter>Source Files\pathfinder</Filter>
@@ -373,10 +376,10 @@
       <Filter>Source Files\utilities</Filter>
     </ClCompile>
     <ClCompile Include="src\rkViewsManager.cpp">
-      <Filter>Source Files\services\viewsManager</Filter>
+      <Filter>Source Files\utilities\services\viewsManager</Filter>
     </ClCompile>
     <ClCompile Include="src\rkViewController.cpp">
-      <Filter>Source Files\services\viewsManager</Filter>
+      <Filter>Source Files\utilities\services\viewsManager</Filter>
     </ClCompile>
     <ClCompile Include="src\rkViewComponent.cpp">
       <Filter>Source Files\scene\gameObjects\components</Filter>
@@ -391,7 +394,7 @@
       <Filter>Source Files\scene\levels</Filter>
     </ClCompile>
     <ClCompile Include="src\rkServiceLocator.cpp">
-      <Filter>Source Files\services</Filter>
+      <Filter>Source Files\utilities\services</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -566,9 +569,6 @@
     <ClInclude Include="include\rkPathfinderComponent.h">
       <Filter>Header Files\scene\gameObjects\components</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkIsometricPositionTransformer.h">
-      <Filter>Header Files\utilities</Filter>
-    </ClInclude>
     <ClInclude Include="include\scripts\rkLuciusStates.h">
       <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
     </ClInclude>
@@ -694,6 +694,15 @@
     </ClInclude>
     <ClInclude Include="include\rkILevelScene.h">
       <Filter>Header Files\scene\levels</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkIPositionTransformer.h">
+      <Filter>Header Files\utilities\positionTransformer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkIsometricPositionTransformer.h">
+      <Filter>Header Files\utilities\positionTransformer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkOrthogonalPositionTransformer.h">
+      <Filter>Header Files\utilities\positionTransformer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
