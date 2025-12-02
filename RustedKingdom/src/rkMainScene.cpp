@@ -16,9 +16,13 @@
 #include "rkTiledMapAssetsLoader.h"
 #include "rkTiledMapUtilities.h"
 #include "rkTiledSceneCreator.h"
-#include "rkTiledObjectCreator.h"
 #include "rkTiledColliderComponentFactory.h"
+#include "rkTiledGameObjectBlueprintsMapper.h"
 #include "rkLuciusBlueprint.h"
+#include "rkTiledClassApplierMapper.h"
+#include "rkBaseTiledClassApplier.h"
+
+#include "rkMinimapBlueprint.h"
 
 namespace rk
 {
@@ -107,13 +111,23 @@ namespace rk
     SharedPtr<TiledMap> tiledMap = m_assetManager->getAssetGroup<TiledMap>()
       .get("level-0");
 
+    TiledGameObjectBlueprintMapper tiledGameObjectBlueprintMapper;
+    tiledGameObjectBlueprintMapper.registerBlueprint("minimap", MakeShared<MinimapBlueprint>());
+
     TiledColliderComponentFactory tiledColliderComponentFactory(colliderComponentFactory);
-    TiledObjectCreator tiledObjectCreator(spriteComponentFactory, tiledColliderComponentFactory);
+    TiledClassApplierMapper tiledClassApplierMapper;
+    tiledClassApplierMapper.registerClassApplier(
+      "",
+      MakeShared<BaseTiledClassApplier>(
+        spriteComponentFactory,
+        tiledColliderComponentFactory
+      )
+    );
 
     tiledSceneCreator::create(
       "level-0",
       *m_assetManager,
-      tiledObjectCreator,
+      tiledClassApplierMapper,
       spriteComponentFactory,
       m_sceneGraph
     );
@@ -121,7 +135,7 @@ namespace rk
     tiledSceneCreator::create(
       "ui",
       *m_assetManager,
-      tiledObjectCreator,
+      tiledClassApplierMapper,
       spriteComponentFactory,
       m_uiSceneGraph
     );

@@ -4,7 +4,7 @@
   <export target="../maps/level-ui.tmx" format="tmx"/>
  </editorsettings>
  <tileset firstgid="1" source="tilesets/level-ui-resources.tsx"/>
- <objectgroup id="2" name="base" locked="1">
+ <objectgroup id="2" name="base">
   <object id="1" gid="1" x="0" y="780" width="1920" height="300"/>
  </objectgroup>
  <objectgroup id="3" name="textures">

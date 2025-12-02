@@ -14,6 +14,7 @@ using std::string;
 #include "TMR/tmrImage.h"
 #include "TMR/tmrPathUtilities.h"
 #include "TMR/tmrObjectGroupXmlLoader.h"
+#include "TMR/tmrPropertiesXmlLoader.h"
 
 using namespace tinyxml2;
 
@@ -224,8 +225,11 @@ namespace tmr
       ObjectGroup* objectGroup = objectGroupXmlLoader::parseObjectGroupFromXmlElement(
         tileElement->FirstChildElement("objectgroup")
       );
+      Properties* properties = propertiesXmlLoader::loadProperties(
+        tileElement->FirstChildElement("properties")
+      );
 
-      return new TileSetTile(id, image, objectGroup);
+      return new TileSetTile(id, image, properties, objectGroup);
     }
 
     Image* parseImage(XMLElement* imageElement, const char* source)

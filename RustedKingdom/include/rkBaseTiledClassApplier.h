@@ -2,16 +2,13 @@
 
 #include <SFML/Graphics/Rect.hpp>
 
-#include "rkPrerequisites.h"
-#include "rkNonCopyable.h"
+#include "rkITiledClassApplier.h"
 
 namespace tmr
 {
-  class TiledMap;
   class TileReferenceObject;
   class ImageCollectionTileSet;
   class SpriteSheetTileSet;
-  class Object;
   class ObjectGroup;
 }
 
@@ -21,46 +18,39 @@ namespace rk
 {
   class TiledColliderComponentFactory;
   class SpriteComponentFactory;
-  class GameObject;
 
-  class TiledObjectCreator : public NonCopyable
+  class BaseTiledClassApplier : public ITiledClassApplier
   {
   public:
-    TiledObjectCreator(
-      SpriteComponentFactory&,
-      TiledColliderComponentFactory&
-    );
-    ~TiledObjectCreator();
+    BaseTiledClassApplier(SpriteComponentFactory&, TiledColliderComponentFactory&);
+    virtual ~BaseTiledClassApplier();
 
-    GameObject* create(
-      const tmr::TiledMap*,
-      const tmr::Object*
-    );
+    void apply(GameObject&, const tmr::Object*, const tmr::TiledMap*) override;
 
-    void setColliderGroupKey(const String& colliderGroupKey) { m_colliderGroupKey = colliderGroupKey; }
-
-  private:
-    String m_colliderGroupKey;
+  protected:
     SpriteComponentFactory& m_spriteComponentFactory;
     TiledColliderComponentFactory& m_tiledColliderComponentFactory;
 
-    GameObject* createTileReference(
+  private:
+    void createTileReference(
+      GameObject&,
       const tmr::TiledMap*,
       const tmr::TileReferenceObject*
     );
 
-    GameObject* createTileReferenceFromImageCollection(
+    void createTileReferenceFromImageCollection(
+      GameObject&,
       const tmr::TileReferenceObject*,
       const tmr::ImageCollectionTileSet*
     );
 
-    GameObject* createTileReferenceFromSpriteSheet(
+    void createTileReferenceFromSpriteSheet(
+      GameObject&,
       const tmr::TileReferenceObject*,
       const tmr::SpriteSheetTileSet*
     );
 
     void addSpriteComponent(GameObject&, const String& textureKey);
-
     void addSpriteComponent(
       GameObject&,
       const String& textureKey,
@@ -68,8 +58,8 @@ namespace rk
     );
 
     void addColliders(
-      const tmr::ObjectGroup*,
       GameObject&,
+      const tmr::ObjectGroup*,
       const String& colliderGroupKey
     );
   };

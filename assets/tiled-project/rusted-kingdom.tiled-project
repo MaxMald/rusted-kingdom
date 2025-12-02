@@ -10,5 +10,35 @@
     "properties": [
     ],
     "propertyTypes": [
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 1,
+            "members": [
+                {
+                    "name": "isInteractive",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "minimapName",
+                    "type": "string",
+                    "value": ""
+                }
+            ],
+            "name": "Minimap",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset",
+                "project"
+            ]
+        }
     ]
 }

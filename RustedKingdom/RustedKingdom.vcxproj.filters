@@ -172,6 +172,12 @@
     <Filter Include="Source Files\minimap">
       <UniqueIdentifier>{3fae0189-166e-4c27-96dc-0228236cf86f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\scene\tiledSceneCreator\classes">
+      <UniqueIdentifier>{f9d20436-dc9c-4334-9dce-ecadff51cbc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\scene\tiledSceneCreator\classes">
+      <UniqueIdentifier>{d2ded1c0-3942-438d-a3f5-4a71c130b2b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -363,14 +369,8 @@
     <ClCompile Include="src\rkTiledObjectBlueprint.cpp">
       <Filter>Source Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkTiledObjectCreator.cpp">
-      <Filter>Source Files\scene\tiledSceneCreator</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkTiledMapUtilities.cpp">
       <Filter>Source Files\scene\tiledSceneCreator</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\rkGameObjectUtilities.cpp">
       <Filter>Source Files\scene\gameObjects</Filter>
@@ -413,6 +413,27 @@
     </ClCompile>
     <ClCompile Include="src\rkMinimapUtilities.cpp">
       <Filter>Source Files\minimap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkMinimapBlueprint.cpp">
+      <Filter>Source Files\scene\gameObjects\blueprints</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scripts\rkMinimapScript.cpp">
+      <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledGameObjectBlueprintMapper.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledGameObjectBlueprint.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkTiledClassApplierMapper.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkBaseTiledClassApplier.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -677,9 +698,6 @@
     <ClInclude Include="include\rkTiledObjectSpriteDescriptor.h">
       <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkTiledObjectCreator.h">
-      <Filter>Header Files\scene\tiledSceneCreator</Filter>
-    </ClInclude>
     <ClInclude Include="include\rkTiledMapUtilities.h">
       <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
@@ -733,6 +751,27 @@
     </ClInclude>
     <ClInclude Include="include\rkMinimapUtilities.h">
       <Filter>Header Files\minimap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkMinimapBlueprint.h">
+      <Filter>Header Files\scene\gameObjects\blueprints</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scripts\rkMinimapScript.h">
+      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledGameObjectBlueprintsMapper.h">
+      <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledGameObjectBlueprint.h">
+      <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkITiledClassApplier.h">
+      <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledClassApplierMapper.h">
+      <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkBaseTiledClassApplier.h">
+      <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

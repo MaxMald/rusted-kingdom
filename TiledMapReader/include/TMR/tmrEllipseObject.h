@@ -15,7 +15,8 @@ namespace tmr
       float x,
       float y,
       const char* name,
-      const char* type
+      const char* type,
+      Properties* properties
     );
     ~EllipseObject() override;
 

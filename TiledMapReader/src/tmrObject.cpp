@@ -2,6 +2,8 @@
 
 #include <memory>
 
+#include "TMR/tmrProperties.h"
+
 namespace tmr
 {
   Object::Object(
@@ -11,13 +13,15 @@ namespace tmr
     float y,
     bool visible,
     const char* name,
-    const char* type
+    const char* type,
+    Properties* properties
   ) :
     m_objectType(objectType),
     m_id(id),
     m_visible(visible),
     m_x(x),
-    m_y(y)
+    m_y(y),
+    m_properties(properties)
   {
     m_name = name ? new char[std::strlen(name) + 1] : nullptr;
     if (m_name)
@@ -32,5 +36,6 @@ namespace tmr
   {
     delete[] m_name;
     delete[] m_type;
+    delete m_properties;
   }
 }

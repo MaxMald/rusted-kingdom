@@ -3,6 +3,7 @@
 #include "TMR/tinyxml2.h"
 #include "TMR/tmrTileReferenceObject.h"
 #include "TMR/tmrEllipseObject.h"
+#include "TMR/tmrPropertiesXmlLoader.h"
 
 using namespace tinyxml2;
 
@@ -19,7 +20,8 @@ namespace tmr
       float x, float y,
       bool visible,
       const char* name,
-      const char* type
+      const char* type,
+      Properties* properties
     );
 
     static Object* parseEllipse(
@@ -28,7 +30,8 @@ namespace tmr
       float x, float y,
       bool visible,
       const char* name,
-      const char* type
+      const char* type,
+      Properties* properties
     );
   }
 }
@@ -48,6 +51,9 @@ namespace tmr
       bool visible = objectElement->BoolAttribute("visible", true);
       const char* name = objectElement->Attribute("name");
       const char* type = objectElement->Attribute("type");
+      Properties* properties = propertiesXmlLoader::loadProperties(
+        objectElement->FirstChildElement("properties")
+      );
 
       if (isTileReference(objectElement))
       {
@@ -57,7 +63,8 @@ namespace tmr
           x, y,
           visible,
           name,
-          type
+          type,
+          properties
         );
       }
       else if (isEllipse(objectElement))
@@ -68,7 +75,8 @@ namespace tmr
           x, y,
           visible,
           name,
-          type
+          type,
+          properties
         );
       }
 
@@ -78,7 +86,8 @@ namespace tmr
         x, y,
         visible,
         name ? name : "",
-        type ? type : ""
+        type ? type : "",
+        properties
       );
     }
 
@@ -129,7 +138,8 @@ namespace tmr
       float x, float y,
       bool visible,
       const char* name,
-      const char* type
+      const char* type,
+      Properties* properties
     )
     {
       uint32_t gid = objectElement->UnsignedAttribute("gid", 0);
@@ -144,7 +154,8 @@ namespace tmr
         rotation,
         x, y,
         name ? name : "",
-        type ? type : ""
+        type ? type : "",
+        properties
       );
     }
 
@@ -154,7 +165,8 @@ namespace tmr
       float x, float y,
       bool visible,
       const char* name,
-      const char* type
+      const char* type,
+      Properties* properties
     )
     {
       uint32_t height = objectElement->UnsignedAttribute("height", 0);
@@ -166,7 +178,8 @@ namespace tmr
         visible,
         x, y,
         name ? name : "",
-        type ? type : ""
+        type ? type : "",
+        properties
       );
     }
   }

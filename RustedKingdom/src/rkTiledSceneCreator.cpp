@@ -24,12 +24,13 @@
 #include "rkSpriteComponentFactory.h"
 #include "rkGameObject.h"
 #include "rkIsometricPositionTransformer.h"
-#include "rkTiledObjectCreator.h"
 #include "rkGameObjectUtilities.h"
 #include "rkColliderComponent.h"
 #include "rkIsometricLayerGameObject.h"
 #include "rkTiledPropertiesHandler.h"
 #include "rkTiledLayerGameObjectCreator.h"
+#include "rkTiledClassApplierMapper.h"
+#include "rkITiledClassApplier.h"
 
 using sf::Vector2f;
 using sf::Vector2i;
@@ -42,7 +43,7 @@ namespace rk
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
       SpriteComponentFactory& spriteComponentFactory,
-      TiledObjectCreator& tiledObjectCreator,
+      TiledClassApplierMapper& tiledClassApplierMapper,
       const tmr::Layer* tmrLayer
     );
 
@@ -56,7 +57,7 @@ namespace rk
     static void createObjectGroupLayer(
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
-      TiledObjectCreator& tiledObjectCreator,
+      TiledClassApplierMapper& tiledClassApplierMapper,
       const tmr::ObjectGroupLayer* tmrLayer
     );
 
@@ -81,7 +82,7 @@ namespace rk
     void create(
       const String& tiledMapKey,
       const AssetManager& assetManager,
-      TiledObjectCreator& tiledObjectCreator,
+      TiledClassApplierMapper& tiledClassApplierMapper,
       SpriteComponentFactory& spriteComponentFactory,
       SceneGraph& sceneGraph
     )
@@ -99,7 +100,7 @@ namespace rk
           tmrTiledMap,
           sceneGraph,
           spriteComponentFactory,
-          tiledObjectCreator,
+          tiledClassApplierMapper,
           tmrTiledMap->getLayerAt(i)
         );
       }
@@ -109,7 +110,7 @@ namespace rk
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
       SpriteComponentFactory& spriteComponentFactory,
-      TiledObjectCreator& tiledObjectCreator,
+      TiledClassApplierMapper& tiledClassApplierMapper,
       const tmr::Layer* tmrLayer
     )
     {
@@ -128,7 +129,7 @@ namespace rk
         createObjectGroupLayer(
           tiledMap,
           sceneGraph,
-          tiledObjectCreator,
+          tiledClassApplierMapper,
           static_cast<const tmr::ObjectGroupLayer*>(tmrLayer)
         );
       }
@@ -216,7 +217,7 @@ namespace rk
     static void createObjectGroupLayer(
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
-      TiledObjectCreator& tiledObjectCreator,
+      TiledClassApplierMapper& tiledClassApplierMapper,
       const tmr::ObjectGroupLayer* tmrLayer
     )
     { 
@@ -227,7 +228,6 @@ namespace rk
       );
 
       String layerName = tmrLayer->getName();
-      tiledObjectCreator.setColliderGroupKey(layerName);
       SharedPtr<IPositionTransformer> positionTransformer = 
         tiledMapUtilities::getPositionTransformer(*tiledMap);
 
@@ -245,16 +245,23 @@ namespace rk
         if (tmrObject->getObjectType() != tmr::objectType::Type::TileReference)
           continue;
 
-        GameObject* tileGameObject = tiledObjectCreator.create(
-          tiledMap,
-          tmrObject
+        SharedPtr<ITiledClassApplier> classApplier = tiledClassApplierMapper
+          .getClassApplier(tmrObject->getType());
+
+        if (classApplier == nullptr)
+          continue;
+
+        GameObject* tileGameObject = new GameObject(tmrObject->getName());
+        classApplier->apply(
+          *tileGameObject,
+          tmrObject,
+          tiledMap
         );
 
         Vector2f position = positionTransformer->inverseTransform(
           tmrObject->getX(),
           tmrObject->getY()
         );
-
         tileGameObject->setPosition(position);
 
         Vector2f origin = tiledMapUtilities::getObjectOrigin(*tiledMap);

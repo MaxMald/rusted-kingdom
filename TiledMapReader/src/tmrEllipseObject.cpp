@@ -10,14 +10,16 @@ namespace tmr
     float x,
     float y,
     const char* name,
-    const char* type
+    const char* type,
+    Properties* properties
   ) :
     Object(
       objectType::Ellipse,
       id, x, y,
       visible,
       name,
-      type
+      type,
+      properties
     ),
     m_width(width),
     m_height(height)

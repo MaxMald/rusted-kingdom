@@ -6,6 +6,8 @@
 
 namespace tmr
 {
+  class Properties;
+
   class TMR_API Object : public NonCopyable
   {
   public:
@@ -16,7 +18,8 @@ namespace tmr
       float y,
       bool visible,
       const char* name,
-      const char* type
+      const char* type,
+      Properties* properties
     );
     virtual ~Object();
 
@@ -27,6 +30,7 @@ namespace tmr
     float getY() const noexcept { return m_y; }
     const char* getName() const noexcept { return m_name; }
     const char* getType() const noexcept { return m_type; }
+    Properties* getProperties() const noexcept { return m_properties; }
 
   private:
     objectType::Type m_objectType;
@@ -36,5 +40,6 @@ namespace tmr
     bool m_visible;
     char* m_name;
     char* m_type;
+    Properties* m_properties;
   };
 }

@@ -5,6 +5,7 @@
 
 namespace tmr
 {
+  class Properties;
   class ObjectGroup;
   class Image;
 
@@ -20,6 +21,7 @@ namespace tmr
     TileSetTile(
       uint32_t id,
       Image* image,
+      Properties* properties,
       ObjectGroup* objectGroup = nullptr
     );
     ~TileSetTile();
@@ -36,9 +38,12 @@ namespace tmr
     /** @return The object group associated with this tile, if any. */
     ObjectGroup* getObjectGroup() const { return m_objectGroup; }
 
+    Properties* getProperties() const { return m_properties; }
+
   private:
     uint32_t m_id;
     Image* m_image;
     ObjectGroup* m_objectGroup;
+    Properties* m_properties;
   };
 }

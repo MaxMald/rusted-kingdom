@@ -1,65 +1,66 @@
-#include "rkTiledObjectCreator.h"
+#include "rkBaseTiledClassApplier.h"
 
 #include <SFML/System/Vector2.hpp>
 
+#include <TMR/tmrObject.h>
 #include <TMR/tmrTiledMap.h>
 #include <TMR/tmrImageCollectionTileSet.h>
 #include <TMR/tmrSpriteSheetTileSet.h>
 #include <TMR/tmrTileSetTile.h>
-#include <TMR/tmrObject.h>
 #include <TMR/tmrObjectGroup.h>
 #include <TMR/tmrEllipseObject.h>
 #include <TMR/tmrTileReferenceObject.h>
 #include <TMR/tmrImage.h>
 
-#include "rkTiledMapUtilities.h"
 #include "rkGameObject.h"
+#include "rkTiledMapUtilities.h"
 #include "rkSpriteComponentFactory.h"
-#include "rkSpriteComponent.h"
 #include "rkTiledColliderComponentFactory.h"
+#include "rkColliderComponentFactory.h"
+#include "rkSpriteComponent.h"
 #include "rkColliderComponent.h"
 
-using sf::Vector2f;
 using sf::Vector2i;
+using sf::Vector2f;
 
 namespace rk
 {
-  TiledObjectCreator::TiledObjectCreator(
+  BaseTiledClassApplier::BaseTiledClassApplier(
     SpriteComponentFactory& spriteComponentFactory,
     TiledColliderComponentFactory& tiledColliderComponentFactory
   ) :
     m_spriteComponentFactory(spriteComponentFactory),
-    m_tiledColliderComponentFactory(tiledColliderComponentFactory),
-    m_colliderGroupKey("")
+    m_tiledColliderComponentFactory(tiledColliderComponentFactory)
   {
   }
 
-  TiledObjectCreator::~TiledObjectCreator()
+  BaseTiledClassApplier::~BaseTiledClassApplier()
   {
   }
 
-  GameObject* TiledObjectCreator::create(
-    const tmr::TiledMap* tmrTiledMap,
-    const tmr::Object* tmrObject
+  void BaseTiledClassApplier::apply(
+    GameObject& gameObject,
+    const tmr::Object* tmrObject,
+    const tmr::TiledMap* tmrTiledMap
   )
   {
     tmr::objectType::Type objectType = tmrObject->getObjectType();
+
     switch (objectType)
     {
-    case tmr::objectType::Type::TileReference:
-    {
-      return createTileReference(
-        tmrTiledMap,
-        static_cast<const tmr::TileReferenceObject*>(tmrObject)
-      );
-    }
-
-    default:
-      return nullptr;
+      case tmr::objectType::Type::TileReference:
+      {
+        createTileReference(
+          gameObject,
+          tmrTiledMap,
+          static_cast<const tmr::TileReferenceObject*>(tmrObject)
+        );
+      }
     }
   }
 
-  GameObject* TiledObjectCreator::createTileReference(
+  void BaseTiledClassApplier::createTileReference(
+    GameObject& gameObject,
     const tmr::TiledMap* tmrTiledMap,
     const tmr::TileReferenceObject* tmrTileRefObject
   )
@@ -71,28 +72,33 @@ namespace rk
 
     if (tileSet->getType() == tmr::tileSetType::Type::ImageCollection)
     {
-      return createTileReferenceFromImageCollection(
+      createTileReferenceFromImageCollection(
+        gameObject,
         tmrTileRefObject,
         static_cast<const tmr::ImageCollectionTileSet*>(tileSet)
       );
     }
     else if (tileSet->getType() == tmr::tileSetType::Type::SpriteSheet)
     {
-      return createTileReferenceFromSpriteSheet(
+      createTileReferenceFromSpriteSheet(
+        gameObject,
         tmrTileRefObject,
         static_cast<const tmr::SpriteSheetTileSet*>(tileSet)
       );
     }
-
-    throw RuntimeErrorException(
-      String::Format(
-        "Unsupported tileset type: %d",
-        static_cast<Int32>(tileSet->getType())
-      )
-    );
+    else
+    {
+      throw RuntimeErrorException(
+        String::Format(
+          "Unsupported tileset type: %d",
+          static_cast<Int32>(tileSet->getType())
+        )
+      );
+    }
   }
 
-  GameObject* TiledObjectCreator::createTileReferenceFromImageCollection(
+  void BaseTiledClassApplier::createTileReferenceFromImageCollection(
+    GameObject& gameObject,
     const tmr::TileReferenceObject* tmrTileRefObject,
     const tmr::ImageCollectionTileSet* imageCollection
   )
@@ -114,18 +120,16 @@ namespace rk
       );
     }
 
-    GameObject* tileGameObject = new GameObject(tmrTileRefObject->getName());
-    tileGameObject->setPosition(
+    gameObject.setPosition(
       Vector2f(tmrTileRefObject->getX(), tmrTileRefObject->getY())
     );
 
-    addSpriteComponent(*tileGameObject, tile->getImage()->getSource());
-    addColliders(tile->getObjectGroup(), *tileGameObject, "plantas");
-    
-    return tileGameObject;
+    addSpriteComponent(gameObject, tile->getImage()->getSource());
+    addColliders(gameObject, tile->getObjectGroup(), "plantas");
   }
 
-  GameObject* TiledObjectCreator::createTileReferenceFromSpriteSheet(
+  void BaseTiledClassApplier::createTileReferenceFromSpriteSheet(
+    GameObject& gameObject,
     const tmr::TileReferenceObject* tmrTileRefObject,
     const tmr::SpriteSheetTileSet* spriteSheet
   )
@@ -147,22 +151,15 @@ namespace rk
       Vector2i(tileWidth, tileHeight)
     );
 
-    GameObject* tileGameObject = new GameObject(tmrTileRefObject->getName());
-    tileGameObject->setPosition(
+    gameObject.setPosition(
       Vector2f(tmrTileRefObject->getX(), tmrTileRefObject->getY())
     );
 
-    addSpriteComponent(
-      *tileGameObject,
-      spriteSheet->getImage()->getSource(),
-      rect
-    );
-
-    // TODO Add colliders
-    return tileGameObject;
+    addSpriteComponent(gameObject, spriteSheet->getImage()->getSource(), rect);
+    // TODO Add colliders for sprite sheets.
   }
 
-  void TiledObjectCreator::addSpriteComponent(
+  void BaseTiledClassApplier::addSpriteComponent(
     GameObject& gameObject,
     const String& textureKey
   )
@@ -172,7 +169,7 @@ namespace rk
     );
   }
 
-  void TiledObjectCreator::addSpriteComponent(
+  void BaseTiledClassApplier::addSpriteComponent(
     GameObject& gameObject,
     const String& textureKey,
     const IntRect& textureRect
@@ -186,9 +183,9 @@ namespace rk
       )
     );
   }
-  void TiledObjectCreator::addColliders(
-    const tmr::ObjectGroup* objectGroup,
+  void BaseTiledClassApplier::addColliders(
     GameObject& gameObject,
+    const tmr::ObjectGroup* objectGroup,
     const String& colliderGroupKey
   )
   {
@@ -213,6 +210,7 @@ namespace rk
         continue;
 
       gameObject.addComponent(std::move(colliderComponent));
+
       return; // Only one collider per object is supported for now
     }
   }

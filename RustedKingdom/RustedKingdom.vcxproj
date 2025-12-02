@@ -170,11 +170,13 @@
     <ClCompile Include="src\rkColliderComponent.cpp" />
     <ClCompile Include="src\rkColliderComponentFactory.cpp" />
     <ClCompile Include="src\rkCollidersGroup.cpp" />
+    <ClCompile Include="src\rkBaseTiledClassApplier.cpp" />
     <ClCompile Include="src\rkGameObjectUtilities.cpp" />
     <ClCompile Include="src\rkIAsset.cpp" />
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp" />
     <ClCompile Include="src\rkILevelScene.cpp" />
     <ClCompile Include="src\rkMainScene.cpp" />
+    <ClCompile Include="src\rkMinimapBlueprint.cpp" />
     <ClCompile Include="src\rkMinimapTextureCreator.cpp" />
     <ClCompile Include="src\rkMinimapUtilities.cpp" />
     <ClCompile Include="src\rkNode.cpp" />
@@ -220,14 +222,16 @@
     <ClCompile Include="src\rkSpriteComponentFactory.cpp" />
     <ClCompile Include="src\rkSpriteSheet.cpp" />
     <ClCompile Include="src\rkTexture.cpp" />
+    <ClCompile Include="src\rkTiledClassApplierMapper.cpp" />
     <ClCompile Include="src\rkTiledColliderComponentFactory.cpp" />
+    <ClCompile Include="src\rkTiledGameObjectBlueprint.cpp" />
+    <ClCompile Include="src\rkTiledGameObjectBlueprintMapper.cpp" />
     <ClCompile Include="src\rkTiledLayerGameObjectCreator.cpp" />
     <ClCompile Include="src\rkTiledMap.cpp" />
     <ClCompile Include="src\rkTiledMapAssetLoader.cpp" />
     <ClCompile Include="src\rkTiledMapUtilities.cpp" />
     <ClCompile Include="src\rkTiledObjectBlueprint.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp" />
-    <ClCompile Include="src\rkTiledObjectCreator.cpp" />
     <ClCompile Include="src\rkTiledPropertiesHandler.cpp" />
     <ClCompile Include="src\rkTiledSceneCreator.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptor.cpp" />
@@ -240,9 +244,12 @@
     <ClCompile Include="src\scripts\rkAgentPathMovement.cpp" />
     <ClCompile Include="src\scripts\rkLucius.cpp" />
     <ClCompile Include="src\scripts\rkLuciusAnimation.cpp" />
+    <ClCompile Include="src\scripts\rkMinimapScript.cpp" />
     <ClCompile Include="src\scripts\rkViewControllerScript.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\rkBaseTiledClassApplier.h" />
+    <ClInclude Include="include\rkMinimapBlueprint.h" />
     <ClInclude Include="include\rkMinimapUtilities.h" />
     <ClInclude Include="include\rkAnimation.h" />
     <ClInclude Include="include\rkAnimationFactory.h" />
@@ -324,13 +331,16 @@
     <ClInclude Include="include\rkString.h" />
     <ClInclude Include="include\rkSpriteComponent.h" />
     <ClInclude Include="include\rkTexture.h" />
+    <ClInclude Include="include\rkTiledClassApplierMapper.h" />
     <ClInclude Include="include\rkTiledColliderComponentFactory.h" />
+    <ClInclude Include="include\rkTiledGameObjectBlueprint.h" />
+    <ClInclude Include="include\rkTiledGameObjectBlueprintsMapper.h" />
     <ClInclude Include="include\rkTiledLayerGameObjectCreator.h" />
     <ClInclude Include="include\rkTiledMap.h" />
     <ClInclude Include="include\rkTiledMapAssetsLoader.h" />
     <ClInclude Include="include\rkTiledMapUtilities.h" />
     <ClInclude Include="include\rkTiledObjectBlueprint.h" />
-    <ClInclude Include="include\rkTiledObjectCreator.h" />
+    <ClInclude Include="include\rkITiledClassApplier.h" />
     <ClInclude Include="include\rkTiledPropertiesHandler.h" />
     <ClInclude Include="include\rkTiledSceneCreator.h" />
     <ClInclude Include="include\rkTileGameObjectBlueprint.h" />
@@ -348,6 +358,7 @@
     <ClInclude Include="include\scripts\rkLuciusAnimation.h" />
     <ClInclude Include="include\scripts\rkLuciusStates.h" />
     <ClInclude Include="include\rkTiledObjectSpriteDescriptorFactory.h" />
+    <ClInclude Include="include\scripts\rkMinimapScript.h" />
     <ClInclude Include="include\scripts\rkViewControllerScript.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -12,14 +12,16 @@ namespace tmr
     float x,
     float y,
     const char* name,
-    const char* type
+    const char* type,
+    Properties* properties
   ) :
     Object(
       objectType::TileReference,
       id, x, y,
       visible,
       name,
-      type
+      type,
+      properties
     ),
     m_gid(gid),
     m_height(height),
