@@ -414,20 +414,11 @@
     <ClCompile Include="src\rkMinimapUtilities.cpp">
       <Filter>Source Files\minimap</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkMinimapBlueprint.cpp">
-      <Filter>Source Files\scene\gameObjects\blueprints</Filter>
-    </ClCompile>
     <ClCompile Include="src\scripts\rkMinimapScript.cpp">
       <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp">
       <Filter>Source Files\scene\tiledSceneCreator</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkTiledGameObjectBlueprintMapper.cpp">
-      <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkTiledGameObjectBlueprint.cpp">
-      <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTiledClassApplierMapper.cpp">
       <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
@@ -752,17 +743,8 @@
     <ClInclude Include="include\rkMinimapUtilities.h">
       <Filter>Header Files\minimap</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkMinimapBlueprint.h">
-      <Filter>Header Files\scene\gameObjects\blueprints</Filter>
-    </ClInclude>
     <ClInclude Include="include\scripts\rkMinimapScript.h">
       <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkTiledGameObjectBlueprintsMapper.h">
-      <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkTiledGameObjectBlueprint.h">
-      <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
     </ClInclude>
     <ClInclude Include="include\rkITiledClassApplier.h">
       <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>

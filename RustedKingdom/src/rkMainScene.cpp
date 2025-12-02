@@ -17,12 +17,9 @@
 #include "rkTiledMapUtilities.h"
 #include "rkTiledSceneCreator.h"
 #include "rkTiledColliderComponentFactory.h"
-#include "rkTiledGameObjectBlueprintsMapper.h"
 #include "rkLuciusBlueprint.h"
 #include "rkTiledClassApplierMapper.h"
 #include "rkBaseTiledClassApplier.h"
-
-#include "rkMinimapBlueprint.h"
 
 namespace rk
 {
@@ -110,9 +107,6 @@ namespace rk
     m_physicsWorld.createCollidersGroup("plantas");
     SharedPtr<TiledMap> tiledMap = m_assetManager->getAssetGroup<TiledMap>()
       .get("level-0");
-
-    TiledGameObjectBlueprintMapper tiledGameObjectBlueprintMapper;
-    tiledGameObjectBlueprintMapper.registerBlueprint("minimap", MakeShared<MinimapBlueprint>());
 
     TiledColliderComponentFactory tiledColliderComponentFactory(colliderComponentFactory);
     TiledClassApplierMapper tiledClassApplierMapper;

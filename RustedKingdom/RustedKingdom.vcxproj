@@ -176,7 +176,6 @@
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp" />
     <ClCompile Include="src\rkILevelScene.cpp" />
     <ClCompile Include="src\rkMainScene.cpp" />
-    <ClCompile Include="src\rkMinimapBlueprint.cpp" />
     <ClCompile Include="src\rkMinimapTextureCreator.cpp" />
     <ClCompile Include="src\rkMinimapUtilities.cpp" />
     <ClCompile Include="src\rkNode.cpp" />
@@ -224,8 +223,6 @@
     <ClCompile Include="src\rkTexture.cpp" />
     <ClCompile Include="src\rkTiledClassApplierMapper.cpp" />
     <ClCompile Include="src\rkTiledColliderComponentFactory.cpp" />
-    <ClCompile Include="src\rkTiledGameObjectBlueprint.cpp" />
-    <ClCompile Include="src\rkTiledGameObjectBlueprintMapper.cpp" />
     <ClCompile Include="src\rkTiledLayerGameObjectCreator.cpp" />
     <ClCompile Include="src\rkTiledMap.cpp" />
     <ClCompile Include="src\rkTiledMapAssetLoader.cpp" />
@@ -249,7 +246,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkBaseTiledClassApplier.h" />
-    <ClInclude Include="include\rkMinimapBlueprint.h" />
     <ClInclude Include="include\rkMinimapUtilities.h" />
     <ClInclude Include="include\rkAnimation.h" />
     <ClInclude Include="include\rkAnimationFactory.h" />
@@ -333,8 +329,6 @@
     <ClInclude Include="include\rkTexture.h" />
     <ClInclude Include="include\rkTiledClassApplierMapper.h" />
     <ClInclude Include="include\rkTiledColliderComponentFactory.h" />
-    <ClInclude Include="include\rkTiledGameObjectBlueprint.h" />
-    <ClInclude Include="include\rkTiledGameObjectBlueprintsMapper.h" />
     <ClInclude Include="include\rkTiledLayerGameObjectCreator.h" />
     <ClInclude Include="include\rkTiledMap.h" />
     <ClInclude Include="include\rkTiledMapAssetsLoader.h" />
