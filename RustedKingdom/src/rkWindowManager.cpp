@@ -46,7 +46,9 @@ namespace rk
   {
     m_renderWindow = new RenderWindow(
       sf::VideoMode({ 1920, 1080 }),
-      "Rusted Kingdom"
+      "Rusted Kingdom",
+      sf::Style::Default,
+      sf::State::Fullscreen
     );
 
     if (!m_renderWindow->isOpen())
