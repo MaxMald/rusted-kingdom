@@ -1,5 +1,7 @@
 #pragma once
 
+#include <SFML/Graphics/Color.hpp>
+
 #include "rkPrerequisites.h"
 
 namespace tmr
@@ -24,7 +26,7 @@ namespace rk
 
     bool hasProperty(const String& name) const;
     bool tryGetBool(const String& name, bool& outValue) const;
-    bool tryGetColor(const String& name, String& outValue) const;
+    bool tryGetColor(const String& name, sf::Color& outValue) const;
     bool tryGetFile(const String& name, String& outValue) const;
     bool tryGetFloat(const String& name, float& outValue) const;
     bool tryGetInt(const String& name, Int32& outValue) const;

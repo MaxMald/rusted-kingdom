@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/System/Vector2.hpp>
+#include <SFML/Graphics/Rect.hpp>
 
 #include "rkPrerequisites.h"
 
@@ -15,17 +16,21 @@ namespace tmr
 }
 
 using sf::Vector2f;
+using sf::FloatRect;
 
 namespace rk
 {
+  class GameObject;
   class SceneGraph;
 
   namespace minimapTextureCreator
   {
     sf::Texture create(
       const tmr::TiledMap*,
-      SceneGraph&,
-      const Vector2f& size
+      const Vector<GameObject*>& mapGameObjects,
+      const FloatRect& mapBounds,
+      const Vector2f& minimapSize,
+      SceneGraph&
     );
   }
 }

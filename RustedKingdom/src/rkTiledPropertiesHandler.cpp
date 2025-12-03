@@ -9,6 +9,8 @@
 #include <TMR/tmrStringProperty.h>
 #include <TMR/tmrProperties.h>
 
+#include "rkColorUtilities.h"
+
 namespace rk
 {
   TiledPropertiesHandler::TiledPropertiesHandler() :
@@ -85,7 +87,7 @@ namespace rk
 
   bool TiledPropertiesHandler::tryGetColor(
     const String& name,
-    String& outValue
+    sf::Color& outValue
   ) const
   {
     const tmr::Property* property = findPropertyByName(name);
@@ -95,7 +97,9 @@ namespace rk
     if (property->getType() != tmr::propertyType::Color)
       return false;
 
-    outValue = static_cast<const tmr::ColorProperty*>(property)->getValue();
+    String hexColor = static_cast<const tmr::ColorProperty*>(property)->getValue();
+    outValue = colorUtilities::getColorFromHex(hexColor);
+
     return true;
   }
 

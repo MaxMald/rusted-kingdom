@@ -161,6 +161,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\rkColorUtilities.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkApplication.cpp" />
     <ClCompile Include="src\rkAssetGroup.cpp" />
@@ -177,6 +178,7 @@
     <ClCompile Include="src\rkILevelScene.cpp" />
     <ClCompile Include="src\rkMainScene.cpp" />
     <ClCompile Include="src\rkMinimapTextureCreator.cpp" />
+    <ClCompile Include="src\rkMinimapTiledClassApplier.cpp" />
     <ClCompile Include="src\rkMinimapUtilities.cpp" />
     <ClCompile Include="src\rkNode.cpp" />
     <ClCompile Include="src\rkNodeLink.cpp" />
@@ -246,6 +248,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkBaseTiledClassApplier.h" />
+    <ClInclude Include="include\rkColorUtilities.h" />
+    <ClInclude Include="include\rkMinimapTiledClassApplier.h" />
     <ClInclude Include="include\rkMinimapUtilities.h" />
     <ClInclude Include="include\rkAnimation.h" />
     <ClInclude Include="include\rkAnimationFactory.h" />

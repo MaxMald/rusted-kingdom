@@ -25,7 +25,7 @@ namespace rk
     BaseTiledClassApplier(SpriteComponentFactory&, TiledColliderComponentFactory&);
     virtual ~BaseTiledClassApplier();
 
-    void apply(GameObject&, const tmr::Object*, const tmr::TiledMap*) override;
+    virtual void apply(GameObject&, const tmr::Object*, const tmr::TiledMap*) override;
 
   protected:
     SpriteComponentFactory& m_spriteComponentFactory;

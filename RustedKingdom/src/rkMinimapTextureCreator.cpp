@@ -6,9 +6,7 @@
 #include <TMR/tmrTiledMap.h>
 #include <TMR/tmrLayer.h>
 
-#include "rkTiledPropertiesHandler.h"
 #include "rkGameObject.h"
-#include "rkGameObjectUtilities.h"
 #include "rkRectUtilities.h"
 #include "rkSceneGraph.h"
 
@@ -20,17 +18,6 @@ namespace rk
 {
   namespace minimapTextureCreator
   {
-    static Vector<String> getMinimapLayerNames(const tmr::TiledMap* tiledMap);
-    
-    static Vector<GameObject*> getGameObjectsForMinimapLayers(
-      const tmr::TiledMap* tiledMap,
-      SceneGraph& sceneGraph
-    );
-
-    static FloatRect calculateLayersBounds(
-      const Vector<GameObject*>& minimapGameObjects
-    );
-
     static void drawGameObjectToRenderTexture(
       RenderTexture& renderTexture,
       const GameObject* gameObject,
@@ -44,28 +31,25 @@ namespace rk
   namespace minimapTextureCreator
   {
     sf::Texture create(
-      const tmr::TiledMap* tiledMap,
-      SceneGraph& sceneGraph,
-      const Vector2f& size
+      const tmr::TiledMap*,
+      const Vector<GameObject*>& mapGameObjects,
+      const FloatRect& mapBounds,
+      const Vector2f& minimapSize,
+      SceneGraph&
     )
     {
-      Vector<GameObject*> minimapGameObjects =
-        getGameObjectsForMinimapLayers(tiledMap, sceneGraph);
-
-      FloatRect layersBounds = calculateLayersBounds(minimapGameObjects);
-
       // Base render texture at original size
 
       RenderTexture baseRender(
         Vector2u(
-          static_cast<unsigned int>(layersBounds.size.x), 
-          static_cast<unsigned int>(layersBounds.size.y)
+          static_cast<unsigned int>(mapBounds.size.x), 
+          static_cast<unsigned int>(mapBounds.size.y)
         )
       );
       baseRender.clear(sf::Color::Transparent);
 
-      for (GameObject* obj : minimapGameObjects)
-        drawGameObjectToRenderTexture(baseRender, obj, layersBounds);
+      for (GameObject* obj : mapGameObjects)
+        drawGameObjectToRenderTexture(baseRender, obj, mapBounds);
 
       baseRender.display();
 
@@ -73,8 +57,8 @@ namespace rk
 
       sf::RenderTexture minimapRender(
         Vector2u(
-          static_cast<unsigned int>(size.x),
-          static_cast<unsigned int>(size.y)
+          static_cast<unsigned int>(minimapSize.x),
+          static_cast<unsigned int>(minimapSize.y)
         )
       );
       minimapRender.clear(sf::Color::Transparent);
@@ -82,75 +66,14 @@ namespace rk
       sf::Sprite baseSprite(baseRender.getTexture());
       baseSprite.setScale(
         Vector2f(
-          size.x / layersBounds.size.x,
-          size.y / layersBounds.size.y
+          minimapSize.x / mapBounds.size.x,
+          minimapSize.y / mapBounds.size.y
         )
       );
       minimapRender.draw(baseSprite);
       minimapRender.display();
 
       return minimapRender.getTexture();
-    }
-
-    static Vector<GameObject*> getGameObjectsForMinimapLayers(
-      const tmr::TiledMap* tiledMap,
-      SceneGraph& sceneGraph
-    )
-    {
-      Vector<String> minimapLayerNames = getMinimapLayerNames(tiledMap);
-      Vector<GameObject*> minimapGameObjects;
-
-      for (const String& layerName : minimapLayerNames)
-      {
-        GameObject* layerGameObject = sceneGraph.getRoot()->findChildByName(layerName);
-
-        if (layerGameObject)
-          minimapGameObjects.push_back(layerGameObject);
-      }
-
-      return minimapGameObjects;
-    }
-
-    static Vector<String> getMinimapLayerNames(const tmr::TiledMap* tiledMap)
-    {
-      SizeT numLayers = tiledMap->getLayersCount();
-      Vector<String> minimapLayerNames;
-
-      for (SizeT i = 0; i < numLayers; ++i)
-      {
-        const tmr::Layer* layer = tiledMap->getLayerAt(i);
-        TiledPropertiesHandler propertiesHandler(layer->getProperties());
-
-        bool isMinimapLayer = false;
-        propertiesHandler.tryGetBool("minimap", isMinimapLayer);
-
-        if (isMinimapLayer)
-          minimapLayerNames.push_back(layer->getName());
-      }
-
-      return minimapLayerNames;
-    }
-
-    static FloatRect calculateLayersBounds(
-      const Vector<GameObject*>& minimapGameObjects
-    )
-    {
-      FloatRect combinedBounds;
-      bool first = true;
-      for (const GameObject* gameObject : minimapGameObjects)
-      {
-        FloatRect bounds = gameObjectUtilities::calculateBounds(*gameObject);
-        if (first)
-        {
-          combinedBounds = bounds;
-          first = false;
-        }
-        else
-        {
-          combinedBounds = rectUtilities::unify(combinedBounds, bounds);
-        }
-      }
-      return combinedBounds;
     }
 
     static void drawGameObjectToRenderTexture(

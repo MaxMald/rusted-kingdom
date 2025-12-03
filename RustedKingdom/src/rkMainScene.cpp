@@ -18,8 +18,10 @@
 #include "rkTiledSceneCreator.h"
 #include "rkTiledColliderComponentFactory.h"
 #include "rkLuciusBlueprint.h"
+
 #include "rkTiledClassApplierMapper.h"
 #include "rkBaseTiledClassApplier.h"
+#include "rkMinimapTiledClassApplier.h"
 
 namespace rk
 {
@@ -110,9 +112,18 @@ namespace rk
 
     TiledColliderComponentFactory tiledColliderComponentFactory(colliderComponentFactory);
     TiledClassApplierMapper tiledClassApplierMapper;
+    
     tiledClassApplierMapper.registerClassApplier(
       "",
       MakeShared<BaseTiledClassApplier>(
+        spriteComponentFactory,
+        tiledColliderComponentFactory
+      )
+    );
+
+    tiledClassApplierMapper.registerClassApplier(
+      "Minimap",
+      MakeShared<MinimapTiledClassApplier>(
         spriteComponentFactory,
         tiledColliderComponentFactory
       )

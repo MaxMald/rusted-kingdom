@@ -52,23 +52,11 @@
     <Filter Include="Source Files\animations">
       <UniqueIdentifier>{c5ba93cd-2f2a-4b1d-b475-ea58430b9ee1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\scene\gameObjects\components">
-      <UniqueIdentifier>{fa0c4e7d-95b6-4fdf-a6e3-8b93f6086d80}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\scene\gameObjects\components">
-      <UniqueIdentifier>{1c62247d-6915-4d37-add1-4ec3541a9e58}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\scene\gameObjects\builder">
       <UniqueIdentifier>{67385f25-bd36-48b9-9ef7-a0ed5c8b996d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\scene\gameObjects\builder">
       <UniqueIdentifier>{d11e4267-765c-446a-bac9-20351a22213b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\scene\gameObjects\components\scripts">
-      <UniqueIdentifier>{d942f593-2184-43a5-9a06-ded32fbf4269}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\scene\gameObjects\components\scripts">
-      <UniqueIdentifier>{11095315-510e-46dd-b767-701cc2c72331}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\animations\stateMachine">
       <UniqueIdentifier>{9d37230f-a0c3-442d-8fef-b7b0d9fb2f26}</UniqueIdentifier>
@@ -78,12 +66,6 @@
     </Filter>
     <Filter Include="Header Files\utilities\blackboard">
       <UniqueIdentifier>{2fa6137e-082e-4b42-ac68-a4028126b5ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\scene\gameObjects\components\factories">
-      <UniqueIdentifier>{34d0baa3-6398-4e9e-8304-e448942771fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\scene\gameObjects\components\factories">
-      <UniqueIdentifier>{ea0e3583-e8a5-494e-a775-9e2828c306d1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\scene\gameObjects\blueprints">
       <UniqueIdentifier>{f4b291ce-20dd-451f-a49f-95b034252b3c}</UniqueIdentifier>
@@ -178,6 +160,24 @@
     <Filter Include="Source Files\scene\tiledSceneCreator\classes">
       <UniqueIdentifier>{d2ded1c0-3942-438d-a3f5-4a71c130b2b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\components">
+      <UniqueIdentifier>{1c62247d-6915-4d37-add1-4ec3541a9e58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\components\scripts">
+      <UniqueIdentifier>{11095315-510e-46dd-b767-701cc2c72331}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\components\factories">
+      <UniqueIdentifier>{34d0baa3-6398-4e9e-8304-e448942771fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\components">
+      <UniqueIdentifier>{fa0c4e7d-95b6-4fdf-a6e3-8b93f6086d80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\components\scripts">
+      <UniqueIdentifier>{d942f593-2184-43a5-9a06-ded32fbf4269}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\components\factories">
+      <UniqueIdentifier>{ea0e3583-e8a5-494e-a775-9e2828c306d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -211,22 +211,22 @@
       <Filter>Source Files\assets\animations</Filter>
     </ClCompile>
     <ClCompile Include="src\rkComponent.cpp">
-      <Filter>Source Files\scene\gameObjects\components</Filter>
+      <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\rkSpriteComponent.cpp">
-      <Filter>Source Files\scene\gameObjects\components</Filter>
+      <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\rkGameObjectBuilder.cpp">
       <Filter>Source Files\scene\gameObjects\builder</Filter>
     </ClCompile>
     <ClCompile Include="src\rkAnimationComponent.cpp">
-      <Filter>Source Files\scene\gameObjects\components</Filter>
+      <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\rkScriptComponent.cpp">
-      <Filter>Source Files\scene\gameObjects\components</Filter>
+      <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkLucius.cpp">
-      <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
+      <Filter>Source Files\components\scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\rkAnimation.cpp">
       <Filter>Source Files\animations</Filter>
@@ -247,7 +247,7 @@
       <Filter>Source Files\animations\stateMachine</Filter>
     </ClCompile>
     <ClCompile Include="src\rkSpriteComponentFactory.cpp">
-      <Filter>Source Files\scene\gameObjects\components\factories</Filter>
+      <Filter>Source Files\components\factories</Filter>
     </ClCompile>
     <ClCompile Include="src\rkLuciusBlueprint.cpp">
       <Filter>Source Files\scene\gameObjects\blueprints</Filter>
@@ -262,16 +262,16 @@
       <Filter>Source Files\physics</Filter>
     </ClCompile>
     <ClCompile Include="src\rkRigidBodyComponent.cpp">
-      <Filter>Source Files\scene\gameObjects\components</Filter>
+      <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\rkBoolComparisonAnimationStateTransition.cpp">
       <Filter>Source Files\animations\stateMachine</Filter>
     </ClCompile>
     <ClCompile Include="src\rkRigidBodyComponentFactory.cpp">
-      <Filter>Source Files\scene\gameObjects\components\factories</Filter>
+      <Filter>Source Files\components\factories</Filter>
     </ClCompile>
     <ClCompile Include="src\rkRigidBodyDebuggedComponent.cpp">
-      <Filter>Source Files\scene\gameObjects\components</Filter>
+      <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\rkSearchNode.cpp">
       <Filter>Source Files\pathfinder</Filter>
@@ -292,16 +292,16 @@
       <Filter>Source Files\pathfinder</Filter>
     </ClCompile>
     <ClCompile Include="src\rkPathfinderComponent.cpp">
-      <Filter>Source Files\scene\gameObjects\components</Filter>
+      <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp">
       <Filter>Source Files\utilities</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkLuciusAnimation.cpp">
-      <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
+      <Filter>Source Files\components\scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkAgentPathMovement.cpp">
-      <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
+      <Filter>Source Files\components\scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\rkCircleCollider.cpp">
       <Filter>Source Files\physics\colliders</Filter>
@@ -310,10 +310,10 @@
       <Filter>Source Files\physics\colliders</Filter>
     </ClCompile>
     <ClCompile Include="src\rkColliderComponent.cpp">
-      <Filter>Source Files\scene\gameObjects\components</Filter>
+      <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\rkColliderComponentFactory.cpp">
-      <Filter>Source Files\scene\gameObjects\components\factories</Filter>
+      <Filter>Source Files\components\factories</Filter>
     </ClCompile>
     <ClCompile Include="src\rkPathfinderCollisionMaskUpdater.cpp">
       <Filter>Source Files\pathfinder</Filter>
@@ -388,13 +388,13 @@
       <Filter>Source Files\utilities\services\viewsManager</Filter>
     </ClCompile>
     <ClCompile Include="src\rkViewComponent.cpp">
-      <Filter>Source Files\scene\gameObjects\components</Filter>
+      <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\rkViewComponentFactory.cpp">
-      <Filter>Source Files\scene\gameObjects\components\factories</Filter>
+      <Filter>Source Files\components\factories</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkViewControllerScript.cpp">
-      <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
+      <Filter>Source Files\components\scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\rkILevelScene.cpp">
       <Filter>Source Files\scene\levels</Filter>
@@ -415,7 +415,7 @@
       <Filter>Source Files\minimap</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkMinimapScript.cpp">
-      <Filter>Source Files\scene\gameObjects\components\scripts</Filter>
+      <Filter>Source Files\components\scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp">
       <Filter>Source Files\scene\tiledSceneCreator</Filter>
@@ -425,6 +425,12 @@
     </ClCompile>
     <ClCompile Include="src\rkBaseTiledClassApplier.cpp">
       <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkMinimapTiledClassApplier.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="include\rkColorUtilities.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -486,22 +492,22 @@
       <Filter>Header Files\utilities</Filter>
     </ClInclude>
     <ClInclude Include="include\rkComponent.h">
-      <Filter>Header Files\scene\gameObjects\components</Filter>
+      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="include\rkSpriteComponent.h">
-      <Filter>Header Files\scene\gameObjects\components</Filter>
+      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="include\rkGameObjectBuilder.h">
       <Filter>Header Files\scene\gameObjects\builder</Filter>
     </ClInclude>
     <ClInclude Include="include\rkAnimationStateMachineComponent.h">
-      <Filter>Header Files\scene\gameObjects\components</Filter>
+      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkLucius.h">
-      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
+      <Filter>Header Files\components\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\rkScriptComponent.h">
-      <Filter>Header Files\scene\gameObjects\components</Filter>
+      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="include\rkSteerForces.h">
       <Filter>Header Files\utilities</Filter>
@@ -546,7 +552,7 @@
       <Filter>Header Files\utilities\blackboard</Filter>
     </ClInclude>
     <ClInclude Include="include\rkSpriteComponentFactory.h">
-      <Filter>Header Files\scene\gameObjects\components\factories</Filter>
+      <Filter>Header Files\components\factories</Filter>
     </ClInclude>
     <ClInclude Include="include\rkGameObjectBlueprint.h">
       <Filter>Header Files\scene\gameObjects\blueprints</Filter>
@@ -570,13 +576,13 @@
       <Filter>Header Files\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\rkRigidBodyComponent.h">
-      <Filter>Header Files\scene\gameObjects\components</Filter>
+      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="include\rkRigidBodyComponentFactory.h">
-      <Filter>Header Files\scene\gameObjects\components\factories</Filter>
+      <Filter>Header Files\components\factories</Filter>
     </ClInclude>
     <ClInclude Include="include\rkRigidBodyDebuggedComponent.h">
-      <Filter>Header Files\scene\gameObjects\components</Filter>
+      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="include\rkPathfinder.h">
       <Filter>Header Files\pathfinder</Filter>
@@ -597,16 +603,16 @@
       <Filter>Header Files\pathfinder</Filter>
     </ClInclude>
     <ClInclude Include="include\rkPathfinderComponent.h">
-      <Filter>Header Files\scene\gameObjects\components</Filter>
+      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkLuciusStates.h">
-      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
+      <Filter>Header Files\components\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkLuciusAnimation.h">
-      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
+      <Filter>Header Files\components\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkAgentPathMovement.h">
-      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
+      <Filter>Header Files\components\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\rkCircleCollider.h">
       <Filter>Header Files\physics\colliders</Filter>
@@ -618,10 +624,10 @@
       <Filter>Header Files\physics\colliders</Filter>
     </ClInclude>
     <ClInclude Include="include\rkColliderComponent.h">
-      <Filter>Header Files\scene\gameObjects\components</Filter>
+      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="include\rkColliderComponentFactory.h">
-      <Filter>Header Files\scene\gameObjects\components\factories</Filter>
+      <Filter>Header Files\components\factories</Filter>
     </ClInclude>
     <ClInclude Include="include\rkPhysicWorldListener.h">
       <Filter>Header Files\physics</Filter>
@@ -711,13 +717,13 @@
       <Filter>Header Files\services\viewsManager</Filter>
     </ClInclude>
     <ClInclude Include="include\rkViewComponent.h">
-      <Filter>Header Files\scene\gameObjects\components</Filter>
+      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="include\rkViewComponentFactory.h">
-      <Filter>Header Files\scene\gameObjects\components\factories</Filter>
+      <Filter>Header Files\components\factories</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkViewControllerScript.h">
-      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
+      <Filter>Header Files\components\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\rkILevelScene.h">
       <Filter>Header Files\scene\levels</Filter>
@@ -744,7 +750,7 @@
       <Filter>Header Files\minimap</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkMinimapScript.h">
-      <Filter>Header Files\scene\gameObjects\components\scripts</Filter>
+      <Filter>Header Files\components\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\rkITiledClassApplier.h">
       <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
@@ -754,6 +760,12 @@
     </ClInclude>
     <ClInclude Include="include\rkBaseTiledClassApplier.h">
       <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkMinimapTiledClassApplier.h">
+      <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkColorUtilities.h">
+      <Filter>Header Files\utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
