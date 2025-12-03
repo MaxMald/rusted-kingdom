@@ -32,4 +32,9 @@ namespace rk
   {
     return m_view;
   }
+
+  void ViewController::setViewCenter(const Vector2f& center)
+  {
+    m_view.setCenter(center);
+  }
 }

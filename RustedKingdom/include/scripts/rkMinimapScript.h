@@ -7,8 +7,14 @@
 
 #include "rkScriptComponent.h"
 
+namespace sf
+{
+  class RenderWindow;
+}
+
 using sf::FloatRect;
 using sf::Vector2f;
+using sf::RenderWindow;
 
 namespace rk
 {
@@ -27,10 +33,12 @@ namespace rk
 
   protected:
     virtual void onCreate() override;
+    virtual void onUpdate(float) override;
     virtual void onDraw(RenderTarget& target, RenderStates states) const override;
 
   private:
     float m_viewBoxThickness;
+    sf::RenderWindow* m_renderWindow;
     sf::RectangleShape m_viewBoxShape;
     sf::Color m_viewBoxColor;
     FloatRect m_mapRect;
@@ -43,5 +51,6 @@ namespace rk
     FloatRect clipRectViewToMapRect(const FloatRect& viewRect) const;
     FloatRect scaleViewRectToMinimap(const FloatRect& viewRect) const;
     FloatRect moveRectToOrigin(const FloatRect& rect) const;
+    bool isPointInMinimap(const Vector2f& point) const;
   };
 }

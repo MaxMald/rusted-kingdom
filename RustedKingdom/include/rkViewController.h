@@ -1,11 +1,13 @@
 #pragma once
 
 #include <SFML/Graphics/View.hpp>
+#include <SFML/System/Vector2.hpp>
 
 #include "rkPrerequisites.h"
 #include "rkNonCopyable.h"
 
 using sf::View;
+using sf::Vector2f;
 
 namespace rk
 {
@@ -19,6 +21,7 @@ namespace rk
     const String& getName() const;
     void setView(const View& view);
     const View& getView() const;
+    void setViewCenter(const Vector2f& center);
 
   private:
     View m_view;
