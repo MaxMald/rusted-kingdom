@@ -64,38 +64,7 @@ namespace rk
 
   void MainScene::loadAssets()
   {
-    m_assetManager->getAssetGroup<TiledMap>().loadFromFile(
-      "level-0",
-      m_assetManager->combineAssetDirectoryWithPath("maps/level-5.tmx")
-    );
-    tiledMapAssetLoader::loadTiledMapAssets(*m_assetManager, "level-0");
-
-    m_assetManager->getAssetGroup<TiledMap>().loadFromFile(
-      "ui",
-      m_assetManager->combineAssetDirectoryWithPath("maps/level-ui.tmx")
-    );
-    tiledMapAssetLoader::loadTiledMapAssets(*m_assetManager, "ui");
-
-    m_assetManager->getAssetGroup<Texture>().loadFromFile(
-      "lucius-walking",
-      m_assetManager->combineAssetDirectoryWithPath("textures/characters/lucius/lucius-walking.png")
-    );
-    m_assetManager->getAssetGroup<Texture>().loadFromFile(
-      "lucius-running",
-      m_assetManager->combineAssetDirectoryWithPath("textures/characters/lucius/lucius-running.png")
-    );
-    m_assetManager->getAssetGroup<EightDirAnimationDesc>().loadFromFile(
-      "lucius-idle-anim",
-      m_assetManager->combineAssetDirectoryWithPath("animations/lucius-idle-anim.json")
-    );
-    m_assetManager->getAssetGroup<EightDirAnimationDesc>().loadFromFile(
-      "lucius-walking-anim",
-      m_assetManager->combineAssetDirectoryWithPath("animations/lucius-walking-anim.json")
-    );
-    m_assetManager->getAssetGroup<EightDirAnimationDesc>().loadFromFile(
-      "lucius-running-anim",
-      m_assetManager->combineAssetDirectoryWithPath("animations/lucius-running-anim.json")
-    );
+    m_assetManager->loadBundle("bundles/mainLevel-bundle.json");
   }
 
   void MainScene::createScene()

@@ -432,6 +432,12 @@
     <ClCompile Include="include\rkColorUtilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkAssetsBundleItem.cpp">
+      <Filter>Source Files\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkAssetsBundleLoader.cpp">
+      <Filter>Source Files\loaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -766,6 +772,12 @@
     </ClInclude>
     <ClInclude Include="include\rkColorUtilities.h">
       <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkAssetsBundleItem.h">
+      <Filter>Header Files\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkAssetsBundleLoader.h">
+      <Filter>Header Files\loaders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

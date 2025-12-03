@@ -71,7 +71,7 @@ namespace rk
     return Json(new Impl(std::move(j)));
   }
 
-  Json Json::loadFromFile(const String& filePath)
+  Json Json::loadFromFile(const Path& filePath)
   {
     std::ifstream file(filePath.c_str());
 
@@ -193,5 +193,10 @@ namespace rk
   Int32 Json::getInt32() const
   {
     return static_cast<Int32>(m_impl->json.get<int>());
+  }
+
+  SizeT Json::getSize() const
+  {
+    return static_cast<SizeT>(m_impl->json.size());
   }
 }

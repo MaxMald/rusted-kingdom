@@ -6,6 +6,7 @@
 #include "rkTiledMap.h"
 #include "rkEightDirAnimationDesc.h"
 #include "rkTexture.h"
+#include "rkAssetsBundleLoader.h"
 
 namespace rk
 {
@@ -13,12 +14,20 @@ namespace rk
     m_assetDirectory(),
     m_assetGroups()
   {
-    //String assetsPath = "C:/Users/nuup2/OneDrive/Documentos/Repositories/MaxMald/rusted-kingdom/assets";
+    //m_assetDirectory = "C:/Users/nuup2/OneDrive/Documentos/Repositories/MaxMald/rusted-kingdom/assets";
     m_assetDirectory = "F:/Repositories/MaxMald/rusted-kingdom/assets";
   }
 
   AssetManager::~AssetManager()
   {
+  }
+
+  bool AssetManager::loadBundle(Path relativeBundleFilePath)
+  {
+    return assetsBundleLoader::loadAssetsBundle(
+      combineAssetDirectoryWithPath(relativeBundleFilePath),
+      *this
+    );
   }
 
   void AssetManager::unloadAll()

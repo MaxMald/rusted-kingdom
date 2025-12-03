@@ -1,0 +1,38 @@
+{
+  "textures": [
+    {
+      "key": "lucius-walking",
+      "path": "textures/characters/lucius/lucius-walking.png"
+    },
+    {
+      "key": "lucius-running",
+      "path": "textures/characters/lucius/lucius-running.png"
+    }
+  ],
+
+  "eightDirAnimationDescriptors": [
+    {
+      "key": "lucius-idle-anim",
+      "path": "animations/lucius-idle-anim.json"
+    },
+    {
+      "key": "lucius-walking-anim",
+      "path": "animations/lucius-walking-anim.json"
+    },
+    {
+      "key": "lucius-running-anim",
+      "path": "animations/lucius-running-anim.json"
+    }
+  ],
+
+  "tiledMaps": [
+    {
+      "key": "level-0",
+      "path": "maps/level-5.tmx"
+    },
+    {
+      "key": "ui",
+      "path": "maps/level-ui.tmx"
+    }
+  ]
+}

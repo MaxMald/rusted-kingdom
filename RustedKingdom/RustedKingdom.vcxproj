@@ -165,6 +165,8 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkApplication.cpp" />
     <ClCompile Include="src\rkAssetGroup.cpp" />
+    <ClCompile Include="src\rkAssetsBundleItem.cpp" />
+    <ClCompile Include="src\rkAssetsBundleLoader.cpp" />
     <ClCompile Include="src\rkBoolComparisonAnimationStateTransition.cpp" />
     <ClCompile Include="src\rkCircleCollider.cpp" />
     <ClCompile Include="src\rkCollider.cpp" />
@@ -247,6 +249,8 @@
     <ClCompile Include="src\scripts\rkViewControllerScript.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\rkAssetsBundleItem.h" />
+    <ClInclude Include="include\rkAssetsBundleLoader.h" />
     <ClInclude Include="include\rkBaseTiledClassApplier.h" />
     <ClInclude Include="include\rkColorUtilities.h" />
     <ClInclude Include="include\rkMinimapTiledClassApplier.h" />

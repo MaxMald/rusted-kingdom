@@ -57,7 +57,7 @@ namespace rk
      * @throws RuntimeErrorException if the file cannot be opened.
      * @throws LogicErrorException if the file content is not valid JSON.
      */
-    static Json loadFromFile(const String& filePath);
+    static Json loadFromFile(const Path& filePath);
 
     /**
      * @brief Copy assignment operator. Performs a deep copy of the JSON value.
@@ -170,7 +170,13 @@ namespace rk
      * @throws std::exception if the value is not a number.
      */
     Int32 getInt32() const;
-   
+
+    /**
+     * @brief Returns the size of the JSON array or object.
+     * 
+     * @return The number of elements in the array or members in the object.
+     */
+    SizeT getSize() const;
 
   private:
 

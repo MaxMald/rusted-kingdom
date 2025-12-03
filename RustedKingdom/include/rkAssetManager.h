@@ -95,6 +95,16 @@ namespace rk
 
       return *typedGroup;
     }
+
+    /**
+     * @brief Loads an assets bundle from a file.
+     *
+     * @param relativeBundleFilePath Path to the assets bundle file (relative to
+     * the asset directory).
+     *
+     * @return True if the bundle was loaded successfully, false otherwise.
+     */
+    bool loadBundle(Path relativeBundleFilePath);
     
     /**
      * @brief Unloads all assets managed by the AssetManager.
