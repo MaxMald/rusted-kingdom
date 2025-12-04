@@ -13,6 +13,7 @@ namespace rk
   class ScenesManager;
   class WindowManager;
   class ViewsManager;
+  class InputManager;
 
   class Application : public NonCopyable
   {
@@ -29,6 +30,7 @@ namespace rk
     SharedPtr<ScenesManager> m_scenesManager;
     SharedPtr<WindowManager> m_windowManager;
     SharedPtr<ViewsManager> m_viewManager;
+    SharedPtr<InputManager> m_inputManager;
 
     void registerServices();
     void registerScenes();

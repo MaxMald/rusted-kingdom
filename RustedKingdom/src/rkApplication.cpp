@@ -6,6 +6,7 @@
 #include "rkWindowManager.h"
 #include "rkAssetManager.h"
 #include "rkViewsManager.h"
+#include "rkInputManager.h"
 #include "rkMainScene.h"
 
 using std::optional;
@@ -40,6 +41,8 @@ namespace rk
       m_serviceLocator->getService<WindowManager>();
     m_viewManager =
       m_serviceLocator->getService<ViewsManager>();
+    m_inputManager =
+      m_serviceLocator->getService<InputManager>();
 
     m_windowManager->createWindow();
     m_serviceLocator->initializeServices();
@@ -87,6 +90,7 @@ namespace rk
 
   void Application::update(float deltaTime)
   {
+    m_inputManager->update();
     m_viewManager->updateRenderWindowView();
     m_scenesManager->update(deltaTime);
   }
@@ -104,6 +108,7 @@ namespace rk
     m_serviceLocator->registerService(MakeShared<ScenesManager>());
     m_serviceLocator->registerService(MakeShared<WindowManager>());
     m_serviceLocator->registerService(MakeShared<ViewsManager>());
+    m_serviceLocator->registerService(MakeShared<InputManager>());
   }
 
   void Application::registerScenes()

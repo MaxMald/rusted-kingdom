@@ -182,6 +182,9 @@
     <ClCompile Include="src\rkMinimapTextureCreator.cpp" />
     <ClCompile Include="src\rkMinimapTiledClassApplier.cpp" />
     <ClCompile Include="src\rkMinimapUtilities.cpp" />
+    <ClCompile Include="src\rkMouseButtonEvent.cpp" />
+    <ClCompile Include="src\rkMouseButtonHandler.cpp" />
+    <ClCompile Include="src\rkMouseInputManager.cpp" />
     <ClCompile Include="src\rkNode.cpp" />
     <ClCompile Include="src\rkNodeLink.cpp" />
     <ClCompile Include="src\rkNodeMesh.cpp" />
@@ -253,6 +256,7 @@
     <ClInclude Include="include\rkAssetsBundleLoader.h" />
     <ClInclude Include="include\rkBaseTiledClassApplier.h" />
     <ClInclude Include="include\rkColorUtilities.h" />
+    <ClInclude Include="include\rkIMouseButtonHandlerListener.h" />
     <ClInclude Include="include\rkMinimapTiledClassApplier.h" />
     <ClInclude Include="include\rkMinimapUtilities.h" />
     <ClInclude Include="include\rkAnimation.h" />
@@ -282,6 +286,10 @@
     <ClInclude Include="include\rkILevelScene.h" />
     <ClInclude Include="include\rkMainScene.h" />
     <ClInclude Include="include\rkMinimapTextureCreator.h" />
+    <ClInclude Include="include\rkMouseButtonEvent.h" />
+    <ClInclude Include="include\rkMouseButtonHandler.h" />
+    <ClInclude Include="include\rkMouseInputManager.h" />
+    <ClInclude Include="include\rkIMouseInputManagerListener.h" />
     <ClInclude Include="include\rkNode.h" />
     <ClInclude Include="include\rkNodeLink.h" />
     <ClInclude Include="include\rkNodeMesh.h" />

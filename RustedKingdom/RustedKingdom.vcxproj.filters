@@ -31,12 +31,6 @@
     <Filter Include="Source Files\scene\gameObjects">
       <UniqueIdentifier>{5636a2fb-4114-47ab-b71e-98de9f50d66c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\inputManager">
-      <UniqueIdentifier>{93039089-27ea-47ad-9a21-d3afbb8af2eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\inputManager">
-      <UniqueIdentifier>{c33eba27-aa5d-4a65-ba2f-ffb0ed617d4c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\eventsManager">
       <UniqueIdentifier>{4bc21eb9-d848-433d-ac47-07ca78b4ecf9}</UniqueIdentifier>
     </Filter>
@@ -139,12 +133,6 @@
     <Filter Include="Header Files\services\viewsManager">
       <UniqueIdentifier>{e74f2fa8-45ee-463f-871b-5b72736214a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\utilities\services">
-      <UniqueIdentifier>{3a0b928f-928a-48cf-bd23-1c422aeb92fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\utilities\services\viewsManager">
-      <UniqueIdentifier>{f61b5292-f837-471a-aa44-98b721dbabd8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\utilities\positionTransformer">
       <UniqueIdentifier>{cb49a8d0-0121-4fbb-86e2-0abf3609c328}</UniqueIdentifier>
     </Filter>
@@ -178,6 +166,24 @@
     <Filter Include="Header Files\components\factories">
       <UniqueIdentifier>{ea0e3583-e8a5-494e-a775-9e2828c306d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\services\inputManager">
+      <UniqueIdentifier>{25839408-1584-45b7-87b3-078833914a13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\services">
+      <UniqueIdentifier>{3a0b928f-928a-48cf-bd23-1c422aeb92fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\services\viewsManager">
+      <UniqueIdentifier>{f61b5292-f837-471a-aa44-98b721dbabd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\services\inputManager">
+      <UniqueIdentifier>{c33eba27-aa5d-4a65-ba2f-ffb0ed617d4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\services\inputManager\mouseInputManager">
+      <UniqueIdentifier>{cda330f2-82a0-4735-85b9-5e6d1a81c70d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\services\inputManager\mouseInputManager">
+      <UniqueIdentifier>{a87564d9-bb80-4c95-89a9-0ff069a6bd8e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -196,7 +202,7 @@
       <Filter>Source Files\assets</Filter>
     </ClCompile>
     <ClCompile Include="src\rkInputManager.cpp">
-      <Filter>Source Files\inputManager</Filter>
+      <Filter>Source Files\services\inputManager</Filter>
     </ClCompile>
     <ClCompile Include="src\rkEventsManager.cpp">
       <Filter>Source Files\eventsManager</Filter>
@@ -325,16 +331,16 @@
       <Filter>Source Files\scene</Filter>
     </ClCompile>
     <ClCompile Include="src\rkScenesManager.cpp">
-      <Filter>Source Files\utilities\services</Filter>
+      <Filter>Source Files\services</Filter>
     </ClCompile>
     <ClCompile Include="src\rkApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\rkWindowManager.cpp">
-      <Filter>Source Files\utilities\services</Filter>
+      <Filter>Source Files\services</Filter>
     </ClCompile>
     <ClCompile Include="src\rkAssetManager.cpp">
-      <Filter>Source Files\utilities\services</Filter>
+      <Filter>Source Files\services</Filter>
     </ClCompile>
     <ClCompile Include="src\rkPathfinderManager.cpp">
       <Filter>Source Files\pathfinder</Filter>
@@ -382,10 +388,10 @@
       <Filter>Source Files\utilities</Filter>
     </ClCompile>
     <ClCompile Include="src\rkViewsManager.cpp">
-      <Filter>Source Files\utilities\services\viewsManager</Filter>
+      <Filter>Source Files\services\viewsManager</Filter>
     </ClCompile>
     <ClCompile Include="src\rkViewController.cpp">
-      <Filter>Source Files\utilities\services\viewsManager</Filter>
+      <Filter>Source Files\services\viewsManager</Filter>
     </ClCompile>
     <ClCompile Include="src\rkViewComponent.cpp">
       <Filter>Source Files\components</Filter>
@@ -400,7 +406,7 @@
       <Filter>Source Files\scene\levels</Filter>
     </ClCompile>
     <ClCompile Include="src\rkServiceLocator.cpp">
-      <Filter>Source Files\utilities\services</Filter>
+      <Filter>Source Files\services</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTiledLayerGameObjectCreator.cpp">
       <Filter>Source Files\scene\tiledSceneCreator</Filter>
@@ -438,6 +444,15 @@
     <ClCompile Include="src\rkAssetsBundleLoader.cpp">
       <Filter>Source Files\loaders</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkMouseButtonHandler.cpp">
+      <Filter>Source Files\services\inputManager\mouseInputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkMouseInputManager.cpp">
+      <Filter>Source Files\services\inputManager\mouseInputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkMouseButtonEvent.cpp">
+      <Filter>Source Files\services\inputManager\mouseInputManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -463,12 +478,6 @@
     </ClInclude>
     <ClInclude Include="include\rkSpriteSheet.h">
       <Filter>Header Files\assets</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkInputManager.h">
-      <Filter>Header Files\inputManager</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkInputManagerListener.h">
-      <Filter>Header Files\inputManager</Filter>
     </ClInclude>
     <ClInclude Include="include\rkEventsManager.h">
       <Filter>Header Files\eventsManager</Filter>
@@ -704,9 +713,6 @@
     <ClInclude Include="include\rkTiledMapUtilities.h">
       <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkTiledObjectSpriteDescriptorFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\rkGameObjectUtilities.h">
       <Filter>Header Files\scene\gameObjects</Filter>
     </ClInclude>
@@ -778,6 +784,30 @@
     </ClInclude>
     <ClInclude Include="include\rkAssetsBundleLoader.h">
       <Filter>Header Files\loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkInputManager.h">
+      <Filter>Header Files\services\inputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkInputManagerListener.h">
+      <Filter>Header Files\services\inputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkIMouseButtonHandlerListener.h">
+      <Filter>Header Files\services\inputManager\mouseInputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkMouseButtonHandler.h">
+      <Filter>Header Files\services\inputManager\mouseInputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkMouseInputManager.h">
+      <Filter>Header Files\services\inputManager\mouseInputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkIMouseInputManagerListener.h">
+      <Filter>Header Files\services\inputManager\mouseInputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkMouseButtonEvent.h">
+      <Filter>Header Files\services\inputManager\mouseInputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkTiledObjectSpriteDescriptorFactory.h">
+      <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

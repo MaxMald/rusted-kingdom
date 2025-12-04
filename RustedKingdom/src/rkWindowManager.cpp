@@ -48,7 +48,7 @@ namespace rk
       sf::VideoMode({ 1920, 1080 }),
       "Rusted Kingdom",
       sf::Style::Default,
-      sf::State::Fullscreen
+      sf::State::Windowed
     );
 
     if (!m_renderWindow->isOpen())
