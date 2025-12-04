@@ -2,24 +2,25 @@
 
 #include <algorithm>
 
-#include <SFML/Window/Mouse.hpp>
 #include <SFML/Graphics/View.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
 
 #include "rkServiceLocator.h"
 #include "rkViewsManager.h"
-#include "rkWindowManager.h"
+#include "rkInputManager.h"
 #include "rkViewController.h"
 #include "rkGameObject.h"
 
 namespace rk
 {
+  constexpr sf::Mouse::Button DRAG_BUTTON = sf::Mouse::Button::Left;
+
   MinimapScript::MinimapScript(GameObject& gameObject) :
     ScriptComponent(gameObject),
     m_viewsManager(nullptr),
     m_mapRect(),
     m_viewBoxThickness(1.f),
-    m_renderWindow(nullptr)
+    m_inputManager(nullptr),
+    m_isDragging(false)
   {
   }
 
@@ -47,53 +48,48 @@ namespace rk
   void MinimapScript::onCreate()
   {
     m_viewsManager = ServiceLocator::Instance().getService<ViewsManager>();
-
-    SharedPtr<WindowManager> windowManager = ServiceLocator::Instance()
-      .getService<WindowManager>();
-    m_renderWindow = &(windowManager->getRenderWindow());
+    m_inputManager = ServiceLocator::Instance().getService<InputManager>();
+    m_inputManager->getMouseInputManager().subscribe(this);
   }
 
   void MinimapScript::onUpdate(float)
   {
-    if (!m_renderWindow)
+    if (!m_isDragging)
       return;
 
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-    {
-      sf::Vector2i mousePixelPos = sf::Mouse::getPosition(*m_renderWindow);
-      sf::Vector2f mouseWorldPos = m_renderWindow->mapPixelToCoords(mousePixelPos);
+    sf::Vector2f mouseWorldPos = m_inputManager->getMouseInputManager()
+      .getMousePositionWorldCoordinates();
 
-      SharedPtr<ViewController> activeView = m_viewsManager->getActiveView();
-      if (!activeView)
-        return;
+    SharedPtr<ViewController> activeView = m_viewsManager->getActiveView();
+    if (!activeView)
+      return;
 
-      // Convert mouse world position to view-relative position
-      sf::Vector2f viewCenter = activeView->getView().getCenter();
-      sf::Vector2f viewPosition = {
-        viewCenter.x - activeView->getView().getSize().x * 0.5f,
-        viewCenter.y - activeView->getView().getSize().y * 0.5f
-      };
-      sf::Vector2f mouseViewPos = {
-        mouseWorldPos.x - viewPosition.x,
-        mouseWorldPos.y - viewPosition.y
-      };
+    // Convert mouse world position to view-relative position
+    sf::Vector2f viewCenter = activeView->getView().getCenter();
+    sf::Vector2f viewPosition = {
+      viewCenter.x - activeView->getView().getSize().x * 0.5f,
+      viewCenter.y - activeView->getView().getSize().y * 0.5f
+    };
+    sf::Vector2f mouseViewPos = {
+      mouseWorldPos.x - viewPosition.x,
+      mouseWorldPos.y - viewPosition.y
+    };
 
-      if (!isPointInMinimap(mouseViewPos))
-        return;
+    if (!isPointInMinimap(mouseViewPos))
+      return;
 
-      // Calculate the corresponding position on the main map
-      Vector2f localMinimapPos = mouseViewPos - m_gameObject->getPosition();
-      Vector2f normalizedLocalPos = {
-        localMinimapPos.x / m_minimapSize.x,
-        localMinimapPos.y / m_minimapSize.y
-      };
-      Vector2f mouseMapPos = {
-        m_mapRect.position.x + normalizedLocalPos.x * m_mapRect.size.x,
-        m_mapRect.position.y + normalizedLocalPos.y * m_mapRect.size.y
-      };
+    // Calculate the corresponding position on the main map
+    Vector2f localMinimapPos = mouseViewPos - m_gameObject->getPosition();
+    Vector2f normalizedLocalPos = {
+      localMinimapPos.x / m_minimapSize.x,
+      localMinimapPos.y / m_minimapSize.y
+    };
+    Vector2f mouseMapPos = {
+      m_mapRect.position.x + normalizedLocalPos.x * m_mapRect.size.x,
+      m_mapRect.position.y + normalizedLocalPos.y * m_mapRect.size.y
+    };
 
-      activeView->setViewCenter(mouseMapPos);
-    }
+    activeView->setViewCenter(mouseMapPos);
   }
 
   void MinimapScript::onDraw(RenderTarget& target, RenderStates states) const
@@ -106,6 +102,23 @@ namespace rk
       return;
 
     drawViewBox(target, states);
+  }
+
+  void MinimapScript::onMouseButtonPressed(const MouseButtonEvent& event)
+  {
+    if (event.getButton() != DRAG_BUTTON)
+      return;
+
+    m_isDragging = true;
+    // TODO Should avoid others to get the input event.
+  }
+  
+  void MinimapScript::onMouseButtonReleased(const MouseButtonEvent& event)
+  {
+    if (event.getButton() != DRAG_BUTTON)
+      return;
+
+    m_isDragging = false;
   }
 
   void MinimapScript::drawViewBox(RenderTarget& target, RenderStates states) const

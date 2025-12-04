@@ -6,6 +6,7 @@
 #include <SFML/System/Vector2.hpp>
 
 #include "rkScriptComponent.h"
+#include "rkIMouseInputManagerListener.h"
 
 namespace sf
 {
@@ -19,8 +20,9 @@ using sf::RenderWindow;
 namespace rk
 {
   class ViewsManager;
+  class InputManager;
 
-  class MinimapScript : public ScriptComponent
+  class MinimapScript : public ScriptComponent, IMouseInputManagerListener
   {
   public:
     MinimapScript(GameObject& gameObject);
@@ -36,9 +38,12 @@ namespace rk
     virtual void onUpdate(float) override;
     virtual void onDraw(RenderTarget& target, RenderStates states) const override;
 
+    virtual void onMouseButtonPressed(const MouseButtonEvent&);
+    virtual void onMouseButtonReleased(const MouseButtonEvent&);
+
   private:
+    bool m_isDragging;
     float m_viewBoxThickness;
-    sf::RenderWindow* m_renderWindow;
     sf::RectangleShape m_viewBoxShape;
     sf::Color m_viewBoxColor;
     FloatRect m_mapRect;
@@ -46,6 +51,7 @@ namespace rk
     Vector2f m_mapBottomRight;
     Vector2f m_minimapSize;
     SharedPtr<ViewsManager> m_viewsManager;
+    SharedPtr<InputManager> m_inputManager;
 
     void drawViewBox(RenderTarget&, RenderStates) const;
     FloatRect clipRectViewToMapRect(const FloatRect& viewRect) const;
