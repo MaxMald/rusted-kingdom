@@ -4,13 +4,6 @@
 #include "rkGameObjectBlueprint.h"
 #include "rkIPositionTransformer.h"
 
-namespace sf
-{
-  class RenderWindow;
-}
-
-using sf::RenderWindow;
-
 namespace rk
 {
   class GameObjectBuilder;
@@ -30,8 +23,7 @@ namespace rk
       RigidBodyComponentFactory& rigidBodyComponentFactory,
       ColliderComponentFactory& colliderComponentFactory,
       SharedPtr<Pathfinder> pathfinder,
-      SharedPtr<IPositionTransformer> positionTransform,
-      const RenderWindow& renderWindow
+      SharedPtr<IPositionTransformer> positionTransform
     );
     ~LuciusBlueprint() override;
 
@@ -49,6 +41,5 @@ namespace rk
     RigidBodyComponentFactory& m_rigidBodyComponentFactory;
     SharedPtr<Pathfinder> m_pathfinder;
     SharedPtr<IPositionTransformer> m_positionTransform;
-    const RenderWindow& m_renderWindow;
   };
 }

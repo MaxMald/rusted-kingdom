@@ -129,8 +129,7 @@ namespace rk
       rigidBodyComponentFactory,
       colliderComponentFactory,
       m_pathfinderManager.getPathfinder("characters"),
-      positionTransform,
-      m_windowManager->getRenderWindow()
+      positionTransform
     );
 
     GameObject* plantas = m_sceneGraph.getRoot()->findChildByName("plantas");

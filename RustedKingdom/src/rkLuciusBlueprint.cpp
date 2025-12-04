@@ -30,8 +30,7 @@ namespace rk
     RigidBodyComponentFactory& rigidBodyComponentFactory,
     ColliderComponentFactory& colliderComponentFactory,
     SharedPtr<Pathfinder> pathfinder,
-    SharedPtr<IPositionTransformer> positionTransform,
-    const RenderWindow& renderWindow
+    SharedPtr<IPositionTransformer> positionTransform
   ) :
     m_gameObjectBuilder(gameObjectBuilder),
     m_spriteComponentFactory(spriteComponentFactory),
@@ -39,8 +38,7 @@ namespace rk
     m_rigidBodyComponentFactory(rigidBodyComponentFactory),
     m_colliderComponentFactory(colliderComponentFactory),
     m_pathfinder(pathfinder),
-    m_positionTransform(positionTransform),
-    m_renderWindow(renderWindow)
+    m_positionTransform(positionTransform)
   {
   }
 
@@ -107,7 +105,7 @@ namespace rk
       MakeUnique<PathfinderComponent>(*lucius, m_pathfinder)
     );
     lucius->addComponent(
-      MakeUnique<Lucius>(*lucius, m_renderWindow, m_positionTransform)
+      MakeUnique<Lucius>(*lucius, m_positionTransform)
     );
     lucius->addComponent(
       MakeUnique<LuciusAnimation>(*lucius)

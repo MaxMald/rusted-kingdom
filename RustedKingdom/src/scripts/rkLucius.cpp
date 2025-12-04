@@ -7,19 +7,22 @@
 #include "rkSpriteComponent.h"
 #include "rkSteerForces.h"
 #include "rkPathfinderComponent.h"
+#include "rkServiceLocator.h"
+#include "rkInputManager.h"
 
 #include "scripts/rkAgentPathMovement.h"
 
 namespace rk
 {
+  constexpr sf::Mouse::Button MOVEMENT_BUTTON = sf::Mouse::Button::Right;
+
   Lucius::Lucius(
-    GameObject& gameObject, 
-    const RenderWindow& renderWindow,
+    GameObject& gameObject,
     SharedPtr<IPositionTransformer> positionTransformer
   )
     : ScriptComponent(gameObject),
     m_positionTransformer(positionTransformer),
-    m_renderWindow(renderWindow),
+    m_inputManager(nullptr),
     m_agentPathMovement(nullptr),
     m_pathfinderComponent(nullptr),
     m_currentState(luciusStates::Type::Idle)
@@ -60,21 +63,31 @@ namespace rk
     m_pathfinderComponent = m_gameObject->getComponent<PathfinderComponent>();
     m_agentPathMovement = m_gameObject->getComponent<AgentPathMovement>();
     m_agentPathMovement->setSpeed(100.0f);
+
+    m_inputManager = ServiceLocator::Instance().getService<InputManager>();
+    m_inputManager->getMouseInputManager().subscribe(this);
   }
 
   void Lucius::onUpdate(float)
   {
-    // Check for left mouse button press
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
-    {
-      // Get mouse position in window coordinates
-      sf::Vector2i mousePixelPos = sf::Mouse::getPosition(m_renderWindow);
+    // No implementation needed
+  }
 
-      // Convert to world coordinates using the window's current view
-      sf::Vector2f mouseWorldPos = m_renderWindow.mapPixelToCoords(mousePixelPos);
+  void Lucius::onDelete()
+  {
+    m_inputManager->getMouseInputManager().unsubscribe(this);
+  }
 
-      // Call goTo with the world position
-      goTo(mouseWorldPos);
-    }
+  void Lucius::onMouseButtonPressed(const MouseButtonEvent&)
+  {
+    // No implementation needed
+  }
+
+  void Lucius::onMouseButtonReleased(const MouseButtonEvent& mouseEvent)
+  {
+    if (MOVEMENT_BUTTON != mouseEvent.getButton())
+      return;
+
+    goTo(m_inputManager->getMouseInputManager().getMousePositionWorldCoordinates());
   }
 }
