@@ -46,11 +46,11 @@ namespace rk
 
   sf::Mouse::Button MouseButtonEvent::getButton() const
   {
-    return sf::Mouse::Button();
+    return m_button;
   }
 
   bool MouseButtonEvent::isPressed() const
   {
-    return false;
+    return m_isPressed;
   }
 }
