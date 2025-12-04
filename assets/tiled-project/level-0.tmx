@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="30" tilewidth="128" tileheight="64" infinite="0" nextlayerid="12" nextobjectid="209">
+<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="30" tilewidth="128" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="210">
  <editorsettings>
   <export target="../maps/level-5.tmx" format="tmx"/>
  </editorsettings>
@@ -81,7 +81,7 @@
 3,30,30,30,30,30,6,10,0,0,0,0,0,0,0,0,11,15,2,20,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="2" name="plantas">
+ <objectgroup id="2" name="plantas" locked="1">
   <properties>
    <property name="isStatic" type="bool" value="false"/>
    <property name="minimap" type="bool" value="true"/>
@@ -135,5 +135,10 @@
   <object id="205" gid="33" x="1520" y="813.333" width="256" height="128"/>
   <object id="206" gid="33" x="1522" y="739.333" width="256" height="128"/>
   <object id="207" gid="33" x="1365.33" y="840" width="256" height="128"/>
+ </objectgroup>
+ <objectgroup id="12" name="level-systems">
+  <object id="209" name="box-selector" type="BoxSelector" x="-856" y="1020">
+   <point/>
+  </object>
  </objectgroup>
 </map>

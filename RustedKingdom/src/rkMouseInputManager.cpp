@@ -31,6 +31,13 @@ namespace rk
     return sf::Mouse::getPosition(m_windowManager->getRenderWindow());
   }
 
+  Vector2f MouseInputManager::getMousePositionWorldCoordinates() const
+  {
+    sf::RenderWindow& renderWindow = m_windowManager->getRenderWindow();
+    Vector2i windowPos = getMousePositionRelativeToWindow();
+    return renderWindow.mapPixelToCoords(windowPos);
+  }
+
   bool MouseInputManager::isButtonPressed(sf::Mouse::Button button) const
   {
     auto it = m_buttonHandlers.find(button);

@@ -98,7 +98,7 @@ namespace rk
       return false;
 
     String hexColor = static_cast<const tmr::ColorProperty*>(property)->getValue();
-    outValue = colorUtilities::getColorFromHex(hexColor);
+    outValue = colorUtilities::getColorFromTiledHex(hexColor);
 
     return true;
   }

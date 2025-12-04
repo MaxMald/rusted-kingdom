@@ -30,6 +30,7 @@ namespace rk
     virtual void postDraw(RenderTarget& window, RenderStates states) const override;
 
     void prepareMinimap(const tmr::TiledMap* tiledMap);
+    void createBoxSelector();
 
   private:
     SharedPtr<ViewsManager> m_viewsManager;

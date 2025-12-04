@@ -51,6 +51,7 @@ namespace rk
     loadAssets();
     createScene();
 
+    createBoxSelector();
     prepareMinimap(
       m_assetManager->getAssetGroup<TiledMap>().get("level-0")->getTmrTiledMap()
     );

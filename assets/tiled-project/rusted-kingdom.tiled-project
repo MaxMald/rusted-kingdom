@@ -13,6 +13,41 @@
         {
             "color": "#ffa0a0a4",
             "drawFill": true,
+            "id": 2,
+            "members": [
+                {
+                    "name": "borderColor",
+                    "type": "color",
+                    "value": "#ff04359f"
+                },
+                {
+                    "name": "borderThickness",
+                    "type": "float",
+                    "value": 1
+                },
+                {
+                    "name": "fillColor",
+                    "type": "color",
+                    "value": "#3c0894ff"
+                }
+            ],
+            "name": "BoxSelector",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset",
+                "project"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
             "id": 1,
             "members": [
                 {

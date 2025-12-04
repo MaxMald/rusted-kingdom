@@ -57,6 +57,19 @@ namespace rk
 
   GameObject* SceneGraph::instantiateGameObject(
     const GameObjectBlueprint& blueprint,
+    const String& name, 
+    const Vector2f& position
+  )
+  {
+    GameObject* newGameObject = blueprint.instantiate(name, *m_root);
+    newGameObject->updateTransform();
+    newGameObject->setPosition(position);
+    newGameObject->onCreate();
+    return newGameObject;
+  }
+
+  GameObject* SceneGraph::instantiateGameObject(
+    const GameObjectBlueprint& blueprint,
     const Vector2f& position,
     GameObject& parent
   )

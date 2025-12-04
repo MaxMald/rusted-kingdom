@@ -453,6 +453,12 @@
     <ClCompile Include="src\rkMouseButtonEvent.cpp">
       <Filter>Source Files\services\inputManager\mouseInputManager</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkBoxSelectorBlueprint.cpp">
+      <Filter>Source Files\scene\gameObjects\blueprints</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scripts\rkBoxSelectorScript.cpp">
+      <Filter>Source Files\components\scripts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -808,6 +814,12 @@
     </ClInclude>
     <ClInclude Include="include\rkTiledObjectSpriteDescriptorFactory.h">
       <Filter>Header Files\scene\tiledSceneCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkBoxSelectorBlueprint.h">
+      <Filter>Header Files\scene\gameObjects\blueprints</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scripts\rkBoxSelectorScript.h">
+      <Filter>Header Files\components\scripts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

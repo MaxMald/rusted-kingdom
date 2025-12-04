@@ -5,6 +5,7 @@
 #include "rkViewComponentFactory.h"
 #include "rkViewController.h"
 #include "rkMinimapUtilities.h"
+#include "rkBoxSelectorBlueprint.h"
 #include "scripts/rkViewControllerScript.h"
 
 namespace rk
@@ -82,6 +83,16 @@ namespace rk
     viewGameObject->addComponent(MakeUnique<ViewControllerScript>(*viewGameObject));
 
     m_sceneGraph.registerGameObject(std::move(viewGameObject));
+  }
+
+  void ILevelScene::createBoxSelector()
+  {
+    BoxSelectorBlueprint boxSelectorBlueprint;
+    m_sceneGraph.instantiateGameObject(
+      boxSelectorBlueprint,
+      "box-selector",
+      Vector2f(0.f, 0.f)
+    );
   }
 
   void ILevelScene::updateUi(float deltaTime)

@@ -168,6 +168,7 @@
     <ClCompile Include="src\rkAssetsBundleItem.cpp" />
     <ClCompile Include="src\rkAssetsBundleLoader.cpp" />
     <ClCompile Include="src\rkBoolComparisonAnimationStateTransition.cpp" />
+    <ClCompile Include="src\rkBoxSelectorBlueprint.cpp" />
     <ClCompile Include="src\rkCircleCollider.cpp" />
     <ClCompile Include="src\rkCollider.cpp" />
     <ClCompile Include="src\rkColliderComponent.cpp" />
@@ -246,6 +247,7 @@
     <ClCompile Include="src\rkViewsManager.cpp" />
     <ClCompile Include="src\rkWindowManager.cpp" />
     <ClCompile Include="src\scripts\rkAgentPathMovement.cpp" />
+    <ClCompile Include="src\scripts\rkBoxSelectorScript.cpp" />
     <ClCompile Include="src\scripts\rkLucius.cpp" />
     <ClCompile Include="src\scripts\rkLuciusAnimation.cpp" />
     <ClCompile Include="src\scripts\rkMinimapScript.cpp" />
@@ -255,6 +257,7 @@
     <ClInclude Include="include\rkAssetsBundleItem.h" />
     <ClInclude Include="include\rkAssetsBundleLoader.h" />
     <ClInclude Include="include\rkBaseTiledClassApplier.h" />
+    <ClInclude Include="include\rkBoxSelectorBlueprint.h" />
     <ClInclude Include="include\rkColorUtilities.h" />
     <ClInclude Include="include\rkIMouseButtonHandlerListener.h" />
     <ClInclude Include="include\rkMinimapTiledClassApplier.h" />
@@ -364,6 +367,7 @@
     <ClInclude Include="include\rkViewsManager.h" />
     <ClInclude Include="include\rkWindowManager.h" />
     <ClInclude Include="include\scripts\rkAgentPathMovement.h" />
+    <ClInclude Include="include\scripts\rkBoxSelectorScript.h" />
     <ClInclude Include="include\scripts\rkLucius.h" />
     <ClInclude Include="include\scripts\rkLuciusAnimation.h" />
     <ClInclude Include="include\scripts\rkLuciusStates.h" />

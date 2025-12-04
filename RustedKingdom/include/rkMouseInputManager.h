@@ -8,6 +8,7 @@
 #include "rkIMouseButtonHandlerListener.h"
 
 using sf::Vector2i;
+using sf::Vector2f;
 
 namespace rk
 {
@@ -40,6 +41,17 @@ namespace rk
      * @returns Current position of the mouse cursor in window coordinates.
      */
     Vector2i getMousePositionRelativeToWindow() const;
+
+    /**
+     * @brief Get the current position of the mouse in world coordinates.
+     *
+     * This function returns the current position of the mouse cursor,
+     * translated to world coordinates based on the current view of the
+     * application window.
+     *
+     * @returns Current position of the mouse cursor in world coordinates.
+     */
+    Vector2f getMousePositionWorldCoordinates() const;
 
     bool isButtonPressed(sf::Mouse::Button button) const;
 
