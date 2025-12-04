@@ -37,6 +37,7 @@ namespace rk
     virtual void onCreate() override;
     virtual void onUpdate(float) override;
     virtual void onDraw(RenderTarget& target, RenderStates states) const override;
+    virtual void onDelete() override;
 
     virtual void onMouseButtonPressed(const MouseButtonEvent&);
     virtual void onMouseButtonReleased(const MouseButtonEvent&);

@@ -104,6 +104,11 @@ namespace rk
     drawViewBox(target, states);
   }
 
+  void MinimapScript::onDelete()
+  {
+    m_inputManager->getMouseInputManager().unsubscribe(this);
+  }
+
   void MinimapScript::onMouseButtonPressed(const MouseButtonEvent& event)
   {
     if (event.getButton() != DRAG_BUTTON)
