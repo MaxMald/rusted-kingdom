@@ -19,9 +19,12 @@ namespace rk
    
     sf::Mouse::Button getButton() const;
     bool isPressed() const;
+    void setConsumed(bool consumed);
+    bool isConsumed() const;
 
   private:
     sf::Mouse::Button m_button;
+    bool m_isConsumed;
     bool m_isPressed;
   };
 }

@@ -51,14 +51,22 @@ namespace rk
   {
     MouseButtonEvent event(button, true);
     for (auto* listener : m_listeners)
+    {
       listener->onMouseButtonPressed(event);
+      if (event.isConsumed())
+        break;
+    }
   }
 
   void MouseInputManager::onMouseButtonReleased(sf::Mouse::Button button)
   {
     MouseButtonEvent event(button, false);
     for (auto* listener : m_listeners)
+    {
       listener->onMouseButtonReleased(event);
+      if (event.isConsumed())
+        break;
+    }
   }
 
   void MouseInputManager::prepare(SharedPtr<WindowManager> windowManager)

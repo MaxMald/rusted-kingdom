@@ -69,7 +69,7 @@ namespace rk
   }
 
   void BoxSelectorScript::onMouseButtonPressed(
-    const MouseButtonEvent& mouseEvent
+    MouseButtonEvent& mouseEvent
   )
   {
     if (mouseEvent.getButton() != SELECTION_BUTTON || m_isSelecting)
@@ -82,7 +82,7 @@ namespace rk
   }
 
   void BoxSelectorScript::onMouseButtonReleased(
-    const MouseButtonEvent& mouseEvent
+    MouseButtonEvent& mouseEvent
   )
   {
     if (mouseEvent.getButton() != SELECTION_BUTTON || !m_isSelecting)

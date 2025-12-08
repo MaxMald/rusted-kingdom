@@ -109,16 +109,16 @@ namespace rk
     m_inputManager->getMouseInputManager().unsubscribe(this);
   }
 
-  void MinimapScript::onMouseButtonPressed(const MouseButtonEvent& event)
+  void MinimapScript::onMouseButtonPressed(MouseButtonEvent& event)
   {
     if (event.getButton() != DRAG_BUTTON)
       return;
 
     m_isDragging = true;
-    // TODO Should avoid others to get the input event.
+    event.setConsumed(true);
   }
   
-  void MinimapScript::onMouseButtonReleased(const MouseButtonEvent& event)
+  void MinimapScript::onMouseButtonReleased(MouseButtonEvent& event)
   {
     if (event.getButton() != DRAG_BUTTON)
       return;

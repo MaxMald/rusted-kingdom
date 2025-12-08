@@ -31,8 +31,8 @@ namespace rk
     virtual void onUpdate(float deltaTime) override;
     virtual void onDelete() override;
 
-    virtual void onMouseButtonPressed(const MouseButtonEvent&);
-    virtual void onMouseButtonReleased(const MouseButtonEvent&);
+    virtual void onMouseButtonPressed(MouseButtonEvent&);
+    virtual void onMouseButtonReleased(MouseButtonEvent&);
 
   private:
     SharedPtr<InputManager> m_inputManager;

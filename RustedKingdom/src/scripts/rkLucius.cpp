@@ -78,12 +78,12 @@ namespace rk
     m_inputManager->getMouseInputManager().unsubscribe(this);
   }
 
-  void Lucius::onMouseButtonPressed(const MouseButtonEvent&)
+  void Lucius::onMouseButtonPressed(MouseButtonEvent&)
   {
     // No implementation needed
   }
 
-  void Lucius::onMouseButtonReleased(const MouseButtonEvent& mouseEvent)
+  void Lucius::onMouseButtonReleased(MouseButtonEvent& mouseEvent)
   {
     if (MOVEMENT_BUTTON != mouseEvent.getButton())
       return;

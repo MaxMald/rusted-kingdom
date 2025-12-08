@@ -10,7 +10,7 @@ namespace rk
   public:
     virtual ~IMouseInputManagerListener() = default;
 
-    virtual void onMouseButtonPressed(const MouseButtonEvent&) = 0;
-    virtual void onMouseButtonReleased(const MouseButtonEvent&) = 0;
+    virtual void onMouseButtonPressed(MouseButtonEvent&) = 0;
+    virtual void onMouseButtonReleased(MouseButtonEvent&) = 0;
   };
 }

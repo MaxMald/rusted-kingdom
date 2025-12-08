@@ -160,9 +160,6 @@
     <Filter Include="Header Files\components">
       <UniqueIdentifier>{fa0c4e7d-95b6-4fdf-a6e3-8b93f6086d80}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\components\scripts">
-      <UniqueIdentifier>{d942f593-2184-43a5-9a06-ded32fbf4269}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\components\factories">
       <UniqueIdentifier>{ea0e3583-e8a5-494e-a775-9e2828c306d1}</UniqueIdentifier>
     </Filter>
@@ -183,6 +180,9 @@
     </Filter>
     <Filter Include="Source Files\services\inputManager\mouseInputManager">
       <UniqueIdentifier>{a87564d9-bb80-4c95-89a9-0ff069a6bd8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\scripts">
+      <UniqueIdentifier>{d942f593-2184-43a5-9a06-ded32fbf4269}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -525,7 +525,7 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkLucius.h">
-      <Filter>Header Files\components\scripts</Filter>
+      <Filter>Header Files\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\rkScriptComponent.h">
       <Filter>Header Files\components</Filter>
@@ -627,13 +627,13 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkLuciusStates.h">
-      <Filter>Header Files\components\scripts</Filter>
+      <Filter>Header Files\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkLuciusAnimation.h">
-      <Filter>Header Files\components\scripts</Filter>
+      <Filter>Header Files\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkAgentPathMovement.h">
-      <Filter>Header Files\components\scripts</Filter>
+      <Filter>Header Files\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\rkCircleCollider.h">
       <Filter>Header Files\physics\colliders</Filter>
@@ -741,7 +741,7 @@
       <Filter>Header Files\components\factories</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkViewControllerScript.h">
-      <Filter>Header Files\components\scripts</Filter>
+      <Filter>Header Files\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\rkILevelScene.h">
       <Filter>Header Files\scene\levels</Filter>
@@ -768,7 +768,7 @@
       <Filter>Header Files\minimap</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkMinimapScript.h">
-      <Filter>Header Files\components\scripts</Filter>
+      <Filter>Header Files\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\rkITiledClassApplier.h">
       <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
@@ -819,7 +819,7 @@
       <Filter>Header Files\scene\gameObjects\blueprints</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkBoxSelectorScript.h">
-      <Filter>Header Files\components\scripts</Filter>
+      <Filter>Header Files\scripts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

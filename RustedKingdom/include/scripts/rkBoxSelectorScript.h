@@ -29,8 +29,8 @@ namespace rk
     virtual void onDraw(RenderTarget&, RenderStates) const override;
     virtual void onDelete() override;
 
-    virtual void onMouseButtonPressed(const MouseButtonEvent&);
-    virtual void onMouseButtonReleased(const MouseButtonEvent&);
+    virtual void onMouseButtonPressed(MouseButtonEvent&);
+    virtual void onMouseButtonReleased(MouseButtonEvent&);
 
   private:
     sf::Color m_borderColor;
