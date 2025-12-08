@@ -62,10 +62,7 @@ namespace rk
     return m_collider->checkCollision(point);
   }
 
-  void ColliderComponent::onDraw(
-    RenderTarget& target,
-    RenderStates states
-  ) const
+  void ColliderComponent::onDraw(RenderTarget& target, RenderStates) const
   {
     if (!m_debug)
       return;

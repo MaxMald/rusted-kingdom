@@ -46,7 +46,7 @@ namespace rk
     m_inputManager->getMouseInputManager().subscribe(this);
   }
 
-  void BoxSelectorScript::onUpdate(float deltaTime)
+  void BoxSelectorScript::onUpdate(float)
   {
     if (!m_isSelecting)
       return;
