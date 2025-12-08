@@ -155,7 +155,7 @@ namespace rk
       bool first = true;
       for (const GameObject* gameObject : minimapGameObjects)
       {
-        FloatRect bounds = gameObjectUtilities::calculateBounds(*gameObject);
+        FloatRect bounds = gameObjectUtilities::calculateAggregateBounds(*gameObject);
         if (first)
         {
           combinedBounds = bounds;

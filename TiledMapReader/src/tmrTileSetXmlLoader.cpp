@@ -46,15 +46,15 @@ namespace tmr
       if (!tilesetElement || !sourcePath)
         return nullptr;
 
-      // Embedded Image collection tile set
-      XMLElement* gridElement = tilesetElement->FirstChildElement("tile");
-      if (gridElement)
-        return parseImageCollectionTileSet(tilesetElement, firstGid, sourcePath);
-
       // Embedded Sprite Sheet tile set
       XMLElement* imageElement = tilesetElement->FirstChildElement("image");
       if (imageElement)
         return parseSpriteSheetTileSet(tilesetElement, firstGid, sourcePath);
+
+      // Embedded Image collection tile set
+      XMLElement* gridElement = tilesetElement->FirstChildElement("tile");
+      if (gridElement)
+        return parseImageCollectionTileSet(tilesetElement, firstGid, sourcePath);
 
       // External tile set file
       const char* source = tilesetElement->Attribute("source");

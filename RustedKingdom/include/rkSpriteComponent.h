@@ -7,6 +7,7 @@
 #include <SFML/Graphics/Rect.hpp>
 
 using sf::Vector2f;
+using sf::FloatRect;
 
 namespace rk
 {

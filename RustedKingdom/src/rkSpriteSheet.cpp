@@ -1,20 +1,54 @@
 #include "rkSpriteSheet.h"
+
 #include <SFML/Graphics/Texture.hpp>
+
+#include "rkTexture.h"
 
 namespace rk
 {
+  SpriteSheet::SpriteSheet() :
+    m_texture(nullptr),
+    m_spriteWidth(0),
+    m_spriteHeight(0),
+    m_numSpritesX(0),
+    m_numSpritesY(0),
+    m_totalNumSprites(0)
+  {
+  }
+
   SpriteSheet::SpriteSheet(
-    const sf::Texture& texture,
-    UInt32 spriteWidth,
-    UInt32 spriteHeight
+  SharedPtr<Texture> texture,
+  UInt32 spriteWidth,
+  UInt32 spriteHeight
   ) :
     m_texture(texture),
     m_spriteWidth(spriteWidth),
     m_spriteHeight(spriteHeight)
   {
-    m_numSpritesX = m_texture.getSize().x / m_spriteWidth;
-    m_numSpritesY = m_texture.getSize().y / m_spriteHeight;
+    const sf::Texture& sfmlTexture = m_texture->getSFMLTexture();
+    m_numSpritesX = sfmlTexture.getSize().x / m_spriteWidth;
+    m_numSpritesY = sfmlTexture.getSize().y / m_spriteHeight;
     m_totalNumSprites = m_numSpritesX * m_numSpritesY;
+  }
+
+  SpriteSheet::SpriteSheet(const SpriteSheet& other) :
+    m_texture(other.m_texture),
+    m_spriteWidth(other.m_spriteWidth),
+    m_spriteHeight(other.m_spriteHeight),
+    m_numSpritesX(other.m_numSpritesX),
+    m_numSpritesY(other.m_numSpritesY),
+    m_totalNumSprites(other.m_totalNumSprites)
+  {
+  }
+
+  SpriteSheet::SpriteSheet(SpriteSheet&& spriteSheet) :
+    m_texture(std::move(spriteSheet.m_texture)),
+    m_spriteWidth(spriteSheet.m_spriteWidth),
+    m_spriteHeight(spriteSheet.m_spriteHeight),
+    m_numSpritesX(spriteSheet.m_numSpritesX),
+    m_numSpritesY(spriteSheet.m_numSpritesY),
+    m_totalNumSprites(spriteSheet.m_totalNumSprites)
+  {
   }
 
   SpriteSheet::~SpriteSheet()
@@ -22,7 +56,35 @@ namespace rk
     // No ownership of texture, nothing to clean up
   }
 
-  const sf::Texture& SpriteSheet::getTexture() const
+  SpriteSheet& SpriteSheet::operator=(const SpriteSheet& other)
+  {
+    if (this != &other)
+    {
+      m_texture = other.m_texture;
+      m_spriteWidth = other.m_spriteWidth;
+      m_spriteHeight = other.m_spriteHeight;
+      m_numSpritesX = other.m_numSpritesX;
+      m_numSpritesY = other.m_numSpritesY;
+      m_totalNumSprites = other.m_totalNumSprites;
+    }
+    return *this;
+  }
+
+  SpriteSheet& SpriteSheet::operator=(SpriteSheet&& spriteSheet)
+  {
+    if (this != &spriteSheet)
+    {
+      m_texture = std::move(spriteSheet.m_texture);
+      m_spriteWidth = spriteSheet.m_spriteWidth;
+      m_spriteHeight = spriteSheet.m_spriteHeight;
+      m_numSpritesX = spriteSheet.m_numSpritesX;
+      m_numSpritesY = spriteSheet.m_numSpritesY;
+      m_totalNumSprites = spriteSheet.m_totalNumSprites;
+    }
+    return *this;
+  }
+
+  const SharedPtr<Texture>& SpriteSheet::getTexture() const
   {
     return m_texture;
   }

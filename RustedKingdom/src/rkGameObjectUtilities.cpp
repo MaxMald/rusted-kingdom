@@ -10,7 +10,6 @@ namespace rk
 {
   namespace gameObjectUtilities
   {
-    static FloatRect getGameObjectBounds(const GameObject& gameObject);
     static void calculateBounds(const GameObject& gameObject, Vector<FloatRect>& outBounds);
   }
 }
@@ -35,7 +34,7 @@ namespace rk
       );
     }
 
-    FloatRect calculateBounds(const GameObject& gameObject)
+    FloatRect calculateAggregateBounds(const GameObject& gameObject)
     {
       Vector<FloatRect> boundsList;
       calculateBounds(gameObject, boundsList);
@@ -67,13 +66,13 @@ namespace rk
     )
     {
       if (gameObject.hasComponent<SpriteComponent>())
-        outBounds.push_back(getGameObjectBounds(gameObject));
+        outBounds.push_back(getGameObjectSpriteGlobalBounds(gameObject));
 
       for (const UniquePtr<GameObject>& child : gameObject.getChildren())
         calculateBounds(*child, outBounds);
     }
 
-    static FloatRect getGameObjectBounds(const GameObject& gameObject)
+    FloatRect getGameObjectSpriteGlobalBounds(const GameObject& gameObject)
     {
       if (!gameObject.hasComponent<SpriteComponent>())
       {

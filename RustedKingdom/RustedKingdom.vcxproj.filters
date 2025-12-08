@@ -151,9 +151,6 @@
     <Filter Include="Source Files\components">
       <UniqueIdentifier>{1c62247d-6915-4d37-add1-4ec3541a9e58}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\components\scripts">
-      <UniqueIdentifier>{11095315-510e-46dd-b767-701cc2c72331}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\components\factories">
       <UniqueIdentifier>{34d0baa3-6398-4e9e-8304-e448942771fd}</UniqueIdentifier>
     </Filter>
@@ -183,6 +180,9 @@
     </Filter>
     <Filter Include="Header Files\scripts">
       <UniqueIdentifier>{d942f593-2184-43a5-9a06-ded32fbf4269}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\scripts">
+      <UniqueIdentifier>{11095315-510e-46dd-b767-701cc2c72331}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -232,7 +232,7 @@
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkLucius.cpp">
-      <Filter>Source Files\components\scripts</Filter>
+      <Filter>Source Files\scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\rkAnimation.cpp">
       <Filter>Source Files\animations</Filter>
@@ -304,10 +304,10 @@
       <Filter>Source Files\utilities</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkLuciusAnimation.cpp">
-      <Filter>Source Files\components\scripts</Filter>
+      <Filter>Source Files\scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkAgentPathMovement.cpp">
-      <Filter>Source Files\components\scripts</Filter>
+      <Filter>Source Files\scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\rkCircleCollider.cpp">
       <Filter>Source Files\physics\colliders</Filter>
@@ -400,7 +400,7 @@
       <Filter>Source Files\components\factories</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkViewControllerScript.cpp">
-      <Filter>Source Files\components\scripts</Filter>
+      <Filter>Source Files\scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\rkILevelScene.cpp">
       <Filter>Source Files\scene\levels</Filter>
@@ -421,7 +421,7 @@
       <Filter>Source Files\minimap</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkMinimapScript.cpp">
-      <Filter>Source Files\components\scripts</Filter>
+      <Filter>Source Files\scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp">
       <Filter>Source Files\scene\tiledSceneCreator</Filter>
@@ -457,7 +457,13 @@
       <Filter>Source Files\scene\gameObjects\blueprints</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkBoxSelectorScript.cpp">
-      <Filter>Source Files\components\scripts</Filter>
+      <Filter>Source Files\scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scripts\rkButtonScript.cpp">
+      <Filter>Source Files\scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkButtonClassApplier.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -820,6 +826,15 @@
     </ClInclude>
     <ClInclude Include="include\scripts\rkBoxSelectorScript.h">
       <Filter>Header Files\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scripts\rkButtonScript.h">
+      <Filter>Header Files\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scripts\rkIButtonScriptListener.h">
+      <Filter>Header Files\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkButtonClassApplier.h">
+      <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

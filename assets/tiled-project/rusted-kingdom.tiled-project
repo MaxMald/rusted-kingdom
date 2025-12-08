@@ -48,6 +48,56 @@
         {
             "color": "#ffa0a0a4",
             "drawFill": true,
+            "id": 3,
+            "members": [
+                {
+                    "name": "buttonHeight",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "buttonWidth",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "hoveredIndex",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "normalIndex",
+                    "type": "int",
+                    "value": 1
+                },
+                {
+                    "name": "pressedIndex",
+                    "type": "int",
+                    "value": 2
+                },
+                {
+                    "name": "spriteSheetColumns",
+                    "type": "int",
+                    "value": 0
+                }
+            ],
+            "name": "Button",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset",
+                "project"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
             "id": 1,
             "members": [
                 {

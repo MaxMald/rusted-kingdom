@@ -22,6 +22,7 @@
 #include "rkTiledClassApplierMapper.h"
 #include "rkBaseTiledClassApplier.h"
 #include "rkMinimapTiledClassApplier.h"
+#include "rkButtonClassApplier.h"
 
 namespace rk
 {
@@ -94,6 +95,14 @@ namespace rk
     tiledClassApplierMapper.registerClassApplier(
       "Minimap",
       MakeShared<MinimapTiledClassApplier>(
+        spriteComponentFactory,
+        tiledColliderComponentFactory
+      )
+    );
+
+    tiledClassApplierMapper.registerClassApplier(
+      "Button",
+      MakeShared<ButtonClassApplier>(
         spriteComponentFactory,
         tiledColliderComponentFactory
       )

@@ -1,0 +1,22 @@
+#pragma once
+
+#include "rkBaseTiledClassApplier.h"
+
+namespace rk
+{
+  class ButtonClassApplier : public BaseTiledClassApplier
+  {
+  public:
+    ButtonClassApplier(
+      SpriteComponentFactory& spriteComponentFactory,
+      TiledColliderComponentFactory& tiledColliderComponentFactory
+    );
+    virtual ~ButtonClassApplier();
+
+    virtual void apply(
+      GameObject& gameObject,
+      const tmr::Object* object,
+      const tmr::TiledMap* tiledMap
+    ) override;
+  };
+}

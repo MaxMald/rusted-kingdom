@@ -2,15 +2,11 @@
 
 #include <SFML/Graphics/Rect.hpp>
 #include "rkPrerequisites.h"
-#include "rkNonCopyable.h"
-
-namespace sf
-{
-  class Texture;
-}
 
 namespace rk
 {
+  class Texture;
+
   /**
    * @brief Represents a sprite sheet, providing access to individual sprite
    * rectangles.
@@ -20,9 +16,11 @@ namespace rk
    * rectangles by index or grid position, and query the number of sprites in
    * each dimension.
    */
-  class SpriteSheet : public NonCopyable
+  class SpriteSheet
   {
   public:
+      SpriteSheet();
+
       /**
        * @brief Constructs a SpriteSheet from a texture and sprite dimensions.
        *
@@ -30,7 +28,10 @@ namespace rk
        * @param spriteWidth Width of each individual sprite in pixels.
        * @param spriteHeight Height of each individual sprite in pixels.
        */
-      SpriteSheet(const sf::Texture& texture, UInt32 spriteWidth, UInt32 spriteHeight);
+      SpriteSheet(SharedPtr<Texture> texture, UInt32 spriteWidth, UInt32 spriteHeight);
+
+      SpriteSheet(const SpriteSheet&);
+      SpriteSheet(SpriteSheet&& spriteSheet);
 
       /**
        * @brief Destructor.
@@ -39,12 +40,15 @@ namespace rk
        */
       ~SpriteSheet();
 
+      SpriteSheet& operator=(const SpriteSheet&);
+      SpriteSheet& operator=(SpriteSheet&& spriteSheet);
+
       /**
        * @brief Gets the underlying SFML texture.
        *
        * @return Reference to the texture.
        */
-      const sf::Texture& getTexture() const;
+      const SharedPtr<Texture>& getTexture() const;
 
       /**
        * @brief Gets the rectangle of a sprite by linear index.
@@ -87,7 +91,7 @@ namespace rk
       UInt32 getTotalNumSprites() const;
     
   private:
-      const sf::Texture& m_texture;
+      SharedPtr<Texture> m_texture;
       UInt32 m_spriteWidth;
       UInt32 m_spriteHeight;
       UInt32 m_numSpritesX;
