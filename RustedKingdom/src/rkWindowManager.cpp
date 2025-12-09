@@ -47,7 +47,7 @@ namespace rk
     m_renderWindow = new RenderWindow(
       sf::VideoMode({ 1920, 1080 }),
       "Rusted Kingdom",
-      sf::Style::Default,
+      sf::Style::Titlebar | sf::Style::Close,
       sf::State::Windowed
     );
 

@@ -57,29 +57,25 @@ namespace rk
     if (!m_isDragging)
       return;
 
-    sf::Vector2f mouseWorldPos = m_inputManager->getMouseInputManager()
-      .getMousePositionWorldCoordinates();
+    sf::Vector2i mouseWorldPos = m_inputManager->getMouseInputManager()
+      .getMousePositionRelativeToWindow();
+
+    if (!isPointInMinimap(mouseWorldPos))
+      return;
 
     SharedPtr<ViewController> activeView = m_viewsManager->getActiveView();
     if (!activeView)
       return;
 
-    // Convert mouse world position to view-relative position
     sf::Vector2f viewCenter = activeView->getView().getCenter();
-    sf::Vector2f viewPosition = {
-      viewCenter.x - activeView->getView().getSize().x * 0.5f,
-      viewCenter.y - activeView->getView().getSize().y * 0.5f
-    };
-    sf::Vector2f mouseViewPos = {
-      mouseWorldPos.x - viewPosition.x,
-      mouseWorldPos.y - viewPosition.y
-    };
 
-    if (!isPointInMinimap(mouseViewPos))
-      return;
+    Vector2f mouseWorldPosF = {
+      static_cast<float>(mouseWorldPos.x),
+      static_cast<float>(mouseWorldPos.y)
+    };
 
     // Calculate the corresponding position on the main map
-    Vector2f localMinimapPos = mouseViewPos - m_gameObject->getPosition();
+    Vector2f localMinimapPos = mouseWorldPosF - m_gameObject->getPosition();
     Vector2f normalizedLocalPos = {
       localMinimapPos.x / m_minimapSize.x,
       localMinimapPos.y / m_minimapSize.y
@@ -112,6 +108,12 @@ namespace rk
   void MinimapScript::onMouseButtonPressed(MouseButtonEvent& event)
   {
     if (event.getButton() != DRAG_BUTTON)
+      return;
+
+    sf::Vector2i mousePosition = m_inputManager->getMouseInputManager()
+      .getMousePositionRelativeToWindow();
+
+    if (!isPointInMinimap(mousePosition))
       return;
 
     m_isDragging = true;
@@ -200,14 +202,15 @@ namespace rk
     movedRect.position.y -= m_mapRect.position.y;
     return movedRect;
   }
-  bool MinimapScript::isPointInMinimap(const Vector2f& point) const
+
+  bool MinimapScript::isPointInMinimap(const Vector2i& point) const
   {
     Vector2f minimapTopLeft = m_gameObject->getPosition();
     Vector2f minimapBottomRight = minimapTopLeft + m_minimapSize;
 
-    return point.x >= minimapTopLeft.x
-      && point.x <= minimapBottomRight.x
-      && point.y >= minimapTopLeft.y
-      && point.y <= minimapBottomRight.y;
+    return static_cast<float>(point.x) >= minimapTopLeft.x
+      && static_cast<float>(point.x) <= minimapBottomRight.x
+      && static_cast<float>(point.y) >= minimapTopLeft.y
+      && static_cast<float>(point.y) <= minimapBottomRight.y;
   }
 }

@@ -55,6 +55,7 @@ namespace rk
       return;
 
     m_isPressed = true;
+    event.setConsumed(true);
     updateTextureRect(m_pressedRect);
   }
 
@@ -107,6 +108,9 @@ namespace rk
 
   void ButtonScript::onUpdate(float)
   {
+    Vector2i mousePosition = m_inputManager->getMouseInputManager()
+      .getMousePositionRelativeToWindow();
+
     bool mouseOver = isMouseOverButton();
     if (mouseOver && !m_isHovered && !m_isPressed)
     {

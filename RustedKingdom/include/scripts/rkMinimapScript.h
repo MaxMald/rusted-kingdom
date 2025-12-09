@@ -15,6 +15,7 @@ namespace sf
 
 using sf::FloatRect;
 using sf::Vector2f;
+using sf::Vector2i;
 using sf::RenderWindow;
 
 namespace rk
@@ -58,6 +59,6 @@ namespace rk
     FloatRect clipRectViewToMapRect(const FloatRect& viewRect) const;
     FloatRect scaleViewRectToMinimap(const FloatRect& viewRect) const;
     FloatRect moveRectToOrigin(const FloatRect& rect) const;
-    bool isPointInMinimap(const Vector2f& point) const;
+    bool isPointInMinimap(const Vector2i& point) const;
   };
 }
