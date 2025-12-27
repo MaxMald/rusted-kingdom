@@ -184,6 +184,12 @@
     <Filter Include="Source Files\scripts">
       <UniqueIdentifier>{11095315-510e-46dd-b767-701cc2c72331}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\services\factionManager">
+      <UniqueIdentifier>{721d203a-1e8a-402b-9eee-448092482422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\services\factionManager">
+      <UniqueIdentifier>{0f88d600-b01b-4b09-8032-69e12a57331c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -464,6 +470,12 @@
     </ClCompile>
     <ClCompile Include="src\rkButtonClassApplier.cpp">
       <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkFaction.cpp">
+      <Filter>Source Files\services\factionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkFactionManager.cpp">
+      <Filter>Source Files\services\factionManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -835,6 +847,15 @@
     </ClInclude>
     <ClInclude Include="include\rkButtonClassApplier.h">
       <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkFaction.h">
+      <Filter>Header Files\services\factionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkFactionManager.h">
+      <Filter>Header Files\services\factionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkFactionType.h">
+      <Filter>Header Files\services\factionManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -7,6 +7,7 @@
 #include "rkAssetManager.h"
 #include "rkViewsManager.h"
 #include "rkInputManager.h"
+#include "rkFactionManager.h"
 #include "rkMainScene.h"
 
 using std::optional;
@@ -109,6 +110,7 @@ namespace rk
     m_serviceLocator->registerService(MakeShared<WindowManager>());
     m_serviceLocator->registerService(MakeShared<ViewsManager>());
     m_serviceLocator->registerService(MakeShared<InputManager>());
+    m_serviceLocator->registerService(MakeShared<FactionManager>());
   }
 
   void Application::registerScenes()

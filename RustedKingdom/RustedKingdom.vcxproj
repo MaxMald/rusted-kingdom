@@ -176,6 +176,8 @@
     <ClCompile Include="src\rkColliderComponentFactory.cpp" />
     <ClCompile Include="src\rkCollidersGroup.cpp" />
     <ClCompile Include="src\rkBaseTiledClassApplier.cpp" />
+    <ClCompile Include="src\rkFaction.cpp" />
+    <ClCompile Include="src\rkFactionManager.cpp" />
     <ClCompile Include="src\rkGameObjectUtilities.cpp" />
     <ClCompile Include="src\rkIAsset.cpp" />
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp" />
@@ -262,6 +264,9 @@
     <ClInclude Include="include\rkBoxSelectorBlueprint.h" />
     <ClInclude Include="include\rkButtonClassApplier.h" />
     <ClInclude Include="include\rkColorUtilities.h" />
+    <ClInclude Include="include\rkFaction.h" />
+    <ClInclude Include="include\rkFactionManager.h" />
+    <ClInclude Include="include\rkFactionType.h" />
     <ClInclude Include="include\rkIMouseButtonHandlerListener.h" />
     <ClInclude Include="include\rkMinimapTiledClassApplier.h" />
     <ClInclude Include="include\rkMinimapUtilities.h" />
