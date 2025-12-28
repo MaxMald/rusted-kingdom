@@ -190,6 +190,12 @@
     <Filter Include="Source Files\services\factionManager">
       <UniqueIdentifier>{0f88d600-b01b-4b09-8032-69e12a57331c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\armyManager">
+      <UniqueIdentifier>{6a8f1e22-eeb6-4d8e-b488-d59dd0a91cba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\armyManager">
+      <UniqueIdentifier>{b6659e5c-3970-44d5-83f0-f0f56d550590}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -476,6 +482,15 @@
     </ClCompile>
     <ClCompile Include="src\rkFactionManager.cpp">
       <Filter>Source Files\services\factionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkArmy.cpp">
+      <Filter>Source Files\armyManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkArmyManager.cpp">
+      <Filter>Source Files\armyManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scripts\rkUnitController.cpp">
+      <Filter>Source Files\scripts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -856,6 +871,18 @@
     </ClInclude>
     <ClInclude Include="include\rkFactionType.h">
       <Filter>Header Files\services\factionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkArmy.h">
+      <Filter>Header Files\armyManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkArmyControlType.h">
+      <Filter>Header Files\armyManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkArmyManager.h">
+      <Filter>Header Files\armyManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scripts\rkUnitController.h">
+      <Filter>Header Files\scripts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

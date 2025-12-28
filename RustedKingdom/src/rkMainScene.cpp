@@ -18,6 +18,7 @@
 #include "rkTiledSceneCreator.h"
 #include "rkTiledColliderComponentFactory.h"
 #include "rkLuciusBlueprint.h"
+#include "rkArmyManager.h"
 
 #include "rkTiledClassApplierMapper.h"
 #include "rkBaseTiledClassApplier.h"
@@ -50,6 +51,7 @@ namespace rk
     ILevelScene::onLoad();
 
     loadAssets();
+    createArmies();
     createScene();
 
     createBoxSelector();
@@ -67,6 +69,21 @@ namespace rk
   void MainScene::loadAssets()
   {
     m_assetManager->loadBundle("bundles/mainLevel-bundle.json");
+  }
+
+  void MainScene::createArmies()
+  {
+    m_armyManager->createArmy(
+      "User Army",
+      factionType::Corps,
+      armyControlType::User
+    );
+
+    m_armyManager->createArmy(
+      "Hostile Army",
+      factionType::Bios,
+      armyControlType::AI
+    );
   }
 
   void MainScene::createScene()

@@ -11,6 +11,7 @@ namespace tmr
 namespace rk
 {
   class ViewsManager;
+  class ArmyManager;
 
   class ILevelScene : public IScene
   {
@@ -19,6 +20,7 @@ namespace rk
     virtual ~ILevelScene();
 
   protected:
+    SharedPtr<ArmyManager> m_armyManager;
     PathfinderManager m_pathfinderManager;
     SceneGraph m_uiSceneGraph;
 

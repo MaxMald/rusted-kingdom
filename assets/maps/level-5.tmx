@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="30" tilewidth="128" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="210">
+<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="30" tilewidth="128" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="211">
  <tileset firstgid="1" source="../tiled-project/tilesets/terrain-dirt-a-to-sand-a.tsx"/>
  <tileset firstgid="33" source="../tiled-project/tilesets/plants-01.tsx"/>
+ <tileset firstgid="112" source="../tiled-project/tilesets/buildings.tsx"/>
  <layer id="3" name="sand" width="30" height="30" locked="1">
   <properties>
    <property name="isStatic" type="bool" value="true"/>
@@ -78,7 +79,7 @@
 3,30,30,30,30,30,6,10,0,0,0,0,0,0,0,0,11,15,2,20,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="2" name="plantas" locked="1">
+ <objectgroup id="2" name="plantas">
   <properties>
    <property name="isStatic" type="bool" value="false"/>
    <property name="minimap" type="bool" value="true"/>
@@ -132,6 +133,7 @@
   <object id="205" gid="33" x="1520" y="813.333" width="256" height="128"/>
   <object id="206" gid="33" x="1522" y="739.333" width="256" height="128"/>
   <object id="207" gid="33" x="1365.33" y="840" width="256" height="128"/>
+  <object id="210" gid="112" x="450.5" y="1277.5" width="259" height="256"/>
  </objectgroup>
  <objectgroup id="12" name="level-systems">
   <object id="209" name="box-selector" type="BoxSelector" x="-856" y="1020">

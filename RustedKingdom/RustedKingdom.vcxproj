@@ -164,6 +164,8 @@
     <ClCompile Include="include\rkColorUtilities.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkApplication.cpp" />
+    <ClCompile Include="src\rkArmy.cpp" />
+    <ClCompile Include="src\rkArmyManager.cpp" />
     <ClCompile Include="src\rkAssetGroup.cpp" />
     <ClCompile Include="src\rkAssetsBundleItem.cpp" />
     <ClCompile Include="src\rkAssetsBundleLoader.cpp" />
@@ -255,9 +257,13 @@
     <ClCompile Include="src\scripts\rkLucius.cpp" />
     <ClCompile Include="src\scripts\rkLuciusAnimation.cpp" />
     <ClCompile Include="src\scripts\rkMinimapScript.cpp" />
+    <ClCompile Include="src\scripts\rkUnitController.cpp" />
     <ClCompile Include="src\scripts\rkViewControllerScript.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\rkArmy.h" />
+    <ClInclude Include="include\rkArmyControlType.h" />
+    <ClInclude Include="include\rkArmyManager.h" />
     <ClInclude Include="include\rkAssetsBundleItem.h" />
     <ClInclude Include="include\rkAssetsBundleLoader.h" />
     <ClInclude Include="include\rkBaseTiledClassApplier.h" />
@@ -383,6 +389,7 @@
     <ClInclude Include="include\scripts\rkLuciusStates.h" />
     <ClInclude Include="include\rkTiledObjectSpriteDescriptorFactory.h" />
     <ClInclude Include="include\scripts\rkMinimapScript.h" />
+    <ClInclude Include="include\scripts\rkUnitController.h" />
     <ClInclude Include="include\scripts\rkViewControllerScript.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

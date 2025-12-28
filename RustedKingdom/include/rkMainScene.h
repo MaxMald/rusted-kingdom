@@ -25,6 +25,7 @@ namespace rk
     UniquePtr<PathfinderCollisionMaskUpdater> m_pathfinderCollisionMaskUpdater;
 
     void loadAssets();
+    void createArmies();
     void createScene();
     void createPathfinders();
   };

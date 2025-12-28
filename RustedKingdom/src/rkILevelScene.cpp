@@ -1,6 +1,7 @@
 #include "rkILevelScene.h"
 
 #include "rkServiceLocator.h"
+#include "rkArmyManager.h"
 #include "rkViewsManager.h"
 #include "rkViewComponentFactory.h"
 #include "rkViewController.h"
@@ -23,6 +24,7 @@ namespace rk
   void ILevelScene::init(ServiceLocator& serviceLocator)
   {
     m_viewsManager = serviceLocator.getService<ViewsManager>();
+    m_armyManager = serviceLocator.getService<ArmyManager>();
   }
 
   void ILevelScene::onLoad()
@@ -34,6 +36,7 @@ namespace rk
   {
     m_pathfinderManager.clear();
     m_uiSceneGraph.destroy();
+    m_armyManager->clear();
   }
 
   void ILevelScene::preUpdate(float)
