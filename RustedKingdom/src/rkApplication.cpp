@@ -9,6 +9,7 @@
 #include "rkInputManager.h"
 #include "rkFactionManager.h"
 #include "rkArmyManager.h"
+#include "rkUnitDescriptionManager.h"
 #include "rkMainScene.h"
 
 using std::optional;
@@ -113,6 +114,7 @@ namespace rk
     m_serviceLocator->registerService(MakeShared<InputManager>());
     m_serviceLocator->registerService(MakeShared<FactionManager>());
     m_serviceLocator->registerService(MakeShared<ArmyManager>());
+    m_serviceLocator->registerService(MakeShared<UnitDescriptionManager>());
   }
 
   void Application::registerScenes()

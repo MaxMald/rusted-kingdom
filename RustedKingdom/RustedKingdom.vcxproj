@@ -246,6 +246,8 @@
     <ClCompile Include="src\rkTiledSceneCreator.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptor.cpp" />
     <ClCompile Include="src\rkTileGameObjectBlueprint.cpp" />
+    <ClCompile Include="src\rkUnitDescription.cpp" />
+    <ClCompile Include="src\rkUnitDescriptionManager.cpp" />
     <ClCompile Include="src\rkViewComponent.cpp" />
     <ClCompile Include="src\rkViewComponentFactory.cpp" />
     <ClCompile Include="src\rkViewController.cpp" />
@@ -374,6 +376,8 @@
     <ClInclude Include="include\rkTiledObjectSpriteDescriptor.h" />
     <ClInclude Include="include\rkTypedAssetGroup.h" />
     <ClInclude Include="include\rkTypeDefinitions.h" />
+    <ClInclude Include="include\rkUnitDescription.h" />
+    <ClInclude Include="include\rkUnitDescriptionManager.h" />
     <ClInclude Include="include\rkVector2Utilities.h" />
     <ClInclude Include="include\rkViewComponent.h" />
     <ClInclude Include="include\rkViewComponentFactory.h" />

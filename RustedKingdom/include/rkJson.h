@@ -178,6 +178,13 @@ namespace rk
      */
     SizeT getSize() const;
 
+    /**
+     * @brief Returns the value as a floating-point number.
+     * 
+     * @return The float value.
+     */
+    float getFloat() const;
+
   private:
 
     /**

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "rkScriptComponent.h"
+#include "rkUnitDescription.h"
 
 namespace rk
 {
@@ -9,11 +10,19 @@ namespace rk
   class UnitController : public ScriptComponent
   {
   public:
-    UnitController(GameObject&, const String& armyName);
+    UnitController(
+      GameObject&,
+      const UnitDescription&,
+      SharedPtr<Army>
+    );
     virtual ~UnitController();
 
     SharedPtr<Army> getArmy();
     void setArmy(SharedPtr<Army> army);
+    const UnitDescription& getUnitDescription() const;
+    UInt16 getCurrentHealth() const;
+    void addDamage(UInt16 damage);
+    void addHealth(UInt16 health);
 
   protected:
     void onCreate() override;
@@ -21,5 +30,7 @@ namespace rk
 
   private:
     SharedPtr<Army> m_army;
+    UnitDescription m_unitDescription;
+    UInt16 m_currentHealth;
   };
 }

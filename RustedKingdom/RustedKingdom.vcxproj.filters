@@ -190,11 +190,17 @@
     <Filter Include="Source Files\services\factionManager">
       <UniqueIdentifier>{0f88d600-b01b-4b09-8032-69e12a57331c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\armyManager">
+    <Filter Include="Header Files\services\armyManager">
       <UniqueIdentifier>{6a8f1e22-eeb6-4d8e-b488-d59dd0a91cba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\armyManager">
+    <Filter Include="Source Files\services\armyManager">
       <UniqueIdentifier>{b6659e5c-3970-44d5-83f0-f0f56d550590}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\services\units">
+      <UniqueIdentifier>{80a19945-a53f-4e32-a960-0394ccf0524a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\services\units">
+      <UniqueIdentifier>{2c4757bc-d265-4e21-8fda-88c5c2e0a2f9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -484,13 +490,19 @@
       <Filter>Source Files\services\factionManager</Filter>
     </ClCompile>
     <ClCompile Include="src\rkArmy.cpp">
-      <Filter>Source Files\armyManager</Filter>
+      <Filter>Source Files\services\armyManager</Filter>
     </ClCompile>
     <ClCompile Include="src\rkArmyManager.cpp">
-      <Filter>Source Files\armyManager</Filter>
+      <Filter>Source Files\services\armyManager</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkUnitController.cpp">
       <Filter>Source Files\scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkUnitDescription.cpp">
+      <Filter>Source Files\services\units</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkUnitDescriptionManager.cpp">
+      <Filter>Source Files\services\units</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -873,16 +885,22 @@
       <Filter>Header Files\services\factionManager</Filter>
     </ClInclude>
     <ClInclude Include="include\rkArmy.h">
-      <Filter>Header Files\armyManager</Filter>
+      <Filter>Header Files\services\armyManager</Filter>
     </ClInclude>
     <ClInclude Include="include\rkArmyControlType.h">
-      <Filter>Header Files\armyManager</Filter>
+      <Filter>Header Files\services\armyManager</Filter>
     </ClInclude>
     <ClInclude Include="include\rkArmyManager.h">
-      <Filter>Header Files\armyManager</Filter>
+      <Filter>Header Files\services\armyManager</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkUnitController.h">
       <Filter>Header Files\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkUnitDescription.h">
+      <Filter>Header Files\services\units</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkUnitDescriptionManager.h">
+      <Filter>Header Files\services\units</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

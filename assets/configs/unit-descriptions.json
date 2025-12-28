@@ -1,0 +1,11 @@
+{
+  "units": [
+    {
+      "name": "corpSoldier",
+      "displayName": "Soldado de Infanteria",
+      "velocity": 2.5,
+      "health": 100,
+      "armor": 0
+    }
+  ]
+}

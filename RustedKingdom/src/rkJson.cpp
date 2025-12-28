@@ -199,4 +199,9 @@ namespace rk
   {
     return static_cast<SizeT>(m_impl->json.size());
   }
+
+  float Json::getFloat() const
+  {
+    return m_impl->json.get<float>();
+  }
 }
