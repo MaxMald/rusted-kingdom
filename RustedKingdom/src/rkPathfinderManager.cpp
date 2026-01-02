@@ -55,4 +55,12 @@ namespace rk
   {
     m_pathfinders.clear();
   }
+
+  void PathfinderManager::init(ServiceLocator& serviceLocator)
+  {
+  }
+
+  void PathfinderManager::destroy()
+  {
+  }
 }

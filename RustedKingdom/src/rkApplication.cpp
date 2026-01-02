@@ -10,6 +10,7 @@
 #include "rkFactionManager.h"
 #include "rkArmyManager.h"
 #include "rkUnitDescriptionManager.h"
+#include "rkPathfinderManager.h"
 #include "rkMainScene.h"
 
 using std::optional;
@@ -115,6 +116,7 @@ namespace rk
     m_serviceLocator->registerService(MakeShared<FactionManager>());
     m_serviceLocator->registerService(MakeShared<ArmyManager>());
     m_serviceLocator->registerService(MakeShared<UnitDescriptionManager>());
+    m_serviceLocator->registerService(MakeShared<PathfinderManager>());
   }
 
   void Application::registerScenes()

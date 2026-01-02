@@ -154,7 +154,7 @@ namespace rk
       animationFactory,
       rigidBodyComponentFactory,
       colliderComponentFactory,
-      m_pathfinderManager.getPathfinder("characters"),
+      m_pathfinderManager->getPathfinder("characters"),
       positionTransform
     );
 
@@ -175,7 +175,7 @@ namespace rk
       *tiledMap
     );
 
-    m_pathfinderManager.addPathfinder("characters", pathfinder);
+    m_pathfinderManager->addPathfinder("characters", pathfinder);
 
     m_pathfinderCollisionMaskUpdater = MakeUnique<PathfinderCollisionMaskUpdater>(
       pathfinder,

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="30" tilewidth="128" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="211">
+<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="30" tilewidth="128" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="214">
  <editorsettings>
   <export target="../maps/level-5.tmx" format="tmx"/>
  </editorsettings>
  <tileset firstgid="1" source="tilesets/terrain-dirt-a-to-sand-a.tsx"/>
  <tileset firstgid="33" source="tilesets/plants-01.tsx"/>
  <tileset firstgid="112" source="tilesets/buildings.tsx"/>
+ <tileset firstgid="113" source="tilesets/units.tsx"/>
  <layer id="3" name="sand" width="30" height="30" locked="1">
   <properties>
    <property name="isStatic" type="bool" value="true"/>
@@ -137,6 +138,9 @@
   <object id="206" gid="33" x="1522" y="739.333" width="256" height="128"/>
   <object id="207" gid="33" x="1365.33" y="840" width="256" height="128"/>
   <object id="210" gid="112" x="450.5" y="1277.5" width="259" height="256"/>
+  <object id="211" gid="113" x="584" y="1220" width="100" height="100"/>
+  <object id="212" gid="113" x="563.5" y="1148.5" width="100" height="100"/>
+  <object id="213" gid="113" x="562" y="1256" width="100" height="100"/>
  </objectgroup>
  <objectgroup id="12" name="level-systems">
   <object id="209" name="box-selector" type="BoxSelector" x="-856" y="1020">

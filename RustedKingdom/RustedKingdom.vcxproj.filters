@@ -504,6 +504,9 @@
     <ClCompile Include="src\rkUnitDescriptionManager.cpp">
       <Filter>Source Files\services\units</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkGameObjectBlueprint.cpp">
+      <Filter>Source Files\scene\gameObjects\blueprints</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -901,6 +904,12 @@
     </ClInclude>
     <ClInclude Include="include\rkUnitDescriptionManager.h">
       <Filter>Header Files\services\units</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkUnitClassApplier.h">
+      <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkUnitBlueprint.h">
+      <Filter>Header Files\scene\gameObjects\blueprints</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

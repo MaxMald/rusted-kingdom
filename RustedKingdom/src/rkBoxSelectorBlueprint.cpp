@@ -15,25 +15,15 @@ namespace rk
   {
   }
 
-  GameObject* BoxSelectorBlueprint::instantiate(
-    const String& name,
-    GameObject& parent
-  ) const
+  void BoxSelectorBlueprint::apply(GameObject& gameObject) const
   {
-    GameObjectBuilder builder;
-    GameObject* boxSelector = builder
-      .createGameObject(name)
-      .buildWithParent(parent);
-
     UniquePtr<BoxSelectorScript> boxSelectorScript =
-      MakeUnique<BoxSelectorScript>(*boxSelector);
+      MakeUnique<BoxSelectorScript>(gameObject);
 
     boxSelectorScript->setBorderColor(colorUtilities::getColorFromHex("0054a0ff"));
     boxSelectorScript->setFillColor(colorUtilities::getColorFromHex("0085ff31"));
     boxSelectorScript->setBorderThickness(2.f);
 
-    boxSelector->addComponent(std::move(boxSelectorScript));
-
-    return boxSelector;
+    gameObject.addComponent(std::move(boxSelectorScript));
   }
 }

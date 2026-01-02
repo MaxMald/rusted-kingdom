@@ -1,23 +1,27 @@
 #pragma once
 
 #include "rkPrerequisites.h"
-#include "rkNonCopyable.h"
+#include "rkIService.h"
 
 namespace rk
 {
   class Pathfinder;
 
-  class PathfinderManager : public NonCopyable
+  class PathfinderManager : public IService
   {
   public:
     PathfinderManager();
-    ~PathfinderManager();
+    virtual ~PathfinderManager();
 
     SharedPtr<Pathfinder> getPathfinder(const String& key);
     const SharedPtr<Pathfinder> getPathfinder(const String& key) const;
 
     void addPathfinder(const String& key, const SharedPtr<Pathfinder>&);
     void clear();
+
+  protected:
+    virtual void init(ServiceLocator& serviceLocator) override;
+    virtual void destroy() override;
 
   private:
     UnorderedMap<String, SharedPtr<Pathfinder>> m_pathfinders;

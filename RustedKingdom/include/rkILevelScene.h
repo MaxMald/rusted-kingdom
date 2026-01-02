@@ -21,7 +21,7 @@ namespace rk
 
   protected:
     SharedPtr<ArmyManager> m_armyManager;
-    PathfinderManager m_pathfinderManager;
+    SharedPtr<PathfinderManager> m_pathfinderManager;
     SceneGraph m_uiSceneGraph;
 
     virtual void init(ServiceLocator& serviceLocator) override;

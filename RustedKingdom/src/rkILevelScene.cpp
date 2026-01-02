@@ -11,12 +11,14 @@
 
 namespace rk
 {
-  ILevelScene::ILevelScene()
-    : IScene(),
-    m_pathfinderManager()
+  ILevelScene::ILevelScene() :
+    IScene(),
+    m_armyManager(nullptr),
+    m_pathfinderManager(nullptr),
+    m_viewsManager(nullptr)
   {
   }
-  
+
   ILevelScene::~ILevelScene()
   {
   }
@@ -25,6 +27,7 @@ namespace rk
   {
     m_viewsManager = serviceLocator.getService<ViewsManager>();
     m_armyManager = serviceLocator.getService<ArmyManager>();
+    m_pathfinderManager = serviceLocator.getService<PathfinderManager>();
   }
 
   void ILevelScene::onLoad()
@@ -34,8 +37,8 @@ namespace rk
 
   void ILevelScene::onUnload()
   {
-    m_pathfinderManager.clear();
     m_uiSceneGraph.destroy();
+    m_pathfinderManager->clear();
     m_armyManager->clear();
   }
 

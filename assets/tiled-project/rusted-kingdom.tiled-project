@@ -98,6 +98,26 @@
         {
             "color": "#ffa0a0a4",
             "drawFill": true,
+            "id": 5,
+            "members": [
+                {
+                    "name": "armyName",
+                    "type": "string",
+                    "value": "army name here"
+                }
+            ],
+            "name": "CorpSoldier",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "tile",
+                "project"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
             "id": 1,
             "members": [
                 {

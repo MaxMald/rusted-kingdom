@@ -180,6 +180,7 @@
     <ClCompile Include="src\rkBaseTiledClassApplier.cpp" />
     <ClCompile Include="src\rkFaction.cpp" />
     <ClCompile Include="src\rkFactionManager.cpp" />
+    <ClCompile Include="src\rkGameObjectBlueprint.cpp" />
     <ClCompile Include="src\rkGameObjectUtilities.cpp" />
     <ClCompile Include="src\rkIAsset.cpp" />
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp" />
@@ -376,6 +377,8 @@
     <ClInclude Include="include\rkTiledObjectSpriteDescriptor.h" />
     <ClInclude Include="include\rkTypedAssetGroup.h" />
     <ClInclude Include="include\rkTypeDefinitions.h" />
+    <ClInclude Include="include\rkUnitBlueprint.h" />
+    <ClInclude Include="include\rkUnitClassApplier.h" />
     <ClInclude Include="include\rkUnitDescription.h" />
     <ClInclude Include="include\rkUnitDescriptionManager.h" />
     <ClInclude Include="include\rkVector2Utilities.h" />

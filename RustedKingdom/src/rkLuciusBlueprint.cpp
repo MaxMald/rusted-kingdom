@@ -46,15 +46,11 @@ namespace rk
   {
   }
 
-  GameObject* LuciusBlueprint::instantiate(const String& name, GameObject& parent) const
+  void LuciusBlueprint::apply(GameObject& gameObject) const
   {
-    GameObject* lucius = m_gameObjectBuilder
-      .createGameObject(name)
-      .buildWithParent(parent);
-
-    lucius->addComponent(
+    gameObject.addComponent(
       m_spriteComponentFactory.createSpriteComponent(
-        *lucius,
+        gameObject,
         "lucius-walking",
         IntRect(Vector2i(0, 0), Vector2i(100, 100))
       )
@@ -75,16 +71,16 @@ namespace rk
       .withFloatComparisonTransition("running", "walking", 0.5f, logicalComparisonType::GreaterEqual, "luciusSpeed")
       .build();
 
-    lucius->addComponent(
+    gameObject.addComponent(
       MakeUnique<AnimationStateMachineComponent>(
-        *lucius,
+        gameObject,
         std::move(animStateMachine)
       )
     );
 
-    lucius->addComponent(
+    gameObject.addComponent(
       m_rigidBodyComponentFactory.create(
-        *lucius,
+        gameObject,
         rigidBodyType::Type::Kinematic,
         false
       )
@@ -92,28 +88,26 @@ namespace rk
 
     UniquePtr<ColliderComponent> circleCollider =
       m_colliderComponentFactory.createCircle(
-        *lucius,
+        gameObject,
         Vector2f(0.0f, 0.0f),
         20.0f,
         "characters"
       );
     circleCollider->setDebug(true);
 
-    lucius->addComponent(std::move(circleCollider));
+    gameObject.addComponent(std::move(circleCollider));
 
-    lucius->addComponent(
-      MakeUnique<PathfinderComponent>(*lucius, m_pathfinder)
+    gameObject.addComponent(
+      MakeUnique<PathfinderComponent>(gameObject, m_pathfinder)
     );
-    lucius->addComponent(
-      MakeUnique<Lucius>(*lucius, m_positionTransform)
+    gameObject.addComponent(
+      MakeUnique<Lucius>(gameObject, m_positionTransform)
     );
-    lucius->addComponent(
-      MakeUnique<LuciusAnimation>(*lucius)
+    gameObject.addComponent(
+      MakeUnique<LuciusAnimation>(gameObject)
     );
-    lucius->addComponent(
-      MakeUnique<AgentPathMovement>(*lucius)
+    gameObject.addComponent(
+      MakeUnique<AgentPathMovement>(gameObject)
     );
-
-    return lucius;
   }
 }

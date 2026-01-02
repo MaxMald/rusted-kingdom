@@ -10,15 +10,10 @@ namespace rk
   class GameObjectBlueprint : public NonCopyable
   {
   public:
-    GameObjectBlueprint() : NonCopyable() {}
-    virtual ~GameObjectBlueprint() {}
+    GameObjectBlueprint();
+    virtual ~GameObjectBlueprint();
 
-  protected:
-    virtual GameObject* instantiate(
-      const String& name,
-      GameObject& parent
-    ) const = 0;
-
-    friend class SceneGraph;
+    virtual void apply(GameObject& gameObject) const;
+    GameObject* instantiate(const String& name, GameObject& parent) const;
   };
 }

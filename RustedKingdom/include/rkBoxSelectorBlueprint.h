@@ -10,10 +10,6 @@ namespace rk
     BoxSelectorBlueprint();
     virtual ~BoxSelectorBlueprint();
 
-  protected:
-    virtual GameObject* instantiate(
-      const String& name,
-      GameObject& parent
-    ) const;
+    virtual void apply(GameObject& gameObject) const;
   };
 }
