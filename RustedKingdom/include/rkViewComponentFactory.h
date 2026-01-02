@@ -1,14 +1,13 @@
 #pragma once
 
-#include "rkPrerequisites.h"
-#include "rkNonCopyable.h"
+#include "rkIComponentFactory.h"
 #include "rkViewComponent.h"
 
 namespace rk
 {
   class ViewsManager;
 
-  class ViewComponentFactory : public NonCopyable
+  class ViewComponentFactory : public IComponentFactory
   {
   public:
     ViewComponentFactory(SharedPtr<ViewsManager> viewsManager);

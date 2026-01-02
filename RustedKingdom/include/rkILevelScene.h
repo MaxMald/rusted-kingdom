@@ -30,6 +30,8 @@ namespace rk
     virtual void preUpdate(float deltaTime) override;
     virtual void postUpdate(float deltaTime) override;
     virtual void postDraw(RenderTarget& window, RenderStates states) const override;
+    
+    virtual void prepareComponentFactories();
 
     void prepareMinimap(const tmr::TiledMap* tiledMap);
     void createBoxSelector();

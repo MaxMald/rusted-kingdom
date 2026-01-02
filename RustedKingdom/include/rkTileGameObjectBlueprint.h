@@ -5,24 +5,17 @@
 
 namespace rk
 {
-  class SpriteComponentFactory;
-
   class TileGameObjectBlueprint : public GameObjectBlueprint
   {
   public:
-    TileGameObjectBlueprint(SpriteComponentFactory&);
+    TileGameObjectBlueprint(ComponentFactoryLocator&);
     ~TileGameObjectBlueprint();
 
     void setDescription(const TiledObjectSpriteDescriptor& description);
 
-  protected:
-    virtual GameObject* instantiate(
-      const String& name,
-      GameObject& parent
-    ) const override;
+    virtual void apply(GameObject& gameObject) const override;
 
   private:
-    SpriteComponentFactory& m_spriteComponentFactory;
     TiledObjectSpriteDescriptor m_description;
   };
 }

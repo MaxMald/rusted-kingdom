@@ -1,8 +1,8 @@
 #pragma once
 
 #include <SFML/System/Vector2.hpp>
-#include "rkPrerequisites.h"
-#include "rkNonCopyable.h"
+
+#include "rkIComponentFactory.h"
 
 using sf::Vector2f;
 
@@ -12,7 +12,7 @@ namespace rk
   class PhysicWorld;
   class ColliderComponent;
 
-  class ColliderComponentFactory : public NonCopyable
+  class ColliderComponentFactory : public IComponentFactory
   {
   public:
     ColliderComponentFactory(PhysicWorld& physicWorld);

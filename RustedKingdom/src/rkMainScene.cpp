@@ -129,7 +129,7 @@ namespace rk
       "level-0",
       *m_assetManager,
       tiledClassApplierMapper,
-      spriteComponentFactory,
+      m_componentFactoryLocator,
       m_sceneGraph
     );
 
@@ -137,7 +137,7 @@ namespace rk
       "ui",
       *m_assetManager,
       tiledClassApplierMapper,
-      spriteComponentFactory,
+      m_componentFactoryLocator,
       m_uiSceneGraph
     );
 
@@ -149,11 +149,8 @@ namespace rk
 
     AnimationFactory animationFactory(*m_assetManager);
     LuciusBlueprint luciusBlueprint(
-      gameObjectBuilder,
-      spriteComponentFactory,
+      m_componentFactoryLocator,
       animationFactory,
-      rigidBodyComponentFactory,
-      colliderComponentFactory,
       m_pathfinderManager->getPathfinder("characters"),
       positionTransform
     );

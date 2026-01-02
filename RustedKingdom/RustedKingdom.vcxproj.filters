@@ -79,12 +79,6 @@
     <Filter Include="Source Files\physics">
       <UniqueIdentifier>{28ce9d3b-2b4f-4749-b901-553c5bac9b3c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\pathfinder">
-      <UniqueIdentifier>{e09bbf75-4d6d-4d9c-ac8c-93ef0404fa01}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\pathfinder">
-      <UniqueIdentifier>{7a727191-bf2f-453e-b8e8-4b8b3e23c942}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\physics\colliders">
       <UniqueIdentifier>{1b5341f9-5304-441c-98ab-73528344d645}</UniqueIdentifier>
     </Filter>
@@ -202,6 +196,12 @@
     <Filter Include="Header Files\services\units">
       <UniqueIdentifier>{2c4757bc-d265-4e21-8fda-88c5c2e0a2f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\services\pathfinder">
+      <UniqueIdentifier>{7a727191-bf2f-453e-b8e8-4b8b3e23c942}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\services\pathfinder">
+      <UniqueIdentifier>{e09bbf75-4d6d-4d9c-ac8c-93ef0404fa01}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -298,22 +298,22 @@
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\rkSearchNode.cpp">
-      <Filter>Source Files\pathfinder</Filter>
+      <Filter>Source Files\services\pathfinder</Filter>
     </ClCompile>
     <ClCompile Include="src\rkPathfinder.cpp">
-      <Filter>Source Files\pathfinder</Filter>
+      <Filter>Source Files\services\pathfinder</Filter>
     </ClCompile>
     <ClCompile Include="src\rkNode.cpp">
-      <Filter>Source Files\pathfinder</Filter>
+      <Filter>Source Files\services\pathfinder</Filter>
     </ClCompile>
     <ClCompile Include="src\rkNodeMesh.cpp">
-      <Filter>Source Files\pathfinder</Filter>
+      <Filter>Source Files\services\pathfinder</Filter>
     </ClCompile>
     <ClCompile Include="src\rkNodeLink.cpp">
-      <Filter>Source Files\pathfinder</Filter>
+      <Filter>Source Files\services\pathfinder</Filter>
     </ClCompile>
     <ClCompile Include="src\rkPathfinderFactory.cpp">
-      <Filter>Source Files\pathfinder</Filter>
+      <Filter>Source Files\services\pathfinder</Filter>
     </ClCompile>
     <ClCompile Include="src\rkPathfinderComponent.cpp">
       <Filter>Source Files\components</Filter>
@@ -340,7 +340,7 @@
       <Filter>Source Files\components\factories</Filter>
     </ClCompile>
     <ClCompile Include="src\rkPathfinderCollisionMaskUpdater.cpp">
-      <Filter>Source Files\pathfinder</Filter>
+      <Filter>Source Files\services\pathfinder</Filter>
     </ClCompile>
     <ClCompile Include="src\rkCollidersGroup.cpp">
       <Filter>Source Files\physics\colliders</Filter>
@@ -361,7 +361,7 @@
       <Filter>Source Files\services</Filter>
     </ClCompile>
     <ClCompile Include="src\rkPathfinderManager.cpp">
-      <Filter>Source Files\pathfinder</Filter>
+      <Filter>Source Files\services\pathfinder</Filter>
     </ClCompile>
     <ClCompile Include="src\rkMainScene.cpp">
       <Filter>Source Files\scene\levels</Filter>
@@ -505,6 +505,9 @@
       <Filter>Source Files\services\units</Filter>
     </ClCompile>
     <ClCompile Include="src\rkGameObjectBlueprint.cpp">
+      <Filter>Source Files\scene\gameObjects\blueprints</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkUnitBlueprint.cpp">
       <Filter>Source Files\scene\gameObjects\blueprints</Filter>
     </ClCompile>
   </ItemGroup>
@@ -654,22 +657,22 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="include\rkPathfinder.h">
-      <Filter>Header Files\pathfinder</Filter>
+      <Filter>Header Files\services\pathfinder</Filter>
     </ClInclude>
     <ClInclude Include="include\rkSearchNode.h">
-      <Filter>Header Files\pathfinder</Filter>
+      <Filter>Header Files\services\pathfinder</Filter>
     </ClInclude>
     <ClInclude Include="include\rkNode.h">
-      <Filter>Header Files\pathfinder</Filter>
+      <Filter>Header Files\services\pathfinder</Filter>
     </ClInclude>
     <ClInclude Include="include\rkNodeMesh.h">
-      <Filter>Header Files\pathfinder</Filter>
+      <Filter>Header Files\services\pathfinder</Filter>
     </ClInclude>
     <ClInclude Include="include\rkNodeLink.h">
-      <Filter>Header Files\pathfinder</Filter>
+      <Filter>Header Files\services\pathfinder</Filter>
     </ClInclude>
     <ClInclude Include="include\rkPathfinderFactory.h">
-      <Filter>Header Files\pathfinder</Filter>
+      <Filter>Header Files\services\pathfinder</Filter>
     </ClInclude>
     <ClInclude Include="include\rkPathfinderComponent.h">
       <Filter>Header Files\components</Filter>
@@ -702,7 +705,7 @@
       <Filter>Header Files\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\rkPathfinderCollisionMaskUpdater.h">
-      <Filter>Header Files\pathfinder</Filter>
+      <Filter>Header Files\services\pathfinder</Filter>
     </ClInclude>
     <ClInclude Include="include\rkCollidersGroup.h">
       <Filter>Header Files\physics\colliders</Filter>
@@ -729,7 +732,7 @@
       <Filter>Header Files\services</Filter>
     </ClInclude>
     <ClInclude Include="include\rkPathfinderManager.h">
-      <Filter>Header Files\pathfinder</Filter>
+      <Filter>Header Files\services\pathfinder</Filter>
     </ClInclude>
     <ClInclude Include="include\rkMainScene.h">
       <Filter>Header Files\scene\levels</Filter>
@@ -910,6 +913,12 @@
     </ClInclude>
     <ClInclude Include="include\rkUnitBlueprint.h">
       <Filter>Header Files\scene\gameObjects\blueprints</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rkDependenciesLocator.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkIComponentFactory.h">
+      <Filter>Header Files\components\factories</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

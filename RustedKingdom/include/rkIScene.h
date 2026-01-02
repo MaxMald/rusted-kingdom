@@ -2,10 +2,9 @@
 
 #include <SFML/Graphics/RenderStates.hpp>
 
-#include "rkPrerequisites.h"
-#include "rkNonCopyable.h"
 #include "rkSceneGraph.h"
 #include "rkPhysicWorld.h"
+#include "rkDependenciesLocator.h"
 
 namespace sf
 {
@@ -33,6 +32,7 @@ namespace rk
   protected:
     SceneGraph m_sceneGraph;
     PhysicWorld m_physicsWorld;
+    ComponentFactoryLocator m_componentFactoryLocator;
 
     virtual void init(ServiceLocator&) = 0;
     virtual void onLoad() = 0;

@@ -13,7 +13,7 @@ namespace rk
   class TiledObjectBlueprint : public GameObjectBlueprint
   {
   public:
-    TiledObjectBlueprint();
+    TiledObjectBlueprint(ComponentFactoryLocator&);
     virtual ~TiledObjectBlueprint();
 
     void prepare(

@@ -2,8 +2,8 @@
 
 namespace rk
 {
-  TiledObjectBlueprint::TiledObjectBlueprint()
-    : GameObjectBlueprint(), m_tmrObject(nullptr)
+  TiledObjectBlueprint::TiledObjectBlueprint(ComponentFactoryLocator& componentFactoryLocator)
+    : GameObjectBlueprint(componentFactoryLocator), m_tmrObject(nullptr)
   {
   }
   

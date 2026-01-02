@@ -1,7 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics/Rect.hpp>
-#include "rkPrerequisites.h"
+
+#include "rkIComponentFactory.h"
 
 namespace rk
 {
@@ -9,7 +10,7 @@ namespace rk
   class AssetManager;
   class GameObject;
 
-  class SpriteComponentFactory
+  class SpriteComponentFactory : public IComponentFactory
   {
   public:
     SpriteComponentFactory(AssetManager& assetManager);

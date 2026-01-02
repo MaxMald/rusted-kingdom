@@ -42,7 +42,7 @@ namespace rk
     static void createLayer(
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
-      SpriteComponentFactory& spriteComponentFactory,
+      ComponentFactoryLocator& componentFactoryLocator,
       TiledClassApplierMapper& tiledClassApplierMapper,
       const tmr::Layer* tmrLayer
     );
@@ -50,7 +50,7 @@ namespace rk
     static void createGridDataLayer(
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
-      SpriteComponentFactory& spriteComponentFactory,
+      ComponentFactoryLocator& componentFactoryLocator,
       const tmr::GridDataLayer* tmrLayer
     );
 
@@ -83,7 +83,7 @@ namespace rk
       const String& tiledMapKey,
       const AssetManager& assetManager,
       TiledClassApplierMapper& tiledClassApplierMapper,
-      SpriteComponentFactory& spriteComponentFactory,
+      ComponentFactoryLocator& componentFactoryLocator,
       SceneGraph& sceneGraph
     )
     {
@@ -99,7 +99,7 @@ namespace rk
         createLayer(
           tmrTiledMap,
           sceneGraph,
-          spriteComponentFactory,
+          componentFactoryLocator,
           tiledClassApplierMapper,
           tmrTiledMap->getLayerAt(i)
         );
@@ -109,7 +109,7 @@ namespace rk
     static void createLayer(
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
-      SpriteComponentFactory& spriteComponentFactory,
+      ComponentFactoryLocator& componentFactoryLocator,
       TiledClassApplierMapper& tiledClassApplierMapper,
       const tmr::Layer* tmrLayer
     )
@@ -120,7 +120,7 @@ namespace rk
         createGridDataLayer(
           tiledMap,
           sceneGraph,
-          spriteComponentFactory,
+          componentFactoryLocator,
           static_cast<const tmr::GridDataLayer*>(tmrLayer)
         );
       }
@@ -147,7 +147,7 @@ namespace rk
     static void createGridDataLayer(
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
-      SpriteComponentFactory& spriteComponentFactory,
+      ComponentFactoryLocator& componentFactoryLocator,
       const tmr::GridDataLayer* tmrLayer
     )
     {
@@ -161,7 +161,7 @@ namespace rk
       Int32 width = tmrLayer->getWidth();
       Int32 height = tmrLayer->getHeight();
       TileGameObjectBlueprint tileGameObjectBlueprint(
-        spriteComponentFactory
+        componentFactoryLocator
       );
 
       SharedPtr<IPositionTransformer> positionTransformer = 

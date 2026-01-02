@@ -2,14 +2,13 @@
 #include "rkGameObject.h"
 #include "rkSpriteComponent.h"
 #include "rkSpriteComponentFactory.h"
-#include "rkGameObjectBuilder.h"
 
 namespace rk
 {
   TileGameObjectBlueprint::TileGameObjectBlueprint(
-    SpriteComponentFactory& spriteComponentFactory
+    ComponentFactoryLocator& componentFactoryLocator
   ) :
-    m_spriteComponentFactory(spriteComponentFactory),
+    GameObjectBlueprint(componentFactoryLocator),
     m_description()
   {
   }
@@ -25,19 +24,14 @@ namespace rk
     m_description = description;
   }
 
-  GameObject* TileGameObjectBlueprint::instantiate(
-    const String& name,
-    GameObject& parent
-  ) const
+  void TileGameObjectBlueprint::apply(GameObject& gameObject) const
   {
-    GameObjectBuilder gameObjectBuilder;
-    GameObject* tileGameObject = gameObjectBuilder
-      .createGameObject(name)
-      .buildWithParent(parent);
+    SharedPtr<SpriteComponentFactory> spriteComponentFactory =
+      m_componentFactoryLocator.get<SpriteComponentFactory>();
 
     UniquePtr<SpriteComponent> spriteComponent =
-      m_spriteComponentFactory.createSpriteComponent(
-        *tileGameObject,
+      spriteComponentFactory->createSpriteComponent(
+        gameObject,
         m_description.getTextureKey(),
         m_description.getRect()
       );
@@ -49,8 +43,6 @@ namespace rk
       )
     );
 
-    tileGameObject->addComponent(std::move(spriteComponent));
-
-    return tileGameObject;
+    gameObject.addComponent(std::move(spriteComponent));
   }
 }

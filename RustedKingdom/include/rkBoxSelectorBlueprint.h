@@ -7,7 +7,7 @@ namespace rk
   class BoxSelectorBlueprint : public GameObjectBlueprint
   {
   public:
-    BoxSelectorBlueprint();
+    BoxSelectorBlueprint(ComponentFactoryLocator&);
     virtual ~BoxSelectorBlueprint();
 
     virtual void apply(GameObject& gameObject) const;

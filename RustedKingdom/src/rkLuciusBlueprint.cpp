@@ -2,6 +2,7 @@
 
 #include <SFML/System/Angle.hpp>
 
+#include "rkDependenciesLocator.h"
 #include "rkGameObjectBuilder.h"
 #include "rkAnimationStateMachineBuilder.h"
 #include "rkSpriteComponentFactory.h"
@@ -24,19 +25,13 @@ using sf::Vector2i;
 namespace rk
 {
   LuciusBlueprint::LuciusBlueprint(
-    GameObjectBuilder& gameObjectBuilder, 
-    SpriteComponentFactory& spriteComponentFactory, 
+    ComponentFactoryLocator& componentFactoryLocator,
     AnimationFactory& animationFactory,
-    RigidBodyComponentFactory& rigidBodyComponentFactory,
-    ColliderComponentFactory& colliderComponentFactory,
     SharedPtr<Pathfinder> pathfinder,
     SharedPtr<IPositionTransformer> positionTransform
   ) :
-    m_gameObjectBuilder(gameObjectBuilder),
-    m_spriteComponentFactory(spriteComponentFactory),
+    GameObjectBlueprint(componentFactoryLocator),
     m_animationFactory(animationFactory),
-    m_rigidBodyComponentFactory(rigidBodyComponentFactory),
-    m_colliderComponentFactory(colliderComponentFactory),
     m_pathfinder(pathfinder),
     m_positionTransform(positionTransform)
   {
@@ -48,8 +43,11 @@ namespace rk
 
   void LuciusBlueprint::apply(GameObject& gameObject) const
   {
+    SharedPtr<SpriteComponentFactory> spriteComponentFactory =
+      m_componentFactoryLocator.get<SpriteComponentFactory>();
+
     gameObject.addComponent(
-      m_spriteComponentFactory.createSpriteComponent(
+      spriteComponentFactory->createSpriteComponent(
         gameObject,
         "lucius-walking",
         IntRect(Vector2i(0, 0), Vector2i(100, 100))
@@ -78,16 +76,22 @@ namespace rk
       )
     );
 
+    SharedPtr<RigidBodyComponentFactory> rigidBodyComponentFactory =
+      m_componentFactoryLocator.get<RigidBodyComponentFactory>();
+
     gameObject.addComponent(
-      m_rigidBodyComponentFactory.create(
+      rigidBodyComponentFactory->create(
         gameObject,
         rigidBodyType::Type::Kinematic,
         false
       )
     );
 
+    SharedPtr<ColliderComponentFactory> colliderComponentFactory =
+      m_componentFactoryLocator.get<ColliderComponentFactory>();
+
     UniquePtr<ColliderComponent> circleCollider =
-      m_colliderComponentFactory.createCircle(
+      colliderComponentFactory->createCircle(
         gameObject,
         Vector2f(0.0f, 0.0f),
         20.0f,

@@ -1,8 +1,7 @@
 #pragma once
 
 #include <SFML/System/Vector2.hpp>
-#include "rkPrerequisites.h"
-#include "rkNonCopyable.h"
+#include "rkIComponentFactory.h"
 #include "rkRigidBodyType.h"
 
 using sf::Vector2f;
@@ -13,7 +12,7 @@ namespace rk
   class RigidBodyComponent;
   class GameObject;
 
-  class RigidBodyComponentFactory : public NonCopyable
+  class RigidBodyComponentFactory : public IComponentFactory
   {
   public:
     RigidBodyComponentFactory(PhysicWorld&);

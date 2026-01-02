@@ -1,10 +1,12 @@
 #include "rkGameObjectBlueprint.h"
 #include "rkGameObject.h"
 #include "rkGameObjectBuilder.h"
+#include "rkDependenciesLocator.h"
 
 namespace rk
 {
-  GameObjectBlueprint::GameObjectBlueprint()
+  GameObjectBlueprint::GameObjectBlueprint(ComponentFactoryLocator& componentFactoryLocator) :
+    m_componentFactoryLocator(componentFactoryLocator)
   {
   }
 

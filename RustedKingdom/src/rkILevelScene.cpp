@@ -1,9 +1,15 @@
 #include "rkILevelScene.h"
 
 #include "rkServiceLocator.h"
+#include "rkAssetManager.h"
 #include "rkArmyManager.h"
 #include "rkViewsManager.h"
+
 #include "rkViewComponentFactory.h"
+#include "rkSpriteComponentFactory.h"
+#include "rkRigidBodyComponentFactory.h"
+#include "rkColliderComponentFactory.h"
+
 #include "rkViewController.h"
 #include "rkMinimapUtilities.h"
 #include "rkBoxSelectorBlueprint.h"
@@ -32,6 +38,7 @@ namespace rk
 
   void ILevelScene::onLoad()
   {
+    prepareComponentFactories();
     createView();
   }
 
@@ -40,6 +47,7 @@ namespace rk
     m_uiSceneGraph.destroy();
     m_pathfinderManager->clear();
     m_armyManager->clear();
+    m_componentFactoryLocator.clear();
   }
 
   void ILevelScene::preUpdate(float)
@@ -58,6 +66,20 @@ namespace rk
   ) const
   {
     drawUi(window, states);
+  }
+
+  void ILevelScene::prepareComponentFactories()
+  {
+    ServiceLocator& serviceLocator = ServiceLocator::Instance();
+
+    SharedPtr<AssetManager> assetManager = serviceLocator.getService<AssetManager>();
+
+    m_componentFactoryLocator
+      .registerDependency(MakeShared<SpriteComponentFactory>(*assetManager));
+    m_componentFactoryLocator
+      .registerDependency(MakeShared<RigidBodyComponentFactory>(m_physicsWorld));
+    m_componentFactoryLocator
+      .registerDependency(MakeShared<ColliderComponentFactory>(m_physicsWorld));
   }
 
   void ILevelScene::prepareMinimap(
@@ -93,7 +115,7 @@ namespace rk
 
   void ILevelScene::createBoxSelector()
   {
-    BoxSelectorBlueprint boxSelectorBlueprint;
+    BoxSelectorBlueprint boxSelectorBlueprint(m_componentFactoryLocator);
     m_sceneGraph.instantiateGameObject(
       boxSelectorBlueprint,
       "box-selector",

@@ -247,6 +247,7 @@
     <ClCompile Include="src\rkTiledSceneCreator.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptor.cpp" />
     <ClCompile Include="src\rkTileGameObjectBlueprint.cpp" />
+    <ClCompile Include="src\rkUnitBlueprint.cpp" />
     <ClCompile Include="src\rkUnitDescription.cpp" />
     <ClCompile Include="src\rkUnitDescriptionManager.cpp" />
     <ClCompile Include="src\rkViewComponent.cpp" />
@@ -276,6 +277,7 @@
     <ClInclude Include="include\rkFaction.h" />
     <ClInclude Include="include\rkFactionManager.h" />
     <ClInclude Include="include\rkFactionType.h" />
+    <ClInclude Include="include\rkIComponentFactory.h" />
     <ClInclude Include="include\rkIMouseButtonHandlerListener.h" />
     <ClInclude Include="include\rkMinimapTiledClassApplier.h" />
     <ClInclude Include="include\rkMinimapUtilities.h" />
@@ -398,6 +400,7 @@
     <ClInclude Include="include\scripts\rkMinimapScript.h" />
     <ClInclude Include="include\scripts\rkUnitController.h" />
     <ClInclude Include="include\scripts\rkViewControllerScript.h" />
+    <ClInclude Include="src\rkDependenciesLocator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -7,11 +7,9 @@ namespace rk
   class UnitBlueprint : public GameObjectBlueprint
   {
   public:
-    UnitBlueprint();
+    UnitBlueprint(ComponentFactoryLocator&);
     virtual ~UnitBlueprint();
 
     virtual void apply(GameObject& gameObject) const override;
-
-  private:
   };
 }
