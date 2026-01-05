@@ -1,6 +1,7 @@
 #pragma once
 
 #include "rkComponent.h"
+#include "rkAnimationStateMachine.h"
 
 using sf::Vector2i;
 
@@ -12,7 +13,6 @@ namespace sf
 namespace rk
 {
   class SpriteComponent;
-  class AnimationStateMachine;
   class Blackboard;
 
   class AnimationStateMachineComponent : public Component

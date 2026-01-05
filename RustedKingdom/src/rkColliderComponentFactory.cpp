@@ -1,40 +1,52 @@
 #include "rkColliderComponentFactory.h"
+
+#include "rkServiceLocator.h"
+#include "rkScenesManager.h"
+#include "rkIScene.h"
+#include "rkGameObject.h"
 #include "rkPhysicWorld.h"
 #include "rkCircleCollider.h"
 #include "rkColliderComponent.h"
 
 namespace rk
 {
-  ColliderComponentFactory::ColliderComponentFactory(PhysicWorld& physicWorld)
-    : m_physicWorld(physicWorld)
+  namespace colliderComponentFactory
   {
-  }
+    UniquePtr<ColliderComponent> createCircle(
+      GameObject& gameObject,
+      const Vector2f& center,
+      float radius,
+      const String& colliderGroupKey
+    )
+    {
+      SharedPtr<ScenesManager> scenesManager =
+        ServiceLocator::Instance().getService<ScenesManager>();
 
-  ColliderComponentFactory::~ColliderComponentFactory()
-  {
-  }
+      SharedPtr<IScene> activeScene = scenesManager->getActiveScene();
+      if (!activeScene)
+      {
+        throw RuntimeErrorException(
+          "No active scene found in ScenesManager."
+        );
+      }
 
-  UniquePtr<ColliderComponent> ColliderComponentFactory::createCircle(
-    GameObject& gameObject,
-    const Vector2f& center,
-    float radius,
-    const String& colliderGroupKey
-  )
-  {
-    Collider* collider = m_physicWorld.createCollider(
-      gameObject,
-      colliderType::Circle,
-      colliderGroupKey
-    );
+      PhysicWorld& physicWorld = activeScene->getPhysicWorld();
 
-    CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);
-    circleCollider->setCenter(center);
-    circleCollider->setRadius(radius);
+      Collider* collider = physicWorld.createCollider(
+        gameObject,
+        colliderType::Circle,
+        colliderGroupKey
+      );
 
-    return MakeUnique<ColliderComponent>(
-      gameObject,
-      m_physicWorld,
-      circleCollider
-    );
+      CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);
+      circleCollider->setCenter(center);
+      circleCollider->setRadius(radius);
+
+      return MakeUnique<ColliderComponent>(
+        gameObject,
+        physicWorld,
+        circleCollider
+      );
+    }
   }
 }

@@ -10,12 +10,9 @@
 
 namespace rk
 {
-  AnimationStateMachineBuilder::AnimationStateMachineBuilder(
-    AnimationFactory& animationFactory
-  ) :
+  AnimationStateMachineBuilder::AnimationStateMachineBuilder() :
     m_currentAnimationStateMachine(nullptr),
-    m_statesMap(),
-    m_animationFactory(animationFactory)
+    m_statesMap()
   {
   }
 
@@ -175,11 +172,11 @@ namespace rk
     assertCurrentAnimationStateMachineNotNull();
     assertDoesNotHaveState(stateKey);
 
-    UniquePtr<Animation> newAnimation = m_animationFactory
-      .createEightDirectionsAnimation(
-        descriptionKey,
-        m_currentAnimationStateMachine->getBlackboard()
-      );
+
+    UniquePtr<Animation> newAnimation = animationFactory::createEightDirectionsAnimation(
+      descriptionKey,
+      m_currentAnimationStateMachine->getBlackboard()
+    );
 
     UniquePtr<AnimationState> newState = MakeUnique<AnimationState>(
       stateKey,

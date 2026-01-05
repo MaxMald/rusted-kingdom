@@ -25,12 +25,7 @@ using sf::Vector2f;
 
 namespace rk
 {
-  BaseTiledClassApplier::BaseTiledClassApplier(
-    SpriteComponentFactory& spriteComponentFactory,
-    TiledColliderComponentFactory& tiledColliderComponentFactory
-  ) :
-    m_spriteComponentFactory(spriteComponentFactory),
-    m_tiledColliderComponentFactory(tiledColliderComponentFactory)
+  BaseTiledClassApplier::BaseTiledClassApplier()
   {
   }
 
@@ -165,7 +160,7 @@ namespace rk
   )
   {
     gameObject.addComponent(
-      m_spriteComponentFactory.createSpriteComponent(gameObject, textureKey)
+      spriteComponentFactory::createSpriteComponent(gameObject, textureKey)
     );
   }
 
@@ -176,7 +171,7 @@ namespace rk
   )
   {
     gameObject.addComponent(
-      m_spriteComponentFactory.createSpriteComponent(
+      spriteComponentFactory::createSpriteComponent(
         gameObject,
         textureKey,
         textureRect
@@ -200,7 +195,7 @@ namespace rk
         continue;
 
       UniquePtr<ColliderComponent> colliderComponent =
-        m_tiledColliderComponentFactory.create(
+        tiledColliderComponentFactory::create(
           collider,
           gameObject,
           colliderGroupKey

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <SFML/Graphics/Rect.hpp>
+#include "rkPrerequisites.h"
 
-#include "rkIComponentFactory.h"
+#include <SFML/Graphics/Rect.hpp>
 
 namespace rk
 {
@@ -10,12 +10,8 @@ namespace rk
   class AssetManager;
   class GameObject;
 
-  class SpriteComponentFactory : public IComponentFactory
+  namespace spriteComponentFactory
   {
-  public:
-    SpriteComponentFactory(AssetManager& assetManager);
-    ~SpriteComponentFactory();
-
     UniquePtr<SpriteComponent> createSpriteComponent(
       GameObject& gameObject,
       const String& textureKey
@@ -26,8 +22,5 @@ namespace rk
       const String& textureKey,
       const sf::IntRect& textureRect
     );
-
-  private:
-    AssetManager* m_assetManager;
-  };
+  }
 }

@@ -4,11 +4,11 @@
 
 namespace rk
 {
-  class UnitBlueprint : public GameObjectBlueprint
+  class CorpoBasicSoldierBlueprint : public GameObjectBlueprint
   {
   public:
-    UnitBlueprint(ComponentFactoryLocator&);
-    virtual ~UnitBlueprint();
+    CorpoBasicSoldierBlueprint();
+    virtual ~CorpoBasicSoldierBlueprint();
 
     virtual void apply(GameObject& gameObject) const override;
   };

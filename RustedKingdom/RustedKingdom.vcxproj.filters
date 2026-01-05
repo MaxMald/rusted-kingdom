@@ -25,12 +25,6 @@
     <Filter Include="Source Files\scene">
       <UniqueIdentifier>{f4b7875f-8ddb-4bbc-93a4-1c8002b40c54}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\scene\gameObjects">
-      <UniqueIdentifier>{15be0b2e-cf06-4d43-93c9-09654fe34019}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\scene\gameObjects">
-      <UniqueIdentifier>{5636a2fb-4114-47ab-b71e-98de9f50d66c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\eventsManager">
       <UniqueIdentifier>{4bc21eb9-d848-433d-ac47-07ca78b4ecf9}</UniqueIdentifier>
     </Filter>
@@ -46,12 +40,6 @@
     <Filter Include="Source Files\animations">
       <UniqueIdentifier>{c5ba93cd-2f2a-4b1d-b475-ea58430b9ee1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\scene\gameObjects\builder">
-      <UniqueIdentifier>{67385f25-bd36-48b9-9ef7-a0ed5c8b996d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\scene\gameObjects\builder">
-      <UniqueIdentifier>{d11e4267-765c-446a-bac9-20351a22213b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\animations\stateMachine">
       <UniqueIdentifier>{9d37230f-a0c3-442d-8fef-b7b0d9fb2f26}</UniqueIdentifier>
     </Filter>
@@ -60,12 +48,6 @@
     </Filter>
     <Filter Include="Header Files\utilities\blackboard">
       <UniqueIdentifier>{2fa6137e-082e-4b42-ac68-a4028126b5ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\scene\gameObjects\blueprints">
-      <UniqueIdentifier>{f4b291ce-20dd-451f-a49f-95b034252b3c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\scene\gameObjects\blueprints">
-      <UniqueIdentifier>{dd65f676-8395-4682-b73e-fb622ef44fd7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\animations\factories">
       <UniqueIdentifier>{b32a9299-3b1e-4333-84d8-5cdb7abd088a}</UniqueIdentifier>
@@ -202,6 +184,30 @@
     <Filter Include="Header Files\services\pathfinder">
       <UniqueIdentifier>{e09bbf75-4d6d-4d9c-ac8c-93ef0404fa01}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gameObjects">
+      <UniqueIdentifier>{15be0b2e-cf06-4d43-93c9-09654fe34019}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gameObjects\builder">
+      <UniqueIdentifier>{67385f25-bd36-48b9-9ef7-a0ed5c8b996d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gameObjects\blueprints">
+      <UniqueIdentifier>{f4b291ce-20dd-451f-a49f-95b034252b3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gameObjects">
+      <UniqueIdentifier>{5636a2fb-4114-47ab-b71e-98de9f50d66c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gameObjects\builder">
+      <UniqueIdentifier>{d11e4267-765c-446a-bac9-20351a22213b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gameObjects\blueprints">
+      <UniqueIdentifier>{dd65f676-8395-4682-b73e-fb622ef44fd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\services\gameObjectBlueprintManager">
+      <UniqueIdentifier>{32a6a552-5df0-4ba9-9133-487ffbd71f00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\services\gameObjectBlueprintManager">
+      <UniqueIdentifier>{2db45892-d6f7-4578-8e04-66905c7e661a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -214,7 +220,7 @@
       <Filter>Source Files\scene</Filter>
     </ClCompile>
     <ClCompile Include="src\rkGameObject.cpp">
-      <Filter>Source Files\scene\gameObjects</Filter>
+      <Filter>Source Files\gameObjects</Filter>
     </ClCompile>
     <ClCompile Include="src\rkSpriteSheet.cpp">
       <Filter>Source Files\assets</Filter>
@@ -226,7 +232,7 @@
       <Filter>Source Files\eventsManager</Filter>
     </ClCompile>
     <ClCompile Include="src\rkIsometricLayerGameObject.cpp">
-      <Filter>Source Files\scene\gameObjects</Filter>
+      <Filter>Source Files\gameObjects</Filter>
     </ClCompile>
     <ClCompile Include="src\rkEightDirectionsSpriteSheetAnimation.cpp">
       <Filter>Source Files\animations</Filter>
@@ -241,7 +247,7 @@
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\rkGameObjectBuilder.cpp">
-      <Filter>Source Files\scene\gameObjects\builder</Filter>
+      <Filter>Source Files\gameObjects\builder</Filter>
     </ClCompile>
     <ClCompile Include="src\rkAnimationComponent.cpp">
       <Filter>Source Files\components</Filter>
@@ -272,9 +278,6 @@
     </ClCompile>
     <ClCompile Include="src\rkSpriteComponentFactory.cpp">
       <Filter>Source Files\components\factories</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rkLuciusBlueprint.cpp">
-      <Filter>Source Files\scene\gameObjects\blueprints</Filter>
     </ClCompile>
     <ClCompile Include="src\rkAnimationFactory.cpp">
       <Filter>Source Files\animations\factories</Filter>
@@ -390,14 +393,11 @@
     <ClCompile Include="src\rkTiledObjectSpriteDescriptor.cpp">
       <Filter>Source Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkTiledObjectBlueprint.cpp">
-      <Filter>Source Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
-    </ClCompile>
     <ClCompile Include="src\rkTiledMapUtilities.cpp">
       <Filter>Source Files\scene\tiledSceneCreator</Filter>
     </ClCompile>
     <ClCompile Include="src\rkGameObjectUtilities.cpp">
-      <Filter>Source Files\scene\gameObjects</Filter>
+      <Filter>Source Files\gameObjects</Filter>
     </ClCompile>
     <ClCompile Include="src\rkTiledColliderComponentFactory.cpp">
       <Filter>Source Files\scene\tiledSceneCreator</Filter>
@@ -472,7 +472,7 @@
       <Filter>Source Files\services\inputManager\mouseInputManager</Filter>
     </ClCompile>
     <ClCompile Include="src\rkBoxSelectorBlueprint.cpp">
-      <Filter>Source Files\scene\gameObjects\blueprints</Filter>
+      <Filter>Source Files\gameObjects\blueprints</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkBoxSelectorScript.cpp">
       <Filter>Source Files\scripts</Filter>
@@ -505,10 +505,16 @@
       <Filter>Source Files\services\units</Filter>
     </ClCompile>
     <ClCompile Include="src\rkGameObjectBlueprint.cpp">
-      <Filter>Source Files\scene\gameObjects\blueprints</Filter>
+      <Filter>Source Files\gameObjects\blueprints</Filter>
     </ClCompile>
-    <ClCompile Include="src\rkUnitBlueprint.cpp">
-      <Filter>Source Files\scene\gameObjects\blueprints</Filter>
+    <ClCompile Include="src\rkCorpoBasicSoldierBlueprint.cpp">
+      <Filter>Source Files\gameObjects\blueprints</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkBlueprintClassApplier.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkGameObjectBlueprintsManager.cpp">
+      <Filter>Source Files\services\gameObjectBlueprintManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -531,7 +537,7 @@
       <Filter>Header Files\scene</Filter>
     </ClInclude>
     <ClInclude Include="include\rkGameObject.h">
-      <Filter>Header Files\scene\gameObjects</Filter>
+      <Filter>Header Files\gameObjects</Filter>
     </ClInclude>
     <ClInclude Include="include\rkSpriteSheet.h">
       <Filter>Header Files\assets</Filter>
@@ -552,7 +558,7 @@
       <Filter>Header Files\utilities</Filter>
     </ClInclude>
     <ClInclude Include="include\rkIsometricLayerGameObject.h">
-      <Filter>Header Files\scene\gameObjects</Filter>
+      <Filter>Header Files\gameObjects</Filter>
     </ClInclude>
     <ClInclude Include="include\rkEightDirAnimationDesc.h">
       <Filter>Header Files\assets\animations</Filter>
@@ -570,7 +576,7 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="include\rkGameObjectBuilder.h">
-      <Filter>Header Files\scene\gameObjects\builder</Filter>
+      <Filter>Header Files\gameObjects\builder</Filter>
     </ClInclude>
     <ClInclude Include="include\rkAnimationStateMachineComponent.h">
       <Filter>Header Files\components</Filter>
@@ -627,13 +633,10 @@
       <Filter>Header Files\components\factories</Filter>
     </ClInclude>
     <ClInclude Include="include\rkGameObjectBlueprint.h">
-      <Filter>Header Files\scene\gameObjects\blueprints</Filter>
+      <Filter>Header Files\gameObjects\blueprints</Filter>
     </ClInclude>
     <ClInclude Include="include\rkNonCopyable.h">
       <Filter>Header Files\utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkLuciusBlueprint.h">
-      <Filter>Header Files\scene\gameObjects\blueprints</Filter>
     </ClInclude>
     <ClInclude Include="include\rkAnimationFactory.h">
       <Filter>Header Files\animations\factories</Filter>
@@ -761,9 +764,6 @@
     <ClInclude Include="include\rkTileGameObjectBlueprint.h">
       <Filter>Header Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkTiledObjectBlueprint.h">
-      <Filter>Header Files\scene\tiledSceneCreator\gameObjectBlueprints</Filter>
-    </ClInclude>
     <ClInclude Include="include\rkTiledObjectSpriteDescriptor.h">
       <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
@@ -771,10 +771,7 @@
       <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
     <ClInclude Include="include\rkGameObjectUtilities.h">
-      <Filter>Header Files\scene\gameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\rkTiledColliderComponentFactory.h">
-      <Filter>Header Files\scene\tiledSceneCreator</Filter>
+      <Filter>Header Files\gameObjects</Filter>
     </ClInclude>
     <ClInclude Include="include\rkTiledPropertiesHandler.h">
       <Filter>Header Files\utilities</Filter>
@@ -867,7 +864,7 @@
       <Filter>Header Files\scene\tiledSceneCreator</Filter>
     </ClInclude>
     <ClInclude Include="include\rkBoxSelectorBlueprint.h">
-      <Filter>Header Files\scene\gameObjects\blueprints</Filter>
+      <Filter>Header Files\gameObjects\blueprints</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkBoxSelectorScript.h">
       <Filter>Header Files\scripts</Filter>
@@ -908,17 +905,20 @@
     <ClInclude Include="include\rkUnitDescriptionManager.h">
       <Filter>Header Files\services\units</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkUnitClassApplier.h">
+    <ClInclude Include="include\rkBlueprintClassApplier.h">
       <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkUnitBlueprint.h">
-      <Filter>Header Files\scene\gameObjects\blueprints</Filter>
+    <ClInclude Include="include\rkCorpoBasicSoldierBlueprint.h">
+      <Filter>Header Files\gameObjects\blueprints</Filter>
     </ClInclude>
-    <ClInclude Include="src\rkDependenciesLocator.h">
+    <ClInclude Include="include\rkDependencyContainer.h">
       <Filter>Header Files\utilities</Filter>
     </ClInclude>
-    <ClInclude Include="include\rkIComponentFactory.h">
+    <ClInclude Include="include\rkTiledColliderComponentFactory.h">
       <Filter>Header Files\components\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkGameObjectBlueprintsManager.h">
+      <Filter>Header Files\services\gameObjectBlueprintManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

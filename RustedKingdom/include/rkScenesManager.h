@@ -24,6 +24,7 @@ namespace rk
 
     void registerScene(const String& key, SharedPtr<IScene> scene);
     void setNextScene(const String& key);
+    SharedPtr<IScene> getActiveScene() const;
 
   protected:
     virtual void init(ServiceLocator& serviceLocator) override;

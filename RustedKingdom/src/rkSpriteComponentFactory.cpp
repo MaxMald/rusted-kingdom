@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics/Texture.hpp>
 
+#include "rkServiceLocator.h"
 #include "rkAssetManager.h"
 #include "rkGameObject.h"
 #include "rkSpriteComponent.h"
@@ -9,39 +10,39 @@
 
 namespace rk
 {
-  SpriteComponentFactory::SpriteComponentFactory(AssetManager& assetManager) :
-    m_assetManager(&assetManager)
+  namespace spriteComponentFactory
   {
-  }
+    UniquePtr<SpriteComponent> createSpriteComponent(
+      GameObject& gameObject,
+      const String& textureKey
+    )
+    {
+      const SharedPtr<AssetManager> assetManager =
+        ServiceLocator::Instance().getService<AssetManager>();
 
-  SpriteComponentFactory::~SpriteComponentFactory()
-  {
-  }
+      const SharedPtr<rk::Texture> texture =
+        assetManager->getAssetGroup<rk::Texture>().get(textureKey);
 
-  UniquePtr<SpriteComponent> SpriteComponentFactory::createSpriteComponent(
-    GameObject& gameObject,
-    const String& textureKey
-  )
-  {
-    const SharedPtr<rk::Texture> texture = m_assetManager->getAssetGroup<rk::Texture>()
-      .get(textureKey);
+      return  MakeUnique<SpriteComponent>(gameObject, texture->getSFMLTexture());
+    }
 
-    return  MakeUnique<SpriteComponent>(gameObject, texture->getSFMLTexture());
-  }
+    UniquePtr<SpriteComponent> createSpriteComponent(
+      GameObject& gameObject,
+      const String& textureKey,
+      const sf::IntRect& textureRect
+    )
+    {
+      const SharedPtr<AssetManager> assetManager =
+        ServiceLocator::Instance().getService<AssetManager>();
 
-  UniquePtr<SpriteComponent> SpriteComponentFactory::createSpriteComponent(
-    GameObject& gameObject,
-    const String& textureKey,
-    const sf::IntRect& textureRect
-  )
-  {
-    const SharedPtr<rk::Texture> texture = m_assetManager->getAssetGroup<rk::Texture>()
-      .get(textureKey);
+      const SharedPtr<rk::Texture> texture =
+        assetManager->getAssetGroup<rk::Texture>().get(textureKey);
 
-    return MakeUnique<SpriteComponent>(
-      gameObject,
-      texture->getSFMLTexture(),
-      textureRect
-    );
+      return MakeUnique<SpriteComponent>(
+        gameObject,
+        texture->getSFMLTexture(),
+        textureRect
+      );
+    }
   }
 }

@@ -5,22 +5,14 @@
 
 namespace rk
 {
-  class AssetManager;
   class Animation;
   class Blackboard;
 
-  class AnimationFactory : public NonCopyable
+  namespace animationFactory
   {
-  public:
-    AnimationFactory(const AssetManager& assetManager);
-    ~AnimationFactory();
-
     UniquePtr<Animation> createEightDirectionsAnimation(
       const String& descriptionKey,
       const Blackboard& blackboard
     );
-
-  private:
-    const AssetManager& m_assetManager;
-  };
+  }
 }

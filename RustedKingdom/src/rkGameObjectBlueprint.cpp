@@ -1,12 +1,10 @@
 #include "rkGameObjectBlueprint.h"
 #include "rkGameObject.h"
 #include "rkGameObjectBuilder.h"
-#include "rkDependenciesLocator.h"
 
 namespace rk
 {
-  GameObjectBlueprint::GameObjectBlueprint(ComponentFactoryLocator& componentFactoryLocator) :
-    m_componentFactoryLocator(componentFactoryLocator)
+  GameObjectBlueprint::GameObjectBlueprint()
   {
   }
 
@@ -14,7 +12,7 @@ namespace rk
   {
   }
 
-  void GameObjectBlueprint::apply(GameObject& gameObject) const
+  void GameObjectBlueprint::apply(GameObject&) const
   {
     // Default implementation does nothing
   }

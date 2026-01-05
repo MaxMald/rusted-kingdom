@@ -18,7 +18,7 @@ namespace rk
     throw RuntimeErrorException("Faction not found");
   }
 
-  void FactionManager::init(ServiceLocator& serviceLocator)
+  void FactionManager::init(ServiceLocator&)
   {
     addFaction(
       Faction(

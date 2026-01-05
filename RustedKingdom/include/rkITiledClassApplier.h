@@ -18,7 +18,11 @@ namespace rk
   public:
     virtual ~ITiledClassApplier() = default;
 
-    virtual void apply(GameObject&, const tmr::Object*, const tmr::TiledMap*) = 0;
+    virtual void apply(
+      GameObject&,
+      const tmr::Object*,
+      const tmr::TiledMap*
+    ) = 0;
 
   protected:
     ITiledClassApplier() = default;

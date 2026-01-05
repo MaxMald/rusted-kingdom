@@ -10,11 +10,7 @@
 
 namespace rk
 {
-  MinimapTiledClassApplier::MinimapTiledClassApplier(
-    SpriteComponentFactory& spriteComponentFactory,
-    TiledColliderComponentFactory& tiledColliderComponentFactory
-  ) :
-    BaseTiledClassApplier(spriteComponentFactory, tiledColliderComponentFactory)
+  MinimapTiledClassApplier::MinimapTiledClassApplier()
   {
   }
 

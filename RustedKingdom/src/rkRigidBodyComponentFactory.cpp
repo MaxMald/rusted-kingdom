@@ -1,4 +1,7 @@
 #include "rkRigidBodyComponentFactory.h"
+#include "rkServiceLocator.h"
+#include "rkScenesManager.h"
+#include "rkIScene.h"
 #include "rkCircleCollider.h"
 #include "rkRigidBodyComponent.h"
 #include "rkRigidBodyDebuggedComponent.h"
@@ -7,37 +10,41 @@
 
 namespace rk
 {
-  RigidBodyComponentFactory::RigidBodyComponentFactory(
-    PhysicWorld& physicWorld
-  ) :
-    m_physicWorld(physicWorld)
+  namespace rigidBodyComponentFactory
   {
-  }
-
-  RigidBodyComponentFactory::~RigidBodyComponentFactory()
-  {
-  }
-
-  UniquePtr<RigidBodyComponent>
-  RigidBodyComponentFactory::create(
-    GameObject& gameObject,
-    rigidBodyType::Type type,
-    bool debug
-  )
-  {
-    if (debug)
+    UniquePtr<RigidBodyComponent> create(
+      GameObject& gameObject,
+      rigidBodyType::Type type,
+      bool debug
+    )
     {
-      return MakeUnique<RigidBodyDebuggedComponent>(
+      SharedPtr<ScenesManager> scenesManager =
+        ServiceLocator::Instance().getService<ScenesManager>();
+
+      SharedPtr<IScene> activeScene = scenesManager->getActiveScene();
+      if (!activeScene)
+      {
+        throw RuntimeErrorException(
+          "No active scene found in ScenesManager."
+        );
+      }
+
+      PhysicWorld& physicWorld = activeScene->getPhysicWorld();
+
+      if (debug)
+      {
+        return MakeUnique<RigidBodyDebuggedComponent>(
+          gameObject,
+          physicWorld,
+          type
+        );
+      }
+
+      return MakeUnique<RigidBodyComponent>(
         gameObject,
-        m_physicWorld,
+        physicWorld,
         type
       );
     }
-
-    return MakeUnique<RigidBodyComponent>(
-      gameObject,
-      m_physicWorld,
-      type
-    );
   }
 }

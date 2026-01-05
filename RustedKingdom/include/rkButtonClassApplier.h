@@ -7,10 +7,7 @@ namespace rk
   class ButtonClassApplier : public BaseTiledClassApplier
   {
   public:
-    ButtonClassApplier(
-      SpriteComponentFactory& spriteComponentFactory,
-      TiledColliderComponentFactory& tiledColliderComponentFactory
-    );
+    ButtonClassApplier();
     virtual ~ButtonClassApplier();
 
     virtual void apply(

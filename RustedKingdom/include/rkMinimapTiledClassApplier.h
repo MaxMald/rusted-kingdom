@@ -7,10 +7,7 @@ namespace rk
   class MinimapTiledClassApplier : public BaseTiledClassApplier
   {
   public:
-    MinimapTiledClassApplier(
-      SpriteComponentFactory&,
-      TiledColliderComponentFactory&
-    );
+    MinimapTiledClassApplier();
     virtual ~MinimapTiledClassApplier();
 
     virtual void apply(

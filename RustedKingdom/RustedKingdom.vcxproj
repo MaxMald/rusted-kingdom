@@ -169,6 +169,7 @@
     <ClCompile Include="src\rkAssetGroup.cpp" />
     <ClCompile Include="src\rkAssetsBundleItem.cpp" />
     <ClCompile Include="src\rkAssetsBundleLoader.cpp" />
+    <ClCompile Include="src\rkBlueprintClassApplier.cpp" />
     <ClCompile Include="src\rkBoolComparisonAnimationStateTransition.cpp" />
     <ClCompile Include="src\rkBoxSelectorBlueprint.cpp" />
     <ClCompile Include="src\rkButtonClassApplier.cpp" />
@@ -178,9 +179,11 @@
     <ClCompile Include="src\rkColliderComponentFactory.cpp" />
     <ClCompile Include="src\rkCollidersGroup.cpp" />
     <ClCompile Include="src\rkBaseTiledClassApplier.cpp" />
+    <ClCompile Include="src\rkCorpoBasicSoldierBlueprint.cpp" />
     <ClCompile Include="src\rkFaction.cpp" />
     <ClCompile Include="src\rkFactionManager.cpp" />
     <ClCompile Include="src\rkGameObjectBlueprint.cpp" />
+    <ClCompile Include="src\rkGameObjectBlueprintsManager.cpp" />
     <ClCompile Include="src\rkGameObjectUtilities.cpp" />
     <ClCompile Include="src\rkIAsset.cpp" />
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp" />
@@ -220,7 +223,6 @@
     <ClCompile Include="src\rkInputManager.cpp" />
     <ClCompile Include="src\rkJson.cpp" />
     <ClCompile Include="src\rkIsometricLayerGameObject.cpp" />
-    <ClCompile Include="src\rkLuciusBlueprint.cpp" />
     <ClCompile Include="src\rkPhysicWorld.cpp" />
     <ClCompile Include="src\rkRigidBody.cpp" />
     <ClCompile Include="src\rkRigidBodyComponentFactory.cpp" />
@@ -241,13 +243,11 @@
     <ClCompile Include="src\rkTiledMap.cpp" />
     <ClCompile Include="src\rkTiledMapAssetLoader.cpp" />
     <ClCompile Include="src\rkTiledMapUtilities.cpp" />
-    <ClCompile Include="src\rkTiledObjectBlueprint.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptorFactory.cpp" />
     <ClCompile Include="src\rkTiledPropertiesHandler.cpp" />
     <ClCompile Include="src\rkTiledSceneCreator.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptor.cpp" />
     <ClCompile Include="src\rkTileGameObjectBlueprint.cpp" />
-    <ClCompile Include="src\rkUnitBlueprint.cpp" />
     <ClCompile Include="src\rkUnitDescription.cpp" />
     <ClCompile Include="src\rkUnitDescriptionManager.cpp" />
     <ClCompile Include="src\rkViewComponent.cpp" />
@@ -274,10 +274,12 @@
     <ClInclude Include="include\rkBoxSelectorBlueprint.h" />
     <ClInclude Include="include\rkButtonClassApplier.h" />
     <ClInclude Include="include\rkColorUtilities.h" />
+    <ClInclude Include="include\rkCorpoBasicSoldierBlueprint.h" />
+    <ClInclude Include="include\rkDependencyContainer.h" />
     <ClInclude Include="include\rkFaction.h" />
     <ClInclude Include="include\rkFactionManager.h" />
     <ClInclude Include="include\rkFactionType.h" />
-    <ClInclude Include="include\rkIComponentFactory.h" />
+    <ClInclude Include="include\rkGameObjectBlueprintsManager.h" />
     <ClInclude Include="include\rkIMouseButtonHandlerListener.h" />
     <ClInclude Include="include\rkMinimapTiledClassApplier.h" />
     <ClInclude Include="include\rkMinimapUtilities.h" />
@@ -345,7 +347,6 @@
     <ClInclude Include="include\rkIsometricLayerGameObject.h" />
     <ClInclude Include="include\rkLogicalComparisonType.h" />
     <ClInclude Include="include\rkLogicalComparisonUtilities.h" />
-    <ClInclude Include="include\rkLuciusBlueprint.h" />
     <ClInclude Include="include\rkNonCopyable.h" />
     <ClInclude Include="include\rkPhysicWorld.h" />
     <ClInclude Include="include\rkPrerequisites.h" />
@@ -371,7 +372,6 @@
     <ClInclude Include="include\rkTiledMap.h" />
     <ClInclude Include="include\rkTiledMapAssetsLoader.h" />
     <ClInclude Include="include\rkTiledMapUtilities.h" />
-    <ClInclude Include="include\rkTiledObjectBlueprint.h" />
     <ClInclude Include="include\rkITiledClassApplier.h" />
     <ClInclude Include="include\rkTiledPropertiesHandler.h" />
     <ClInclude Include="include\rkTiledSceneCreator.h" />
@@ -379,8 +379,7 @@
     <ClInclude Include="include\rkTiledObjectSpriteDescriptor.h" />
     <ClInclude Include="include\rkTypedAssetGroup.h" />
     <ClInclude Include="include\rkTypeDefinitions.h" />
-    <ClInclude Include="include\rkUnitBlueprint.h" />
-    <ClInclude Include="include\rkUnitClassApplier.h" />
+    <ClInclude Include="include\rkBlueprintClassApplier.h" />
     <ClInclude Include="include\rkUnitDescription.h" />
     <ClInclude Include="include\rkUnitDescriptionManager.h" />
     <ClInclude Include="include\rkVector2Utilities.h" />
@@ -400,7 +399,6 @@
     <ClInclude Include="include\scripts\rkMinimapScript.h" />
     <ClInclude Include="include\scripts\rkUnitController.h" />
     <ClInclude Include="include\scripts\rkViewControllerScript.h" />
-    <ClInclude Include="src\rkDependenciesLocator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

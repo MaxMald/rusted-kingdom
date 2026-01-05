@@ -1,31 +1,28 @@
 #include "rkViewComponentFactory.h"
+#include "rkServiceLocator.h"
 #include "rkViewsManager.h"
 #include "rkViewController.h"
 
 namespace rk
 {
-  ViewComponentFactory::ViewComponentFactory(
-    SharedPtr<ViewsManager> viewsManager
-  ) :
-    m_viewsManager(viewsManager)
+  namespace viewComponentFactory
   {
-  }
+    UniquePtr<ViewComponent> create(
+      GameObject& gameObject,
+      const String& viewName
+    )
+    {
+      const SharedPtr<ViewsManager> viewsManager =
+        ServiceLocator::Instance().getService<ViewsManager>();
 
-  ViewComponentFactory::~ViewComponentFactory()
-  {
-  }
+      SharedPtr<ViewController> viewController = MakeShared<ViewController>(
+        viewName,
+        viewsManager->getDefaultSfmlView()
+      );
 
-  UniquePtr<ViewComponent> ViewComponentFactory::create(
-    GameObject& gameObject,
-    const String& viewName
-  )
-  {
-    SharedPtr<ViewController> viewController = MakeShared<ViewController>(
-      viewName,
-      m_viewsManager->getDefaultSfmlView()
-    );
-    m_viewsManager->addView(viewController);
+      viewsManager->addView(viewController);
 
-    return MakeUnique<ViewComponent>(gameObject, viewController);
+      return MakeUnique<ViewComponent>(gameObject, viewController);
+    }
   }
 }

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "rkPrerequisites.h"
-#include "rkDependenciesLocator.h"
 
 namespace rk
 {
@@ -15,7 +14,6 @@ namespace rk
       const String& tiledMapKey,
       const AssetManager& assetManager,
       TiledClassApplierMapper& tiledClassApplierMapper,
-      ComponentFactoryLocator& componentFactoryLocator,
       SceneGraph& sceneGraph
     );
   }

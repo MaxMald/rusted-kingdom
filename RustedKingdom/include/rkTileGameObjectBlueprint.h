@@ -8,7 +8,7 @@ namespace rk
   class TileGameObjectBlueprint : public GameObjectBlueprint
   {
   public:
-    TileGameObjectBlueprint(ComponentFactoryLocator&);
+    TileGameObjectBlueprint();
     ~TileGameObjectBlueprint();
 
     void setDescription(const TiledObjectSpriteDescriptor& description);

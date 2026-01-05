@@ -5,7 +5,7 @@
 namespace rk
 {
   template<typename _BaseType>
-  class DependenciesLocator
+  class DependencyContainer
   {
   public:
     template<typename T>
@@ -46,8 +46,4 @@ namespace rk
   private:
     UnorderedMap<std::type_index, SharedPtr<_BaseType>> m_dependencies;
   };
-
-  class IComponentFactory;
-
-  using ComponentFactoryLocator = DependenciesLocator<IComponentFactory>;
 }

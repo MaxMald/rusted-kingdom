@@ -16,20 +16,13 @@ using sf::IntRect;
 
 namespace rk
 {
-  class TiledColliderComponentFactory;
-  class SpriteComponentFactory;
-
   class BaseTiledClassApplier : public ITiledClassApplier
   {
   public:
-    BaseTiledClassApplier(SpriteComponentFactory&, TiledColliderComponentFactory&);
+    BaseTiledClassApplier();
     virtual ~BaseTiledClassApplier();
 
     virtual void apply(GameObject&, const tmr::Object*, const tmr::TiledMap*) override;
-
-  protected:
-    SpriteComponentFactory& m_spriteComponentFactory;
-    TiledColliderComponentFactory& m_tiledColliderComponentFactory;
 
   private:
     void createTileReference(

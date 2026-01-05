@@ -11,6 +11,7 @@
 #include "rkArmyManager.h"
 #include "rkUnitDescriptionManager.h"
 #include "rkPathfinderManager.h"
+#include "rkGameObjectBlueprintsManager.h"
 #include "rkMainScene.h"
 
 using std::optional;
@@ -117,6 +118,7 @@ namespace rk
     m_serviceLocator->registerService(MakeShared<ArmyManager>());
     m_serviceLocator->registerService(MakeShared<UnitDescriptionManager>());
     m_serviceLocator->registerService(MakeShared<PathfinderManager>());
+    m_serviceLocator->registerService(MakeShared<GameObjectBlueprintsManager>());
   }
 
   void Application::registerScenes()

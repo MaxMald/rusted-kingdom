@@ -42,7 +42,6 @@ namespace rk
     static void createLayer(
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
-      ComponentFactoryLocator& componentFactoryLocator,
       TiledClassApplierMapper& tiledClassApplierMapper,
       const tmr::Layer* tmrLayer
     );
@@ -50,7 +49,6 @@ namespace rk
     static void createGridDataLayer(
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
-      ComponentFactoryLocator& componentFactoryLocator,
       const tmr::GridDataLayer* tmrLayer
     );
 
@@ -83,7 +81,6 @@ namespace rk
       const String& tiledMapKey,
       const AssetManager& assetManager,
       TiledClassApplierMapper& tiledClassApplierMapper,
-      ComponentFactoryLocator& componentFactoryLocator,
       SceneGraph& sceneGraph
     )
     {
@@ -99,7 +96,6 @@ namespace rk
         createLayer(
           tmrTiledMap,
           sceneGraph,
-          componentFactoryLocator,
           tiledClassApplierMapper,
           tmrTiledMap->getLayerAt(i)
         );
@@ -109,7 +105,6 @@ namespace rk
     static void createLayer(
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
-      ComponentFactoryLocator& componentFactoryLocator,
       TiledClassApplierMapper& tiledClassApplierMapper,
       const tmr::Layer* tmrLayer
     )
@@ -120,7 +115,6 @@ namespace rk
         createGridDataLayer(
           tiledMap,
           sceneGraph,
-          componentFactoryLocator,
           static_cast<const tmr::GridDataLayer*>(tmrLayer)
         );
       }
@@ -147,7 +141,6 @@ namespace rk
     static void createGridDataLayer(
       const tmr::TiledMap* tiledMap,
       SceneGraph& sceneGraph,
-      ComponentFactoryLocator& componentFactoryLocator,
       const tmr::GridDataLayer* tmrLayer
     )
     {
@@ -160,9 +153,7 @@ namespace rk
       Int32 spriteHeight = tiledMap->getTileHeight();
       Int32 width = tmrLayer->getWidth();
       Int32 height = tmrLayer->getHeight();
-      TileGameObjectBlueprint tileGameObjectBlueprint(
-        componentFactoryLocator
-      );
+      TileGameObjectBlueprint tileGameObjectBlueprint;
 
       SharedPtr<IPositionTransformer> positionTransformer = 
         tiledMapUtilities::getPositionTransformer(*tiledMap);

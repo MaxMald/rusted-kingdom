@@ -1,22 +1,19 @@
-#include "rkLuciusBlueprint.h"
+#include "rkCorpoBasicSoldierBlueprint.h"
 
 #include <SFML/System/Angle.hpp>
 
-#include "rkDependenciesLocator.h"
-#include "rkGameObjectBuilder.h"
-#include "rkAnimationStateMachineBuilder.h"
-#include "rkSpriteComponentFactory.h"
+#include "rkGameObject.h"
 #include "rkSpriteComponent.h"
+#include "rkServiceLocator.h"
+#include "rkSpriteComponentFactory.h"
+#include "rkAssetManager.h"
 #include "rkAnimationStateMachineComponent.h"
-#include "rkAnimationStateMachine.h"
+#include "rkAnimationStateMachineBuilder.h"
 #include "rkRigidBodyComponent.h"
 #include "rkRigidBodyComponentFactory.h"
-#include "rkColliderComponentFactory.h"
 #include "rkColliderComponent.h"
-#include "rkPathfinderComponent.h"
+#include "rkColliderComponentFactory.h"
 
-#include "scripts/rkLucius.h"
-#include "scripts/rkLuciusAnimation.h"
 #include "scripts/rkAgentPathMovement.h"
 
 using sf::IntRect;
@@ -24,37 +21,25 @@ using sf::Vector2i;
 
 namespace rk
 {
-  LuciusBlueprint::LuciusBlueprint(
-    ComponentFactoryLocator& componentFactoryLocator,
-    AnimationFactory& animationFactory,
-    SharedPtr<Pathfinder> pathfinder,
-    SharedPtr<IPositionTransformer> positionTransform
-  ) :
-    GameObjectBlueprint(componentFactoryLocator),
-    m_animationFactory(animationFactory),
-    m_pathfinder(pathfinder),
-    m_positionTransform(positionTransform)
+  CorpoBasicSoldierBlueprint::CorpoBasicSoldierBlueprint()
   {
   }
 
-  LuciusBlueprint::~LuciusBlueprint()
+  CorpoBasicSoldierBlueprint::~CorpoBasicSoldierBlueprint()
   {
   }
 
-  void LuciusBlueprint::apply(GameObject& gameObject) const
+  void CorpoBasicSoldierBlueprint::apply(GameObject& gameObject) const
   {
-    SharedPtr<SpriteComponentFactory> spriteComponentFactory =
-      m_componentFactoryLocator.get<SpriteComponentFactory>();
-
     gameObject.addComponent(
-      spriteComponentFactory->createSpriteComponent(
+      spriteComponentFactory::createSpriteComponent(
         gameObject,
         "lucius-walking",
         IntRect(Vector2i(0, 0), Vector2i(100, 100))
       )
     );
 
-    AnimationStateMachineBuilder animBuilder(m_animationFactory);
+    AnimationStateMachineBuilder animBuilder;
     UniquePtr<AnimationStateMachine> animStateMachine = animBuilder
       .createStateMachine("idle")
       .withFloat("luciusSpeed", 0.0f)
@@ -76,42 +61,23 @@ namespace rk
       )
     );
 
-    SharedPtr<RigidBodyComponentFactory> rigidBodyComponentFactory =
-      m_componentFactoryLocator.get<RigidBodyComponentFactory>();
-
     gameObject.addComponent(
-      rigidBodyComponentFactory->create(
+      rigidBodyComponentFactory::create(
         gameObject,
         rigidBodyType::Type::Kinematic,
         false
       )
     );
 
-    SharedPtr<ColliderComponentFactory> colliderComponentFactory =
-      m_componentFactoryLocator.get<ColliderComponentFactory>();
-
     UniquePtr<ColliderComponent> circleCollider =
-      colliderComponentFactory->createCircle(
+      colliderComponentFactory::createCircle(
         gameObject,
         Vector2f(0.0f, 0.0f),
         20.0f,
         "characters"
       );
-    circleCollider->setDebug(true);
 
     gameObject.addComponent(std::move(circleCollider));
-
-    gameObject.addComponent(
-      MakeUnique<PathfinderComponent>(gameObject, m_pathfinder)
-    );
-    gameObject.addComponent(
-      MakeUnique<Lucius>(gameObject, m_positionTransform)
-    );
-    gameObject.addComponent(
-      MakeUnique<LuciusAnimation>(gameObject)
-    );
-    gameObject.addComponent(
-      MakeUnique<AgentPathMovement>(gameObject)
-    );
+    gameObject.addComponent(MakeUnique<AgentPathMovement>(gameObject));
   }
 }

@@ -20,7 +20,6 @@ using sf::Vector2f;
 
 namespace rk
 {
-  class AnimationFactory;
   class AnimationStateMachine;
   class AnimationState;
   class Animation;
@@ -30,7 +29,7 @@ namespace rk
   {
   public:
 
-    AnimationStateMachineBuilder(AnimationFactory& animationFactory);
+    AnimationStateMachineBuilder();
     ~AnimationStateMachineBuilder();
 
     AnimationStateMachineBuilder& createStateMachine(const String& initialStateKey);
@@ -69,7 +68,6 @@ namespace rk
   private:
     AnimationStateMachine* m_currentAnimationStateMachine;
     UnorderedMap<String, AnimationState*> m_statesMap;
-    AnimationFactory& m_animationFactory;
 
     AnimationState* getAnimationState(const String& stateKey) const;
 

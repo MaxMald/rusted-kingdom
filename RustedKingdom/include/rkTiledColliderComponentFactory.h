@@ -1,7 +1,6 @@
 #pragma once
 
 #include "rkPrerequisites.h"
-#include "rkNonCopyable.h"
 
 namespace tmr
 {
@@ -16,14 +15,8 @@ namespace rk
   class CircleColliderComponent;
   class ColliderComponentFactory;
 
-  class TiledColliderComponentFactory : public NonCopyable
+  namespace tiledColliderComponentFactory
   {
-  public:
-    TiledColliderComponentFactory(
-      ColliderComponentFactory&
-    );
-    ~TiledColliderComponentFactory();
-
     UniquePtr<ColliderComponent> create(
       const tmr::Object*,
       GameObject&,
@@ -35,8 +28,5 @@ namespace rk
       GameObject&,
       const String& colliderGroupKey
     );
-
-  private:
-    ColliderComponentFactory& m_colliderComponentFactory;
-  };
+  }
 }

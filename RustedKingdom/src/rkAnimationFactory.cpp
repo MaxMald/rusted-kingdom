@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics/Texture.hpp>
 
+#include "rkServiceLocator.h"
 #include "rkAssetManager.h"
 #include "rkEightDirAnimationDesc.h"
 #include "rkEightDirectionsSpriteSheetAnimation.h"
@@ -9,30 +10,27 @@
 
 namespace rk
 {
-  AnimationFactory::AnimationFactory(const AssetManager& assetManager) :
-    m_assetManager(assetManager)
+  namespace animationFactory
   {
-  }
+    UniquePtr<Animation> createEightDirectionsAnimation(
+      const String& descriptionKey,
+      const Blackboard& blackboard
+    )
+    {
+      SharedPtr<AssetManager> assetManager = ServiceLocator::Instance()
+        .getService<AssetManager>();
 
-  AnimationFactory::~AnimationFactory()
-  {
-  }
+      const SharedPtr<EightDirAnimationDesc> description =
+        assetManager->getAssetGroup<EightDirAnimationDesc>().get(descriptionKey);
 
-  UniquePtr<Animation> AnimationFactory::createEightDirectionsAnimation(
-    const String& descriptionKey,
-    const Blackboard& blackboard
-  )
-  {
-    const SharedPtr<EightDirAnimationDesc> description = m_assetManager
-      .getAssetGroup<EightDirAnimationDesc>().get(descriptionKey);
+      const SharedPtr<rk::Texture> texture =
+        assetManager->getAssetGroup<rk::Texture>().get(description->getTextureKey());
 
-    const SharedPtr<rk::Texture> texture = m_assetManager
-      .getAssetGroup<rk::Texture>().get(description->getTextureKey());
-
-    return MakeUnique<EightDirectionsSpriteSheetAnimation>(
-      *description,
-      blackboard,
-      texture->getSFMLTexture()
-    );
+      return MakeUnique<EightDirectionsSpriteSheetAnimation>(
+        *description,
+        blackboard,
+        texture->getSFMLTexture()
+      );
+    }
   }
 }

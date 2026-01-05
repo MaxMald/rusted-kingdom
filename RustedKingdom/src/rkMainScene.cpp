@@ -17,13 +17,14 @@
 #include "rkTiledMapUtilities.h"
 #include "rkTiledSceneCreator.h"
 #include "rkTiledColliderComponentFactory.h"
-#include "rkLuciusBlueprint.h"
 #include "rkArmyManager.h"
 
 #include "rkTiledClassApplierMapper.h"
 #include "rkBaseTiledClassApplier.h"
 #include "rkMinimapTiledClassApplier.h"
 #include "rkButtonClassApplier.h"
+#include "rkBlueprintClassApplier.h"
+#include "rkCorpoBasicSoldierBlueprint.h"
 
 namespace rk
 {
@@ -89,39 +90,33 @@ namespace rk
   void MainScene::createScene()
   {
     GameObjectBuilder gameObjectBuilder;
-    SpriteComponentFactory spriteComponentFactory(*m_assetManager);
-    RigidBodyComponentFactory rigidBodyComponentFactory(m_physicsWorld);
-    ColliderComponentFactory colliderComponentFactory(m_physicsWorld);
 
     m_physicsWorld.createCollidersGroup("characters");
     m_physicsWorld.createCollidersGroup("plantas");
     SharedPtr<TiledMap> tiledMap = m_assetManager->getAssetGroup<TiledMap>()
       .get("level-0");
 
-    TiledColliderComponentFactory tiledColliderComponentFactory(colliderComponentFactory);
     TiledClassApplierMapper tiledClassApplierMapper;
     
     tiledClassApplierMapper.registerClassApplier(
       "",
-      MakeShared<BaseTiledClassApplier>(
-        spriteComponentFactory,
-        tiledColliderComponentFactory
-      )
+      MakeShared<BaseTiledClassApplier>()
     );
 
     tiledClassApplierMapper.registerClassApplier(
       "Minimap",
-      MakeShared<MinimapTiledClassApplier>(
-        spriteComponentFactory,
-        tiledColliderComponentFactory
-      )
+      MakeShared<MinimapTiledClassApplier>()
     );
 
     tiledClassApplierMapper.registerClassApplier(
       "Button",
-      MakeShared<ButtonClassApplier>(
-        spriteComponentFactory,
-        tiledColliderComponentFactory
+      MakeShared<ButtonClassApplier>()
+    );
+
+    tiledClassApplierMapper.registerClassApplier(
+      "CorpSoldier",
+      MakeShared<BlueprintClassApplier>(
+        MakeShared<CorpoBasicSoldierBlueprint>()
       )
     );
 
@@ -129,7 +124,6 @@ namespace rk
       "level-0",
       *m_assetManager,
       tiledClassApplierMapper,
-      m_componentFactoryLocator,
       m_sceneGraph
     );
 
@@ -137,31 +131,10 @@ namespace rk
       "ui",
       *m_assetManager,
       tiledClassApplierMapper,
-      m_componentFactoryLocator,
       m_uiSceneGraph
     );
 
     createPathfinders();
-
-    // Create Lucius
-    SharedPtr<IPositionTransformer> positionTransform =
-      tiledMapUtilities::getPositionTransformer(*tiledMap);
-
-    AnimationFactory animationFactory(*m_assetManager);
-    LuciusBlueprint luciusBlueprint(
-      m_componentFactoryLocator,
-      animationFactory,
-      m_pathfinderManager->getPathfinder("characters"),
-      positionTransform
-    );
-
-    GameObject* plantas = m_sceneGraph.getRoot()->findChildByName("plantas");
-
-    m_sceneGraph.instantiateGameObject(
-      luciusBlueprint,
-      sf::Vector2f(200.0f, 200.0f),
-      *plantas
-    );
   }
 
   void MainScene::createPathfinders()

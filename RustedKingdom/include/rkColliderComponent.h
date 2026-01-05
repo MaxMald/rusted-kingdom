@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/System/Vector2.hpp>
+
 #include "rkComponent.h"
 #include "rkColliderType.h"
 

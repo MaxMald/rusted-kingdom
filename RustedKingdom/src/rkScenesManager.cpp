@@ -35,6 +35,11 @@ namespace rk
     );
   }
 
+  SharedPtr<IScene> ScenesManager::getActiveScene() const
+  {
+    return m_activeScene;
+  }
+
   void ScenesManager::init(ServiceLocator&)
   {
     // Intentionally left blank.

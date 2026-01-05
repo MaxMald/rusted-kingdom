@@ -7,8 +7,7 @@
 
 namespace rk
 {
-  BoxSelectorBlueprint::BoxSelectorBlueprint(ComponentFactoryLocator& componentFactoryLocator) :
-    GameObjectBlueprint(componentFactoryLocator)
+  BoxSelectorBlueprint::BoxSelectorBlueprint()
   {
   }
 

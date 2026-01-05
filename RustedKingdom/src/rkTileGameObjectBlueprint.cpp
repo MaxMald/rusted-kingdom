@@ -5,10 +5,7 @@
 
 namespace rk
 {
-  TileGameObjectBlueprint::TileGameObjectBlueprint(
-    ComponentFactoryLocator& componentFactoryLocator
-  ) :
-    GameObjectBlueprint(componentFactoryLocator),
+  TileGameObjectBlueprint::TileGameObjectBlueprint() :
     m_description()
   {
   }
@@ -26,11 +23,8 @@ namespace rk
 
   void TileGameObjectBlueprint::apply(GameObject& gameObject) const
   {
-    SharedPtr<SpriteComponentFactory> spriteComponentFactory =
-      m_componentFactoryLocator.get<SpriteComponentFactory>();
-
     UniquePtr<SpriteComponent> spriteComponent =
-      spriteComponentFactory->createSpriteComponent(
+      spriteComponentFactory::createSpriteComponent(
         gameObject,
         m_description.getTextureKey(),
         m_description.getRect()

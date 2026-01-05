@@ -14,11 +14,7 @@ using sf::Vector2i;
 
 namespace rk
 {
-  ButtonClassApplier::ButtonClassApplier(
-    SpriteComponentFactory& spriteComponentFactory,
-    TiledColliderComponentFactory& tiledColliderComponentFactory
-  ) :
-    BaseTiledClassApplier(spriteComponentFactory, tiledColliderComponentFactory)
+  ButtonClassApplier::ButtonClassApplier()
   {
   }
 
