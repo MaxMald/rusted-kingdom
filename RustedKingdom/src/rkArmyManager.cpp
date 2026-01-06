@@ -87,7 +87,9 @@ namespace rk
         controlType
       )
     );
-    return SharedPtr<Army>();
+
+    m_armies[newArmy->getId()] = newArmy;
+    return newArmy;
   }
 
   void ArmyManager::clear()

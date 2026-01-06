@@ -60,7 +60,6 @@ namespace rk
 
   void Army::addUnit(UnitController* unitController)
   {
-    unitController->setArmy(SharedPtr<Army>(this));
     m_units.push_back(unitController);
   }
 
@@ -69,11 +68,6 @@ namespace rk
     auto it = std::remove(m_units.begin(), m_units.end(), unitController);
     if (it != m_units.end())
     {
-      for (auto iter = it; iter != m_units.end(); ++iter)
-      {
-        (*iter)->setArmy(nullptr);
-      }
-
       m_units.erase(it, m_units.end());
     }
   }

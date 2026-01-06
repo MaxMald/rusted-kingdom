@@ -189,6 +189,7 @@
     <ClCompile Include="src\rkCollidersGroup.cpp" />
     <ClCompile Include="src\rkBaseTiledClassApplier.cpp" />
     <ClCompile Include="src\rkCorpoBasicSoldierBlueprint.cpp" />
+    <ClCompile Include="src\rkCorpSoldierClassApplier.cpp" />
     <ClCompile Include="src\rkFaction.cpp" />
     <ClCompile Include="src\rkFactionManager.cpp" />
     <ClCompile Include="src\rkFactionManagerRuntimeDevToolView.cpp" />
@@ -299,6 +300,7 @@
     <ClInclude Include="include\rkButtonClassApplier.h" />
     <ClInclude Include="include\rkColorUtilities.h" />
     <ClInclude Include="include\rkCorpoBasicSoldierBlueprint.h" />
+    <ClInclude Include="include\rkCorpSoldierClassApplier.h" />
     <ClInclude Include="include\rkDependencyContainer.h" />
     <ClInclude Include="include\rkFaction.h" />
     <ClInclude Include="include\rkFactionManager.h" />

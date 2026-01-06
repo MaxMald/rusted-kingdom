@@ -138,9 +138,21 @@
   <object id="206" gid="33" x="1522" y="739.333" width="256" height="128"/>
   <object id="207" gid="33" x="1365.33" y="840" width="256" height="128"/>
   <object id="210" gid="112" x="450.5" y="1277.5" width="259" height="256"/>
-  <object id="211" gid="113" x="584" y="1220" width="100" height="100"/>
-  <object id="212" gid="113" x="563.5" y="1148.5" width="100" height="100"/>
-  <object id="213" gid="113" x="562" y="1256" width="100" height="100"/>
+  <object id="211" name="CorpSoldier" gid="113" x="584" y="1220" width="100" height="100">
+   <properties>
+    <property name="armyName" value="User Army"/>
+   </properties>
+  </object>
+  <object id="212" name="CorpSoldier" gid="113" x="563.5" y="1148.5" width="100" height="100">
+   <properties>
+    <property name="armyName" value="User Army"/>
+   </properties>
+  </object>
+  <object id="213" name="CorpSoldier" gid="113" x="562" y="1256" width="100" height="100">
+   <properties>
+    <property name="armyName" value="User Army"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="12" name="level-systems">
   <object id="209" name="box-selector" type="BoxSelector" x="-856" y="1020">

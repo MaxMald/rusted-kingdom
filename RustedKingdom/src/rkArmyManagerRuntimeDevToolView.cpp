@@ -5,6 +5,9 @@
 #include "rkArmy.h"
 #include "rkFaction.h"
 #include "rkFactionManager.h"
+#include "rkGameObject.h"
+
+#include "scripts/rkUnitController.h"
 
 namespace rk
 {
@@ -55,19 +58,70 @@ namespace rk
     if (ImGui::TreeNode(army.getName().c_str()))
     {
       ImGui::Text("ID: %u", army.getId());
-      ImGui::Text("Faction: %s", getArmyFactionName(army).c_str());
+
+      String factionName = getArmyFactionName(army);
+      ImGui::Text("Faction: %s", factionName.c_str());
 
       String controlTypeStr = armyControlType::toString(army.getControlType());
-      ImGui::Text("Control: %s", controlTypeStr);
-      ImGui::Text("Number of Units: %zu", army.getUnits().size());
+      ImGui::Text("Control: %s", controlTypeStr.c_str());
+
+      const Vector<UnitController*>& units = army.getUnits();
+      drawUnitsTree(units);
 
       ImGui::TreePop();
     }
   }
 
-  const String& ArmyManagerRuntimeDevToolView::getArmyFactionName(const Army& army)
+  String ArmyManagerRuntimeDevToolView::getArmyFactionName(const Army& army)
   {
     Faction faction = m_factionManager->getFaction(army.getFactionType());
     return faction.getName();
+  }
+
+  void ArmyManagerRuntimeDevToolView::drawUnitsTree(
+    const Vector<UnitController*>& units
+  )
+  {
+    String label = String::Format("Units (%zu)", units.size());
+    if (ImGui::TreeNode(label.c_str()))
+    {
+      for (const UnitController* unitController : units)
+        drawUnitElement(*unitController);
+
+      ImGui::TreePop();
+    }
+  }
+
+  void ArmyManagerRuntimeDevToolView::drawUnitElement(
+    const UnitController& unitController
+  )
+  {
+    const GameObject& gameObject = unitController.getGameObject();
+
+    String gameObjectName = gameObject.getName();
+    if (gameObjectName.empty())
+      gameObjectName = "<unnamed>";
+
+    gameObjectName = String::Format("%s (%p)", gameObjectName.c_str(), &gameObject);
+    
+    if (ImGui::TreeNode(gameObjectName.c_str()))
+    {
+      const UnitDescription& unitDescription =
+        unitController.getUnitDescription();
+
+      ImGui::Text("Unit Descriptor Information:");
+      ImGui::Text("Unit Name: %s", unitDescription.getName().c_str());
+      ImGui::Text("Display Name: %s", unitDescription.getDisplayName().c_str());
+      ImGui::Text("Health: %u", unitDescription.getHealth());
+      ImGui::Text("Armor: %u", unitDescription.getArmor());
+      ImGui::Text("Velocity: %.2f", unitDescription.getVelocity());
+
+      ImGui::Separator();
+      ImGui::Text("Unit Controller Information:");
+      ImGui::Text("Current Health: %u", unitController.getCurrentHealth());
+
+      ImGui::TreePop();
+    }
+
   }
 }

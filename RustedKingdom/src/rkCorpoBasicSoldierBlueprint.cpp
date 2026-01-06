@@ -13,8 +13,11 @@
 #include "rkRigidBodyComponentFactory.h"
 #include "rkColliderComponent.h"
 #include "rkColliderComponentFactory.h"
+#include "rkUnitDescriptionManager.h"
+#include "rkUnitDescription.h"
 
 #include "scripts/rkAgentPathMovement.h"
+#include "scripts/rkUnitController.h"
 
 using sf::IntRect;
 using sf::Vector2i;
@@ -79,5 +82,13 @@ namespace rk
 
     gameObject.addComponent(std::move(circleCollider));
     gameObject.addComponent(MakeUnique<AgentPathMovement>(gameObject));
+
+    SharedPtr<UnitDescriptionManager> unitDescriptionManager = 
+      ServiceLocator::Instance().getService<UnitDescriptionManager>();
+
+    gameObject.addComponent(MakeUnique<UnitController>(
+      gameObject,
+      unitDescriptionManager->getUnitDescription("corpSoldier")
+    ));
   }
 }

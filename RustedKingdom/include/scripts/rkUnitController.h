@@ -12,8 +12,7 @@ namespace rk
   public:
     UnitController(
       GameObject&,
-      const UnitDescription&,
-      SharedPtr<Army>
+      const UnitDescription&
     );
     virtual ~UnitController();
 

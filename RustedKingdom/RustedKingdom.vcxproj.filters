@@ -576,6 +576,9 @@
     <ClCompile Include="src\rkArmyControlType.cpp">
       <Filter>Source Files\services\armyManager</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkCorpSoldierClassApplier.cpp">
+      <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -1030,6 +1033,9 @@
     </ClInclude>
     <ClInclude Include="include\rkArmyManagerRuntimeDevToolView.h">
       <Filter>Header Files\runtimeDevTools\views</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkCorpSoldierClassApplier.h">
+      <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

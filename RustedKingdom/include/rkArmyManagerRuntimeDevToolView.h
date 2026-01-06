@@ -4,6 +4,7 @@
 
 namespace rk
 {
+  class UnitController;
   class Faction;
   class FactionManager;
   class ArmyManager;
@@ -27,6 +28,8 @@ namespace rk
     SharedPtr<FactionManager> m_factionManager;
 
     void drawArmyElement(const Army& army);
-    const String& getArmyFactionName(const Army& army);
+    String getArmyFactionName(const Army& army);
+    void drawUnitsTree(const Vector<UnitController*>& units);
+    void drawUnitElement(const UnitController& unitController);
   };
 }

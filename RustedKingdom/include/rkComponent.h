@@ -18,6 +18,9 @@ namespace rk
     Component(GameObject& gameObject);
     virtual ~Component() = default;
 
+    const GameObject& getGameObject() const;
+    GameObject& getGameObject();
+
   protected:
     GameObject* m_gameObject;
 

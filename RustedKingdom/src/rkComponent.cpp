@@ -7,6 +7,16 @@ namespace rk
   {
   }
 
+  const GameObject& Component::getGameObject() const
+  {
+    return *m_gameObject;
+  }
+
+  GameObject& Component::getGameObject()
+  {
+    return *m_gameObject;
+  }
+
   void Component::onCreate()
   {
   }

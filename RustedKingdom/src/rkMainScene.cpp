@@ -2,6 +2,7 @@
 #include "rkServiceLocator.h"
 #include "rkAssetManager.h"
 #include "rkWindowManager.h"
+#include "rkGameObjectBlueprintsManager.h"
 
 #include "rkPathfinderFactory.h"
 #include "rkPathfinderCollisionMaskUpdater.h"
@@ -22,6 +23,7 @@
 #include "rkTiledClassApplierMapper.h"
 #include "rkBaseTiledClassApplier.h"
 #include "rkMinimapTiledClassApplier.h"
+#include "rkCorpSoldierClassApplier.h"
 #include "rkButtonClassApplier.h"
 #include "rkBlueprintClassApplier.h"
 #include "rkCorpoBasicSoldierBlueprint.h"
@@ -113,10 +115,13 @@ namespace rk
       MakeShared<ButtonClassApplier>()
     );
 
+    SharedPtr<GameObjectBlueprintsManager> blueprintsManager =
+      ServiceLocator::Instance().getService<GameObjectBlueprintsManager>();
+
     tiledClassApplierMapper.registerClassApplier(
       "CorpSoldier",
-      MakeShared<BlueprintClassApplier>(
-        MakeShared<CorpoBasicSoldierBlueprint>()
+      MakeShared<CorpoSoldierClassApplier>(
+        blueprintsManager->get(gameObjectBlueprintKeys::CorpoBasicSoldier)
       )
     );
 
