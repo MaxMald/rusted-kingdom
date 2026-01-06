@@ -220,6 +220,12 @@
     <Filter Include="Source Files\runtimeDevTools">
       <UniqueIdentifier>{82e571bf-0ed1-49d8-9d20-87deff0cac0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\runtimeDevTools\views">
+      <UniqueIdentifier>{2e1e2bb9-0999-47c3-87ad-734ca630569c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\runtimeDevTools\views">
+      <UniqueIdentifier>{95e12328-7acc-4490-beca-aeb2eac8d8ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -548,6 +554,15 @@
     </ClCompile>
     <ClCompile Include="src\rkImguiRuntimeDevTools.cpp">
       <Filter>Source Files\runtimeDevTools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkSceneGraphRuntimeDevToolView.cpp">
+      <Filter>Source Files\runtimeDevTools\views</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkARuntimeDevToolView.cpp">
+      <Filter>Source Files\runtimeDevTools\views</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkAssetManagerRuntimeDevToolView.cpp">
+      <Filter>Source Files\runtimeDevTools\views</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -985,6 +1000,15 @@
     </ClInclude>
     <ClInclude Include="include\rkNullRuntimeDevTools.h">
       <Filter>Header Files\runtimeDevTools</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkARuntimeDevToolView.h">
+      <Filter>Header Files\runtimeDevTools\views</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkSceneGraphRuntimeDevToolView.h">
+      <Filter>Header Files\runtimeDevTools\views</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkAssetManagerRuntimeDevToolView.h">
+      <Filter>Header Files\runtimeDevTools\views</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

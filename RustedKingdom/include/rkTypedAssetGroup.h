@@ -11,7 +11,8 @@ namespace rk
   class TypedAssetGroup : public AssetGroup
   {
   public:
-    TypedAssetGroup() = default;
+    TypedAssetGroup() : AssetGroup() {}
+    TypedAssetGroup(const String& name) : AssetGroup(name) {}
     virtual ~TypedAssetGroup() = default;
 
     /**
@@ -36,6 +37,7 @@ namespace rk
       }
 
       m_assets[key] = std::static_pointer_cast<IAsset>(asset);
+      m_assets[key]->setAssetKey(key);
     }
     
     /**
@@ -64,6 +66,9 @@ namespace rk
           String::Format("Failed to load asset from file '{}'", filename.c_str())
         );
       }
+
+      assetBase->setAssetKey(key);
+      assetBase->setAssetPath(filename);
 
       m_assets[key] = assetBase;
       return asset;

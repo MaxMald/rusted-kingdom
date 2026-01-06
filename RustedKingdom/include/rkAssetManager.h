@@ -25,6 +25,13 @@ namespace rk
     const Path& getAssetDirectory() const;
 
     /**
+     * @brief Retrieves all registered asset groups.
+     *
+     * @return Vector of shared pointers to all asset groups.
+     */
+    Vector<SharedPtr<AssetGroup>> getAllAssetGroups() const;
+
+    /**
      * @brief Combines the asset directory with a relative path.
      * 
      * @param relativePath Path relative to the asset directory.

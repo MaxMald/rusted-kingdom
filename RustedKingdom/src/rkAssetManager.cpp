@@ -22,6 +22,14 @@ namespace rk
   {
   }
 
+  Vector<SharedPtr<AssetGroup>> AssetManager::getAllAssetGroups() const
+  {
+    Vector<SharedPtr<AssetGroup>> groups;
+    for (const auto& pair : m_assetGroups)
+      groups.push_back(pair.second);
+    return groups;
+  }
+
   bool AssetManager::loadBundle(Path relativeBundleFilePath)
   {
     return assetsBundleLoader::loadAssetsBundle(
@@ -58,8 +66,8 @@ namespace rk
 
   void AssetManager::registerAssetGroups()
   {
-    m_assetGroups[typeid(Texture)] = MakeShared<TypedAssetGroup<Texture>>();
-    m_assetGroups[typeid(TiledMap)] = MakeShared<TypedAssetGroup<TiledMap>>();
-    m_assetGroups[typeid(EightDirAnimationDesc)] = MakeShared<TypedAssetGroup<EightDirAnimationDesc>>();
+    m_assetGroups[typeid(Texture)] = MakeShared<TypedAssetGroup<Texture>>("Textures");
+    m_assetGroups[typeid(TiledMap)] = MakeShared<TypedAssetGroup<TiledMap>>("Tiled Maps");
+    m_assetGroups[typeid(EightDirAnimationDesc)] = MakeShared<TypedAssetGroup<EightDirAnimationDesc>>("Eight Direction Animation Descriptors");
   }
 }

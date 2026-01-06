@@ -2,6 +2,7 @@
 
 #include "rkIRuntimeDevTools.h"
 #include "rkServiceLocator.h"
+#include "rkARuntimeDevToolView.h"
 
 namespace rk
 {
@@ -13,5 +14,8 @@ namespace rk
     void update(sf::RenderWindow& window, const sf::Time& elapsed) override;
     void draw(sf::RenderWindow& window) override;
     void destroy() override;
+
+  private:
+    Vector<SharedPtr<ARuntimeDevToolView>> m_views;
   };
 }

@@ -14,6 +14,26 @@ namespace rk
     IAsset();
     virtual ~IAsset();
 
+    /**
+    * @brief Sets the unique key for the asset.
+    */
+    void setAssetKey(const String& assetKey);
+
+    /**
+     * @brief Gets the unique key for the asset.
+     */
+    String getAssetKey() const;
+
+    /**
+     * @brief Sets the file path for the asset.
+     */
+    void setAssetPath(const Path& assetPath);
+
+    /**
+     * @brief Gets the file path for the asset.
+     */
+    Path getAssetPath() const;
+
   protected:
     /**
      * @brief Loads the asset from a file.
@@ -36,6 +56,8 @@ namespace rk
 
   private:
     Vector<String> m_dependencyTag;
+    String m_assetKey;
+    Path m_assetPath;
 
     friend class AssetGroup;
     template<typename T>

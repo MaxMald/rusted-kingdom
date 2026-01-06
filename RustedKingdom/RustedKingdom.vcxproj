@@ -173,6 +173,7 @@
     <ClCompile Include="src\rkArmy.cpp" />
     <ClCompile Include="src\rkArmyManager.cpp" />
     <ClCompile Include="src\rkAssetGroup.cpp" />
+    <ClCompile Include="src\rkAssetManagerRuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkAssetsBundleItem.cpp" />
     <ClCompile Include="src\rkAssetsBundleLoader.cpp" />
     <ClCompile Include="src\rkBlueprintClassApplier.cpp" />
@@ -235,7 +236,9 @@
     <ClCompile Include="src\rkRigidBodyComponentFactory.cpp" />
     <ClCompile Include="src\rkRigidBodyDebuggedComponent.cpp" />
     <ClCompile Include="src\rkIScene.cpp" />
+    <ClCompile Include="src\rkARuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkSceneGraph.cpp" />
+    <ClCompile Include="src\rkSceneGraphRuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkScenesManager.cpp" />
     <ClCompile Include="src\rkScriptComponent.cpp" />
     <ClCompile Include="src\rkSearchNode.cpp" />
@@ -283,6 +286,7 @@
     <ClInclude Include="include\rkArmy.h" />
     <ClInclude Include="include\rkArmyControlType.h" />
     <ClInclude Include="include\rkArmyManager.h" />
+    <ClInclude Include="include\rkAssetManagerRuntimeDevToolView.h" />
     <ClInclude Include="include\rkAssetsBundleItem.h" />
     <ClInclude Include="include\rkAssetsBundleLoader.h" />
     <ClInclude Include="include\rkBaseTiledClassApplier.h" />
@@ -373,7 +377,9 @@
     <ClInclude Include="include\rkRigidBodyType.h" />
     <ClInclude Include="include\rkIScene.h" />
     <ClInclude Include="include\rkIRuntimeDevTools.h" />
+    <ClInclude Include="include\rkARuntimeDevToolView.h" />
     <ClInclude Include="include\rkSceneGraph.h" />
+    <ClInclude Include="include\rkSceneGraphRuntimeDevToolView.h" />
     <ClInclude Include="include\rkScenesManager.h" />
     <ClInclude Include="include\rkScriptComponent.h" />
     <ClInclude Include="include\rkSearchNode.h" />
