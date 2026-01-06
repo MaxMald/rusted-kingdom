@@ -1,12 +1,15 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/System/Time.hpp>
 
 #include "rkPrerequisites.h"
 #include "rkNonCopyable.h"
 #include "rkServiceLocator.h"
+#include "rkIRuntimeDevTools.h"
 
 using sf::RenderWindow;
+using sf::Time;
 
 namespace rk
 {
@@ -26,6 +29,7 @@ namespace rk
     void destroy();
 
   private:
+    SharedPtr<IRuntimeDevTools> m_runtimeDevTools;
     ServiceLocator* m_serviceLocator;
     SharedPtr<ScenesManager> m_scenesManager;
     SharedPtr<WindowManager> m_windowManager;
@@ -34,7 +38,7 @@ namespace rk
 
     void registerServices();
     void registerScenes();
-    void update(float deltaTime);
+    void update(RenderWindow&, const Time&);
     void draw(RenderWindow&);
   };
 }

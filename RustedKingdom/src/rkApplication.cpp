@@ -12,6 +12,8 @@
 #include "rkUnitDescriptionManager.h"
 #include "rkPathfinderManager.h"
 #include "rkGameObjectBlueprintsManager.h"
+#include "rkNullRuntimeDevTools.h"
+#include "rkImguiRuntimeDevTools.h"
 #include "rkMainScene.h"
 
 using std::optional;
@@ -25,8 +27,14 @@ namespace rk
     m_scenesManager(nullptr),
     m_windowManager(nullptr),
     m_viewManager(nullptr),
-    m_serviceLocator(nullptr)
+    m_serviceLocator(nullptr),
+    m_runtimeDevTools(nullptr)
   {
+#ifdef DEBUG
+    m_runtimeDevTools = MakeShared<ImguiRuntimeDevTools>();
+#else
+    m_runtimeDevTools = MakeShared<NullRuntimeDevTools>();
+#endif
   }
 
   Application::~Application()
@@ -54,6 +62,11 @@ namespace rk
 
     registerScenes();
     m_scenesManager->initScenes(*m_serviceLocator);
+
+    m_runtimeDevTools->prepare(
+      m_windowManager->getRenderWindow(),
+      *m_serviceLocator
+    );
   }
 
   void Application::run(const String& initialScene)
@@ -66,13 +79,15 @@ namespace rk
     {
       while (const optional event = renderWindow.pollEvent())
       {
+        m_runtimeDevTools->processEvent(renderWindow, *event);
+
         if (event->is<sf::Event::Closed>())
           renderWindow.close();
       }
 
       try
       {
-        update(deltaClock.restart().asSeconds());
+        update(renderWindow, deltaClock.restart());
         draw(renderWindow);
       }
       catch (const std::exception& ex)
@@ -93,17 +108,19 @@ namespace rk
     ServiceLocator::Shutdown();
   }
 
-  void Application::update(float deltaTime)
+  void Application::update(RenderWindow& window, const Time& elapsed)
   {
     m_inputManager->update();
     m_viewManager->updateRenderWindowView();
-    m_scenesManager->update(deltaTime);
+    m_scenesManager->update(elapsed.asSeconds());
+    m_runtimeDevTools->update(window, elapsed);
   }
 
   void Application::draw(RenderWindow& renderWindow)
   {
     renderWindow.clear(sf::Color::Black);
     m_scenesManager->draw(renderWindow, RenderStates::Default);
+    m_runtimeDevTools->draw(renderWindow);
     renderWindow.display();
   }
 

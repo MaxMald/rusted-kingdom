@@ -208,6 +208,18 @@
     <Filter Include="Header Files\services\gameObjectBlueprintManager">
       <UniqueIdentifier>{2db45892-d6f7-4578-8e04-66905c7e661a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\imgui">
+      <UniqueIdentifier>{8b543646-8493-4c68-8c0d-ffb63329a918}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\imgui">
+      <UniqueIdentifier>{e34fda63-458c-42d8-966f-6728357a4d09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\runtimeDevTools">
+      <UniqueIdentifier>{a7b1d616-c87e-4913-b3a5-0250f884ecc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\runtimeDevTools">
+      <UniqueIdentifier>{82e571bf-0ed1-49d8-9d20-87deff0cac0f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -515,6 +527,27 @@
     </ClCompile>
     <ClCompile Include="src\rkGameObjectBlueprintsManager.cpp">
       <Filter>Source Files\services\gameObjectBlueprintManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui-SFML.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui_demo.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui_draw.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui_tables.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui_widgets.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkImguiRuntimeDevTools.cpp">
+      <Filter>Source Files\runtimeDevTools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -919,6 +952,39 @@
     </ClInclude>
     <ClInclude Include="include\rkGameObjectBlueprintsManager.h">
       <Filter>Header Files\services\gameObjectBlueprintManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imgui-SFML.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imgui-SFML_export.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imstb_textedit.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imstb_truetype.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imconfig.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imgui.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imgui_internal.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imstb_rectpack.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkIRuntimeDevTools.h">
+      <Filter>Header Files\runtimeDevTools</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkImguiRuntimeDevTools.h">
+      <Filter>Header Files\runtimeDevTools</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkNullRuntimeDevTools.h">
+      <Filter>Header Files\runtimeDevTools</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
