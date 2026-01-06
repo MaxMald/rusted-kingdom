@@ -11,5 +11,7 @@ namespace rk
       User = 0,
       AI
     };
+
+    String toString(Type controlType);
   }
 }

@@ -18,6 +18,16 @@ namespace rk
     throw RuntimeErrorException("Faction not found");
   }
 
+  Vector<Faction> FactionManager::getAllFactions() const
+  {
+    Vector<Faction> factions;
+
+    for (const auto& pair : m_factions)
+      factions.push_back(pair.second);
+
+    return factions;
+  }
+
   void FactionManager::init(ServiceLocator&)
   {
     addFaction(

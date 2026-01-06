@@ -16,6 +16,7 @@ namespace rk
     SharedPtr<Army> getArmy(const String& name);
     void setArmiesAsAllies(UInt32 armyIdA, UInt32 armyIdB);
     void setArmiesAsHostiles(UInt32 armyIdA, UInt32 armyIdB);
+    const UnorderedMap<UInt32, SharedPtr<Army>>& getAllArmies() const;
 
     SharedPtr<Army> createArmy(
       const String& name,

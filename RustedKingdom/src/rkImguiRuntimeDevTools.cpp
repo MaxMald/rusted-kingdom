@@ -4,8 +4,14 @@
 #include "imgui-SFML.h"
 #include "rkSceneGraphRuntimeDevToolView.h"
 #include "rkAssetManagerRuntimeDevToolView.h"
+#include "rkPathfinderManagerRuntimeDevToolView.h"
+#include "rkFactionManagerRuntimeDevToolView.h"
+#include "rkArmyManagerRuntimeDevToolView.h"
+#include "rkPathfinderManager.h"
+#include "rkFactionManager.h"
 #include "rkScenesManager.h"
 #include "rkAssetManager.h"
+#include "rkArmyManager.h"
 
 namespace rk
 {
@@ -26,6 +32,25 @@ namespace rk
     m_views.push_back(
       MakeShared<AssetManagerRuntimeDevToolView>(
         serviceLocator.getService<AssetManager>()
+      )
+    );
+
+    m_views.push_back(
+      MakeShared<PathfinderManagerRuntimeDevToolView>(
+        serviceLocator.getService<PathfinderManager>()
+      )
+    );
+
+    m_views.push_back(
+      MakeShared<FactionManagerRuntimeDevToolView>(
+        serviceLocator.getService<FactionManager>()
+      )
+    );
+
+    m_views.push_back(
+      MakeShared<ArmyManagerRuntimeDevToolView>(
+        serviceLocator.getService<ArmyManager>(),
+        serviceLocator.getService<FactionManager>()
       )
     );
   }

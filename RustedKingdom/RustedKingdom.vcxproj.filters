@@ -564,6 +564,18 @@
     <ClCompile Include="src\rkAssetManagerRuntimeDevToolView.cpp">
       <Filter>Source Files\runtimeDevTools\views</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkPathfinderManagerRuntimeDevToolView.cpp">
+      <Filter>Source Files\runtimeDevTools\views</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkFactionManagerRuntimeDevToolView.cpp">
+      <Filter>Source Files\runtimeDevTools\views</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkArmyManagerRuntimeDevToolView.cpp">
+      <Filter>Source Files\runtimeDevTools\views</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkArmyControlType.cpp">
+      <Filter>Source Files\services\armyManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -1008,6 +1020,15 @@
       <Filter>Header Files\runtimeDevTools\views</Filter>
     </ClInclude>
     <ClInclude Include="include\rkAssetManagerRuntimeDevToolView.h">
+      <Filter>Header Files\runtimeDevTools\views</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkPathfinderManagerRuntimeDevToolView.h">
+      <Filter>Header Files\runtimeDevTools\views</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkFactionManagerRuntimeDevToolView.h">
+      <Filter>Header Files\runtimeDevTools\views</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkArmyManagerRuntimeDevToolView.h">
       <Filter>Header Files\runtimeDevTools\views</Filter>
     </ClInclude>
   </ItemGroup>

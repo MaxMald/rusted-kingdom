@@ -11,6 +11,7 @@ namespace rk
   public:
     void addFaction(const Faction& faction);
     const Faction& getFaction(factionType::Type type) const;
+    Vector<Faction> getAllFactions() const;
 
   protected:
     void init(ServiceLocator& serviceLocator) override;

@@ -65,6 +65,11 @@ namespace rk
     armyB->addHostileArmy(*armyA);
   }
 
+  const UnorderedMap<UInt32, SharedPtr<Army>>& ArmyManager::getAllArmies() const
+  {
+    return m_armies;
+  }
+
   SharedPtr<Army> ArmyManager::createArmy(
     const String& name,
     factionType::Type factionType,

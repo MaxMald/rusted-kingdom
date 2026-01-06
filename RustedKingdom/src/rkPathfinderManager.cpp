@@ -43,6 +43,11 @@ namespace rk
     );
   }
 
+  const UnorderedMap<String, SharedPtr<Pathfinder>>& PathfinderManager::getAllPathfinders() const
+  {
+    return m_pathfinders;
+  }
+
   void PathfinderManager::addPathfinder(
     const String& key,
     const SharedPtr<Pathfinder>& pathfinder

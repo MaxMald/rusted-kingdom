@@ -171,7 +171,9 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkApplication.cpp" />
     <ClCompile Include="src\rkArmy.cpp" />
+    <ClCompile Include="src\rkArmyControlType.cpp" />
     <ClCompile Include="src\rkArmyManager.cpp" />
+    <ClCompile Include="src\rkArmyManagerRuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkAssetGroup.cpp" />
     <ClCompile Include="src\rkAssetManagerRuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkAssetsBundleItem.cpp" />
@@ -189,6 +191,7 @@
     <ClCompile Include="src\rkCorpoBasicSoldierBlueprint.cpp" />
     <ClCompile Include="src\rkFaction.cpp" />
     <ClCompile Include="src\rkFactionManager.cpp" />
+    <ClCompile Include="src\rkFactionManagerRuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkGameObjectBlueprint.cpp" />
     <ClCompile Include="src\rkGameObjectBlueprintsManager.cpp" />
     <ClCompile Include="src\rkGameObjectUtilities.cpp" />
@@ -211,6 +214,7 @@
     <ClCompile Include="src\rkPathfinderComponent.cpp" />
     <ClCompile Include="src\rkPathfinderFactory.cpp" />
     <ClCompile Include="src\rkPathfinderManager.cpp" />
+    <ClCompile Include="src\rkPathfinderManagerRuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkRectUtilities.cpp" />
     <ClCompile Include="src\rkRigidBodyComponent.cpp" />
     <ClCompile Include="src\rkAnimation.cpp" />
@@ -286,6 +290,7 @@
     <ClInclude Include="include\rkArmy.h" />
     <ClInclude Include="include\rkArmyControlType.h" />
     <ClInclude Include="include\rkArmyManager.h" />
+    <ClInclude Include="include\rkArmyManagerRuntimeDevToolView.h" />
     <ClInclude Include="include\rkAssetManagerRuntimeDevToolView.h" />
     <ClInclude Include="include\rkAssetsBundleItem.h" />
     <ClInclude Include="include\rkAssetsBundleLoader.h" />
@@ -297,6 +302,7 @@
     <ClInclude Include="include\rkDependencyContainer.h" />
     <ClInclude Include="include\rkFaction.h" />
     <ClInclude Include="include\rkFactionManager.h" />
+    <ClInclude Include="include\rkFactionManagerRuntimeDevToolView.h" />
     <ClInclude Include="include\rkFactionType.h" />
     <ClInclude Include="include\rkGameObjectBlueprintsManager.h" />
     <ClInclude Include="include\rkImguiRuntimeDevTools.h" />
@@ -344,6 +350,7 @@
     <ClInclude Include="include\rkPathfinderComponent.h" />
     <ClInclude Include="include\rkPathfinderFactory.h" />
     <ClInclude Include="include\rkPathfinderManager.h" />
+    <ClInclude Include="include\rkPathfinderManagerRuntimeDevToolView.h" />
     <ClInclude Include="include\rkPhysicWorldListener.h" />
     <ClInclude Include="include\rkRectUtilities.h" />
     <ClInclude Include="include\rkRigidBodyComponentFactory.h" />
