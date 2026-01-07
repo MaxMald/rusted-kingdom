@@ -11,5 +11,7 @@ namespace rk
       Undefined = 0,
       Circle = 1
     };
+
+    String toString(Type type);
   }
 }

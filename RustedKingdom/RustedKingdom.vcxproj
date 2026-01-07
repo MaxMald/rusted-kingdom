@@ -188,6 +188,7 @@
     <ClCompile Include="src\rkColliderComponentFactory.cpp" />
     <ClCompile Include="src\rkCollidersGroup.cpp" />
     <ClCompile Include="src\rkBaseTiledClassApplier.cpp" />
+    <ClCompile Include="src\rkColliderType.cpp" />
     <ClCompile Include="src\rkCorpoBasicSoldierBlueprint.cpp" />
     <ClCompile Include="src\rkCorpSoldierClassApplier.cpp" />
     <ClCompile Include="src\rkFaction.cpp" />
@@ -216,6 +217,7 @@
     <ClCompile Include="src\rkPathfinderFactory.cpp" />
     <ClCompile Include="src\rkPathfinderManager.cpp" />
     <ClCompile Include="src\rkPathfinderManagerRuntimeDevToolView.cpp" />
+    <ClCompile Include="src\rkPhysicWorldRuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkRectUtilities.cpp" />
     <ClCompile Include="src\rkRigidBodyComponent.cpp" />
     <ClCompile Include="src\rkAnimation.cpp" />
@@ -354,6 +356,7 @@
     <ClInclude Include="include\rkPathfinderManager.h" />
     <ClInclude Include="include\rkPathfinderManagerRuntimeDevToolView.h" />
     <ClInclude Include="include\rkPhysicWorldListener.h" />
+    <ClInclude Include="include\rkPhysicWorldRuntimeDevToolView.h" />
     <ClInclude Include="include\rkRectUtilities.h" />
     <ClInclude Include="include\rkRigidBodyComponentFactory.h" />
     <ClInclude Include="include\rkColliderType.h" />

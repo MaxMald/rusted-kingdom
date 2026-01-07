@@ -579,6 +579,12 @@
     <ClCompile Include="src\rkCorpSoldierClassApplier.cpp">
       <Filter>Source Files\scene\tiledSceneCreator\classes</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkPhysicWorldRuntimeDevToolView.cpp">
+      <Filter>Source Files\runtimeDevTools\views</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkColliderType.cpp">
+      <Filter>Source Files\physics\colliders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -1036,6 +1042,9 @@
     </ClInclude>
     <ClInclude Include="include\rkCorpSoldierClassApplier.h">
       <Filter>Header Files\scene\tiledSceneCreator\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkPhysicWorldRuntimeDevToolView.h">
+      <Filter>Header Files\runtimeDevTools\views</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

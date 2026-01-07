@@ -23,6 +23,7 @@ namespace rk
     void setPosition(const Vector2f& position) { m_position = position; m_isDirty = true; }
     colliderType::Type getType() const { return m_type; }
     GameObject& getGameObject() { return m_gameObject; }
+    const GameObject& getGameObject() const { return m_gameObject; }
     bool isDirty() const { return m_isDirty; }
     const String& getCollidersGroupKey() const { return m_collidersGroupKey; }
 

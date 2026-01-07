@@ -36,6 +36,7 @@ namespace rk
     Collider* createCollider(GameObject&, colliderType::Type type);
     Collider* createCollider(GameObject&, colliderType::Type type, const String& colliderGroupKey);
     void destroyCollider(Collider* collider);
+    Vector<String> getCollidersGroupKeys() const;
     const Vector<UniquePtr<Collider>>& getColliders(const String& collidersGroupKey) const;
 
     void addListener(PhysicWorldListener* listener);

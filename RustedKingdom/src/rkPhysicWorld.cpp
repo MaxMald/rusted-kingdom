@@ -44,6 +44,15 @@ namespace rk
     }
   }
 
+  Vector<String> PhysicWorld::getCollidersGroupKeys() const
+  {
+    Vector<String> keys;
+    for (const auto& pair : m_collidersGroups)
+      keys.push_back(pair.first);
+
+    return keys;
+  }
+
   const Vector<UniquePtr<Collider>>& PhysicWorld::getColliders(
     const String& collidersGroupKey
   ) const

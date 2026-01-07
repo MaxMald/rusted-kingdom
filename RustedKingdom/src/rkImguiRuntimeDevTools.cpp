@@ -7,6 +7,7 @@
 #include "rkPathfinderManagerRuntimeDevToolView.h"
 #include "rkFactionManagerRuntimeDevToolView.h"
 #include "rkArmyManagerRuntimeDevToolView.h"
+#include "rkPhysicWorldRuntimeDevToolView.h"
 #include "rkPathfinderManager.h"
 #include "rkFactionManager.h"
 #include "rkScenesManager.h"
@@ -51,6 +52,12 @@ namespace rk
       MakeShared<ArmyManagerRuntimeDevToolView>(
         serviceLocator.getService<ArmyManager>(),
         serviceLocator.getService<FactionManager>()
+      )
+    );
+
+    m_views.push_back(
+      MakeShared<PhysicWorldRuntimeDevToolView>(
+        serviceLocator.getService<ScenesManager>()
       )
     );
   }
