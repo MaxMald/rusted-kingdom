@@ -8,7 +8,8 @@ namespace rk
 {
   CollidersDrawerRuntimeDevToolComponent::CollidersDrawerRuntimeDevToolComponent(
     SharedPtr<ScenesManager> scenesManager
-  ) : m_colliderGroupDrawers(),
+  ) : ARuntimeDevToolComponent("Collider Drawer Tool"),
+    m_colliderGroupDrawers(),
     m_scenesManager(scenesManager),
     m_drawerService()
   {
@@ -36,11 +37,8 @@ namespace rk
 
     updateColliderGroupDrawers(physicWorld);
 
-    if (ImGui::CollapsingHeader("Colliders Drawer Tool"))
-    {
-      for (const auto groupDrawer : m_colliderGroupDrawers)
-        groupDrawer->draw(window, physicWorld);
-    }
+    for (const auto groupDrawer : m_colliderGroupDrawers)
+      groupDrawer->draw(window, physicWorld);
   }
 
   void CollidersDrawerRuntimeDevToolComponent::updateColliderGroupDrawers(

@@ -1,4 +1,5 @@
 #include "rkARuntimeDevToolComponent.h"
+#include "imgui.h"
 
 namespace rk
 {
@@ -12,6 +13,12 @@ namespace rk
 
   void ARuntimeDevToolComponent::draw(sf::RenderWindow& window)
   {
-    this->onDraw(window);
+    if (ImGui::CollapsingHeader(m_componentName.c_str()))
+      this->onDraw(window);
+  }
+
+  ARuntimeDevToolComponent::ARuntimeDevToolComponent(const String& name) :
+    m_componentName(name)
+  {
   }
 }

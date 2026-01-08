@@ -17,7 +17,9 @@ namespace rk
     void draw(sf::RenderWindow& window);
 
   protected:
-    ARuntimeDevToolComponent() = default;
+    String m_componentName;
+
+    ARuntimeDevToolComponent(const String& name);
 
     virtual void onUpdate(sf::RenderWindow& window, const sf::Time& elapsed) = 0;
     virtual void onDraw(sf::RenderWindow& window) = 0;
