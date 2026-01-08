@@ -238,6 +238,12 @@
     <Filter Include="Source Files\runtimeDevTools\views\components\collidersDrawer">
       <UniqueIdentifier>{3aac8d39-1fd4-4432-a586-f0b5d6c4fc61}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\runtimeDevTools\views\gameObject">
+      <UniqueIdentifier>{4de002d1-31e3-4b28-8d8e-7913623db7af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\runtimeDevTools\views\gameObject">
+      <UniqueIdentifier>{4257fea6-0908-49ff-aa26-9de1db3cc572}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -617,6 +623,9 @@
     </ClCompile>
     <ClCompile Include="src\rkColliderDrawerService.cpp">
       <Filter>Source Files\runtimeDevTools\views\components\collidersDrawer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkGameObjectRuntimeDevToolView.cpp">
+      <Filter>Source Files\runtimeDevTools\views\gameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1102,6 +1111,9 @@
     </ClInclude>
     <ClInclude Include="include\rkColliderDrawerService.h">
       <Filter>Header Files\runtimeDevTools\views\components\collidersDrawer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkGameObjectRuntimeDevToolView.h">
+      <Filter>Header Files\runtimeDevTools\views\gameObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

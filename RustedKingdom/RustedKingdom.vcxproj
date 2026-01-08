@@ -201,6 +201,7 @@
     <ClCompile Include="src\rkFactionManagerRuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkGameObjectBlueprint.cpp" />
     <ClCompile Include="src\rkGameObjectBlueprintsManager.cpp" />
+    <ClCompile Include="src\rkGameObjectRuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkGameObjectUtilities.cpp" />
     <ClCompile Include="src\rkIAsset.cpp" />
     <ClCompile Include="src\rkImguiRuntimeDevTools.cpp" />
@@ -321,6 +322,7 @@
     <ClInclude Include="include\rkFactionType.h" />
     <ClInclude Include="include\rkGameObjectBlueprintsManager.h" />
     <ClInclude Include="include\rkARuntimeDevToolComponent.h" />
+    <ClInclude Include="include\rkGameObjectRuntimeDevToolView.h" />
     <ClInclude Include="include\rkIColliderDrawer.h" />
     <ClInclude Include="include\rkImguiRuntimeDevTools.h" />
     <ClInclude Include="include\rkIMouseButtonHandlerListener.h" />

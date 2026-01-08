@@ -11,8 +11,11 @@ namespace rk
     SharedPtr<ScenesManager> scenesManager
   ) :
     ARuntimeDevToolView("Scene Graph"),
-    m_scenesManager(scenesManager)
+    m_scenesManager(scenesManager),
+    m_gameObjectView(),
+    m_selectedGameObject(nullptr)
   {
+    m_gameObjectView.isOpen = true;
   }
 
   SceneGraphRuntimeDevToolView::~SceneGraphRuntimeDevToolView()
@@ -23,7 +26,7 @@ namespace rk
   {
   }
 
-  void SceneGraphRuntimeDevToolView::onDraw(sf::RenderWindow&)
+  void SceneGraphRuntimeDevToolView::onDraw(sf::RenderWindow& window)
   {
     if (!m_scenesManager)
       return;
@@ -33,29 +36,54 @@ namespace rk
       return;
 
     SceneGraph& sceneGraph = activeScene->getSceneGraph();
+
     drawGameObjectTree(*sceneGraph.getRoot());
+
+    if (m_selectedGameObject)
+    {
+      m_gameObjectView.setActiveGameObject(m_selectedGameObject);
+      m_gameObjectView.draw(window);
+    }
   }
 
-  void SceneGraphRuntimeDevToolView::drawGameObjectTree(const GameObject& root)
+  void SceneGraphRuntimeDevToolView::drawGameObjectTree(GameObject& node)
   {
-    String label = getGameObjectName(root);
-    if (ImGui::TreeNode(label.c_str()))
+    String label = getGameObjectName(node);
+
+    // Use a unique ID to avoid ImGui ID conflicts
+    ImGui::PushID(&node);
+
+    bool nodeOpen = ImGui::TreeNode(label.c_str());
+
+    if (ImGui::IsItemClicked())
     {
-      for (const auto& child : root.getChildren())
+      m_selectedGameObject = &node;
+    }
+
+    if (m_selectedGameObject == &node)
+    {
+      ImGui::SameLine();
+      ImGui::TextColored(ImVec4(1, 1, 0, 1), "<-- Selected");
+    }
+
+    if (nodeOpen)
+    {
+      for (const auto& child : node.getChildren())
       {
         drawGameObjectTree(*child);
       }
-
       ImGui::TreePop();
     }
+
+    ImGui::PopID();
   }
 
   String SceneGraphRuntimeDevToolView::getGameObjectName(const GameObject& gameObject)
   {
     String gameObjectName = gameObject.getName();
-    if (!gameObjectName.empty())
-      return gameObjectName;
+    if (gameObjectName.empty())
+      gameObjectName = "<unnamed>";
 
-    return String::Format("<unnamed> &(%p)", &gameObject);
+    return String::Format("%s (%p)", gameObjectName.c_str(), &gameObject);
   }
 }
