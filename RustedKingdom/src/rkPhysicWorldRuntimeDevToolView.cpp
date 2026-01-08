@@ -14,7 +14,8 @@ namespace rk
   PhysicWorldRuntimeDevToolView::PhysicWorldRuntimeDevToolView(
     SharedPtr<ScenesManager> scenesManager
   ) : ARuntimeDevToolView("Physic World"),
-    m_scenesManager(scenesManager)
+    m_scenesManager(scenesManager),
+    m_collidersDrawerComponent(scenesManager)
   {
   }
 
@@ -30,7 +31,7 @@ namespace rk
   }
 
   void PhysicWorldRuntimeDevToolView::onDraw(
-    sf::RenderWindow&
+    sf::RenderWindow& window
   )
   {
     if (!m_scenesManager)
@@ -40,6 +41,7 @@ namespace rk
     if (!currentScene)
       return;
 
+    m_collidersDrawerComponent.draw(window);
     drawPhysicWorldInfo(currentScene->getPhysicWorld());
   }
 
@@ -47,10 +49,13 @@ namespace rk
     const PhysicWorld& physicworld
   )
   {
-    drawColliderGroupsInfo(
-      physicworld.getCollidersGroupKeys(),
-      physicworld
-    );
+    if (ImGui::CollapsingHeader("Physic World"))
+    {
+      drawColliderGroupsInfo(
+        physicworld.getCollidersGroupKeys(),
+        physicworld
+      );
+    }
   }
 
   void PhysicWorldRuntimeDevToolView::drawColliderGroupsInfo(

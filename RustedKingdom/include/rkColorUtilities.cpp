@@ -46,5 +46,25 @@ namespace rk
 
       return sf::Color(r, g, b, a);
     }
+
+    ImVec4 getImVec4FromColor(const sf::Color& color)
+    {
+      return ImVec4(
+        static_cast<float>(color.r) / 255.0f,
+        static_cast<float>(color.g) / 255.0f,
+        static_cast<float>(color.b) / 255.0f,
+        static_cast<float>(color.a) / 255.0f
+      );
+    }
+
+    sf::Color getColorFromImVec4(const ImVec4& color)
+    {
+      return sf::Color(
+        static_cast<UInt8>(color.x * 255.0f),
+        static_cast<UInt8>(color.y * 255.0f),
+        static_cast<UInt8>(color.z * 255.0f),
+        static_cast<UInt8>(color.w * 255.0f)
+      );
+    }
   }
 }

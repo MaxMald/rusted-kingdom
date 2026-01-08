@@ -26,7 +26,6 @@ namespace rk
     const Vector2f& getCenter() const;
     void setCenter(const Vector2f& center);
     const colliderType::Type getColliderType() const;
-    void setDebug(bool debug) { m_debug = debug; }
     const Collider* getCollider() const;
 
     bool checkCollision(const ColliderComponent& other) const;
@@ -35,17 +34,5 @@ namespace rk
   protected:
     Collider* m_collider;
     PhysicWorld& m_physicWorld;
-    bool m_debug;
-
-    virtual void onDraw(
-      RenderTarget& target,
-      RenderStates states
-    ) const override;
-
-  private:
-    void debugCircleCollider(
-      const CircleCollider* circleCollider,
-      RenderTarget& target
-    ) const;
   };
 }

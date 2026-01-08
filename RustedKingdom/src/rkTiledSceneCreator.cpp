@@ -69,7 +69,6 @@ namespace rk
     );
 
     static void fixColliderCenterBaseOnOrigin(GameObject& gameObject);
-    static void activeDebugCollider(GameObject& gameObject);
   }
 }
 
@@ -259,7 +258,6 @@ namespace rk
         gameObjectUtilities::setSpriteOrigin(*tileGameObject, origin.x, origin.y);
 
         fixColliderCenterBaseOnOrigin(*tileGameObject);
-        activeDebugCollider(*tileGameObject);
 
         sceneGraph.registerGameObject(
           UniquePtr<GameObject>(tileGameObject),
@@ -285,17 +283,6 @@ namespace rk
       colliderComponent->setCenter(
         colliderComponent->getCenter() - spriteComponent->getOrigin()
       );
-    }
-
-    static void activeDebugCollider(GameObject& gameObject)
-    {
-      if (!gameObject.hasComponent<ColliderComponent>())
-        return;
-
-      ColliderComponent* colliderComponent = gameObject
-        .getComponent<ColliderComponent>();
-
-      colliderComponent->setDebug(true);
     }
   }
 }

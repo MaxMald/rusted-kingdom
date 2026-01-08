@@ -36,8 +36,11 @@ namespace rk
     Collider* createCollider(GameObject&, colliderType::Type type);
     Collider* createCollider(GameObject&, colliderType::Type type, const String& colliderGroupKey);
     void destroyCollider(Collider* collider);
+    bool hasColliderGroup(const String& collidersGroupKey) const;
     Vector<String> getCollidersGroupKeys() const;
     const Vector<UniquePtr<Collider>>& getColliders(const String& collidersGroupKey) const;
+    CollidersGroup* getCollidersGroup(const String& key);
+    const CollidersGroup* getCollidersGroup(const String& key) const;
 
     void addListener(PhysicWorldListener* listener);
     void removeListener(PhysicWorldListener* listener);
@@ -51,8 +54,6 @@ namespace rk
     Vector<PhysicWorldListener*> m_listeners;
 
     void addColliderToGroup(const String& key, UniquePtr<Collider> collider);
-    CollidersGroup* getCollidersGroup(const String& key);
-    const CollidersGroup* getCollidersGroup(const String& key) const;
     void notifyColliderChanged(Collider* collider);
   };
 }

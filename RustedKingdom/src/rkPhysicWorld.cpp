@@ -44,6 +44,11 @@ namespace rk
     }
   }
 
+  bool PhysicWorld::hasColliderGroup(const String& collidersGroupKey) const
+  {
+    return m_collidersGroups.find(collidersGroupKey) != m_collidersGroups.end();
+  }
+
   Vector<String> PhysicWorld::getCollidersGroupKeys() const
   {
     Vector<String> keys;

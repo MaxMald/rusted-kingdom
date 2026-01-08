@@ -1,6 +1,7 @@
 #pragma once
 
 #include "rkARuntimeDevToolView.h"
+#include "rkCollidersDrawerRuntimeDevToolComponent.h"
 
 namespace rk
 {
@@ -17,6 +18,7 @@ namespace rk
 
   protected:
     SharedPtr<ScenesManager> m_scenesManager;
+    CollidersDrawerRuntimeDevToolComponent m_collidersDrawerComponent;
 
     void onUpdate(sf::RenderWindow& window, const sf::Time& elapsed) override;
     void onDraw(sf::RenderWindow& window) override;

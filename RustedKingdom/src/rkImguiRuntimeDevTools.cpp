@@ -13,6 +13,7 @@
 #include "rkScenesManager.h"
 #include "rkAssetManager.h"
 #include "rkArmyManager.h"
+#include "rkInputManager.h"
 
 namespace rk
 {
@@ -60,6 +61,10 @@ namespace rk
         serviceLocator.getService<ScenesManager>()
       )
     );
+
+    m_mouseInfoComponent = MakeShared<MouseInfoRuntimeDevToolComponent>(
+      serviceLocator.getService<InputManager>()
+    );
   }
 
   void ImguiRuntimeDevTools::processEvent(
@@ -87,12 +92,17 @@ namespace rk
   void ImguiRuntimeDevTools::draw(sf::RenderWindow& window)
   {
     ImGui::Begin("Runtime Development Tools", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+    
+    if (m_mouseInfoComponent)
+      m_mouseInfoComponent->draw(window);
 
-    ImGui::Text("Toggle Views:");
-    for (SizeT i = 0; i < m_views.size(); ++i) 
+    if (ImGui::CollapsingHeader("Toggle View"))
     {
-      auto& view = m_views[i];
-      ImGui::Checkbox(view->getName().c_str(), &view->isOpen);
+      for (SizeT i = 0; i < m_views.size(); ++i)
+      {
+        auto& view = m_views[i];
+        ImGui::Checkbox(view->getName().c_str(), &view->isOpen);
+      }
     }
 
     ImGui::End();

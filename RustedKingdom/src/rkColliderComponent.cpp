@@ -16,8 +16,7 @@ namespace rk
   ) :
     Component(gameObject),
     m_physicWorld(physicWorld),
-    m_collider(collider),
-    m_debug(false)
+    m_collider(collider)
   {
     if (collider == nullptr)
     {
@@ -60,37 +59,5 @@ namespace rk
   bool ColliderComponent::checkCollision(const Vector2f& point) const
   {
     return m_collider->checkCollision(point);
-  }
-
-  void ColliderComponent::onDraw(RenderTarget& target, RenderStates) const
-  {
-    if (!m_debug)
-      return;
-
-    if (m_collider->getType() == colliderType::Circle)
-    {
-      debugCircleCollider(
-        static_cast<const CircleCollider*>(m_collider),
-        target
-      );
-    }
-  }
-
-  void ColliderComponent::debugCircleCollider(
-    const CircleCollider* circleCollider,
-    RenderTarget& target
-  ) const
-  {
-    const float radius = circleCollider->getRadius();
-    const Vector2f position = circleCollider->getPosition()
-      + circleCollider->getCenter();
-
-    sf::CircleShape circle(radius);
-    circle.setPosition(position - Vector2f(radius, radius));
-    circle.setFillColor(sf::Color::Transparent);
-    circle.setOutlineColor(sf::Color::Red);
-    circle.setOutlineThickness(1.f);
-
-    target.draw(circle);
   }
 }

@@ -3,6 +3,7 @@
 #include "rkIRuntimeDevTools.h"
 #include "rkServiceLocator.h"
 #include "rkARuntimeDevToolView.h"
+#include "rkMouseInfoRuntimeDevToolComponent.h"
 
 namespace rk
 {
@@ -16,6 +17,7 @@ namespace rk
     void destroy() override;
 
   private:
+    SharedPtr<MouseInfoRuntimeDevToolComponent> m_mouseInfoComponent;
     Vector<SharedPtr<ARuntimeDevToolView>> m_views;
   };
 }
