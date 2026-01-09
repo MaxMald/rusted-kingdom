@@ -14,7 +14,7 @@ namespace rk
   )
   {
     ImGui::PushID(&component);
-    if (ImGui::CollapsingHeader(m_componentName.c_str()))
+    if (ImGui::CollapsingHeader(m_componentName.c_str(), ImGuiTreeNodeFlags_DefaultOpen))
       onDraw(component, window);
     ImGui::PopID();
   }

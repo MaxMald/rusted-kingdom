@@ -1,5 +1,7 @@
 #include "rkGameObjectComponentDrawerService.h"
 #include "rkUndefinedGameObjectComponentDrawer.h"
+#include "rkSpriteComponent.h"
+#include "rkSpriteGameObjectComponentDrawer.h"
 #include "rkComponent.h"
 
 namespace rk
@@ -8,7 +10,8 @@ namespace rk
   {
     m_defaultComponentDrawer = MakeUnique<UndefinedGameObjectComponentDrawer>();
 
-    // Add other component drawers here
+    m_componentDrawers[TypeIndex(typeid(SpriteComponent))] = 
+      MakeUnique<SpriteGameObjectComponentDrawer>();
   }
 
   GameObjectComponentDrawerService::~GameObjectComponentDrawerService() = default;

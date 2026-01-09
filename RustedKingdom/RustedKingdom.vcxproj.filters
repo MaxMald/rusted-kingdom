@@ -636,6 +636,9 @@
     <ClCompile Include="src\rkGameObjectComponentDrawerService.cpp">
       <Filter>Source Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkSpriteGameObjectComponentDrawer.cpp">
+      <Filter>Source Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -1131,6 +1134,9 @@
       <Filter>Header Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
     </ClInclude>
     <ClInclude Include="include\rkGameObjectComponentDrawerService.h">
+      <Filter>Header Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkSpriteGameObjectComponentDrawer.h">
       <Filter>Header Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
     </ClInclude>
   </ItemGroup>

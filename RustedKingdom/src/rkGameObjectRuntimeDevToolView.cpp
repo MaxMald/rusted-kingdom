@@ -49,7 +49,7 @@ namespace rk
 
     ImGui::Text("Name: %s", gameObjectName.c_str());
 
-    if (ImGui::CollapsingHeader("Transform"))
+    if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen))
     {
       ImGui::Text("Position: (%f, %f)", m_activeGameObject->getPosition().x, m_activeGameObject->getPosition().y);
       ImGui::Text("World Position: (%f, %f)", m_activeGameObject->getWorldPosition().x, m_activeGameObject->getWorldPosition().y);
