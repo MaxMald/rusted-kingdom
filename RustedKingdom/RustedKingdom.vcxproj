@@ -169,6 +169,7 @@
     <ClCompile Include="src\imgui_tables.cpp" />
     <ClCompile Include="src\imgui_widgets.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\rkAGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkColliderGroupDrawer.cpp" />
     <ClCompile Include="src\rkApplication.cpp" />
     <ClCompile Include="src\rkArmy.cpp" />
@@ -201,6 +202,7 @@
     <ClCompile Include="src\rkFactionManagerRuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkGameObjectBlueprint.cpp" />
     <ClCompile Include="src\rkGameObjectBlueprintsManager.cpp" />
+    <ClCompile Include="src\rkGameObjectComponentDrawerService.cpp" />
     <ClCompile Include="src\rkGameObjectRuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkGameObjectUtilities.cpp" />
     <ClCompile Include="src\rkIAsset.cpp" />
@@ -273,6 +275,7 @@
     <ClCompile Include="src\rkTiledSceneCreator.cpp" />
     <ClCompile Include="src\rkTiledObjectSpriteDescriptor.cpp" />
     <ClCompile Include="src\rkTileGameObjectBlueprint.cpp" />
+    <ClCompile Include="src\rkUndefinedGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkUnitDescription.cpp" />
     <ClCompile Include="src\rkUnitDescriptionManager.cpp" />
     <ClCompile Include="src\rkViewComponent.cpp" />
@@ -322,8 +325,10 @@
     <ClInclude Include="include\rkFactionType.h" />
     <ClInclude Include="include\rkGameObjectBlueprintsManager.h" />
     <ClInclude Include="include\rkARuntimeDevToolComponent.h" />
+    <ClInclude Include="include\rkGameObjectComponentDrawerService.h" />
     <ClInclude Include="include\rkGameObjectRuntimeDevToolView.h" />
     <ClInclude Include="include\rkIColliderDrawer.h" />
+    <ClInclude Include="include\rkAGameObjectComponentDrawer.h" />
     <ClInclude Include="include\rkImguiRuntimeDevTools.h" />
     <ClInclude Include="include\rkIMouseButtonHandlerListener.h" />
     <ClInclude Include="include\rkMinimapTiledClassApplier.h" />
@@ -433,6 +438,7 @@
     <ClInclude Include="include\rkTypedAssetGroup.h" />
     <ClInclude Include="include\rkTypeDefinitions.h" />
     <ClInclude Include="include\rkBlueprintClassApplier.h" />
+    <ClInclude Include="include\rkUndefinedGameObjectComponentDrawer.h" />
     <ClInclude Include="include\rkUnitDescription.h" />
     <ClInclude Include="include\rkUnitDescriptionManager.h" />
     <ClInclude Include="include\rkVector2Utilities.h" />

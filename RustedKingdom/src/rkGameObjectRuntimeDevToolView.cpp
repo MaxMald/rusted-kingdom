@@ -1,12 +1,14 @@
 #include "rkGameObjectRuntimeDevToolView.h"
 #include "imgui.h"
 #include "rkGameObject.h"
+#include "rkComponent.h"
 
 namespace rk
 {
   GameObjectRuntimeDevToolView::GameObjectRuntimeDevToolView()
-    : ARuntimeDevToolView("Game Object View")
-    , m_activeGameObject(nullptr)
+    : ARuntimeDevToolView("Game Object View"),
+    m_activeGameObject(nullptr),
+    m_componentDrawerService()
   {
   }
 
@@ -27,18 +29,20 @@ namespace rk
     // Nothing to update for now
   }
 
-  void GameObjectRuntimeDevToolView::onDraw(
-    sf::RenderWindow&
-  )
+  void GameObjectRuntimeDevToolView::onDraw(sf::RenderWindow& window)
   {
     if (!m_activeGameObject)
       return;
 
     drawBaseInformation();
+    drawComponents(window);
   }
 
   void GameObjectRuntimeDevToolView::drawBaseInformation()
   {
+    if (!m_activeGameObject)
+      return;
+
     String gameObjectName = m_activeGameObject->getName();
     if (gameObjectName.empty())
       gameObjectName = "<unnamed>";
@@ -62,5 +66,17 @@ namespace rk
         }
       }
     }
+  }
+
+  void GameObjectRuntimeDevToolView::drawComponents(sf::RenderWindow& window)
+  {
+    if (!m_activeGameObject)
+      return;
+    
+    const Vector<UniquePtr<Component>>& components = 
+      m_activeGameObject->getAllComponents();
+
+    for (const auto& component : components)
+      m_componentDrawerService.draw(window, *component);
   }
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "rkARuntimeDevToolView.h"
+#include "rkGameObjectComponentDrawerService.h"
 
 namespace rk
 {
@@ -20,7 +21,9 @@ namespace rk
 
   private:
     GameObject* m_activeGameObject;
+    GameObjectComponentDrawerService m_componentDrawerService;
 
     void drawBaseInformation();
+    void drawComponents(sf::RenderWindow&);
   };
 }

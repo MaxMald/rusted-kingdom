@@ -136,6 +136,13 @@ namespace rk
     }
 
     /**
+     * @brief Gets the list of all components attached to this GameObject.
+     * 
+     * @return Reference to the vector of unique pointers to components.
+     */
+    const Vector<UniquePtr<Component>>& getAllComponents() const;
+
+    /**
      * @brief Adds a child GameObject to this object.
      *
      * @param child Unique pointer to the child GameObject.

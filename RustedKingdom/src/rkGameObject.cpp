@@ -47,6 +47,11 @@ namespace rk
     return m_name;
   }
 
+  const Vector<UniquePtr<Component>>& GameObject::getAllComponents() const
+  {
+    return m_components;
+  }
+
   void GameObject::addChild(UniquePtr<GameObject> child)
   {
     if (!child)
