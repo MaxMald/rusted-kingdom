@@ -170,6 +170,7 @@
     <ClCompile Include="src\imgui_widgets.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkAGameObjectComponentDrawer.cpp" />
+    <ClCompile Include="src\rkAnimationStateMachineGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkColliderGroupDrawer.cpp" />
     <ClCompile Include="src\rkApplication.cpp" />
     <ClCompile Include="src\rkArmy.cpp" />
@@ -302,6 +303,7 @@
     <ClInclude Include="include\imstb_rectpack.h" />
     <ClInclude Include="include\imstb_textedit.h" />
     <ClInclude Include="include\imstb_truetype.h" />
+    <ClInclude Include="include\rkAnimationStateMachineGameObjectComponentDrawer.h" />
     <ClInclude Include="include\rkArmy.h" />
     <ClInclude Include="include\rkArmyControlType.h" />
     <ClInclude Include="include\rkArmyManager.h" />

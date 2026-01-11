@@ -3,6 +3,8 @@
 #include "rkSpriteComponent.h"
 #include "rkSpriteGameObjectComponentDrawer.h"
 #include "rkComponent.h"
+#include "rkAnimationStateMachineGameObjectComponentDrawer.h"
+#include "rkAnimationStateMachineComponent.h"
 
 namespace rk
 {
@@ -12,6 +14,9 @@ namespace rk
 
     m_componentDrawers[TypeIndex(typeid(SpriteComponent))] = 
       MakeUnique<SpriteGameObjectComponentDrawer>();
+
+    m_componentDrawers[TypeIndex(typeid(AnimationStateMachineComponent))] =
+      MakeUnique<AnimationStateMachineGameObjectComponentDrawer>();
   }
 
   GameObjectComponentDrawerService::~GameObjectComponentDrawerService() = default;

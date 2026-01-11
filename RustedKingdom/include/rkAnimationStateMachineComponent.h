@@ -26,6 +26,7 @@ namespace rk
 
     Blackboard& getBlackboard();
     const Blackboard& getBlackboard() const;
+    const AnimationState* getCurrentState() const;
 
   protected:
     virtual void onUpdate(float deltaTime) override;

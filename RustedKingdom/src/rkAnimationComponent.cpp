@@ -32,6 +32,11 @@ namespace rk
     return m_animationStateMachine->getBlackboard();
   }
 
+  const AnimationState* AnimationStateMachineComponent::getCurrentState() const
+  {
+    return m_animationStateMachine->getCurrentState();
+  }
+
   void AnimationStateMachineComponent::onUpdate(float deltaTime)
   {
     m_animationStateMachine->update(
