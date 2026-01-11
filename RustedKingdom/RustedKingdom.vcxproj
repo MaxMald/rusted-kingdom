@@ -170,6 +170,7 @@
     <ClCompile Include="src\imgui_widgets.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rkAGameObjectComponentDrawer.cpp" />
+    <ClCompile Include="src\rkAgentPathMovementGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkAnimationStateMachineGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkColliderGroupDrawer.cpp" />
     <ClCompile Include="src\rkApplication.cpp" />
@@ -278,6 +279,7 @@
     <ClCompile Include="src\rkTiledObjectSpriteDescriptor.cpp" />
     <ClCompile Include="src\rkTileGameObjectBlueprint.cpp" />
     <ClCompile Include="src\rkUndefinedGameObjectComponentDrawer.cpp" />
+    <ClCompile Include="src\rkUnitControllerGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkUnitDescription.cpp" />
     <ClCompile Include="src\rkUnitDescriptionManager.cpp" />
     <ClCompile Include="src\rkViewComponent.cpp" />
@@ -303,6 +305,7 @@
     <ClInclude Include="include\imstb_rectpack.h" />
     <ClInclude Include="include\imstb_textedit.h" />
     <ClInclude Include="include\imstb_truetype.h" />
+    <ClInclude Include="include\rkAgentPathMovementGameObjectComponentDrawer.h" />
     <ClInclude Include="include\rkAnimationStateMachineGameObjectComponentDrawer.h" />
     <ClInclude Include="include\rkArmy.h" />
     <ClInclude Include="include\rkArmyControlType.h" />
@@ -443,6 +446,7 @@
     <ClInclude Include="include\rkTypeDefinitions.h" />
     <ClInclude Include="include\rkBlueprintClassApplier.h" />
     <ClInclude Include="include\rkUndefinedGameObjectComponentDrawer.h" />
+    <ClInclude Include="include\rkUnitControllerGameObjectComponentDrawer.h" />
     <ClInclude Include="include\rkUnitDescription.h" />
     <ClInclude Include="include\rkUnitDescriptionManager.h" />
     <ClInclude Include="include\rkVector2Utilities.h" />

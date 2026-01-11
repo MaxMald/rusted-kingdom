@@ -5,6 +5,11 @@
 #include "rkComponent.h"
 #include "rkAnimationStateMachineGameObjectComponentDrawer.h"
 #include "rkAnimationStateMachineComponent.h"
+#include "rkUnitControllerGameObjectComponentDrawer.h"
+#include "rkAgentPathMovementGameObjectComponentDrawer.h"
+
+#include "scripts/rkUnitController.h"
+#include "scripts/rkAgentPathMovement.h"
 
 namespace rk
 {
@@ -17,6 +22,12 @@ namespace rk
 
     m_componentDrawers[TypeIndex(typeid(AnimationStateMachineComponent))] =
       MakeUnique<AnimationStateMachineGameObjectComponentDrawer>();
+
+    m_componentDrawers[TypeIndex(typeid(UnitController))] =
+      MakeUnique<UnitControllerGameObjectComponentDrawer>();
+
+    m_componentDrawers[TypeIndex(typeid(AgentPathMovement))] =
+      MakeUnique<AgentPathMovementGameObjectComponentDrawer>();
   }
 
   GameObjectComponentDrawerService::~GameObjectComponentDrawerService() = default;

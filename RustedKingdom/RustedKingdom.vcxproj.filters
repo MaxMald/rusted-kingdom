@@ -642,6 +642,12 @@
     <ClCompile Include="src\rkAnimationStateMachineGameObjectComponentDrawer.cpp">
       <Filter>Source Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
     </ClCompile>
+    <ClCompile Include="src\rkUnitControllerGameObjectComponentDrawer.cpp">
+      <Filter>Source Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkAgentPathMovementGameObjectComponentDrawer.cpp">
+      <Filter>Source Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rkJson.h">
@@ -1143,6 +1149,12 @@
       <Filter>Header Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
     </ClInclude>
     <ClInclude Include="include\rkAnimationStateMachineGameObjectComponentDrawer.h">
+      <Filter>Header Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkUnitControllerGameObjectComponentDrawer.h">
+      <Filter>Header Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkAgentPathMovementGameObjectComponentDrawer.h">
       <Filter>Header Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
     </ClInclude>
   </ItemGroup>
