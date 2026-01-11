@@ -57,4 +57,19 @@ namespace rk
     static Vector2f zeroVelocity(0.0f, 0.0f);
     return zeroVelocity;
   }
+
+  rigidBodyType::Type RigidBodyComponent::getType() const
+  {
+    if (m_rigidBody)
+      return m_rigidBody->getType();
+    return rigidBodyType::Undefined;
+  }
+
+  const Vector2f& RigidBodyComponent::getPosition() const
+  {
+    if (m_rigidBody)
+      return m_rigidBody->getPosition();
+    static Vector2f zeroPosition(0.0f, 0.0f);
+    return zeroPosition;
+  }
 }

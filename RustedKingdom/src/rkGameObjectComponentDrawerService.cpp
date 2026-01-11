@@ -7,6 +7,10 @@
 #include "rkAnimationStateMachineComponent.h"
 #include "rkUnitControllerGameObjectComponentDrawer.h"
 #include "rkAgentPathMovementGameObjectComponentDrawer.h"
+#include "rkColliderGameObjectComponentDrawer.h"
+#include "rkColliderComponent.h"
+#include "rkRigidBodyGameObjectComponentDrawer.h"
+#include "rkRigidBodyComponent.h"
 
 #include "scripts/rkUnitController.h"
 #include "scripts/rkAgentPathMovement.h"
@@ -28,6 +32,12 @@ namespace rk
 
     m_componentDrawers[TypeIndex(typeid(AgentPathMovement))] =
       MakeUnique<AgentPathMovementGameObjectComponentDrawer>();
+
+    m_componentDrawers[TypeIndex(typeid(ColliderComponent))] =
+      MakeUnique<ColliderGameObjectComponentDrawer>();
+
+    m_componentDrawers[TypeIndex(typeid(RigidBodyComponent))] =
+      MakeUnique<RigidBodyGameObjectComponentDrawer>();
   }
 
   GameObjectComponentDrawerService::~GameObjectComponentDrawerService() = default;

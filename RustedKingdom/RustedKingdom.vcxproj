@@ -172,6 +172,7 @@
     <ClCompile Include="src\rkAGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkAgentPathMovementGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkAnimationStateMachineGameObjectComponentDrawer.cpp" />
+    <ClCompile Include="src\rkColliderGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkColliderGroupDrawer.cpp" />
     <ClCompile Include="src\rkApplication.cpp" />
     <ClCompile Include="src\rkArmy.cpp" />
@@ -256,6 +257,8 @@
     <ClCompile Include="src\rkRigidBodyDebuggedComponent.cpp" />
     <ClCompile Include="src\rkIScene.cpp" />
     <ClCompile Include="src\rkARuntimeDevToolView.cpp" />
+    <ClCompile Include="src\rkRigidBodyGameObjectComponentDrawer.cpp" />
+    <ClCompile Include="src\rkRigidBodyType.cpp" />
     <ClCompile Include="src\rkSceneGraph.cpp" />
     <ClCompile Include="src\rkSceneGraphRuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkScenesManager.cpp" />
@@ -317,6 +320,7 @@
     <ClInclude Include="include\rkBaseTiledClassApplier.h" />
     <ClInclude Include="include\rkBoxSelectorBlueprint.h" />
     <ClInclude Include="include\rkButtonClassApplier.h" />
+    <ClInclude Include="include\rkColliderGameObjectComponentDrawer.h" />
     <ClInclude Include="include\rkColliderGroupDrawer.h" />
     <ClInclude Include="include\rkCircleColliderDrawer.h" />
     <ClInclude Include="include\rkColliderDrawerService.h" />
@@ -414,6 +418,7 @@
     <ClInclude Include="include\rkRigidBody.h" />
     <ClInclude Include="include\rkRigidBodyComponent.h" />
     <ClInclude Include="include\rkRigidBodyDebuggedComponent.h" />
+    <ClInclude Include="include\rkRigidBodyGameObjectComponentDrawer.h" />
     <ClInclude Include="include\rkRigidBodyType.h" />
     <ClInclude Include="include\rkIScene.h" />
     <ClInclude Include="include\rkIRuntimeDevTools.h" />

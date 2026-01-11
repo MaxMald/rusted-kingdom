@@ -25,6 +25,8 @@ namespace rk
     float getMass() const;
     void setVelocity(const Vector2f& velocity);
     const Vector2f& getVelocity() const;
+    rigidBodyType::Type getType() const;
+    const Vector2f& getPosition() const;
 
   protected:
     RigidBody* m_rigidBody;

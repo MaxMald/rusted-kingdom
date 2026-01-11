@@ -8,8 +8,11 @@ namespace rk
   {
     enum Type : UInt8
     {
-      Static = 0,
-      Kinematic = 1
+      Undefined = 0,
+      Static = 1,
+      Kinematic = 2
     };
+
+    String toString(Type type);
   }
 }
