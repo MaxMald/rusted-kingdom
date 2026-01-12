@@ -4,11 +4,13 @@
 #include "rkInputManager.h"
 #include "rkMouseInputManager.h"
 
+#include "scripts/rkIBoxSelectorScriptListener.h"
+
 namespace rk
 {
   const sf::Mouse::Button SELECTION_BUTTON = sf::Mouse::Button::Left;
 
-  BoxSelectorScript::BoxSelectorScript(GameObject& gameObject): 
+  BoxSelectorScript::BoxSelectorScript(GameObject& gameObject) :
     ScriptComponent(gameObject),
     m_boxP1(0.f, 0.f),
     m_boxP2(0.f, 0.f),
@@ -17,7 +19,8 @@ namespace rk
     m_inputManager(nullptr),
     m_borderColor(sf::Color::Green),
     m_fillColor(sf::Color::Green),
-    m_borderThickness(2.f)
+    m_borderThickness(2.f),
+    m_listeners()
   {
   }
 
@@ -40,6 +43,41 @@ namespace rk
     m_borderThickness = thickness;
   }
 
+  bool BoxSelectorScript::isSelecting() const
+  {
+    return m_isSelecting;
+  }
+
+  const Vector2f& BoxSelectorScript::getBoxP1() const
+  {
+    return m_boxP1;
+  }
+
+  const Vector2f& BoxSelectorScript::getBoxP2() const
+  {
+    return m_boxP2;
+  }
+
+  void BoxSelectorScript::registerListener(IBoxSelectorScriptListener* listener)
+  {
+    if (listener && std::find(
+      m_listeners.begin(),
+      m_listeners.end(),
+      listener) == m_listeners.end())
+    {
+      m_listeners.push_back(listener);
+    }
+  }
+
+  void BoxSelectorScript::unregisterListener(IBoxSelectorScriptListener* listener)
+  {
+    auto it = std::find(m_listeners.begin(), m_listeners.end(), listener);
+    if (it != m_listeners.end())
+    {
+      m_listeners.erase(it);
+    }
+  }
+
   void BoxSelectorScript::onCreate()
   {
     m_inputManager = ServiceLocator::Instance().getService<InputManager>();
@@ -53,11 +91,14 @@ namespace rk
 
     updateBoxP2();
     updateBoxShape();
+
+    for (IBoxSelectorScriptListener* listener : m_listeners)
+      listener->onBoxSelectionUpdated(m_boxP1, m_boxP2);
   }
 
   void BoxSelectorScript::onDraw(RenderTarget& renderTarget, RenderStates states) const
   {
-    if(!m_isSelecting)
+    if (!m_isSelecting)
       return;
 
     renderTarget.draw(m_boxShape, states);
@@ -76,9 +117,12 @@ namespace rk
       return;
 
     m_isSelecting = true;
-    
+
     m_boxP1 = m_inputManager->getMouseInputManager()
       .getMousePositionWorldCoordinates();
+
+    for (IBoxSelectorScriptListener* listener : m_listeners)
+      listener->onBoxSelectionStarted(m_boxP1, m_boxP2);
   }
 
   void BoxSelectorScript::onMouseButtonReleased(
@@ -89,6 +133,9 @@ namespace rk
       return;
 
     m_isSelecting = false;
+
+    for (IBoxSelectorScriptListener* listener : m_listeners)
+      listener->onBoxSelectionEnded(m_boxP1, m_boxP2);
   }
   void BoxSelectorScript::updateBoxP2()
   {

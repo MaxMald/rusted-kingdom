@@ -25,6 +25,17 @@ namespace rk
     return SharedPtr<Army>();
   }
 
+  SharedPtr<Army> ArmyManager::getUserArmy()
+  {
+    for (const auto& [id, army] : m_armies)
+    {
+      if (army->getControlType() == armyControlType::User)
+        return army;
+    }
+
+    return SharedPtr<Army>();
+  }
+
   void ArmyManager::setArmiesAsAllies(UInt32 armyIdA, UInt32 armyIdB)
   {
     SharedPtr<Army> armyA = getArmy(armyIdA);

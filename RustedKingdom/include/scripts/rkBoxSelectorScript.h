@@ -12,6 +12,7 @@ using sf::Vector2f;
 namespace rk
 {
   class InputManager;
+  class IBoxSelectorScriptListener;
 
   class BoxSelectorScript : public ScriptComponent, IMouseInputManagerListener
   {
@@ -22,6 +23,13 @@ namespace rk
     void setBorderColor(const sf::Color& color);
     void setFillColor(const sf::Color& color);
     void setBorderThickness(float thickness);
+
+    bool isSelecting() const;
+    const Vector2f& getBoxP1() const;
+    const Vector2f& getBoxP2() const;
+
+    void registerListener(IBoxSelectorScriptListener* listener);
+    void unregisterListener(IBoxSelectorScriptListener* listener);
 
   protected:
     virtual void onCreate() override;
@@ -41,6 +49,7 @@ namespace rk
     Vector2f m_boxP2;
     bool m_isSelecting;
     SharedPtr<InputManager> m_inputManager;
+    Vector<IBoxSelectorScriptListener*> m_listeners;
 
     void updateBoxP2();
     void updateBoxShape();

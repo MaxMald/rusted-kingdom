@@ -4,6 +4,7 @@
 #include "rkColorUtilities.h"
 
 #include "scripts/rkBoxSelectorScript.h"
+#include "scripts/rkUnitsSelectionController.h"
 
 namespace rk
 {
@@ -17,6 +18,8 @@ namespace rk
 
   void BoxSelectorBlueprint::apply(GameObject& gameObject) const
   {
+    // Box Selector Script
+
     UniquePtr<BoxSelectorScript> boxSelectorScript =
       MakeUnique<BoxSelectorScript>(gameObject);
 
@@ -25,5 +28,12 @@ namespace rk
     boxSelectorScript->setBorderThickness(2.f);
 
     gameObject.addComponent(std::move(boxSelectorScript));
+
+    // Units Selection Controller
+
+    UniquePtr<UnitsSelectionController> unitsSelectionController =
+      MakeUnique<UnitsSelectionController>(gameObject);
+
+    gameObject.addComponent(std::move(unitsSelectionController));
   }
 }

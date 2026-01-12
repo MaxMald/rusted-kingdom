@@ -172,6 +172,7 @@
     <ClCompile Include="src\rkAGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkAgentPathMovementGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkAnimationStateMachineGameObjectComponentDrawer.cpp" />
+    <ClCompile Include="src\rkBoxSelectorScriptGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkColliderGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkColliderGroupDrawer.cpp" />
     <ClCompile Include="src\rkApplication.cpp" />
@@ -285,6 +286,7 @@
     <ClCompile Include="src\rkUnitControllerGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkUnitDescription.cpp" />
     <ClCompile Include="src\rkUnitDescriptionManager.cpp" />
+    <ClCompile Include="src\rkUnitsSelectionControllerGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkViewComponent.cpp" />
     <ClCompile Include="src\rkViewComponentFactory.cpp" />
     <ClCompile Include="src\rkViewController.cpp" />
@@ -297,6 +299,7 @@
     <ClCompile Include="src\scripts\rkLuciusAnimation.cpp" />
     <ClCompile Include="src\scripts\rkMinimapScript.cpp" />
     <ClCompile Include="src\scripts\rkUnitController.cpp" />
+    <ClCompile Include="src\scripts\rkUnitsSelectionController.cpp" />
     <ClCompile Include="src\scripts\rkViewControllerScript.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -319,6 +322,7 @@
     <ClInclude Include="include\rkAssetsBundleLoader.h" />
     <ClInclude Include="include\rkBaseTiledClassApplier.h" />
     <ClInclude Include="include\rkBoxSelectorBlueprint.h" />
+    <ClInclude Include="include\rkBoxSelectorScriptGameObjectComponentDrawer.h" />
     <ClInclude Include="include\rkButtonClassApplier.h" />
     <ClInclude Include="include\rkColliderGameObjectComponentDrawer.h" />
     <ClInclude Include="include\rkColliderGroupDrawer.h" />
@@ -454,6 +458,7 @@
     <ClInclude Include="include\rkUnitControllerGameObjectComponentDrawer.h" />
     <ClInclude Include="include\rkUnitDescription.h" />
     <ClInclude Include="include\rkUnitDescriptionManager.h" />
+    <ClInclude Include="include\rkUnitsSelectionControllerGameObjectComponentDrawer.h" />
     <ClInclude Include="include\rkVector2Utilities.h" />
     <ClInclude Include="include\rkViewComponent.h" />
     <ClInclude Include="include\rkViewComponentFactory.h" />
@@ -462,6 +467,7 @@
     <ClInclude Include="include\rkWindowManager.h" />
     <ClInclude Include="include\scripts\rkAgentPathMovement.h" />
     <ClInclude Include="include\scripts\rkBoxSelectorScript.h" />
+    <ClInclude Include="include\scripts\rkIBoxSelectorScriptListener.h" />
     <ClInclude Include="include\scripts\rkButtonScript.h" />
     <ClInclude Include="include\scripts\rkIButtonScriptListener.h" />
     <ClInclude Include="include\scripts\rkLucius.h" />
@@ -470,6 +476,7 @@
     <ClInclude Include="include\rkTiledObjectSpriteDescriptorFactory.h" />
     <ClInclude Include="include\scripts\rkMinimapScript.h" />
     <ClInclude Include="include\scripts\rkUnitController.h" />
+    <ClInclude Include="include\scripts\rkUnitsSelectionController.h" />
     <ClInclude Include="include\scripts\rkViewControllerScript.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

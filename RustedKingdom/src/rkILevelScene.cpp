@@ -9,7 +9,9 @@
 #include "rkViewController.h"
 #include "rkMinimapUtilities.h"
 #include "rkBoxSelectorBlueprint.h"
+
 #include "scripts/rkViewControllerScript.h"
+#include "scripts/rkUnitsSelectionController.h"
 
 namespace rk
 {
@@ -97,11 +99,16 @@ namespace rk
     SharedPtr<GameObjectBlueprint> boxSelectorBlueprint =
       gameObjectSelectorBlueprint->get(gameObjectBlueprintKeys::BoxSelector);
 
-    m_sceneGraph.instantiateGameObject(
+    GameObject* boxSelectorGo = m_sceneGraph.instantiateGameObject(
       *boxSelectorBlueprint,
       "box-selector",
       Vector2f(0.f, 0.f)
     );
+
+    UnitsSelectionController* unitsSelectionController =
+      boxSelectorGo->getComponent<UnitsSelectionController>();
+
+    unitsSelectionController->setArmy(m_armyManager->getUserArmy());
   }
 
   void ILevelScene::updateUi(float deltaTime)

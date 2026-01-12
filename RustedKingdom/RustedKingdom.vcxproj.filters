@@ -244,6 +244,12 @@
     <Filter Include="Source Files\runtimeDevTools\views\components\gameObjectComponents">
       <UniqueIdentifier>{882f6366-0ace-48e6-8bf5-061bfe2e4ec5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\scripts\boxSelector">
+      <UniqueIdentifier>{7225f8a9-2975-420d-9a94-2c565c09cbd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\scripts\boxSelector">
+      <UniqueIdentifier>{fb482408-65c7-4834-90e1-9e3d2061407e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -510,9 +516,6 @@
     <ClCompile Include="src\rkBoxSelectorBlueprint.cpp">
       <Filter>Source Files\gameObjects\blueprints</Filter>
     </ClCompile>
-    <ClCompile Include="src\scripts\rkBoxSelectorScript.cpp">
-      <Filter>Source Files\scripts</Filter>
-    </ClCompile>
     <ClCompile Include="src\scripts\rkButtonScript.cpp">
       <Filter>Source Files\scripts</Filter>
     </ClCompile>
@@ -656,6 +659,18 @@
     </ClCompile>
     <ClCompile Include="src\rkRigidBodyType.cpp">
       <Filter>Source Files\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scripts\rkUnitsSelectionController.cpp">
+      <Filter>Source Files\scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scripts\rkBoxSelectorScript.cpp">
+      <Filter>Source Files\scripts\boxSelector</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkUnitsSelectionControllerGameObjectComponentDrawer.cpp">
+      <Filter>Source Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkBoxSelectorScriptGameObjectComponentDrawer.cpp">
+      <Filter>Source Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1007,9 +1022,6 @@
     <ClInclude Include="include\rkBoxSelectorBlueprint.h">
       <Filter>Header Files\gameObjects\blueprints</Filter>
     </ClInclude>
-    <ClInclude Include="include\scripts\rkBoxSelectorScript.h">
-      <Filter>Header Files\scripts</Filter>
-    </ClInclude>
     <ClInclude Include="include\scripts\rkButtonScript.h">
       <Filter>Header Files\scripts</Filter>
     </ClInclude>
@@ -1170,6 +1182,21 @@
       <Filter>Header Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
     </ClInclude>
     <ClInclude Include="include\rkRigidBodyGameObjectComponentDrawer.h">
+      <Filter>Header Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scripts\rkUnitsSelectionController.h">
+      <Filter>Header Files\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scripts\rkBoxSelectorScript.h">
+      <Filter>Header Files\scripts\boxSelector</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scripts\rkIBoxSelectorScriptListener.h">
+      <Filter>Header Files\scripts\boxSelector</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkUnitsSelectionControllerGameObjectComponentDrawer.h">
+      <Filter>Header Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkBoxSelectorScriptGameObjectComponentDrawer.h">
       <Filter>Header Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
     </ClInclude>
   </ItemGroup>

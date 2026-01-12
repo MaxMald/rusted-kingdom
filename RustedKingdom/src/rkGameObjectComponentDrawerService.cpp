@@ -11,9 +11,13 @@
 #include "rkColliderComponent.h"
 #include "rkRigidBodyGameObjectComponentDrawer.h"
 #include "rkRigidBodyComponent.h"
+#include "rkUnitsSelectionControllerGameObjectComponentDrawer.h"
+#include "rkBoxSelectorScriptGameObjectComponentDrawer.h"
 
 #include "scripts/rkUnitController.h"
 #include "scripts/rkAgentPathMovement.h"
+#include "scripts/rkUnitsSelectionController.h"
+#include "scripts/rkBoxSelectorScript.h"
 
 namespace rk
 {
@@ -38,6 +42,12 @@ namespace rk
 
     m_componentDrawers[TypeIndex(typeid(RigidBodyComponent))] =
       MakeUnique<RigidBodyGameObjectComponentDrawer>();
+
+    m_componentDrawers[TypeIndex(typeid(UnitsSelectionController))] =
+      MakeUnique<UnitsSelectionControllerGameObjectComponentDrawer>();
+
+    m_componentDrawers[TypeIndex(typeid(BoxSelectorScript))] =
+      MakeUnique<BoxSelectorScriptGameObjectComponentDrawer>();
   }
 
   GameObjectComponentDrawerService::~GameObjectComponentDrawerService() = default;
