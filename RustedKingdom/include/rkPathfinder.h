@@ -1,6 +1,11 @@
 #pragma once
 
+#include <SFML/Graphics/Rect.hpp>
+
 #include "rkNodeMesh.h"
+#include "rkQuadTree.h"
+
+using sf::FloatRect;
 
 namespace rk
 {
@@ -33,17 +38,17 @@ namespace rk
       const Vector2f& end
     );
 
+    void updateQuadTree();
+
   private:
     Vector<SharedPtr<SearchNode>> openList;
     Vector<SharedPtr<SearchNode>> closedList;
-    float m_meshWidth;
-    float m_meshHeight;
-    float m_1OverXSpacing;
-    float m_1OverYSpacing;
+    SharedPtr<QuadTree<SharedPtr<Node>>> m_quadTree;
 
     void clearLists();
     void sortOpenListByFCost();
     SharedPtr<SearchNode> getNextNodeFromOpenList();
+    FloatRect getNodeMeshBounds() const;
 
     bool isNodeInList(
       const SharedPtr<Node>& node,

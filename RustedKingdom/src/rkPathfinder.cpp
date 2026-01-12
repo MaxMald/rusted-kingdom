@@ -8,10 +8,16 @@
 
 using std::round;
 
+namespace 
+{
+  constexpr rk::UInt32 QuadTreeNodeCapacity = 4;
+}
+
 namespace rk
 {
   Pathfinder::Pathfinder() :
-    NodeMesh()
+    NodeMesh(),
+    m_quadTree(nullptr)
   {
   }
 
@@ -45,16 +51,14 @@ namespace rk
       );
     }
 
-    m_meshWidth = static_cast<float>(width * xSpacing);
-    m_meshHeight = static_cast<float>(height * ySpacing);
-    m_1OverXSpacing = 1.0f / static_cast<float>(xSpacing);
-    m_1OverYSpacing = 1.0f / static_cast<float>(ySpacing);
+    updateQuadTree();
   }
 
   void Pathfinder::clear()
   {
     NodeMesh::clear();
     clearLists();
+    m_quadTree = nullptr;
   }
 
   Vector<Vector2f> Pathfinder::findPath(
@@ -135,6 +139,28 @@ namespace rk
     return {};
   }
 
+  void Pathfinder::updateQuadTree()
+  {
+    m_quadTree = nullptr;
+
+    FloatRect bounds = getNodeMeshBounds();
+    if (bounds.size.x == 0.0f || bounds.size.y == 0.0f)
+      return;
+
+    auto positionGetter = [&](SharedPtr<Node> node) {
+      return node->getPosition();
+    };
+
+    m_quadTree = MakeShared<QuadTree<SharedPtr<Node>>>(
+      bounds,
+      QuadTreeNodeCapacity,
+      positionGetter
+    );
+
+    for (const auto& node : m_nodes)
+      m_quadTree->insert(node);
+  }
+
   void Pathfinder::clearLists()
   {
     openList.clear();
@@ -173,6 +199,41 @@ namespace rk
     closedList.push_back(currentNode);
 
     return currentNode;
+  }
+
+  FloatRect Pathfinder::getNodeMeshBounds() const
+  {
+    Vector2f minPos(std::numeric_limits<float>::max(), std::numeric_limits<float>::max());
+    Vector2f maxPos(std::numeric_limits<float>::lowest(), std::numeric_limits<float>::lowest());
+    bool found = false;
+
+    for (UInt32 y = 0; y < m_height; ++y)
+    {
+      for (UInt32 x = 0; x < m_width; ++x)
+      {
+        SharedPtr<Node> node = getNodeAt(x, y);
+        if (node)
+        {
+          found = true;
+          Vector2f nodePos = node->getPosition();
+          minPos.x = std::min(minPos.x, nodePos.x);
+          minPos.y = std::min(minPos.y, nodePos.y);
+          maxPos.x = std::max(maxPos.x, nodePos.x);
+          maxPos.y = std::max(maxPos.y, nodePos.y);
+        }
+      }
+    }
+
+    if (!found)
+      return FloatRect();
+
+    return FloatRect(
+      minPos,
+      Vector2f(
+        maxPos.x - minPos.x,
+        maxPos.y - minPos.y
+      )
+    );
   }
 
   bool Pathfinder::isNodeInList(
@@ -265,12 +326,30 @@ namespace rk
     const Vector2f& position
   ) const
   {
-    UInt32 closestX = 0;
-    UInt32 closestY = 0;
+    if (!m_quadTree)
+      return nullptr;
 
-    // Quad tree
+    Vector<SharedPtr<Node>> foundNodes;
+    m_quadTree->query(position, foundNodes);
 
-    return getNodeAt(closestX, closestY);
+    if (foundNodes.empty())
+      return nullptr;
+
+    float closestDistance = std::numeric_limits<float>::max();
+    SharedPtr<Node> closestNode = nullptr;
+
+    for (const auto& node : foundNodes)
+    {
+      Vector2f nodePos = node->getPosition();
+      float distance = (nodePos - position).length();
+      if (distance < closestDistance)
+      {
+        closestDistance = distance;
+        closestNode = node;
+      }
+    }
+
+    return closestNode;
   }
 
   void Pathfinder::removeEndNodePositionIfNotWalkable(

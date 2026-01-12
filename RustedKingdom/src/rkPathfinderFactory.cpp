@@ -71,6 +71,9 @@ namespace rk
           node->setPosition(isoTransformer.isometricToWorld(positionToTransform));
         }
       }
+
+      // Update quad tree
+      pathfinder.updateQuadTree();
     }
   }
 }

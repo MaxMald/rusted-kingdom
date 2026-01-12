@@ -1226,5 +1226,8 @@
     <ClInclude Include="include\scripts\rkPlayerInputScript.h">
       <Filter>Header Files\scripts</Filter>
     </ClInclude>
+    <ClInclude Include="include\rkQuadTree.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

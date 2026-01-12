@@ -399,6 +399,7 @@
     <ClInclude Include="include\rkPathfinderRuntimeDevToolDrawer.h" />
     <ClInclude Include="include\rkPhysicWorldListener.h" />
     <ClInclude Include="include\rkPhysicWorldRuntimeDevToolView.h" />
+    <ClInclude Include="include\rkQuadTree.h" />
     <ClInclude Include="include\rkRectUtilities.h" />
     <ClInclude Include="include\rkRigidBodyComponentFactory.h" />
     <ClInclude Include="include\rkColliderType.h" />

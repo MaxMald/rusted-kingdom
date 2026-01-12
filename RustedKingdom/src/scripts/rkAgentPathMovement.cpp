@@ -7,6 +7,11 @@
 #include "rkColliderComponent.h"
 #include "rkCollider.h"
 
+namespace
+{
+  constexpr float ArrivalThreshold = 5.0f;
+}
+
 namespace rk
 {
   AgentPathMovement::AgentPathMovement(GameObject& gameObject)
@@ -56,7 +61,10 @@ namespace rk
       return;
 
     Vector2f targetPosition = m_pathPoints[m_currentPathPointIndex];
-    if (m_colliderComponent->checkCollision(targetPosition))
+    Vector2f currentPosition = m_gameObject->getPosition();
+    float distanceToTarget = (targetPosition - currentPosition).length();
+
+    if (distanceToTarget < ArrivalThreshold)
     {
       m_currentPathPointIndex++;
       if (m_currentPathPointIndex >= m_pathPoints.size())
@@ -68,7 +76,6 @@ namespace rk
       targetPosition = m_pathPoints[m_currentPathPointIndex];
     }
 
-    Vector2f currentPosition = m_gameObject->getPosition();
     Vector2f direction = (targetPosition - currentPosition).normalized();
     m_rigidBodyComponent->setVelocity(direction * m_speed);
   }
