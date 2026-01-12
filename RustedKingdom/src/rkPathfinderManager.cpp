@@ -1,4 +1,5 @@
 #include "rkPathfinderManager.h"
+#include "rkPathfinder.h"
 
 namespace rk
 {
@@ -46,6 +47,13 @@ namespace rk
   const UnorderedMap<String, SharedPtr<Pathfinder>>& PathfinderManager::getAllPathfinders() const
   {
     return m_pathfinders;
+  }
+
+  SharedPtr<Pathfinder> PathfinderManager::createPathfinder(const String& key)
+  {
+    SharedPtr<Pathfinder> pathfinder = MakeShared<Pathfinder>();
+    m_pathfinders[key] = pathfinder;
+    return pathfinder;
   }
 
   void PathfinderManager::addPathfinder(

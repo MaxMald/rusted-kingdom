@@ -15,6 +15,20 @@ namespace rk
       const TiledMap& tiledMap
     )
     {
+      SharedPtr<Pathfinder> pathfinder = MakeShared<Pathfinder>();
+      initializeFromIsometricTiledMap(*pathfinder, tiledMap);
+      return pathfinder;
+    }
+
+    void initializeFromIsometricTiledMap(
+      Pathfinder& pathfinder,
+      const TiledMap& tiledMap,
+      UInt32 subdivisions
+    )
+    {
+      if (subdivisions == 0)
+        subdivisions = 1;
+
       const tmr::TiledMap* tmrTiledMap = tiledMap.getTmrTiledMap();
 
       if (tmrTiledMap->getOrientation() != tmr::orientation::Type::Isometric)
@@ -29,12 +43,34 @@ namespace rk
       UInt32 height = static_cast<UInt32>(tmrTiledMap->getHeight());
       UInt32 tileHeight = static_cast<UInt32>(tmrTiledMap->getTileHeight());
 
-      return MakeShared<Pathfinder>(
-        width,
-        height,
-        tileHeight,
-        tileHeight
+      UInt32 pathfinderWidth = width * subdivisions;
+      UInt32 pathfinderHeight = height * subdivisions;
+      UInt32 pathfinderXSpacing = tileHeight / subdivisions;
+      UInt32 pathfinderYSpacing = tileHeight / subdivisions;
+
+      pathfinder.init(
+        pathfinderWidth,
+        pathfinderHeight,
+        pathfinderXSpacing,
+        pathfinderYSpacing
       );
+
+      // Transform node positions from isometric to world coordinates
+
+      IsometricPositionTransformer isoTransformer(
+        static_cast<UInt32>(tmrTiledMap->getTileWidth()),
+        static_cast<UInt32>(tmrTiledMap->getTileHeight())
+      );
+
+      for (UInt32 column = 0; column < pathfinderWidth; ++column)
+      {
+        for (UInt32 row = 0; row < pathfinderHeight; ++row)
+        {
+          SharedPtr<Node> node = pathfinder.getNodeAt(column, row);
+          Vector2f positionToTransform = node->getPosition();
+          node->setPosition(isoTransformer.isometricToWorld(positionToTransform));
+        }
+      }
     }
   }
 }

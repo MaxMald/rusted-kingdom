@@ -17,6 +17,7 @@ namespace rk
     const SharedPtr<Pathfinder> getPathfinder(const String& key) const;
     const UnorderedMap<String, SharedPtr<Pathfinder>>& getAllPathfinders() const;
 
+    SharedPtr<Pathfinder> createPathfinder(const String& key);
     void addPathfinder(const String& key, const SharedPtr<Pathfinder>&);
     void clear();
 

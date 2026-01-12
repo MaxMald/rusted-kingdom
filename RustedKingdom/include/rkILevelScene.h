@@ -33,6 +33,7 @@ namespace rk
 
     void prepareMinimap(const tmr::TiledMap* tiledMap);
     void createBoxSelector();
+    void createPathfinders();
 
   private:
     SharedPtr<ViewsManager> m_viewsManager;

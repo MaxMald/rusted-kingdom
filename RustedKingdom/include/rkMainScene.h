@@ -27,6 +27,6 @@ namespace rk
     void loadAssets();
     void createArmies();
     void createScene();
-    void createPathfinders();
+    void initializePathfinders();
   };
 }

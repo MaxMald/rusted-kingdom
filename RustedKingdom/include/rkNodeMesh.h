@@ -8,6 +8,7 @@ namespace rk
   class NodeMesh : public NonCopyable
   {
   public:
+    NodeMesh();
     NodeMesh(
       UInt32 width,
       UInt32 height,
@@ -20,6 +21,15 @@ namespace rk
     const SharedPtr<Node> getNodeAt(UInt32 x, UInt32 y) const;
     UInt32 getWidth() const { return m_width; }
     UInt32 getHeight() const { return m_height; }
+
+    virtual void init(
+      UInt32 width,
+      UInt32 height,
+      UInt32 xSpacing,
+      UInt32 ySpacing
+    );
+
+    virtual void clear();
 
   protected:
     UInt32 m_width;

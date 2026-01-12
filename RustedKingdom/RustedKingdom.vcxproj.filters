@@ -250,6 +250,9 @@
     <Filter Include="Header Files\scripts\boxSelector">
       <UniqueIdentifier>{fb482408-65c7-4834-90e1-9e3d2061407e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\runtimeDevTools\views\components\pathfinderDrawer">
+      <UniqueIdentifier>{6d4acbbb-6a84-487c-97c0-b32c991f6778}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -671,6 +674,9 @@
     </ClCompile>
     <ClCompile Include="src\rkBoxSelectorScriptGameObjectComponentDrawer.cpp">
       <Filter>Source Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rkPathfinderRuntimeDevToolDrawer.cpp">
+      <Filter>Source Files\runtimeDevTools\views\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1198,6 +1204,9 @@
     </ClInclude>
     <ClInclude Include="include\rkBoxSelectorScriptGameObjectComponentDrawer.h">
       <Filter>Header Files\runtimeDevTools\views\components\gameObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rkPathfinderRuntimeDevToolDrawer.h">
+      <Filter>Header Files\runtimeDevTools\views\components\pathfinderDrawer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

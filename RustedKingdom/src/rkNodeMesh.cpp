@@ -2,6 +2,14 @@
 
 namespace rk
 {
+  NodeMesh::NodeMesh() :
+    m_width(0),
+    m_height(0),
+    m_xSpacing(0),
+    m_ySpacing(0)
+  {
+  }
+
   NodeMesh::NodeMesh(
     UInt32 width,
     UInt32 height,
@@ -13,6 +21,39 @@ namespace rk
     m_xSpacing(xSpacing),
     m_ySpacing(ySpacing)
   {
+    init(m_width, m_height, m_xSpacing, m_ySpacing);
+  }
+
+  NodeMesh::~NodeMesh()
+  {
+  }
+
+  SharedPtr<Node> NodeMesh::getNodeAt(UInt32 x, UInt32 y)
+  {
+    assertValidCoordinates(x, y);
+    return m_nodes[m_width * y + x];
+  }
+
+  const SharedPtr<Node> NodeMesh::getNodeAt(UInt32 x, UInt32 y) const
+  {
+    assertValidCoordinates(x, y);
+    return m_nodes[m_width * y + x];
+  }
+
+  void NodeMesh::init(
+    UInt32 width,
+    UInt32 height,
+    UInt32 xSpacing,
+    UInt32 ySpacing
+  )
+  {
+    clear();
+
+    m_width = width;
+    m_height = height;
+    m_xSpacing = xSpacing;
+    m_ySpacing = ySpacing;
+
     m_nodes.reserve(width * height);
     for (UInt32 y = 0; y < height; ++y)
     {
@@ -22,7 +63,7 @@ namespace rk
           Vector2f(
             static_cast<float>(x * xSpacing),
             static_cast<float>(y * ySpacing))
-          )
+        )
         );
       }
     }
@@ -69,20 +110,13 @@ namespace rk
     }
   }
 
-  NodeMesh::~NodeMesh()
+  void NodeMesh::clear()
   {
-  }
-
-  SharedPtr<Node> NodeMesh::getNodeAt(UInt32 x, UInt32 y)
-  {
-    assertValidCoordinates(x, y);
-    return m_nodes[m_width * y + x];
-  }
-
-  const SharedPtr<Node> NodeMesh::getNodeAt(UInt32 x, UInt32 y) const
-  {
-    assertValidCoordinates(x, y);
-    return m_nodes[m_width * y + x];
+    m_nodes.clear();
+    m_width = 0;
+    m_height = 0;
+    m_xSpacing = 0;
+    m_ySpacing = 0;
   }
 
   void NodeMesh::assertValidCoordinates(UInt32 x, UInt32 y) const

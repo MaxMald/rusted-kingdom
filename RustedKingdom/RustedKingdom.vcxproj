@@ -231,6 +231,7 @@
     <ClCompile Include="src\rkPathfinderFactory.cpp" />
     <ClCompile Include="src\rkPathfinderManager.cpp" />
     <ClCompile Include="src\rkPathfinderManagerRuntimeDevToolView.cpp" />
+    <ClCompile Include="src\rkPathfinderRuntimeDevToolDrawer.cpp" />
     <ClCompile Include="src\rkPhysicWorldRuntimeDevToolView.cpp" />
     <ClCompile Include="src\rkRectUtilities.cpp" />
     <ClCompile Include="src\rkRigidBodyComponent.cpp" />
@@ -391,6 +392,7 @@
     <ClInclude Include="include\rkPathfinderFactory.h" />
     <ClInclude Include="include\rkPathfinderManager.h" />
     <ClInclude Include="include\rkPathfinderManagerRuntimeDevToolView.h" />
+    <ClInclude Include="include\rkPathfinderRuntimeDevToolDrawer.h" />
     <ClInclude Include="include\rkPhysicWorldListener.h" />
     <ClInclude Include="include\rkPhysicWorldRuntimeDevToolView.h" />
     <ClInclude Include="include\rkRectUtilities.h" />

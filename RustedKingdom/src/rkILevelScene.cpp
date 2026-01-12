@@ -37,6 +37,7 @@ namespace rk
   void ILevelScene::onLoad()
   {
     createView();
+    createPathfinders();
   }
 
   void ILevelScene::onUnload()
@@ -109,6 +110,13 @@ namespace rk
       boxSelectorGo->getComponent<UnitsSelectionController>();
 
     unitsSelectionController->setArmy(m_armyManager->getUserArmy());
+  }
+
+  void ILevelScene::createPathfinders()
+  {
+    m_pathfinderManager->createPathfinder("land-units");
+    m_pathfinderManager->createPathfinder("air-units");
+    m_pathfinderManager->createPathfinder("sea-units");
   }
 
   void ILevelScene::updateUi(float deltaTime)

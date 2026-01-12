@@ -104,6 +104,11 @@
                     "name": "armyName",
                     "type": "string",
                     "value": "army name here"
+                },
+                {
+                    "name": "pathfinder",
+                    "type": "string",
+                    "value": "land-units"
                 }
             ],
             "name": "CorpSoldier",

@@ -9,13 +9,11 @@ namespace rk
   PathfinderCollisionMaskUpdater::PathfinderCollisionMaskUpdater(
     SharedPtr<Pathfinder> pathfinder,
     PhysicWorld& physicWorld,
-    const String& collidersGroupKey,
-    SharedPtr<IPositionTransformer> positionTransformer
+    const String& collidersGroupKey
   ) : 
     m_pathfinder(pathfinder),
     m_physicWorld(physicWorld),
-    m_collidersGroupKey(collidersGroupKey),
-    m_positionTransformer(positionTransformer)
+    m_collidersGroupKey(collidersGroupKey)
   {
     m_physicWorld.addListener(this);
 
@@ -66,10 +64,8 @@ namespace rk
       {
         SharedPtr<Node> node = m_pathfinder->getNodeAt(x, y);
         Vector2f nodePosition = node->getPosition();
-        Vector2f transformedPosition = 
-          m_positionTransformer->inverseTransform(nodePosition);
 
-        if (collider->checkCollision(transformedPosition))
+        if (collider->checkCollision(nodePosition))
           node->setWalkable(false);
       }
     }

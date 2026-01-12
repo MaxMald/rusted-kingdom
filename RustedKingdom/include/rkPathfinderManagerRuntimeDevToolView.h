@@ -6,6 +6,7 @@ namespace rk
 {
   class Pathfinder;
   class PathfinderManager;
+  class PathfinderRuntimeDevToolDrawer;
 
   class PathfinderManagerRuntimeDevToolView : public ARuntimeDevToolView
   {
@@ -21,10 +22,10 @@ namespace rk
 
   private:
     SharedPtr<PathfinderManager> m_pathfinderManager;
+    Vector<SharedPtr<PathfinderRuntimeDevToolDrawer>> m_pathfinderDrawers;
 
-    void drawPathfinderElement(
-      const String& key,
-      const Pathfinder& pathfinder
-    );
+    void updatePathfinderDrawers();
+    void drawPathfinderDrawers(sf::RenderWindow& window);
+    bool hasPathfinderDrawer(const String& key) const;
   };
 }

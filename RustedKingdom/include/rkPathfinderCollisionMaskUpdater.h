@@ -19,8 +19,7 @@ namespace rk
     PathfinderCollisionMaskUpdater(
       SharedPtr<Pathfinder> pathfinder,
       PhysicWorld& physicWorld,
-      const String& collidersGroupKey,
-      SharedPtr<IPositionTransformer> positionTransformer
+      const String& collidersGroupKey
     );
     virtual ~PathfinderCollisionMaskUpdater();
 
@@ -29,7 +28,6 @@ namespace rk
   private:
     SharedPtr<Pathfinder> m_pathfinder;
     PhysicWorld& m_physicWorld;
-    SharedPtr<IPositionTransformer> m_positionTransformer;
     String m_collidersGroupKey;
 
     void setNodesAsWalkable();

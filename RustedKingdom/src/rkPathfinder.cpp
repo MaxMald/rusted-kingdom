@@ -10,18 +10,38 @@ using std::round;
 
 namespace rk
 {
+  Pathfinder::Pathfinder() :
+    NodeMesh()
+  {
+  }
+
   Pathfinder::Pathfinder(
     UInt32 width,
     UInt32 height,
     UInt32 xSpacing,
     UInt32 ySpacing
-  ) :
-    NodeMesh(width, height, xSpacing, ySpacing)
+  ) : NodeMesh()
   {
+    init(width, height, xSpacing, ySpacing);
+  }
+
+  Pathfinder::~Pathfinder()
+  {
+  }
+
+  void Pathfinder::init(
+    UInt32 width,
+    UInt32 height,
+    UInt32 xSpacing,
+    UInt32 ySpacing
+  )
+  {
+    NodeMesh::init(width, height, xSpacing, ySpacing);
+
     if (width == 0 || height == 0 || xSpacing == 0 || ySpacing == 0)
     {
       throw InvalidArgumentException(
-        "Pathfinder::Pathfinder: width, height, xSpacing, and ySpacing must be greater than zero."
+        "Pathfinder::init: width, height, xSpacing, and ySpacing must be greater than zero."
       );
     }
 
@@ -31,8 +51,10 @@ namespace rk
     m_1OverYSpacing = 1.0f / static_cast<float>(ySpacing);
   }
 
-  Pathfinder::~Pathfinder()
+  void Pathfinder::clear()
   {
+    NodeMesh::clear();
+    clearLists();
   }
 
   Vector<Vector2f> Pathfinder::findPath(
@@ -40,6 +62,9 @@ namespace rk
     const Vector2f& end
   )
   {
+    if (m_nodes.empty())
+      return {};
+
     clearLists();
 
     SharedPtr<Node> startNode = getClosestNodeToPosition(start);
@@ -49,7 +74,7 @@ namespace rk
       return {};
 
     openList.push_back(createStartSearchNode(startNode, end));
-    
+
     while (!openList.empty())
     {
       sortOpenListByFCost();

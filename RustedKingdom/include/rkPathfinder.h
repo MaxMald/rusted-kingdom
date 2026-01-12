@@ -10,6 +10,7 @@ namespace rk
   class Pathfinder : public NodeMesh
   {
   public:
+    Pathfinder();
     Pathfinder(
       UInt32 width,
       UInt32 height,
@@ -17,6 +18,15 @@ namespace rk
       UInt32 ySpacing
     );
     virtual ~Pathfinder();
+
+    virtual void init(
+      UInt32 width,
+      UInt32 height,
+      UInt32 xSpacing,
+      UInt32 ySpacing
+    ) override;
+
+    virtual void clear() override;
 
     Vector<Vector2f> findPath(
       const Vector2f& start,

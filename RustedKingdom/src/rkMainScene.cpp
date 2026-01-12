@@ -139,24 +139,22 @@ namespace rk
       m_uiSceneGraph
     );
 
-    createPathfinders();
+    initializePathfinders();
   }
 
-  void MainScene::createPathfinders()
+  void MainScene::initializePathfinders()
   {
     SharedPtr<TiledMap> tiledMap = m_assetManager->getAssetGroup<TiledMap>()
       .get("level-0");
-    SharedPtr<Pathfinder> pathfinder = pathfinderFactory::createFromIsometricTiledMap(
-      *tiledMap
-    );
 
-    m_pathfinderManager->addPathfinder("characters", pathfinder);
+
+    SharedPtr<Pathfinder> pathfinder = m_pathfinderManager->getPathfinder("land-units");
+    pathfinderFactory::initializeFromIsometricTiledMap(*pathfinder, *tiledMap, 2);
 
     m_pathfinderCollisionMaskUpdater = MakeUnique<PathfinderCollisionMaskUpdater>(
       pathfinder,
       m_physicsWorld,
-      "plantas",
-      tiledMapUtilities::getPositionTransformer(*tiledMap)
+      "plantas"
     );
   }
 }

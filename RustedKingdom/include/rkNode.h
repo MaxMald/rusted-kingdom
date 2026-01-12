@@ -20,6 +20,7 @@ namespace rk
 
     Vector2f& getPosition() { return m_position; }
     Vector2f getPosition() const { return m_position; }
+    void setPosition(const Vector2f& position) { m_position = position; }
     float getWeight() const { return m_weight; }
     void setWeight(float weight) { m_weight = weight; }
     bool isWalkable() const { return m_walkable; }
