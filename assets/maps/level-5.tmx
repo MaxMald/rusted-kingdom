@@ -138,16 +138,19 @@
   <object id="211" name="CorpSoldier" type="CorpSoldier" gid="113" x="584" y="1220" width="100" height="100">
    <properties>
     <property name="armyName" value="User Army"/>
+    <property name="pathfinder" value="land-units"/>
    </properties>
   </object>
   <object id="212" name="CorpSoldier" type="CorpSoldier" gid="113" x="563.5" y="1148.5" width="100" height="100">
    <properties>
     <property name="armyName" value="User Army"/>
+    <property name="pathfinder" value="land-units"/>
    </properties>
   </object>
   <object id="213" name="CorpSoldier" type="CorpSoldier" gid="113" x="562" y="1256" width="100" height="100">
    <properties>
     <property name="armyName" value="User Army"/>
+    <property name="pathfinder" value="land-units"/>
    </properties>
   </object>
  </objectgroup>

@@ -3,26 +3,20 @@
 
 namespace rk
 {
-  PathfinderComponent::PathfinderComponent(
-    GameObject& gameObject,
-    SharedPtr<Pathfinder> pathfinder
-  ) :
+  PathfinderComponent::PathfinderComponent(GameObject& gameObject) :
     Component(gameObject),
     m_pathfinder(nullptr),
     m_drawPoints(false)
   {
-    if (!pathfinder)
-    {
-      throw InvalidArgumentException(
-        "PathfinderComponent constructor: pathfinder is a null pointer"
-      );
-    }
-
-    m_pathfinder = pathfinder;
   }
 
   PathfinderComponent::~PathfinderComponent()
   {
+  }
+
+  void PathfinderComponent::setPathfinder(SharedPtr<Pathfinder> pathfinder)
+  {
+    m_pathfinder = pathfinder;
   }
 
   Vector<Vector2f> PathfinderComponent::findPath(
@@ -30,6 +24,9 @@ namespace rk
     const Vector2f& end
   )
   {
+    if (!m_pathfinder)
+      return Vector<Vector2f>();
+
     return m_pathfinder->findPath(start, end);
   }
 }

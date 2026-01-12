@@ -12,11 +12,10 @@ namespace rk
   class PathfinderComponent : public Component
   {
   public:
-    PathfinderComponent(
-      GameObject&,
-      SharedPtr<Pathfinder>
-    );
+    PathfinderComponent(GameObject&);
     virtual ~PathfinderComponent();
+
+    void setPathfinder(SharedPtr<Pathfinder> pathfinder);
 
     Vector<Vector2f> findPath(
       const Vector2f& start,

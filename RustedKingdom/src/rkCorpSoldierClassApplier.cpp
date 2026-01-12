@@ -8,6 +8,8 @@
 #include "rkTiledPropertiesHandler.h"
 #include "rkArmyManager.h"
 #include "rkArmy.h"
+#include "rkPathfinderManager.h"
+#include "rkPathfinderComponent.h"
 
 #include "scripts/rkUnitController.h"
 
@@ -40,5 +42,18 @@ namespace rk
       = ServiceLocator::Instance().getService<ArmyManager>();
 
     unitController->setArmy(armyManager->getArmy(armyName));
+
+    SharedPtr<PathfinderManager> pathfinderManager
+      = ServiceLocator::Instance().getService<PathfinderManager>();
+
+    PathfinderComponent* pathfinderComponent = gameObject
+      .getComponent<PathfinderComponent>();
+
+    String pathfinderKey;
+    propertiesHandler.tryGetString("pathfinder", pathfinderKey);
+
+    pathfinderComponent->setPathfinder(
+      pathfinderManager->getPathfinder(pathfinderKey)
+    );
   }
 }

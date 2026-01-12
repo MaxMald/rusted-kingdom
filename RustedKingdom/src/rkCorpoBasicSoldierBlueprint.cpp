@@ -15,6 +15,7 @@
 #include "rkColliderComponentFactory.h"
 #include "rkUnitDescriptionManager.h"
 #include "rkUnitDescription.h"
+#include "rkPathfinderComponent.h"
 
 #include "scripts/rkAgentPathMovement.h"
 #include "scripts/rkUnitController.h"
@@ -90,5 +91,7 @@ namespace rk
       gameObject,
       unitDescriptionManager->getUnitDescription("corpSoldier")
     ));
+
+    gameObject.addComponent(MakeUnique<PathfinderComponent>(gameObject));
   }
 }
