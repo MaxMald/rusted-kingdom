@@ -1,5 +1,10 @@
 #include "scripts/rkUnitController.h"
+
+#include "rkGameObject.h"
 #include "rkArmy.h"
+#include "rkPathfinderComponent.h"
+
+#include "scripts/rkAgentPathMovement.h"
 
 namespace rk
 {
@@ -8,7 +13,9 @@ namespace rk
     const UnitDescription& unitDescription
   ) :
     ScriptComponent(gameObject),
-    m_unitDescription(unitDescription)
+    m_unitDescription(unitDescription),
+    m_pathfinderComponent(nullptr),
+    m_agentPathMovement(nullptr)
   {
     m_currentHealth = m_unitDescription.getHealth();
   }
@@ -46,6 +53,22 @@ namespace rk
     return m_currentHealth;
   }
 
+  void UnitController::goTo(const Vector2f& position)
+  {
+    if (!m_agentPathMovement || !m_pathfinderComponent)
+      return;
+
+    Vector<Vector2f> path = m_pathfinderComponent->findPath(
+      m_gameObject->getPosition(),
+      position
+    );
+
+    if (path.empty())
+      return;
+
+    m_agentPathMovement->start(path);
+  }
+
   void UnitController::addDamage(UInt16 damage)
   {
     m_currentHealth -= damage;
@@ -60,6 +83,8 @@ namespace rk
 
   void UnitController::onCreate()
   {
+    m_pathfinderComponent = m_gameObject->getComponent<PathfinderComponent>();
+    m_agentPathMovement = m_gameObject->getComponent<AgentPathMovement>();
   }
 
   void UnitController::onDelete()
