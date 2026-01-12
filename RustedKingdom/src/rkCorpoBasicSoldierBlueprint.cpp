@@ -82,16 +82,26 @@ namespace rk
       );
 
     gameObject.addComponent(std::move(circleCollider));
-    gameObject.addComponent(MakeUnique<AgentPathMovement>(gameObject));
+
 
     SharedPtr<UnitDescriptionManager> unitDescriptionManager = 
       ServiceLocator::Instance().getService<UnitDescriptionManager>();
 
+    const UnitDescription& unitDescription = 
+      unitDescriptionManager->getUnitDescription("corpSoldier");
+
     gameObject.addComponent(MakeUnique<UnitController>(
       gameObject,
-      unitDescriptionManager->getUnitDescription("corpSoldier")
+      unitDescription
     ));
 
     gameObject.addComponent(MakeUnique<PathfinderComponent>(gameObject));
+
+    UniquePtr<AgentPathMovement> agentPathMovement =
+      MakeUnique<AgentPathMovement>(gameObject);
+
+    agentPathMovement->setSpeed(unitDescription.getVelocity());
+
+    gameObject.addComponent(std::move(agentPathMovement));
   }
 }

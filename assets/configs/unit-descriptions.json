@@ -3,7 +3,7 @@
     {
       "name": "corpSoldier",
       "displayName": "Soldado de Infanteria",
-      "velocity": 2.5,
+      "velocity": 100,
       "health": 100,
       "armor": 0
     }

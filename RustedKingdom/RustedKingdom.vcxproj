@@ -271,6 +271,7 @@
     <ClCompile Include="src\rkSpriteComponentFactory.cpp" />
     <ClCompile Include="src\rkSpriteGameObjectComponentDrawer.cpp" />
     <ClCompile Include="src\rkSpriteSheet.cpp" />
+    <ClCompile Include="src\rkSteerForces.cpp" />
     <ClCompile Include="src\rkTexture.cpp" />
     <ClCompile Include="src\rkTiledClassApplierMapper.cpp" />
     <ClCompile Include="src\rkTiledColliderComponentFactory.cpp" />
@@ -288,6 +289,7 @@
     <ClCompile Include="src\rkUnitDescription.cpp" />
     <ClCompile Include="src\rkUnitDescriptionManager.cpp" />
     <ClCompile Include="src\rkUnitsSelectionControllerGameObjectComponentDrawer.cpp" />
+    <ClCompile Include="src\rkVector2Utilities.cpp" />
     <ClCompile Include="src\rkViewComponent.cpp" />
     <ClCompile Include="src\rkViewComponentFactory.cpp" />
     <ClCompile Include="src\rkViewController.cpp" />
@@ -299,7 +301,9 @@
     <ClCompile Include="src\scripts\rkLucius.cpp" />
     <ClCompile Include="src\scripts\rkLuciusAnimation.cpp" />
     <ClCompile Include="src\scripts\rkMinimapScript.cpp" />
+    <ClCompile Include="src\scripts\rkPlayerInputScript.cpp" />
     <ClCompile Include="src\scripts\rkUnitController.cpp" />
+    <ClCompile Include="src\scripts\rkUnitsCommanderScript.cpp" />
     <ClCompile Include="src\scripts\rkUnitsSelectionController.cpp" />
     <ClCompile Include="src\scripts\rkViewControllerScript.cpp" />
   </ItemGroup>
@@ -477,7 +481,9 @@
     <ClInclude Include="include\scripts\rkLuciusStates.h" />
     <ClInclude Include="include\rkTiledObjectSpriteDescriptorFactory.h" />
     <ClInclude Include="include\scripts\rkMinimapScript.h" />
+    <ClInclude Include="include\scripts\rkPlayerInputScript.h" />
     <ClInclude Include="include\scripts\rkUnitController.h" />
+    <ClInclude Include="include\scripts\rkUnitsCommanderScript.h" />
     <ClInclude Include="include\scripts\rkUnitsSelectionController.h" />
     <ClInclude Include="include\scripts\rkViewControllerScript.h" />
   </ItemGroup>

@@ -268,19 +268,7 @@ namespace rk
     UInt32 closestX = 0;
     UInt32 closestY = 0;
 
-    if (position.x < 0.0f)
-      closestX = 0;
-    else if (position.x >= m_meshWidth)
-      closestX = m_width - 1;
-    else
-      closestX = static_cast<UInt32>(round(position.x * m_1OverXSpacing)) % m_width;
-
-    if (position.y < 0.0f)
-      closestY = 0;
-    else if (position.y >= m_meshHeight)
-      closestY = m_height - 1;
-    else
-      closestY = static_cast<UInt32>(round(position.y * m_1OverYSpacing)) % m_height;
+    // Quad tree
 
     return getNodeAt(closestX, closestY);
   }

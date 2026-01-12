@@ -5,6 +5,8 @@
 
 #include "scripts/rkBoxSelectorScript.h"
 #include "scripts/rkUnitsSelectionController.h"
+#include "scripts/rkUnitsCommanderScript.h"
+#include "scripts/rkPlayerInputScript.h"
 
 namespace rk
 {
@@ -29,11 +31,8 @@ namespace rk
 
     gameObject.addComponent(std::move(boxSelectorScript));
 
-    // Units Selection Controller
-
-    UniquePtr<UnitsSelectionController> unitsSelectionController =
-      MakeUnique<UnitsSelectionController>(gameObject);
-
-    gameObject.addComponent(std::move(unitsSelectionController));
+    gameObject.addComponent(MakeUnique<UnitsSelectionController>(gameObject));
+    gameObject.addComponent(MakeUnique<UnitsCommanderScript>(gameObject));
+    gameObject.addComponent(MakeUnique<PlayerInputScript>(gameObject));
   }
 }
