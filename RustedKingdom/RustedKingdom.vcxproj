@@ -299,7 +299,7 @@
     <ClCompile Include="src\scripts\rkBoxSelectorScript.cpp" />
     <ClCompile Include="src\scripts\rkButtonScript.cpp" />
     <ClCompile Include="src\scripts\rkLucius.cpp" />
-    <ClCompile Include="src\scripts\rkLuciusAnimation.cpp" />
+    <ClCompile Include="src\scripts\rkUnitAnimationControllerScript.cpp" />
     <ClCompile Include="src\scripts\rkMinimapScript.cpp" />
     <ClCompile Include="src\scripts\rkPlayerInputScript.cpp" />
     <ClCompile Include="src\scripts\rkUnitController.cpp" />
@@ -478,7 +478,7 @@
     <ClInclude Include="include\scripts\rkButtonScript.h" />
     <ClInclude Include="include\scripts\rkIButtonScriptListener.h" />
     <ClInclude Include="include\scripts\rkLucius.h" />
-    <ClInclude Include="include\scripts\rkLuciusAnimation.h" />
+    <ClInclude Include="include\scripts\rkUnitAnimationControllerScript.h" />
     <ClInclude Include="include\scripts\rkLuciusStates.h" />
     <ClInclude Include="include\rkTiledObjectSpriteDescriptorFactory.h" />
     <ClInclude Include="include\scripts\rkMinimapScript.h" />

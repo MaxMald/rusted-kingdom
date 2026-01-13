@@ -369,7 +369,7 @@
     <ClCompile Include="src\rkIsometricPositionTransformer.cpp">
       <Filter>Source Files\utilities</Filter>
     </ClCompile>
-    <ClCompile Include="src\scripts\rkLuciusAnimation.cpp">
+    <ClCompile Include="src\scripts\rkUnitAnimationControllerScript.cpp">
       <Filter>Source Files\scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\scripts\rkAgentPathMovement.cpp">
@@ -857,7 +857,7 @@
     <ClInclude Include="include\scripts\rkLuciusStates.h">
       <Filter>Header Files\scripts</Filter>
     </ClInclude>
-    <ClInclude Include="include\scripts\rkLuciusAnimation.h">
+    <ClInclude Include="include\scripts\rkUnitAnimationControllerScript.h">
       <Filter>Header Files\scripts</Filter>
     </ClInclude>
     <ClInclude Include="include\scripts\rkAgentPathMovement.h">

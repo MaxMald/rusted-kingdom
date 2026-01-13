@@ -19,6 +19,7 @@
 
 #include "scripts/rkAgentPathMovement.h"
 #include "scripts/rkUnitController.h"
+#include "scripts/rkUnitAnimationControllerScript.h"
 
 using sf::IntRect;
 using sf::Vector2i;
@@ -83,7 +84,6 @@ namespace rk
 
     gameObject.addComponent(std::move(circleCollider));
 
-
     SharedPtr<UnitDescriptionManager> unitDescriptionManager = 
       ServiceLocator::Instance().getService<UnitDescriptionManager>();
 
@@ -94,7 +94,7 @@ namespace rk
       gameObject,
       unitDescription
     ));
-
+    gameObject.addComponent(MakeUnique<UnitAnimationControllerScript>(gameObject));
     gameObject.addComponent(MakeUnique<PathfinderComponent>(gameObject));
 
     UniquePtr<AgentPathMovement> agentPathMovement =

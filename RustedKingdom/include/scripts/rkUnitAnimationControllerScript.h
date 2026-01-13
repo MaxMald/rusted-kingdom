@@ -7,11 +7,11 @@ namespace rk
   class AnimationStateMachineComponent;
   class RigidBodyComponent;
 
-  class LuciusAnimation : public ScriptComponent
+  class UnitAnimationControllerScript : public ScriptComponent
   {
   public:
-    LuciusAnimation(GameObject& gameObject);
-    virtual ~LuciusAnimation();
+    UnitAnimationControllerScript(GameObject& gameObject);
+    virtual ~UnitAnimationControllerScript();
 
   protected:
     virtual void onCreate() override;

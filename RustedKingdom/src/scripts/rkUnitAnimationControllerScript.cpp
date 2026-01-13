@@ -1,4 +1,5 @@
-#include "scripts/rkLuciusAnimation.h"
+#include "scripts/rkUnitAnimationControllerScript.h"
+
 #include "rkGameObject.h"
 #include "rkRigidBodyComponent.h"
 #include "rkAnimationStateMachineComponent.h"
@@ -8,24 +9,24 @@ using sf::Vector2f;
 
 namespace rk
 {
-  LuciusAnimation::LuciusAnimation(GameObject& gameObject)
+  UnitAnimationControllerScript::UnitAnimationControllerScript(GameObject& gameObject)
     : ScriptComponent(gameObject),
     m_animationComponent(nullptr),
     m_rigidBodyComponent(nullptr)
   {
   }
 
-  LuciusAnimation::~LuciusAnimation()
+  UnitAnimationControllerScript::~UnitAnimationControllerScript()
   {
   }
 
-  void LuciusAnimation::onCreate()
+  void UnitAnimationControllerScript::onCreate()
   {
     m_animationComponent = m_gameObject->getComponent<AnimationStateMachineComponent>();
     m_rigidBodyComponent = m_gameObject->getComponent<RigidBodyComponent>();
   }
 
-  void LuciusAnimation::onUpdate(float)
+  void UnitAnimationControllerScript::onUpdate(float)
   {
     Vector2f velocity = m_rigidBodyComponent->getVelocity();
 
